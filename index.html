@@ -108,7 +108,7 @@ function render(filter){
   rows.forEach(function(d){
     html+="<tr>";
     html+="<td><a href='reports/"+d.report+"'>"+d.ticker+"</a></td>";
-    html+="<td>"+d.total+"</td>";
+    html+="<td>"+(d.stock||0)+"</td>";
     html+="<td>"+(d.stock?'<span class="green">'+d.stock+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.indiv?'<span class="green">'+d.indiv+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.wr100?'<span class="green">'+d.wr100+'</span>':'<span class="zero">0</span>')+"</td>";
