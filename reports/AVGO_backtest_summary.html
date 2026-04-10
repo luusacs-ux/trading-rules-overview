@@ -20,8 +20,6 @@ th { background: #16213e; color: #00d4ff; padding: 8px 10px; text-align: left; c
 th:hover { background: #1a3a5e; }
 td { padding: 6px 10px; border-bottom: 1px solid #222; }
 tr:hover { background: #1a2a4e; }
-tr.wr100 { background: rgba(0, 255, 136, 0.15); }
-tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
 .fam-AVS { background: #2a4a2a; color: #66ff66; }
 .fam-AVL { background: #2a2a4a; color: #6666ff; }
@@ -36,127 +34,578 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <div class="subtitle">Pipeline: create_rules_AVGO_SOXX_20260410 | Ticker: AVGO | Lead: SOXX | Divergence: XLK | Inverse: TECS | Date: 2026-04-10</div>
 
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">75</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">26</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">21</div></div>
-    <div class="card"><div class="label">Avg PTPnL per Rule</div><div class="value green">2.2%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">539</div></div>
+    <div class="card"><div class="label">AVS (Standalone)</div><div class="value green">230</div></div>
+    <div class="card"><div class="label">AVL (Lead-Lag)</div><div class="value">144</div></div>
+    <div class="card"><div class="label">AVD (Divergence)</div><div class="value">90</div></div>
+    <div class="card"><div class="label">AVX (Inverse)</div><div class="value">75</div></div>
+    <div class="card"><div class="label">Status</div><div class="value">Pending Backtest</div></div>
 </div>
-<h2>5M Timeframe (19 rules)</h2>
+<h2>5M Timeframe (160 rules)</h2>
 <table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Rule ID<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">APnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<thead><tr><th>#</th><th>Rule ID</th><th>Family</th><th>Trades</th><th>WR%</th><th>APnL%</th><th>PTPnL%</th></tr></thead>
 <tbody>
-<tr class="tier2"><td>1</td><td><strong>AVS01-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>75.0</td><td><strong>71.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>2</td><td><strong>AVS07-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>68.0</td><td><strong>68.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>3</td><td><strong>AVS03-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>72.0</td><td><strong>65.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>4</td><td><strong>AVS08-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>59.0</td><td><strong>47.00</strong></td><td>3.00</td></tr>
-<tr class="wr100"><td>5</td><td><strong>AVL02-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>40.00</strong></td><td>8.00</td></tr>
-<tr class="tier2"><td>6</td><td><strong>AVL01-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>62.0</td><td><strong>37.00</strong></td><td>1.00</td></tr>
-<tr class="tier2"><td>7</td><td><strong>AVS02-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>70.0</td><td><strong>36.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>8</td><td><strong>AVS05-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>68.0</td><td><strong>32.00</strong></td><td>1.00</td></tr>
-<tr class="tier2"><td>9</td><td><strong>AVL05-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>75.0</td><td><strong>30.00</strong></td><td>3.00</td></tr>
-<tr class="wr100"><td>10</td><td><strong>AVL03-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>16.00</strong></td><td>8.00</td></tr>
-<tr class="tier2"><td>11</td><td><strong>AVS06-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>56.0</td><td><strong>14.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>12</td><td><strong>AVD01-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>100.0</td><td><strong>12.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>13</td><td><strong>AVL04-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>83.0</td><td><strong>11.00</strong></td><td>1.00</td></tr>
-<tr class="wr100"><td>14</td><td><strong>AVL06-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>9.00</strong></td><td>3.00</td></tr>
-<tr class="wr100"><td>15</td><td><strong>AVX01-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>100.0</td><td><strong>9.00</strong></td><td>3.00</td></tr>
-<tr class="wr100"><td>16</td><td><strong>AVD02-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>100.0</td><td><strong>8.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>17</td><td><strong>AVX02-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>100.0</td><td><strong>7.00</strong></td><td>2.00</td></tr>
-<tr class=""><td>18</td><td><strong>AVD03-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>80.0</td><td><strong>6.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>19</td><td><strong>AVS04-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>3.00</strong></td><td>1.00</td></tr>
-</tbody></table>
-
-<h2>15M Timeframe (16 rules)</h2>
+<tr><td>1</td><td><strong>AVD01-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2</td><td><strong>AVD02-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>3</td><td><strong>AVD03-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>4</td><td><strong>AVD04-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>5</td><td><strong>AVD05-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>6</td><td><strong>AVD06-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>7</td><td><strong>AVD07-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>8</td><td><strong>AVD08-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>9</td><td><strong>AVD09-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>10</td><td><strong>AVD10-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>11</td><td><strong>AVD11-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>12</td><td><strong>AVD12-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>13</td><td><strong>AVD13-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>14</td><td><strong>AVD14-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>15</td><td><strong>AVD15-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>16</td><td><strong>AVD16-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>17</td><td><strong>AVD17-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>18</td><td><strong>AVD18-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>19</td><td><strong>AVD19-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>20</td><td><strong>AVD20-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>21</td><td><strong>AVD21-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>22</td><td><strong>AVD22-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>23</td><td><strong>AVD23-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>24</td><td><strong>AVD24-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>25</td><td><strong>AVD25-5m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>26</td><td><strong>AVL01-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>27</td><td><strong>AVL02-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>28</td><td><strong>AVL03-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>29</td><td><strong>AVL05-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>30</td><td><strong>AVL06-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>31</td><td><strong>AVL07-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>32</td><td><strong>AVL08-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>33</td><td><strong>AVL09-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>34</td><td><strong>AVL10-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>35</td><td><strong>AVL11-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>36</td><td><strong>AVL12-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>37</td><td><strong>AVL13-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>38</td><td><strong>AVL14-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>39</td><td><strong>AVL15-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>40</td><td><strong>AVL16-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>41</td><td><strong>AVL17-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>42</td><td><strong>AVL18-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>43</td><td><strong>AVL19-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>44</td><td><strong>AVL20-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>45</td><td><strong>AVL21-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>46</td><td><strong>AVL22-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>47</td><td><strong>AVL23-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>48</td><td><strong>AVL24-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>49</td><td><strong>AVL25-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>50</td><td><strong>AVL26-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>51</td><td><strong>AVL27-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>52</td><td><strong>AVL28-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>53</td><td><strong>AVL29-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>54</td><td><strong>AVL30-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>55</td><td><strong>AVL31-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>56</td><td><strong>AVL32-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>57</td><td><strong>AVL33-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>58</td><td><strong>AVL34-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>59</td><td><strong>AVL35-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>60</td><td><strong>AVL36-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>61</td><td><strong>AVL37-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>62</td><td><strong>AVL38-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>63</td><td><strong>AVL39-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>64</td><td><strong>AVL40-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>65</td><td><strong>AVL41-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>66</td><td><strong>AVL42-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>67</td><td><strong>AVL43-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>68</td><td><strong>AVL44-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>69</td><td><strong>AVL45-5m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>70</td><td><strong>AVS01-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>71</td><td><strong>AVS02-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>72</td><td><strong>AVS03-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>73</td><td><strong>AVS04-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>74</td><td><strong>AVS05-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>75</td><td><strong>AVS06-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>76</td><td><strong>AVS07-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>77</td><td><strong>AVS08-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>78</td><td><strong>AVS09-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>79</td><td><strong>AVS10-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>80</td><td><strong>AVS11-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>81</td><td><strong>AVS12-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>82</td><td><strong>AVS13-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>83</td><td><strong>AVS14-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>84</td><td><strong>AVS15-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>85</td><td><strong>AVS16-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>86</td><td><strong>AVS17-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>87</td><td><strong>AVS18-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>88</td><td><strong>AVS19-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>89</td><td><strong>AVS20-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>90</td><td><strong>AVS21-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>91</td><td><strong>AVS22-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>92</td><td><strong>AVS23-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>93</td><td><strong>AVS24-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>94</td><td><strong>AVS25-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>95</td><td><strong>AVS26-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>96</td><td><strong>AVS27-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>97</td><td><strong>AVS28-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>98</td><td><strong>AVS29-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>99</td><td><strong>AVS30-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>100</td><td><strong>AVS31-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>101</td><td><strong>AVS32-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>102</td><td><strong>AVS33-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>103</td><td><strong>AVS34-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>104</td><td><strong>AVS35-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>105</td><td><strong>AVS36-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>106</td><td><strong>AVS37-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>107</td><td><strong>AVS38-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>108</td><td><strong>AVS39-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>109</td><td><strong>AVS40-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>110</td><td><strong>AVS41-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>111</td><td><strong>AVS42-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>112</td><td><strong>AVS43-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>113</td><td><strong>AVS44-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>114</td><td><strong>AVS45-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>115</td><td><strong>AVS46-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>116</td><td><strong>AVS47-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>117</td><td><strong>AVS48-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>118</td><td><strong>AVS49-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>119</td><td><strong>AVS50-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>120</td><td><strong>AVS51-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>121</td><td><strong>AVS52-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>122</td><td><strong>AVS53-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>123</td><td><strong>AVS54-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>124</td><td><strong>AVS55-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>125</td><td><strong>AVS56-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>126</td><td><strong>AVS57-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>127</td><td><strong>AVS58-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>128</td><td><strong>AVS59-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>129</td><td><strong>AVS60-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>130</td><td><strong>AVS61-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>131</td><td><strong>AVS62-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>132</td><td><strong>AVS63-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>133</td><td><strong>AVS64-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>134</td><td><strong>AVS65-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>135</td><td><strong>AVS66-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>136</td><td><strong>AVS67-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>137</td><td><strong>AVS68-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>138</td><td><strong>AVS69-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>139</td><td><strong>AVS70-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>140</td><td><strong>AVS71-5m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>141</td><td><strong>AVX01-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>142</td><td><strong>AVX02-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>143</td><td><strong>AVX03-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>144</td><td><strong>AVX04-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>145</td><td><strong>AVX05-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>146</td><td><strong>AVX06-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>147</td><td><strong>AVX07-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>148</td><td><strong>AVX08-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>149</td><td><strong>AVX09-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>150</td><td><strong>AVX10-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>151</td><td><strong>AVX11-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>152</td><td><strong>AVX12-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>153</td><td><strong>AVX13-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>154</td><td><strong>AVX14-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>155</td><td><strong>AVX15-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>156</td><td><strong>AVX16-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>157</td><td><strong>AVX17-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>158</td><td><strong>AVX18-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>159</td><td><strong>AVX19-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>160</td><td><strong>AVX20-5m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h2>15M Timeframe (150 rules)</h2>
 <table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Rule ID<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">APnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<thead><tr><th>#</th><th>Rule ID</th><th>Family</th><th>Trades</th><th>WR%</th><th>APnL%</th><th>PTPnL%</th></tr></thead>
 <tbody>
-<tr class="wr100"><td>1</td><td><strong>AVL01-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>4.00</td></tr>
-<tr class="wr100"><td>2</td><td><strong>AVS01-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>10.00</strong></td><td>3.00</td></tr>
-<tr class="tier2"><td>3</td><td><strong>AVS04-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>71.0</td><td><strong>10.00</strong></td><td>1.00</td></tr>
-<tr class="wr100"><td>4</td><td><strong>AVD01-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>100.0</td><td><strong>10.00</strong></td><td>3.00</td></tr>
-<tr class=""><td>5</td><td><strong>AVL05-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>57.0</td><td><strong>9.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>6</td><td><strong>AVS03-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>77.0</td><td><strong>8.00</strong></td><td>0.00</td></tr>
-<tr class="wr100"><td>7</td><td><strong>AVX01-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>100.0</td><td><strong>8.00</strong></td><td>3.00</td></tr>
-<tr class=""><td>8</td><td><strong>AVS02-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>86.0</td><td><strong>7.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>9</td><td><strong>AVS06-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>86.0</td><td><strong>7.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>10</td><td><strong>AVD02-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>80.0</td><td><strong>6.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>11</td><td><strong>AVL02-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>83.0</td><td><strong>5.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>12</td><td><strong>AVL03-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>79.0</td><td><strong>5.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>13</td><td><strong>AVX02-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>80.0</td><td><strong>5.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>14</td><td><strong>AVS05-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>62.0</td><td><strong>4.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>15</td><td><strong>AVS07-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>57.0</td><td><strong>3.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>16</td><td><strong>AVL04-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>80.0</td><td><strong>2.00</strong></td><td>0.00</td></tr>
-</tbody></table>
-
-<h2>1H Timeframe (18 rules)</h2>
+<tr><td>1</td><td><strong>AVD01-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2</td><td><strong>AVD02-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>3</td><td><strong>AVD03-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>4</td><td><strong>AVD04-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>5</td><td><strong>AVD05-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>6</td><td><strong>AVD06-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>7</td><td><strong>AVD07-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>8</td><td><strong>AVD08-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>9</td><td><strong>AVD09-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>10</td><td><strong>AVD10-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>11</td><td><strong>AVD11-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>12</td><td><strong>AVD12-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>13</td><td><strong>AVD13-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>14</td><td><strong>AVD14-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>15</td><td><strong>AVD15-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>16</td><td><strong>AVD16-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>17</td><td><strong>AVD17-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>18</td><td><strong>AVD18-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>19</td><td><strong>AVD19-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>20</td><td><strong>AVD20-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>21</td><td><strong>AVD21-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>22</td><td><strong>AVD22-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>23</td><td><strong>AVD23-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>24</td><td><strong>AVD24-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>25</td><td><strong>AVD25-15m</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>26</td><td><strong>AVL01-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>27</td><td><strong>AVL02-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>28</td><td><strong>AVL03-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>29</td><td><strong>AVL04-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>30</td><td><strong>AVL05-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>31</td><td><strong>AVL06-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>32</td><td><strong>AVL07-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>33</td><td><strong>AVL08-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>34</td><td><strong>AVL09-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>35</td><td><strong>AVL10-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>36</td><td><strong>AVL11-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>37</td><td><strong>AVL12-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>38</td><td><strong>AVL13-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>39</td><td><strong>AVL14-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>40</td><td><strong>AVL15-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>41</td><td><strong>AVL16-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>42</td><td><strong>AVL17-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>43</td><td><strong>AVL18-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>44</td><td><strong>AVL19-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>45</td><td><strong>AVL20-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>46</td><td><strong>AVL21-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>47</td><td><strong>AVL22-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>48</td><td><strong>AVL23-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>49</td><td><strong>AVL24-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>50</td><td><strong>AVL25-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>51</td><td><strong>AVL26-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>52</td><td><strong>AVL27-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>53</td><td><strong>AVL28-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>54</td><td><strong>AVL29-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>55</td><td><strong>AVL30-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>56</td><td><strong>AVL31-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>57</td><td><strong>AVL32-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>58</td><td><strong>AVL33-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>59</td><td><strong>AVL34-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>60</td><td><strong>AVL35-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>61</td><td><strong>AVL36-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>62</td><td><strong>AVL37-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>63</td><td><strong>AVL38-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>64</td><td><strong>AVL39-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>65</td><td><strong>AVL40-15m</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>66</td><td><strong>AVS01-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>67</td><td><strong>AVS02-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>68</td><td><strong>AVS03-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>69</td><td><strong>AVS04-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>70</td><td><strong>AVS05-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>71</td><td><strong>AVS06-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>72</td><td><strong>AVS07-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>73</td><td><strong>AVS08-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>74</td><td><strong>AVS09-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>75</td><td><strong>AVS10-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>76</td><td><strong>AVS11-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>77</td><td><strong>AVS12-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>78</td><td><strong>AVS13-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>79</td><td><strong>AVS14-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>80</td><td><strong>AVS15-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>81</td><td><strong>AVS16-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>82</td><td><strong>AVS17-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>83</td><td><strong>AVS18-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>84</td><td><strong>AVS19-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>85</td><td><strong>AVS20-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>86</td><td><strong>AVS21-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>87</td><td><strong>AVS22-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>88</td><td><strong>AVS23-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>89</td><td><strong>AVS24-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>90</td><td><strong>AVS25-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>91</td><td><strong>AVS26-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>92</td><td><strong>AVS27-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>93</td><td><strong>AVS28-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>94</td><td><strong>AVS29-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>95</td><td><strong>AVS30-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>96</td><td><strong>AVS31-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>97</td><td><strong>AVS32-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>98</td><td><strong>AVS33-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>99</td><td><strong>AVS34-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>100</td><td><strong>AVS35-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>101</td><td><strong>AVS36-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>102</td><td><strong>AVS37-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>103</td><td><strong>AVS38-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>104</td><td><strong>AVS39-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>105</td><td><strong>AVS40-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>106</td><td><strong>AVS41-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>107</td><td><strong>AVS42-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>108</td><td><strong>AVS43-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>109</td><td><strong>AVS44-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>110</td><td><strong>AVS45-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>111</td><td><strong>AVS46-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>112</td><td><strong>AVS47-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>113</td><td><strong>AVS48-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>114</td><td><strong>AVS49-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>115</td><td><strong>AVS50-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>116</td><td><strong>AVS51-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>117</td><td><strong>AVS52-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>118</td><td><strong>AVS53-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>119</td><td><strong>AVS54-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>120</td><td><strong>AVS55-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>121</td><td><strong>AVS56-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>122</td><td><strong>AVS57-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>123</td><td><strong>AVS58-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>124</td><td><strong>AVS59-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>125</td><td><strong>AVS60-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>126</td><td><strong>AVS61-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>127</td><td><strong>AVS62-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>128</td><td><strong>AVS63-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>129</td><td><strong>AVS64-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>130</td><td><strong>AVS65-15m</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>131</td><td><strong>AVX01-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>132</td><td><strong>AVX02-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>133</td><td><strong>AVX03-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>134</td><td><strong>AVX04-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>135</td><td><strong>AVX05-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>136</td><td><strong>AVX06-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>137</td><td><strong>AVX07-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>138</td><td><strong>AVX08-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>139</td><td><strong>AVX09-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>140</td><td><strong>AVX10-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>141</td><td><strong>AVX11-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>142</td><td><strong>AVX12-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>143</td><td><strong>AVX13-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>144</td><td><strong>AVX14-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>145</td><td><strong>AVX15-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>146</td><td><strong>AVX16-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>147</td><td><strong>AVX17-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>148</td><td><strong>AVX18-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>149</td><td><strong>AVX19-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>150</td><td><strong>AVX20-15m</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h2>1H Timeframe (130 rules)</h2>
 <table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Rule ID<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">APnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<thead><tr><th>#</th><th>Rule ID</th><th>Family</th><th>Trades</th><th>WR%</th><th>APnL%</th><th>PTPnL%</th></tr></thead>
 <tbody>
-<tr class="tier2"><td>1</td><td><strong>AVL02-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>86.0</td><td><strong>28.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>2</td><td><strong>AVS05-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>69.0</td><td><strong>18.00</strong></td><td>1.00</td></tr>
-<tr class="wr100"><td>3</td><td><strong>AVL03-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>18.00</strong></td><td>4.00</td></tr>
-<tr class="tier2"><td>4</td><td><strong>AVL06-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>80.0</td><td><strong>15.00</strong></td><td>3.00</td></tr>
-<tr class="tier2"><td>5</td><td><strong>AVS01-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>55.0</td><td><strong>10.00</strong></td><td>1.00</td></tr>
-<tr class="tier2"><td>6</td><td><strong>AVS03-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>67.0</td><td><strong>10.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>7</td><td><strong>AVL04-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>10.00</strong></td><td>3.00</td></tr>
-<tr class="tier2"><td>8</td><td><strong>AVL07-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>67.0</td><td><strong>10.00</strong></td><td>3.00</td></tr>
-<tr class=""><td>9</td><td><strong>AVS02-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>67.0</td><td><strong>9.00</strong></td><td>3.00</td></tr>
-<tr class="wr100"><td>10</td><td><strong>AVD01-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>100.0</td><td><strong>8.00</strong></td><td>3.00</td></tr>
-<tr class=""><td>11</td><td><strong>AVS06-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>75.0</td><td><strong>7.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>12</td><td><strong>AVX01-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>100.0</td><td><strong>7.00</strong></td><td>2.00</td></tr>
-<tr class=""><td>13</td><td><strong>AVD02-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>80.0</td><td><strong>6.00</strong></td><td>1.00</td></tr>
-<tr class="wr100"><td>14</td><td><strong>AVL01-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>5.00</strong></td><td>5.00</td></tr>
-<tr class=""><td>15</td><td><strong>AVL05-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>60.0</td><td><strong>5.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>16</td><td><strong>AVD03-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>75.0</td><td><strong>5.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>17</td><td><strong>AVX02-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>80.0</td><td><strong>5.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>18</td><td><strong>AVS04-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>57.0</td><td><strong>4.00</strong></td><td>1.00</td></tr>
-</tbody></table>
-
-<h2>Daily Timeframe (22 rules)</h2>
+<tr><td>1</td><td><strong>AVD01-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2</td><td><strong>AVD02-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>3</td><td><strong>AVD03-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>4</td><td><strong>AVD04-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>5</td><td><strong>AVD05-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>6</td><td><strong>AVD06-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>7</td><td><strong>AVD07-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>8</td><td><strong>AVD08-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>9</td><td><strong>AVD09-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>10</td><td><strong>AVD10-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>11</td><td><strong>AVD11-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>12</td><td><strong>AVD12-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>13</td><td><strong>AVD13-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>14</td><td><strong>AVD14-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>15</td><td><strong>AVD15-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>16</td><td><strong>AVD16-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>17</td><td><strong>AVD17-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>18</td><td><strong>AVD18-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>19</td><td><strong>AVD19-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>20</td><td><strong>AVD20-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>21</td><td><strong>AVD21-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>22</td><td><strong>AVD22-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>23</td><td><strong>AVD23-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>24</td><td><strong>AVD24-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>25</td><td><strong>AVD25-1h</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>26</td><td><strong>AVL01-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>27</td><td><strong>AVL02-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>28</td><td><strong>AVL03-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>29</td><td><strong>AVL04-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>30</td><td><strong>AVL05-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>31</td><td><strong>AVL06-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>32</td><td><strong>AVL07-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>33</td><td><strong>AVL08-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>34</td><td><strong>AVL09-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>35</td><td><strong>AVL10-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>36</td><td><strong>AVL11-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>37</td><td><strong>AVL12-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>38</td><td><strong>AVL13-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>39</td><td><strong>AVL14-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>40</td><td><strong>AVL15-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>41</td><td><strong>AVL16-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>42</td><td><strong>AVL17-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>43</td><td><strong>AVL18-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>44</td><td><strong>AVL19-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>45</td><td><strong>AVL20-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>46</td><td><strong>AVL21-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>47</td><td><strong>AVL22-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>48</td><td><strong>AVL23-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>49</td><td><strong>AVL24-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>50</td><td><strong>AVL25-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>51</td><td><strong>AVL26-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>52</td><td><strong>AVL27-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>53</td><td><strong>AVL28-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>54</td><td><strong>AVL29-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>55</td><td><strong>AVL30-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>56</td><td><strong>AVL31-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>57</td><td><strong>AVL32-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>58</td><td><strong>AVL33-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>59</td><td><strong>AVL34-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>60</td><td><strong>AVL35-1h</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>61</td><td><strong>AVS01-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>62</td><td><strong>AVS02-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>63</td><td><strong>AVS03-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>64</td><td><strong>AVS04-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>65</td><td><strong>AVS05-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>66</td><td><strong>AVS06-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>67</td><td><strong>AVS07-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>68</td><td><strong>AVS08-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>69</td><td><strong>AVS09-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>70</td><td><strong>AVS10-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>71</td><td><strong>AVS11-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>72</td><td><strong>AVS12-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>73</td><td><strong>AVS13-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>74</td><td><strong>AVS14-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>75</td><td><strong>AVS15-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>76</td><td><strong>AVS16-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>77</td><td><strong>AVS17-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>78</td><td><strong>AVS18-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>79</td><td><strong>AVS19-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>80</td><td><strong>AVS20-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>81</td><td><strong>AVS21-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>82</td><td><strong>AVS22-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>83</td><td><strong>AVS23-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>84</td><td><strong>AVS24-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>85</td><td><strong>AVS25-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>86</td><td><strong>AVS26-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>87</td><td><strong>AVS27-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>88</td><td><strong>AVS28-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>89</td><td><strong>AVS29-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>90</td><td><strong>AVS30-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>91</td><td><strong>AVS31-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>92</td><td><strong>AVS32-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>93</td><td><strong>AVS33-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>94</td><td><strong>AVS34-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>95</td><td><strong>AVS35-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>96</td><td><strong>AVS36-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>97</td><td><strong>AVS37-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>98</td><td><strong>AVS38-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>99</td><td><strong>AVS39-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>100</td><td><strong>AVS40-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>101</td><td><strong>AVS41-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>102</td><td><strong>AVS42-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>103</td><td><strong>AVS43-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>104</td><td><strong>AVS44-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>105</td><td><strong>AVS45-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>106</td><td><strong>AVS46-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>107</td><td><strong>AVS47-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>108</td><td><strong>AVS48-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>109</td><td><strong>AVS49-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>110</td><td><strong>AVS50-1h</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>111</td><td><strong>AVX01-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>112</td><td><strong>AVX02-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>113</td><td><strong>AVX03-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>114</td><td><strong>AVX04-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>115</td><td><strong>AVX05-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>116</td><td><strong>AVX06-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>117</td><td><strong>AVX07-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>118</td><td><strong>AVX08-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>119</td><td><strong>AVX09-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>120</td><td><strong>AVX10-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>121</td><td><strong>AVX11-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>122</td><td><strong>AVX12-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>123</td><td><strong>AVX13-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>124</td><td><strong>AVX14-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>125</td><td><strong>AVX15-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>126</td><td><strong>AVX16-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>127</td><td><strong>AVX17-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>128</td><td><strong>AVX18-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>129</td><td><strong>AVX19-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>130</td><td><strong>AVX20-1h</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h2>Daily Timeframe (99 rules)</h2>
 <table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Rule ID<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">APnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<thead><tr><th>#</th><th>Rule ID</th><th>Family</th><th>Trades</th><th>WR%</th><th>APnL%</th><th>PTPnL%</th></tr></thead>
 <tbody>
-<tr class="wr100"><td>1</td><td><strong>AVS01-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>2</td><td><strong>AVS02-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
-<tr class="wr100"><td>3</td><td><strong>AVS04-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>4.00</td></tr>
-<tr class="wr100"><td>4</td><td><strong>AVS05-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>8.00</td></tr>
-<tr class="wr100"><td>5</td><td><strong>AVS06-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>8.00</td></tr>
-<tr class="wr100"><td>6</td><td><strong>AVL01-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>2.00</td></tr>
-<tr class="wr100"><td>7</td><td><strong>AVL02-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>4.00</td></tr>
-<tr class="wr100"><td>8</td><td><strong>AVL03-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
-<tr class="tier2"><td>9</td><td><strong>AVL04-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>77.0</td><td><strong>13.00</strong></td><td>1.00</td></tr>
-<tr class="tier2"><td>10</td><td><strong>AVS07-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>62.0</td><td><strong>11.00</strong></td><td>1.00</td></tr>
-<tr class="tier2"><td>11</td><td><strong>AVS08-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>64.0</td><td><strong>10.00</strong></td><td>1.00</td></tr>
-<tr class="tier2"><td>12</td><td><strong>AVS10-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>73.0</td><td><strong>10.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>13</td><td><strong>AVS09-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>78.0</td><td><strong>9.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>14</td><td><strong>AVL05-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>86.0</td><td><strong>9.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>15</td><td><strong>AVL06-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>80.0</td><td><strong>6.00</strong></td><td>1.00</td></tr>
-<tr class="wr100"><td>16</td><td><strong>AVS03-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>100.0</td><td><strong>5.00</strong></td><td>1.00</td></tr>
-<tr class=""><td>17</td><td><strong>AVD01-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>73.0</td><td><strong>5.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>18</td><td><strong>AVX01-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>70.0</td><td><strong>5.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>19</td><td><strong>AVD02-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>67.0</td><td><strong>4.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>20</td><td><strong>AVD03-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>75.0</td><td><strong>4.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>21</td><td><strong>AVX02-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>72.0</td><td><strong>4.00</strong></td><td>0.00</td></tr>
-<tr class=""><td>22</td><td><strong>AVX03-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>67.0</td><td><strong>4.00</strong></td><td>0.00</td></tr>
-</tbody></table>
-
-<div class="pipeline">Generated by create-rules pipeline | create_rules_AVGO_SOXX_20260410</div>
-<script>
-function sortTable(th) {
-    const table = th.closest('table');
-    const tbody = table.querySelector('tbody');
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    const idx = Array.from(th.parentNode.children).indexOf(th);
-    const asc = th.dataset.sort !== 'asc';
-    th.dataset.sort = asc ? 'asc' : 'desc';
-    rows.sort((a, b) => {
-        let va = a.children[idx].textContent, vb = b.children[idx].textContent;
-        let na = parseFloat(va), nb = parseFloat(vb);
-        if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
-        return asc ? va.localeCompare(vb) : vb.localeCompare(va);
-    });
-    rows.forEach(r => tbody.appendChild(r));
-}
-</script>
+<tr><td>1</td><td><strong>AVD01-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>2</td><td><strong>AVD02-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>3</td><td><strong>AVD03-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>4</td><td><strong>AVD04-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>5</td><td><strong>AVD05-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>6</td><td><strong>AVD06-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>7</td><td><strong>AVD07-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>8</td><td><strong>AVD08-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>9</td><td><strong>AVD09-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>10</td><td><strong>AVD10-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>11</td><td><strong>AVD11-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>12</td><td><strong>AVD12-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>13</td><td><strong>AVD13-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>14</td><td><strong>AVD14-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>15</td><td><strong>AVD15-daily</strong></td><td><span class="family fam-AVD">AVD</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>16</td><td><strong>AVL01-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>17</td><td><strong>AVL02-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>18</td><td><strong>AVL03-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>19</td><td><strong>AVL04-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>20</td><td><strong>AVL05-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>21</td><td><strong>AVL06-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>22</td><td><strong>AVL07-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>23</td><td><strong>AVL08-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>24</td><td><strong>AVL09-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>25</td><td><strong>AVL10-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>26</td><td><strong>AVL11-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>27</td><td><strong>AVL12-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>28</td><td><strong>AVL13-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>29</td><td><strong>AVL14-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>30</td><td><strong>AVL15-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>31</td><td><strong>AVL16-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>32</td><td><strong>AVL17-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>33</td><td><strong>AVL18-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>34</td><td><strong>AVL19-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>35</td><td><strong>AVL20-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>36</td><td><strong>AVL21-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>37</td><td><strong>AVL22-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>38</td><td><strong>AVL23-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>39</td><td><strong>AVL24-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>40</td><td><strong>AVL25-daily</strong></td><td><span class="family fam-AVL">AVL</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>41</td><td><strong>AVS01-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>42</td><td><strong>AVS02-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>43</td><td><strong>AVS03-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>44</td><td><strong>AVS04-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>45</td><td><strong>AVS05-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>46</td><td><strong>AVS06-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>47</td><td><strong>AVS07-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>48</td><td><strong>AVS08-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>49</td><td><strong>AVS09-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>50</td><td><strong>AVS10-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>51</td><td><strong>AVS11-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>52</td><td><strong>AVS12-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>53</td><td><strong>AVS13-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>54</td><td><strong>AVS14-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>55</td><td><strong>AVS15-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>56</td><td><strong>AVS16-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>57</td><td><strong>AVS17-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>58</td><td><strong>AVS18-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>59</td><td><strong>AVS19-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>60</td><td><strong>AVS20-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>61</td><td><strong>AVS21-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>62</td><td><strong>AVS22-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>63</td><td><strong>AVS23-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>64</td><td><strong>AVS24-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>65</td><td><strong>AVS25-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>66</td><td><strong>AVS26-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>67</td><td><strong>AVS27-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>68</td><td><strong>AVS28-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>69</td><td><strong>AVS29-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>70</td><td><strong>AVS30-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>71</td><td><strong>AVS31-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>72</td><td><strong>AVS32-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>73</td><td><strong>AVS33-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>74</td><td><strong>AVS34-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>75</td><td><strong>AVS35-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>76</td><td><strong>AVS36-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>77</td><td><strong>AVS37-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>78</td><td><strong>AVS38-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>79</td><td><strong>AVS39-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>80</td><td><strong>AVS40-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>81</td><td><strong>AVS41-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>82</td><td><strong>AVS42-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>83</td><td><strong>AVS43-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>84</td><td><strong>AVS44-daily</strong></td><td><span class="family fam-AVS">AVS</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>85</td><td><strong>AVX01-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>86</td><td><strong>AVX02-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>87</td><td><strong>AVX03-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>88</td><td><strong>AVX04-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>89</td><td><strong>AVX05-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>90</td><td><strong>AVX06-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>91</td><td><strong>AVX07-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>92</td><td><strong>AVX08-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>93</td><td><strong>AVX09-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>94</td><td><strong>AVX10-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>95</td><td><strong>AVX11-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>96</td><td><strong>AVX12-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>97</td><td><strong>AVX13-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>98</td><td><strong>AVX14-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>99</td><td><strong>AVX15-daily</strong></td><td><span class="family fam-AVX">AVX</span></td><td>0</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<div class="pipeline">
+Generated: 2026-04-10 | Pipeline: create_rules_AVGO_SOXX_20260410 | 539 rules across 4 timeframes, 4 families | Backtest pending
+</div>
 </body>
 </html>
