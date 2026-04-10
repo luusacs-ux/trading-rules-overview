@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Rules Overview</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px}
+.header{position:sticky;top:0;z-index:10;background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
+.header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 10px}
+.stat{background:#0f3460;border-radius:8px;padding:8px 14px;text-align:center}
+.stat .num{font-size:1.4rem;font-weight:700;color:#e94560}
+.stat .label{font-size:.7rem;color:#a0a0b0;text-transform:uppercase;letter-spacing:.5px}
+.search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none}
+.search-box:focus{border-color:#e94560}
+.container{padding:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{position:sticky;top:105px;z-index:5}
+th{background:#0f3460;color:#e94560;padding:8px 6px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560}
+th:first-child{text-align:left}
+th:hover{background:#162d50}
+th .arrow{font-size:10px;margin-left:2px;opacity:.5}
+th.active .arrow{opacity:1}
+td{padding:7px 6px;text-align:right;border-bottom:1px solid #1e2a4a}
+td:first-child{text-align:left;font-weight:600;color:#53c0f0}
+tr:hover{background:#1e2a4a}
+.zero{color:#444}
+a{color:#53c0f0;text-decoration:none}
+a:hover{color:#e94560;text-decoration:underline}
+.report-link{font-size:12px}
+.footer{text-align:center;padding:16px;color:#555;font-size:11px}
+@media(max-width:480px){
+  .stat .num{font-size:1.1rem}
+  table{font-size:12px}
+  th,td{padding:6px 4px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Trading Rules Overview</h1>
+  <div class="stats">
+    <div class="stat"><div class="num" id="totalRules">6,372</div><div class="label">Total Rules</div></div>
+    <div class="stat"><div class="num" id="totalTickers">22</div><div class="label">Tickers</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Timeframes</div></div>
+  </div>
+  <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
+</div>
+
+<div class="container">
+<table id="rulesTable">
+<thead>
+<tr>
+  <th data-col="ticker" data-type="str">Ticker <span class="arrow">&#9650;</span></th>
+  <th data-col="total" data-type="num" class="active">Total <span class="arrow">&#9660;</span></th>
+  <th data-col="5m" data-type="num">5m <span class="arrow">&#9650;</span></th>
+  <th data-col="15m" data-type="num">15m <span class="arrow">&#9650;</span></th>
+  <th data-col="1h" data-type="num">1h <span class="arrow">&#9650;</span></th>
+  <th data-col="daily" data-type="num">Daily <span class="arrow">&#9650;</span></th>
+  <th data-col="report" data-type="str">Report <span class="arrow">&#9650;</span></th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+
+<div class="footer">Last updated: 2026-04-09</div>
+
+<script>
+var data = [
+  {ticker:"AMZN",  "5m":42,  "15m":18,  "1h":97,  daily:65},
+  {ticker:"ASTS",  "5m":52,  "15m":46,  "1h":166, daily:64},
+  {ticker:"BKR",   "5m":119, "15m":111, "1h":70,  daily:61},
+  {ticker:"BWET",  "5m":0,   "15m":0,   "1h":27,  daily:50},
+  {ticker:"CI",    "5m":78,  "15m":86,  "1h":109, daily:76},
+  {ticker:"CLSK",  "5m":66,  "15m":38,  "1h":131, daily:53},
+  {ticker:"CNBS",  "5m":22,  "15m":23,  "1h":118, daily:38},
+  {ticker:"CRWG",  "5m":93,  "15m":108, "1h":23,  daily:13},
+  {ticker:"DAL",   "5m":150, "15m":157, "1h":51,  daily:48},
+  {ticker:"DLTR",  "5m":14,  "15m":12,  "1h":95,  daily:48},
+  {ticker:"ELV",   "5m":134, "15m":141, "1h":107, daily:101},
+  {ticker:"F",     "5m":10,  "15m":9,   "1h":75,  daily:40},
+  {ticker:"HAL",   "5m":119, "15m":122, "1h":99,  daily:55},
+  {ticker:"HUM",   "5m":87,  "15m":157, "1h":101, daily:79},
+  {ticker:"LNG",   "5m":45,  "15m":35,  "1h":74,  daily:77},
+  {ticker:"NKE",   "5m":11,  "15m":16,  "1h":126, daily:56},
+  {ticker:"PFE",   "5m":0,   "15m":6,   "1h":82,  daily:49},
+  {ticker:"SLB",   "5m":101, "15m":90,  "1h":79,  daily:54},
+  {ticker:"SMCI",  "5m":183, "15m":167, "1h":60,  daily:119},
+  {ticker:"TSAT",  "5m":64,  "15m":50,  "1h":160, daily:66},
+  {ticker:"UNH",   "5m":79,  "15m":69,  "1h":39,  daily:61},
+  {ticker:"USAR",  "5m":77,  "15m":55,  "1h":106, daily:42}
+];
+
+data.forEach(function(d){ d.total = d["5m"] + d["15m"] + d["1h"] + d.daily; });
+
+var sortCol = "total", sortAsc = false;
+
+function render(filter) {
+  var f = (filter || "").toLowerCase();
+  var rows = data.filter(function(d){ return !f || d.ticker.toLowerCase().indexOf(f) >= 0; });
+  rows.sort(function(a,b){
+    var va = sortCol === "ticker" ? a.ticker : a[sortCol];
+    var vb = sortCol === "ticker" ? b.ticker : b[sortCol];
+    if (typeof va === "string") return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    return sortAsc ? va - vb : vb - va;
+  });
+  var html = "";
+  rows.forEach(function(d){
+    html += "<tr>";
+    html += "<td>" + d.ticker + "</td>";
+    html += "<td><strong>" + d.total + "</strong></td>";
+    html += "<td>" + (d["5m"] ? d["5m"] : '<span class="zero">-</span>') + "</td>";
+    html += "<td>" + (d["15m"] ? d["15m"] : '<span class="zero">-</span>') + "</td>";
+    html += "<td>" + (d["1h"] ? d["1h"] : '<span class="zero">-</span>') + "</td>";
+    html += "<td>" + (d.daily ? d.daily : '<span class="zero">-</span>') + "</td>";
+    html += '<td class="report-link"><a href="reports/' + d.ticker + '_backtest_summary.html">View</a></td>';
+    html += "</tr>";
+  });
+  document.getElementById("tbody").innerHTML = html;
+}
+
+document.getElementById("search").addEventListener("input", function(){ render(this.value); });
+
+document.querySelectorAll("th[data-col]").forEach(function(th){
+  th.addEventListener("click", function(){
+    var col = this.getAttribute("data-col");
+    if (col === "report") return;
+    if (sortCol === col) sortAsc = !sortAsc; else { sortCol = col; sortAsc = col === "ticker"; }
+    document.querySelectorAll("th").forEach(function(h){ h.classList.remove("active"); h.querySelector(".arrow").textContent = "\u25B2"; });
+    this.classList.add("active");
+    this.querySelector(".arrow").textContent = sortAsc ? "\u25B2" : "\u25BC";
+    render(document.getElementById("search").value);
+  });
+});
+
+render();
+</script>
+</body>
+</html>
