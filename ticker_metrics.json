@@ -228,5 +228,15 @@
     "stock_active": 360,
     "indiv_active": 360,
     "report": "GLW_backtest_summary.html"
+  },
+  "ITA": {
+    "total": 234,
+    "wr100": 55,
+    "pnl_gt10": 203,
+    "avg_pnl": 21.11,
+    "avg_ptpnl": 2.6,
+    "report": "ITA_backtest_summary.html",
+    "stock_active": 234,
+    "indiv_active": 234
   }
 }
