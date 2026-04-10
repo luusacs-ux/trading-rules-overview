@@ -328,5 +328,15 @@
     "report": "CVNA_backtest_summary.html",
     "stock_active": 96,
     "indiv_active": 96
+  },
+  "ASML": {
+    "total": 63,
+    "wr100": 21,
+    "pnl_gt10": 0,
+    "avg_pnl": 2.1,
+    "avg_ptpnl": 0.31,
+    "report": "ASML_backtest_summary.html",
+    "stock_active": 63,
+    "indiv_active": 63
   }
 }
