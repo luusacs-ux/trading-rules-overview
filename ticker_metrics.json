@@ -238,5 +238,15 @@
     "report": "ITA_backtest_summary.html",
     "stock_active": 234,
     "indiv_active": 234
+  },
+  "LMT": {
+    "total": 388,
+    "wr100": 134,
+    "pnl_gt10": 326,
+    "avg_pnl": 20.86,
+    "avg_ptpnl": 3.48,
+    "report": "LMT_backtest_summary.html",
+    "stock_active": 386,
+    "indiv_active": 386
   }
 }
