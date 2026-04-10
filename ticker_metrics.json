@@ -288,5 +288,15 @@
     "report": "USO_backtest_summary.html",
     "stock_active": 451,
     "indiv_active": 451
+  },
+  "LLY": {
+    "total": 356,
+    "wr100": 95,
+    "pnl_gt10": 327,
+    "avg_pnl": 33.33,
+    "avg_ptpnl": 3.63,
+    "report": "LLY_backtest_summary.html",
+    "stock_active": 356,
+    "indiv_active": 356
   }
 }
