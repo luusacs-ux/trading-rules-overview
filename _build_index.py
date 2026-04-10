@@ -31,10 +31,11 @@ data_js = """[
   {ticker:"AMZN",stock:199,indiv:199,wr100:79,pnl10:159,avgPnl:16.57,ptpnl:2.39,report:"AMZN_backtest_summary.html"}
   {ticker:"NKE",stock:184,indiv:184,wr100:69,pnl10:137,avgPnl:15.7,ptpnl:2.11,report:"NKE_backtest_summary.html"}
   {ticker:"MKC",stock:228,indiv:228,wr100:76,pnl10:182,avgPnl:14.65,ptpnl:1.86,report:"MKC_backtest_summary.html"}
+  {ticker:"CVNA",stock:96,indiv:96,wr100:36,pnl10:0,avgPnl:3.14,ptpnl:0.49,report:"CVNA_backtest_summary.html"}
   {ticker:"APLD",stock:588,indiv:588,wr100:44,pnl10:10,avgPnl:2.98,ptpnl:2.98,report:"APLD_backtest_summary.html"}
 ]"""
 
-summary = "32 tickers &#8226; 9,420 rules &#8226; 27.5%% avg PnL"
+summary = "33 tickers &#8226; 9,516 rules &#8226; 26.8%% avg PnL"
 
 with open("gh_pages/index_template.html", "r", encoding="utf-8") as tf:
     tmpl = tf.read()

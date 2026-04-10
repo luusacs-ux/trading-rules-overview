@@ -318,5 +318,15 @@
     "report": "ORCL_backtest_summary.html",
     "stock_active": 261,
     "indiv_active": 261
+  },
+  "CVNA": {
+    "total": 96,
+    "wr100": 36,
+    "pnl_gt10": 0,
+    "avg_pnl": 3.14,
+    "avg_ptpnl": 0.49,
+    "report": "CVNA_backtest_summary.html",
+    "stock_active": 96,
+    "indiv_active": 96
   }
 }
