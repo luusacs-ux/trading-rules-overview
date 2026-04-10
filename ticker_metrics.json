@@ -119,6 +119,16 @@
     "stock_active": 111,
     "indiv_active": 111
   },
+  "GLW": {
+    "total": 363,
+    "wr100": 63,
+    "pnl_gt10": 338,
+    "avg_pnl": 39.26,
+    "avg_ptpnl": 3.3339,
+    "stock_active": 360,
+    "indiv_active": 360,
+    "report": "GLW_backtest_summary.html"
+  },
   "HAL": {
     "total": 375,
     "wr100": 66,
@@ -139,6 +149,26 @@
     "stock_active": 394,
     "indiv_active": 394
   },
+  "ITA": {
+    "total": 234,
+    "wr100": 55,
+    "pnl_gt10": 203,
+    "avg_pnl": 21.11,
+    "avg_ptpnl": 2.6,
+    "report": "ITA_backtest_summary.html",
+    "stock_active": 234,
+    "indiv_active": 234
+  },
+  "LMT": {
+    "total": 388,
+    "wr100": 134,
+    "pnl_gt10": 326,
+    "avg_pnl": 20.86,
+    "avg_ptpnl": 3.48,
+    "report": "LMT_backtest_summary.html",
+    "stock_active": 386,
+    "indiv_active": 386
+  },
   "LNG": {
     "total": 211,
     "wr100": 70,
@@ -148,6 +178,36 @@
     "report": "LNG_backtest_summary.html",
     "stock_active": 206,
     "indiv_active": 206
+  },
+  "MKC": {
+    "total": 228,
+    "wr100": 76,
+    "pnl_gt10": 182,
+    "avg_pnl": 14.82,
+    "avg_ptpnl": 1.88,
+    "report": "MKC_backtest_summary.html",
+    "stock_active": 228,
+    "indiv_active": 228
+  },
+  "MP": {
+    "total": 489,
+    "wr100": 48,
+    "pnl_gt10": 482,
+    "avg_pnl": 45.55,
+    "avg_ptpnl": 2.88,
+    "report": "MP_backtest_summary.html",
+    "stock_active": 489,
+    "indiv_active": 489
+  },
+  "MSFT": {
+    "total": 113,
+    "wr100": 48,
+    "pnl_gt10": 84,
+    "avg_pnl": 15.1,
+    "avg_ptpnl": 0.0,
+    "report": "MSFT_backtest_summary.html",
+    "stock_active": 113,
+    "indiv_active": 113
   },
   "NKE": {
     "total": 189,
@@ -218,56 +278,6 @@
     "report": "USAR_backtest_summary.html",
     "stock_active": 255,
     "indiv_active": 255
-  },
-  "GLW": {
-    "total": 363,
-    "wr100": 63,
-    "pnl_gt10": 338,
-    "avg_pnl": 39.26,
-    "avg_ptpnl": 3.3339,
-    "stock_active": 360,
-    "indiv_active": 360,
-    "report": "GLW_backtest_summary.html"
-  },
-  "ITA": {
-    "total": 234,
-    "wr100": 55,
-    "pnl_gt10": 203,
-    "avg_pnl": 21.11,
-    "avg_ptpnl": 2.6,
-    "report": "ITA_backtest_summary.html",
-    "stock_active": 234,
-    "indiv_active": 234
-  },
-  "LMT": {
-    "total": 388,
-    "wr100": 134,
-    "pnl_gt10": 326,
-    "avg_pnl": 20.86,
-    "avg_ptpnl": 3.48,
-    "report": "LMT_backtest_summary.html",
-    "stock_active": 386,
-    "indiv_active": 386
-  },
-  "MKC": {
-    "total": 228,
-    "wr100": 76,
-    "pnl_gt10": 182,
-    "avg_pnl": 14.82,
-    "avg_ptpnl": 1.88,
-    "report": "MKC_backtest_summary.html",
-    "stock_active": 228,
-    "indiv_active": 228
-  },
-  "MP": {
-    "total": 489,
-    "wr100": 48,
-    "pnl_gt10": 482,
-    "avg_pnl": 45.55,
-    "avg_ptpnl": 2.88,
-    "report": "MP_backtest_summary.html",
-    "stock_active": 489,
-    "indiv_active": 489
   },
   "USO": {
     "total": 451,
