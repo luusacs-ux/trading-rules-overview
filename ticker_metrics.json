@@ -1,4 +1,14 @@
 {
+  "APLD": {
+    "total": 588,
+    "wr100": 44,
+    "pnl_gt10": 10,
+    "avg_pnl": 2.98,
+    "avg_ptpnl": 2.98,
+    "report": "APLD_backtest_summary.html",
+    "stock_active": 588,
+    "indiv_active": 588
+  },
   "AMZN": {
     "total": 202,
     "wr100": 79,
