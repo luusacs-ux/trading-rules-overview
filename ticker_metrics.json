@@ -268,5 +268,15 @@
     "report": "MP_backtest_summary.html",
     "stock_active": 489,
     "indiv_active": 489
+  },
+  "USO": {
+    "total": 451,
+    "wr100": 62,
+    "pnl_gt10": 437,
+    "avg_pnl": 32.39,
+    "avg_ptpnl": 0.0,
+    "report": "USO_backtest_summary.html",
+    "stock_active": 451,
+    "indiv_active": 451
   }
 }
