@@ -6,8 +6,8 @@
     "avg_pnl": 16.57,
     "avg_ptpnl": 2.39,
     "report": "AMZN_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 199,
+    "indiv_active": 199
   },
   "ASTS": {
     "total": 308,
@@ -16,8 +16,8 @@
     "avg_pnl": 44.24,
     "avg_ptpnl": 3.44,
     "report": "ASTS_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 307,
+    "indiv_active": 307
   },
   "BKR": {
     "total": 341,
@@ -26,8 +26,8 @@
     "avg_pnl": 33.36,
     "avg_ptpnl": 0.0,
     "report": "BKR_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 341,
+    "indiv_active": 341
   },
   "BWET": {
     "total": 69,
@@ -36,8 +36,8 @@
     "avg_pnl": 55.12,
     "avg_ptpnl": 5.68,
     "report": "BWET_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 69,
+    "indiv_active": 69
   },
   "CI": {
     "total": 329,
@@ -46,8 +46,8 @@
     "avg_pnl": 23.56,
     "avg_ptpnl": 3.49,
     "report": "CI_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 329,
+    "indiv_active": 329
   },
   "CLSK": {
     "total": 268,
@@ -56,8 +56,8 @@
     "avg_pnl": 34.25,
     "avg_ptpnl": 3.04,
     "report": "CLSK_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 265,
+    "indiv_active": 265
   },
   "CNBS": {
     "total": 181,
@@ -66,8 +66,8 @@
     "avg_pnl": 32.28,
     "avg_ptpnl": 3.32,
     "report": "CNBS_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 174,
+    "indiv_active": 174
   },
   "CRWG": {
     "total": 217,
@@ -76,8 +76,8 @@
     "avg_pnl": 25.35,
     "avg_ptpnl": 4.4,
     "report": "CRWG_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 208,
+    "indiv_active": 208
   },
   "DAL": {
     "total": 386,
@@ -86,8 +86,8 @@
     "avg_pnl": 34.16,
     "avg_ptpnl": 2.19,
     "report": "DAL_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 383,
+    "indiv_active": 383
   },
   "DLTR": {
     "total": 149,
@@ -96,8 +96,8 @@
     "avg_pnl": 24.67,
     "avg_ptpnl": 2.69,
     "report": "DLTR_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 147,
+    "indiv_active": 147
   },
   "ELV": {
     "total": 463,
@@ -106,8 +106,8 @@
     "avg_pnl": 21.4,
     "avg_ptpnl": 2.22,
     "report": "ELV_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 461,
+    "indiv_active": 461
   },
   "F": {
     "total": 114,
@@ -116,8 +116,8 @@
     "avg_pnl": 19.28,
     "avg_ptpnl": 3.35,
     "report": "F_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 111,
+    "indiv_active": 111
   },
   "HAL": {
     "total": 375,
@@ -126,8 +126,8 @@
     "avg_pnl": 36.71,
     "avg_ptpnl": 0.0,
     "report": "HAL_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 374,
+    "indiv_active": 374
   },
   "HUM": {
     "total": 404,
@@ -136,8 +136,8 @@
     "avg_pnl": 23.73,
     "avg_ptpnl": 2.95,
     "report": "HUM_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 394,
+    "indiv_active": 394
   },
   "LNG": {
     "total": 211,
@@ -146,8 +146,8 @@
     "avg_pnl": 20.41,
     "avg_ptpnl": 3.79,
     "report": "LNG_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 206,
+    "indiv_active": 206
   },
   "NKE": {
     "total": 189,
@@ -156,8 +156,8 @@
     "avg_pnl": 15.66,
     "avg_ptpnl": 2.11,
     "report": "NKE_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 184,
+    "indiv_active": 184
   },
   "PFE": {
     "total": 122,
@@ -166,8 +166,8 @@
     "avg_pnl": 20.1,
     "avg_ptpnl": 4.04,
     "report": "PFE_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 120,
+    "indiv_active": 120
   },
   "SLB": {
     "total": 304,
@@ -176,8 +176,8 @@
     "avg_pnl": 33.2,
     "avg_ptpnl": 0.0,
     "report": "SLB_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 302,
+    "indiv_active": 302
   },
   "SMCI": {
     "total": 509,
@@ -186,8 +186,8 @@
     "avg_pnl": 40.2,
     "avg_ptpnl": 2.56,
     "report": "SMCI_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 509,
+    "indiv_active": 509
   },
   "TSAT": {
     "total": 320,
@@ -196,8 +196,8 @@
     "avg_pnl": 38.84,
     "avg_ptpnl": 4.33,
     "report": "TSAT_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 319,
+    "indiv_active": 319
   },
   "UNH": {
     "total": 228,
@@ -206,8 +206,8 @@
     "avg_pnl": 21.66,
     "avg_ptpnl": 1.58,
     "report": "UNH_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 225,
+    "indiv_active": 225
   },
   "USAR": {
     "total": 260,
@@ -216,7 +216,7 @@
     "avg_pnl": 27.7,
     "avg_ptpnl": 3.68,
     "report": "USAR_backtest_summary.html",
-    "stock_active": 0,
-    "indiv_active": 0
+    "stock_active": 255,
+    "indiv_active": 255
   }
 }
