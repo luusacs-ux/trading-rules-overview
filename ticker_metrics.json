@@ -218,5 +218,15 @@
     "report": "USAR_backtest_summary.html",
     "stock_active": 255,
     "indiv_active": 255
+  },
+  "GLW": {
+    "total": 363,
+    "wr100": 63,
+    "pnl_gt10": 338,
+    "avg_pnl": 39.26,
+    "avg_ptpnl": 3.3339,
+    "stock_active": 360,
+    "indiv_active": 360,
+    "report": "GLW_backtest_summary.html"
   }
 }
