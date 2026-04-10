@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Trading Performance</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px}
+.header{background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
+.header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
+.subtitle{color:#a0a0b0;font-size:12px;margin:4px 0 8px}
+.search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none}
+.search-box:focus{border-color:#e94560}
+.container{padding:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:800px}
+th{background:#0f3460;color:#e94560;padding:8px 5px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:11px}
+th:first-child{text-align:left}
+th:hover{background:#162d50}
+th .arrow{font-size:9px;margin-left:1px;opacity:.5}
+th.active .arrow{opacity:1}
+td{padding:7px 5px;text-align:right;border-bottom:1px solid #1e2a4a}
+td:first-child{text-align:left;font-weight:600;color:#53c0f0}
+tr:hover{background:#1e2a4a}
+.green{color:#4caf50}
+.red{color:#ef5350}
+.zero{color:#444}
+a{color:#53c0f0;text-decoration:none}
+a:hover{color:#e94560;text-decoration:underline}
+.footer{text-align:center;padding:16px;color:#555;font-size:11px}
+.nav{padding:8px 16px;font-size:12px}
+.nav a{margin-right:12px}
+.group-header{background:#0f3460;color:#a0a0b0;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.group-header th{border-bottom:1px solid #0f3460;padding:4px 5px}
+@media(max-width:480px){table{font-size:11px}th,td{padding:5px 3px}th{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Paper Trading Performance</h1>
+  <p class="subtitle">13 tickers &bull; 29 trades &bull; <span class="green">$6,015.09</span> total PnL</p>
+  <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
+</div>
+<div class="nav"><a href="index.html">Rules Overview</a></div>
+<div class="container">
+<table id="mainTable">
+<thead>
+<tr class="group-header">
+  <th></th>
+  <th colspan="3">This Month</th>
+  <th colspan="3">This Week</th>
+  <th colspan="3">Prior Day</th>
+  <th colspan="3">ITD (All Time)</th>
+  <th></th>
+</tr>
+<tr>
+  <th data-col="ticker" data-type="str">Ticker <span class="arrow">&#9650;</span></th>
+  <th data-col="m_trades" data-type="num">#Trades</th>
+  <th data-col="m_pnl" data-type="num">PnL $</th>
+  <th data-col="m_pct" data-type="num">PnL %</th>
+  <th data-col="w_trades" data-type="num">#Trades</th>
+  <th data-col="w_pnl" data-type="num">PnL $</th>
+  <th data-col="w_pct" data-type="num">PnL %</th>
+  <th data-col="d_trades" data-type="num">#Trades</th>
+  <th data-col="d_pnl" data-type="num">PnL $</th>
+  <th data-col="d_pct" data-type="num">PnL %</th>
+  <th data-col="i_trades" data-type="num">#Trades</th>
+  <th data-col="i_pnl" data-type="num">PnL $</th>
+  <th data-col="i_pct" data-type="num">PnL %</th>
+  <th data-col="detail" data-type="str">Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>AAPL</td>
+  <td data-v="1">1</td>
+  <td data-v="119.72"><span class="green">$119.72</span></td>
+  <td data-v="3.0"><span class="green">+3.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="119.72"><span class="green">$119.72</span></td>
+  <td data-v="3.0"><span class="green">+3.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="119.72"><span class="green">$119.72</span></td>
+  <td data-v="3.0"><span class="green">+3.00%</span></td>
+  <td><a href="reports/AAPL_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>BAC</td>
+  <td data-v="1">1</td>
+  <td data-v="199.26"><span class="green">$199.26</span></td>
+  <td data-v="5.0"><span class="green">+5.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="199.26"><span class="green">$199.26</span></td>
+  <td data-v="5.0"><span class="green">+5.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="199.26"><span class="green">$199.26</span></td>
+  <td data-v="5.0"><span class="green">+5.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="199.26"><span class="green">$199.26</span></td>
+  <td data-v="5.0"><span class="green">+5.00%</span></td>
+  <td><a href="reports/BAC_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>BITX</td>
+  <td data-v="2">2</td>
+  <td data-v="285.57"><span class="green">$285.57</span></td>
+  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="6.35"><span class="green">$6.35</span></td>
+  <td data-v="0.15"><span class="green">+0.15%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="285.57"><span class="green">$285.57</span></td>
+  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td><a href="reports/BITX_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>CONL</td>
+  <td data-v="1">1</td>
+  <td data-v="211.23"><span class="green">$211.23</span></td>
+  <td data-v="5.2"><span class="green">+5.20%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="211.23"><span class="green">$211.23</span></td>
+  <td data-v="5.2"><span class="green">+5.20%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="3">3</td>
+  <td data-v="371.8"><span class="green">$371.80</span></td>
+  <td data-v="3.07"><span class="green">+3.07%</span></td>
+  <td><a href="reports/CONL_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>CWVX</td>
+  <td data-v="4">4</td>
+  <td data-v="1813.24"><span class="green">$1,813.24</span></td>
+  <td data-v="10.3"><span class="green">+10.30%</span></td>
+  <td data-v="3">3</td>
+  <td data-v="1631.82"><span class="green">$1,631.82</span></td>
+  <td data-v="12.14"><span class="green">+12.14%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="787.46"><span class="green">$787.46</span></td>
+  <td data-v="8.54"><span class="green">+8.54%</span></td>
+  <td data-v="5">5</td>
+  <td data-v="2212.36"><span class="green">$2,212.36</span></td>
+  <td data-v="10.25"><span class="green">+10.25%</span></td>
+  <td><a href="reports/CWVX_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>GGLL</td>
+  <td data-v="1">1</td>
+  <td data-v="40.48"><span class="green">$40.48</span></td>
+  <td data-v="1.0"><span class="green">+1.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="40.48"><span class="green">$40.48</span></td>
+  <td data-v="1.0"><span class="green">+1.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="40.48"><span class="green">$40.48</span></td>
+  <td data-v="1.0"><span class="green">+1.00%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="239.03"><span class="green">$239.03</span></td>
+  <td data-v="2.98"><span class="green">+2.98%</span></td>
+  <td><a href="reports/GGLL_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>IRE</td>
+  <td data-v="1">1</td>
+  <td data-v="623.28"><span class="green">$623.28</span></td>
+  <td data-v="15.0"><span class="green">+15.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="623.28"><span class="green">$623.28</span></td>
+  <td data-v="15.0"><span class="green">+15.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="1022.24"><span class="green">$1,022.24</span></td>
+  <td data-v="12.55"><span class="green">+12.55%</span></td>
+  <td><a href="reports/IRE_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>JPM</td>
+  <td data-v="1">1</td>
+  <td data-v="115.21"><span class="green">$115.21</span></td>
+  <td data-v="3.0"><span class="green">+3.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="115.21"><span class="green">$115.21</span></td>
+  <td data-v="3.0"><span class="green">+3.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="115.21"><span class="green">$115.21</span></td>
+  <td data-v="3.0"><span class="green">+3.00%</span></td>
+  <td><a href="reports/JPM_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>MU</td>
+  <td data-v="3">3</td>
+  <td data-v="867.8"><span class="green">$867.80</span></td>
+  <td data-v="7.29"><span class="green">+7.29%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="562.31"><span class="green">$562.31</span></td>
+  <td data-v="6.96"><span class="green">+6.96%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="4">4</td>
+  <td data-v="824.84"><span class="green">$824.84</span></td>
+  <td data-v="5.23"><span class="green">+5.23%</span></td>
+  <td><a href="reports/MU_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>RIVN</td>
+  <td data-v="2">2</td>
+  <td data-v="120.21"><span class="green">$120.21</span></td>
+  <td data-v="1.5"><span class="green">+1.50%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="40.27"><span class="green">$40.27</span></td>
+  <td data-v="1.0"><span class="green">+1.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="120.21"><span class="green">$120.21</span></td>
+  <td data-v="1.5"><span class="green">+1.50%</span></td>
+  <td><a href="reports/RIVN_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>STX</td>
+  <td data-v="3">3</td>
+  <td data-v="494.11"><span class="green">$494.11</span></td>
+  <td data-v="4.25"><span class="green">+4.25%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="40.97"><span class="green">$40.97</span></td>
+  <td data-v="1.0"><span class="green">+1.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="3">3</td>
+  <td data-v="494.11"><span class="green">$494.11</span></td>
+  <td data-v="4.25"><span class="green">+4.25%</span></td>
+  <td><a href="reports/STX_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>TSLL</td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="399.57"><span class="green">$399.57</span></td>
+  <td data-v="10.0"><span class="green">+10.00%</span></td>
+  <td><a href="reports/TSLL_perf.html">View</a></td>
+</tr>
+<tr>
+  <td>USO</td>
+  <td data-v="2">2</td>
+  <td data-v="-388.83"><span class="red">$-388.83</span></td>
+  <td data-v="-5.0"><span class="red">-5.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="-194.08"><span class="red">$-194.08</span></td>
+  <td data-v="-5.0"><span class="red">-5.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="-388.83"><span class="red">$-388.83</span></td>
+  <td data-v="-5.0"><span class="red">-5.00%</span></td>
+  <td><a href="reports/USO_perf.html">View</a></td>
+</tr>
+<tr style="font-weight:bold;border-top:2px solid #e94560">
+  <td>TOTAL</td>
+  <td data-v="22">22</td>
+  <td data-v="4501.28"><span class="green">$4,501.28</span></td>
+  <td data-v="5.05"><span class="green">+5.05%</span></td>
+  <td data-v="15">15</td>
+  <td data-v="3396.82"><span class="green">$3,396.82</span></td>
+  <td data-v="5.5"><span class="green">+5.50%</span></td>
+  <td data-v="4">4</td>
+  <td data-v="1027.2"><span class="green">$1,027.20</span></td>
+  <td data-v="5.95"><span class="green">+5.95%</span></td>
+  <td data-v="29">29</td>
+  <td data-v="6015.09"><span class="green">$6,015.09</span></td>
+  <td data-v="5.14"><span class="green">+5.14%</span></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footer">Last updated: 2026-04-10 14:48 UTC</div>
+
+<script>
+function sortTable(table, col, type, asc) {
+  var tbody = table.querySelector('tbody');
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort(function(a, b) {
+    var av = a.cells[col].getAttribute('data-v') || a.cells[col].textContent;
+    var bv = b.cells[col].getAttribute('data-v') || b.cells[col].textContent;
+    if (type === 'num') { av = parseFloat(av) || 0; bv = parseFloat(bv) || 0; }
+    else { av = av.toLowerCase(); bv = bv.toLowerCase(); }
+    return asc ? (av > bv ? 1 : -1) : (av < bv ? 1 : -1);
+  });
+  rows.forEach(function(r) { tbody.appendChild(r); });
+}
+document.querySelectorAll('th[data-col]').forEach(function(th, idx) {
+  th.addEventListener('click', function() {
+    var table = th.closest('table');
+    var asc = !th.classList.contains('asc');
+    table.querySelectorAll('th').forEach(function(h) { h.classList.remove('asc', 'desc', 'active'); });
+    th.classList.add(asc ? 'asc' : 'desc', 'active');
+    sortTable(table, idx, th.getAttribute('data-type'), asc);
+  });
+});
+var search = document.getElementById('search');
+if (search) {
+  search.addEventListener('input', function() {
+    var q = this.value.toLowerCase();
+    document.querySelectorAll('#mainTable tbody tr').forEach(function(r) {
+      r.style.display = r.cells[0].textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+}
+</script>
+
+</body>
+</html>

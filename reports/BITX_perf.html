@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BITX - Rule Performance</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px}
+.header{background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
+.header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
+.subtitle{color:#a0a0b0;font-size:12px;margin:4px 0 8px}
+.search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none}
+.search-box:focus{border-color:#e94560}
+.container{padding:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:800px}
+th{background:#0f3460;color:#e94560;padding:8px 5px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:11px}
+th:first-child{text-align:left}
+th:hover{background:#162d50}
+th .arrow{font-size:9px;margin-left:1px;opacity:.5}
+th.active .arrow{opacity:1}
+td{padding:7px 5px;text-align:right;border-bottom:1px solid #1e2a4a}
+td:first-child{text-align:left;font-weight:600;color:#53c0f0}
+tr:hover{background:#1e2a4a}
+.green{color:#4caf50}
+.red{color:#ef5350}
+.zero{color:#444}
+a{color:#53c0f0;text-decoration:none}
+a:hover{color:#e94560;text-decoration:underline}
+.footer{text-align:center;padding:16px;color:#555;font-size:11px}
+.nav{padding:8px 16px;font-size:12px}
+.nav a{margin-right:12px}
+.group-header{background:#0f3460;color:#a0a0b0;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.group-header th{border-bottom:1px solid #0f3460;padding:4px 5px}
+@media(max-width:480px){table{font-size:11px}th,td{padding:5px 3px}th{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>BITX Rule Performance</h1>
+  <p class="subtitle">2 rules &bull; 2 trades &bull; <span class="green">$285.57</span> total PnL</p>
+</div>
+<div class="nav"><a href="../performance.html">Back to Summary</a> <a href="../index.html">Rules Overview</a></div>
+<div class="container">
+<table id="mainTable">
+<thead>
+<tr class="group-header">
+  <th></th>
+  <th></th>
+  <th colspan="3">This Month</th>
+  <th colspan="3">This Week</th>
+  <th colspan="3">Prior Day</th>
+  <th colspan="3">ITD (All Time)</th>
+</tr>
+<tr>
+  <th data-col="rule" data-type="str">Rule <span class="arrow">&#9650;</span></th>
+  <th data-col="since" data-type="str">Since <span class="arrow">&#9650;</span></th>
+  <th data-col="m_trades" data-type="num">#Trades</th>
+  <th data-col="m_pnl" data-type="num">PnL $</th>
+  <th data-col="m_pct" data-type="num">PnL %</th>
+  <th data-col="w_trades" data-type="num">#Trades</th>
+  <th data-col="w_pnl" data-type="num">PnL $</th>
+  <th data-col="w_pct" data-type="num">PnL %</th>
+  <th data-col="d_trades" data-type="num">#Trades</th>
+  <th data-col="d_pnl" data-type="num">PnL $</th>
+  <th data-col="d_pct" data-type="num">PnL %</th>
+  <th data-col="i_trades" data-type="num">#Trades</th>
+  <th data-col="i_pnl" data-type="num">PnL $</th>
+  <th data-col="i_pct" data-type="num">PnL %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td title="BXD03-15m: IRE 1d drop -19.8% (lag=1), BITX 1d drop 1.6%, RSI=26, green">BXD03-15m: IRE 1d drop -19.8% (lag=1), BITX 1d drop 1.6%, RS...</td>
+  <td>2026-03-30</td>
+  <td data-v="1">1</td>
+  <td data-v="279.22"><span class="green">$279.22</span></td>
+  <td data-v="7.0"><span class="green">+7.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="279.22"><span class="green">$279.22</span></td>
+  <td data-v="7.0"><span class="green">+7.00%</span></td>
+</tr>
+<tr>
+  <td title="BXD05-15m: IRE 3h drop -3.0% (lag=1), BITX 3h drop -1.0%, Stoch=0">BXD05-15m: IRE 3h drop -3.0% (lag=1), BITX 3h drop -1.0%, St...</td>
+  <td>2026-04-01</td>
+  <td data-v="1">1</td>
+  <td data-v="6.35"><span class="green">$6.35</span></td>
+  <td data-v="0.15"><span class="green">+0.15%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="6.35"><span class="green">$6.35</span></td>
+  <td data-v="0.15"><span class="green">+0.15%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="6.35"><span class="green">$6.35</span></td>
+  <td data-v="0.15"><span class="green">+0.15%</span></td>
+</tr>
+<tr style="font-weight:bold;border-top:2px solid #e94560">
+  <td>TOTAL</td>
+  <td></td>
+  <td data-v="2">2</td>
+  <td data-v="285.57"><span class="green">$285.57</span></td>
+  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="6.35"><span class="green">$6.35</span></td>
+  <td data-v="0.15"><span class="green">+0.15%</span></td>
+  <td data-v="0">0</td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="2">2</td>
+  <td data-v="285.57"><span class="green">$285.57</span></td>
+  <td data-v="3.53"><span class="green">+3.53%</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="footer">Last updated: 2026-04-10 14:48 UTC</div>
+
+<script>
+function sortTable(table, col, type, asc) {
+  var tbody = table.querySelector('tbody');
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort(function(a, b) {
+    var av = a.cells[col].getAttribute('data-v') || a.cells[col].textContent;
+    var bv = b.cells[col].getAttribute('data-v') || b.cells[col].textContent;
+    if (type === 'num') { av = parseFloat(av) || 0; bv = parseFloat(bv) || 0; }
+    else { av = av.toLowerCase(); bv = bv.toLowerCase(); }
+    return asc ? (av > bv ? 1 : -1) : (av < bv ? 1 : -1);
+  });
+  rows.forEach(function(r) { tbody.appendChild(r); });
+}
+document.querySelectorAll('th[data-col]').forEach(function(th, idx) {
+  th.addEventListener('click', function() {
+    var table = th.closest('table');
+    var asc = !th.classList.contains('asc');
+    table.querySelectorAll('th').forEach(function(h) { h.classList.remove('asc', 'desc', 'active'); });
+    th.classList.add(asc ? 'asc' : 'desc', 'active');
+    sortTable(table, idx, th.getAttribute('data-type'), asc);
+  });
+});
+var search = document.getElementById('search');
+if (search) {
+  search.addEventListener('input', function() {
+    var q = this.value.toLowerCase();
+    document.querySelectorAll('#mainTable tbody tr').forEach(function(r) {
+      r.style.display = r.cells[0].textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+}
+</script>
+
+</body>
+</html>
