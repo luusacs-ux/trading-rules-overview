@@ -248,5 +248,15 @@
     "report": "LMT_backtest_summary.html",
     "stock_active": 386,
     "indiv_active": 386
+  },
+  "MKC": {
+    "total": 228,
+    "wr100": 76,
+    "pnl_gt10": 182,
+    "avg_pnl": 14.82,
+    "avg_ptpnl": 1.88,
+    "report": "MKC_backtest_summary.html",
+    "stock_active": 228,
+    "indiv_active": 228
   }
 }
