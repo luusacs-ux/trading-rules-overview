@@ -338,5 +338,15 @@
     "report": "ASML_backtest_summary.html",
     "stock_active": 63,
     "indiv_active": 63
+  },
+  "AVGO": {
+    "total": 75,
+    "wr100": 26,
+    "pnl_gt10": 37,
+    "avg_pnl": 13.79,
+    "avg_ptpnl": 2.2,
+    "report": "AVGO_backtest_summary.html",
+    "stock_active": 75,
+    "indiv_active": 75
   }
 }
