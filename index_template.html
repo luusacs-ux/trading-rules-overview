@@ -42,8 +42,8 @@ a:hover{color:#e94560;text-decoration:underline}
 <thead>
 <tr>
   <th data-col="ticker" data-type="str">Ticker <span class="arrow">&#9650;</span></th>
-  <th data-col="stock" data-type="num">Stock <span class="arrow">&#9650;</span></th>
-  <th data-col="indiv" data-type="num">Indiv <span class="arrow">&#9650;</span></th>
+  <th data-col="total" data-type="num">Rules <span class="arrow">&#9650;</span></th>
+  <th data-col="stock" data-type="num">Active <span class="arrow">&#9650;</span></th>
   <th data-col="wr100" data-type="num">100%WR <span class="arrow">&#9650;</span></th>
   <th data-col="pnl10" data-type="num">&gt;10%PnL <span class="arrow">&#9650;</span></th>
   <th data-col="avgPnl" data-type="num" class="active">Avg PnL% <span class="arrow">&#9660;</span></th>
@@ -71,8 +71,8 @@ function render(filter){
   rows.forEach(function(d){
     html+="<tr>";
     html+="<td><a href='reports/"+d.report+"'>"+d.ticker+"</a></td>";
-    html+="<td>"+d.stock+"</td>";
-    html+="<td>"+d.indiv+"</td>";
+    html+="<td>"+d.total+"</td>";
+    html+="<td>"+(d.stock?'<span class="green">'+d.stock+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.wr100?'<span class="green">'+d.wr100+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.pnl10?'<span class="green">'+d.pnl10+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td><strong>"+(d.avgPnl>0?d.avgPnl.toFixed(1)+"%":'<span class="zero">0</span>')+"</strong></td>";
