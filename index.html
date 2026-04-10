@@ -17,7 +17,7 @@ body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 .search-box:focus{border-color:#e94560}
 .container{padding:8px;overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
-thead{position:sticky;top:105px;z-index:5}
+thead{position:sticky;top:70px;z-index:5}
 th{background:#0f3460;color:#e94560;padding:8px 5px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:11px}
 th:first-child{text-align:left}
 th:hover{background:#162d50}
@@ -46,11 +46,7 @@ a:hover{color:#e94560;text-decoration:underline}
 
 <div class="header">
   <h1>Trading Rules Overview</h1>
-  <div class="stats">
-    <div class="stat"><div class="num" id="totalRules">1,198</div><div class="label">Total Rules</div></div>
-    <div class="stat"><div class="num" id="totalTickers">21</div><div class="label">Tickers</div></div>
-    <div class="stat"><div class="num" id="totalPnl">32,501%</div><div class="label">Combined PnL</div></div>
-  </div>
+  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">21 tickers &bull; 1,198 rules &bull; 32,501% combined PnL</p>
   <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
 </div>
 
