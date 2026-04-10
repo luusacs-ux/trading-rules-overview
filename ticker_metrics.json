@@ -298,5 +298,15 @@
     "report": "LLY_backtest_summary.html",
     "stock_active": 356,
     "indiv_active": 356
+  },
+  "ORCL": {
+    "total": 261,
+    "wr100": 69,
+    "pnl_gt10": 233,
+    "avg_pnl": 20.99,
+    "avg_ptpnl": 3.2,
+    "report": "ORCL_backtest_summary.html",
+    "stock_active": 261,
+    "indiv_active": 261
   }
 }
