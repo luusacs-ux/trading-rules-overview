@@ -1,0 +1,178 @@
+{
+  "AMZN": {
+    "total": 37,
+    "wr100": 26,
+    "pnl_gt10": 29,
+    "avg_pnl": 11.6,
+    "avg_ptpnl": 2.54,
+    "report": "AMZN_backtest_summary.html"
+  },
+  "ASTS": {
+    "total": 47,
+    "wr100": 19,
+    "pnl_gt10": 36,
+    "avg_pnl": 21.11,
+    "avg_ptpnl": 4.05,
+    "report": "ASTS_backtest_summary.html"
+  },
+  "BKR": {
+    "total": 341,
+    "wr100": 0,
+    "pnl_gt10": 0,
+    "avg_pnl": 33.33,
+    "avg_ptpnl": 0.0,
+    "report": "BKR_backtest_summary.html"
+  },
+  "BWET": {
+    "total": 23,
+    "wr100": 2,
+    "pnl_gt10": 23,
+    "avg_pnl": 26.21,
+    "avg_ptpnl": 5.99,
+    "report": "BWET_backtest_summary.html"
+  },
+  "CI": {
+    "total": 73,
+    "wr100": 5,
+    "pnl_gt10": 72,
+    "avg_pnl": 26.71,
+    "avg_ptpnl": 1.92,
+    "report": "CI_backtest_summary.html"
+  },
+  "CLSK": {
+    "total": 61,
+    "wr100": 32,
+    "pnl_gt10": 48,
+    "avg_pnl": 19.53,
+    "avg_ptpnl": 3.96,
+    "report": "CLSK_backtest_summary.html"
+  },
+  "CNBS": {
+    "total": 17,
+    "wr100": 17,
+    "pnl_gt10": 7,
+    "avg_pnl": 7.41,
+    "avg_ptpnl": 2.47,
+    "report": "CNBS_backtest_summary.html"
+  },
+  "CRWG": {
+    "total": 88,
+    "wr100": 5,
+    "pnl_gt10": 84,
+    "avg_pnl": 29.88,
+    "avg_ptpnl": 5.49,
+    "report": "CRWG_backtest_summary.html"
+  },
+  "DAL": {
+    "total": 145,
+    "wr100": 6,
+    "pnl_gt10": 141,
+    "avg_pnl": 42.75,
+    "avg_ptpnl": 1.85,
+    "report": "DAL_backtest_summary.html"
+  },
+  "DLTR": {
+    "total": 9,
+    "wr100": 6,
+    "pnl_gt10": 4,
+    "avg_pnl": 6.89,
+    "avg_ptpnl": 1.37,
+    "report": "DLTR_backtest_summary.html"
+  },
+  "ELV": {
+    "total": 129,
+    "wr100": 23,
+    "pnl_gt10": 116,
+    "avg_pnl": 24.54,
+    "avg_ptpnl": 1.6,
+    "report": "ELV_backtest_summary.html"
+  },
+  "F": {
+    "total": 5,
+    "wr100": 4,
+    "pnl_gt10": 1,
+    "avg_pnl": 6.98,
+    "avg_ptpnl": 1.96,
+    "report": "F_backtest_summary.html"
+  },
+  "HAL": {
+    "total": 375,
+    "wr100": 0,
+    "pnl_gt10": 0,
+    "avg_pnl": 36.71,
+    "avg_ptpnl": 0.0,
+    "report": "HAL_backtest_summary.html"
+  },
+  "HUM": {
+    "total": 82,
+    "wr100": 21,
+    "pnl_gt10": 68,
+    "avg_pnl": 23.79,
+    "avg_ptpnl": 3.11,
+    "report": "HUM_backtest_summary.html"
+  },
+  "LNG": {
+    "total": 40,
+    "wr100": 16,
+    "pnl_gt10": 36,
+    "avg_pnl": 18.95,
+    "avg_ptpnl": 5.43,
+    "report": "LNG_backtest_summary.html"
+  },
+  "NKE": {
+    "total": 6,
+    "wr100": 6,
+    "pnl_gt10": 0,
+    "avg_pnl": 5.89,
+    "avg_ptpnl": 1.76,
+    "report": "NKE_backtest_summary.html"
+  },
+  "PFE": {
+    "total": 0,
+    "wr100": 0,
+    "pnl_gt10": 0,
+    "avg_pnl": 0.0,
+    "avg_ptpnl": 0.0,
+    "report": "PFE_backtest_summary.html"
+  },
+  "SLB": {
+    "total": 304,
+    "wr100": 0,
+    "pnl_gt10": 0,
+    "avg_pnl": 33.22,
+    "avg_ptpnl": 0.0,
+    "report": "SLB_backtest_summary.html"
+  },
+  "SMCI": {
+    "total": 178,
+    "wr100": 3,
+    "pnl_gt10": 176,
+    "avg_pnl": 49.17,
+    "avg_ptpnl": 2.17,
+    "report": "SMCI_backtest_summary.html"
+  },
+  "TSAT": {
+    "total": 59,
+    "wr100": 29,
+    "pnl_gt10": 56,
+    "avg_pnl": 26.94,
+    "avg_ptpnl": 5.66,
+    "report": "TSAT_backtest_summary.html"
+  },
+  "UNH": {
+    "total": 74,
+    "wr100": 5,
+    "pnl_gt10": 71,
+    "avg_pnl": 23.61,
+    "avg_ptpnl": 1.35,
+    "report": "UNH_backtest_summary.html"
+  },
+  "USAR": {
+    "total": 72,
+    "wr100": 23,
+    "pnl_gt10": 53,
+    "avg_pnl": 17.88,
+    "avg_ptpnl": 3.9,
+    "report": "USAR_backtest_summary.html"
+  }
+}
