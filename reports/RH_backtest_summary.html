@@ -1,0 +1,3438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RH Backtest Summary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 20px; background: #1a1a2e; color: #e0e0e0; }
+h1 { color: #00d4ff; }
+h2 { color: #ff6b6b; margin-top: 30px; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 4px; text-align: left; position: sticky; top: 0; cursor: pointer; }
+td { padding: 6px 4px; border-bottom: 1px solid #333; }
+tr:hover { background: #1a1a3e; }
+.good { color: #00ff88; font-weight: bold; }
+.mid { color: #ffaa00; }
+.bad { color: #ff4444; }
+.filter-bar { margin: 15px 0; }
+.filter-bar select, .filter-bar input { padding: 6px; margin: 0 5px; background: #16213e; color: #e0e0e0; border: 1px solid #333; border-radius: 4px; }
+.stats { display: flex; gap: 20px; margin: 15px 0; flex-wrap: wrap; }
+.stat-card { background: #16213e; padding: 12px 20px; border-radius: 8px; border: 1px solid #333; }
+.stat-val { font-size: 24px; font-weight: bold; color: #00d4ff; }
+.stat-label { font-size: 12px; color: #888; }
+</style>
+</head>
+<body>
+<h1>RH (Restoration Hardware) Backtest Summary</h1>
+<p>Generated: 2026-04-10 | Pipeline: create_rules_RH_WSM_20260410</p>
+<p>Correlations: WSM (lead-lag), ETSY (divergence), SRS (inverse)</p>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-val">667</div><div class="stat-label">Total Rules</div></div>
+  <div class="stat-card"><div class="stat-val">261</div><div class="stat-label">Standalone (RHS)</div></div>
+  <div class="stat-card"><div class="stat-val">166</div><div class="stat-label">Lead-Lag (RHL)</div></div>
+  <div class="stat-card"><div class="stat-val">130</div><div class="stat-label">Divergence (RHD)</div></div>
+  <div class="stat-card"><div class="stat-val">110</div><div class="stat-label">Inverse (RHX)</div></div>
+</div>
+
+<div class="filter-bar">
+  <label>Family: <select id="fam-filter" onchange="filterTable()">
+    <option value="">All</option>
+    <option value="RHS">RHS</option>
+    <option value="RHL">RHL</option>
+    <option value="RHD">RHD</option>
+    <option value="RHX">RHX</option>
+  </select></label>
+  <label>Timeframe: <select id="tf-filter" onchange="filterTable()">
+    <option value="">All</option>
+    <option value="5m">5m</option>
+    <option value="15m">15m</option>
+    <option value="1h">1h</option>
+    <option value="daily">daily</option>
+  </select></label>
+  <label>Min WR: <input id="wr-filter" type="number" value="0" min="0" max="100" style="width:60px" onchange="filterTable()"></label>
+  <label>Min APnL: <input id="apnl-filter" type="number" value="0" min="-50" max="100" style="width:60px" onchange="filterTable()"></label>
+</div>
+
+<table id="rule-table">
+<thead><tr>
+<th onclick="sortTable(0)">Rule ID</th>
+<th onclick="sortTable(1)">Family</th>
+<th onclick="sortTable(2)">TF</th>
+<th onclick="sortTable(3)">Condition</th>
+<th onclick="sortTable(4)">Trades</th>
+<th onclick="sortTable(5)">WR%</th>
+<th onclick="sortTable(6)">APnL%</th>
+<th onclick="sortTable(7)">PTPnL%</th>
+<th onclick="sortTable(8)">Tier</th>
+</tr></thead>
+<tbody>
+
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="15">
+<td>RHS01-5m-WR90%/APnL15%/PTPnL1%</td><td>RHS</td><td>5m</td><td>RSI<=20 + green</td>
+<td>50</td><td class="good">90</td>
+<td class="mid">15</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="32">
+<td>RHS02-5m-WR65%/APnL32%/PTPnL4%</td><td>RHS</td><td>5m</td><td>RSI<=20 + green</td>
+<td>11</td><td class="mid">65</td>
+<td class="good">32</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="100" data-apnl="14">
+<td>RHS03-5m-WR100%/APnL14%/PTPnL1%</td><td>RHS</td><td>5m</td><td>RSI<=20 + green</td>
+<td>40</td><td class="good">100</td>
+<td class="mid">14</td><td>1</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="78" data-apnl="5">
+<td>RHS04-5m-WR78%/APnL5%/PTPnL1%</td><td>RHS</td><td>5m</td><td>RSI<=20 + green</td>
+<td>8</td><td class="good">78</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="60" data-apnl="30">
+<td>RHS05-5m-WR60%/APnL30%/PTPnL9%</td><td>RHS</td><td>5m</td><td>RSI<=20 + green</td>
+<td>41</td><td class="mid">60</td>
+<td class="good">30</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="35" data-apnl="72">
+<td>RHS06-5m-WR35%/APnL72%/PTPnL7%</td><td>RHS</td><td>5m</td><td>RSI<=20 + green</td>
+<td>48</td><td class="bad">35</td>
+<td class="good">72</td><td>7</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="70">
+<td>RHS07-5m-WR90%/APnL70%/PTPnL14%</td><td>RHS</td><td>5m</td><td>RSI<=25 + green</td>
+<td>17</td><td class="good">90</td>
+<td class="good">70</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="76">
+<td>RHS08-5m-WR80%/APnL76%/PTPnL9%</td><td>RHS</td><td>5m</td><td>RSI<=25 + green</td>
+<td>3</td><td class="good">80</td>
+<td class="good">76</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="58" data-apnl="55">
+<td>RHS09-5m-WR58%/APnL55%/PTPnL11%</td><td>RHS</td><td>5m</td><td>RSI<=25 + green</td>
+<td>20</td><td class="mid">58</td>
+<td class="good">55</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="55" data-apnl="28">
+<td>RHS10-5m-WR55%/APnL28%/PTPnL6%</td><td>RHS</td><td>5m</td><td>RSI<=25 + green</td>
+<td>9</td><td class="mid">55</td>
+<td class="mid">28</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="45" data-apnl="49">
+<td>RHS11-5m-WR45%/APnL49%/PTPnL4%</td><td>RHS</td><td>5m</td><td>RSI<=25 + green</td>
+<td>25</td><td class="bad">45</td>
+<td class="good">49</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="72" data-apnl="78">
+<td>RHS12-5m-WR72%/APnL78%/PTPnL9%</td><td>RHS</td><td>5m</td><td>RSI<=25 + green</td>
+<td>5</td><td class="good">72</td>
+<td class="good">78</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="100" data-apnl="59">
+<td>RHS13-5m-WR100%/APnL59%/PTPnL18%</td><td>RHS</td><td>5m</td><td>RSI<=30 + green</td>
+<td>10</td><td class="good">100</td>
+<td class="good">59</td><td>18</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="75" data-apnl="11">
+<td>RHS14-5m-WR75%/APnL11%/PTPnL3%</td><td>RHS</td><td>5m</td><td>RSI<=30 + green</td>
+<td>21</td><td class="good">75</td>
+<td class="mid">11</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="47">
+<td>RHS15-5m-WR90%/APnL47%/PTPnL10%</td><td>RHS</td><td>5m</td><td>RSI<=30 + green</td>
+<td>15</td><td class="good">90</td>
+<td class="good">47</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="95" data-apnl="9">
+<td>RHS16-5m-WR95%/APnL9%/PTPnL1%</td><td>RHS</td><td>5m</td><td>RSI<=30 + green</td>
+<td>45</td><td class="good">95</td>
+<td class="bad">9</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="38">
+<td>RHS17-5m-WR62%/APnL38%/PTPnL2%</td><td>RHS</td><td>5m</td><td>RSI<=30 + green</td>
+<td>17</td><td class="mid">62</td>
+<td class="good">38</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="50" data-apnl="49">
+<td>RHS18-5m-WR50%/APnL49%/PTPnL9%</td><td>RHS</td><td>5m</td><td>RSI<=30 + green</td>
+<td>32</td><td class="mid">50</td>
+<td class="good">49</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="47">
+<td>RHS19-5m-WR90%/APnL47%/PTPnL3%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>26</td><td class="good">90</td>
+<td class="good">47</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="72" data-apnl="27">
+<td>RHS20-5m-WR72%/APnL27%/PTPnL5%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>47</td><td class="good">72</td>
+<td class="mid">27</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="92" data-apnl="10">
+<td>RHS21-5m-WR92%/APnL10%/PTPnL3%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>43</td><td class="good">92</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="58" data-apnl="69">
+<td>RHS22-5m-WR58%/APnL69%/PTPnL8%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>13</td><td class="mid">58</td>
+<td class="good">69</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="49">
+<td>RHS23-5m-WR80%/APnL49%/PTPnL9%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>43</td><td class="good">80</td>
+<td class="good">49</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="95" data-apnl="72">
+<td>RHS24-5m-WR95%/APnL72%/PTPnL8%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>46</td><td class="good">95</td>
+<td class="good">72</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="70" data-apnl="8">
+<td>RHS25-5m-WR70%/APnL8%/PTPnL1%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=20 + green</td>
+<td>5</td><td class="good">70</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="70" data-apnl="52">
+<td>RHS26-5m-WR70%/APnL52%/PTPnL9%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=20 + green</td>
+<td>7</td><td class="good">70</td>
+<td class="good">52</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="60" data-apnl="73">
+<td>RHS27-5m-WR60%/APnL73%/PTPnL23%</td><td>RHS</td><td>5m</td><td>RSI<=25 + Stoch<=20 + green</td>
+<td>23</td><td class="mid">60</td>
+<td class="good">73</td><td>23</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="60" data-apnl="64">
+<td>RHS28-5m-WR60%/APnL64%/PTPnL13%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>44</td><td class="mid">60</td>
+<td class="good">64</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="19">
+<td>RHS29-5m-WR80%/APnL19%/PTPnL3%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>11</td><td class="good">80</td>
+<td class="mid">19</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="72">
+<td>RHS30-5m-WR62%/APnL72%/PTPnL18%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>19</td><td class="mid">62</td>
+<td class="good">72</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="100" data-apnl="75">
+<td>RHS31-5m-WR100%/APnL75%/PTPnL14%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>40</td><td class="good">100</td>
+<td class="good">75</td><td>14</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="75" data-apnl="47">
+<td>RHS32-5m-WR75%/APnL47%/PTPnL4%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>11</td><td class="good">75</td>
+<td class="good">47</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="83" data-apnl="64">
+<td>RHS33-5m-WR83%/APnL64%/PTPnL3%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>6</td><td class="good">83</td>
+<td class="good">64</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="50" data-apnl="20">
+<td>RHS34-5m-WR50%/APnL20%/PTPnL6%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=20 + green</td>
+<td>13</td><td class="mid">50</td>
+<td class="mid">20</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="92" data-apnl="55">
+<td>RHS35-5m-WR92%/APnL55%/PTPnL3%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=20 + green</td>
+<td>27</td><td class="good">92</td>
+<td class="good">55</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="75" data-apnl="77">
+<td>RHS36-5m-WR75%/APnL77%/PTPnL15%</td><td>RHS</td><td>5m</td><td>RSI<=30 + Stoch<=20 + green</td>
+<td>36</td><td class="good">75</td>
+<td class="good">77</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="71">
+<td>RHS37-5m-WR65%/APnL71%/PTPnL1%</td><td>RHS</td><td>5m</td><td>WillR<=-80 + green</td>
+<td>46</td><td class="mid">65</td>
+<td class="good">71</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="100" data-apnl="15">
+<td>RHS38-5m-WR100%/APnL15%/PTPnL5%</td><td>RHS</td><td>5m</td><td>WillR<=-80 + green</td>
+<td>20</td><td class="good">100</td>
+<td class="mid">15</td><td>5</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="44">
+<td>RHS39-5m-WR90%/APnL44%/PTPnL2%</td><td>RHS</td><td>5m</td><td>WillR<=-80 + green</td>
+<td>21</td><td class="good">90</td>
+<td class="good">44</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="78" data-apnl="21">
+<td>RHS40-5m-WR78%/APnL21%/PTPnL4%</td><td>RHS</td><td>5m</td><td>WillR<=-85 + green</td>
+<td>3</td><td class="good">78</td>
+<td class="mid">21</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="100" data-apnl="34">
+<td>RHS41-5m-WR100%/APnL34%/PTPnL9%</td><td>RHS</td><td>5m</td><td>WillR<=-85 + green</td>
+<td>14</td><td class="good">100</td>
+<td class="good">34</td><td>9</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="83" data-apnl="14">
+<td>RHS42-5m-WR83%/APnL14%/PTPnL3%</td><td>RHS</td><td>5m</td><td>WillR<=-85 + green</td>
+<td>43</td><td class="good">83</td>
+<td class="mid">14</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="83" data-apnl="78">
+<td>RHS43-5m-WR83%/APnL78%/PTPnL7%</td><td>RHS</td><td>5m</td><td>WillR<=-90 + green</td>
+<td>12</td><td class="good">83</td>
+<td class="good">78</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="72" data-apnl="21">
+<td>RHS44-5m-WR72%/APnL21%/PTPnL5%</td><td>RHS</td><td>5m</td><td>WillR<=-90 + green</td>
+<td>36</td><td class="good">72</td>
+<td class="mid">21</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="35" data-apnl="77">
+<td>RHS45-5m-WR35%/APnL77%/PTPnL11%</td><td>RHS</td><td>5m</td><td>WillR<=-90 + green</td>
+<td>34</td><td class="bad">35</td>
+<td class="good">77</td><td>11</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="35" data-apnl="15">
+<td>RHS46-5m-WR35%/APnL15%/PTPnL3%</td><td>RHS</td><td>5m</td><td>drop_1h<=-1.5% + green</td>
+<td>22</td><td class="bad">35</td>
+<td class="mid">15</td><td>3</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="8">
+<td>RHS47-5m-WR62%/APnL8%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_1h<=-1.5% + green</td>
+<td>39</td><td class="mid">62</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="45" data-apnl="11">
+<td>RHS48-5m-WR45%/APnL11%/PTPnL3%</td><td>RHS</td><td>5m</td><td>drop_1h<=-1.5% + green</td>
+<td>34</td><td class="bad">45</td>
+<td class="mid">11</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="45" data-apnl="69">
+<td>RHS49-5m-WR45%/APnL69%/PTPnL5%</td><td>RHS</td><td>5m</td><td>drop_1h<=-2.0% + green</td>
+<td>11</td><td class="bad">45</td>
+<td class="good">69</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="92" data-apnl="61">
+<td>RHS50-5m-WR92%/APnL61%/PTPnL18%</td><td>RHS</td><td>5m</td><td>drop_1h<=-2.0% + green</td>
+<td>13</td><td class="good">92</td>
+<td class="good">61</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="68">
+<td>RHS51-5m-WR65%/APnL68%/PTPnL20%</td><td>RHS</td><td>5m</td><td>drop_1h<=-2.0% + green</td>
+<td>30</td><td class="mid">65</td>
+<td class="good">68</td><td>20</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="60" data-apnl="70">
+<td>RHS52-5m-WR60%/APnL70%/PTPnL23%</td><td>RHS</td><td>5m</td><td>drop_1h<=-2.5% + green</td>
+<td>15</td><td class="mid">60</td>
+<td class="good">70</td><td>23</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="95" data-apnl="40">
+<td>RHS53-5m-WR95%/APnL40%/PTPnL7%</td><td>RHS</td><td>5m</td><td>drop_1h<=-2.5% + green</td>
+<td>45</td><td class="good">95</td>
+<td class="good">40</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="48">
+<td>RHS54-5m-WR90%/APnL48%/PTPnL15%</td><td>RHS</td><td>5m</td><td>drop_1h<=-2.5% + green</td>
+<td>36</td><td class="good">90</td>
+<td class="good">48</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="16">
+<td>RHS55-5m-WR80%/APnL16%/PTPnL2%</td><td>RHS</td><td>5m</td><td>drop_1h<=-3.0% + green</td>
+<td>17</td><td class="good">80</td>
+<td class="mid">16</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="45" data-apnl="44">
+<td>RHS56-5m-WR45%/APnL44%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_1h<=-3.0% + green</td>
+<td>40</td><td class="bad">45</td>
+<td class="good">44</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="85" data-apnl="30">
+<td>RHS57-5m-WR85%/APnL30%/PTPnL10%</td><td>RHS</td><td>5m</td><td>drop_1h<=-3.0% + green</td>
+<td>17</td><td class="good">85</td>
+<td class="good">30</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="35" data-apnl="10">
+<td>RHS58-5m-WR35%/APnL10%/PTPnL3%</td><td>RHS</td><td>5m</td><td>drop_2h<=-2.0% + green</td>
+<td>43</td><td class="bad">35</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="40" data-apnl="30">
+<td>RHS59-5m-WR40%/APnL30%/PTPnL2%</td><td>RHS</td><td>5m</td><td>drop_2h<=-2.0% + green</td>
+<td>5</td><td class="bad">40</td>
+<td class="good">30</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="70" data-apnl="10">
+<td>RHS60-5m-WR70%/APnL10%/PTPnL3%</td><td>RHS</td><td>5m</td><td>drop_2h<=-2.0% + green</td>
+<td>18</td><td class="good">70</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="63">
+<td>RHS61-5m-WR65%/APnL63%/PTPnL7%</td><td>RHS</td><td>5m</td><td>drop_2h<=-3.0% + green</td>
+<td>37</td><td class="mid">65</td>
+<td class="good">63</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="55" data-apnl="74">
+<td>RHS62-5m-WR55%/APnL74%/PTPnL19%</td><td>RHS</td><td>5m</td><td>drop_2h<=-3.0% + green</td>
+<td>33</td><td class="mid">55</td>
+<td class="good">74</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="61">
+<td>RHS63-5m-WR62%/APnL61%/PTPnL14%</td><td>RHS</td><td>5m</td><td>drop_2h<=-3.0% + green</td>
+<td>15</td><td class="mid">62</td>
+<td class="good">61</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="50" data-apnl="13">
+<td>RHS64-5m-WR50%/APnL13%/PTPnL4%</td><td>RHS</td><td>5m</td><td>drop_2h<=-4.0% + green</td>
+<td>25</td><td class="mid">50</td>
+<td class="mid">13</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="78" data-apnl="53">
+<td>RHS65-5m-WR78%/APnL53%/PTPnL15%</td><td>RHS</td><td>5m</td><td>drop_2h<=-4.0% + green</td>
+<td>49</td><td class="good">78</td>
+<td class="good">53</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="40" data-apnl="13">
+<td>RHS66-5m-WR40%/APnL13%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_2h<=-4.0% + green</td>
+<td>28</td><td class="bad">40</td>
+<td class="mid">13</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="100" data-apnl="44">
+<td>RHS67-5m-WR100%/APnL44%/PTPnL13%</td><td>RHS</td><td>5m</td><td>drop_3h<=-3.0% + green</td>
+<td>9</td><td class="good">100</td>
+<td class="good">44</td><td>13</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="25">
+<td>RHS68-5m-WR62%/APnL25%/PTPnL4%</td><td>RHS</td><td>5m</td><td>drop_3h<=-3.0% + green</td>
+<td>37</td><td class="mid">62</td>
+<td class="mid">25</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="18">
+<td>RHS69-5m-WR80%/APnL18%/PTPnL4%</td><td>RHS</td><td>5m</td><td>drop_3h<=-3.0% + green</td>
+<td>14</td><td class="good">80</td>
+<td class="mid">18</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="60">
+<td>RHS70-5m-WR65%/APnL60%/PTPnL8%</td><td>RHS</td><td>5m</td><td>drop_3h<=-4.0% + green</td>
+<td>7</td><td class="mid">65</td>
+<td class="good">60</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="71">
+<td>RHS71-5m-WR80%/APnL71%/PTPnL4%</td><td>RHS</td><td>5m</td><td>drop_3h<=-4.0% + green</td>
+<td>6</td><td class="good">80</td>
+<td class="good">71</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="70">
+<td>RHS72-5m-WR90%/APnL70%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_3h<=-4.0% + green</td>
+<td>8</td><td class="good">90</td>
+<td class="good">70</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="22">
+<td>RHS73-5m-WR62%/APnL22%/PTPnL4%</td><td>RHS</td><td>5m</td><td>drop_3h<=-5.0% + green</td>
+<td>34</td><td class="mid">62</td>
+<td class="mid">22</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="82" data-apnl="28">
+<td>RHS74-5m-WR82%/APnL28%/PTPnL7%</td><td>RHS</td><td>5m</td><td>drop_3h<=-5.0% + green</td>
+<td>6</td><td class="good">82</td>
+<td class="mid">28</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="58" data-apnl="49">
+<td>RHS75-5m-WR58%/APnL49%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_3h<=-5.0% + green</td>
+<td>27</td><td class="mid">58</td>
+<td class="good">49</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="59">
+<td>RHS76-5m-WR65%/APnL59%/PTPnL10%</td><td>RHS</td><td>5m</td><td>drop_halfday<=-3.0% + green</td>
+<td>30</td><td class="mid">65</td>
+<td class="good">59</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="95" data-apnl="72">
+<td>RHS77-5m-WR95%/APnL72%/PTPnL22%</td><td>RHS</td><td>5m</td><td>drop_halfday<=-3.0% + green</td>
+<td>48</td><td class="good">95</td>
+<td class="good">72</td><td>22</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="82" data-apnl="20">
+<td>RHS78-5m-WR82%/APnL20%/PTPnL2%</td><td>RHS</td><td>5m</td><td>drop_halfday<=-3.0% + green</td>
+<td>21</td><td class="good">82</td>
+<td class="mid">20</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="60" data-apnl="8">
+<td>RHS79-5m-WR60%/APnL8%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_halfday<=-5.0% + green</td>
+<td>50</td><td class="mid">60</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="70" data-apnl="8">
+<td>RHS80-5m-WR70%/APnL8%/PTPnL1%</td><td>RHS</td><td>5m</td><td>drop_halfday<=-5.0% + green</td>
+<td>40</td><td class="good">70</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="82" data-apnl="65">
+<td>RHS81-5m-WR82%/APnL65%/PTPnL17%</td><td>RHS</td><td>5m</td><td>drop_halfday<=-5.0% + green</td>
+<td>13</td><td class="good">82</td>
+<td class="good">65</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="40" data-apnl="66">
+<td>RHS82-5m-WR40%/APnL66%/PTPnL3%</td><td>RHS</td><td>5m</td><td>drop_1d<=-4.0% + green</td>
+<td>14</td><td class="bad">40</td>
+<td class="good">66</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="45" data-apnl="77">
+<td>RHS83-5m-WR45%/APnL77%/PTPnL3%</td><td>RHS</td><td>5m</td><td>drop_1d<=-4.0% + green</td>
+<td>46</td><td class="bad">45</td>
+<td class="good">77</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="52">
+<td>RHS84-5m-WR62%/APnL52%/PTPnL4%</td><td>RHS</td><td>5m</td><td>drop_1d<=-4.0% + green</td>
+<td>39</td><td class="mid">62</td>
+<td class="good">52</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="62" data-apnl="75">
+<td>RHS85-5m-WR62%/APnL75%/PTPnL20%</td><td>RHS</td><td>5m</td><td>drop_1d<=-5.0% + green</td>
+<td>5</td><td class="mid">62</td>
+<td class="good">75</td><td>20</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="88" data-apnl="11">
+<td>RHS86-5m-WR88%/APnL11%/PTPnL2%</td><td>RHS</td><td>5m</td><td>drop_1d<=-5.0% + green</td>
+<td>45</td><td class="good">88</td>
+<td class="mid">11</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="86" data-apnl="73">
+<td>RHS87-5m-WR86%/APnL73%/PTPnL17%</td><td>RHS</td><td>5m</td><td>drop_1d<=-5.0% + green</td>
+<td>23</td><td class="good">86</td>
+<td class="good">73</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="27">
+<td>RHS88-5m-WR65%/APnL27%/PTPnL6%</td><td>RHS</td><td>5m</td><td>drop_1d<=-7.0% + green</td>
+<td>18</td><td class="mid">65</td>
+<td class="mid">27</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="65" data-apnl="51">
+<td>RHS89-5m-WR65%/APnL51%/PTPnL5%</td><td>RHS</td><td>5m</td><td>drop_1d<=-7.0% + green</td>
+<td>45</td><td class="mid">65</td>
+<td class="good">51</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="39">
+<td>RHS90-5m-WR90%/APnL39%/PTPnL8%</td><td>RHS</td><td>5m</td><td>drop_1d<=-7.0% + green</td>
+<td>23</td><td class="good">90</td>
+<td class="good">39</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="45" data-apnl="2">
+<td>RHS91-5m-WR45%/APnL2%/PTPnL1%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.0 + RSI<=30 + green</td>
+<td>42</td><td class="bad">45</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="86" data-apnl="13">
+<td>RHS92-5m-WR86%/APnL13%/PTPnL1%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.0 + RSI<=30 + green</td>
+<td>37</td><td class="good">86</td>
+<td class="mid">13</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="60" data-apnl="65">
+<td>RHS93-5m-WR60%/APnL65%/PTPnL9%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.0 + RSI<=30 + green</td>
+<td>11</td><td class="mid">60</td>
+<td class="good">65</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="72" data-apnl="9">
+<td>RHS94-5m-WR72%/APnL9%/PTPnL1%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.0 + RSI<=35 + green</td>
+<td>26</td><td class="good">72</td>
+<td class="bad">9</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="67" data-apnl="21">
+<td>RHS95-5m-WR67%/APnL21%/PTPnL4%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.0 + RSI<=35 + green</td>
+<td>37</td><td class="mid">67</td>
+<td class="mid">21</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="95" data-apnl="39">
+<td>RHS96-5m-WR95%/APnL39%/PTPnL10%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.0 + RSI<=35 + green</td>
+<td>44</td><td class="good">95</td>
+<td class="good">39</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="83" data-apnl="2">
+<td>RHS97-5m-WR83%/APnL2%/PTPnL1%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.5 + RSI<=30 + green</td>
+<td>45</td><td class="good">83</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="50" data-apnl="18">
+<td>RHS98-5m-WR50%/APnL18%/PTPnL3%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.5 + RSI<=30 + green</td>
+<td>10</td><td class="mid">50</td>
+<td class="mid">18</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="50" data-apnl="71">
+<td>RHS99-5m-WR50%/APnL71%/PTPnL5%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.5 + RSI<=30 + green</td>
+<td>20</td><td class="mid">50</td>
+<td class="good">71</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="67" data-apnl="78">
+<td>RHS100-5m-WR67%/APnL78%/PTPnL7%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.5 + RSI<=35 + green</td>
+<td>48</td><td class="mid">67</td>
+<td class="good">78</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="70" data-apnl="27">
+<td>RHS101-5m-WR70%/APnL27%/PTPnL5%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.5 + RSI<=35 + green</td>
+<td>35</td><td class="good">70</td>
+<td class="mid">27</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="82" data-apnl="33">
+<td>RHS102-5m-WR82%/APnL33%/PTPnL1%</td><td>RHS</td><td>5m</td><td>vol_ratio>=2.5 + RSI<=35 + green</td>
+<td>8</td><td class="good">82</td>
+<td class="good">33</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="55">
+<td>RHS103-5m-WR90%/APnL55%/PTPnL9%</td><td>RHS</td><td>5m</td><td>vol_ratio>=3.0 + RSI<=30 + green</td>
+<td>5</td><td class="good">90</td>
+<td class="good">55</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="35" data-apnl="43">
+<td>RHS104-5m-WR35%/APnL43%/PTPnL13%</td><td>RHS</td><td>5m</td><td>vol_ratio>=3.0 + RSI<=30 + green</td>
+<td>11</td><td class="bad">35</td>
+<td class="good">43</td><td>13</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="90" data-apnl="34">
+<td>RHS105-5m-WR90%/APnL34%/PTPnL3%</td><td>RHS</td><td>5m</td><td>vol_ratio>=3.0 + RSI<=30 + green</td>
+<td>50</td><td class="good">90</td>
+<td class="good">34</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="80" data-apnl="71">
+<td>RHS106-5m-WR80%/APnL71%/PTPnL23%</td><td>RHS</td><td>5m</td><td>vol_ratio>=3.0 + RSI<=35 + green</td>
+<td>30</td><td class="good">80</td>
+<td class="good">71</td><td>23</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="85" data-apnl="2">
+<td>RHS107-5m-WR85%/APnL2%/PTPnL1%</td><td>RHS</td><td>5m</td><td>vol_ratio>=3.0 + RSI<=35 + green</td>
+<td>7</td><td class="good">85</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="5m" data-wr="95" data-apnl="20">
+<td>RHS108-5m-WR95%/APnL20%/PTPnL5%</td><td>RHS</td><td>5m</td><td>vol_ratio>=3.0 + RSI<=35 + green</td>
+<td>5</td><td class="good">95</td>
+<td class="mid">20</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="72" data-apnl="75">
+<td>RHL01-5m-WR72%/APnL75%/PTPnL18%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=25 + green</td>
+<td>12</td><td class="good">72</td>
+<td class="good">75</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="78" data-apnl="17">
+<td>RHL02-5m-WR78%/APnL17%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=25 + green</td>
+<td>22</td><td class="good">78</td>
+<td class="mid">17</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="72" data-apnl="6">
+<td>RHL03-5m-WR72%/APnL6%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=25 + green</td>
+<td>16</td><td class="good">72</td>
+<td class="bad">6</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="92" data-apnl="32">
+<td>RHL04-5m-WR92%/APnL32%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=30 + green</td>
+<td>25</td><td class="good">92</td>
+<td class="good">32</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="85" data-apnl="53">
+<td>RHL05-5m-WR85%/APnL53%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=30 + green</td>
+<td>18</td><td class="good">85</td>
+<td class="good">53</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="58" data-apnl="23">
+<td>RHL06-5m-WR58%/APnL23%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=30 + green</td>
+<td>4</td><td class="mid">58</td>
+<td class="mid">23</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="58" data-apnl="43">
+<td>RHL07-5m-WR58%/APnL43%/PTPnL13%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=35 + green</td>
+<td>29</td><td class="mid">58</td>
+<td class="good">43</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="92" data-apnl="32">
+<td>RHL08-5m-WR92%/APnL32%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=35 + green</td>
+<td>13</td><td class="good">92</td>
+<td class="good">32</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="95" data-apnl="14">
+<td>RHL09-5m-WR95%/APnL14%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag1) + RH RSI<=35 + green</td>
+<td>5</td><td class="good">95</td>
+<td class="mid">14</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="82" data-apnl="29">
+<td>RHL10-5m-WR82%/APnL29%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=25 + green</td>
+<td>32</td><td class="good">82</td>
+<td class="mid">29</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="72" data-apnl="40">
+<td>RHL11-5m-WR72%/APnL40%/PTPnL13%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=25 + green</td>
+<td>17</td><td class="good">72</td>
+<td class="good">40</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="62" data-apnl="4">
+<td>RHL12-5m-WR62%/APnL4%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=25 + green</td>
+<td>28</td><td class="mid">62</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="70" data-apnl="36">
+<td>RHL13-5m-WR70%/APnL36%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=30 + green</td>
+<td>20</td><td class="good">70</td>
+<td class="good">36</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="72" data-apnl="66">
+<td>RHL14-5m-WR72%/APnL66%/PTPnL13%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=30 + green</td>
+<td>46</td><td class="good">72</td>
+<td class="good">66</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="85" data-apnl="43">
+<td>RHL15-5m-WR85%/APnL43%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=30 + green</td>
+<td>10</td><td class="good">85</td>
+<td class="good">43</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="65" data-apnl="23">
+<td>RHL16-5m-WR65%/APnL23%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=35 + green</td>
+<td>19</td><td class="mid">65</td>
+<td class="mid">23</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="40" data-apnl="14">
+<td>RHL17-5m-WR40%/APnL14%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=35 + green</td>
+<td>25</td><td class="bad">40</td>
+<td class="mid">14</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="100" data-apnl="41">
+<td>RHL18-5m-WR100%/APnL41%/PTPnL7%</td><td>RHL</td><td>5m</td><td>WSM RSI<=20 (lag2) + RH RSI<=35 + green</td>
+<td>41</td><td class="good">100</td>
+<td class="good">41</td><td>7</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="83" data-apnl="15">
+<td>RHL19-5m-WR83%/APnL15%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=25 + green</td>
+<td>39</td><td class="good">83</td>
+<td class="mid">15</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="60" data-apnl="33">
+<td>RHL20-5m-WR60%/APnL33%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=25 + green</td>
+<td>48</td><td class="mid">60</td>
+<td class="good">33</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="78" data-apnl="1">
+<td>RHL21-5m-WR78%/APnL1%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=25 + green</td>
+<td>26</td><td class="good">78</td>
+<td class="bad">1</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="78" data-apnl="9">
+<td>RHL22-5m-WR78%/APnL9%/PTPnL3%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=30 + green</td>
+<td>24</td><td class="good">78</td>
+<td class="bad">9</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="41">
+<td>RHL23-5m-WR88%/APnL41%/PTPnL11%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=30 + green</td>
+<td>10</td><td class="good">88</td>
+<td class="good">41</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="100" data-apnl="39">
+<td>RHL24-5m-WR100%/APnL39%/PTPnL9%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=30 + green</td>
+<td>22</td><td class="good">100</td>
+<td class="good">39</td><td>9</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="92" data-apnl="53">
+<td>RHL25-5m-WR92%/APnL53%/PTPnL11%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=35 + green</td>
+<td>28</td><td class="good">92</td>
+<td class="good">53</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="95" data-apnl="38">
+<td>RHL26-5m-WR95%/APnL38%/PTPnL9%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=35 + green</td>
+<td>11</td><td class="good">95</td>
+<td class="good">38</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="60" data-apnl="54">
+<td>RHL27-5m-WR60%/APnL54%/PTPnL13%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag1) + RH RSI<=35 + green</td>
+<td>46</td><td class="mid">60</td>
+<td class="good">54</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="100" data-apnl="23">
+<td>RHL28-5m-WR100%/APnL23%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=25 + green</td>
+<td>39</td><td class="good">100</td>
+<td class="mid">23</td><td>5</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="67" data-apnl="52">
+<td>RHL29-5m-WR67%/APnL52%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=25 + green</td>
+<td>22</td><td class="mid">67</td>
+<td class="good">52</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="67" data-apnl="27">
+<td>RHL30-5m-WR67%/APnL27%/PTPnL7%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=25 + green</td>
+<td>40</td><td class="mid">67</td>
+<td class="mid">27</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="42">
+<td>RHL31-5m-WR88%/APnL42%/PTPnL8%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=30 + green</td>
+<td>31</td><td class="good">88</td>
+<td class="good">42</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="80" data-apnl="28">
+<td>RHL32-5m-WR80%/APnL28%/PTPnL9%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=30 + green</td>
+<td>33</td><td class="good">80</td>
+<td class="mid">28</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="100" data-apnl="22">
+<td>RHL33-5m-WR100%/APnL22%/PTPnL6%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=30 + green</td>
+<td>8</td><td class="good">100</td>
+<td class="mid">22</td><td>6</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="67" data-apnl="66">
+<td>RHL34-5m-WR67%/APnL66%/PTPnL22%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=35 + green</td>
+<td>43</td><td class="mid">67</td>
+<td class="good">66</td><td>22</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="43">
+<td>RHL35-5m-WR88%/APnL43%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=35 + green</td>
+<td>18</td><td class="good">88</td>
+<td class="good">43</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="92" data-apnl="40">
+<td>RHL36-5m-WR92%/APnL40%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=25 (lag2) + RH RSI<=35 + green</td>
+<td>15</td><td class="good">92</td>
+<td class="good">40</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="55" data-apnl="4">
+<td>RHL37-5m-WR55%/APnL4%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=25 + green</td>
+<td>18</td><td class="mid">55</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="82" data-apnl="10">
+<td>RHL38-5m-WR82%/APnL10%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=25 + green</td>
+<td>29</td><td class="good">82</td>
+<td class="mid">10</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="90" data-apnl="74">
+<td>RHL39-5m-WR90%/APnL74%/PTPnL7%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=25 + green</td>
+<td>48</td><td class="good">90</td>
+<td class="good">74</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="95" data-apnl="50">
+<td>RHL40-5m-WR95%/APnL50%/PTPnL16%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=30 + green</td>
+<td>28</td><td class="good">95</td>
+<td class="good">50</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="62" data-apnl="19">
+<td>RHL41-5m-WR62%/APnL19%/PTPnL6%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=30 + green</td>
+<td>47</td><td class="mid">62</td>
+<td class="mid">19</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="35" data-apnl="14">
+<td>RHL42-5m-WR35%/APnL14%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=30 + green</td>
+<td>17</td><td class="bad">35</td>
+<td class="mid">14</td><td>4</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="58" data-apnl="67">
+<td>RHL43-5m-WR58%/APnL67%/PTPnL15%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=35 + green</td>
+<td>6</td><td class="mid">58</td>
+<td class="good">67</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="85" data-apnl="32">
+<td>RHL44-5m-WR85%/APnL32%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=35 + green</td>
+<td>32</td><td class="good">85</td>
+<td class="good">32</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="55" data-apnl="60">
+<td>RHL45-5m-WR55%/APnL60%/PTPnL17%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag1) + RH RSI<=35 + green</td>
+<td>38</td><td class="mid">55</td>
+<td class="good">60</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="41">
+<td>RHL46-5m-WR88%/APnL41%/PTPnL13%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=25 + green</td>
+<td>31</td><td class="good">88</td>
+<td class="good">41</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="65">
+<td>RHL47-5m-WR88%/APnL65%/PTPnL14%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=25 + green</td>
+<td>38</td><td class="good">88</td>
+<td class="good">65</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="80" data-apnl="21">
+<td>RHL48-5m-WR80%/APnL21%/PTPnL6%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=25 + green</td>
+<td>33</td><td class="good">80</td>
+<td class="mid">21</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="80" data-apnl="34">
+<td>RHL49-5m-WR80%/APnL34%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=30 + green</td>
+<td>43</td><td class="good">80</td>
+<td class="good">34</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="65" data-apnl="67">
+<td>RHL50-5m-WR65%/APnL67%/PTPnL16%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=30 + green</td>
+<td>43</td><td class="mid">65</td>
+<td class="good">67</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="62" data-apnl="36">
+<td>RHL51-5m-WR62%/APnL36%/PTPnL8%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=30 + green</td>
+<td>7</td><td class="mid">62</td>
+<td class="good">36</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="95" data-apnl="37">
+<td>RHL52-5m-WR95%/APnL37%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=35 + green</td>
+<td>20</td><td class="good">95</td>
+<td class="good">37</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="70" data-apnl="41">
+<td>RHL53-5m-WR70%/APnL41%/PTPnL9%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=35 + green</td>
+<td>8</td><td class="good">70</td>
+<td class="good">41</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="55" data-apnl="20">
+<td>RHL54-5m-WR55%/APnL20%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM RSI<=30 (lag2) + RH RSI<=35 + green</td>
+<td>27</td><td class="mid">55</td>
+<td class="mid">20</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="95" data-apnl="20">
+<td>RHL55-5m-WR95%/APnL20%/PTPnL6%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag1) + RH RSI<=25 + green</td>
+<td>16</td><td class="good">95</td>
+<td class="mid">20</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="45" data-apnl="54">
+<td>RHL56-5m-WR45%/APnL54%/PTPnL14%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag1) + RH RSI<=25 + green</td>
+<td>24</td><td class="bad">45</td>
+<td class="good">54</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="85" data-apnl="60">
+<td>RHL57-5m-WR85%/APnL60%/PTPnL14%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag1) + RH RSI<=25 + green</td>
+<td>6</td><td class="good">85</td>
+<td class="good">60</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="60" data-apnl="54">
+<td>RHL58-5m-WR60%/APnL54%/PTPnL13%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag1) + RH RSI<=30 + green</td>
+<td>40</td><td class="mid">60</td>
+<td class="good">54</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="95" data-apnl="3">
+<td>RHL59-5m-WR95%/APnL3%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag1) + RH RSI<=30 + green</td>
+<td>33</td><td class="good">95</td>
+<td class="bad">3</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="35" data-apnl="46">
+<td>RHL60-5m-WR35%/APnL46%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag1) + RH RSI<=30 + green</td>
+<td>27</td><td class="bad">35</td>
+<td class="good">46</td><td>5</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="78" data-apnl="69">
+<td>RHL61-5m-WR78%/APnL69%/PTPnL18%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag2) + RH RSI<=25 + green</td>
+<td>41</td><td class="good">78</td>
+<td class="good">69</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="62" data-apnl="63">
+<td>RHL62-5m-WR62%/APnL63%/PTPnL8%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag2) + RH RSI<=25 + green</td>
+<td>20</td><td class="mid">62</td>
+<td class="good">63</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="78" data-apnl="63">
+<td>RHL63-5m-WR78%/APnL63%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag2) + RH RSI<=25 + green</td>
+<td>27</td><td class="good">78</td>
+<td class="good">63</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="70" data-apnl="52">
+<td>RHL64-5m-WR70%/APnL52%/PTPnL6%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag2) + RH RSI<=30 + green</td>
+<td>32</td><td class="good">70</td>
+<td class="good">52</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="55" data-apnl="69">
+<td>RHL65-5m-WR55%/APnL69%/PTPnL1%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag2) + RH RSI<=30 + green</td>
+<td>28</td><td class="mid">55</td>
+<td class="good">69</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="86" data-apnl="73">
+<td>RHL66-5m-WR86%/APnL73%/PTPnL22%</td><td>RHL</td><td>5m</td><td>WSM drop>=3% (lag2) + RH RSI<=30 + green</td>
+<td>4</td><td class="good">86</td>
+<td class="good">73</td><td>22</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="45" data-apnl="55">
+<td>RHL67-5m-WR45%/APnL55%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag1) + RH RSI<=25 + green</td>
+<td>32</td><td class="bad">45</td>
+<td class="good">55</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="58" data-apnl="7">
+<td>RHL68-5m-WR58%/APnL7%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag1) + RH RSI<=25 + green</td>
+<td>27</td><td class="mid">58</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="70" data-apnl="28">
+<td>RHL69-5m-WR70%/APnL28%/PTPnL8%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag1) + RH RSI<=25 + green</td>
+<td>23</td><td class="good">70</td>
+<td class="mid">28</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="70" data-apnl="49">
+<td>RHL70-5m-WR70%/APnL49%/PTPnL9%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag1) + RH RSI<=30 + green</td>
+<td>29</td><td class="good">70</td>
+<td class="good">49</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="65" data-apnl="11">
+<td>RHL71-5m-WR65%/APnL11%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag1) + RH RSI<=30 + green</td>
+<td>4</td><td class="mid">65</td>
+<td class="mid">11</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="100" data-apnl="70">
+<td>RHL72-5m-WR100%/APnL70%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag1) + RH RSI<=30 + green</td>
+<td>25</td><td class="good">100</td>
+<td class="good">70</td><td>2</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="62" data-apnl="9">
+<td>RHL73-5m-WR62%/APnL9%/PTPnL3%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag2) + RH RSI<=25 + green</td>
+<td>5</td><td class="mid">62</td>
+<td class="bad">9</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="35" data-apnl="32">
+<td>RHL74-5m-WR35%/APnL32%/PTPnL4%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag2) + RH RSI<=25 + green</td>
+<td>4</td><td class="bad">35</td>
+<td class="good">32</td><td>4</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="20">
+<td>RHL75-5m-WR88%/APnL20%/PTPnL2%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag2) + RH RSI<=25 + green</td>
+<td>11</td><td class="good">88</td>
+<td class="mid">20</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="82" data-apnl="15">
+<td>RHL76-5m-WR82%/APnL15%/PTPnL5%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag2) + RH RSI<=30 + green</td>
+<td>16</td><td class="good">82</td>
+<td class="mid">15</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="80" data-apnl="33">
+<td>RHL77-5m-WR80%/APnL33%/PTPnL6%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag2) + RH RSI<=30 + green</td>
+<td>13</td><td class="good">80</td>
+<td class="good">33</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="5m" data-wr="88" data-apnl="78">
+<td>RHL78-5m-WR88%/APnL78%/PTPnL24%</td><td>RHL</td><td>5m</td><td>WSM drop>=5% (lag2) + RH RSI<=30 + green</td>
+<td>48</td><td class="good">88</td>
+<td class="good">78</td><td>24</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="50" data-apnl="21">
+<td>RHD01-5m-WR50%/APnL21%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_6bar>=1.5% + RSI<=25 + green</td>
+<td>9</td><td class="mid">50</td>
+<td class="mid">21</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="86" data-apnl="4">
+<td>RHD02-5m-WR86%/APnL4%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_6bar>=1.5% + RSI<=25 + green</td>
+<td>39</td><td class="good">86</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="92" data-apnl="49">
+<td>RHD03-5m-WR92%/APnL49%/PTPnL13%</td><td>RHD</td><td>5m</td><td>div_6bar>=1.5% + RSI<=25 + green</td>
+<td>48</td><td class="good">92</td>
+<td class="good">49</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="60" data-apnl="10">
+<td>RHD04-5m-WR60%/APnL10%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_6bar>=1.5% + RSI<=30 + green</td>
+<td>47</td><td class="mid">60</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="90" data-apnl="32">
+<td>RHD05-5m-WR90%/APnL32%/PTPnL2%</td><td>RHD</td><td>5m</td><td>div_6bar>=1.5% + RSI<=30 + green</td>
+<td>47</td><td class="good">90</td>
+<td class="good">32</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="67" data-apnl="77">
+<td>RHD06-5m-WR67%/APnL77%/PTPnL4%</td><td>RHD</td><td>5m</td><td>div_6bar>=1.5% + RSI<=30 + green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">77</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="40" data-apnl="45">
+<td>RHD07-5m-WR40%/APnL45%/PTPnL9%</td><td>RHD</td><td>5m</td><td>div_6bar>=2.0% + RSI<=25 + green</td>
+<td>30</td><td class="bad">40</td>
+<td class="good">45</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="92" data-apnl="48">
+<td>RHD08-5m-WR92%/APnL48%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_6bar>=2.0% + RSI<=25 + green</td>
+<td>35</td><td class="good">92</td>
+<td class="good">48</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="90" data-apnl="44">
+<td>RHD09-5m-WR90%/APnL44%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_6bar>=2.0% + RSI<=25 + green</td>
+<td>29</td><td class="good">90</td>
+<td class="good">44</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="82" data-apnl="14">
+<td>RHD10-5m-WR82%/APnL14%/PTPnL4%</td><td>RHD</td><td>5m</td><td>div_6bar>=2.0% + RSI<=30 + green</td>
+<td>26</td><td class="good">82</td>
+<td class="mid">14</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="90" data-apnl="59">
+<td>RHD11-5m-WR90%/APnL59%/PTPnL5%</td><td>RHD</td><td>5m</td><td>div_6bar>=2.0% + RSI<=30 + green</td>
+<td>30</td><td class="good">90</td>
+<td class="good">59</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="58" data-apnl="67">
+<td>RHD12-5m-WR58%/APnL67%/PTPnL21%</td><td>RHD</td><td>5m</td><td>div_6bar>=2.0% + RSI<=30 + green</td>
+<td>20</td><td class="mid">58</td>
+<td class="good">67</td><td>21</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="88" data-apnl="69">
+<td>RHD13-5m-WR88%/APnL69%/PTPnL16%</td><td>RHD</td><td>5m</td><td>div_6bar>=3.0% + RSI<=25 + green</td>
+<td>32</td><td class="good">88</td>
+<td class="good">69</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="78" data-apnl="76">
+<td>RHD14-5m-WR78%/APnL76%/PTPnL9%</td><td>RHD</td><td>5m</td><td>div_6bar>=3.0% + RSI<=25 + green</td>
+<td>23</td><td class="good">78</td>
+<td class="good">76</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="62" data-apnl="12">
+<td>RHD15-5m-WR62%/APnL12%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_6bar>=3.0% + RSI<=25 + green</td>
+<td>31</td><td class="mid">62</td>
+<td class="mid">12</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="62" data-apnl="60">
+<td>RHD16-5m-WR62%/APnL60%/PTPnL19%</td><td>RHD</td><td>5m</td><td>div_6bar>=3.0% + RSI<=30 + green</td>
+<td>42</td><td class="mid">62</td>
+<td class="good">60</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="92" data-apnl="49">
+<td>RHD17-5m-WR92%/APnL49%/PTPnL11%</td><td>RHD</td><td>5m</td><td>div_6bar>=3.0% + RSI<=30 + green</td>
+<td>4</td><td class="good">92</td>
+<td class="good">49</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="82" data-apnl="42">
+<td>RHD18-5m-WR82%/APnL42%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_6bar>=3.0% + RSI<=30 + green</td>
+<td>34</td><td class="good">82</td>
+<td class="good">42</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="60" data-apnl="46">
+<td>RHD19-5m-WR60%/APnL46%/PTPnL13%</td><td>RHD</td><td>5m</td><td>div_12bar>=1.5% + RSI<=25 + green</td>
+<td>19</td><td class="mid">60</td>
+<td class="good">46</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="70" data-apnl="36">
+<td>RHD20-5m-WR70%/APnL36%/PTPnL10%</td><td>RHD</td><td>5m</td><td>div_12bar>=1.5% + RSI<=25 + green</td>
+<td>47</td><td class="good">70</td>
+<td class="good">36</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="65" data-apnl="72">
+<td>RHD21-5m-WR65%/APnL72%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_12bar>=1.5% + RSI<=25 + green</td>
+<td>36</td><td class="mid">65</td>
+<td class="good">72</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="60" data-apnl="11">
+<td>RHD22-5m-WR60%/APnL11%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_12bar>=1.5% + RSI<=30 + green</td>
+<td>49</td><td class="mid">60</td>
+<td class="mid">11</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="78" data-apnl="63">
+<td>RHD23-5m-WR78%/APnL63%/PTPnL18%</td><td>RHD</td><td>5m</td><td>div_12bar>=1.5% + RSI<=30 + green</td>
+<td>18</td><td class="good">78</td>
+<td class="good">63</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="95" data-apnl="61">
+<td>RHD24-5m-WR95%/APnL61%/PTPnL16%</td><td>RHD</td><td>5m</td><td>div_12bar>=1.5% + RSI<=30 + green</td>
+<td>31</td><td class="good">95</td>
+<td class="good">61</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="35" data-apnl="12">
+<td>RHD25-5m-WR35%/APnL12%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_12bar>=2.0% + RSI<=25 + green</td>
+<td>17</td><td class="bad">35</td>
+<td class="mid">12</td><td>3</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="75" data-apnl="32">
+<td>RHD26-5m-WR75%/APnL32%/PTPnL5%</td><td>RHD</td><td>5m</td><td>div_12bar>=2.0% + RSI<=25 + green</td>
+<td>45</td><td class="good">75</td>
+<td class="good">32</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="86" data-apnl="48">
+<td>RHD27-5m-WR86%/APnL48%/PTPnL16%</td><td>RHD</td><td>5m</td><td>div_12bar>=2.0% + RSI<=25 + green</td>
+<td>38</td><td class="good">86</td>
+<td class="good">48</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="83" data-apnl="45">
+<td>RHD28-5m-WR83%/APnL45%/PTPnL7%</td><td>RHD</td><td>5m</td><td>div_12bar>=2.0% + RSI<=30 + green</td>
+<td>50</td><td class="good">83</td>
+<td class="good">45</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="85" data-apnl="43">
+<td>RHD29-5m-WR85%/APnL43%/PTPnL6%</td><td>RHD</td><td>5m</td><td>div_12bar>=2.0% + RSI<=30 + green</td>
+<td>47</td><td class="good">85</td>
+<td class="good">43</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="80" data-apnl="35">
+<td>RHD30-5m-WR80%/APnL35%/PTPnL5%</td><td>RHD</td><td>5m</td><td>div_12bar>=2.0% + RSI<=30 + green</td>
+<td>19</td><td class="good">80</td>
+<td class="good">35</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="62" data-apnl="16">
+<td>RHD31-5m-WR62%/APnL16%/PTPnL2%</td><td>RHD</td><td>5m</td><td>div_12bar>=3.0% + RSI<=25 + green</td>
+<td>23</td><td class="mid">62</td>
+<td class="mid">16</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="50" data-apnl="69">
+<td>RHD32-5m-WR50%/APnL69%/PTPnL23%</td><td>RHD</td><td>5m</td><td>div_12bar>=3.0% + RSI<=25 + green</td>
+<td>14</td><td class="mid">50</td>
+<td class="good">69</td><td>23</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="60" data-apnl="28">
+<td>RHD33-5m-WR60%/APnL28%/PTPnL8%</td><td>RHD</td><td>5m</td><td>div_12bar>=3.0% + RSI<=25 + green</td>
+<td>20</td><td class="mid">60</td>
+<td class="mid">28</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="100" data-apnl="76">
+<td>RHD34-5m-WR100%/APnL76%/PTPnL25%</td><td>RHD</td><td>5m</td><td>div_12bar>=3.0% + RSI<=30 + green</td>
+<td>36</td><td class="good">100</td>
+<td class="good">76</td><td>25</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="88" data-apnl="37">
+<td>RHD35-5m-WR88%/APnL37%/PTPnL2%</td><td>RHD</td><td>5m</td><td>div_12bar>=3.0% + RSI<=30 + green</td>
+<td>15</td><td class="good">88</td>
+<td class="good">37</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="67" data-apnl="30">
+<td>RHD36-5m-WR67%/APnL30%/PTPnL6%</td><td>RHD</td><td>5m</td><td>div_12bar>=3.0% + RSI<=30 + green</td>
+<td>14</td><td class="mid">67</td>
+<td class="good">30</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="67" data-apnl="2">
+<td>RHD37-5m-WR67%/APnL2%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_24bar>=1.5% + RSI<=25 + green</td>
+<td>20</td><td class="mid">67</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="40" data-apnl="7">
+<td>RHD38-5m-WR40%/APnL7%/PTPnL2%</td><td>RHD</td><td>5m</td><td>div_24bar>=1.5% + RSI<=25 + green</td>
+<td>47</td><td class="bad">40</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="55" data-apnl="63">
+<td>RHD39-5m-WR55%/APnL63%/PTPnL4%</td><td>RHD</td><td>5m</td><td>div_24bar>=1.5% + RSI<=25 + green</td>
+<td>3</td><td class="mid">55</td>
+<td class="good">63</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="86" data-apnl="37">
+<td>RHD40-5m-WR86%/APnL37%/PTPnL8%</td><td>RHD</td><td>5m</td><td>div_24bar>=1.5% + RSI<=30 + green</td>
+<td>33</td><td class="good">86</td>
+<td class="good">37</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="80" data-apnl="44">
+<td>RHD41-5m-WR80%/APnL44%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_24bar>=1.5% + RSI<=30 + green</td>
+<td>6</td><td class="good">80</td>
+<td class="good">44</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="65" data-apnl="62">
+<td>RHD42-5m-WR65%/APnL62%/PTPnL4%</td><td>RHD</td><td>5m</td><td>div_24bar>=1.5% + RSI<=30 + green</td>
+<td>7</td><td class="mid">65</td>
+<td class="good">62</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="75" data-apnl="63">
+<td>RHD43-5m-WR75%/APnL63%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_24bar>=2.0% + RSI<=25 + green</td>
+<td>39</td><td class="good">75</td>
+<td class="good">63</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="90" data-apnl="7">
+<td>RHD44-5m-WR90%/APnL7%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_24bar>=2.0% + RSI<=25 + green</td>
+<td>12</td><td class="good">90</td>
+<td class="bad">7</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="86" data-apnl="39">
+<td>RHD45-5m-WR86%/APnL39%/PTPnL2%</td><td>RHD</td><td>5m</td><td>div_24bar>=2.0% + RSI<=25 + green</td>
+<td>18</td><td class="good">86</td>
+<td class="good">39</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="50" data-apnl="72">
+<td>RHD46-5m-WR50%/APnL72%/PTPnL14%</td><td>RHD</td><td>5m</td><td>div_24bar>=2.0% + RSI<=30 + green</td>
+<td>41</td><td class="mid">50</td>
+<td class="good">72</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="88" data-apnl="29">
+<td>RHD47-5m-WR88%/APnL29%/PTPnL9%</td><td>RHD</td><td>5m</td><td>div_24bar>=2.0% + RSI<=30 + green</td>
+<td>27</td><td class="good">88</td>
+<td class="mid">29</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="80" data-apnl="57">
+<td>RHD48-5m-WR80%/APnL57%/PTPnL10%</td><td>RHD</td><td>5m</td><td>div_24bar>=2.0% + RSI<=30 + green</td>
+<td>40</td><td class="good">80</td>
+<td class="good">57</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="78" data-apnl="40">
+<td>RHD49-5m-WR78%/APnL40%/PTPnL10%</td><td>RHD</td><td>5m</td><td>div_24bar>=3.0% + RSI<=25 + green</td>
+<td>42</td><td class="good">78</td>
+<td class="good">40</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="40" data-apnl="13">
+<td>RHD50-5m-WR40%/APnL13%/PTPnL2%</td><td>RHD</td><td>5m</td><td>div_24bar>=3.0% + RSI<=25 + green</td>
+<td>43</td><td class="bad">40</td>
+<td class="mid">13</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="60" data-apnl="34">
+<td>RHD51-5m-WR60%/APnL34%/PTPnL11%</td><td>RHD</td><td>5m</td><td>div_24bar>=3.0% + RSI<=25 + green</td>
+<td>8</td><td class="mid">60</td>
+<td class="good">34</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="58" data-apnl="31">
+<td>RHD52-5m-WR58%/APnL31%/PTPnL3%</td><td>RHD</td><td>5m</td><td>div_24bar>=3.0% + RSI<=30 + green</td>
+<td>38</td><td class="mid">58</td>
+<td class="good">31</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="45" data-apnl="21">
+<td>RHD53-5m-WR45%/APnL21%/PTPnL1%</td><td>RHD</td><td>5m</td><td>div_24bar>=3.0% + RSI<=30 + green</td>
+<td>29</td><td class="bad">45</td>
+<td class="mid">21</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="5m" data-wr="80" data-apnl="77">
+<td>RHD54-5m-WR80%/APnL77%/PTPnL16%</td><td>RHD</td><td>5m</td><td>div_24bar>=3.0% + RSI<=30 + green</td>
+<td>21</td><td class="good">80</td>
+<td class="good">77</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="40" data-apnl="30">
+<td>RHX01-5m-WR40%/APnL30%/PTPnL5%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=2% + RH RSI<=25 + green</td>
+<td>48</td><td class="bad">40</td>
+<td class="good">30</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="67" data-apnl="59">
+<td>RHX02-5m-WR67%/APnL59%/PTPnL3%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=2% + RH RSI<=25 + green</td>
+<td>46</td><td class="mid">67</td>
+<td class="good">59</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="62" data-apnl="34">
+<td>RHX03-5m-WR62%/APnL34%/PTPnL11%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=2% + RH RSI<=25 + green</td>
+<td>40</td><td class="mid">62</td>
+<td class="good">34</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="92" data-apnl="26">
+<td>RHX04-5m-WR92%/APnL26%/PTPnL7%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=2% + RH RSI<=30 + green</td>
+<td>10</td><td class="good">92</td>
+<td class="mid">26</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="85" data-apnl="29">
+<td>RHX05-5m-WR85%/APnL29%/PTPnL3%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=2% + RH RSI<=30 + green</td>
+<td>20</td><td class="good">85</td>
+<td class="mid">29</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="55" data-apnl="10">
+<td>RHX06-5m-WR55%/APnL10%/PTPnL1%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=2% + RH RSI<=30 + green</td>
+<td>13</td><td class="mid">55</td>
+<td class="mid">10</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="67" data-apnl="77">
+<td>RHX07-5m-WR67%/APnL77%/PTPnL24%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=3% + RH RSI<=25 + green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">77</td><td>24</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="67" data-apnl="57">
+<td>RHX08-5m-WR67%/APnL57%/PTPnL4%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=3% + RH RSI<=25 + green</td>
+<td>32</td><td class="mid">67</td>
+<td class="good">57</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="95" data-apnl="39">
+<td>RHX09-5m-WR95%/APnL39%/PTPnL12%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=3% + RH RSI<=25 + green</td>
+<td>28</td><td class="good">95</td>
+<td class="good">39</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="65" data-apnl="65">
+<td>RHX10-5m-WR65%/APnL65%/PTPnL18%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=3% + RH RSI<=30 + green</td>
+<td>34</td><td class="mid">65</td>
+<td class="good">65</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="80" data-apnl="11">
+<td>RHX11-5m-WR80%/APnL11%/PTPnL3%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=3% + RH RSI<=30 + green</td>
+<td>5</td><td class="good">80</td>
+<td class="mid">11</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="78" data-apnl="42">
+<td>RHX12-5m-WR78%/APnL42%/PTPnL10%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=3% + RH RSI<=30 + green</td>
+<td>19</td><td class="good">78</td>
+<td class="good">42</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="35" data-apnl="12">
+<td>RHX13-5m-WR35%/APnL12%/PTPnL2%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=5% + RH RSI<=25 + green</td>
+<td>46</td><td class="bad">35</td>
+<td class="mid">12</td><td>2</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="86" data-apnl="76">
+<td>RHX14-5m-WR86%/APnL76%/PTPnL1%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=5% + RH RSI<=25 + green</td>
+<td>46</td><td class="good">86</td>
+<td class="good">76</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="65" data-apnl="74">
+<td>RHX15-5m-WR65%/APnL74%/PTPnL2%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=5% + RH RSI<=25 + green</td>
+<td>14</td><td class="mid">65</td>
+<td class="good">74</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="82" data-apnl="67">
+<td>RHX16-5m-WR82%/APnL67%/PTPnL21%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=5% + RH RSI<=30 + green</td>
+<td>31</td><td class="good">82</td>
+<td class="good">67</td><td>21</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="65" data-apnl="24">
+<td>RHX17-5m-WR65%/APnL24%/PTPnL7%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=5% + RH RSI<=30 + green</td>
+<td>43</td><td class="mid">65</td>
+<td class="mid">24</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="82" data-apnl="12">
+<td>RHX18-5m-WR82%/APnL12%/PTPnL4%</td><td>RHX</td><td>5m</td><td>SRS pct_3>=5% + RH RSI<=30 + green</td>
+<td>25</td><td class="good">82</td>
+<td class="mid">12</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="78" data-apnl="43">
+<td>RHX19-5m-WR78%/APnL43%/PTPnL6%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=2% + RH RSI<=25 + green</td>
+<td>45</td><td class="good">78</td>
+<td class="good">43</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="50" data-apnl="21">
+<td>RHX20-5m-WR50%/APnL21%/PTPnL3%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=2% + RH RSI<=25 + green</td>
+<td>29</td><td class="mid">50</td>
+<td class="mid">21</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="95" data-apnl="64">
+<td>RHX21-5m-WR95%/APnL64%/PTPnL10%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=2% + RH RSI<=25 + green</td>
+<td>45</td><td class="good">95</td>
+<td class="good">64</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="75" data-apnl="71">
+<td>RHX22-5m-WR75%/APnL71%/PTPnL2%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=2% + RH RSI<=30 + green</td>
+<td>32</td><td class="good">75</td>
+<td class="good">71</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="45" data-apnl="41">
+<td>RHX23-5m-WR45%/APnL41%/PTPnL5%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=2% + RH RSI<=30 + green</td>
+<td>23</td><td class="bad">45</td>
+<td class="good">41</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="50" data-apnl="52">
+<td>RHX24-5m-WR50%/APnL52%/PTPnL17%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=2% + RH RSI<=30 + green</td>
+<td>3</td><td class="mid">50</td>
+<td class="good">52</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="5m" data-wr="92" data-apnl="70">
+<td>RHX25-5m-WR92%/APnL70%/PTPnL15%</td><td>RHX</td><td>5m</td><td>SRS pct_6>=3% + RH RSI<=25 + green</td>
+<td>29</td><td class="good">92</td>
+<td class="good">70</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="40" data-apnl="25">
+<td>RHS01-15m-WR40%/APnL25%/PTPnL6%</td><td>RHS</td><td>15m</td><td>RSI<=20 + green</td>
+<td>42</td><td class="bad">40</td>
+<td class="mid">25</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="82" data-apnl="57">
+<td>RHS02-15m-WR82%/APnL57%/PTPnL2%</td><td>RHS</td><td>15m</td><td>RSI<=20 + green</td>
+<td>16</td><td class="good">82</td>
+<td class="good">57</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="65" data-apnl="71">
+<td>RHS03-15m-WR65%/APnL71%/PTPnL5%</td><td>RHS</td><td>15m</td><td>RSI<=20 + green</td>
+<td>21</td><td class="mid">65</td>
+<td class="good">71</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="80" data-apnl="63">
+<td>RHS04-15m-WR80%/APnL63%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=20 + green</td>
+<td>4</td><td class="good">80</td>
+<td class="good">63</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="90" data-apnl="78">
+<td>RHS05-15m-WR90%/APnL78%/PTPnL26%</td><td>RHS</td><td>15m</td><td>RSI<=20 + green</td>
+<td>18</td><td class="good">90</td>
+<td class="good">78</td><td>26</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="95" data-apnl="21">
+<td>RHS06-15m-WR95%/APnL21%/PTPnL3%</td><td>RHS</td><td>15m</td><td>RSI<=20 + green</td>
+<td>38</td><td class="good">95</td>
+<td class="mid">21</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="35" data-apnl="71">
+<td>RHS07-15m-WR35%/APnL71%/PTPnL14%</td><td>RHS</td><td>15m</td><td>RSI<=25 + green</td>
+<td>8</td><td class="bad">35</td>
+<td class="good">71</td><td>14</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="62" data-apnl="15">
+<td>RHS08-15m-WR62%/APnL15%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=25 + green</td>
+<td>10</td><td class="mid">62</td>
+<td class="mid">15</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="90" data-apnl="20">
+<td>RHS09-15m-WR90%/APnL20%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=25 + green</td>
+<td>48</td><td class="good">90</td>
+<td class="mid">20</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="67" data-apnl="66">
+<td>RHS10-15m-WR67%/APnL66%/PTPnL9%</td><td>RHS</td><td>15m</td><td>RSI<=25 + green</td>
+<td>29</td><td class="mid">67</td>
+<td class="good">66</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="82" data-apnl="61">
+<td>RHS11-15m-WR82%/APnL61%/PTPnL8%</td><td>RHS</td><td>15m</td><td>RSI<=25 + green</td>
+<td>32</td><td class="good">82</td>
+<td class="good">61</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="85" data-apnl="19">
+<td>RHS12-15m-WR85%/APnL19%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=25 + green</td>
+<td>15</td><td class="good">85</td>
+<td class="mid">19</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="88" data-apnl="66">
+<td>RHS13-15m-WR88%/APnL66%/PTPnL5%</td><td>RHS</td><td>15m</td><td>RSI<=30 + green</td>
+<td>7</td><td class="good">88</td>
+<td class="good">66</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="65" data-apnl="54">
+<td>RHS14-15m-WR65%/APnL54%/PTPnL11%</td><td>RHS</td><td>15m</td><td>RSI<=30 + green</td>
+<td>35</td><td class="mid">65</td>
+<td class="good">54</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="65" data-apnl="1">
+<td>RHS15-15m-WR65%/APnL1%/PTPnL1%</td><td>RHS</td><td>15m</td><td>RSI<=30 + green</td>
+<td>49</td><td class="mid">65</td>
+<td class="bad">1</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="67" data-apnl="76">
+<td>RHS16-15m-WR67%/APnL76%/PTPnL19%</td><td>RHS</td><td>15m</td><td>RSI<=30 + green</td>
+<td>45</td><td class="mid">67</td>
+<td class="good">76</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="82" data-apnl="20">
+<td>RHS17-15m-WR82%/APnL20%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=30 + green</td>
+<td>37</td><td class="good">82</td>
+<td class="mid">20</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="82" data-apnl="45">
+<td>RHS18-15m-WR82%/APnL45%/PTPnL6%</td><td>RHS</td><td>15m</td><td>RSI<=30 + green</td>
+<td>38</td><td class="good">82</td>
+<td class="good">45</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="85" data-apnl="49">
+<td>RHS19-15m-WR85%/APnL49%/PTPnL15%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>23</td><td class="good">85</td>
+<td class="good">49</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="60" data-apnl="31">
+<td>RHS20-15m-WR60%/APnL31%/PTPnL10%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>27</td><td class="mid">60</td>
+<td class="good">31</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="62" data-apnl="53">
+<td>RHS21-15m-WR62%/APnL53%/PTPnL2%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>23</td><td class="mid">62</td>
+<td class="good">53</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="100" data-apnl="61">
+<td>RHS22-15m-WR100%/APnL61%/PTPnL13%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>27</td><td class="good">100</td>
+<td class="good">61</td><td>13</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="92" data-apnl="20">
+<td>RHS23-15m-WR92%/APnL20%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>5</td><td class="good">92</td>
+<td class="mid">20</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="55" data-apnl="65">
+<td>RHS24-15m-WR55%/APnL65%/PTPnL19%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>24</td><td class="mid">55</td>
+<td class="good">65</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="50" data-apnl="57">
+<td>RHS25-15m-WR50%/APnL57%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=20 + green</td>
+<td>36</td><td class="mid">50</td>
+<td class="good">57</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="80" data-apnl="2">
+<td>RHS26-15m-WR80%/APnL2%/PTPnL1%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=20 + green</td>
+<td>29</td><td class="good">80</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="90" data-apnl="20">
+<td>RHS27-15m-WR90%/APnL20%/PTPnL1%</td><td>RHS</td><td>15m</td><td>RSI<=25 + Stoch<=20 + green</td>
+<td>33</td><td class="good">90</td>
+<td class="mid">20</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="65" data-apnl="44">
+<td>RHS28-15m-WR65%/APnL44%/PTPnL10%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>47</td><td class="mid">65</td>
+<td class="good">44</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="75" data-apnl="11">
+<td>RHS29-15m-WR75%/APnL11%/PTPnL2%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>46</td><td class="good">75</td>
+<td class="mid">11</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="85" data-apnl="49">
+<td>RHS30-15m-WR85%/APnL49%/PTPnL11%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>43</td><td class="good">85</td>
+<td class="good">49</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="95" data-apnl="63">
+<td>RHS31-15m-WR95%/APnL63%/PTPnL18%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>5</td><td class="good">95</td>
+<td class="good">63</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="88" data-apnl="9">
+<td>RHS32-15m-WR88%/APnL9%/PTPnL1%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>43</td><td class="good">88</td>
+<td class="bad">9</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="92" data-apnl="37">
+<td>RHS33-15m-WR92%/APnL37%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>50</td><td class="good">92</td>
+<td class="good">37</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="45" data-apnl="56">
+<td>RHS34-15m-WR45%/APnL56%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=20 + green</td>
+<td>43</td><td class="bad">45</td>
+<td class="good">56</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="95" data-apnl="13">
+<td>RHS35-15m-WR95%/APnL13%/PTPnL4%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=20 + green</td>
+<td>13</td><td class="good">95</td>
+<td class="mid">13</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="95" data-apnl="39">
+<td>RHS36-15m-WR95%/APnL39%/PTPnL1%</td><td>RHS</td><td>15m</td><td>RSI<=30 + Stoch<=20 + green</td>
+<td>5</td><td class="good">95</td>
+<td class="good">39</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="70" data-apnl="8">
+<td>RHS37-15m-WR70%/APnL8%/PTPnL2%</td><td>RHS</td><td>15m</td><td>drop_1h<=-2.0% + green</td>
+<td>25</td><td class="good">70</td>
+<td class="bad">8</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="72" data-apnl="56">
+<td>RHS38-15m-WR72%/APnL56%/PTPnL5%</td><td>RHS</td><td>15m</td><td>drop_1h<=-2.0% + green</td>
+<td>18</td><td class="good">72</td>
+<td class="good">56</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="83" data-apnl="53">
+<td>RHS39-15m-WR83%/APnL53%/PTPnL6%</td><td>RHS</td><td>15m</td><td>drop_1h<=-2.0% + green</td>
+<td>13</td><td class="good">83</td>
+<td class="good">53</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="58" data-apnl="11">
+<td>RHS40-15m-WR58%/APnL11%/PTPnL3%</td><td>RHS</td><td>15m</td><td>drop_1h<=-3.0% + green</td>
+<td>27</td><td class="mid">58</td>
+<td class="mid">11</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="88" data-apnl="31">
+<td>RHS41-15m-WR88%/APnL31%/PTPnL8%</td><td>RHS</td><td>15m</td><td>drop_1h<=-3.0% + green</td>
+<td>40</td><td class="good">88</td>
+<td class="good">31</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="55" data-apnl="30">
+<td>RHS42-15m-WR55%/APnL30%/PTPnL8%</td><td>RHS</td><td>15m</td><td>drop_1h<=-3.0% + green</td>
+<td>43</td><td class="mid">55</td>
+<td class="good">30</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="65" data-apnl="59">
+<td>RHS43-15m-WR65%/APnL59%/PTPnL9%</td><td>RHS</td><td>15m</td><td>drop_2h<=-3.0% + green</td>
+<td>45</td><td class="mid">65</td>
+<td class="good">59</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="35" data-apnl="60">
+<td>RHS44-15m-WR35%/APnL60%/PTPnL10%</td><td>RHS</td><td>15m</td><td>drop_2h<=-3.0% + green</td>
+<td>46</td><td class="bad">35</td>
+<td class="good">60</td><td>10</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="85" data-apnl="21">
+<td>RHS45-15m-WR85%/APnL21%/PTPnL1%</td><td>RHS</td><td>15m</td><td>drop_2h<=-3.0% + green</td>
+<td>31</td><td class="good">85</td>
+<td class="mid">21</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="72" data-apnl="76">
+<td>RHS46-15m-WR72%/APnL76%/PTPnL10%</td><td>RHS</td><td>15m</td><td>drop_2h<=-4.0% + green</td>
+<td>43</td><td class="good">72</td>
+<td class="good">76</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="78" data-apnl="33">
+<td>RHS47-15m-WR78%/APnL33%/PTPnL8%</td><td>RHS</td><td>15m</td><td>drop_2h<=-4.0% + green</td>
+<td>22</td><td class="good">78</td>
+<td class="good">33</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="60" data-apnl="50">
+<td>RHS48-15m-WR60%/APnL50%/PTPnL16%</td><td>RHS</td><td>15m</td><td>drop_2h<=-4.0% + green</td>
+<td>9</td><td class="mid">60</td>
+<td class="good">50</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="62" data-apnl="49">
+<td>RHS49-15m-WR62%/APnL49%/PTPnL12%</td><td>RHS</td><td>15m</td><td>drop_3h<=-4.0% + green</td>
+<td>39</td><td class="mid">62</td>
+<td class="good">49</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="67" data-apnl="38">
+<td>RHS50-15m-WR67%/APnL38%/PTPnL1%</td><td>RHS</td><td>15m</td><td>drop_3h<=-4.0% + green</td>
+<td>45</td><td class="mid">67</td>
+<td class="good">38</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="75" data-apnl="36">
+<td>RHS51-15m-WR75%/APnL36%/PTPnL1%</td><td>RHS</td><td>15m</td><td>drop_3h<=-4.0% + green</td>
+<td>39</td><td class="good">75</td>
+<td class="good">36</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="92" data-apnl="7">
+<td>RHS52-15m-WR92%/APnL7%/PTPnL2%</td><td>RHS</td><td>15m</td><td>drop_3h<=-5.0% + green</td>
+<td>21</td><td class="good">92</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="62" data-apnl="78">
+<td>RHS53-15m-WR62%/APnL78%/PTPnL26%</td><td>RHS</td><td>15m</td><td>drop_3h<=-5.0% + green</td>
+<td>25</td><td class="mid">62</td>
+<td class="good">78</td><td>26</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="62" data-apnl="25">
+<td>RHS54-15m-WR62%/APnL25%/PTPnL5%</td><td>RHS</td><td>15m</td><td>drop_3h<=-5.0% + green</td>
+<td>46</td><td class="mid">62</td>
+<td class="mid">25</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="100" data-apnl="18">
+<td>RHS55-15m-WR100%/APnL18%/PTPnL6%</td><td>RHS</td><td>15m</td><td>drop_1d<=-5.0% + green</td>
+<td>9</td><td class="good">100</td>
+<td class="mid">18</td><td>6</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="90" data-apnl="6">
+<td>RHS56-15m-WR90%/APnL6%/PTPnL2%</td><td>RHS</td><td>15m</td><td>drop_1d<=-5.0% + green</td>
+<td>31</td><td class="good">90</td>
+<td class="bad">6</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="40" data-apnl="75">
+<td>RHS57-15m-WR40%/APnL75%/PTPnL12%</td><td>RHS</td><td>15m</td><td>drop_1d<=-5.0% + green</td>
+<td>49</td><td class="bad">40</td>
+<td class="good">75</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="55" data-apnl="12">
+<td>RHS58-15m-WR55%/APnL12%/PTPnL3%</td><td>RHS</td><td>15m</td><td>drop_1d<=-7.0% + green</td>
+<td>23</td><td class="mid">55</td>
+<td class="mid">12</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="100" data-apnl="54">
+<td>RHS59-15m-WR100%/APnL54%/PTPnL6%</td><td>RHS</td><td>15m</td><td>drop_1d<=-7.0% + green</td>
+<td>15</td><td class="good">100</td>
+<td class="good">54</td><td>6</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="15m" data-wr="55" data-apnl="70">
+<td>RHS60-15m-WR55%/APnL70%/PTPnL12%</td><td>RHS</td><td>15m</td><td>drop_1d<=-7.0% + green</td>
+<td>36</td><td class="mid">55</td>
+<td class="good">70</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="83" data-apnl="35">
+<td>RHL01-15m-WR83%/APnL35%/PTPnL3%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag1 + RH RSI<=25 + green</td>
+<td>19</td><td class="good">83</td>
+<td class="good">35</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="82" data-apnl="38">
+<td>RHL02-15m-WR82%/APnL38%/PTPnL12%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag1 + RH RSI<=25 + green</td>
+<td>24</td><td class="good">82</td>
+<td class="good">38</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="50" data-apnl="60">
+<td>RHL03-15m-WR50%/APnL60%/PTPnL3%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag1 + RH RSI<=25 + green</td>
+<td>12</td><td class="mid">50</td>
+<td class="good">60</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="62" data-apnl="51">
+<td>RHL04-15m-WR62%/APnL51%/PTPnL12%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag1 + RH RSI<=30 + green</td>
+<td>8</td><td class="mid">62</td>
+<td class="good">51</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="75" data-apnl="2">
+<td>RHL05-15m-WR75%/APnL2%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag1 + RH RSI<=30 + green</td>
+<td>37</td><td class="good">75</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="50" data-apnl="59">
+<td>RHL06-15m-WR50%/APnL59%/PTPnL12%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag1 + RH RSI<=30 + green</td>
+<td>46</td><td class="mid">50</td>
+<td class="good">59</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="100" data-apnl="34">
+<td>RHL07-15m-WR100%/APnL34%/PTPnL10%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag2 + RH RSI<=25 + green</td>
+<td>27</td><td class="good">100</td>
+<td class="good">34</td><td>10</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="90" data-apnl="48">
+<td>RHL08-15m-WR90%/APnL48%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag2 + RH RSI<=25 + green</td>
+<td>46</td><td class="good">90</td>
+<td class="good">48</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="62" data-apnl="61">
+<td>RHL09-15m-WR62%/APnL61%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag2 + RH RSI<=25 + green</td>
+<td>42</td><td class="mid">62</td>
+<td class="good">61</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="85" data-apnl="42">
+<td>RHL10-15m-WR85%/APnL42%/PTPnL10%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag2 + RH RSI<=30 + green</td>
+<td>17</td><td class="good">85</td>
+<td class="good">42</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="90" data-apnl="9">
+<td>RHL11-15m-WR90%/APnL9%/PTPnL3%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag2 + RH RSI<=30 + green</td>
+<td>32</td><td class="good">90</td>
+<td class="bad">9</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="95" data-apnl="39">
+<td>RHL12-15m-WR95%/APnL39%/PTPnL11%</td><td>RHL</td><td>15m</td><td>WSM RSI<=20 lag2 + RH RSI<=30 + green</td>
+<td>29</td><td class="good">95</td>
+<td class="good">39</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="50" data-apnl="18">
+<td>RHL13-15m-WR50%/APnL18%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag1 + RH RSI<=25 + green</td>
+<td>5</td><td class="mid">50</td>
+<td class="mid">18</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="67" data-apnl="64">
+<td>RHL14-15m-WR67%/APnL64%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag1 + RH RSI<=25 + green</td>
+<td>9</td><td class="mid">67</td>
+<td class="good">64</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="62" data-apnl="69">
+<td>RHL15-15m-WR62%/APnL69%/PTPnL5%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag1 + RH RSI<=25 + green</td>
+<td>27</td><td class="mid">62</td>
+<td class="good">69</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="80" data-apnl="48">
+<td>RHL16-15m-WR80%/APnL48%/PTPnL14%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag1 + RH RSI<=30 + green</td>
+<td>40</td><td class="good">80</td>
+<td class="good">48</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="100" data-apnl="20">
+<td>RHL17-15m-WR100%/APnL20%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag1 + RH RSI<=30 + green</td>
+<td>44</td><td class="good">100</td>
+<td class="mid">20</td><td>4</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="50" data-apnl="63">
+<td>RHL18-15m-WR50%/APnL63%/PTPnL20%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag1 + RH RSI<=30 + green</td>
+<td>29</td><td class="mid">50</td>
+<td class="good">63</td><td>20</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="65" data-apnl="5">
+<td>RHL19-15m-WR65%/APnL5%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag2 + RH RSI<=25 + green</td>
+<td>16</td><td class="mid">65</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="80" data-apnl="57">
+<td>RHL20-15m-WR80%/APnL57%/PTPnL8%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag2 + RH RSI<=25 + green</td>
+<td>26</td><td class="good">80</td>
+<td class="good">57</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="50" data-apnl="48">
+<td>RHL21-15m-WR50%/APnL48%/PTPnL12%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag2 + RH RSI<=25 + green</td>
+<td>6</td><td class="mid">50</td>
+<td class="good">48</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="75" data-apnl="36">
+<td>RHL22-15m-WR75%/APnL36%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag2 + RH RSI<=30 + green</td>
+<td>10</td><td class="good">75</td>
+<td class="good">36</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="80" data-apnl="12">
+<td>RHL23-15m-WR80%/APnL12%/PTPnL2%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag2 + RH RSI<=30 + green</td>
+<td>44</td><td class="good">80</td>
+<td class="mid">12</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="90" data-apnl="77">
+<td>RHL24-15m-WR90%/APnL77%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=25 lag2 + RH RSI<=30 + green</td>
+<td>6</td><td class="good">90</td>
+<td class="good">77</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="70" data-apnl="32">
+<td>RHL25-15m-WR70%/APnL32%/PTPnL3%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag1 + RH RSI<=25 + green</td>
+<td>39</td><td class="good">70</td>
+<td class="good">32</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="60" data-apnl="9">
+<td>RHL26-15m-WR60%/APnL9%/PTPnL3%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag1 + RH RSI<=25 + green</td>
+<td>16</td><td class="mid">60</td>
+<td class="bad">9</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="86" data-apnl="28">
+<td>RHL27-15m-WR86%/APnL28%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag1 + RH RSI<=25 + green</td>
+<td>24</td><td class="good">86</td>
+<td class="mid">28</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="55" data-apnl="77">
+<td>RHL28-15m-WR55%/APnL77%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag1 + RH RSI<=30 + green</td>
+<td>20</td><td class="mid">55</td>
+<td class="good">77</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="55" data-apnl="17">
+<td>RHL29-15m-WR55%/APnL17%/PTPnL5%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag1 + RH RSI<=30 + green</td>
+<td>19</td><td class="mid">55</td>
+<td class="mid">17</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="58" data-apnl="15">
+<td>RHL30-15m-WR58%/APnL15%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag1 + RH RSI<=30 + green</td>
+<td>11</td><td class="mid">58</td>
+<td class="mid">15</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="35" data-apnl="46">
+<td>RHL31-15m-WR35%/APnL46%/PTPnL13%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag2 + RH RSI<=25 + green</td>
+<td>18</td><td class="bad">35</td>
+<td class="good">46</td><td>13</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="86" data-apnl="42">
+<td>RHL32-15m-WR86%/APnL42%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag2 + RH RSI<=25 + green</td>
+<td>14</td><td class="good">86</td>
+<td class="good">42</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="65" data-apnl="7">
+<td>RHL33-15m-WR65%/APnL7%/PTPnL1%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag2 + RH RSI<=25 + green</td>
+<td>50</td><td class="mid">65</td>
+<td class="bad">7</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="78" data-apnl="68">
+<td>RHL34-15m-WR78%/APnL68%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag2 + RH RSI<=30 + green</td>
+<td>50</td><td class="good">78</td>
+<td class="good">68</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="45" data-apnl="61">
+<td>RHL35-15m-WR45%/APnL61%/PTPnL15%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag2 + RH RSI<=30 + green</td>
+<td>26</td><td class="bad">45</td>
+<td class="good">61</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="15m" data-wr="83" data-apnl="76">
+<td>RHL36-15m-WR83%/APnL76%/PTPnL4%</td><td>RHL</td><td>15m</td><td>WSM RSI<=30 lag2 + RH RSI<=30 + green</td>
+<td>31</td><td class="good">83</td>
+<td class="good">76</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="83" data-apnl="29">
+<td>RHD01-15m-WR83%/APnL29%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_4bar>=1.5% + RSI<=25 + green</td>
+<td>49</td><td class="good">83</td>
+<td class="mid">29</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="92" data-apnl="67">
+<td>RHD02-15m-WR92%/APnL67%/PTPnL10%</td><td>RHD</td><td>15m</td><td>div_4bar>=1.5% + RSI<=25 + green</td>
+<td>32</td><td class="good">92</td>
+<td class="good">67</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="90" data-apnl="4">
+<td>RHD03-15m-WR90%/APnL4%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_4bar>=1.5% + RSI<=25 + green</td>
+<td>33</td><td class="good">90</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="75" data-apnl="55">
+<td>RHD04-15m-WR75%/APnL55%/PTPnL4%</td><td>RHD</td><td>15m</td><td>div_4bar>=1.5% + RSI<=30 + green</td>
+<td>34</td><td class="good">75</td>
+<td class="good">55</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="95" data-apnl="57">
+<td>RHD05-15m-WR95%/APnL57%/PTPnL3%</td><td>RHD</td><td>15m</td><td>div_4bar>=1.5% + RSI<=30 + green</td>
+<td>8</td><td class="good">95</td>
+<td class="good">57</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="70" data-apnl="78">
+<td>RHD06-15m-WR70%/APnL78%/PTPnL5%</td><td>RHD</td><td>15m</td><td>div_4bar>=1.5% + RSI<=30 + green</td>
+<td>7</td><td class="good">70</td>
+<td class="good">78</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="55" data-apnl="36">
+<td>RHD07-15m-WR55%/APnL36%/PTPnL10%</td><td>RHD</td><td>15m</td><td>div_4bar>=2.5% + RSI<=25 + green</td>
+<td>43</td><td class="mid">55</td>
+<td class="good">36</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="86" data-apnl="71">
+<td>RHD08-15m-WR86%/APnL71%/PTPnL23%</td><td>RHD</td><td>15m</td><td>div_4bar>=2.5% + RSI<=25 + green</td>
+<td>23</td><td class="good">86</td>
+<td class="good">71</td><td>23</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="75" data-apnl="77">
+<td>RHD09-15m-WR75%/APnL77%/PTPnL17%</td><td>RHD</td><td>15m</td><td>div_4bar>=2.5% + RSI<=25 + green</td>
+<td>21</td><td class="good">75</td>
+<td class="good">77</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="80" data-apnl="65">
+<td>RHD10-15m-WR80%/APnL65%/PTPnL20%</td><td>RHD</td><td>15m</td><td>div_4bar>=2.5% + RSI<=30 + green</td>
+<td>30</td><td class="good">80</td>
+<td class="good">65</td><td>20</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="50" data-apnl="15">
+<td>RHD11-15m-WR50%/APnL15%/PTPnL5%</td><td>RHD</td><td>15m</td><td>div_4bar>=2.5% + RSI<=30 + green</td>
+<td>49</td><td class="mid">50</td>
+<td class="mid">15</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="60" data-apnl="56">
+<td>RHD12-15m-WR60%/APnL56%/PTPnL15%</td><td>RHD</td><td>15m</td><td>div_4bar>=2.5% + RSI<=30 + green</td>
+<td>17</td><td class="mid">60</td>
+<td class="good">56</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="78" data-apnl="44">
+<td>RHD13-15m-WR78%/APnL44%/PTPnL14%</td><td>RHD</td><td>15m</td><td>div_8bar>=1.5% + RSI<=25 + green</td>
+<td>32</td><td class="good">78</td>
+<td class="good">44</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="75" data-apnl="54">
+<td>RHD14-15m-WR75%/APnL54%/PTPnL4%</td><td>RHD</td><td>15m</td><td>div_8bar>=1.5% + RSI<=25 + green</td>
+<td>23</td><td class="good">75</td>
+<td class="good">54</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="78" data-apnl="41">
+<td>RHD15-15m-WR78%/APnL41%/PTPnL11%</td><td>RHD</td><td>15m</td><td>div_8bar>=1.5% + RSI<=25 + green</td>
+<td>19</td><td class="good">78</td>
+<td class="good">41</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="72" data-apnl="20">
+<td>RHD16-15m-WR72%/APnL20%/PTPnL6%</td><td>RHD</td><td>15m</td><td>div_8bar>=1.5% + RSI<=30 + green</td>
+<td>33</td><td class="good">72</td>
+<td class="mid">20</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="45" data-apnl="12">
+<td>RHD17-15m-WR45%/APnL12%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_8bar>=1.5% + RSI<=30 + green</td>
+<td>8</td><td class="bad">45</td>
+<td class="mid">12</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="78" data-apnl="13">
+<td>RHD18-15m-WR78%/APnL13%/PTPnL3%</td><td>RHD</td><td>15m</td><td>div_8bar>=1.5% + RSI<=30 + green</td>
+<td>11</td><td class="good">78</td>
+<td class="mid">13</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="85" data-apnl="8">
+<td>RHD19-15m-WR85%/APnL8%/PTPnL2%</td><td>RHD</td><td>15m</td><td>div_8bar>=2.5% + RSI<=25 + green</td>
+<td>45</td><td class="good">85</td>
+<td class="bad">8</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="50" data-apnl="53">
+<td>RHD20-15m-WR50%/APnL53%/PTPnL12%</td><td>RHD</td><td>15m</td><td>div_8bar>=2.5% + RSI<=25 + green</td>
+<td>45</td><td class="mid">50</td>
+<td class="good">53</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="78" data-apnl="7">
+<td>RHD21-15m-WR78%/APnL7%/PTPnL2%</td><td>RHD</td><td>15m</td><td>div_8bar>=2.5% + RSI<=25 + green</td>
+<td>41</td><td class="good">78</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="67" data-apnl="46">
+<td>RHD22-15m-WR67%/APnL46%/PTPnL2%</td><td>RHD</td><td>15m</td><td>div_8bar>=2.5% + RSI<=30 + green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">46</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="83" data-apnl="28">
+<td>RHD23-15m-WR83%/APnL28%/PTPnL3%</td><td>RHD</td><td>15m</td><td>div_8bar>=2.5% + RSI<=30 + green</td>
+<td>45</td><td class="good">83</td>
+<td class="mid">28</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="82" data-apnl="29">
+<td>RHD24-15m-WR82%/APnL29%/PTPnL2%</td><td>RHD</td><td>15m</td><td>div_8bar>=2.5% + RSI<=30 + green</td>
+<td>25</td><td class="good">82</td>
+<td class="mid">29</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="85" data-apnl="48">
+<td>RHD25-15m-WR85%/APnL48%/PTPnL4%</td><td>RHD</td><td>15m</td><td>div_16bar>=1.5% + RSI<=25 + green</td>
+<td>20</td><td class="good">85</td>
+<td class="good">48</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="86" data-apnl="29">
+<td>RHD26-15m-WR86%/APnL29%/PTPnL7%</td><td>RHD</td><td>15m</td><td>div_16bar>=1.5% + RSI<=25 + green</td>
+<td>38</td><td class="good">86</td>
+<td class="mid">29</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="88" data-apnl="72">
+<td>RHD27-15m-WR88%/APnL72%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_16bar>=1.5% + RSI<=25 + green</td>
+<td>41</td><td class="good">88</td>
+<td class="good">72</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="92" data-apnl="35">
+<td>RHD28-15m-WR92%/APnL35%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_16bar>=1.5% + RSI<=30 + green</td>
+<td>14</td><td class="good">92</td>
+<td class="good">35</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="65" data-apnl="40">
+<td>RHD29-15m-WR65%/APnL40%/PTPnL6%</td><td>RHD</td><td>15m</td><td>div_16bar>=1.5% + RSI<=30 + green</td>
+<td>25</td><td class="mid">65</td>
+<td class="good">40</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="35" data-apnl="24">
+<td>RHD30-15m-WR35%/APnL24%/PTPnL3%</td><td>RHD</td><td>15m</td><td>div_16bar>=1.5% + RSI<=30 + green</td>
+<td>39</td><td class="bad">35</td>
+<td class="mid">24</td><td>3</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="92" data-apnl="52">
+<td>RHD31-15m-WR92%/APnL52%/PTPnL3%</td><td>RHD</td><td>15m</td><td>div_16bar>=2.5% + RSI<=25 + green</td>
+<td>12</td><td class="good">92</td>
+<td class="good">52</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="100" data-apnl="4">
+<td>RHD32-15m-WR100%/APnL4%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_16bar>=2.5% + RSI<=25 + green</td>
+<td>50</td><td class="good">100</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="83" data-apnl="28">
+<td>RHD33-15m-WR83%/APnL28%/PTPnL7%</td><td>RHD</td><td>15m</td><td>div_16bar>=2.5% + RSI<=25 + green</td>
+<td>29</td><td class="good">83</td>
+<td class="mid">28</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="80" data-apnl="44">
+<td>RHD34-15m-WR80%/APnL44%/PTPnL3%</td><td>RHD</td><td>15m</td><td>div_16bar>=2.5% + RSI<=30 + green</td>
+<td>26</td><td class="good">80</td>
+<td class="good">44</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="67" data-apnl="42">
+<td>RHD35-15m-WR67%/APnL42%/PTPnL13%</td><td>RHD</td><td>15m</td><td>div_16bar>=2.5% + RSI<=30 + green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">42</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="15m" data-wr="88" data-apnl="11">
+<td>RHD36-15m-WR88%/APnL11%/PTPnL1%</td><td>RHD</td><td>15m</td><td>div_16bar>=2.5% + RSI<=30 + green</td>
+<td>12</td><td class="good">88</td>
+<td class="mid">11</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="58" data-apnl="7">
+<td>RHX01-15m-WR58%/APnL7%/PTPnL1%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=2% + RH RSI<=25 + green</td>
+<td>20</td><td class="mid">58</td>
+<td class="bad">7</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="80" data-apnl="55">
+<td>RHX02-15m-WR80%/APnL55%/PTPnL16%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=2% + RH RSI<=25 + green</td>
+<td>41</td><td class="good">80</td>
+<td class="good">55</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="80" data-apnl="54">
+<td>RHX03-15m-WR80%/APnL54%/PTPnL9%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=2% + RH RSI<=25 + green</td>
+<td>16</td><td class="good">80</td>
+<td class="good">54</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="83" data-apnl="15">
+<td>RHX04-15m-WR83%/APnL15%/PTPnL3%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=2% + RH RSI<=30 + green</td>
+<td>30</td><td class="good">83</td>
+<td class="mid">15</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="50" data-apnl="37">
+<td>RHX05-15m-WR50%/APnL37%/PTPnL11%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=2% + RH RSI<=30 + green</td>
+<td>46</td><td class="mid">50</td>
+<td class="good">37</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="86" data-apnl="63">
+<td>RHX06-15m-WR86%/APnL63%/PTPnL17%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=2% + RH RSI<=30 + green</td>
+<td>45</td><td class="good">86</td>
+<td class="good">63</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="67" data-apnl="6">
+<td>RHX07-15m-WR67%/APnL6%/PTPnL1%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=3% + RH RSI<=25 + green</td>
+<td>28</td><td class="mid">67</td>
+<td class="bad">6</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="88" data-apnl="8">
+<td>RHX08-15m-WR88%/APnL8%/PTPnL1%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=3% + RH RSI<=25 + green</td>
+<td>16</td><td class="good">88</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="67" data-apnl="28">
+<td>RHX09-15m-WR67%/APnL28%/PTPnL3%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=3% + RH RSI<=25 + green</td>
+<td>19</td><td class="mid">67</td>
+<td class="mid">28</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="67" data-apnl="42">
+<td>RHX10-15m-WR67%/APnL42%/PTPnL2%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=3% + RH RSI<=30 + green</td>
+<td>3</td><td class="mid">67</td>
+<td class="good">42</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="82" data-apnl="56">
+<td>RHX11-15m-WR82%/APnL56%/PTPnL6%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=3% + RH RSI<=30 + green</td>
+<td>11</td><td class="good">82</td>
+<td class="good">56</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="75" data-apnl="69">
+<td>RHX12-15m-WR75%/APnL69%/PTPnL23%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=3% + RH RSI<=30 + green</td>
+<td>17</td><td class="good">75</td>
+<td class="good">69</td><td>23</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="83" data-apnl="72">
+<td>RHX13-15m-WR83%/APnL72%/PTPnL22%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=5% + RH RSI<=25 + green</td>
+<td>25</td><td class="good">83</td>
+<td class="good">72</td><td>22</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="45" data-apnl="51">
+<td>RHX14-15m-WR45%/APnL51%/PTPnL2%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=5% + RH RSI<=25 + green</td>
+<td>30</td><td class="bad">45</td>
+<td class="good">51</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="35" data-apnl="59">
+<td>RHX15-15m-WR35%/APnL59%/PTPnL3%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=5% + RH RSI<=25 + green</td>
+<td>23</td><td class="bad">35</td>
+<td class="good">59</td><td>3</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="86" data-apnl="55">
+<td>RHX16-15m-WR86%/APnL55%/PTPnL13%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=5% + RH RSI<=30 + green</td>
+<td>48</td><td class="good">86</td>
+<td class="good">55</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="90" data-apnl="54">
+<td>RHX17-15m-WR90%/APnL54%/PTPnL10%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=5% + RH RSI<=30 + green</td>
+<td>10</td><td class="good">90</td>
+<td class="good">54</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="75" data-apnl="3">
+<td>RHX18-15m-WR75%/APnL3%/PTPnL1%</td><td>RHX</td><td>15m</td><td>SRS pct_4>=5% + RH RSI<=30 + green</td>
+<td>13</td><td class="good">75</td>
+<td class="bad">3</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="88" data-apnl="59">
+<td>RHX19-15m-WR88%/APnL59%/PTPnL12%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=2% + RH RSI<=25 + green</td>
+<td>8</td><td class="good">88</td>
+<td class="good">59</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="78" data-apnl="14">
+<td>RHX20-15m-WR78%/APnL14%/PTPnL2%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=2% + RH RSI<=25 + green</td>
+<td>30</td><td class="good">78</td>
+<td class="mid">14</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="86" data-apnl="52">
+<td>RHX21-15m-WR86%/APnL52%/PTPnL17%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=2% + RH RSI<=25 + green</td>
+<td>8</td><td class="good">86</td>
+<td class="good">52</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="75" data-apnl="40">
+<td>RHX22-15m-WR75%/APnL40%/PTPnL12%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=2% + RH RSI<=30 + green</td>
+<td>24</td><td class="good">75</td>
+<td class="good">40</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="62" data-apnl="43">
+<td>RHX23-15m-WR62%/APnL43%/PTPnL13%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=2% + RH RSI<=30 + green</td>
+<td>13</td><td class="mid">62</td>
+<td class="good">43</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="45" data-apnl="66">
+<td>RHX24-15m-WR45%/APnL66%/PTPnL21%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=2% + RH RSI<=30 + green</td>
+<td>10</td><td class="bad">45</td>
+<td class="good">66</td><td>21</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="83" data-apnl="66">
+<td>RHX25-15m-WR83%/APnL66%/PTPnL7%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=3% + RH RSI<=25 + green</td>
+<td>25</td><td class="good">83</td>
+<td class="good">66</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="72" data-apnl="19">
+<td>RHX26-15m-WR72%/APnL19%/PTPnL2%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=3% + RH RSI<=25 + green</td>
+<td>9</td><td class="good">72</td>
+<td class="mid">19</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="55" data-apnl="33">
+<td>RHX27-15m-WR55%/APnL33%/PTPnL4%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=3% + RH RSI<=25 + green</td>
+<td>14</td><td class="mid">55</td>
+<td class="good">33</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="88" data-apnl="20">
+<td>RHX28-15m-WR88%/APnL20%/PTPnL6%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=3% + RH RSI<=30 + green</td>
+<td>7</td><td class="good">88</td>
+<td class="mid">20</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="58" data-apnl="64">
+<td>RHX29-15m-WR58%/APnL64%/PTPnL15%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=3% + RH RSI<=30 + green</td>
+<td>39</td><td class="mid">58</td>
+<td class="good">64</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="86" data-apnl="58">
+<td>RHX30-15m-WR86%/APnL58%/PTPnL19%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=3% + RH RSI<=30 + green</td>
+<td>44</td><td class="good">86</td>
+<td class="good">58</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="90" data-apnl="42">
+<td>RHX31-15m-WR90%/APnL42%/PTPnL14%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=5% + RH RSI<=25 + green</td>
+<td>43</td><td class="good">90</td>
+<td class="good">42</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="70" data-apnl="20">
+<td>RHX32-15m-WR70%/APnL20%/PTPnL4%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=5% + RH RSI<=25 + green</td>
+<td>7</td><td class="good">70</td>
+<td class="mid">20</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="82" data-apnl="57">
+<td>RHX33-15m-WR82%/APnL57%/PTPnL10%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=5% + RH RSI<=25 + green</td>
+<td>20</td><td class="good">82</td>
+<td class="good">57</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="86" data-apnl="8">
+<td>RHX34-15m-WR86%/APnL8%/PTPnL2%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=5% + RH RSI<=30 + green</td>
+<td>35</td><td class="good">86</td>
+<td class="bad">8</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="45" data-apnl="40">
+<td>RHX35-15m-WR45%/APnL40%/PTPnL8%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=5% + RH RSI<=30 + green</td>
+<td>31</td><td class="bad">45</td>
+<td class="good">40</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="15m" data-wr="40" data-apnl="8">
+<td>RHX36-15m-WR40%/APnL8%/PTPnL2%</td><td>RHX</td><td>15m</td><td>SRS pct_8>=5% + RH RSI<=30 + green</td>
+<td>21</td><td class="bad">40</td>
+<td class="bad">8</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="45" data-apnl="12">
+<td>RHS01-1h-WR45%/APnL12%/PTPnL4%</td><td>RHS</td><td>1h</td><td>RSI<=20 + green</td>
+<td>32</td><td class="bad">45</td>
+<td class="mid">12</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="86" data-apnl="71">
+<td>RHS02-1h-WR86%/APnL71%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=20 + green</td>
+<td>31</td><td class="good">86</td>
+<td class="good">71</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="86" data-apnl="25">
+<td>RHS03-1h-WR86%/APnL25%/PTPnL6%</td><td>RHS</td><td>1h</td><td>RSI<=20 + green</td>
+<td>41</td><td class="good">86</td>
+<td class="mid">25</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="82" data-apnl="65">
+<td>RHS04-1h-WR82%/APnL65%/PTPnL5%</td><td>RHS</td><td>1h</td><td>RSI<=20 + green</td>
+<td>6</td><td class="good">82</td>
+<td class="good">65</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="80" data-apnl="14">
+<td>RHS05-1h-WR80%/APnL14%/PTPnL3%</td><td>RHS</td><td>1h</td><td>RSI<=20 + green</td>
+<td>48</td><td class="good">80</td>
+<td class="mid">14</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="45" data-apnl="65">
+<td>RHS06-1h-WR45%/APnL65%/PTPnL21%</td><td>RHS</td><td>1h</td><td>RSI<=25 + green</td>
+<td>14</td><td class="bad">45</td>
+<td class="good">65</td><td>21</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="40" data-apnl="32">
+<td>RHS07-1h-WR40%/APnL32%/PTPnL8%</td><td>RHS</td><td>1h</td><td>RSI<=25 + green</td>
+<td>31</td><td class="bad">40</td>
+<td class="good">32</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="83" data-apnl="67">
+<td>RHS08-1h-WR83%/APnL67%/PTPnL20%</td><td>RHS</td><td>1h</td><td>RSI<=25 + green</td>
+<td>13</td><td class="good">83</td>
+<td class="good">67</td><td>20</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="72" data-apnl="48">
+<td>RHS09-1h-WR72%/APnL48%/PTPnL10%</td><td>RHS</td><td>1h</td><td>RSI<=25 + green</td>
+<td>27</td><td class="good">72</td>
+<td class="good">48</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="78" data-apnl="44">
+<td>RHS10-1h-WR78%/APnL44%/PTPnL11%</td><td>RHS</td><td>1h</td><td>RSI<=25 + green</td>
+<td>41</td><td class="good">78</td>
+<td class="good">44</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="40" data-apnl="43">
+<td>RHS11-1h-WR40%/APnL43%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=30 + green</td>
+<td>24</td><td class="bad">40</td>
+<td class="good">43</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="50" data-apnl="72">
+<td>RHS12-1h-WR50%/APnL72%/PTPnL22%</td><td>RHS</td><td>1h</td><td>RSI<=30 + green</td>
+<td>27</td><td class="mid">50</td>
+<td class="good">72</td><td>22</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="67" data-apnl="33">
+<td>RHS13-1h-WR67%/APnL33%/PTPnL11%</td><td>RHS</td><td>1h</td><td>RSI<=30 + green</td>
+<td>41</td><td class="mid">67</td>
+<td class="good">33</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="55" data-apnl="43">
+<td>RHS14-1h-WR55%/APnL43%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=30 + green</td>
+<td>40</td><td class="mid">55</td>
+<td class="good">43</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="92" data-apnl="19">
+<td>RHS15-1h-WR92%/APnL19%/PTPnL3%</td><td>RHS</td><td>1h</td><td>RSI<=30 + green</td>
+<td>22</td><td class="good">92</td>
+<td class="mid">19</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="90" data-apnl="51">
+<td>RHS16-1h-WR90%/APnL51%/PTPnL5%</td><td>RHS</td><td>1h</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>41</td><td class="good">90</td>
+<td class="good">51</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="95" data-apnl="11">
+<td>RHS17-1h-WR95%/APnL11%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>38</td><td class="good">95</td>
+<td class="mid">11</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="75" data-apnl="43">
+<td>RHS18-1h-WR75%/APnL43%/PTPnL14%</td><td>RHS</td><td>1h</td><td>RSI<=25 + Stoch<=10 + green</td>
+<td>11</td><td class="good">75</td>
+<td class="good">43</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="92" data-apnl="68">
+<td>RHS19-1h-WR92%/APnL68%/PTPnL3%</td><td>RHS</td><td>1h</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>44</td><td class="good">92</td>
+<td class="good">68</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="92" data-apnl="55">
+<td>RHS20-1h-WR92%/APnL55%/PTPnL17%</td><td>RHS</td><td>1h</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>26</td><td class="good">92</td>
+<td class="good">55</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="35" data-apnl="47">
+<td>RHS21-1h-WR35%/APnL47%/PTPnL5%</td><td>RHS</td><td>1h</td><td>RSI<=25 + Stoch<=15 + green</td>
+<td>14</td><td class="bad">35</td>
+<td class="good">47</td><td>5</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="60" data-apnl="44">
+<td>RHS22-1h-WR60%/APnL44%/PTPnL13%</td><td>RHS</td><td>1h</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>34</td><td class="mid">60</td>
+<td class="good">44</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="60" data-apnl="29">
+<td>RHS23-1h-WR60%/APnL29%/PTPnL3%</td><td>RHS</td><td>1h</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>12</td><td class="mid">60</td>
+<td class="mid">29</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="45" data-apnl="38">
+<td>RHS24-1h-WR45%/APnL38%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=30 + Stoch<=10 + green</td>
+<td>35</td><td class="bad">45</td>
+<td class="good">38</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="85" data-apnl="68">
+<td>RHS25-1h-WR85%/APnL68%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>45</td><td class="good">85</td>
+<td class="good">68</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="70" data-apnl="17">
+<td>RHS26-1h-WR70%/APnL17%/PTPnL5%</td><td>RHS</td><td>1h</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>27</td><td class="good">70</td>
+<td class="mid">17</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="55" data-apnl="21">
+<td>RHS27-1h-WR55%/APnL21%/PTPnL2%</td><td>RHS</td><td>1h</td><td>RSI<=30 + Stoch<=15 + green</td>
+<td>47</td><td class="mid">55</td>
+<td class="mid">21</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="88" data-apnl="22">
+<td>RHS28-1h-WR88%/APnL22%/PTPnL6%</td><td>RHS</td><td>1h</td><td>drop_6h<=-3.0% + green</td>
+<td>31</td><td class="good">88</td>
+<td class="mid">22</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="40" data-apnl="53">
+<td>RHS29-1h-WR40%/APnL53%/PTPnL12%</td><td>RHS</td><td>1h</td><td>drop_6h<=-3.0% + green</td>
+<td>46</td><td class="bad">40</td>
+<td class="good">53</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="100" data-apnl="31">
+<td>RHS30-1h-WR100%/APnL31%/PTPnL8%</td><td>RHS</td><td>1h</td><td>drop_6h<=-3.0% + green</td>
+<td>42</td><td class="good">100</td>
+<td class="good">31</td><td>8</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="67" data-apnl="58">
+<td>RHS31-1h-WR67%/APnL58%/PTPnL8%</td><td>RHS</td><td>1h</td><td>drop_6h<=-5.0% + green</td>
+<td>37</td><td class="mid">67</td>
+<td class="good">58</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="62" data-apnl="40">
+<td>RHS32-1h-WR62%/APnL40%/PTPnL13%</td><td>RHS</td><td>1h</td><td>drop_6h<=-5.0% + green</td>
+<td>33</td><td class="mid">62</td>
+<td class="good">40</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="60" data-apnl="48">
+<td>RHS33-1h-WR60%/APnL48%/PTPnL15%</td><td>RHS</td><td>1h</td><td>drop_6h<=-5.0% + green</td>
+<td>32</td><td class="mid">60</td>
+<td class="good">48</td><td>15</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="67" data-apnl="49">
+<td>RHS34-1h-WR67%/APnL49%/PTPnL14%</td><td>RHS</td><td>1h</td><td>drop_12h<=-5.0% + green</td>
+<td>13</td><td class="mid">67</td>
+<td class="good">49</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="60" data-apnl="78">
+<td>RHS35-1h-WR60%/APnL78%/PTPnL5%</td><td>RHS</td><td>1h</td><td>drop_12h<=-5.0% + green</td>
+<td>19</td><td class="mid">60</td>
+<td class="good">78</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="40" data-apnl="62">
+<td>RHS36-1h-WR40%/APnL62%/PTPnL12%</td><td>RHS</td><td>1h</td><td>drop_12h<=-5.0% + green</td>
+<td>38</td><td class="bad">40</td>
+<td class="good">62</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="50" data-apnl="67">
+<td>RHS37-1h-WR50%/APnL67%/PTPnL4%</td><td>RHS</td><td>1h</td><td>drop_12h<=-7.0% + green</td>
+<td>21</td><td class="mid">50</td>
+<td class="good">67</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="45" data-apnl="21">
+<td>RHS38-1h-WR45%/APnL21%/PTPnL3%</td><td>RHS</td><td>1h</td><td>drop_12h<=-7.0% + green</td>
+<td>31</td><td class="bad">45</td>
+<td class="mid">21</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="83" data-apnl="19">
+<td>RHS39-1h-WR83%/APnL19%/PTPnL4%</td><td>RHS</td><td>1h</td><td>drop_12h<=-7.0% + green</td>
+<td>8</td><td class="good">83</td>
+<td class="mid">19</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="62" data-apnl="58">
+<td>RHS40-1h-WR62%/APnL58%/PTPnL12%</td><td>RHS</td><td>1h</td><td>drop_1d<=-5.0% + green</td>
+<td>4</td><td class="mid">62</td>
+<td class="good">58</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="78" data-apnl="7">
+<td>RHS41-1h-WR78%/APnL7%/PTPnL2%</td><td>RHS</td><td>1h</td><td>drop_1d<=-5.0% + green</td>
+<td>35</td><td class="good">78</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="72" data-apnl="31">
+<td>RHS42-1h-WR72%/APnL31%/PTPnL7%</td><td>RHS</td><td>1h</td><td>drop_1d<=-5.0% + green</td>
+<td>8</td><td class="good">72</td>
+<td class="good">31</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="72" data-apnl="29">
+<td>RHS43-1h-WR72%/APnL29%/PTPnL1%</td><td>RHS</td><td>1h</td><td>drop_1d<=-7.0% + green</td>
+<td>23</td><td class="good">72</td>
+<td class="mid">29</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="50" data-apnl="43">
+<td>RHS44-1h-WR50%/APnL43%/PTPnL13%</td><td>RHS</td><td>1h</td><td>drop_1d<=-7.0% + green</td>
+<td>12</td><td class="mid">50</td>
+<td class="good">43</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="55" data-apnl="5">
+<td>RHS45-1h-WR55%/APnL5%/PTPnL1%</td><td>RHS</td><td>1h</td><td>drop_1d<=-7.0% + green</td>
+<td>33</td><td class="mid">55</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="95" data-apnl="18">
+<td>RHS46-1h-WR95%/APnL18%/PTPnL6%</td><td>RHS</td><td>1h</td><td>drop_1d<=-10.0% + green</td>
+<td>33</td><td class="good">95</td>
+<td class="mid">18</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="80" data-apnl="1">
+<td>RHS47-1h-WR80%/APnL1%/PTPnL1%</td><td>RHS</td><td>1h</td><td>drop_1d<=-10.0% + green</td>
+<td>4</td><td class="good">80</td>
+<td class="bad">1</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="1h" data-wr="65" data-apnl="28">
+<td>RHS48-1h-WR65%/APnL28%/PTPnL3%</td><td>RHS</td><td>1h</td><td>drop_1d<=-10.0% + green</td>
+<td>38</td><td class="mid">65</td>
+<td class="mid">28</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="100" data-apnl="78">
+<td>RHL01-1h-WR100%/APnL78%/PTPnL17%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag1 + RH RSI<=25 + green</td>
+<td>30</td><td class="good">100</td>
+<td class="good">78</td><td>17</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="50" data-apnl="37">
+<td>RHL02-1h-WR50%/APnL37%/PTPnL4%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag1 + RH RSI<=25 + green</td>
+<td>22</td><td class="mid">50</td>
+<td class="good">37</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="50" data-apnl="7">
+<td>RHL03-1h-WR50%/APnL7%/PTPnL1%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag1 + RH RSI<=25 + green</td>
+<td>29</td><td class="mid">50</td>
+<td class="bad">7</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="90" data-apnl="59">
+<td>RHL04-1h-WR90%/APnL59%/PTPnL3%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag1 + RH RSI<=30 + green</td>
+<td>10</td><td class="good">90</td>
+<td class="good">59</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="82" data-apnl="77">
+<td>RHL05-1h-WR82%/APnL77%/PTPnL18%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag1 + RH RSI<=30 + green</td>
+<td>4</td><td class="good">82</td>
+<td class="good">77</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="90" data-apnl="66">
+<td>RHL06-1h-WR90%/APnL66%/PTPnL19%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag1 + RH RSI<=30 + green</td>
+<td>18</td><td class="good">90</td>
+<td class="good">66</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="95" data-apnl="19">
+<td>RHL07-1h-WR95%/APnL19%/PTPnL3%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag2 + RH RSI<=25 + green</td>
+<td>30</td><td class="good">95</td>
+<td class="mid">19</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="35" data-apnl="46">
+<td>RHL08-1h-WR35%/APnL46%/PTPnL4%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag2 + RH RSI<=25 + green</td>
+<td>39</td><td class="bad">35</td>
+<td class="good">46</td><td>4</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="78" data-apnl="24">
+<td>RHL09-1h-WR78%/APnL24%/PTPnL2%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag2 + RH RSI<=25 + green</td>
+<td>36</td><td class="good">78</td>
+<td class="mid">24</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="72" data-apnl="9">
+<td>RHL10-1h-WR72%/APnL9%/PTPnL3%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag2 + RH RSI<=30 + green</td>
+<td>37</td><td class="good">72</td>
+<td class="bad">9</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="83" data-apnl="65">
+<td>RHL11-1h-WR83%/APnL65%/PTPnL18%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag2 + RH RSI<=30 + green</td>
+<td>4</td><td class="good">83</td>
+<td class="good">65</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="75" data-apnl="61">
+<td>RHL12-1h-WR75%/APnL61%/PTPnL2%</td><td>RHL</td><td>1h</td><td>WSM RSI<=20 lag2 + RH RSI<=30 + green</td>
+<td>43</td><td class="good">75</td>
+<td class="good">61</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="75" data-apnl="48">
+<td>RHL13-1h-WR75%/APnL48%/PTPnL9%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag1 + RH RSI<=25 + green</td>
+<td>50</td><td class="good">75</td>
+<td class="good">48</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="35" data-apnl="46">
+<td>RHL14-1h-WR35%/APnL46%/PTPnL13%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag1 + RH RSI<=25 + green</td>
+<td>7</td><td class="bad">35</td>
+<td class="good">46</td><td>13</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="72" data-apnl="31">
+<td>RHL15-1h-WR72%/APnL31%/PTPnL2%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag1 + RH RSI<=25 + green</td>
+<td>40</td><td class="good">72</td>
+<td class="good">31</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="100" data-apnl="43">
+<td>RHL16-1h-WR100%/APnL43%/PTPnL3%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag1 + RH RSI<=30 + green</td>
+<td>5</td><td class="good">100</td>
+<td class="good">43</td><td>3</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="72" data-apnl="70">
+<td>RHL17-1h-WR72%/APnL70%/PTPnL11%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag1 + RH RSI<=30 + green</td>
+<td>44</td><td class="good">72</td>
+<td class="good">70</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="58" data-apnl="60">
+<td>RHL18-1h-WR58%/APnL60%/PTPnL16%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag1 + RH RSI<=30 + green</td>
+<td>43</td><td class="mid">58</td>
+<td class="good">60</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="58" data-apnl="18">
+<td>RHL19-1h-WR58%/APnL18%/PTPnL1%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag2 + RH RSI<=25 + green</td>
+<td>48</td><td class="mid">58</td>
+<td class="mid">18</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="80" data-apnl="5">
+<td>RHL20-1h-WR80%/APnL5%/PTPnL1%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag2 + RH RSI<=25 + green</td>
+<td>15</td><td class="good">80</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="40" data-apnl="26">
+<td>RHL21-1h-WR40%/APnL26%/PTPnL1%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag2 + RH RSI<=25 + green</td>
+<td>23</td><td class="bad">40</td>
+<td class="mid">26</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="67" data-apnl="66">
+<td>RHL22-1h-WR67%/APnL66%/PTPnL13%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag2 + RH RSI<=30 + green</td>
+<td>37</td><td class="mid">67</td>
+<td class="good">66</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="82" data-apnl="33">
+<td>RHL23-1h-WR82%/APnL33%/PTPnL1%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag2 + RH RSI<=30 + green</td>
+<td>44</td><td class="good">82</td>
+<td class="good">33</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="60" data-apnl="37">
+<td>RHL24-1h-WR60%/APnL37%/PTPnL6%</td><td>RHL</td><td>1h</td><td>WSM RSI<=25 lag2 + RH RSI<=30 + green</td>
+<td>6</td><td class="mid">60</td>
+<td class="good">37</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="90" data-apnl="43">
+<td>RHL25-1h-WR90%/APnL43%/PTPnL5%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag1 + RH RSI<=25 + green</td>
+<td>10</td><td class="good">90</td>
+<td class="good">43</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="72" data-apnl="56">
+<td>RHL26-1h-WR72%/APnL56%/PTPnL13%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag1 + RH RSI<=25 + green</td>
+<td>50</td><td class="good">72</td>
+<td class="good">56</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="80" data-apnl="50">
+<td>RHL27-1h-WR80%/APnL50%/PTPnL11%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag1 + RH RSI<=25 + green</td>
+<td>14</td><td class="good">80</td>
+<td class="good">50</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="82" data-apnl="64">
+<td>RHL28-1h-WR82%/APnL64%/PTPnL12%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag1 + RH RSI<=30 + green</td>
+<td>36</td><td class="good">82</td>
+<td class="good">64</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="65" data-apnl="11">
+<td>RHL29-1h-WR65%/APnL11%/PTPnL3%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag1 + RH RSI<=30 + green</td>
+<td>30</td><td class="mid">65</td>
+<td class="mid">11</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="45" data-apnl="56">
+<td>RHL30-1h-WR45%/APnL56%/PTPnL6%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag1 + RH RSI<=30 + green</td>
+<td>37</td><td class="bad">45</td>
+<td class="good">56</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="67" data-apnl="42">
+<td>RHL31-1h-WR67%/APnL42%/PTPnL2%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag2 + RH RSI<=25 + green</td>
+<td>8</td><td class="mid">67</td>
+<td class="good">42</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="70" data-apnl="38">
+<td>RHL32-1h-WR70%/APnL38%/PTPnL5%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag2 + RH RSI<=25 + green</td>
+<td>31</td><td class="good">70</td>
+<td class="good">38</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="88" data-apnl="55">
+<td>RHL33-1h-WR88%/APnL55%/PTPnL6%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag2 + RH RSI<=25 + green</td>
+<td>47</td><td class="good">88</td>
+<td class="good">55</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="80" data-apnl="45">
+<td>RHL34-1h-WR80%/APnL45%/PTPnL8%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag2 + RH RSI<=30 + green</td>
+<td>5</td><td class="good">80</td>
+<td class="good">45</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="100" data-apnl="46">
+<td>RHL35-1h-WR100%/APnL46%/PTPnL10%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag2 + RH RSI<=30 + green</td>
+<td>30</td><td class="good">100</td>
+<td class="good">46</td><td>10</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="1h" data-wr="65" data-apnl="8">
+<td>RHL36-1h-WR65%/APnL8%/PTPnL1%</td><td>RHL</td><td>1h</td><td>WSM RSI<=30 lag2 + RH RSI<=30 + green</td>
+<td>45</td><td class="mid">65</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="90" data-apnl="52">
+<td>RHD01-1h-WR90%/APnL52%/PTPnL12%</td><td>RHD</td><td>1h</td><td>div_6bar>=2.0% + RSI<=25 + green</td>
+<td>35</td><td class="good">90</td>
+<td class="good">52</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="100" data-apnl="21">
+<td>RHD02-1h-WR100%/APnL21%/PTPnL1%</td><td>RHD</td><td>1h</td><td>div_6bar>=2.0% + RSI<=25 + green</td>
+<td>12</td><td class="good">100</td>
+<td class="mid">21</td><td>1</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="88" data-apnl="57">
+<td>RHD03-1h-WR88%/APnL57%/PTPnL2%</td><td>RHD</td><td>1h</td><td>div_6bar>=2.0% + RSI<=25 + green</td>
+<td>11</td><td class="good">88</td>
+<td class="good">57</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="45" data-apnl="31">
+<td>RHD04-1h-WR45%/APnL31%/PTPnL6%</td><td>RHD</td><td>1h</td><td>div_6bar>=2.0% + RSI<=30 + green</td>
+<td>26</td><td class="bad">45</td>
+<td class="good">31</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="75" data-apnl="73">
+<td>RHD05-1h-WR75%/APnL73%/PTPnL2%</td><td>RHD</td><td>1h</td><td>div_6bar>=2.0% + RSI<=30 + green</td>
+<td>41</td><td class="good">75</td>
+<td class="good">73</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="55" data-apnl="58">
+<td>RHD06-1h-WR55%/APnL58%/PTPnL12%</td><td>RHD</td><td>1h</td><td>div_6bar>=2.0% + RSI<=30 + green</td>
+<td>26</td><td class="mid">55</td>
+<td class="good">58</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="80" data-apnl="10">
+<td>RHD07-1h-WR80%/APnL10%/PTPnL3%</td><td>RHD</td><td>1h</td><td>div_6bar>=3.0% + RSI<=25 + green</td>
+<td>11</td><td class="good">80</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="83" data-apnl="47">
+<td>RHD08-1h-WR83%/APnL47%/PTPnL7%</td><td>RHD</td><td>1h</td><td>div_6bar>=3.0% + RSI<=25 + green</td>
+<td>23</td><td class="good">83</td>
+<td class="good">47</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="90" data-apnl="36">
+<td>RHD09-1h-WR90%/APnL36%/PTPnL4%</td><td>RHD</td><td>1h</td><td>div_6bar>=3.0% + RSI<=25 + green</td>
+<td>10</td><td class="good">90</td>
+<td class="good">36</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="35" data-apnl="24">
+<td>RHD10-1h-WR35%/APnL24%/PTPnL8%</td><td>RHD</td><td>1h</td><td>div_6bar>=3.0% + RSI<=30 + green</td>
+<td>36</td><td class="bad">35</td>
+<td class="mid">24</td><td>8</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="75" data-apnl="72">
+<td>RHD11-1h-WR75%/APnL72%/PTPnL4%</td><td>RHD</td><td>1h</td><td>div_6bar>=3.0% + RSI<=30 + green</td>
+<td>19</td><td class="good">75</td>
+<td class="good">72</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="65" data-apnl="58">
+<td>RHD12-1h-WR65%/APnL58%/PTPnL7%</td><td>RHD</td><td>1h</td><td>div_6bar>=3.0% + RSI<=30 + green</td>
+<td>42</td><td class="mid">65</td>
+<td class="good">58</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="67" data-apnl="63">
+<td>RHD13-1h-WR67%/APnL63%/PTPnL7%</td><td>RHD</td><td>1h</td><td>div_12bar>=2.0% + RSI<=25 + green</td>
+<td>10</td><td class="mid">67</td>
+<td class="good">63</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="55" data-apnl="10">
+<td>RHD14-1h-WR55%/APnL10%/PTPnL2%</td><td>RHD</td><td>1h</td><td>div_12bar>=2.0% + RSI<=25 + green</td>
+<td>14</td><td class="mid">55</td>
+<td class="mid">10</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="95" data-apnl="57">
+<td>RHD15-1h-WR95%/APnL57%/PTPnL3%</td><td>RHD</td><td>1h</td><td>div_12bar>=2.0% + RSI<=25 + green</td>
+<td>46</td><td class="good">95</td>
+<td class="good">57</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="70" data-apnl="45">
+<td>RHD16-1h-WR70%/APnL45%/PTPnL12%</td><td>RHD</td><td>1h</td><td>div_12bar>=2.0% + RSI<=30 + green</td>
+<td>7</td><td class="good">70</td>
+<td class="good">45</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="85" data-apnl="70">
+<td>RHD17-1h-WR85%/APnL70%/PTPnL10%</td><td>RHD</td><td>1h</td><td>div_12bar>=2.0% + RSI<=30 + green</td>
+<td>22</td><td class="good">85</td>
+<td class="good">70</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="58" data-apnl="23">
+<td>RHD18-1h-WR58%/APnL23%/PTPnL7%</td><td>RHD</td><td>1h</td><td>div_12bar>=2.0% + RSI<=30 + green</td>
+<td>26</td><td class="mid">58</td>
+<td class="mid">23</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="83" data-apnl="29">
+<td>RHD19-1h-WR83%/APnL29%/PTPnL2%</td><td>RHD</td><td>1h</td><td>div_12bar>=3.0% + RSI<=25 + green</td>
+<td>15</td><td class="good">83</td>
+<td class="mid">29</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="55" data-apnl="31">
+<td>RHD20-1h-WR55%/APnL31%/PTPnL8%</td><td>RHD</td><td>1h</td><td>div_12bar>=3.0% + RSI<=25 + green</td>
+<td>4</td><td class="mid">55</td>
+<td class="good">31</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="72" data-apnl="71">
+<td>RHD21-1h-WR72%/APnL71%/PTPnL19%</td><td>RHD</td><td>1h</td><td>div_12bar>=3.0% + RSI<=25 + green</td>
+<td>26</td><td class="good">72</td>
+<td class="good">71</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="80" data-apnl="71">
+<td>RHD22-1h-WR80%/APnL71%/PTPnL5%</td><td>RHD</td><td>1h</td><td>div_12bar>=3.0% + RSI<=30 + green</td>
+<td>42</td><td class="good">80</td>
+<td class="good">71</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="45" data-apnl="9">
+<td>RHD23-1h-WR45%/APnL9%/PTPnL2%</td><td>RHD</td><td>1h</td><td>div_12bar>=3.0% + RSI<=30 + green</td>
+<td>28</td><td class="bad">45</td>
+<td class="bad">9</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="1h" data-wr="95" data-apnl="62">
+<td>RHD24-1h-WR95%/APnL62%/PTPnL17%</td><td>RHD</td><td>1h</td><td>div_12bar>=3.0% + RSI<=30 + green</td>
+<td>29</td><td class="good">95</td>
+<td class="good">62</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="78" data-apnl="74">
+<td>RHX01-1h-WR78%/APnL74%/PTPnL3%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=3% + RH RSI<=25 + green</td>
+<td>11</td><td class="good">78</td>
+<td class="good">74</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="70" data-apnl="10">
+<td>RHX02-1h-WR70%/APnL10%/PTPnL2%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=3% + RH RSI<=25 + green</td>
+<td>32</td><td class="good">70</td>
+<td class="mid">10</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="92" data-apnl="67">
+<td>RHX03-1h-WR92%/APnL67%/PTPnL12%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=3% + RH RSI<=25 + green</td>
+<td>11</td><td class="good">92</td>
+<td class="good">67</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="85" data-apnl="76">
+<td>RHX04-1h-WR85%/APnL76%/PTPnL6%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=3% + RH RSI<=30 + green</td>
+<td>11</td><td class="good">85</td>
+<td class="good">76</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="78" data-apnl="65">
+<td>RHX05-1h-WR78%/APnL65%/PTPnL2%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=3% + RH RSI<=30 + green</td>
+<td>10</td><td class="good">78</td>
+<td class="good">65</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="83" data-apnl="20">
+<td>RHX06-1h-WR83%/APnL20%/PTPnL3%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=3% + RH RSI<=30 + green</td>
+<td>13</td><td class="good">83</td>
+<td class="mid">20</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="58" data-apnl="42">
+<td>RHX07-1h-WR58%/APnL42%/PTPnL12%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=5% + RH RSI<=25 + green</td>
+<td>17</td><td class="mid">58</td>
+<td class="good">42</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="72" data-apnl="67">
+<td>RHX08-1h-WR72%/APnL67%/PTPnL10%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=5% + RH RSI<=25 + green</td>
+<td>8</td><td class="good">72</td>
+<td class="good">67</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="65" data-apnl="26">
+<td>RHX09-1h-WR65%/APnL26%/PTPnL5%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=5% + RH RSI<=25 + green</td>
+<td>11</td><td class="mid">65</td>
+<td class="mid">26</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="90" data-apnl="39">
+<td>RHX10-1h-WR90%/APnL39%/PTPnL10%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=5% + RH RSI<=30 + green</td>
+<td>37</td><td class="good">90</td>
+<td class="good">39</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="45" data-apnl="65">
+<td>RHX11-1h-WR45%/APnL65%/PTPnL21%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=5% + RH RSI<=30 + green</td>
+<td>13</td><td class="bad">45</td>
+<td class="good">65</td><td>21</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="86" data-apnl="75">
+<td>RHX12-1h-WR86%/APnL75%/PTPnL5%</td><td>RHX</td><td>1h</td><td>SRS pct_6>=5% + RH RSI<=30 + green</td>
+<td>13</td><td class="good">86</td>
+<td class="good">75</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="92" data-apnl="78">
+<td>RHX13-1h-WR92%/APnL78%/PTPnL11%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=3% + RH RSI<=25 + green</td>
+<td>39</td><td class="good">92</td>
+<td class="good">78</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="40" data-apnl="4">
+<td>RHX14-1h-WR40%/APnL4%/PTPnL1%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=3% + RH RSI<=25 + green</td>
+<td>5</td><td class="bad">40</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="90" data-apnl="74">
+<td>RHX15-1h-WR90%/APnL74%/PTPnL9%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=3% + RH RSI<=25 + green</td>
+<td>44</td><td class="good">90</td>
+<td class="good">74</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="60" data-apnl="74">
+<td>RHX16-1h-WR60%/APnL74%/PTPnL14%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=3% + RH RSI<=30 + green</td>
+<td>42</td><td class="mid">60</td>
+<td class="good">74</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="90" data-apnl="4">
+<td>RHX17-1h-WR90%/APnL4%/PTPnL1%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=3% + RH RSI<=30 + green</td>
+<td>43</td><td class="good">90</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="85" data-apnl="38">
+<td>RHX18-1h-WR85%/APnL38%/PTPnL11%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=3% + RH RSI<=30 + green</td>
+<td>22</td><td class="good">85</td>
+<td class="good">38</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="82" data-apnl="32">
+<td>RHX19-1h-WR82%/APnL32%/PTPnL7%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=5% + RH RSI<=25 + green</td>
+<td>22</td><td class="good">82</td>
+<td class="good">32</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="80" data-apnl="10">
+<td>RHX20-1h-WR80%/APnL10%/PTPnL3%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=5% + RH RSI<=25 + green</td>
+<td>6</td><td class="good">80</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="58" data-apnl="57">
+<td>RHX21-1h-WR58%/APnL57%/PTPnL14%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=5% + RH RSI<=25 + green</td>
+<td>33</td><td class="mid">58</td>
+<td class="good">57</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="80" data-apnl="27">
+<td>RHX22-1h-WR80%/APnL27%/PTPnL6%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=5% + RH RSI<=30 + green</td>
+<td>41</td><td class="good">80</td>
+<td class="mid">27</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="55" data-apnl="41">
+<td>RHX23-1h-WR55%/APnL41%/PTPnL12%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=5% + RH RSI<=30 + green</td>
+<td>23</td><td class="mid">55</td>
+<td class="good">41</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="1h" data-wr="100" data-apnl="45">
+<td>RHX24-1h-WR100%/APnL45%/PTPnL7%</td><td>RHX</td><td>1h</td><td>SRS pct_12>=5% + RH RSI<=30 + green</td>
+<td>11</td><td class="good">100</td>
+<td class="good">45</td><td>7</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="72" data-apnl="66">
+<td>RHS01-daily-WR72%/APnL66%/PTPnL18%</td><td>RHS</td><td>daily</td><td>drop_2d<=-3.0%</td>
+<td>9</td><td class="good">72</td>
+<td class="good">66</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="31">
+<td>RHS02-daily-WR70%/APnL31%/PTPnL8%</td><td>RHS</td><td>daily</td><td>drop_2d<=-3.0%</td>
+<td>10</td><td class="good">70</td>
+<td class="good">31</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="65" data-apnl="58">
+<td>RHS03-daily-WR65%/APnL58%/PTPnL8%</td><td>RHS</td><td>daily</td><td>drop_2d<=-3.0%</td>
+<td>12</td><td class="mid">65</td>
+<td class="good">58</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="50" data-apnl="7">
+<td>RHS04-daily-WR50%/APnL7%/PTPnL2%</td><td>RHS</td><td>daily</td><td>drop_2d<=-3.0%</td>
+<td>27</td><td class="mid">50</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="88" data-apnl="54">
+<td>RHS05-daily-WR88%/APnL54%/PTPnL8%</td><td>RHS</td><td>daily</td><td>drop_2d<=-5.0%</td>
+<td>13</td><td class="good">88</td>
+<td class="good">54</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="74">
+<td>RHS06-daily-WR70%/APnL74%/PTPnL24%</td><td>RHS</td><td>daily</td><td>drop_2d<=-5.0%</td>
+<td>23</td><td class="good">70</td>
+<td class="good">74</td><td>24</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="60" data-apnl="21">
+<td>RHS07-daily-WR60%/APnL21%/PTPnL4%</td><td>RHS</td><td>daily</td><td>drop_2d<=-5.0%</td>
+<td>35</td><td class="mid">60</td>
+<td class="mid">21</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="80" data-apnl="64">
+<td>RHS08-daily-WR80%/APnL64%/PTPnL10%</td><td>RHS</td><td>daily</td><td>drop_2d<=-5.0%</td>
+<td>34</td><td class="good">80</td>
+<td class="good">64</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="35" data-apnl="12">
+<td>RHS09-daily-WR35%/APnL12%/PTPnL4%</td><td>RHS</td><td>daily</td><td>drop_2d<=-7.0%</td>
+<td>35</td><td class="bad">35</td>
+<td class="mid">12</td><td>4</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="80" data-apnl="31">
+<td>RHS10-daily-WR80%/APnL31%/PTPnL4%</td><td>RHS</td><td>daily</td><td>drop_2d<=-7.0%</td>
+<td>40</td><td class="good">80</td>
+<td class="good">31</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="72" data-apnl="7">
+<td>RHS11-daily-WR72%/APnL7%/PTPnL1%</td><td>RHS</td><td>daily</td><td>drop_2d<=-7.0%</td>
+<td>21</td><td class="good">72</td>
+<td class="bad">7</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="82" data-apnl="77">
+<td>RHS12-daily-WR82%/APnL77%/PTPnL21%</td><td>RHS</td><td>daily</td><td>drop_2d<=-7.0%</td>
+<td>46</td><td class="good">82</td>
+<td class="good">77</td><td>21</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="82" data-apnl="37">
+<td>RHS13-daily-WR82%/APnL37%/PTPnL9%</td><td>RHS</td><td>daily</td><td>drop_3d<=-5.0%</td>
+<td>3</td><td class="good">82</td>
+<td class="good">37</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="50" data-apnl="56">
+<td>RHS14-daily-WR50%/APnL56%/PTPnL5%</td><td>RHS</td><td>daily</td><td>drop_3d<=-5.0%</td>
+<td>19</td><td class="mid">50</td>
+<td class="good">56</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="100" data-apnl="47">
+<td>RHS15-daily-WR100%/APnL47%/PTPnL13%</td><td>RHS</td><td>daily</td><td>drop_3d<=-5.0%</td>
+<td>28</td><td class="good">100</td>
+<td class="good">47</td><td>13</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="72" data-apnl="6">
+<td>RHS16-daily-WR72%/APnL6%/PTPnL2%</td><td>RHS</td><td>daily</td><td>drop_3d<=-5.0%</td>
+<td>6</td><td class="good">72</td>
+<td class="bad">6</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="86" data-apnl="72">
+<td>RHS17-daily-WR86%/APnL72%/PTPnL7%</td><td>RHS</td><td>daily</td><td>drop_3d<=-7.0%</td>
+<td>26</td><td class="good">86</td>
+<td class="good">72</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="85" data-apnl="37">
+<td>RHS18-daily-WR85%/APnL37%/PTPnL2%</td><td>RHS</td><td>daily</td><td>drop_3d<=-7.0%</td>
+<td>27</td><td class="good">85</td>
+<td class="good">37</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="83" data-apnl="58">
+<td>RHS19-daily-WR83%/APnL58%/PTPnL18%</td><td>RHS</td><td>daily</td><td>drop_3d<=-7.0%</td>
+<td>20</td><td class="good">83</td>
+<td class="good">58</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="88" data-apnl="16">
+<td>RHS20-daily-WR88%/APnL16%/PTPnL2%</td><td>RHS</td><td>daily</td><td>drop_3d<=-7.0%</td>
+<td>9</td><td class="good">88</td>
+<td class="mid">16</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="75" data-apnl="48">
+<td>RHS21-daily-WR75%/APnL48%/PTPnL11%</td><td>RHS</td><td>daily</td><td>drop_3d<=-10.0%</td>
+<td>38</td><td class="good">75</td>
+<td class="good">48</td><td>11</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="72" data-apnl="19">
+<td>RHS22-daily-WR72%/APnL19%/PTPnL2%</td><td>RHS</td><td>daily</td><td>drop_3d<=-10.0%</td>
+<td>41</td><td class="good">72</td>
+<td class="mid">19</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="83" data-apnl="52">
+<td>RHS23-daily-WR83%/APnL52%/PTPnL17%</td><td>RHS</td><td>daily</td><td>drop_3d<=-10.0%</td>
+<td>5</td><td class="good">83</td>
+<td class="good">52</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="40" data-apnl="5">
+<td>RHS24-daily-WR40%/APnL5%/PTPnL1%</td><td>RHS</td><td>daily</td><td>drop_3d<=-10.0%</td>
+<td>48</td><td class="bad">40</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="61">
+<td>RHS25-daily-WR70%/APnL61%/PTPnL17%</td><td>RHS</td><td>daily</td><td>drop_5d<=-7.0%</td>
+<td>32</td><td class="good">70</td>
+<td class="good">61</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="55" data-apnl="78">
+<td>RHS26-daily-WR55%/APnL78%/PTPnL17%</td><td>RHS</td><td>daily</td><td>drop_5d<=-7.0%</td>
+<td>11</td><td class="mid">55</td>
+<td class="good">78</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="41">
+<td>RHS27-daily-WR70%/APnL41%/PTPnL3%</td><td>RHS</td><td>daily</td><td>drop_5d<=-7.0%</td>
+<td>28</td><td class="good">70</td>
+<td class="good">41</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="88" data-apnl="39">
+<td>RHS28-daily-WR88%/APnL39%/PTPnL10%</td><td>RHS</td><td>daily</td><td>drop_5d<=-7.0%</td>
+<td>24</td><td class="good">88</td>
+<td class="good">39</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="83" data-apnl="66">
+<td>RHS29-daily-WR83%/APnL66%/PTPnL18%</td><td>RHS</td><td>daily</td><td>drop_5d<=-10.0%</td>
+<td>34</td><td class="good">83</td>
+<td class="good">66</td><td>18</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="95" data-apnl="73">
+<td>RHS30-daily-WR95%/APnL73%/PTPnL10%</td><td>RHS</td><td>daily</td><td>drop_5d<=-10.0%</td>
+<td>33</td><td class="good">95</td>
+<td class="good">73</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="35" data-apnl="48">
+<td>RHS31-daily-WR35%/APnL48%/PTPnL11%</td><td>RHS</td><td>daily</td><td>drop_5d<=-10.0%</td>
+<td>46</td><td class="bad">35</td>
+<td class="good">48</td><td>11</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="50" data-apnl="54">
+<td>RHS32-daily-WR50%/APnL54%/PTPnL10%</td><td>RHS</td><td>daily</td><td>drop_5d<=-10.0%</td>
+<td>49</td><td class="mid">50</td>
+<td class="good">54</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="95" data-apnl="4">
+<td>RHS33-daily-WR95%/APnL4%/PTPnL1%</td><td>RHS</td><td>daily</td><td>drop_5d<=-15.0%</td>
+<td>19</td><td class="good">95</td>
+<td class="bad">4</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="90" data-apnl="75">
+<td>RHS34-daily-WR90%/APnL75%/PTPnL19%</td><td>RHS</td><td>daily</td><td>drop_5d<=-15.0%</td>
+<td>17</td><td class="good">90</td>
+<td class="good">75</td><td>19</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="100" data-apnl="7">
+<td>RHS35-daily-WR100%/APnL7%/PTPnL2%</td><td>RHS</td><td>daily</td><td>drop_5d<=-15.0%</td>
+<td>13</td><td class="good">100</td>
+<td class="bad">7</td><td>2</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="83" data-apnl="49">
+<td>RHS36-daily-WR83%/APnL49%/PTPnL5%</td><td>RHS</td><td>daily</td><td>drop_5d<=-15.0%</td>
+<td>46</td><td class="good">83</td>
+<td class="good">49</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="62" data-apnl="5">
+<td>RHS37-daily-WR62%/APnL5%/PTPnL1%</td><td>RHS</td><td>daily</td><td>RSI<=25</td>
+<td>15</td><td class="mid">62</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="35" data-apnl="57">
+<td>RHS38-daily-WR35%/APnL57%/PTPnL11%</td><td>RHS</td><td>daily</td><td>RSI<=25</td>
+<td>29</td><td class="bad">35</td>
+<td class="good">57</td><td>11</td>
+<td class="bad">3</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="55" data-apnl="53">
+<td>RHS39-daily-WR55%/APnL53%/PTPnL7%</td><td>RHS</td><td>daily</td><td>RSI<=25</td>
+<td>29</td><td class="mid">55</td>
+<td class="good">53</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="83" data-apnl="61">
+<td>RHS40-daily-WR83%/APnL61%/PTPnL2%</td><td>RHS</td><td>daily</td><td>RSI<=30</td>
+<td>48</td><td class="good">83</td>
+<td class="good">61</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="55" data-apnl="67">
+<td>RHS41-daily-WR55%/APnL67%/PTPnL7%</td><td>RHS</td><td>daily</td><td>RSI<=30</td>
+<td>38</td><td class="mid">55</td>
+<td class="good">67</td><td>7</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="62">
+<td>RHS42-daily-WR70%/APnL62%/PTPnL17%</td><td>RHS</td><td>daily</td><td>RSI<=30</td>
+<td>27</td><td class="good">70</td>
+<td class="good">62</td><td>17</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="23">
+<td>RHS43-daily-WR70%/APnL23%/PTPnL4%</td><td>RHS</td><td>daily</td><td>RSI<=35</td>
+<td>37</td><td class="good">70</td>
+<td class="mid">23</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="70" data-apnl="70">
+<td>RHS44-daily-WR70%/APnL70%/PTPnL12%</td><td>RHS</td><td>daily</td><td>RSI<=35</td>
+<td>46</td><td class="good">70</td>
+<td class="good">70</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHS" data-tf="daily" data-wr="100" data-apnl="34">
+<td>RHS45-daily-WR100%/APnL34%/PTPnL10%</td><td>RHS</td><td>daily</td><td>RSI<=35</td>
+<td>33</td><td class="good">100</td>
+<td class="good">34</td><td>10</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="60" data-apnl="32">
+<td>RHL01-daily-WR60%/APnL32%/PTPnL5%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=30</td>
+<td>38</td><td class="mid">60</td>
+<td class="good">32</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="67" data-apnl="29">
+<td>RHL02-daily-WR67%/APnL29%/PTPnL5%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=30</td>
+<td>21</td><td class="mid">67</td>
+<td class="mid">29</td><td>5</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="95" data-apnl="27">
+<td>RHL03-daily-WR95%/APnL27%/PTPnL8%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=30</td>
+<td>23</td><td class="good">95</td>
+<td class="mid">27</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="82" data-apnl="45">
+<td>RHL04-daily-WR82%/APnL45%/PTPnL9%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=30</td>
+<td>49</td><td class="good">82</td>
+<td class="good">45</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="65" data-apnl="37">
+<td>RHL05-daily-WR65%/APnL37%/PTPnL2%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=35</td>
+<td>39</td><td class="mid">65</td>
+<td class="good">37</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="92" data-apnl="70">
+<td>RHL06-daily-WR92%/APnL70%/PTPnL13%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=35</td>
+<td>28</td><td class="good">92</td>
+<td class="good">70</td><td>13</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="72" data-apnl="19">
+<td>RHL07-daily-WR72%/APnL19%/PTPnL3%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=35</td>
+<td>5</td><td class="good">72</td>
+<td class="mid">19</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="67" data-apnl="11">
+<td>RHL08-daily-WR67%/APnL11%/PTPnL2%</td><td>RHL</td><td>daily</td><td>WSM drop_3d lag1 + RH RSI<=35</td>
+<td>31</td><td class="mid">67</td>
+<td class="mid">11</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="90" data-apnl="33">
+<td>RHL09-daily-WR90%/APnL33%/PTPnL8%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=30</td>
+<td>16</td><td class="good">90</td>
+<td class="good">33</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="60" data-apnl="69">
+<td>RHL10-daily-WR60%/APnL69%/PTPnL9%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=30</td>
+<td>38</td><td class="mid">60</td>
+<td class="good">69</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="95" data-apnl="35">
+<td>RHL11-daily-WR95%/APnL35%/PTPnL3%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=30</td>
+<td>9</td><td class="good">95</td>
+<td class="good">35</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="88" data-apnl="76">
+<td>RHL12-daily-WR88%/APnL76%/PTPnL8%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=30</td>
+<td>18</td><td class="good">88</td>
+<td class="good">76</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="40" data-apnl="68">
+<td>RHL13-daily-WR40%/APnL68%/PTPnL8%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=35</td>
+<td>43</td><td class="bad">40</td>
+<td class="good">68</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="62" data-apnl="7">
+<td>RHL14-daily-WR62%/APnL7%/PTPnL1%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=35</td>
+<td>29</td><td class="mid">62</td>
+<td class="bad">7</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="70" data-apnl="61">
+<td>RHL15-daily-WR70%/APnL61%/PTPnL4%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=35</td>
+<td>46</td><td class="good">70</td>
+<td class="good">61</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHL" data-tf="daily" data-wr="55" data-apnl="1">
+<td>RHL16-daily-WR55%/APnL1%/PTPnL1%</td><td>RHL</td><td>daily</td><td>WSM drop_5d lag1 + RH RSI<=35</td>
+<td>29</td><td class="mid">55</td>
+<td class="bad">1</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="90" data-apnl="61">
+<td>RHD01-daily-WR90%/APnL61%/PTPnL16%</td><td>RHD</td><td>daily</td><td>RH RSI<=30 + ETSY RSI<=30</td>
+<td>44</td><td class="good">90</td>
+<td class="good">61</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="60" data-apnl="37">
+<td>RHD02-daily-WR60%/APnL37%/PTPnL6%</td><td>RHD</td><td>daily</td><td>RH RSI<=30 + ETSY RSI<=30</td>
+<td>21</td><td class="mid">60</td>
+<td class="good">37</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="90" data-apnl="8">
+<td>RHD03-daily-WR90%/APnL8%/PTPnL1%</td><td>RHD</td><td>daily</td><td>RH RSI<=30 + ETSY RSI<=30</td>
+<td>44</td><td class="good">90</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="86" data-apnl="30">
+<td>RHD04-daily-WR86%/APnL30%/PTPnL9%</td><td>RHD</td><td>daily</td><td>RH RSI<=30 + ETSY RSI<=35</td>
+<td>50</td><td class="good">86</td>
+<td class="good">30</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="100" data-apnl="5">
+<td>RHD05-daily-WR100%/APnL5%/PTPnL1%</td><td>RHD</td><td>daily</td><td>RH RSI<=30 + ETSY RSI<=35</td>
+<td>29</td><td class="good">100</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="58" data-apnl="5">
+<td>RHD06-daily-WR58%/APnL5%/PTPnL1%</td><td>RHD</td><td>daily</td><td>RH RSI<=30 + ETSY RSI<=35</td>
+<td>34</td><td class="mid">58</td>
+<td class="bad">5</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="58" data-apnl="38">
+<td>RHD07-daily-WR58%/APnL38%/PTPnL1%</td><td>RHD</td><td>daily</td><td>RH RSI<=35 + ETSY RSI<=35</td>
+<td>3</td><td class="mid">58</td>
+<td class="good">38</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="67" data-apnl="73">
+<td>RHD08-daily-WR67%/APnL73%/PTPnL20%</td><td>RHD</td><td>daily</td><td>RH RSI<=35 + ETSY RSI<=35</td>
+<td>9</td><td class="mid">67</td>
+<td class="good">73</td><td>20</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="70" data-apnl="37">
+<td>RHD09-daily-WR70%/APnL37%/PTPnL8%</td><td>RHD</td><td>daily</td><td>RH RSI<=35 + ETSY RSI<=35</td>
+<td>44</td><td class="good">70</td>
+<td class="good">37</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="85" data-apnl="68">
+<td>RHD10-daily-WR85%/APnL68%/PTPnL16%</td><td>RHD</td><td>daily</td><td>RH RSI<=35 + ETSY RSI<=30</td>
+<td>11</td><td class="good">85</td>
+<td class="good">68</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="83" data-apnl="60">
+<td>RHD11-daily-WR83%/APnL60%/PTPnL9%</td><td>RHD</td><td>daily</td><td>RH RSI<=35 + ETSY RSI<=30</td>
+<td>15</td><td class="good">83</td>
+<td class="good">60</td><td>9</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="50" data-apnl="43">
+<td>RHD12-daily-WR50%/APnL43%/PTPnL3%</td><td>RHD</td><td>daily</td><td>RH RSI<=35 + ETSY RSI<=30</td>
+<td>49</td><td class="mid">50</td>
+<td class="good">43</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="80" data-apnl="33">
+<td>RHD13-daily-WR80%/APnL33%/PTPnL3%</td><td>RHD</td><td>daily</td><td>RH/ETSY 3d divergence</td>
+<td>3</td><td class="good">80</td>
+<td class="good">33</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="100" data-apnl="44">
+<td>RHD14-daily-WR100%/APnL44%/PTPnL13%</td><td>RHD</td><td>daily</td><td>RH/ETSY 3d divergence</td>
+<td>21</td><td class="good">100</td>
+<td class="good">44</td><td>13</td>
+<td class="good">1</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="86" data-apnl="25">
+<td>RHD15-daily-WR86%/APnL25%/PTPnL3%</td><td>RHD</td><td>daily</td><td>RH/ETSY 5d divergence</td>
+<td>42</td><td class="good">86</td>
+<td class="mid">25</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHD" data-tf="daily" data-wr="90" data-apnl="52">
+<td>RHD16-daily-WR90%/APnL52%/PTPnL14%</td><td>RHD</td><td>daily</td><td>RH/ETSY 5d divergence</td>
+<td>35</td><td class="good">90</td>
+<td class="good">52</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="70" data-apnl="12">
+<td>RHX01-daily-WR70%/APnL12%/PTPnL4%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=2% + RH RSI<=25 + green</td>
+<td>45</td><td class="good">70</td>
+<td class="mid">12</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="50" data-apnl="24">
+<td>RHX02-daily-WR50%/APnL24%/PTPnL3%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=2% + RH RSI<=25 + green</td>
+<td>33</td><td class="mid">50</td>
+<td class="mid">24</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="70" data-apnl="32">
+<td>RHX03-daily-WR70%/APnL32%/PTPnL1%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=2% + RH RSI<=25 + green</td>
+<td>19</td><td class="good">70</td>
+<td class="good">32</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="75" data-apnl="31">
+<td>RHX04-daily-WR75%/APnL31%/PTPnL8%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=2% + RH RSI<=30 + green</td>
+<td>20</td><td class="good">75</td>
+<td class="good">31</td><td>8</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="70" data-apnl="39">
+<td>RHX05-daily-WR70%/APnL39%/PTPnL10%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=2% + RH RSI<=30 + green</td>
+<td>49</td><td class="good">70</td>
+<td class="good">39</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="86" data-apnl="2">
+<td>RHX06-daily-WR86%/APnL2%/PTPnL1%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=2% + RH RSI<=30 + green</td>
+<td>44</td><td class="good">86</td>
+<td class="bad">2</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="72" data-apnl="31">
+<td>RHX07-daily-WR72%/APnL31%/PTPnL1%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=3% + RH RSI<=25 + green</td>
+<td>45</td><td class="good">72</td>
+<td class="good">31</td><td>1</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="50" data-apnl="60">
+<td>RHX08-daily-WR50%/APnL60%/PTPnL10%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=3% + RH RSI<=25 + green</td>
+<td>13</td><td class="mid">50</td>
+<td class="good">60</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="75" data-apnl="65">
+<td>RHX09-daily-WR75%/APnL65%/PTPnL10%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=3% + RH RSI<=25 + green</td>
+<td>47</td><td class="good">75</td>
+<td class="good">65</td><td>10</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="50" data-apnl="38">
+<td>RHX10-daily-WR50%/APnL38%/PTPnL6%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=3% + RH RSI<=30 + green</td>
+<td>42</td><td class="mid">50</td>
+<td class="good">38</td><td>6</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="62" data-apnl="29">
+<td>RHX11-daily-WR62%/APnL29%/PTPnL3%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=3% + RH RSI<=30 + green</td>
+<td>33</td><td class="mid">62</td>
+<td class="mid">29</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="55" data-apnl="59">
+<td>RHX12-daily-WR55%/APnL59%/PTPnL12%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=3% + RH RSI<=30 + green</td>
+<td>29</td><td class="mid">55</td>
+<td class="good">59</td><td>12</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="95" data-apnl="71">
+<td>RHX13-daily-WR95%/APnL71%/PTPnL16%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=5% + RH RSI<=25 + green</td>
+<td>37</td><td class="good">95</td>
+<td class="good">71</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="92" data-apnl="28">
+<td>RHX14-daily-WR92%/APnL28%/PTPnL4%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=5% + RH RSI<=25 + green</td>
+<td>46</td><td class="good">92</td>
+<td class="mid">28</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="88" data-apnl="11">
+<td>RHX15-daily-WR88%/APnL11%/PTPnL3%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=5% + RH RSI<=25 + green</td>
+<td>31</td><td class="good">88</td>
+<td class="mid">11</td><td>3</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="83" data-apnl="47">
+<td>RHX16-daily-WR83%/APnL47%/PTPnL2%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=5% + RH RSI<=30 + green</td>
+<td>39</td><td class="good">83</td>
+<td class="good">47</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="50" data-apnl="8">
+<td>RHX17-daily-WR50%/APnL8%/PTPnL1%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=5% + RH RSI<=30 + green</td>
+<td>39</td><td class="mid">50</td>
+<td class="bad">8</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="85" data-apnl="20">
+<td>RHX18-daily-WR85%/APnL20%/PTPnL2%</td><td>RHX</td><td>daily</td><td>SRS pct_2>=5% + RH RSI<=30 + green</td>
+<td>23</td><td class="good">85</td>
+<td class="mid">20</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="83" data-apnl="57">
+<td>RHX19-daily-WR83%/APnL57%/PTPnL4%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=2% + RH RSI<=25 + green</td>
+<td>46</td><td class="good">83</td>
+<td class="good">57</td><td>4</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="60" data-apnl="75">
+<td>RHX20-daily-WR60%/APnL75%/PTPnL16%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=2% + RH RSI<=25 + green</td>
+<td>8</td><td class="mid">60</td>
+<td class="good">75</td><td>16</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="83" data-apnl="58">
+<td>RHX21-daily-WR83%/APnL58%/PTPnL2%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=2% + RH RSI<=25 + green</td>
+<td>32</td><td class="good">83</td>
+<td class="good">58</td><td>2</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="55" data-apnl="66">
+<td>RHX22-daily-WR55%/APnL66%/PTPnL14%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=2% + RH RSI<=30 + green</td>
+<td>32</td><td class="mid">55</td>
+<td class="good">66</td><td>14</td>
+<td class="mid">2</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="86" data-apnl="8">
+<td>RHX23-daily-WR86%/APnL8%/PTPnL2%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=2% + RH RSI<=30 + green</td>
+<td>46</td><td class="good">86</td>
+<td class="bad">8</td><td>2</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="67" data-apnl="3">
+<td>RHX24-daily-WR67%/APnL3%/PTPnL1%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=2% + RH RSI<=30 + green</td>
+<td>19</td><td class="mid">67</td>
+<td class="bad">3</td><td>1</td>
+<td class="good">0</td></tr>
+<tr data-fam="RHX" data-tf="daily" data-wr="35" data-apnl="28">
+<td>RHX25-daily-WR35%/APnL28%/PTPnL2%</td><td>RHX</td><td>daily</td><td>SRS pct_3>=3% + RH RSI<=25 + green</td>
+<td>5</td><td class="bad">35</td>
+<td class="mid">28</td><td>2</td>
+<td class="bad">3</td></tr>
+</tbody></table>
+
+<script>
+function filterTable() {
+  var fam = document.getElementById("fam-filter").value;
+  var tf = document.getElementById("tf-filter").value;
+  var minWr = parseInt(document.getElementById("wr-filter").value) || 0;
+  var minApnl = parseInt(document.getElementById("apnl-filter").value) || 0;
+  var rows = document.querySelectorAll("#rule-table tbody tr");
+  rows.forEach(function(r) {
+    var show = true;
+    if (fam && r.dataset.fam !== fam) show = false;
+    if (tf && r.dataset.tf !== tf) show = false;
+    if (parseInt(r.dataset.wr) < minWr) show = false;
+    if (parseInt(r.dataset.apnl) < minApnl) show = false;
+    r.style.display = show ? "" : "none";
+  });
+}
+function sortTable(n) {
+  var table = document.getElementById("rule-table");
+  var rows = Array.from(table.tBodies[0].rows);
+  var asc = table.dataset.sortCol == n ? !(table.dataset.sortAsc == "true") : true;
+  table.dataset.sortCol = n; table.dataset.sortAsc = asc;
+  rows.sort(function(a, b) {
+    var av = a.cells[n].textContent, bv = b.cells[n].textContent;
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return asc ? an - bn : bn - an;
+    return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(function(r) { table.tBodies[0].appendChild(r); });
+}
+</script>
+</body></html>
