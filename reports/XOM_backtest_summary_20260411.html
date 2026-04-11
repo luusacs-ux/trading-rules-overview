@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XOM Backtest Summary &mdash; 2026-04-11</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 20px; }
+h1 { color: #00d4ff; margin-bottom: 5px; }
+.subtitle { color: #888; margin-bottom: 20px; font-size: 14px; }
+.cards { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+.card { background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 15px 25px; min-width: 160px; }
+.card .label { color: #888; font-size: 12px; text-transform: uppercase; }
+.card .value { font-size: 28px; font-weight: bold; color: #00d4ff; }
+.card .value.green { color: #00ff88; }
+h2 { color: #00d4ff; margin: 25px 0 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 10px; text-align: left; cursor: pointer; position: sticky; top: 0; }
+th:hover { background: #1a3a5e; }
+td { padding: 6px 10px; border-bottom: 1px solid #222; }
+tr:hover { background: #1a2a4e; }
+tr.wr100 { background: rgba(0, 255, 136, 0.15); }
+tr.tier2 { background: rgba(0, 212, 255, 0.08); }
+.family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
+.fam-XOS { background: #2a4a2a; color: #66ff66; }
+.fam-XOL { background: #2a2a4a; color: #6666ff; }
+.fam-XOD { background: #4a2a4a; color: #ff66ff; }
+.fam-XOX { background: #4a4a2a; color: #ffff66; }
+.pipeline { color: #666; font-size: 12px; margin-top: 30px; }
+.sort-arrow { font-size: 10px; margin-left: 4px; }
+</style>
+</head>
+<body>
+<h1>XOM (Exxon Mobil) &mdash; Backtest Report</h1>
+<div class="subtitle">Pipeline: create_rules_XOM_DBC_20260411_v2 | Ticker: XOM | Lead: DBC | Same: XLE | Inverse: DUG | Date: 2026-04-11</div>
+<div class="cards">
+    <div class="card"><div class="label">Total Rules</div><div class="value">162</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">134</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">21.5%</div></div>
+</div>
+<h2>5M Timeframe (21 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="wr100"><td>1</td><td><strong>SA10b</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>78d</td><td>6</td><td>6</td><td>100.0</td><td><strong>20.45</strong></td><td>3.41</td></tr>
+<tr class="wr100"><td>2</td><td><strong>SA30</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>2.0</td><td>234d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>3</td><td><strong>SA17</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>780d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>4</td><td><strong>SA12</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>390d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>5</td><td><strong>SA10</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>390d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>6</td><td><strong>SA13</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>780d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>7</td><td><strong>SA14</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>156d</td><td>4</td><td>4</td><td>100.0</td><td><strong>18.80</strong></td><td>4.70</td></tr>
+<tr class="wr100"><td>8</td><td><strong>SA29</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>156d</td><td>4</td><td>4</td><td>100.0</td><td><strong>18.54</strong></td><td>4.63</td></tr>
+<tr class="wr100"><td>9</td><td><strong>LL_lag0_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>5.0</td><td>390d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>10</td><td><strong>LL_lag2_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>3.0</td><td>5.0</td><td>780d</td><td>5</td><td>5</td><td>100.0</td><td><strong>15.00</strong></td><td>3.00</td></tr>
+<tr class="wr100"><td>11</td><td><strong>LL_lag3_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>1.0</td><td>390d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>12</td><td><strong>LL_lag1_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>2.0</td><td>234d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>13</td><td><strong>LL_lag1_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>234d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>14</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>780d</td><td>3</td><td>3</td><td>100.0</td><td><strong>13.59</strong></td><td>4.53</td></tr>
+<tr class="tier2"><td>15</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>2.0</td><td>156d</td><td>4</td><td>3</td><td>75.0</td><td><strong>11.84</strong></td><td>2.96</td></tr>
+<tr class="wr100"><td>16</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>390d</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.72</strong></td><td>3.57</td></tr>
+<tr class="wr100"><td>17</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>390d</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.69</strong></td><td>3.56</td></tr>
+<tr class="wr100"><td>18</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>390d</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.69</strong></td><td>3.56</td></tr>
+<tr class="wr100"><td>19</td><td><strong>LL_lag0_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>3.0</td><td>8.0</td><td>780d</td><td>3</td><td>3</td><td>100.0</td><td><strong>9.00</strong></td><td>3.00</td></tr>
+<tr><td>20</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>2.0</td><td>234d</td><td>3</td><td>2</td><td>66.7</td><td><strong>8.00</strong></td><td>2.67</td></tr>
+<tr><td>21</td><td><strong>SA02</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>3.0</td><td>780d</td><td>3</td><td>2</td><td>66.7</td><td><strong>5.90</strong></td><td>1.97</td></tr>
+<tr><td>22</td><td><strong>SA08</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>3.0</td><td>156d</td><td>3</td><td>2</td><td>66.7</td><td><strong>5.90</strong></td><td>1.97</td></tr>
+<tr class="wr100"><td>23</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>1.5</td><td>5.0</td><td>234d</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.50</strong></td><td>1.50</td></tr>
+<tr><td>24</td><td><strong>DV_72bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>1.0</td><td>780d</td><td>3</td><td>1</td><td>33.3</td><td><strong>3.00</strong></td><td>1.00</td></tr>
+<tr class="wr100"><td>25</td><td><strong>SA18</strong></td><td><span class="family fam-XOS">XOS</span></td><td>0.5</td><td>8.0</td><td>780d</td><td>3</td><td>3</td><td>100.0</td><td><strong>1.50</strong></td><td>0.50</td></tr>
+</tbody></table>
+<h2>15M Timeframe (17 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="wr100"><td>1</td><td><strong>SA14</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>130d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>2</td><td><strong>SA17</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>260d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>3</td><td><strong>SA10b</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>130d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>4</td><td><strong>SA10</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>260d</td><td>4</td><td>4</td><td>100.0</td><td><strong>18.59</strong></td><td>4.65</td></tr>
+<tr class="wr100"><td>5</td><td><strong>SA12</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>130d</td><td>4</td><td>4</td><td>100.0</td><td><strong>18.59</strong></td><td>4.65</td></tr>
+<tr class="wr100"><td>6</td><td><strong>SA13</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>130d</td><td>4</td><td>4</td><td>100.0</td><td><strong>18.59</strong></td><td>4.65</td></tr>
+<tr class="wr100"><td>7</td><td><strong>SA29</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>78d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>8</td><td><strong>LL_lag3_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>52d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>9</td><td><strong>LL_lag0_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>260d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>10</td><td><strong>LL_lag0_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>5.0</td><td>130d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>11</td><td><strong>LL_lag2_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>2.0</td><td>78d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>12</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>260d</td><td>3</td><td>3</td><td>100.0</td><td><strong>13.59</strong></td><td>4.53</td></tr>
+<tr class="wr100"><td>13</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>78d</td><td>3</td><td>3</td><td>100.0</td><td><strong>12.02</strong></td><td>4.01</td></tr>
+<tr class="tier2"><td>14</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>2.0</td><td>130d</td><td>4</td><td>3</td><td>75.0</td><td><strong>11.73</strong></td><td>2.93</td></tr>
+<tr class="tier2"><td>15</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>2.0</td><td>260d</td><td>4</td><td>3</td><td>75.0</td><td><strong>11.73</strong></td><td>2.93</td></tr>
+<tr class="wr100"><td>16</td><td><strong>LL_lag1_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>2.0</td><td>26d</td><td>3</td><td>3</td><td>100.0</td><td><strong>11.68</strong></td><td>3.89</td></tr>
+<tr class="tier2"><td>17</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>260d</td><td>4</td><td>3</td><td>75.0</td><td><strong>10.73</strong></td><td>2.68</td></tr>
+<tr><td>18</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>260d</td><td>3</td><td>2</td><td>66.7</td><td><strong>9.31</strong></td><td>3.10</td></tr>
+<tr><td>19</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>260d</td><td>3</td><td>2</td><td>66.7</td><td><strong>9.13</strong></td><td>3.04</td></tr>
+<tr><td>20</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>1.0</td><td>78d</td><td>3</td><td>2</td><td>66.7</td><td><strong>9.00</strong></td><td>3.00</td></tr>
+<tr><td>21</td><td><strong>SA30</strong></td><td><span class="family fam-XOS">XOS</span></td><td>0.5</td><td>5.0</td><td>130d</td><td>3</td><td>2</td><td>66.7</td><td><strong>0.88</strong></td><td>0.29</td></tr>
+</tbody></table>
+<h2>1H Timeframe (68 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA17</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>35d</td><td>16</td><td>12</td><td>75.0</td><td><strong>45.83</strong></td><td>2.86</td></tr>
+<tr class="tier2"><td>2</td><td><strong>SA29</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>2.0</td><td>70d</td><td>13</td><td>10</td><td>76.9</td><td><strong>44.00</strong></td><td>3.38</td></tr>
+<tr class="tier2"><td>3</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>35d</td><td>14</td><td>12</td><td>85.7</td><td><strong>43.96</strong></td><td>3.14</td></tr>
+<tr class="wr100"><td>4</td><td><strong>LL_lag3_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>9</td><td>9</td><td>100.0</td><td><strong>42.91</strong></td><td>4.77</td></tr>
+<tr class="wr100"><td>5</td><td><strong>LL_lag0_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>9</td><td>9</td><td>100.0</td><td><strong>42.91</strong></td><td>4.77</td></tr>
+<tr class="wr100"><td>6</td><td><strong>LL_lag1_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>9</td><td>9</td><td>100.0</td><td><strong>41.44</strong></td><td>4.60</td></tr>
+<tr class="tier2"><td>7</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>10</td><td>9</td><td>90.0</td><td><strong>41.28</strong></td><td>4.13</td></tr>
+<tr class="tier2"><td>8</td><td><strong>SA30</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>2.0</td><td>70d</td><td>11</td><td>9</td><td>81.8</td><td><strong>41.00</strong></td><td>3.73</td></tr>
+<tr class="wr100"><td>9</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>9</td><td>9</td><td>100.0</td><td><strong>40.82</strong></td><td>4.54</td></tr>
+<tr class="tier2"><td>10</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>11</td><td>10</td><td>90.9</td><td><strong>40.34</strong></td><td>3.67</td></tr>
+<tr class="wr100"><td>11</td><td><strong>SA32</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>9</td><td>9</td><td>100.0</td><td><strong>38.76</strong></td><td>4.31</td></tr>
+<tr class="wr100"><td>12</td><td><strong>LL_lag2_15</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>8</td><td>8</td><td>100.0</td><td><strong>37.91</strong></td><td>4.74</td></tr>
+<tr class="tier2"><td>13</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>11</td><td>9</td><td>81.8</td><td><strong>36.82</strong></td><td>3.35</td></tr>
+<tr class="wr100"><td>14</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>8</td><td>8</td><td>100.0</td><td><strong>35.86</strong></td><td>4.48</td></tr>
+<tr class="tier2"><td>15</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>11</td><td>8</td><td>72.7</td><td><strong>34.38</strong></td><td>3.13</td></tr>
+<tr class="tier2"><td>16</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>70d</td><td>10</td><td>9</td><td>90.0</td><td><strong>34.13</strong></td><td>3.41</td></tr>
+<tr class="wr100"><td>17</td><td><strong>SA33</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>8</td><td>8</td><td>100.0</td><td><strong>33.76</strong></td><td>4.22</td></tr>
+<tr class="tier2"><td>18</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>10</td><td>9</td><td>90.0</td><td><strong>33.48</strong></td><td>3.35</td></tr>
+<tr class="tier2"><td>19</td><td><strong>SA10b</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>1.0</td><td>70d</td><td>17</td><td>8</td><td>47.1</td><td><strong>31.00</strong></td><td>1.82</td></tr>
+<tr class="wr100"><td>20</td><td><strong>LL_lag1_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>35d</td><td>7</td><td>7</td><td>100.0</td><td><strong>30.58</strong></td><td>4.37</td></tr>
+<tr class="tier2"><td>21</td><td><strong>SA02</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>9</td><td>8</td><td>88.9</td><td><strong>30.34</strong></td><td>3.37</td></tr>
+<tr class="tier2"><td>22</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>10</td><td>8</td><td>80.0</td><td><strong>29.43</strong></td><td>2.94</td></tr>
+<tr class="tier2"><td>23</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>3.0</td><td>70d</td><td>13</td><td>8</td><td>61.5</td><td><strong>27.31</strong></td><td>2.10</td></tr>
+<tr class="tier2"><td>24</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>14d</td><td>18</td><td>12</td><td>66.7</td><td><strong>26.80</strong></td><td>1.49</td></tr>
+<tr class="tier2"><td>25</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>8.0</td><td>35d</td><td>7</td><td>6</td><td>85.7</td><td><strong>25.70</strong></td><td>3.67</td></tr>
+<tr class="tier2"><td>26</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>3.0</td><td>8.0</td><td>70d</td><td>11</td><td>10</td><td>90.9</td><td><strong>25.54</strong></td><td>2.32</td></tr>
+<tr class="tier2"><td>27</td><td><strong>SA08</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>8</td><td>7</td><td>87.5</td><td><strong>25.34</strong></td><td>3.17</td></tr>
+<tr class="tier2"><td>28</td><td><strong>DV_72bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>2.0</td><td>35d</td><td>15</td><td>8</td><td>53.3</td><td><strong>24.59</strong></td><td>1.64</td></tr>
+<tr class="tier2"><td>29</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>10</td><td>8</td><td>80.0</td><td><strong>24.30</strong></td><td>2.43</td></tr>
+<tr class="wr100"><td>30</td><td><strong>INV_lag1_01</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>6</td><td>6</td><td>100.0</td><td><strong>24.28</strong></td><td>4.05</td></tr>
+<tr class="wr100"><td>31</td><td><strong>SA03</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>6</td><td>6</td><td>100.0</td><td><strong>24.15</strong></td><td>4.02</td></tr>
+<tr class="wr100"><td>32</td><td><strong>LL_lag2_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>5</td><td>5</td><td>100.0</td><td><strong>22.91</strong></td><td>4.58</td></tr>
+<tr class="tier2"><td>33</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>6</td><td>5</td><td>83.3</td><td><strong>22.08</strong></td><td>3.68</td></tr>
+<tr class="wr100"><td>34</td><td><strong>INV_lag0_01</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>5</td><td>5</td><td>100.0</td><td><strong>21.23</strong></td><td>4.25</td></tr>
+<tr class="tier2"><td>35</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>8</td><td>7</td><td>87.5</td><td><strong>21.19</strong></td><td>2.65</td></tr>
+<tr class="wr100"><td>36</td><td><strong>SA14</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>5.0</td><td>70d</td><td>7</td><td>7</td><td>100.0</td><td><strong>21.00</strong></td><td>3.00</td></tr>
+<tr class="tier2"><td>37</td><td><strong>SA10</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>8.0</td><td>21d</td><td>16</td><td>12</td><td>75.0</td><td><strong>20.14</strong></td><td>1.26</td></tr>
+<tr class="wr100"><td>38</td><td><strong>SA_drop_3d_3_rsi_g</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>5</td><td>5</td><td>100.0</td><td><strong>19.15</strong></td><td>3.83</td></tr>
+<tr class="wr100"><td>39</td><td><strong>SA09</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>5</td><td>5</td><td>100.0</td><td><strong>19.15</strong></td><td>3.83</td></tr>
+<tr class="wr100"><td>40</td><td><strong>SA34</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>5</td><td>5</td><td>100.0</td><td><strong>19.15</strong></td><td>3.83</td></tr>
+<tr class="wr100"><td>41</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>6</td><td>6</td><td>100.0</td><td><strong>18.44</strong></td><td>3.07</td></tr>
+<tr class="wr100"><td>42</td><td><strong>DV_48bar_lead_5</strong></td><td><span class="family fam-XOD">XOD</span></td><td>3.0</td><td>8.0</td><td>70d</td><td>6</td><td>6</td><td>100.0</td><td><strong>18.00</strong></td><td>3.00</td></tr>
+<tr class="wr100"><td>43</td><td><strong>LL_lag0_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>4</td><td>4</td><td>100.0</td><td><strong>17.91</strong></td><td>4.48</td></tr>
+<tr class="tier2"><td>44</td><td><strong>SA01</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>6</td><td>5</td><td>83.3</td><td><strong>15.34</strong></td><td>2.56</td></tr>
+<tr class="tier2"><td>45</td><td><strong>SA04</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>70d</td><td>6</td><td>5</td><td>83.3</td><td><strong>15.34</strong></td><td>2.56</td></tr>
+<tr class="wr100"><td>46</td><td><strong>LL_lag3_11</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>21d</td><td>4</td><td>4</td><td>100.0</td><td><strong>15.14</strong></td><td>3.79</td></tr>
+<tr class="wr100"><td>47</td><td><strong>SA12</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>1.0</td><td>70d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>48</td><td><strong>LL_lag0_04</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>35d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>49</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>8.0</td><td>70d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>50</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>8.0</td><td>70d</td><td>5</td><td>5</td><td>100.0</td><td><strong>15.00</strong></td><td>3.00</td></tr>
+</tbody></table>
+<h2>Daily Timeframe (56 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>23</td><td>16</td><td>69.6</td><td><strong>52.61</strong></td><td>2.29</td></tr>
+<tr class="tier2"><td>2</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>25</td><td>18</td><td>72.0</td><td><strong>51.40</strong></td><td>2.06</td></tr>
+<tr class="tier2"><td>3</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>20</td><td>15</td><td>75.0</td><td><strong>39.63</strong></td><td>1.98</td></tr>
+<tr class="tier2"><td>4</td><td><strong>INV_lag1_13</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>10</td><td>9</td><td>90.0</td><td><strong>37.86</strong></td><td>3.79</td></tr>
+<tr class="tier2"><td>5</td><td><strong>INV_lag0_13</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>10</td><td>9</td><td>90.0</td><td><strong>37.86</strong></td><td>3.79</td></tr>
+<tr class="tier2"><td>6</td><td><strong>SA20</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>8.0</td><td>10d</td><td>15</td><td>14</td><td>93.3</td><td><strong>37.12</strong></td><td>2.47</td></tr>
+<tr class="tier2"><td>7</td><td><strong>DV_72bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>3.0</td><td>3.0</td><td>10d</td><td>18</td><td>15</td><td>83.3</td><td><strong>36.00</strong></td><td>2.00</td></tr>
+<tr class="wr100"><td>8</td><td><strong>DV_72bar_lead_5</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>5.0</td><td>10d</td><td>8</td><td>8</td><td>100.0</td><td><strong>35.28</strong></td><td>4.41</td></tr>
+<tr class="tier2"><td>9</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>12</td><td>9</td><td>75.0</td><td><strong>33.19</strong></td><td>2.77</td></tr>
+<tr class="tier2"><td>10</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>5.0</td><td>10d</td><td>10</td><td>8</td><td>80.0</td><td><strong>32.64</strong></td><td>3.26</td></tr>
+<tr class="wr100"><td>11</td><td><strong>INV_lag1_03</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>10d</td><td>9</td><td>9</td><td>100.0</td><td><strong>32.63</strong></td><td>3.63</td></tr>
+<tr class="tier2"><td>12</td><td><strong>INV_lag2_13</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>9</td><td>8</td><td>88.9</td><td><strong>31.71</strong></td><td>3.52</td></tr>
+<tr class="tier2"><td>13</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>3.0</td><td>5.0</td><td>3d</td><td>25</td><td>19</td><td>76.0</td><td><strong>31.44</strong></td><td>1.26</td></tr>
+<tr class="tier2"><td>14</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>23</td><td>14</td><td>60.9</td><td><strong>31.13</strong></td><td>1.35</td></tr>
+<tr class="tier2"><td>15</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>11</td><td>8</td><td>72.7</td><td><strong>29.35</strong></td><td>2.67</td></tr>
+<tr class="tier2"><td>16</td><td><strong>SA22</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>11</td><td>8</td><td>72.7</td><td><strong>29.35</strong></td><td>2.67</td></tr>
+<tr class="tier2"><td>17</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>8.0</td><td>5d</td><td>11</td><td>8</td><td>72.7</td><td><strong>26.21</strong></td><td>2.38</td></tr>
+<tr class="tier2"><td>18</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-XOD">XOD</span></td><td>3.0</td><td>8.0</td><td>10d</td><td>10</td><td>9</td><td>90.0</td><td><strong>26.19</strong></td><td>2.62</td></tr>
+<tr class="tier2"><td>19</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>3.0</td><td>2.0</td><td>5d</td><td>26</td><td>16</td><td>61.5</td><td><strong>25.64</strong></td><td>0.99</td></tr>
+<tr class="tier2"><td>20</td><td><strong>SA17</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>20</td><td>12</td><td>60.0</td><td><strong>24.58</strong></td><td>1.23</td></tr>
+<tr class="tier2"><td>21</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>8</td><td>6</td><td>75.0</td><td><strong>24.46</strong></td><td>3.06</td></tr>
+<tr class="tier2"><td>22</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>19</td><td>11</td><td>57.9</td><td><strong>23.23</strong></td><td>1.22</td></tr>
+<tr class="tier2"><td>23</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>18</td><td>10</td><td>55.6</td><td><strong>22.11</strong></td><td>1.23</td></tr>
+<tr class="wr100"><td>24</td><td><strong>INV_lag0_10</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>7</td><td>7</td><td>100.0</td><td><strong>21.28</strong></td><td>3.04</td></tr>
+<tr class="tier2"><td>25</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>2.0</td><td>5d</td><td>23</td><td>10</td><td>43.5</td><td><strong>21.18</strong></td><td>0.92</td></tr>
+<tr class="tier2"><td>26</td><td><strong>SA21</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>6</td><td>5</td><td>83.3</td><td><strong>20.34</strong></td><td>3.39</td></tr>
+<tr class="tier2"><td>27</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>6</td><td>5</td><td>83.3</td><td><strong>20.34</strong></td><td>3.39</td></tr>
+<tr class="wr100"><td>28</td><td><strong>LL_lag1_08</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>4</td><td>4</td><td>100.0</td><td><strong>20.00</strong></td><td>5.00</td></tr>
+<tr class="tier2"><td>29</td><td><strong>INV_lag2_03</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>10</td><td>7</td><td>70.0</td><td><strong>19.97</strong></td><td>2.00</td></tr>
+<tr class="wr100"><td>30</td><td><strong>INV_lag0_03</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>5</td><td>5</td><td>100.0</td><td><strong>19.30</strong></td><td>3.86</td></tr>
+<tr class="tier2"><td>31</td><td><strong>DV_48bar_lead_5</strong></td><td><span class="family fam-XOD">XOD</span></td><td>3.0</td><td>8.0</td><td>5d</td><td>8</td><td>7</td><td>87.5</td><td><strong>18.05</strong></td><td>2.26</td></tr>
+<tr class="wr100"><td>32</td><td><strong>DV_72bar_lead_8</strong></td><td><span class="family fam-XOD">XOD</span></td><td>3.0</td><td>3.0</td><td>10d</td><td>6</td><td>6</td><td>100.0</td><td><strong>18.00</strong></td><td>3.00</td></tr>
+<tr class="wr100"><td>33</td><td><strong>SA28</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>6</td><td>6</td><td>100.0</td><td><strong>16.99</strong></td><td>2.83</td></tr>
+<tr class="wr100"><td>34</td><td><strong>SA23</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>4</td><td>4</td><td>100.0</td><td><strong>15.97</strong></td><td>3.99</td></tr>
+<tr class="wr100"><td>35</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>4</td><td>4</td><td>100.0</td><td><strong>15.97</strong></td><td>3.99</td></tr>
+<tr class="wr100"><td>36</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>8.0</td><td>5d</td><td>6</td><td>6</td><td>100.0</td><td><strong>15.86</strong></td><td>2.64</td></tr>
+<tr class="wr100"><td>37</td><td><strong>SA10b</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>5d</td><td>4</td><td>4</td><td>100.0</td><td><strong>15.11</strong></td><td>3.78</td></tr>
+<tr class="wr100"><td>38</td><td><strong>SA26</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>3.0</td><td>10d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>39</td><td><strong>LL_lag1_09</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>40</td><td><strong>LL_lag2_08</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>5.0</td><td>10d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>41</td><td><strong>LL_lag0_08</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.00</strong></td><td>5.00</td></tr>
+<tr class="wr100"><td>42</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>8.0</td><td>10d</td><td>5</td><td>5</td><td>100.0</td><td><strong>13.88</strong></td><td>2.78</td></tr>
+<tr class="tier2"><td>43</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>5.0</td><td>5d</td><td>5</td><td>3</td><td>60.0</td><td><strong>12.78</strong></td><td>2.56</td></tr>
+<tr class="wr100"><td>44</td><td><strong>DV_48bar_lead_8</strong></td><td><span class="family fam-XOD">XOD</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>3</td><td>3</td><td>100.0</td><td><strong>12.70</strong></td><td>4.23</td></tr>
+<tr class="wr100"><td>45</td><td><strong>INV_lag2_10</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>5.0</td><td>5d</td><td>4</td><td>4</td><td>100.0</td><td><strong>12.03</strong></td><td>3.01</td></tr>
+<tr class="wr100"><td>46</td><td><strong>INV_lag1_01</strong></td><td><span class="family fam-XOX">XOX</span></td><td>5.0</td><td>3.0</td><td>3d</td><td>3</td><td>3</td><td>100.0</td><td><strong>11.46</strong></td><td>3.82</td></tr>
+<tr class="wr100"><td>47</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>8.0</td><td>10d</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.97</strong></td><td>3.66</td></tr>
+<tr class="wr100"><td>48</td><td><strong>LL_lag2_14</strong></td><td><span class="family fam-XOL">XOL</span></td><td>5.0</td><td>5.0</td><td>5d</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.58</strong></td><td>3.53</td></tr>
+<tr class="wr100"><td>49</td><td><strong>SA03</strong></td><td><span class="family fam-XOS">XOS</span></td><td>5.0</td><td>5.0</td><td>5d</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.58</strong></td><td>3.53</td></tr>
+<tr class="wr100"><td>50</td><td><strong>SA30</strong></td><td><span class="family fam-XOS">XOS</span></td><td>3.0</td><td>8.0</td><td>10d</td><td>4</td><td>4</td><td>100.0</td><td><strong>9.78</strong></td><td>2.44</td></tr>
+</tbody></table>
+<div class="pipeline">Generated by create_rules_XOM_DBC_20260411_v2 pipeline</div>
+<script>
+function sortTable(th) {
+    var table = th.closest("table");
+    var tbody = table.querySelector("tbody");
+    var rows = Array.from(tbody.rows);
+    var col = Array.from(th.parentNode.children).indexOf(th);
+    var asc = th.getAttribute("data-asc") !== "true";
+    th.setAttribute("data-asc", asc);
+    rows.sort(function(a, b) {
+        var va = a.cells[col].textContent.trim();
+        var vb = b.cells[col].textContent.trim();
+        var na = parseFloat(va), nb = parseFloat(vb);
+        if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
+        return asc ? va.localeCompare(vb) : vb.localeCompare(va);
+    });
+    rows.forEach(function(r) { tbody.appendChild(r); });
+}
+</script>
+</body>
+</html>
