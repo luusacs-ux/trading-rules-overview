@@ -34,7 +34,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <body>
 <div class="header">
   <h1>Trading Rules Overview</h1>
-  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">42 tickers &#8226; 15,919 rules &#8226; 26.4% avg PnL</p>
+  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">43 tickers &#8226; 16,206 rules &#8226; 26.4% avg PnL</p>
   <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
 </div>
 <div style="padding:8px 16px;font-size:12px"><a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a></div>
@@ -56,7 +56,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-04-10</div>
+<div class="footer">Last updated: 2026-04-11</div>
 <script>
 var data = [
   {ticker:"BWET",stock:69,indiv:69,wr100:8,pnl10:68,avgPnl:46.66,ptpnl:5.31,report:"BWET_backtest_summary.html"},
@@ -100,7 +100,8 @@ var data = [
   {ticker:"OPEN",stock:629,indiv:629,wr100:83,pnl10:12,avgPnl:3.3,ptpnl:3.3,report:"OPEN_backtest_summary.html"},
   {ticker:"GRID",stock:295,indiv:295,wr100:47,pnl10:273,avgPnl:26.34,ptpnl:2.1,report:"GRID_backtest_summary_20260411.html"},
   {ticker:"ENPH",stock:525,indiv:525,wr100:111,pnl10:458,avgPnl:33.31,ptpnl:2.8,report:"ENPH_backtest_summary_20260411.html"},
-  {ticker:"NFLX",stock:384,indiv:384,wr100:77,pnl10:344,avgPnl:22.05,ptpnl:2.03,report:"NFLX_backtest_summary_20260411.html"}
+  {ticker:"NFLX",stock:384,indiv:384,wr100:77,pnl10:344,avgPnl:22.05,ptpnl:2.03,report:"NFLX_backtest_summary_20260411.html"},
+  {ticker:"XLK",stock:287,indiv:287,wr100:25,pnl10:260,avgPnl:25.31,ptpnl:1.59,report:"XLK_backtest_summary_20260411.html"}
 ];
 var sortCol="avgPnl",sortAsc=false;
 function render(filter){
