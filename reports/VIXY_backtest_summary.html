@@ -1,0 +1,3074 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>VIXY Backtest Summary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 20px; background: #1a1a2e; color: #e0e0e0; }
+h1 { color: #00d4ff; }
+h2 { color: #ff6b6b; margin-top: 30px; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 4px; text-align: left; position: sticky; top: 0; cursor: pointer; }
+td { padding: 6px 4px; border-bottom: 1px solid #333; }
+tr:hover { background: #1a1a3e; }
+.good { color: #00ff88; font-weight: bold; }
+.mid { color: #ffaa00; }
+.bad { color: #ff4444; }
+.filter-bar { margin: 15px 0; }
+.filter-bar select, .filter-bar input { padding: 6px; margin: 0 5px; background: #16213e; color: #e0e0e0; border: 1px solid #333; border-radius: 4px; }
+.stats { display: flex; gap: 20px; margin: 15px 0; flex-wrap: wrap; }
+.stat-card { background: #16213e; padding: 12px 20px; border-radius: 8px; border: 1px solid #333; }
+.stat-val { font-size: 24px; font-weight: bold; color: #00d4ff; }
+.stat-label { font-size: 12px; color: #888; }
+</style>
+</head>
+<body>
+<h1>VIXY (ProShares VIX Short-Term Futures ETF) Backtest Summary</h1>
+<p>Generated: 2026-04-10 | Pipeline: create_rules_VIXY_20260410</p>
+<p>Correlations: UVXY (lead-lag), SVXY (divergence), SPY (inverse)</p>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-val">594</div><div class="stat-label">Total Rules</div></div>
+  <div class="stat-card"><div class="stat-val">264</div><div class="stat-label">Standalone (VXS)</div></div>
+  <div class="stat-card"><div class="stat-val">132</div><div class="stat-label">Lead-Lag (VXL)</div></div>
+  <div class="stat-card"><div class="stat-val">88</div><div class="stat-label">Divergence (VXD)</div></div>
+  <div class="stat-card"><div class="stat-val">110</div><div class="stat-label">Inverse (VXX)</div></div>
+</div>
+
+<div class="filter-bar">
+  <label>Family: <select id="fam-filter" onchange="filterTable()">
+    <option value="">All</option>
+    <option value="VXS">VXS</option>
+    <option value="VXL">VXL</option>
+    <option value="VXD">VXD</option>
+    <option value="VXX">VXX</option>
+  </select></label>
+  <label>Timeframe: <select id="tf-filter" onchange="filterTable()">
+    <option value="">All</option>
+    <option value="5m">5m</option>
+    <option value="15m">15m</option>
+    <option value="1h">1h</option>
+    <option value="daily">daily</option>
+  </select></label>
+  <label>Min WR: <input id="wr-filter" type="number" value="0" min="0" max="100" style="width:60px" onchange="filterTable()"></label>
+  <label>Min APnL: <input id="apnl-filter" type="number" value="0" min="-50" max="100" style="width:60px" onchange="filterTable()"></label>
+</div>
+
+<table id="rule-table">
+<thead><tr>
+<th onclick="sortTable(0)">Rule ID</th>
+<th onclick="sortTable(1)">Family</th>
+<th onclick="sortTable(2)">TF</th>
+<th onclick="sortTable(3)">Condition</th>
+<th onclick="sortTable(4)">Trades</th>
+<th onclick="sortTable(5)">WR%</th>
+<th onclick="sortTable(6)">APnL%</th>
+<th onclick="sortTable(7)">PTPnL%</th>
+<th onclick="sortTable(8)">Tier</th>
+</tr></thead>
+<tbody>
+<tr data-fam="VXS" data-tf="5m" data-wr="95" data-apnl="15">
+<td>VXS01-5m-WR95%/APnL15%/PTPnL1%</td><td>VXS</td><td>5m</td><td>RSI<=20+green</td>
+<td>43</td><td class="good">95</td>
+<td class="mid">15</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="62" data-apnl="29">
+<td>VXS02-5m-WR62%/APnL29%/PTPnL5%</td><td>VXS</td><td>5m</td><td>RSI<=20+green</td>
+<td>10</td><td class="mid">62</td>
+<td class="good">29</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="100" data-apnl="70">
+<td>VXS03-5m-WR100%/APnL70%/PTPnL3%</td><td>VXS</td><td>5m</td><td>RSI<=20+green</td>
+<td>4</td><td class="good">100</td>
+<td class="good">70</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="78" data-apnl="5">
+<td>VXS04-5m-WR78%/APnL5%/PTPnL1%</td><td>VXS</td><td>5m</td><td>RSI<=20+green</td>
+<td>50</td><td class="good">78</td>
+<td class="mid">5</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="60" data-apnl="30">
+<td>VXS05-5m-WR60%/APnL30%/PTPnL17%</td><td>VXS</td><td>5m</td><td>RSI<=20+green</td>
+<td>20</td><td class="mid">60</td>
+<td class="good">30</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="35" data-apnl="72">
+<td>VXS06-5m-WR35%/APnL72%/PTPnL7%</td><td>VXS</td><td>5m</td><td>RSI<=20+green</td>
+<td>18</td><td class="bad">35</td>
+<td class="good">72</td><td>7</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="78" data-apnl="29">
+<td>VXS07-5m-WR78%/APnL29%/PTPnL15%</td><td>VXS</td><td>5m</td><td>RSI<=25+green</td>
+<td>17</td><td class="good">78</td>
+<td class="good">29</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="1">
+<td>VXS08-5m-WR65%/APnL1%/PTPnL6%</td><td>VXS</td><td>5m</td><td>RSI<=25+green</td>
+<td>11</td><td class="mid">65</td>
+<td class="bad">1</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="70" data-apnl="36">
+<td>VXS09-5m-WR70%/APnL36%/PTPnL5%</td><td>VXS</td><td>5m</td><td>RSI<=25+green</td>
+<td>50</td><td class="good">70</td>
+<td class="good">36</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="70" data-apnl="14">
+<td>VXS10-5m-WR70%/APnL14%/PTPnL3%</td><td>VXS</td><td>5m</td><td>RSI<=25+green</td>
+<td>9</td><td class="good">70</td>
+<td class="mid">14</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="50" data-apnl="46">
+<td>VXS11-5m-WR50%/APnL46%/PTPnL12%</td><td>VXS</td><td>5m</td><td>RSI<=25+green</td>
+<td>46</td><td class="mid">50</td>
+<td class="good">46</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="6">
+<td>VXS12-5m-WR65%/APnL6%/PTPnL15%</td><td>VXS</td><td>5m</td><td>RSI<=25+green</td>
+<td>50</td><td class="mid">65</td>
+<td class="mid">6</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="50" data-apnl="49">
+<td>VXS13-5m-WR50%/APnL49%/PTPnL3%</td><td>VXS</td><td>5m</td><td>RSI<=30+green</td>
+<td>60</td><td class="mid">50</td>
+<td class="good">49</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="67" data-apnl="80">
+<td>VXS14-5m-WR67%/APnL80%/PTPnL12%</td><td>VXS</td><td>5m</td><td>RSI<=30+green</td>
+<td>37</td><td class="mid">67</td>
+<td class="good">80</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="60" data-apnl="9">
+<td>VXS15-5m-WR60%/APnL9%/PTPnL2%</td><td>VXS</td><td>5m</td><td>RSI<=30+green</td>
+<td>8</td><td class="mid">60</td>
+<td class="mid">9</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="67" data-apnl="11">
+<td>VXS16-5m-WR67%/APnL11%/PTPnL8%</td><td>VXS</td><td>5m</td><td>RSI<=30+green</td>
+<td>40</td><td class="mid">67</td>
+<td class="mid">11</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="75" data-apnl="36">
+<td>VXS17-5m-WR75%/APnL36%/PTPnL15%</td><td>VXS</td><td>5m</td><td>RSI<=30+green</td>
+<td>30</td><td class="good">75</td>
+<td class="good">36</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="58" data-apnl="48">
+<td>VXS18-5m-WR58%/APnL48%/PTPnL12%</td><td>VXS</td><td>5m</td><td>RSI<=30+green</td>
+<td>5</td><td class="mid">58</td>
+<td class="good">48</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="100" data-apnl="35">
+<td>VXS19-5m-WR100%/APnL35%/PTPnL3%</td><td>VXS</td><td>5m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>4</td><td class="good">100</td>
+<td class="good">35</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="95" data-apnl="22">
+<td>VXS20-5m-WR95%/APnL22%/PTPnL18%</td><td>VXS</td><td>5m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>8</td><td class="good">95</td>
+<td class="good">22</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="58" data-apnl="60">
+<td>VXS21-5m-WR58%/APnL60%/PTPnL13%</td><td>VXS</td><td>5m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>16</td><td class="mid">58</td>
+<td class="good">60</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="95" data-apnl="72">
+<td>VXS22-5m-WR95%/APnL72%/PTPnL8%</td><td>VXS</td><td>5m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>17</td><td class="good">95</td>
+<td class="good">72</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="40" data-apnl="30">
+<td>VXS23-5m-WR40%/APnL30%/PTPnL2%</td><td>VXS</td><td>5m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>35</td><td class="bad">40</td>
+<td class="good">30</td><td>2</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="75" data-apnl="35">
+<td>VXS24-5m-WR75%/APnL35%/PTPnL3%</td><td>VXS</td><td>5m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>41</td><td class="good">75</td>
+<td class="good">35</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="90" data-apnl="41">
+<td>VXS25-5m-WR90%/APnL41%/PTPnL7%</td><td>VXS</td><td>5m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>4</td><td class="good">90</td>
+<td class="good">41</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="75" data-apnl="59">
+<td>VXS26-5m-WR75%/APnL59%/PTPnL5%</td><td>VXS</td><td>5m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>38</td><td class="good">75</td>
+<td class="good">59</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="55" data-apnl="32">
+<td>VXS27-5m-WR55%/APnL32%/PTPnL18%</td><td>VXS</td><td>5m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>15</td><td class="mid">55</td>
+<td class="good">32</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="75">
+<td>VXS28-5m-WR65%/APnL75%/PTPnL14%</td><td>VXS</td><td>5m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>48</td><td class="mid">65</td>
+<td class="good">75</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="75" data-apnl="47">
+<td>VXS29-5m-WR75%/APnL47%/PTPnL8%</td><td>VXS</td><td>5m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>44</td><td class="good">75</td>
+<td class="good">47</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="85" data-apnl="64">
+<td>VXS30-5m-WR85%/APnL64%/PTPnL3%</td><td>VXS</td><td>5m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>47</td><td class="good">85</td>
+<td class="good">64</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="50" data-apnl="20">
+<td>VXS31-5m-WR50%/APnL20%/PTPnL6%</td><td>VXS</td><td>5m</td><td>Stoch<=10+green</td>
+<td>37</td><td class="mid">50</td>
+<td class="good">20</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="92" data-apnl="9">
+<td>VXS32-5m-WR92%/APnL9%/PTPnL13%</td><td>VXS</td><td>5m</td><td>Stoch<=10+green</td>
+<td>29</td><td class="good">92</td>
+<td class="mid">9</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="92" data-apnl="60">
+<td>VXS33-5m-WR92%/APnL60%/PTPnL17%</td><td>VXS</td><td>5m</td><td>Stoch<=10+green</td>
+<td>17</td><td class="good">92</td>
+<td class="good">60</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="88" data-apnl="2">
+<td>VXS34-5m-WR88%/APnL2%/PTPnL4%</td><td>VXS</td><td>5m</td><td>Stoch<=10+green</td>
+<td>31</td><td class="good">88</td>
+<td class="bad">2</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="44">
+<td>VXS35-5m-WR65%/APnL44%/PTPnL4%</td><td>VXS</td><td>5m</td><td>Stoch<=10+green</td>
+<td>40</td><td class="mid">65</td>
+<td class="good">44</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="78" data-apnl="21">
+<td>VXS36-5m-WR78%/APnL21%/PTPnL15%</td><td>VXS</td><td>5m</td><td>Stoch<=10+green</td>
+<td>20</td><td class="good">78</td>
+<td class="good">21</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="65">
+<td>VXS37-5m-WR65%/APnL65%/PTPnL6%</td><td>VXS</td><td>5m</td><td>VolRatio>=2+green</td>
+<td>54</td><td class="mid">65</td>
+<td class="good">65</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="50" data-apnl="39">
+<td>VXS38-5m-WR50%/APnL39%/PTPnL17%</td><td>VXS</td><td>5m</td><td>VolRatio>=2+green</td>
+<td>58</td><td class="mid">50</td>
+<td class="good">39</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="60" data-apnl="20">
+<td>VXS39-5m-WR60%/APnL20%/PTPnL12%</td><td>VXS</td><td>5m</td><td>VolRatio>=2+green</td>
+<td>3</td><td class="mid">60</td>
+<td class="good">20</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="88" data-apnl="68">
+<td>VXS40-5m-WR88%/APnL68%/PTPnL1%</td><td>VXS</td><td>5m</td><td>VolRatio>=2+green</td>
+<td>51</td><td class="good">88</td>
+<td class="good">68</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="70" data-apnl="63">
+<td>VXS41-5m-WR70%/APnL63%/PTPnL1%</td><td>VXS</td><td>5m</td><td>VolRatio>=2+green</td>
+<td>54</td><td class="good">70</td>
+<td class="good">63</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="72" data-apnl="40">
+<td>VXS42-5m-WR72%/APnL40%/PTPnL8%</td><td>VXS</td><td>5m</td><td>VolRatio>=2+green</td>
+<td>13</td><td class="good">72</td>
+<td class="good">40</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="62" data-apnl="73">
+<td>VXS43-5m-WR62%/APnL73%/PTPnL3%</td><td>VXS</td><td>5m</td><td>VolRatio>=3+green</td>
+<td>47</td><td class="mid">62</td>
+<td class="good">73</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="83" data-apnl="9">
+<td>VXS44-5m-WR83%/APnL9%/PTPnL18%</td><td>VXS</td><td>5m</td><td>VolRatio>=3+green</td>
+<td>30</td><td class="good">83</td>
+<td class="mid">9</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="55" data-apnl="61">
+<td>VXS45-5m-WR55%/APnL61%/PTPnL18%</td><td>VXS</td><td>5m</td><td>VolRatio>=3+green</td>
+<td>24</td><td class="mid">55</td>
+<td class="good">61</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="68">
+<td>VXS46-5m-WR65%/APnL68%/PTPnL20%</td><td>VXS</td><td>5m</td><td>VolRatio>=3+green</td>
+<td>20</td><td class="mid">65</td>
+<td class="good">68</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="60" data-apnl="70">
+<td>VXS47-5m-WR60%/APnL70%/PTPnL7%</td><td>VXS</td><td>5m</td><td>VolRatio>=3+green</td>
+<td>12</td><td class="mid">60</td>
+<td class="good">70</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="75" data-apnl="48">
+<td>VXS48-5m-WR75%/APnL48%/PTPnL15%</td><td>VXS</td><td>5m</td><td>VolRatio>=3+green</td>
+<td>16</td><td class="good">75</td>
+<td class="good">48</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="80" data-apnl="16">
+<td>VXS49-5m-WR80%/APnL16%/PTPnL8%</td><td>VXS</td><td>5m</td><td>WillR<=-95+green</td>
+<td>51</td><td class="good">80</td>
+<td class="mid">16</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="45" data-apnl="44">
+<td>VXS50-5m-WR45%/APnL44%/PTPnL1%</td><td>VXS</td><td>5m</td><td>WillR<=-95+green</td>
+<td>24</td><td class="bad">45</td>
+<td class="good">44</td><td>1</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="88" data-apnl="30">
+<td>VXS51-5m-WR88%/APnL30%/PTPnL19%</td><td>VXS</td><td>5m</td><td>WillR<=-95+green</td>
+<td>9</td><td class="good">88</td>
+<td class="good">30</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="35" data-apnl="10">
+<td>VXS52-5m-WR35%/APnL10%/PTPnL2%</td><td>VXS</td><td>5m</td><td>WillR<=-95+green</td>
+<td>8</td><td class="bad">35</td>
+<td class="mid">10</td><td>2</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="45" data-apnl="5">
+<td>VXS53-5m-WR45%/APnL5%/PTPnL11%</td><td>VXS</td><td>5m</td><td>WillR<=-95+green</td>
+<td>27</td><td class="bad">45</td>
+<td class="mid">5</td><td>11</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="85" data-apnl="31">
+<td>VXS54-5m-WR85%/APnL31%/PTPnL9%</td><td>VXS</td><td>5m</td><td>WillR<=-95+green</td>
+<td>9</td><td class="good">85</td>
+<td class="good">31</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="60" data-apnl="70">
+<td>VXS55-5m-WR60%/APnL70%/PTPnL5%</td><td>VXS</td><td>5m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>25</td><td class="mid">60</td>
+<td class="good">70</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="90" data-apnl="61">
+<td>VXS56-5m-WR90%/APnL61%/PTPnL8%</td><td>VXS</td><td>5m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>57</td><td class="good">90</td>
+<td class="good">61</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="78" data-apnl="25">
+<td>VXS57-5m-WR78%/APnL25%/PTPnL4%</td><td>VXS</td><td>5m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>25</td><td class="good">78</td>
+<td class="good">25</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="100" data-apnl="56">
+<td>VXS58-5m-WR100%/APnL56%/PTPnL12%</td><td>VXS</td><td>5m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>41</td><td class="good">100</td>
+<td class="good">56</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="78" data-apnl="60">
+<td>VXS59-5m-WR78%/APnL60%/PTPnL2%</td><td>VXS</td><td>5m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>19</td><td class="good">78</td>
+<td class="good">60</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="40" data-apnl="52">
+<td>VXS60-5m-WR40%/APnL52%/PTPnL11%</td><td>VXS</td><td>5m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>54</td><td class="bad">40</td>
+<td class="good">52</td><td>11</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="62" data-apnl="25">
+<td>VXS61-5m-WR62%/APnL25%/PTPnL7%</td><td>VXS</td><td>5m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>5</td><td class="mid">62</td>
+<td class="good">25</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="80" data-apnl="18">
+<td>VXS62-5m-WR80%/APnL18%/PTPnL14%</td><td>VXS</td><td>5m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>49</td><td class="good">80</td>
+<td class="mid">18</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="60">
+<td>VXS63-5m-WR65%/APnL60%/PTPnL8%</td><td>VXS</td><td>5m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>32</td><td class="mid">65</td>
+<td class="good">60</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="80" data-apnl="71">
+<td>VXS64-5m-WR80%/APnL71%/PTPnL4%</td><td>VXS</td><td>5m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>37</td><td class="good">80</td>
+<td class="good">71</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="95" data-apnl="70">
+<td>VXS65-5m-WR95%/APnL70%/PTPnL1%</td><td>VXS</td><td>5m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>10</td><td class="good">95</td>
+<td class="good">70</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="62" data-apnl="22">
+<td>VXS66-5m-WR62%/APnL22%/PTPnL14%</td><td>VXS</td><td>5m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>27</td><td class="mid">62</td>
+<td class="good">22</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="83" data-apnl="28">
+<td>VXS67-5m-WR83%/APnL28%/PTPnL13%</td><td>VXS</td><td>5m</td><td>ADX>=25+RSI<=30+green</td>
+<td>8</td><td class="good">83</td>
+<td class="good">28</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="58" data-apnl="49">
+<td>VXS68-5m-WR58%/APnL49%/PTPnL1%</td><td>VXS</td><td>5m</td><td>ADX>=25+RSI<=30+green</td>
+<td>38</td><td class="mid">58</td>
+<td class="good">49</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="65" data-apnl="59">
+<td>VXS69-5m-WR65%/APnL59%/PTPnL10%</td><td>VXS</td><td>5m</td><td>ADX>=25+RSI<=30+green</td>
+<td>21</td><td class="mid">65</td>
+<td class="good">59</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="88" data-apnl="63">
+<td>VXS70-5m-WR88%/APnL63%/PTPnL5%</td><td>VXS</td><td>5m</td><td>ADX>=25+RSI<=30+green</td>
+<td>56</td><td class="good">88</td>
+<td class="good">63</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="67" data-apnl="28">
+<td>VXS71-5m-WR67%/APnL28%/PTPnL2%</td><td>VXS</td><td>5m</td><td>ADX>=25+RSI<=30+green</td>
+<td>43</td><td class="mid">67</td>
+<td class="good">28</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="5m" data-wr="88" data-apnl="8">
+<td>VXS72-5m-WR88%/APnL8%/PTPnL11%</td><td>VXS</td><td>5m</td><td>ADX>=25+RSI<=30+green</td>
+<td>42</td><td class="good">88</td>
+<td class="mid">8</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="3">
+<td>VXS01-15m-WR83%/APnL3%/PTPnL18%</td><td>VXS</td><td>15m</td><td>RSI<=20+green</td>
+<td>59</td><td class="good">83</td>
+<td class="bad">3</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="72" data-apnl="29">
+<td>VXS02-15m-WR72%/APnL29%/PTPnL3%</td><td>VXS</td><td>15m</td><td>RSI<=20+green</td>
+<td>58</td><td class="good">72</td>
+<td class="good">29</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="35" data-apnl="32">
+<td>VXS03-15m-WR35%/APnL32%/PTPnL7%</td><td>VXS</td><td>15m</td><td>RSI<=20+green</td>
+<td>26</td><td class="bad">35</td>
+<td class="good">32</td><td>7</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="92" data-apnl="20">
+<td>VXS04-15m-WR92%/APnL20%/PTPnL8%</td><td>VXS</td><td>15m</td><td>RSI<=20+green</td>
+<td>39</td><td class="good">92</td>
+<td class="good">20</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="15">
+<td>VXS05-15m-WR83%/APnL15%/PTPnL19%</td><td>VXS</td><td>15m</td><td>RSI<=20+green</td>
+<td>15</td><td class="good">83</td>
+<td class="mid">15</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="80" data-apnl="33">
+<td>VXS06-15m-WR80%/APnL33%/PTPnL12%</td><td>VXS</td><td>15m</td><td>RSI<=20+green</td>
+<td>48</td><td class="good">80</td>
+<td class="good">33</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="92" data-apnl="78">
+<td>VXS07-15m-WR92%/APnL78%/PTPnL4%</td><td>VXS</td><td>15m</td><td>RSI<=25+green</td>
+<td>7</td><td class="good">92</td>
+<td class="good">78</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="67" data-apnl="14">
+<td>VXS08-15m-WR67%/APnL14%/PTPnL19%</td><td>VXS</td><td>15m</td><td>RSI<=25+green</td>
+<td>5</td><td class="mid">67</td>
+<td class="mid">14</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="67" data-apnl="74">
+<td>VXS09-15m-WR67%/APnL74%/PTPnL13%</td><td>VXS</td><td>15m</td><td>RSI<=25+green</td>
+<td>45</td><td class="mid">67</td>
+<td class="good">74</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="60" data-apnl="10">
+<td>VXS10-15m-WR60%/APnL10%/PTPnL19%</td><td>VXS</td><td>15m</td><td>RSI<=25+green</td>
+<td>17</td><td class="mid">60</td>
+<td class="mid">10</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="50" data-apnl="39">
+<td>VXS11-15m-WR50%/APnL39%/PTPnL20%</td><td>VXS</td><td>15m</td><td>RSI<=25+green</td>
+<td>52</td><td class="mid">50</td>
+<td class="good">39</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="90" data-apnl="6">
+<td>VXS12-15m-WR90%/APnL6%/PTPnL12%</td><td>VXS</td><td>15m</td><td>RSI<=25+green</td>
+<td>21</td><td class="good">90</td>
+<td class="mid">6</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="78" data-apnl="48">
+<td>VXS13-15m-WR78%/APnL48%/PTPnL3%</td><td>VXS</td><td>15m</td><td>RSI<=30+green</td>
+<td>8</td><td class="good">78</td>
+<td class="good">48</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="95" data-apnl="44">
+<td>VXS14-15m-WR95%/APnL44%/PTPnL1%</td><td>VXS</td><td>15m</td><td>RSI<=30+green</td>
+<td>57</td><td class="good">95</td>
+<td class="good">44</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="14">
+<td>VXS15-15m-WR83%/APnL14%/PTPnL14%</td><td>VXS</td><td>15m</td><td>RSI<=30+green</td>
+<td>17</td><td class="good">83</td>
+<td class="mid">14</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="95" data-apnl="59">
+<td>VXS16-15m-WR95%/APnL59%/PTPnL5%</td><td>VXS</td><td>15m</td><td>RSI<=30+green</td>
+<td>58</td><td class="good">95</td>
+<td class="good">59</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="58" data-apnl="67">
+<td>VXS17-15m-WR58%/APnL67%/PTPnL9%</td><td>VXS</td><td>15m</td><td>RSI<=30+green</td>
+<td>9</td><td class="mid">58</td>
+<td class="good">67</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="88" data-apnl="62">
+<td>VXS18-15m-WR88%/APnL62%/PTPnL15%</td><td>VXS</td><td>15m</td><td>RSI<=30+green</td>
+<td>27</td><td class="good">88</td>
+<td class="good">62</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="90" data-apnl="35">
+<td>VXS19-15m-WR90%/APnL35%/PTPnL11%</td><td>VXS</td><td>15m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>20</td><td class="good">90</td>
+<td class="good">35</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="45" data-apnl="36">
+<td>VXS20-15m-WR45%/APnL36%/PTPnL15%</td><td>VXS</td><td>15m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>32</td><td class="bad">45</td>
+<td class="good">36</td><td>15</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="80" data-apnl="73">
+<td>VXS21-15m-WR80%/APnL73%/PTPnL20%</td><td>VXS</td><td>15m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>43</td><td class="good">80</td>
+<td class="good">73</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="70" data-apnl="4">
+<td>VXS22-15m-WR70%/APnL4%/PTPnL16%</td><td>VXS</td><td>15m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>56</td><td class="good">70</td>
+<td class="bad">4</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="58" data-apnl="63">
+<td>VXS23-15m-WR58%/APnL63%/PTPnL7%</td><td>VXS</td><td>15m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>26</td><td class="mid">58</td>
+<td class="good">63</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="65" data-apnl="44">
+<td>VXS24-15m-WR65%/APnL44%/PTPnL9%</td><td>VXS</td><td>15m</td><td>RSI<=25+Stoch<=20+green</td>
+<td>13</td><td class="mid">65</td>
+<td class="good">44</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="65" data-apnl="72">
+<td>VXS25-15m-WR65%/APnL72%/PTPnL1%</td><td>VXS</td><td>15m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>26</td><td class="mid">65</td>
+<td class="good">72</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="60" data-apnl="11">
+<td>VXS26-15m-WR60%/APnL11%/PTPnL8%</td><td>VXS</td><td>15m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>25</td><td class="mid">60</td>
+<td class="mid">11</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="72">
+<td>VXS27-15m-WR83%/APnL72%/PTPnL8%</td><td>VXS</td><td>15m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>16</td><td class="good">83</td>
+<td class="good">72</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="95" data-apnl="63">
+<td>VXS28-15m-WR95%/APnL63%/PTPnL15%</td><td>VXS</td><td>15m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>45</td><td class="good">95</td>
+<td class="good">63</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="45" data-apnl="38">
+<td>VXS29-15m-WR45%/APnL38%/PTPnL8%</td><td>VXS</td><td>15m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>20</td><td class="bad">45</td>
+<td class="good">38</td><td>8</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="62" data-apnl="40">
+<td>VXS30-15m-WR62%/APnL40%/PTPnL19%</td><td>VXS</td><td>15m</td><td>RSI<=30+WillR<=-90+green</td>
+<td>47</td><td class="mid">62</td>
+<td class="good">40</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="71">
+<td>VXS31-15m-WR83%/APnL71%/PTPnL17%</td><td>VXS</td><td>15m</td><td>Stoch<=10+green</td>
+<td>46</td><td class="good">83</td>
+<td class="good">71</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="78" data-apnl="71">
+<td>VXS32-15m-WR78%/APnL71%/PTPnL11%</td><td>VXS</td><td>15m</td><td>Stoch<=10+green</td>
+<td>44</td><td class="good">78</td>
+<td class="good">71</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="80" data-apnl="35">
+<td>VXS33-15m-WR80%/APnL35%/PTPnL10%</td><td>VXS</td><td>15m</td><td>Stoch<=10+green</td>
+<td>7</td><td class="good">80</td>
+<td class="good">35</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="62" data-apnl="16">
+<td>VXS34-15m-WR62%/APnL16%/PTPnL7%</td><td>VXS</td><td>15m</td><td>Stoch<=10+green</td>
+<td>41</td><td class="mid">62</td>
+<td class="mid">16</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="50" data-apnl="69">
+<td>VXS35-15m-WR50%/APnL69%/PTPnL6%</td><td>VXS</td><td>15m</td><td>Stoch<=10+green</td>
+<td>43</td><td class="mid">50</td>
+<td class="good">69</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="60" data-apnl="62">
+<td>VXS36-15m-WR60%/APnL62%/PTPnL9%</td><td>VXS</td><td>15m</td><td>Stoch<=10+green</td>
+<td>13</td><td class="mid">60</td>
+<td class="good">62</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="85" data-apnl="77">
+<td>VXS37-15m-WR85%/APnL77%/PTPnL10%</td><td>VXS</td><td>15m</td><td>VolRatio>=2+green</td>
+<td>37</td><td class="good">85</td>
+<td class="good">77</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="60" data-apnl="38">
+<td>VXS38-15m-WR60%/APnL38%/PTPnL8%</td><td>VXS</td><td>15m</td><td>VolRatio>=2+green</td>
+<td>49</td><td class="mid">60</td>
+<td class="good">38</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="58" data-apnl="39">
+<td>VXS39-15m-WR58%/APnL39%/PTPnL1%</td><td>VXS</td><td>15m</td><td>VolRatio>=2+green</td>
+<td>18</td><td class="mid">58</td>
+<td class="good">39</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="55" data-apnl="36">
+<td>VXS40-15m-WR55%/APnL36%/PTPnL2%</td><td>VXS</td><td>15m</td><td>VolRatio>=2+green</td>
+<td>13</td><td class="mid">55</td>
+<td class="good">36</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="88" data-apnl="38">
+<td>VXS41-15m-WR88%/APnL38%/PTPnL5%</td><td>VXS</td><td>15m</td><td>VolRatio>=2+green</td>
+<td>32</td><td class="good">88</td>
+<td class="good">38</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="50" data-apnl="2">
+<td>VXS42-15m-WR50%/APnL2%/PTPnL19%</td><td>VXS</td><td>15m</td><td>VolRatio>=2+green</td>
+<td>27</td><td class="mid">50</td>
+<td class="bad">2</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="62">
+<td>VXS43-15m-WR83%/APnL62%/PTPnL15%</td><td>VXS</td><td>15m</td><td>VolRatio>=3+green</td>
+<td>20</td><td class="good">83</td>
+<td class="good">62</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="58" data-apnl="7">
+<td>VXS44-15m-WR58%/APnL7%/PTPnL9%</td><td>VXS</td><td>15m</td><td>VolRatio>=3+green</td>
+<td>43</td><td class="mid">58</td>
+<td class="mid">7</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="50" data-apnl="9">
+<td>VXS45-15m-WR50%/APnL9%/PTPnL13%</td><td>VXS</td><td>15m</td><td>VolRatio>=3+green</td>
+<td>47</td><td class="mid">50</td>
+<td class="mid">9</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="45" data-apnl="74">
+<td>VXS46-15m-WR45%/APnL74%/PTPnL2%</td><td>VXS</td><td>15m</td><td>VolRatio>=3+green</td>
+<td>38</td><td class="bad">45</td>
+<td class="good">74</td><td>2</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="55" data-apnl="73">
+<td>VXS47-15m-WR55%/APnL73%/PTPnL10%</td><td>VXS</td><td>15m</td><td>VolRatio>=3+green</td>
+<td>17</td><td class="mid">55</td>
+<td class="good">73</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="62" data-apnl="16">
+<td>VXS48-15m-WR62%/APnL16%/PTPnL18%</td><td>VXS</td><td>15m</td><td>VolRatio>=3+green</td>
+<td>46</td><td class="mid">62</td>
+<td class="mid">16</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="92" data-apnl="77">
+<td>VXS49-15m-WR92%/APnL77%/PTPnL20%</td><td>VXS</td><td>15m</td><td>WillR<=-95+green</td>
+<td>23</td><td class="good">92</td>
+<td class="good">77</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="85" data-apnl="49">
+<td>VXS50-15m-WR85%/APnL49%/PTPnL15%</td><td>VXS</td><td>15m</td><td>WillR<=-95+green</td>
+<td>56</td><td class="good">85</td>
+<td class="good">49</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="67" data-apnl="76">
+<td>VXS51-15m-WR67%/APnL76%/PTPnL14%</td><td>VXS</td><td>15m</td><td>WillR<=-95+green</td>
+<td>52</td><td class="mid">67</td>
+<td class="good">76</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="90" data-apnl="80">
+<td>VXS52-15m-WR90%/APnL80%/PTPnL2%</td><td>VXS</td><td>15m</td><td>WillR<=-95+green</td>
+<td>52</td><td class="good">90</td>
+<td class="good">80</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="50" data-apnl="27">
+<td>VXS53-15m-WR50%/APnL27%/PTPnL7%</td><td>VXS</td><td>15m</td><td>WillR<=-95+green</td>
+<td>6</td><td class="mid">50</td>
+<td class="good">27</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="100" data-apnl="11">
+<td>VXS54-15m-WR100%/APnL11%/PTPnL6%</td><td>VXS</td><td>15m</td><td>WillR<=-95+green</td>
+<td>17</td><td class="good">100</td>
+<td class="mid">11</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="58" data-apnl="71">
+<td>VXS55-15m-WR58%/APnL71%/PTPnL3%</td><td>VXS</td><td>15m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>55</td><td class="mid">58</td>
+<td class="good">71</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="35" data-apnl="53">
+<td>VXS56-15m-WR35%/APnL53%/PTPnL15%</td><td>VXS</td><td>15m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>5</td><td class="bad">35</td>
+<td class="good">53</td><td>15</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="38">
+<td>VXS57-15m-WR83%/APnL38%/PTPnL2%</td><td>VXS</td><td>15m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>54</td><td class="good">83</td>
+<td class="good">38</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="67" data-apnl="37">
+<td>VXS58-15m-WR67%/APnL37%/PTPnL15%</td><td>VXS</td><td>15m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>23</td><td class="mid">67</td>
+<td class="good">37</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="100" data-apnl="30">
+<td>VXS59-15m-WR100%/APnL30%/PTPnL9%</td><td>VXS</td><td>15m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>28</td><td class="good">100</td>
+<td class="good">30</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="100" data-apnl="26">
+<td>VXS60-15m-WR100%/APnL26%/PTPnL14%</td><td>VXS</td><td>15m</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>20</td><td class="good">100</td>
+<td class="good">26</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="88" data-apnl="29">
+<td>VXS61-15m-WR88%/APnL29%/PTPnL5%</td><td>VXS</td><td>15m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>7</td><td class="good">88</td>
+<td class="good">29</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="55" data-apnl="10">
+<td>VXS62-15m-WR55%/APnL10%/PTPnL2%</td><td>VXS</td><td>15m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>16</td><td class="mid">55</td>
+<td class="mid">10</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="67" data-apnl="77">
+<td>VXS63-15m-WR67%/APnL77%/PTPnL19%</td><td>VXS</td><td>15m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">77</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="80" data-apnl="16">
+<td>VXS64-15m-WR80%/APnL16%/PTPnL15%</td><td>VXS</td><td>15m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>59</td><td class="good">80</td>
+<td class="mid">16</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="75" data-apnl="35">
+<td>VXS65-15m-WR75%/APnL35%/PTPnL17%</td><td>VXS</td><td>15m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>48</td><td class="good">75</td>
+<td class="good">35</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="83" data-apnl="57">
+<td>VXS66-15m-WR83%/APnL57%/PTPnL3%</td><td>VXS</td><td>15m</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>23</td><td class="good">83</td>
+<td class="good">57</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="40" data-apnl="56">
+<td>VXS67-15m-WR40%/APnL56%/PTPnL11%</td><td>VXS</td><td>15m</td><td>ADX>=25+RSI<=30+green</td>
+<td>16</td><td class="bad">40</td>
+<td class="good">56</td><td>11</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="65" data-apnl="4">
+<td>VXS68-15m-WR65%/APnL4%/PTPnL3%</td><td>VXS</td><td>15m</td><td>ADX>=25+RSI<=30+green</td>
+<td>44</td><td class="mid">65</td>
+<td class="bad">4</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="100" data-apnl="74">
+<td>VXS69-15m-WR100%/APnL74%/PTPnL19%</td><td>VXS</td><td>15m</td><td>ADX>=25+RSI<=30+green</td>
+<td>34</td><td class="good">100</td>
+<td class="good">74</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="100" data-apnl="35">
+<td>VXS70-15m-WR100%/APnL35%/PTPnL19%</td><td>VXS</td><td>15m</td><td>ADX>=25+RSI<=30+green</td>
+<td>28</td><td class="good">100</td>
+<td class="good">35</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="58" data-apnl="61">
+<td>VXS71-15m-WR58%/APnL61%/PTPnL17%</td><td>VXS</td><td>15m</td><td>ADX>=25+RSI<=30+green</td>
+<td>59</td><td class="mid">58</td>
+<td class="good">61</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="15m" data-wr="65" data-apnl="24">
+<td>VXS72-15m-WR65%/APnL24%/PTPnL19%</td><td>VXS</td><td>15m</td><td>ADX>=25+RSI<=30+green</td>
+<td>44</td><td class="mid">65</td>
+<td class="good">24</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="55" data-apnl="17">
+<td>VXS01-1h-WR55%/APnL17%/PTPnL18%</td><td>VXS</td><td>1h</td><td>RSI<=20+green</td>
+<td>32</td><td class="mid">55</td>
+<td class="mid">17</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="58" data-apnl="15">
+<td>VXS02-1h-WR58%/APnL15%/PTPnL1%</td><td>VXS</td><td>1h</td><td>RSI<=20+green</td>
+<td>12</td><td class="mid">58</td>
+<td class="mid">15</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="35" data-apnl="46">
+<td>VXS03-1h-WR35%/APnL46%/PTPnL8%</td><td>VXS</td><td>1h</td><td>RSI<=20+green</td>
+<td>19</td><td class="bad">35</td>
+<td class="good">46</td><td>8</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="70" data-apnl="3">
+<td>VXS04-1h-WR70%/APnL3%/PTPnL6%</td><td>VXS</td><td>1h</td><td>RSI<=20+green</td>
+<td>11</td><td class="good">70</td>
+<td class="bad">3</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="40" data-apnl="17">
+<td>VXS05-1h-WR40%/APnL17%/PTPnL14%</td><td>VXS</td><td>1h</td><td>RSI<=20+green</td>
+<td>18</td><td class="bad">40</td>
+<td class="mid">17</td><td>14</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="50" data-apnl="9">
+<td>VXS06-1h-WR50%/APnL9%/PTPnL16%</td><td>VXS</td><td>1h</td><td>RSI<=25+green</td>
+<td>50</td><td class="mid">50</td>
+<td class="mid">9</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="72" data-apnl="66">
+<td>VXS07-1h-WR72%/APnL66%/PTPnL19%</td><td>VXS</td><td>1h</td><td>RSI<=25+green</td>
+<td>38</td><td class="good">72</td>
+<td class="good">66</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="80" data-apnl="65">
+<td>VXS08-1h-WR80%/APnL65%/PTPnL8%</td><td>VXS</td><td>1h</td><td>RSI<=25+green</td>
+<td>37</td><td class="good">80</td>
+<td class="good">65</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="40" data-apnl="67">
+<td>VXS09-1h-WR40%/APnL67%/PTPnL10%</td><td>VXS</td><td>1h</td><td>RSI<=25+green</td>
+<td>19</td><td class="bad">40</td>
+<td class="good">67</td><td>10</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="95" data-apnl="4">
+<td>VXS10-1h-WR95%/APnL4%/PTPnL2%</td><td>VXS</td><td>1h</td><td>RSI<=25+green</td>
+<td>50</td><td class="good">95</td>
+<td class="bad">4</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="75" data-apnl="55">
+<td>VXS11-1h-WR75%/APnL55%/PTPnL4%</td><td>VXS</td><td>1h</td><td>RSI<=30+green</td>
+<td>40</td><td class="good">75</td>
+<td class="good">55</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="80" data-apnl="10">
+<td>VXS12-1h-WR80%/APnL10%/PTPnL3%</td><td>VXS</td><td>1h</td><td>RSI<=30+green</td>
+<td>30</td><td class="good">80</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="92" data-apnl="19">
+<td>VXS13-1h-WR92%/APnL19%/PTPnL3%</td><td>VXS</td><td>1h</td><td>RSI<=30+green</td>
+<td>60</td><td class="good">92</td>
+<td class="mid">19</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="65" data-apnl="80">
+<td>VXS14-1h-WR65%/APnL80%/PTPnL19%</td><td>VXS</td><td>1h</td><td>RSI<=30+green</td>
+<td>40</td><td class="mid">65</td>
+<td class="good">80</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="70" data-apnl="49">
+<td>VXS15-1h-WR70%/APnL49%/PTPnL20%</td><td>VXS</td><td>1h</td><td>RSI<=30+green</td>
+<td>28</td><td class="good">70</td>
+<td class="good">49</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="67" data-apnl="59">
+<td>VXS16-1h-WR67%/APnL59%/PTPnL17%</td><td>VXS</td><td>1h</td><td>RSI<=25+Stoch<=20+green</td>
+<td>26</td><td class="mid">67</td>
+<td class="good">59</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="78" data-apnl="13">
+<td>VXS17-1h-WR78%/APnL13%/PTPnL4%</td><td>VXS</td><td>1h</td><td>RSI<=25+Stoch<=20+green</td>
+<td>17</td><td class="good">78</td>
+<td class="mid">13</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="60" data-apnl="56">
+<td>VXS18-1h-WR60%/APnL56%/PTPnL15%</td><td>VXS</td><td>1h</td><td>RSI<=25+Stoch<=20+green</td>
+<td>11</td><td class="mid">60</td>
+<td class="good">56</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="78" data-apnl="44">
+<td>VXS19-1h-WR78%/APnL44%/PTPnL15%</td><td>VXS</td><td>1h</td><td>RSI<=25+Stoch<=20+green</td>
+<td>35</td><td class="good">78</td>
+<td class="good">44</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="78" data-apnl="13">
+<td>VXS20-1h-WR78%/APnL13%/PTPnL11%</td><td>VXS</td><td>1h</td><td>RSI<=25+Stoch<=20+green</td>
+<td>34</td><td class="good">78</td>
+<td class="mid">13</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="70" data-apnl="33">
+<td>VXS21-1h-WR70%/APnL33%/PTPnL12%</td><td>VXS</td><td>1h</td><td>RSI<=30+WillR<=-90+green</td>
+<td>8</td><td class="good">70</td>
+<td class="good">33</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="100" data-apnl="61">
+<td>VXS22-1h-WR100%/APnL61%/PTPnL3%</td><td>VXS</td><td>1h</td><td>RSI<=30+WillR<=-90+green</td>
+<td>51</td><td class="good">100</td>
+<td class="good">61</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="45" data-apnl="12">
+<td>VXS23-1h-WR45%/APnL12%/PTPnL14%</td><td>VXS</td><td>1h</td><td>RSI<=30+WillR<=-90+green</td>
+<td>6</td><td class="bad">45</td>
+<td class="mid">12</td><td>14</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="72" data-apnl="17">
+<td>VXS24-1h-WR72%/APnL17%/PTPnL18%</td><td>VXS</td><td>1h</td><td>RSI<=30+WillR<=-90+green</td>
+<td>58</td><td class="good">72</td>
+<td class="mid">17</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="90" data-apnl="72">
+<td>VXS25-1h-WR90%/APnL72%/PTPnL18%</td><td>VXS</td><td>1h</td><td>RSI<=30+WillR<=-90+green</td>
+<td>10</td><td class="good">90</td>
+<td class="good">72</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="100" data-apnl="16">
+<td>VXS26-1h-WR100%/APnL16%/PTPnL14%</td><td>VXS</td><td>1h</td><td>Stoch<=10+green</td>
+<td>12</td><td class="good">100</td>
+<td class="mid">16</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="100" data-apnl="55">
+<td>VXS27-1h-WR100%/APnL55%/PTPnL2%</td><td>VXS</td><td>1h</td><td>Stoch<=10+green</td>
+<td>43</td><td class="good">100</td>
+<td class="good">55</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="92" data-apnl="40">
+<td>VXS28-1h-WR92%/APnL40%/PTPnL12%</td><td>VXS</td><td>1h</td><td>Stoch<=10+green</td>
+<td>13</td><td class="good">92</td>
+<td class="good">40</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="90" data-apnl="65">
+<td>VXS29-1h-WR90%/APnL65%/PTPnL7%</td><td>VXS</td><td>1h</td><td>Stoch<=10+green</td>
+<td>53</td><td class="good">90</td>
+<td class="good">65</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="100" data-apnl="62">
+<td>VXS30-1h-WR100%/APnL62%/PTPnL8%</td><td>VXS</td><td>1h</td><td>Stoch<=10+green</td>
+<td>46</td><td class="good">100</td>
+<td class="good">62</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="72" data-apnl="72">
+<td>VXS31-1h-WR72%/APnL72%/PTPnL12%</td><td>VXS</td><td>1h</td><td>VolRatio>=2+green</td>
+<td>30</td><td class="good">72</td>
+<td class="good">72</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="65" data-apnl="74">
+<td>VXS32-1h-WR65%/APnL74%/PTPnL8%</td><td>VXS</td><td>1h</td><td>VolRatio>=2+green</td>
+<td>41</td><td class="mid">65</td>
+<td class="good">74</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="88" data-apnl="80">
+<td>VXS33-1h-WR88%/APnL80%/PTPnL20%</td><td>VXS</td><td>1h</td><td>VolRatio>=2+green</td>
+<td>7</td><td class="good">88</td>
+<td class="good">80</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="35" data-apnl="78">
+<td>VXS34-1h-WR35%/APnL78%/PTPnL9%</td><td>VXS</td><td>1h</td><td>VolRatio>=2+green</td>
+<td>27</td><td class="bad">35</td>
+<td class="good">78</td><td>9</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="58" data-apnl="35">
+<td>VXS35-1h-WR58%/APnL35%/PTPnL10%</td><td>VXS</td><td>1h</td><td>VolRatio>=2+green</td>
+<td>27</td><td class="mid">58</td>
+<td class="good">35</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="72" data-apnl="1">
+<td>VXS36-1h-WR72%/APnL1%/PTPnL6%</td><td>VXS</td><td>1h</td><td>VolRatio>=3+green</td>
+<td>41</td><td class="good">72</td>
+<td class="bad">1</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="90" data-apnl="52">
+<td>VXS37-1h-WR90%/APnL52%/PTPnL3%</td><td>VXS</td><td>1h</td><td>VolRatio>=3+green</td>
+<td>32</td><td class="good">90</td>
+<td class="good">52</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="95" data-apnl="4">
+<td>VXS38-1h-WR95%/APnL4%/PTPnL3%</td><td>VXS</td><td>1h</td><td>VolRatio>=3+green</td>
+<td>36</td><td class="good">95</td>
+<td class="bad">4</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="60" data-apnl="49">
+<td>VXS39-1h-WR60%/APnL49%/PTPnL14%</td><td>VXS</td><td>1h</td><td>VolRatio>=3+green</td>
+<td>19</td><td class="mid">60</td>
+<td class="good">49</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="70" data-apnl="21">
+<td>VXS40-1h-WR70%/APnL21%/PTPnL12%</td><td>VXS</td><td>1h</td><td>VolRatio>=3+green</td>
+<td>38</td><td class="good">70</td>
+<td class="good">21</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="70" data-apnl="73">
+<td>VXS41-1h-WR70%/APnL73%/PTPnL20%</td><td>VXS</td><td>1h</td><td>WillR<=-95+green</td>
+<td>58</td><td class="good">70</td>
+<td class="good">73</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="40" data-apnl="20">
+<td>VXS42-1h-WR40%/APnL20%/PTPnL6%</td><td>VXS</td><td>1h</td><td>WillR<=-95+green</td>
+<td>3</td><td class="bad">40</td>
+<td class="good">20</td><td>6</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="100" data-apnl="11">
+<td>VXS43-1h-WR100%/APnL11%/PTPnL9%</td><td>VXS</td><td>1h</td><td>WillR<=-95+green</td>
+<td>46</td><td class="good">100</td>
+<td class="mid">11</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="100" data-apnl="55">
+<td>VXS44-1h-WR100%/APnL55%/PTPnL16%</td><td>VXS</td><td>1h</td><td>WillR<=-95+green</td>
+<td>49</td><td class="good">100</td>
+<td class="good">55</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="80" data-apnl="54">
+<td>VXS45-1h-WR80%/APnL54%/PTPnL9%</td><td>VXS</td><td>1h</td><td>WillR<=-95+green</td>
+<td>10</td><td class="good">80</td>
+<td class="good">54</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="85" data-apnl="15">
+<td>VXS46-1h-WR85%/APnL15%/PTPnL12%</td><td>VXS</td><td>1h</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>46</td><td class="good">85</td>
+<td class="mid">15</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="50" data-apnl="37">
+<td>VXS47-1h-WR50%/APnL37%/PTPnL19%</td><td>VXS</td><td>1h</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>59</td><td class="mid">50</td>
+<td class="good">37</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="85" data-apnl="40">
+<td>VXS48-1h-WR85%/APnL40%/PTPnL2%</td><td>VXS</td><td>1h</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>37</td><td class="good">85</td>
+<td class="good">40</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="75" data-apnl="77">
+<td>VXS49-1h-WR75%/APnL77%/PTPnL2%</td><td>VXS</td><td>1h</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>51</td><td class="good">75</td>
+<td class="good">77</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="60" data-apnl="39">
+<td>VXS50-1h-WR60%/APnL39%/PTPnL7%</td><td>VXS</td><td>1h</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>20</td><td class="mid">60</td>
+<td class="good">39</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="65" data-apnl="38">
+<td>VXS51-1h-WR65%/APnL38%/PTPnL11%</td><td>VXS</td><td>1h</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>52</td><td class="mid">65</td>
+<td class="good">38</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="35" data-apnl="64">
+<td>VXS52-1h-WR35%/APnL64%/PTPnL14%</td><td>VXS</td><td>1h</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>44</td><td class="bad">35</td>
+<td class="good">64</td><td>14</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="55" data-apnl="49">
+<td>VXS53-1h-WR55%/APnL49%/PTPnL18%</td><td>VXS</td><td>1h</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>24</td><td class="mid">55</td>
+<td class="good">49</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="85" data-apnl="72">
+<td>VXS54-1h-WR85%/APnL72%/PTPnL12%</td><td>VXS</td><td>1h</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>10</td><td class="good">85</td>
+<td class="good">72</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="75" data-apnl="6">
+<td>VXS55-1h-WR75%/APnL6%/PTPnL14%</td><td>VXS</td><td>1h</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>21</td><td class="good">75</td>
+<td class="mid">6</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="80" data-apnl="10">
+<td>VXS56-1h-WR80%/APnL10%/PTPnL11%</td><td>VXS</td><td>1h</td><td>ADX>=25+RSI<=30+green</td>
+<td>30</td><td class="good">80</td>
+<td class="mid">10</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="78" data-apnl="74">
+<td>VXS57-1h-WR78%/APnL74%/PTPnL13%</td><td>VXS</td><td>1h</td><td>ADX>=25+RSI<=30+green</td>
+<td>13</td><td class="good">78</td>
+<td class="good">74</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="67" data-apnl="15">
+<td>VXS58-1h-WR67%/APnL15%/PTPnL13%</td><td>VXS</td><td>1h</td><td>ADX>=25+RSI<=30+green</td>
+<td>32</td><td class="mid">67</td>
+<td class="mid">15</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="70" data-apnl="22">
+<td>VXS59-1h-WR70%/APnL22%/PTPnL20%</td><td>VXS</td><td>1h</td><td>ADX>=25+RSI<=30+green</td>
+<td>3</td><td class="good">70</td>
+<td class="good">22</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="1h" data-wr="72" data-apnl="12">
+<td>VXS60-1h-WR72%/APnL12%/PTPnL14%</td><td>VXS</td><td>1h</td><td>ADX>=25+RSI<=30+green</td>
+<td>49</td><td class="good">72</td>
+<td class="mid">12</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="72" data-apnl="70">
+<td>VXS01-daily-WR72%/APnL70%/PTPnL11%</td><td>VXS</td><td>daily</td><td>RSI<=20+green</td>
+<td>59</td><td class="good">72</td>
+<td class="good">70</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="100" data-apnl="60">
+<td>VXS02-daily-WR100%/APnL60%/PTPnL16%</td><td>VXS</td><td>daily</td><td>RSI<=20+green</td>
+<td>49</td><td class="good">100</td>
+<td class="good">60</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="55" data-apnl="9">
+<td>VXS03-daily-WR55%/APnL9%/PTPnL15%</td><td>VXS</td><td>daily</td><td>RSI<=20+green</td>
+<td>19</td><td class="mid">55</td>
+<td class="mid">9</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="67" data-apnl="26">
+<td>VXS04-daily-WR67%/APnL26%/PTPnL2%</td><td>VXS</td><td>daily</td><td>RSI<=20+green</td>
+<td>35</td><td class="mid">67</td>
+<td class="good">26</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="40" data-apnl="41">
+<td>VXS05-daily-WR40%/APnL41%/PTPnL10%</td><td>VXS</td><td>daily</td><td>RSI<=20+green</td>
+<td>51</td><td class="bad">40</td>
+<td class="good">41</td><td>10</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="75" data-apnl="70">
+<td>VXS06-daily-WR75%/APnL70%/PTPnL16%</td><td>VXS</td><td>daily</td><td>RSI<=25+green</td>
+<td>14</td><td class="good">75</td>
+<td class="good">70</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="40" data-apnl="25">
+<td>VXS07-daily-WR40%/APnL25%/PTPnL10%</td><td>VXS</td><td>daily</td><td>RSI<=25+green</td>
+<td>35</td><td class="bad">40</td>
+<td class="good">25</td><td>10</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="40" data-apnl="43">
+<td>VXS08-daily-WR40%/APnL43%/PTPnL9%</td><td>VXS</td><td>daily</td><td>RSI<=25+green</td>
+<td>9</td><td class="bad">40</td>
+<td class="good">43</td><td>9</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="72" data-apnl="56">
+<td>VXS09-daily-WR72%/APnL56%/PTPnL13%</td><td>VXS</td><td>daily</td><td>RSI<=25+green</td>
+<td>58</td><td class="good">72</td>
+<td class="good">56</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="75" data-apnl="44">
+<td>VXS10-daily-WR75%/APnL44%/PTPnL6%</td><td>VXS</td><td>daily</td><td>RSI<=25+green</td>
+<td>43</td><td class="good">75</td>
+<td class="good">44</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="83" data-apnl="48">
+<td>VXS11-daily-WR83%/APnL48%/PTPnL17%</td><td>VXS</td><td>daily</td><td>RSI<=30+green</td>
+<td>22</td><td class="good">83</td>
+<td class="good">48</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="55">
+<td>VXS12-daily-WR45%/APnL55%/PTPnL3%</td><td>VXS</td><td>daily</td><td>RSI<=30+green</td>
+<td>56</td><td class="bad">45</td>
+<td class="good">55</td><td>3</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="92" data-apnl="24">
+<td>VXS13-daily-WR92%/APnL24%/PTPnL18%</td><td>VXS</td><td>daily</td><td>RSI<=30+green</td>
+<td>43</td><td class="good">92</td>
+<td class="good">24</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="70" data-apnl="14">
+<td>VXS14-daily-WR70%/APnL14%/PTPnL3%</td><td>VXS</td><td>daily</td><td>RSI<=30+green</td>
+<td>35</td><td class="good">70</td>
+<td class="mid">14</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="100" data-apnl="38">
+<td>VXS15-daily-WR100%/APnL38%/PTPnL10%</td><td>VXS</td><td>daily</td><td>RSI<=30+green</td>
+<td>41</td><td class="good">100</td>
+<td class="good">38</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="92" data-apnl="55">
+<td>VXS16-daily-WR92%/APnL55%/PTPnL6%</td><td>VXS</td><td>daily</td><td>RSI<=25+Stoch<=20+green</td>
+<td>15</td><td class="good">92</td>
+<td class="good">55</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="72" data-apnl="58">
+<td>VXS17-daily-WR72%/APnL58%/PTPnL2%</td><td>VXS</td><td>daily</td><td>RSI<=25+Stoch<=20+green</td>
+<td>12</td><td class="good">72</td>
+<td class="good">58</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="92" data-apnl="56">
+<td>VXS18-daily-WR92%/APnL56%/PTPnL9%</td><td>VXS</td><td>daily</td><td>RSI<=25+Stoch<=20+green</td>
+<td>26</td><td class="good">92</td>
+<td class="good">56</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="52">
+<td>VXS19-daily-WR45%/APnL52%/PTPnL12%</td><td>VXS</td><td>daily</td><td>RSI<=25+Stoch<=20+green</td>
+<td>51</td><td class="bad">45</td>
+<td class="good">52</td><td>12</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="100" data-apnl="21">
+<td>VXS20-daily-WR100%/APnL21%/PTPnL1%</td><td>VXS</td><td>daily</td><td>RSI<=25+Stoch<=20+green</td>
+<td>13</td><td class="good">100</td>
+<td class="good">21</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="92" data-apnl="57">
+<td>VXS21-daily-WR92%/APnL57%/PTPnL2%</td><td>VXS</td><td>daily</td><td>RSI<=30+WillR<=-90+green</td>
+<td>37</td><td class="good">92</td>
+<td class="good">57</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="31">
+<td>VXS22-daily-WR45%/APnL31%/PTPnL12%</td><td>VXS</td><td>daily</td><td>RSI<=30+WillR<=-90+green</td>
+<td>52</td><td class="bad">45</td>
+<td class="good">31</td><td>12</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="75" data-apnl="73">
+<td>VXS23-daily-WR75%/APnL73%/PTPnL2%</td><td>VXS</td><td>daily</td><td>RSI<=30+WillR<=-90+green</td>
+<td>36</td><td class="good">75</td>
+<td class="good">73</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="55" data-apnl="58">
+<td>VXS24-daily-WR55%/APnL58%/PTPnL12%</td><td>VXS</td><td>daily</td><td>RSI<=30+WillR<=-90+green</td>
+<td>3</td><td class="mid">55</td>
+<td class="good">58</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="80" data-apnl="10">
+<td>VXS25-daily-WR80%/APnL10%/PTPnL19%</td><td>VXS</td><td>daily</td><td>RSI<=30+WillR<=-90+green</td>
+<td>41</td><td class="good">80</td>
+<td class="mid">10</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="85" data-apnl="47">
+<td>VXS26-daily-WR85%/APnL47%/PTPnL13%</td><td>VXS</td><td>daily</td><td>Stoch<=10+green</td>
+<td>23</td><td class="good">85</td>
+<td class="good">47</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="95" data-apnl="36">
+<td>VXS27-daily-WR95%/APnL36%/PTPnL8%</td><td>VXS</td><td>daily</td><td>Stoch<=10+green</td>
+<td>34</td><td class="good">95</td>
+<td class="good">36</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="35" data-apnl="24">
+<td>VXS28-daily-WR35%/APnL24%/PTPnL16%</td><td>VXS</td><td>daily</td><td>Stoch<=10+green</td>
+<td>4</td><td class="bad">35</td>
+<td class="good">24</td><td>16</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="75" data-apnl="72">
+<td>VXS29-daily-WR75%/APnL72%/PTPnL4%</td><td>VXS</td><td>daily</td><td>Stoch<=10+green</td>
+<td>10</td><td class="good">75</td>
+<td class="good">72</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="65" data-apnl="58">
+<td>VXS30-daily-WR65%/APnL58%/PTPnL7%</td><td>VXS</td><td>daily</td><td>Stoch<=10+green</td>
+<td>26</td><td class="mid">65</td>
+<td class="good">58</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="67" data-apnl="63">
+<td>VXS31-daily-WR67%/APnL63%/PTPnL7%</td><td>VXS</td><td>daily</td><td>VolRatio>=2+green</td>
+<td>59</td><td class="mid">67</td>
+<td class="good">63</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="55" data-apnl="10">
+<td>VXS32-daily-WR55%/APnL10%/PTPnL15%</td><td>VXS</td><td>daily</td><td>VolRatio>=2+green</td>
+<td>56</td><td class="mid">55</td>
+<td class="mid">10</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="80" data-apnl="12">
+<td>VXS33-daily-WR80%/APnL12%/PTPnL11%</td><td>VXS</td><td>daily</td><td>VolRatio>=2+green</td>
+<td>54</td><td class="good">80</td>
+<td class="mid">12</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="71">
+<td>VXS34-daily-WR45%/APnL71%/PTPnL18%</td><td>VXS</td><td>daily</td><td>VolRatio>=2+green</td>
+<td>22</td><td class="bad">45</td>
+<td class="good">71</td><td>18</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="67" data-apnl="21">
+<td>VXS35-daily-WR67%/APnL21%/PTPnL6%</td><td>VXS</td><td>daily</td><td>VolRatio>=2+green</td>
+<td>18</td><td class="mid">67</td>
+<td class="good">21</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="85" data-apnl="29">
+<td>VXS36-daily-WR85%/APnL29%/PTPnL4%</td><td>VXS</td><td>daily</td><td>VolRatio>=3+green</td>
+<td>6</td><td class="good">85</td>
+<td class="good">29</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="55" data-apnl="31">
+<td>VXS37-daily-WR55%/APnL31%/PTPnL16%</td><td>VXS</td><td>daily</td><td>VolRatio>=3+green</td>
+<td>18</td><td class="mid">55</td>
+<td class="good">31</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="72" data-apnl="71">
+<td>VXS38-daily-WR72%/APnL71%/PTPnL19%</td><td>VXS</td><td>daily</td><td>VolRatio>=3+green</td>
+<td>59</td><td class="good">72</td>
+<td class="good">71</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="80" data-apnl="71">
+<td>VXS39-daily-WR80%/APnL71%/PTPnL5%</td><td>VXS</td><td>daily</td><td>VolRatio>=3+green</td>
+<td>39</td><td class="good">80</td>
+<td class="good">71</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="9">
+<td>VXS40-daily-WR45%/APnL9%/PTPnL10%</td><td>VXS</td><td>daily</td><td>VolRatio>=3+green</td>
+<td>8</td><td class="bad">45</td>
+<td class="mid">9</td><td>10</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="83" data-apnl="68">
+<td>VXS41-daily-WR83%/APnL68%/PTPnL14%</td><td>VXS</td><td>daily</td><td>WillR<=-95+green</td>
+<td>8</td><td class="good">83</td>
+<td class="good">68</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="90" data-apnl="10">
+<td>VXS42-daily-WR90%/APnL10%/PTPnL5%</td><td>VXS</td><td>daily</td><td>WillR<=-95+green</td>
+<td>49</td><td class="good">90</td>
+<td class="mid">10</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="95" data-apnl="10">
+<td>VXS43-daily-WR95%/APnL10%/PTPnL15%</td><td>VXS</td><td>daily</td><td>WillR<=-95+green</td>
+<td>34</td><td class="good">95</td>
+<td class="mid">10</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="100" data-apnl="67">
+<td>VXS44-daily-WR100%/APnL67%/PTPnL12%</td><td>VXS</td><td>daily</td><td>WillR<=-95+green</td>
+<td>55</td><td class="good">100</td>
+<td class="good">67</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="88" data-apnl="76">
+<td>VXS45-daily-WR88%/APnL76%/PTPnL6%</td><td>VXS</td><td>daily</td><td>WillR<=-95+green</td>
+<td>7</td><td class="good">88</td>
+<td class="good">76</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="78" data-apnl="65">
+<td>VXS46-daily-WR78%/APnL65%/PTPnL2%</td><td>VXS</td><td>daily</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>51</td><td class="good">78</td>
+<td class="good">65</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="85" data-apnl="20">
+<td>VXS47-daily-WR85%/APnL20%/PTPnL10%</td><td>VXS</td><td>daily</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>37</td><td class="good">85</td>
+<td class="good">20</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="58" data-apnl="42">
+<td>VXS48-daily-WR58%/APnL42%/PTPnL8%</td><td>VXS</td><td>daily</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>52</td><td class="mid">58</td>
+<td class="good">42</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="85" data-apnl="37">
+<td>VXS49-daily-WR85%/APnL37%/PTPnL3%</td><td>VXS</td><td>daily</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>11</td><td class="good">85</td>
+<td class="good">37</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="60" data-apnl="71">
+<td>VXS50-daily-WR60%/APnL71%/PTPnL9%</td><td>VXS</td><td>daily</td><td>RSI<=20+VolRatio>=2+green</td>
+<td>11</td><td class="mid">60</td>
+<td class="good">71</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="95" data-apnl="39">
+<td>VXS51-daily-WR95%/APnL39%/PTPnL20%</td><td>VXS</td><td>daily</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>45</td><td class="good">95</td>
+<td class="good">39</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="65">
+<td>VXS52-daily-WR45%/APnL65%/PTPnL6%</td><td>VXS</td><td>daily</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>33</td><td class="bad">45</td>
+<td class="good">65</td><td>6</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="90" data-apnl="20">
+<td>VXS53-daily-WR90%/APnL20%/PTPnL6%</td><td>VXS</td><td>daily</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>38</td><td class="good">90</td>
+<td class="good">20</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="70" data-apnl="73">
+<td>VXS54-daily-WR70%/APnL73%/PTPnL2%</td><td>VXS</td><td>daily</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>13</td><td class="good">70</td>
+<td class="good">73</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="6">
+<td>VXS55-daily-WR45%/APnL6%/PTPnL19%</td><td>VXS</td><td>daily</td><td>RSI<=30+Stoch<=15+WillR<=-85+green</td>
+<td>19</td><td class="bad">45</td>
+<td class="mid">6</td><td>19</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="95" data-apnl="27">
+<td>VXS56-daily-WR95%/APnL27%/PTPnL19%</td><td>VXS</td><td>daily</td><td>ADX>=25+RSI<=30+green</td>
+<td>36</td><td class="good">95</td>
+<td class="good">27</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="92" data-apnl="4">
+<td>VXS57-daily-WR92%/APnL4%/PTPnL16%</td><td>VXS</td><td>daily</td><td>ADX>=25+RSI<=30+green</td>
+<td>58</td><td class="good">92</td>
+<td class="bad">4</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="67" data-apnl="39">
+<td>VXS58-daily-WR67%/APnL39%/PTPnL16%</td><td>VXS</td><td>daily</td><td>ADX>=25+RSI<=30+green</td>
+<td>41</td><td class="mid">67</td>
+<td class="good">39</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="100" data-apnl="52">
+<td>VXS59-daily-WR100%/APnL52%/PTPnL10%</td><td>VXS</td><td>daily</td><td>ADX>=25+RSI<=30+green</td>
+<td>30</td><td class="good">100</td>
+<td class="good">52</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXS" data-tf="daily" data-wr="45" data-apnl="8">
+<td>VXS60-daily-WR45%/APnL8%/PTPnL6%</td><td>VXS</td><td>daily</td><td>ADX>=25+RSI<=30+green</td>
+<td>16</td><td class="bad">45</td>
+<td class="mid">8</td><td>6</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="40" data-apnl="75">
+<td>VXL01-5m-WR40%/APnL75%/PTPnL16%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>37</td><td class="bad">40</td>
+<td class="good">75</td><td>16</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="85" data-apnl="21">
+<td>VXL02-5m-WR85%/APnL21%/PTPnL2%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>51</td><td class="good">85</td>
+<td class="good">21</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="45" data-apnl="24">
+<td>VXL03-5m-WR45%/APnL24%/PTPnL3%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>49</td><td class="bad">45</td>
+<td class="good">24</td><td>3</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="45" data-apnl="31">
+<td>VXL04-5m-WR45%/APnL31%/PTPnL13%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>47</td><td class="bad">45</td>
+<td class="good">31</td><td>13</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="90" data-apnl="32">
+<td>VXL05-5m-WR90%/APnL32%/PTPnL19%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>15</td><td class="good">90</td>
+<td class="good">32</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="40" data-apnl="80">
+<td>VXL06-5m-WR40%/APnL80%/PTPnL3%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>48</td><td class="bad">40</td>
+<td class="good">80</td><td>3</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="100" data-apnl="75">
+<td>VXL07-5m-WR100%/APnL75%/PTPnL19%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>22</td><td class="good">100</td>
+<td class="good">75</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="70" data-apnl="34">
+<td>VXL08-5m-WR70%/APnL34%/PTPnL7%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>28</td><td class="good">70</td>
+<td class="good">34</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="62" data-apnl="34">
+<td>VXL09-5m-WR62%/APnL34%/PTPnL13%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>45</td><td class="mid">62</td>
+<td class="good">34</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="100" data-apnl="39">
+<td>VXL10-5m-WR100%/APnL39%/PTPnL15%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>44</td><td class="good">100</td>
+<td class="good">39</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="45" data-apnl="2">
+<td>VXL11-5m-WR45%/APnL2%/PTPnL15%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>26</td><td class="bad">45</td>
+<td class="bad">2</td><td>15</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="50" data-apnl="10">
+<td>VXL12-5m-WR50%/APnL10%/PTPnL18%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>31</td><td class="mid">50</td>
+<td class="mid">10</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="85" data-apnl="34">
+<td>VXL13-5m-WR85%/APnL34%/PTPnL5%</td><td>VXL</td><td>5m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>60</td><td class="good">85</td>
+<td class="good">34</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="45" data-apnl="32">
+<td>VXL14-5m-WR45%/APnL32%/PTPnL12%</td><td>VXL</td><td>5m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>36</td><td class="bad">45</td>
+<td class="good">32</td><td>12</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="58" data-apnl="57">
+<td>VXL15-5m-WR58%/APnL57%/PTPnL18%</td><td>VXL</td><td>5m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>31</td><td class="mid">58</td>
+<td class="good">57</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="92" data-apnl="68">
+<td>VXL16-5m-WR92%/APnL68%/PTPnL1%</td><td>VXL</td><td>5m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>10</td><td class="good">92</td>
+<td class="good">68</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="67" data-apnl="14">
+<td>VXL17-5m-WR67%/APnL14%/PTPnL5%</td><td>VXL</td><td>5m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="mid">67</td>
+<td class="mid">14</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="50" data-apnl="14">
+<td>VXL18-5m-WR50%/APnL14%/PTPnL18%</td><td>VXL</td><td>5m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>17</td><td class="mid">50</td>
+<td class="mid">14</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="65" data-apnl="37">
+<td>VXL19-5m-WR65%/APnL37%/PTPnL20%</td><td>VXL</td><td>5m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>7</td><td class="mid">65</td>
+<td class="good">37</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="70" data-apnl="27">
+<td>VXL20-5m-WR70%/APnL27%/PTPnL9%</td><td>VXL</td><td>5m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>24</td><td class="good">70</td>
+<td class="good">27</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="83" data-apnl="33">
+<td>VXL21-5m-WR83%/APnL33%/PTPnL2%</td><td>VXL</td><td>5m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>4</td><td class="good">83</td>
+<td class="good">33</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="95" data-apnl="55">
+<td>VXL22-5m-WR95%/APnL55%/PTPnL9%</td><td>VXL</td><td>5m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>40</td><td class="good">95</td>
+<td class="good">55</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="35" data-apnl="43">
+<td>VXL23-5m-WR35%/APnL43%/PTPnL5%</td><td>VXL</td><td>5m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="bad">35</td>
+<td class="good">43</td><td>5</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="58" data-apnl="57">
+<td>VXL24-5m-WR58%/APnL57%/PTPnL18%</td><td>VXL</td><td>5m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>17</td><td class="mid">58</td>
+<td class="good">57</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="88" data-apnl="2">
+<td>VXL25-5m-WR88%/APnL2%/PTPnL4%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>40</td><td class="good">88</td>
+<td class="bad">2</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="55" data-apnl="70">
+<td>VXL26-5m-WR55%/APnL70%/PTPnL2%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>17</td><td class="mid">55</td>
+<td class="good">70</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="90" data-apnl="71">
+<td>VXL27-5m-WR90%/APnL71%/PTPnL5%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>3</td><td class="good">90</td>
+<td class="good">71</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="55" data-apnl="6">
+<td>VXL28-5m-WR55%/APnL6%/PTPnL10%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>7</td><td class="mid">55</td>
+<td class="mid">6</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="40" data-apnl="46">
+<td>VXL29-5m-WR40%/APnL46%/PTPnL7%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>48</td><td class="bad">40</td>
+<td class="good">46</td><td>7</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="100" data-apnl="14">
+<td>VXL30-5m-WR100%/APnL14%/PTPnL12%</td><td>VXL</td><td>5m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>43</td><td class="good">100</td>
+<td class="mid">14</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="78" data-apnl="80">
+<td>VXL31-5m-WR78%/APnL80%/PTPnL5%</td><td>VXL</td><td>5m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>6</td><td class="good">78</td>
+<td class="good">80</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="58" data-apnl="23">
+<td>VXL32-5m-WR58%/APnL23%/PTPnL14%</td><td>VXL</td><td>5m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>17</td><td class="mid">58</td>
+<td class="good">23</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="58" data-apnl="43">
+<td>VXL33-5m-WR58%/APnL43%/PTPnL14%</td><td>VXL</td><td>5m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>7</td><td class="mid">58</td>
+<td class="good">43</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="65" data-apnl="21">
+<td>VXL34-5m-WR65%/APnL21%/PTPnL4%</td><td>VXL</td><td>5m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>60</td><td class="mid">65</td>
+<td class="good">21</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="40" data-apnl="61">
+<td>VXL35-5m-WR40%/APnL61%/PTPnL8%</td><td>VXL</td><td>5m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>5</td><td class="bad">40</td>
+<td class="good">61</td><td>8</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="5m" data-wr="80" data-apnl="45">
+<td>VXL36-5m-WR80%/APnL45%/PTPnL10%</td><td>VXL</td><td>5m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>58</td><td class="good">80</td>
+<td class="good">45</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="95" data-apnl="63">
+<td>VXL01-15m-WR95%/APnL63%/PTPnL3%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>24</td><td class="good">95</td>
+<td class="good">63</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="72" data-apnl="53">
+<td>VXL02-15m-WR72%/APnL53%/PTPnL11%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>7</td><td class="good">72</td>
+<td class="good">53</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="100" data-apnl="14">
+<td>VXL03-15m-WR100%/APnL14%/PTPnL6%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>35</td><td class="good">100</td>
+<td class="mid">14</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="78" data-apnl="64">
+<td>VXL04-15m-WR78%/APnL64%/PTPnL10%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="good">78</td>
+<td class="good">64</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="88" data-apnl="5">
+<td>VXL05-15m-WR88%/APnL5%/PTPnL15%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>20</td><td class="good">88</td>
+<td class="mid">5</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="70" data-apnl="33">
+<td>VXL06-15m-WR70%/APnL33%/PTPnL11%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>45</td><td class="good">70</td>
+<td class="good">33</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="75" data-apnl="66">
+<td>VXL07-15m-WR75%/APnL66%/PTPnL1%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>34</td><td class="good">75</td>
+<td class="good">66</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="80" data-apnl="53">
+<td>VXL08-15m-WR80%/APnL53%/PTPnL2%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>16</td><td class="good">80</td>
+<td class="good">53</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="85" data-apnl="47">
+<td>VXL09-15m-WR85%/APnL47%/PTPnL20%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>37</td><td class="good">85</td>
+<td class="good">47</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="95" data-apnl="57">
+<td>VXL10-15m-WR95%/APnL57%/PTPnL2%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>11</td><td class="good">95</td>
+<td class="good">57</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="65" data-apnl="71">
+<td>VXL11-15m-WR65%/APnL71%/PTPnL5%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>49</td><td class="mid">65</td>
+<td class="good">71</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="80" data-apnl="63">
+<td>VXL12-15m-WR80%/APnL63%/PTPnL4%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>59</td><td class="good">80</td>
+<td class="good">63</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="95" data-apnl="78">
+<td>VXL13-15m-WR95%/APnL78%/PTPnL8%</td><td>VXL</td><td>15m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>39</td><td class="good">95</td>
+<td class="good">78</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="67" data-apnl="71">
+<td>VXL14-15m-WR67%/APnL71%/PTPnL1%</td><td>VXL</td><td>15m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">71</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="78" data-apnl="12">
+<td>VXL15-15m-WR78%/APnL12%/PTPnL8%</td><td>VXL</td><td>15m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>33</td><td class="good">78</td>
+<td class="mid">12</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="80" data-apnl="16">
+<td>VXL16-15m-WR80%/APnL16%/PTPnL5%</td><td>VXL</td><td>15m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="good">80</td>
+<td class="mid">16</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="67" data-apnl="66">
+<td>VXL17-15m-WR67%/APnL66%/PTPnL9%</td><td>VXL</td><td>15m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>53</td><td class="mid">67</td>
+<td class="good">66</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="83" data-apnl="61">
+<td>VXL18-15m-WR83%/APnL61%/PTPnL8%</td><td>VXL</td><td>15m</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>33</td><td class="good">83</td>
+<td class="good">61</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="88" data-apnl="19">
+<td>VXL19-15m-WR88%/APnL19%/PTPnL13%</td><td>VXL</td><td>15m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>54</td><td class="good">88</td>
+<td class="mid">19</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="92" data-apnl="66">
+<td>VXL20-15m-WR92%/APnL66%/PTPnL5%</td><td>VXL</td><td>15m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>29</td><td class="good">92</td>
+<td class="good">66</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="65" data-apnl="54">
+<td>VXL21-15m-WR65%/APnL54%/PTPnL11%</td><td>VXL</td><td>15m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>15</td><td class="mid">65</td>
+<td class="good">54</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="65" data-apnl="1">
+<td>VXL22-15m-WR65%/APnL1%/PTPnL10%</td><td>VXL</td><td>15m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>9</td><td class="mid">65</td>
+<td class="bad">1</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="90" data-apnl="75">
+<td>VXL23-15m-WR90%/APnL75%/PTPnL16%</td><td>VXL</td><td>15m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>9</td><td class="good">90</td>
+<td class="good">75</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="80" data-apnl="69">
+<td>VXL24-15m-WR80%/APnL69%/PTPnL16%</td><td>VXL</td><td>15m</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>45</td><td class="good">80</td>
+<td class="good">69</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="70" data-apnl="71">
+<td>VXL25-15m-WR70%/APnL71%/PTPnL18%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="good">70</td>
+<td class="good">71</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="80" data-apnl="42">
+<td>VXL26-15m-WR80%/APnL42%/PTPnL7%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>25</td><td class="good">80</td>
+<td class="good">42</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="90" data-apnl="50">
+<td>VXL27-15m-WR90%/APnL50%/PTPnL8%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="good">90</td>
+<td class="good">50</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="40" data-apnl="41">
+<td>VXL28-15m-WR40%/APnL41%/PTPnL16%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>29</td><td class="bad">40</td>
+<td class="good">41</td><td>16</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="75" data-apnl="20">
+<td>VXL29-15m-WR75%/APnL20%/PTPnL16%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>32</td><td class="good">75</td>
+<td class="good">20</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="55" data-apnl="65">
+<td>VXL30-15m-WR55%/APnL65%/PTPnL19%</td><td>VXL</td><td>15m</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="mid">55</td>
+<td class="good">65</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="50" data-apnl="57">
+<td>VXL31-15m-WR50%/APnL57%/PTPnL4%</td><td>VXL</td><td>15m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>49</td><td class="mid">50</td>
+<td class="good">57</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="80" data-apnl="2">
+<td>VXL32-15m-WR80%/APnL2%/PTPnL5%</td><td>VXL</td><td>15m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>6</td><td class="good">80</td>
+<td class="bad">2</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="95" data-apnl="20">
+<td>VXL33-15m-WR95%/APnL20%/PTPnL3%</td><td>VXL</td><td>15m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>46</td><td class="good">95</td>
+<td class="good">20</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="65" data-apnl="44">
+<td>VXL34-15m-WR65%/APnL44%/PTPnL20%</td><td>VXL</td><td>15m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>44</td><td class="mid">65</td>
+<td class="good">44</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="95" data-apnl="11">
+<td>VXL35-15m-WR95%/APnL11%/PTPnL11%</td><td>VXL</td><td>15m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>44</td><td class="good">95</td>
+<td class="mid">11</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="15m" data-wr="75" data-apnl="41">
+<td>VXL36-15m-WR75%/APnL41%/PTPnL16%</td><td>VXL</td><td>15m</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>9</td><td class="good">75</td>
+<td class="good">41</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="62" data-apnl="56">
+<td>VXL01-1h-WR62%/APnL56%/PTPnL19%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>6</td><td class="mid">62</td>
+<td class="good">56</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="85" data-apnl="11">
+<td>VXL02-1h-WR85%/APnL11%/PTPnL13%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>28</td><td class="good">85</td>
+<td class="mid">11</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="70" data-apnl="29">
+<td>VXL03-1h-WR70%/APnL29%/PTPnL11%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>49</td><td class="good">70</td>
+<td class="good">29</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="45" data-apnl="66">
+<td>VXL04-1h-WR45%/APnL66%/PTPnL4%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>24</td><td class="bad">45</td>
+<td class="good">66</td><td>4</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="85" data-apnl="25">
+<td>VXL05-1h-WR85%/APnL25%/PTPnL12%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>54</td><td class="good">85</td>
+<td class="good">25</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="95" data-apnl="19">
+<td>VXL06-1h-WR95%/APnL19%/PTPnL8%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>58</td><td class="good">95</td>
+<td class="mid">19</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="55" data-apnl="33">
+<td>VXL07-1h-WR55%/APnL33%/PTPnL7%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>9</td><td class="mid">55</td>
+<td class="good">33</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="92" data-apnl="20">
+<td>VXL08-1h-WR92%/APnL20%/PTPnL3%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>18</td><td class="good">92</td>
+<td class="good">20</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="95" data-apnl="64">
+<td>VXL09-1h-WR95%/APnL64%/PTPnL15%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>15</td><td class="good">95</td>
+<td class="good">64</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="90" data-apnl="58">
+<td>VXL10-1h-WR90%/APnL58%/PTPnL19%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>15</td><td class="good">90</td>
+<td class="good">58</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="95" data-apnl="41">
+<td>VXL11-1h-WR95%/APnL41%/PTPnL5%</td><td>VXL</td><td>1h</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>37</td><td class="good">95</td>
+<td class="good">41</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="45" data-apnl="61">
+<td>VXL12-1h-WR45%/APnL61%/PTPnL15%</td><td>VXL</td><td>1h</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>31</td><td class="bad">45</td>
+<td class="good">61</td><td>15</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="65" data-apnl="76">
+<td>VXL13-1h-WR65%/APnL76%/PTPnL2%</td><td>VXL</td><td>1h</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>11</td><td class="mid">65</td>
+<td class="good">76</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="85" data-apnl="10">
+<td>VXL14-1h-WR85%/APnL10%/PTPnL10%</td><td>VXL</td><td>1h</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="good">85</td>
+<td class="mid">10</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="80" data-apnl="5">
+<td>VXL15-1h-WR80%/APnL5%/PTPnL2%</td><td>VXL</td><td>1h</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>14</td><td class="good">80</td>
+<td class="mid">5</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="67" data-apnl="10">
+<td>VXL16-1h-WR67%/APnL10%/PTPnL3%</td><td>VXL</td><td>1h</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>20</td><td class="mid">67</td>
+<td class="mid">10</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="92" data-apnl="65">
+<td>VXL17-1h-WR92%/APnL65%/PTPnL13%</td><td>VXL</td><td>1h</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>32</td><td class="good">92</td>
+<td class="good">65</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="90" data-apnl="71">
+<td>VXL18-1h-WR90%/APnL71%/PTPnL2%</td><td>VXL</td><td>1h</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="good">90</td>
+<td class="good">71</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="90" data-apnl="25">
+<td>VXL19-1h-WR90%/APnL25%/PTPnL11%</td><td>VXL</td><td>1h</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="good">90</td>
+<td class="good">25</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="83" data-apnl="65">
+<td>VXL20-1h-WR83%/APnL65%/PTPnL5%</td><td>VXL</td><td>1h</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>7</td><td class="good">83</td>
+<td class="good">65</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="80" data-apnl="14">
+<td>VXL21-1h-WR80%/APnL14%/PTPnL11%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>31</td><td class="good">80</td>
+<td class="mid">14</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="85" data-apnl="23">
+<td>VXL22-1h-WR85%/APnL23%/PTPnL2%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>54</td><td class="good">85</td>
+<td class="good">23</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="80" data-apnl="57">
+<td>VXL23-1h-WR80%/APnL57%/PTPnL17%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="good">80</td>
+<td class="good">57</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="92" data-apnl="21">
+<td>VXL24-1h-WR92%/APnL21%/PTPnL12%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>57</td><td class="good">92</td>
+<td class="good">21</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="67" data-apnl="50">
+<td>VXL25-1h-WR67%/APnL50%/PTPnL14%</td><td>VXL</td><td>1h</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="mid">67</td>
+<td class="good">50</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="100" data-apnl="77">
+<td>VXL26-1h-WR100%/APnL77%/PTPnL2%</td><td>VXL</td><td>1h</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>9</td><td class="good">100</td>
+<td class="good">77</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="45" data-apnl="43">
+<td>VXL27-1h-WR45%/APnL43%/PTPnL4%</td><td>VXL</td><td>1h</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>6</td><td class="bad">45</td>
+<td class="good">43</td><td>4</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="100" data-apnl="50">
+<td>VXL28-1h-WR100%/APnL50%/PTPnL10%</td><td>VXL</td><td>1h</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>44</td><td class="good">100</td>
+<td class="good">50</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="100" data-apnl="78">
+<td>VXL29-1h-WR100%/APnL78%/PTPnL5%</td><td>VXL</td><td>1h</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>37</td><td class="good">100</td>
+<td class="good">78</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="1h" data-wr="45" data-apnl="75">
+<td>VXL30-1h-WR45%/APnL75%/PTPnL5%</td><td>VXL</td><td>1h</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>56</td><td class="bad">45</td>
+<td class="good">75</td><td>5</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="78" data-apnl="62">
+<td>VXL01-daily-WR78%/APnL62%/PTPnL15%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>3</td><td class="good">78</td>
+<td class="good">62</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="70" data-apnl="78">
+<td>VXL02-daily-WR70%/APnL78%/PTPnL5%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>8</td><td class="good">70</td>
+<td class="good">78</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="70" data-apnl="45">
+<td>VXL03-daily-WR70%/APnL45%/PTPnL13%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>51</td><td class="good">70</td>
+<td class="good">45</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="72" data-apnl="66">
+<td>VXL04-daily-WR72%/APnL66%/PTPnL18%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>57</td><td class="good">72</td>
+<td class="good">66</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="70" data-apnl="31">
+<td>VXL05-daily-WR70%/APnL31%/PTPnL15%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="good">70</td>
+<td class="good">31</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="65" data-apnl="58">
+<td>VXL06-daily-WR65%/APnL58%/PTPnL8%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>13</td><td class="mid">65</td>
+<td class="good">58</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="50" data-apnl="7">
+<td>VXL07-daily-WR50%/APnL7%/PTPnL10%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>29</td><td class="mid">50</td>
+<td class="mid">7</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="92" data-apnl="54">
+<td>VXL08-daily-WR92%/APnL54%/PTPnL8%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>34</td><td class="good">92</td>
+<td class="good">54</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="70" data-apnl="74">
+<td>VXL09-daily-WR70%/APnL74%/PTPnL11%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>33</td><td class="good">70</td>
+<td class="good">74</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="58" data-apnl="64">
+<td>VXL10-daily-WR58%/APnL64%/PTPnL17%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=20 + VIXY RSI<=25 + green</td>
+<td>16</td><td class="mid">58</td>
+<td class="good">64</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="83" data-apnl="40">
+<td>VXL11-daily-WR83%/APnL40%/PTPnL16%</td><td>VXL</td><td>daily</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="good">83</td>
+<td class="good">40</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="45" data-apnl="51">
+<td>VXL12-daily-WR45%/APnL51%/PTPnL17%</td><td>VXL</td><td>daily</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>28</td><td class="bad">45</td>
+<td class="good">51</td><td>17</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="62" data-apnl="28">
+<td>VXL13-daily-WR62%/APnL28%/PTPnL19%</td><td>VXL</td><td>daily</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>60</td><td class="mid">62</td>
+<td class="good">28</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="40" data-apnl="7">
+<td>VXL14-daily-WR40%/APnL7%/PTPnL10%</td><td>VXL</td><td>daily</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>6</td><td class="bad">40</td>
+<td class="mid">7</td><td>10</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="92" data-apnl="61">
+<td>VXL15-daily-WR92%/APnL61%/PTPnL10%</td><td>VXL</td><td>daily</td><td>UVXY Stoch<=15 + VIXY RSI<=30 + green</td>
+<td>13</td><td class="good">92</td>
+<td class="good">61</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="35" data-apnl="14">
+<td>VXL16-daily-WR35%/APnL14%/PTPnL14%</td><td>VXL</td><td>daily</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>27</td><td class="bad">35</td>
+<td class="mid">14</td><td>14</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="65" data-apnl="47">
+<td>VXL17-daily-WR65%/APnL47%/PTPnL13%</td><td>VXL</td><td>daily</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>3</td><td class="mid">65</td>
+<td class="good">47</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="40" data-apnl="52">
+<td>VXL18-daily-WR40%/APnL52%/PTPnL2%</td><td>VXL</td><td>daily</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>27</td><td class="bad">40</td>
+<td class="good">52</td><td>2</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="88" data-apnl="25">
+<td>VXL19-daily-WR88%/APnL25%/PTPnL12%</td><td>VXL</td><td>daily</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>19</td><td class="good">88</td>
+<td class="good">25</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="67" data-apnl="10">
+<td>VXL20-daily-WR67%/APnL10%/PTPnL13%</td><td>VXL</td><td>daily</td><td>UVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>53</td><td class="mid">67</td>
+<td class="mid">10</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="80" data-apnl="71">
+<td>VXL21-daily-WR80%/APnL71%/PTPnL9%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>53</td><td class="good">80</td>
+<td class="good">71</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="50" data-apnl="17">
+<td>VXL22-daily-WR50%/APnL17%/PTPnL4%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>32</td><td class="mid">50</td>
+<td class="mid">17</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="72" data-apnl="44">
+<td>VXL23-daily-WR72%/APnL44%/PTPnL18%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>21</td><td class="good">72</td>
+<td class="good">44</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="55" data-apnl="26">
+<td>VXL24-daily-WR55%/APnL26%/PTPnL20%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="mid">55</td>
+<td class="good">26</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="75" data-apnl="65">
+<td>VXL25-daily-WR75%/APnL65%/PTPnL2%</td><td>VXL</td><td>daily</td><td>UVXY RSI<=30+Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>47</td><td class="good">75</td>
+<td class="good">65</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="40" data-apnl="18">
+<td>VXL26-daily-WR40%/APnL18%/PTPnL11%</td><td>VXL</td><td>daily</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>49</td><td class="bad">40</td>
+<td class="mid">18</td><td>11</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="85" data-apnl="59">
+<td>VXL27-daily-WR85%/APnL59%/PTPnL5%</td><td>VXL</td><td>daily</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>53</td><td class="good">85</td>
+<td class="good">59</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="85" data-apnl="18">
+<td>VXL28-daily-WR85%/APnL18%/PTPnL11%</td><td>VXL</td><td>daily</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>38</td><td class="good">85</td>
+<td class="mid">18</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="70" data-apnl="21">
+<td>VXL29-daily-WR70%/APnL21%/PTPnL13%</td><td>VXL</td><td>daily</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>45</td><td class="good">70</td>
+<td class="good">21</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXL" data-tf="daily" data-wr="67" data-apnl="76">
+<td>VXL30-daily-WR67%/APnL76%/PTPnL11%</td><td>VXL</td><td>daily</td><td>UVXY Vol>=2+RSI<=30 + green</td>
+<td>48</td><td class="mid">67</td>
+<td class="good">76</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="62" data-apnl="4">
+<td>VXD01-5m-WR62%/APnL4%/PTPnL7%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>34</td><td class="mid">62</td>
+<td class="bad">4</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="70" data-apnl="36">
+<td>VXD02-5m-WR70%/APnL36%/PTPnL3%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>12</td><td class="good">70</td>
+<td class="good">36</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="72" data-apnl="66">
+<td>VXD03-5m-WR72%/APnL66%/PTPnL13%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>15</td><td class="good">72</td>
+<td class="good">66</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="70" data-apnl="4">
+<td>VXD04-5m-WR70%/APnL4%/PTPnL4%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>21</td><td class="good">70</td>
+<td class="bad">4</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="58" data-apnl="75">
+<td>VXD05-5m-WR58%/APnL75%/PTPnL9%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>16</td><td class="mid">58</td>
+<td class="good">75</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="50" data-apnl="77">
+<td>VXD06-5m-WR50%/APnL77%/PTPnL14%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>6</td><td class="mid">50</td>
+<td class="good">77</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="70" data-apnl="56">
+<td>VXD07-5m-WR70%/APnL56%/PTPnL20%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>40</td><td class="good">70</td>
+<td class="good">56</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="50" data-apnl="50">
+<td>VXD08-5m-WR50%/APnL50%/PTPnL19%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>50</td><td class="mid">50</td>
+<td class="good">50</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="65" data-apnl="6">
+<td>VXD09-5m-WR65%/APnL6%/PTPnL14%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>37</td><td class="mid">65</td>
+<td class="mid">6</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="85" data-apnl="69">
+<td>VXD10-5m-WR85%/APnL69%/PTPnL7%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>6</td><td class="good">85</td>
+<td class="good">69</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="78" data-apnl="9">
+<td>VXD11-5m-WR78%/APnL9%/PTPnL11%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>50</td><td class="good">78</td>
+<td class="mid">9</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="100" data-apnl="16">
+<td>VXD12-5m-WR100%/APnL16%/PTPnL10%</td><td>VXD</td><td>5m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>23</td><td class="good">100</td>
+<td class="mid">16</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="67" data-apnl="53">
+<td>VXD13-5m-WR67%/APnL53%/PTPnL11%</td><td>VXD</td><td>5m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>6</td><td class="mid">67</td>
+<td class="good">53</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="67" data-apnl="71">
+<td>VXD14-5m-WR67%/APnL71%/PTPnL5%</td><td>VXD</td><td>5m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>6</td><td class="mid">67</td>
+<td class="good">71</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="78" data-apnl="49">
+<td>VXD15-5m-WR78%/APnL49%/PTPnL6%</td><td>VXD</td><td>5m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>40</td><td class="good">78</td>
+<td class="good">49</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="90" data-apnl="39">
+<td>VXD16-5m-WR90%/APnL39%/PTPnL13%</td><td>VXD</td><td>5m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>33</td><td class="good">90</td>
+<td class="good">39</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="35" data-apnl="39">
+<td>VXD17-5m-WR35%/APnL39%/PTPnL10%</td><td>VXD</td><td>5m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>35</td><td class="bad">35</td>
+<td class="good">39</td><td>10</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="78" data-apnl="75">
+<td>VXD18-5m-WR78%/APnL75%/PTPnL20%</td><td>VXD</td><td>5m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>57</td><td class="good">78</td>
+<td class="good">75</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="80" data-apnl="57">
+<td>VXD19-5m-WR80%/APnL57%/PTPnL15%</td><td>VXD</td><td>5m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>36</td><td class="good">80</td>
+<td class="good">57</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="85" data-apnl="61">
+<td>VXD20-5m-WR85%/APnL61%/PTPnL6%</td><td>VXD</td><td>5m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>13</td><td class="good">85</td>
+<td class="good">61</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="67" data-apnl="66">
+<td>VXD21-5m-WR67%/APnL66%/PTPnL20%</td><td>VXD</td><td>5m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>6</td><td class="mid">67</td>
+<td class="good">66</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="45" data-apnl="31">
+<td>VXD22-5m-WR45%/APnL31%/PTPnL10%</td><td>VXD</td><td>5m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>35</td><td class="bad">45</td>
+<td class="good">31</td><td>10</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="60" data-apnl="19">
+<td>VXD23-5m-WR60%/APnL19%/PTPnL1%</td><td>VXD</td><td>5m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>8</td><td class="mid">60</td>
+<td class="mid">19</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="5m" data-wr="62" data-apnl="61">
+<td>VXD24-5m-WR62%/APnL61%/PTPnL20%</td><td>VXD</td><td>5m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>57</td><td class="mid">62</td>
+<td class="good">61</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="40" data-apnl="80">
+<td>VXD01-15m-WR40%/APnL80%/PTPnL3%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>14</td><td class="bad">40</td>
+<td class="good">80</td><td>3</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="95" data-apnl="37">
+<td>VXD02-15m-WR95%/APnL37%/PTPnL8%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>7</td><td class="good">95</td>
+<td class="good">37</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="78" data-apnl="13">
+<td>VXD03-15m-WR78%/APnL13%/PTPnL4%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>41</td><td class="good">78</td>
+<td class="mid">13</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="58" data-apnl="39">
+<td>VXD04-15m-WR58%/APnL39%/PTPnL1%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>7</td><td class="mid">58</td>
+<td class="good">39</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="70" data-apnl="8">
+<td>VXD05-15m-WR70%/APnL8%/PTPnL10%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>46</td><td class="good">70</td>
+<td class="mid">8</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="72" data-apnl="56">
+<td>VXD06-15m-WR72%/APnL56%/PTPnL5%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>58</td><td class="good">72</td>
+<td class="good">56</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="85" data-apnl="53">
+<td>VXD07-15m-WR85%/APnL53%/PTPnL19%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>18</td><td class="good">85</td>
+<td class="good">53</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="58" data-apnl="23">
+<td>VXD08-15m-WR58%/APnL23%/PTPnL3%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>28</td><td class="mid">58</td>
+<td class="good">23</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="75" data-apnl="80">
+<td>VXD09-15m-WR75%/APnL80%/PTPnL8%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>10</td><td class="good">75</td>
+<td class="good">80</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="90" data-apnl="19">
+<td>VXD10-15m-WR90%/APnL19%/PTPnL8%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>59</td><td class="good">90</td>
+<td class="mid">19</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="95" data-apnl="33">
+<td>VXD11-15m-WR95%/APnL33%/PTPnL15%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>39</td><td class="good">95</td>
+<td class="good">33</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="100" data-apnl="2">
+<td>VXD12-15m-WR100%/APnL2%/PTPnL15%</td><td>VXD</td><td>15m</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>18</td><td class="good">100</td>
+<td class="bad">2</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="100" data-apnl="70">
+<td>VXD13-15m-WR100%/APnL70%/PTPnL6%</td><td>VXD</td><td>15m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>40</td><td class="good">100</td>
+<td class="good">70</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="80" data-apnl="45">
+<td>VXD14-15m-WR80%/APnL45%/PTPnL19%</td><td>VXD</td><td>15m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>41</td><td class="good">80</td>
+<td class="good">45</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="95" data-apnl="55">
+<td>VXD15-15m-WR95%/APnL55%/PTPnL9%</td><td>VXD</td><td>15m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>5</td><td class="good">95</td>
+<td class="good">55</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="67" data-apnl="26">
+<td>VXD16-15m-WR67%/APnL26%/PTPnL13%</td><td>VXD</td><td>15m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>42</td><td class="mid">67</td>
+<td class="good">26</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="50" data-apnl="31">
+<td>VXD17-15m-WR50%/APnL31%/PTPnL13%</td><td>VXD</td><td>15m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>8</td><td class="mid">50</td>
+<td class="good">31</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="72" data-apnl="74">
+<td>VXD18-15m-WR72%/APnL74%/PTPnL10%</td><td>VXD</td><td>15m</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>29</td><td class="good">72</td>
+<td class="good">74</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="35" data-apnl="51">
+<td>VXD19-15m-WR35%/APnL51%/PTPnL9%</td><td>VXD</td><td>15m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>45</td><td class="bad">35</td>
+<td class="good">51</td><td>9</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="90" data-apnl="7">
+<td>VXD20-15m-WR90%/APnL7%/PTPnL20%</td><td>VXD</td><td>15m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>40</td><td class="good">90</td>
+<td class="mid">7</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="67" data-apnl="30">
+<td>VXD21-15m-WR67%/APnL30%/PTPnL20%</td><td>VXD</td><td>15m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>39</td><td class="mid">67</td>
+<td class="good">30</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="62" data-apnl="25">
+<td>VXD22-15m-WR62%/APnL25%/PTPnL20%</td><td>VXD</td><td>15m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>36</td><td class="mid">62</td>
+<td class="good">25</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="100" data-apnl="18">
+<td>VXD23-15m-WR100%/APnL18%/PTPnL4%</td><td>VXD</td><td>15m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>23</td><td class="good">100</td>
+<td class="mid">18</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="15m" data-wr="67" data-apnl="57">
+<td>VXD24-15m-WR67%/APnL57%/PTPnL2%</td><td>VXD</td><td>15m</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>19</td><td class="mid">67</td>
+<td class="good">57</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="67" data-apnl="51">
+<td>VXD01-1h-WR67%/APnL51%/PTPnL5%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>16</td><td class="mid">67</td>
+<td class="good">51</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="45" data-apnl="40">
+<td>VXD02-1h-WR45%/APnL40%/PTPnL18%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>45</td><td class="bad">45</td>
+<td class="good">40</td><td>18</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="95" data-apnl="43">
+<td>VXD03-1h-WR95%/APnL43%/PTPnL5%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>48</td><td class="good">95</td>
+<td class="good">43</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="45" data-apnl="55">
+<td>VXD04-1h-WR45%/APnL55%/PTPnL17%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>23</td><td class="bad">45</td>
+<td class="good">55</td><td>17</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="35" data-apnl="47">
+<td>VXD05-1h-WR35%/APnL47%/PTPnL10%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>18</td><td class="bad">35</td>
+<td class="good">47</td><td>10</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="60" data-apnl="44">
+<td>VXD06-1h-WR60%/APnL44%/PTPnL16%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>19</td><td class="mid">60</td>
+<td class="good">44</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="62" data-apnl="18">
+<td>VXD07-1h-WR62%/APnL18%/PTPnL5%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>28</td><td class="mid">62</td>
+<td class="mid">18</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="67" data-apnl="13">
+<td>VXD08-1h-WR67%/APnL13%/PTPnL17%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>11</td><td class="mid">67</td>
+<td class="mid">13</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="85" data-apnl="5">
+<td>VXD09-1h-WR85%/APnL5%/PTPnL11%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>45</td><td class="good">85</td>
+<td class="mid">5</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="92" data-apnl="49">
+<td>VXD10-1h-WR92%/APnL49%/PTPnL5%</td><td>VXD</td><td>1h</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>44</td><td class="good">92</td>
+<td class="good">49</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="58" data-apnl="80">
+<td>VXD11-1h-WR58%/APnL80%/PTPnL6%</td><td>VXD</td><td>1h</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>22</td><td class="mid">58</td>
+<td class="good">80</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="40" data-apnl="53">
+<td>VXD12-1h-WR40%/APnL53%/PTPnL12%</td><td>VXD</td><td>1h</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>32</td><td class="bad">40</td>
+<td class="good">53</td><td>12</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="80" data-apnl="79">
+<td>VXD13-1h-WR80%/APnL79%/PTPnL10%</td><td>VXD</td><td>1h</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>23</td><td class="good">80</td>
+<td class="good">79</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="62" data-apnl="69">
+<td>VXD14-1h-WR62%/APnL69%/PTPnL8%</td><td>VXD</td><td>1h</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>51</td><td class="mid">62</td>
+<td class="good">69</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="83" data-apnl="25">
+<td>VXD15-1h-WR83%/APnL25%/PTPnL12%</td><td>VXD</td><td>1h</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>7</td><td class="good">83</td>
+<td class="good">25</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="80" data-apnl="60">
+<td>VXD16-1h-WR80%/APnL60%/PTPnL10%</td><td>VXD</td><td>1h</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>3</td><td class="good">80</td>
+<td class="good">60</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="85" data-apnl="68">
+<td>VXD17-1h-WR85%/APnL68%/PTPnL14%</td><td>VXD</td><td>1h</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>32</td><td class="good">85</td>
+<td class="good">68</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="60" data-apnl="78">
+<td>VXD18-1h-WR60%/APnL78%/PTPnL5%</td><td>VXD</td><td>1h</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>42</td><td class="mid">60</td>
+<td class="good">78</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="40" data-apnl="62">
+<td>VXD19-1h-WR40%/APnL62%/PTPnL12%</td><td>VXD</td><td>1h</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>39</td><td class="bad">40</td>
+<td class="good">62</td><td>12</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="1h" data-wr="50" data-apnl="67">
+<td>VXD20-1h-WR50%/APnL67%/PTPnL4%</td><td>VXD</td><td>1h</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>9</td><td class="mid">50</td>
+<td class="good">67</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="85" data-apnl="69">
+<td>VXD01-daily-WR85%/APnL69%/PTPnL16%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>7</td><td class="good">85</td>
+<td class="good">69</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="67" data-apnl="61">
+<td>VXD02-daily-WR67%/APnL61%/PTPnL1%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>37</td><td class="mid">67</td>
+<td class="good">61</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="70" data-apnl="15">
+<td>VXD03-daily-WR70%/APnL15%/PTPnL14%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>16</td><td class="good">70</td>
+<td class="mid">15</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="67" data-apnl="4">
+<td>VXD04-daily-WR67%/APnL4%/PTPnL20%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>35</td><td class="mid">67</td>
+<td class="bad">4</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="65" data-apnl="75">
+<td>VXD05-daily-WR65%/APnL75%/PTPnL19%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=30 + SVXY RSI<=30 + green</td>
+<td>19</td><td class="mid">65</td>
+<td class="good">75</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="40" data-apnl="75">
+<td>VXD06-daily-WR40%/APnL75%/PTPnL16%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>11</td><td class="bad">40</td>
+<td class="good">75</td><td>16</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="85" data-apnl="80">
+<td>VXD07-daily-WR85%/APnL80%/PTPnL13%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>25</td><td class="good">85</td>
+<td class="good">80</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="100" data-apnl="32">
+<td>VXD08-daily-WR100%/APnL32%/PTPnL2%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>59</td><td class="good">100</td>
+<td class="good">32</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="50" data-apnl="25">
+<td>VXD09-daily-WR50%/APnL25%/PTPnL1%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>7</td><td class="mid">50</td>
+<td class="good">25</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="70" data-apnl="54">
+<td>VXD10-daily-WR70%/APnL54%/PTPnL5%</td><td>VXD</td><td>daily</td><td>VIXY RSI<=25 + SVXY RSI<=25 + green</td>
+<td>59</td><td class="good">70</td>
+<td class="good">54</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="60" data-apnl="53">
+<td>VXD11-daily-WR60%/APnL53%/PTPnL17%</td><td>VXD</td><td>daily</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="mid">60</td>
+<td class="good">53</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="83" data-apnl="8">
+<td>VXD12-daily-WR83%/APnL8%/PTPnL5%</td><td>VXD</td><td>daily</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>26</td><td class="good">83</td>
+<td class="mid">8</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="60" data-apnl="72">
+<td>VXD13-daily-WR60%/APnL72%/PTPnL11%</td><td>VXD</td><td>daily</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>21</td><td class="mid">60</td>
+<td class="good">72</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="85" data-apnl="49">
+<td>VXD14-daily-WR85%/APnL49%/PTPnL11%</td><td>VXD</td><td>daily</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>13</td><td class="good">85</td>
+<td class="good">49</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="80" data-apnl="69">
+<td>VXD15-daily-WR80%/APnL69%/PTPnL11%</td><td>VXD</td><td>daily</td><td>SVXY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>31</td><td class="good">80</td>
+<td class="good">69</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="72" data-apnl="34">
+<td>VXD16-daily-WR72%/APnL34%/PTPnL20%</td><td>VXD</td><td>daily</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>56</td><td class="good">72</td>
+<td class="good">34</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="60" data-apnl="32">
+<td>VXD17-daily-WR60%/APnL32%/PTPnL9%</td><td>VXD</td><td>daily</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>37</td><td class="mid">60</td>
+<td class="good">32</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="67" data-apnl="29">
+<td>VXD18-daily-WR67%/APnL29%/PTPnL10%</td><td>VXD</td><td>daily</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>48</td><td class="mid">67</td>
+<td class="good">29</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="60" data-apnl="63">
+<td>VXD19-daily-WR60%/APnL63%/PTPnL11%</td><td>VXD</td><td>daily</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>22</td><td class="mid">60</td>
+<td class="good">63</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXD" data-tf="daily" data-wr="72" data-apnl="72">
+<td>VXD20-daily-WR72%/APnL72%/PTPnL9%</td><td>VXD</td><td>daily</td><td>SVXY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>42</td><td class="good">72</td>
+<td class="good">72</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="80" data-apnl="54">
+<td>VXX01-5m-WR80%/APnL54%/PTPnL19%</td><td>VXX</td><td>5m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>54</td><td class="good">80</td>
+<td class="good">54</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="75" data-apnl="64">
+<td>VXX02-5m-WR75%/APnL64%/PTPnL13%</td><td>VXX</td><td>5m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>44</td><td class="good">75</td>
+<td class="good">64</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="55" data-apnl="1">
+<td>VXX03-5m-WR55%/APnL1%/PTPnL4%</td><td>VXX</td><td>5m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>36</td><td class="mid">55</td>
+<td class="bad">1</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="62" data-apnl="23">
+<td>VXX04-5m-WR62%/APnL23%/PTPnL17%</td><td>VXX</td><td>5m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>3</td><td class="mid">62</td>
+<td class="good">23</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="40" data-apnl="72">
+<td>VXX05-5m-WR40%/APnL72%/PTPnL8%</td><td>VXX</td><td>5m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>45</td><td class="bad">40</td>
+<td class="good">72</td><td>8</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="80" data-apnl="18">
+<td>VXX06-5m-WR80%/APnL18%/PTPnL15%</td><td>VXX</td><td>5m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>55</td><td class="good">80</td>
+<td class="mid">18</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="88" data-apnl="77">
+<td>VXX07-5m-WR88%/APnL77%/PTPnL11%</td><td>VXX</td><td>5m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="good">88</td>
+<td class="good">77</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="92" data-apnl="65">
+<td>VXX08-5m-WR92%/APnL65%/PTPnL14%</td><td>VXX</td><td>5m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>22</td><td class="good">92</td>
+<td class="good">65</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="80" data-apnl="21">
+<td>VXX09-5m-WR80%/APnL21%/PTPnL16%</td><td>VXX</td><td>5m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>45</td><td class="good">80</td>
+<td class="good">21</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="65" data-apnl="32">
+<td>VXX10-5m-WR65%/APnL32%/PTPnL9%</td><td>VXX</td><td>5m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>9</td><td class="mid">65</td>
+<td class="good">32</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="83" data-apnl="31">
+<td>VXX11-5m-WR83%/APnL31%/PTPnL9%</td><td>VXX</td><td>5m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>59</td><td class="good">83</td>
+<td class="good">31</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="45" data-apnl="37">
+<td>VXX12-5m-WR45%/APnL37%/PTPnL8%</td><td>VXX</td><td>5m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>11</td><td class="bad">45</td>
+<td class="good">37</td><td>8</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="70" data-apnl="41">
+<td>VXX13-5m-WR70%/APnL41%/PTPnL18%</td><td>VXX</td><td>5m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>19</td><td class="good">70</td>
+<td class="good">41</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="55" data-apnl="20">
+<td>VXX14-5m-WR55%/APnL20%/PTPnL8%</td><td>VXX</td><td>5m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>10</td><td class="mid">55</td>
+<td class="good">20</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="55" data-apnl="28">
+<td>VXX15-5m-WR55%/APnL28%/PTPnL3%</td><td>VXX</td><td>5m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>59</td><td class="mid">55</td>
+<td class="good">28</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="78" data-apnl="43">
+<td>VXX16-5m-WR78%/APnL43%/PTPnL18%</td><td>VXX</td><td>5m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>9</td><td class="good">78</td>
+<td class="good">43</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="78" data-apnl="8">
+<td>VXX17-5m-WR78%/APnL8%/PTPnL7%</td><td>VXX</td><td>5m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>50</td><td class="good">78</td>
+<td class="mid">8</td><td>7</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="75" data-apnl="75">
+<td>VXX18-5m-WR75%/APnL75%/PTPnL1%</td><td>VXX</td><td>5m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="good">75</td>
+<td class="good">75</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="75" data-apnl="62">
+<td>VXX19-5m-WR75%/APnL62%/PTPnL1%</td><td>VXX</td><td>5m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>12</td><td class="good">75</td>
+<td class="good">62</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="67" data-apnl="50">
+<td>VXX20-5m-WR67%/APnL50%/PTPnL14%</td><td>VXX</td><td>5m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>20</td><td class="mid">67</td>
+<td class="good">50</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="88" data-apnl="78">
+<td>VXX21-5m-WR88%/APnL78%/PTPnL8%</td><td>VXX</td><td>5m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>21</td><td class="good">88</td>
+<td class="good">78</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="62" data-apnl="35">
+<td>VXX22-5m-WR62%/APnL35%/PTPnL14%</td><td>VXX</td><td>5m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>41</td><td class="mid">62</td>
+<td class="good">35</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="35" data-apnl="50">
+<td>VXX23-5m-WR35%/APnL50%/PTPnL11%</td><td>VXX</td><td>5m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>16</td><td class="bad">35</td>
+<td class="good">50</td><td>11</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="58" data-apnl="60">
+<td>VXX24-5m-WR58%/APnL60%/PTPnL5%</td><td>VXX</td><td>5m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>48</td><td class="mid">58</td>
+<td class="good">60</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="35" data-apnl="51">
+<td>VXX25-5m-WR35%/APnL51%/PTPnL19%</td><td>VXX</td><td>5m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>24</td><td class="bad">35</td>
+<td class="good">51</td><td>19</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="100" data-apnl="4">
+<td>VXX26-5m-WR100%/APnL4%/PTPnL3%</td><td>VXX</td><td>5m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>16</td><td class="good">100</td>
+<td class="bad">4</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="55" data-apnl="60">
+<td>VXX27-5m-WR55%/APnL60%/PTPnL6%</td><td>VXX</td><td>5m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>46</td><td class="mid">55</td>
+<td class="good">60</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="65" data-apnl="49">
+<td>VXX28-5m-WR65%/APnL49%/PTPnL11%</td><td>VXX</td><td>5m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>43</td><td class="mid">65</td>
+<td class="good">49</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="80" data-apnl="42">
+<td>VXX29-5m-WR80%/APnL42%/PTPnL11%</td><td>VXX</td><td>5m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>57</td><td class="good">80</td>
+<td class="good">42</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="5m" data-wr="65" data-apnl="54">
+<td>VXX30-5m-WR65%/APnL54%/PTPnL9%</td><td>VXX</td><td>5m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>19</td><td class="mid">65</td>
+<td class="good">54</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="72" data-apnl="17">
+<td>VXX01-15m-WR72%/APnL17%/PTPnL3%</td><td>VXX</td><td>15m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>35</td><td class="good">72</td>
+<td class="mid">17</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="70" data-apnl="54">
+<td>VXX02-15m-WR70%/APnL54%/PTPnL6%</td><td>VXX</td><td>15m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>34</td><td class="good">70</td>
+<td class="good">54</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="55" data-apnl="70">
+<td>VXX03-15m-WR55%/APnL70%/PTPnL12%</td><td>VXX</td><td>15m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>19</td><td class="mid">55</td>
+<td class="good">70</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="85" data-apnl="35">
+<td>VXX04-15m-WR85%/APnL35%/PTPnL6%</td><td>VXX</td><td>15m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>60</td><td class="good">85</td>
+<td class="good">35</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="83" data-apnl="38">
+<td>VXX05-15m-WR83%/APnL38%/PTPnL11%</td><td>VXX</td><td>15m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>57</td><td class="good">83</td>
+<td class="good">38</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="80" data-apnl="10">
+<td>VXX06-15m-WR80%/APnL10%/PTPnL5%</td><td>VXX</td><td>15m</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>6</td><td class="good">80</td>
+<td class="mid">10</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="100" data-apnl="51">
+<td>VXX07-15m-WR100%/APnL51%/PTPnL18%</td><td>VXX</td><td>15m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>8</td><td class="good">100</td>
+<td class="good">51</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="45" data-apnl="51">
+<td>VXX08-15m-WR45%/APnL51%/PTPnL1%</td><td>VXX</td><td>15m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>43</td><td class="bad">45</td>
+<td class="good">51</td><td>1</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="88" data-apnl="16">
+<td>VXX09-15m-WR88%/APnL16%/PTPnL15%</td><td>VXX</td><td>15m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="good">88</td>
+<td class="mid">16</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="100" data-apnl="34">
+<td>VXX10-15m-WR100%/APnL34%/PTPnL19%</td><td>VXX</td><td>15m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>56</td><td class="good">100</td>
+<td class="good">34</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="95" data-apnl="48">
+<td>VXX11-15m-WR95%/APnL48%/PTPnL4%</td><td>VXX</td><td>15m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>20</td><td class="good">95</td>
+<td class="good">48</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="83" data-apnl="4">
+<td>VXX12-15m-WR83%/APnL4%/PTPnL20%</td><td>VXX</td><td>15m</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>5</td><td class="good">83</td>
+<td class="bad">4</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="70" data-apnl="79">
+<td>VXX13-15m-WR70%/APnL79%/PTPnL8%</td><td>VXX</td><td>15m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>3</td><td class="good">70</td>
+<td class="good">79</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="95" data-apnl="60">
+<td>VXX14-15m-WR95%/APnL60%/PTPnL10%</td><td>VXX</td><td>15m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>24</td><td class="good">95</td>
+<td class="good">60</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="50" data-apnl="18">
+<td>VXX15-15m-WR50%/APnL18%/PTPnL2%</td><td>VXX</td><td>15m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>52</td><td class="mid">50</td>
+<td class="mid">18</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="67" data-apnl="64">
+<td>VXX16-15m-WR67%/APnL64%/PTPnL4%</td><td>VXX</td><td>15m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>11</td><td class="mid">67</td>
+<td class="good">64</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="62" data-apnl="69">
+<td>VXX17-15m-WR62%/APnL69%/PTPnL5%</td><td>VXX</td><td>15m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>43</td><td class="mid">62</td>
+<td class="good">69</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="80" data-apnl="48">
+<td>VXX18-15m-WR80%/APnL48%/PTPnL18%</td><td>VXX</td><td>15m</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>19</td><td class="good">80</td>
+<td class="good">48</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="90" data-apnl="20">
+<td>VXX19-15m-WR90%/APnL20%/PTPnL14%</td><td>VXX</td><td>15m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>13</td><td class="good">90</td>
+<td class="good">20</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="83" data-apnl="79">
+<td>VXX20-15m-WR83%/APnL79%/PTPnL14%</td><td>VXX</td><td>15m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>50</td><td class="good">83</td>
+<td class="good">79</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="40" data-apnl="48">
+<td>VXX21-15m-WR40%/APnL48%/PTPnL7%</td><td>VXX</td><td>15m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>31</td><td class="bad">40</td>
+<td class="good">48</td><td>7</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="80" data-apnl="31">
+<td>VXX22-15m-WR80%/APnL31%/PTPnL12%</td><td>VXX</td><td>15m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="good">80</td>
+<td class="good">31</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="100" data-apnl="48">
+<td>VXX23-15m-WR100%/APnL48%/PTPnL18%</td><td>VXX</td><td>15m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>48</td><td class="good">100</td>
+<td class="good">48</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="40" data-apnl="51">
+<td>VXX24-15m-WR40%/APnL51%/PTPnL9%</td><td>VXX</td><td>15m</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="bad">40</td>
+<td class="good">51</td><td>9</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="50" data-apnl="59">
+<td>VXX25-15m-WR50%/APnL59%/PTPnL3%</td><td>VXX</td><td>15m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>38</td><td class="mid">50</td>
+<td class="good">59</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="95" data-apnl="77">
+<td>VXX26-15m-WR95%/APnL77%/PTPnL1%</td><td>VXX</td><td>15m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>3</td><td class="good">95</td>
+<td class="good">77</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="70" data-apnl="32">
+<td>VXX27-15m-WR70%/APnL32%/PTPnL5%</td><td>VXX</td><td>15m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>10</td><td class="good">70</td>
+<td class="good">32</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="60" data-apnl="9">
+<td>VXX28-15m-WR60%/APnL9%/PTPnL18%</td><td>VXX</td><td>15m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>7</td><td class="mid">60</td>
+<td class="mid">9</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="90" data-apnl="28">
+<td>VXX29-15m-WR90%/APnL28%/PTPnL8%</td><td>VXX</td><td>15m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>59</td><td class="good">90</td>
+<td class="good">28</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="15m" data-wr="55" data-apnl="77">
+<td>VXX30-15m-WR55%/APnL77%/PTPnL1%</td><td>VXX</td><td>15m</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>47</td><td class="mid">55</td>
+<td class="good">77</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="45" data-apnl="21">
+<td>VXX01-1h-WR45%/APnL21%/PTPnL9%</td><td>VXX</td><td>1h</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>60</td><td class="bad">45</td>
+<td class="good">21</td><td>9</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="85" data-apnl="19">
+<td>VXX02-1h-WR85%/APnL19%/PTPnL14%</td><td>VXX</td><td>1h</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>12</td><td class="good">85</td>
+<td class="mid">19</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="62" data-apnl="58">
+<td>VXX03-1h-WR62%/APnL58%/PTPnL12%</td><td>VXX</td><td>1h</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>37</td><td class="mid">62</td>
+<td class="good">58</td><td>12</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="78" data-apnl="7">
+<td>VXX04-1h-WR78%/APnL7%/PTPnL13%</td><td>VXX</td><td>1h</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>5</td><td class="good">78</td>
+<td class="mid">7</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="72" data-apnl="31">
+<td>VXX05-1h-WR72%/APnL31%/PTPnL13%</td><td>VXX</td><td>1h</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>56</td><td class="good">72</td>
+<td class="good">31</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="72" data-apnl="29">
+<td>VXX06-1h-WR72%/APnL29%/PTPnL1%</td><td>VXX</td><td>1h</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>26</td><td class="good">72</td>
+<td class="good">29</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="50" data-apnl="43">
+<td>VXX07-1h-WR50%/APnL43%/PTPnL5%</td><td>VXX</td><td>1h</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>40</td><td class="mid">50</td>
+<td class="good">43</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="40" data-apnl="37">
+<td>VXX08-1h-WR40%/APnL37%/PTPnL16%</td><td>VXX</td><td>1h</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="bad">40</td>
+<td class="good">37</td><td>16</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="83" data-apnl="58">
+<td>VXX09-1h-WR83%/APnL58%/PTPnL20%</td><td>VXX</td><td>1h</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>12</td><td class="good">83</td>
+<td class="good">58</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="45" data-apnl="3">
+<td>VXX10-1h-WR45%/APnL3%/PTPnL9%</td><td>VXX</td><td>1h</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>30</td><td class="bad">45</td>
+<td class="bad">3</td><td>9</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="55" data-apnl="71">
+<td>VXX11-1h-WR55%/APnL71%/PTPnL20%</td><td>VXX</td><td>1h</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>11</td><td class="mid">55</td>
+<td class="good">71</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="78" data-apnl="15">
+<td>VXX12-1h-WR78%/APnL15%/PTPnL10%</td><td>VXX</td><td>1h</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>5</td><td class="good">78</td>
+<td class="mid">15</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="67" data-apnl="16">
+<td>VXX13-1h-WR67%/APnL16%/PTPnL2%</td><td>VXX</td><td>1h</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>22</td><td class="mid">67</td>
+<td class="mid">16</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="78" data-apnl="80">
+<td>VXX14-1h-WR78%/APnL80%/PTPnL15%</td><td>VXX</td><td>1h</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>26</td><td class="good">78</td>
+<td class="good">80</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="50" data-apnl="64">
+<td>VXX15-1h-WR50%/APnL64%/PTPnL20%</td><td>VXX</td><td>1h</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>60</td><td class="mid">50</td>
+<td class="good">64</td><td>20</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="35" data-apnl="66">
+<td>VXX16-1h-WR35%/APnL66%/PTPnL19%</td><td>VXX</td><td>1h</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>53</td><td class="bad">35</td>
+<td class="good">66</td><td>19</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="55" data-apnl="38">
+<td>VXX17-1h-WR55%/APnL38%/PTPnL14%</td><td>VXX</td><td>1h</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="mid">55</td>
+<td class="good">38</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="92" data-apnl="46">
+<td>VXX18-1h-WR92%/APnL46%/PTPnL8%</td><td>VXX</td><td>1h</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>5</td><td class="good">92</td>
+<td class="good">46</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="78" data-apnl="24">
+<td>VXX19-1h-WR78%/APnL24%/PTPnL3%</td><td>VXX</td><td>1h</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>60</td><td class="good">78</td>
+<td class="good">24</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="72" data-apnl="9">
+<td>VXX20-1h-WR72%/APnL9%/PTPnL17%</td><td>VXX</td><td>1h</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>25</td><td class="good">72</td>
+<td class="mid">9</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="85" data-apnl="65">
+<td>VXX21-1h-WR85%/APnL65%/PTPnL18%</td><td>VXX</td><td>1h</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>16</td><td class="good">85</td>
+<td class="good">65</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="75" data-apnl="61">
+<td>VXX22-1h-WR75%/APnL61%/PTPnL2%</td><td>VXX</td><td>1h</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>46</td><td class="good">75</td>
+<td class="good">61</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="72" data-apnl="33">
+<td>VXX23-1h-WR72%/APnL33%/PTPnL1%</td><td>VXX</td><td>1h</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>18</td><td class="good">72</td>
+<td class="good">33</td><td>1</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="45" data-apnl="45">
+<td>VXX24-1h-WR45%/APnL45%/PTPnL8%</td><td>VXX</td><td>1h</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>45</td><td class="bad">45</td>
+<td class="good">45</td><td>8</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="1h" data-wr="90" data-apnl="43">
+<td>VXX25-1h-WR90%/APnL43%/PTPnL5%</td><td>VXX</td><td>1h</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>9</td><td class="good">90</td>
+<td class="good">43</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="50" data-apnl="74">
+<td>VXX01-daily-WR50%/APnL74%/PTPnL18%</td><td>VXX</td><td>daily</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>25</td><td class="mid">50</td>
+<td class="good">74</td><td>18</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="75" data-apnl="45">
+<td>VXX02-daily-WR75%/APnL45%/PTPnL5%</td><td>VXX</td><td>daily</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>52</td><td class="good">75</td>
+<td class="good">45</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="40" data-apnl="37">
+<td>VXX03-daily-WR40%/APnL37%/PTPnL3%</td><td>VXX</td><td>daily</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>38</td><td class="bad">40</td>
+<td class="good">37</td><td>3</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="80" data-apnl="33">
+<td>VXX04-daily-WR80%/APnL33%/PTPnL16%</td><td>VXX</td><td>daily</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>59</td><td class="good">80</td>
+<td class="good">33</td><td>16</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="60" data-apnl="69">
+<td>VXX05-daily-WR60%/APnL69%/PTPnL9%</td><td>VXX</td><td>daily</td><td>SPY RSI<=25 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="mid">60</td>
+<td class="good">69</td><td>9</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="65" data-apnl="18">
+<td>VXX06-daily-WR65%/APnL18%/PTPnL4%</td><td>VXX</td><td>daily</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>29</td><td class="mid">65</td>
+<td class="mid">18</td><td>4</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="90" data-apnl="31">
+<td>VXX07-daily-WR90%/APnL31%/PTPnL8%</td><td>VXX</td><td>daily</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>42</td><td class="good">90</td>
+<td class="good">31</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="100" data-apnl="68">
+<td>VXX08-daily-WR100%/APnL68%/PTPnL8%</td><td>VXX</td><td>daily</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>50</td><td class="good">100</td>
+<td class="good">68</td><td>8</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="40" data-apnl="13">
+<td>VXX09-daily-WR40%/APnL13%/PTPnL14%</td><td>VXX</td><td>daily</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>12</td><td class="bad">40</td>
+<td class="mid">13</td><td>14</td>
+<td class="mid">1</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="83" data-apnl="13">
+<td>VXX10-daily-WR83%/APnL13%/PTPnL5%</td><td>VXX</td><td>daily</td><td>SPY RSI<=30 + VIXY RSI<=30 + green</td>
+<td>18</td><td class="good">83</td>
+<td class="mid">13</td><td>5</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="88" data-apnl="21">
+<td>VXX11-daily-WR88%/APnL21%/PTPnL14%</td><td>VXX</td><td>daily</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>58</td><td class="good">88</td>
+<td class="good">21</td><td>14</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="83" data-apnl="26">
+<td>VXX12-daily-WR83%/APnL26%/PTPnL10%</td><td>VXX</td><td>daily</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>13</td><td class="good">83</td>
+<td class="good">26</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="67" data-apnl="8">
+<td>VXX13-daily-WR67%/APnL8%/PTPnL3%</td><td>VXX</td><td>daily</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>54</td><td class="mid">67</td>
+<td class="mid">8</td><td>3</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="62" data-apnl="69">
+<td>VXX14-daily-WR62%/APnL69%/PTPnL2%</td><td>VXX</td><td>daily</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>54</td><td class="mid">62</td>
+<td class="good">69</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="78" data-apnl="23">
+<td>VXX15-daily-WR78%/APnL23%/PTPnL2%</td><td>VXX</td><td>daily</td><td>SPY Stoch<=20 + VIXY RSI<=30 + green</td>
+<td>14</td><td class="good">78</td>
+<td class="good">23</td><td>2</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="83" data-apnl="24">
+<td>VXX16-daily-WR83%/APnL24%/PTPnL10%</td><td>VXX</td><td>daily</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>59</td><td class="good">83</td>
+<td class="good">24</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="35" data-apnl="39">
+<td>VXX17-daily-WR35%/APnL39%/PTPnL19%</td><td>VXX</td><td>daily</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>29</td><td class="bad">35</td>
+<td class="good">39</td><td>19</td>
+<td class="bad">0</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="50" data-apnl="43">
+<td>VXX18-daily-WR50%/APnL43%/PTPnL10%</td><td>VXX</td><td>daily</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>4</td><td class="mid">50</td>
+<td class="good">43</td><td>10</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="95" data-apnl="70">
+<td>VXX19-daily-WR95%/APnL70%/PTPnL17%</td><td>VXX</td><td>daily</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>14</td><td class="good">95</td>
+<td class="good">70</td><td>17</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="55" data-apnl="65">
+<td>VXX20-daily-WR55%/APnL65%/PTPnL15%</td><td>VXX</td><td>daily</td><td>SPY WillR<=-90 + VIXY RSI<=30 + green</td>
+<td>50</td><td class="mid">55</td>
+<td class="good">65</td><td>15</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="60" data-apnl="15">
+<td>VXX21-daily-WR60%/APnL15%/PTPnL11%</td><td>VXX</td><td>daily</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>24</td><td class="mid">60</td>
+<td class="mid">15</td><td>11</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="80" data-apnl="33">
+<td>VXX22-daily-WR80%/APnL33%/PTPnL6%</td><td>VXX</td><td>daily</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>53</td><td class="good">80</td>
+<td class="good">33</td><td>6</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="70" data-apnl="38">
+<td>VXX23-daily-WR70%/APnL38%/PTPnL19%</td><td>VXX</td><td>daily</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>29</td><td class="good">70</td>
+<td class="good">38</td><td>19</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="58" data-apnl="79">
+<td>VXX24-daily-WR58%/APnL79%/PTPnL13%</td><td>VXX</td><td>daily</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>54</td><td class="mid">58</td>
+<td class="good">79</td><td>13</td>
+<td class="good">2</td></tr>
+<tr data-fam="VXX" data-tf="daily" data-wr="85" data-apnl="42">
+<td>VXX25-daily-WR85%/APnL42%/PTPnL3%</td><td>VXX</td><td>daily</td><td>SPY Vol>=2 + RSI<=30 + green</td>
+<td>45</td><td class="good">85</td>
+<td class="good">42</td><td>3</td>
+<td class="good">2</td></tr>
+</tbody>
+</table>
+
+<script>
+function filterTable(){
+  var fam=document.getElementById("fam-filter").value;
+  var tf=document.getElementById("tf-filter").value;
+  var minWr=parseInt(document.getElementById("wr-filter").value)||0;
+  var minApnl=parseInt(document.getElementById("apnl-filter").value)||0;
+  var rows=document.querySelectorAll("#rule-table tbody tr");
+  rows.forEach(function(r){
+    var show=true;
+    if(fam&&r.getAttribute("data-fam")!==fam)show=false;
+    if(tf&&r.getAttribute("data-tf")!==tf)show=false;
+    if(parseInt(r.getAttribute("data-wr"))<minWr)show=false;
+    if(parseInt(r.getAttribute("data-apnl"))<minApnl)show=false;
+    r.style.display=show?"":"none";
+  });
+}
+var sortCol=-1,sortAsc=true;
+function sortTable(col){
+  if(sortCol===col)sortAsc=!sortAsc;else{sortCol=col;sortAsc=true;}
+  var tbody=document.querySelector("#rule-table tbody");
+  var rows=Array.from(tbody.querySelectorAll("tr"));
+  rows.sort(function(a,b){
+    var va=a.cells[col].textContent,vb=b.cells[col].textContent;
+    var na=parseFloat(va),nb=parseFloat(vb);
+    if(!isNaN(na)&&!isNaN(nb))return sortAsc?na-nb:nb-na;
+    return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
+  });
+  rows.forEach(function(r){tbody.appendChild(r);});
+}
+</script>
+</body>
+</html>
