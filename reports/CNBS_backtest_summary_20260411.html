@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNBS Backtest Summary (v2)</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a2e; color: #e0e0e0; }
+h1 { color: #00d4ff; }
+h2 { color: #7c83ff; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 12px; text-align: left; border: 1px solid #333; cursor: pointer; }
+th:hover { background: #1e3a6e; }
+td { padding: 6px 12px; border: 1px solid #333; }
+tr:nth-child(even) { background: #0f3460; }
+tr:nth-child(odd) { background: #1a1a2e; }
+.tier1 { color: #00ff88; font-weight: bold; }
+.tier2 { color: #ffdd00; }
+.tier3 { color: #ff6666; }
+.summary { margin: 10px 0; padding: 10px; background: #16213e; border-radius: 5px; }
+.back { color: #53c0f0; text-decoration: none; font-size: 14px; }
+.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="back" href="../index.html">&larr; Back to Overview</a>
+<h1>CNBS - Backtest Summary (v2)</h1>
+<div class="summary">
+<p><strong>Pipeline:</strong> create_rules_CNBS_v2_20260411</p>
+<p><strong>Lead:</strong> MSOS | <strong>Divergence:</strong> WEED | <strong>Inverse:</strong> SARK</p>
+<p><strong>Total Rules:</strong> 177</p>
+<p><strong>Tier 1 (100% WR):</strong> 20 | <strong>Tier 2 (&gt;10% PnL):</strong> 164 | <strong>Tier 3:</strong> 1</p>
+</div>
+<h2>15M Rules (14)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>CBS01-15m-WR100.0%/APnL14.81%/PTPnL4.94%</td><td>CBS</td><td>100.0</td><td>14.81</td><td>4.94</td><td class="tier1">T1</td></tr>
+<tr><td>2</td><td>CBS02-15m-WR100.0%/APnL12.0%/PTPnL4.0%</td><td>CBS</td><td>100.0</td><td>12.0</td><td>4.0</td><td class="tier1">T1</td></tr>
+<tr><td>3</td><td>CBS03-15m-WR100.0%/APnL12.0%/PTPnL4.0%</td><td>CBS</td><td>100.0</td><td>12.0</td><td>4.0</td><td class="tier1">T1</td></tr>
+<tr><td>4</td><td>CBS04-15m-WR100.0%/APnL12.0%/PTPnL4.0%</td><td>CBS</td><td>100.0</td><td>12.0</td><td>4.0</td><td class="tier1">T1</td></tr>
+<tr><td>5</td><td>CBS05-15m-WR75.0%/APnL10.0%/PTPnL2.5%</td><td>CBS</td><td>75.0</td><td>10.0</td><td>2.5</td><td class="tier3">T3</td></tr>
+<tr><td>6</td><td>CBS06-15m-WR100.0%/APnL6.0%/PTPnL2.0%</td><td>CBS</td><td>100.0</td><td>6.0</td><td>2.0</td><td class="tier1">T1</td></tr>
+<tr><td>7</td><td>CBS07-15m-WR100.0%/APnL4.5%/PTPnL1.5%</td><td>CBS</td><td>100.0</td><td>4.5</td><td>1.5</td><td class="tier1">T1</td></tr>
+<tr><td>8</td><td>CBS08-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>CBS</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>9</td><td>CBS09-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>CBS</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>10</td><td>CBS10-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>CBS</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>11</td><td>CBL01-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>CBL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>12</td><td>CBL02-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>CBL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>13</td><td>CBL03-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>CBL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>14</td><td>CBL04-15m-WR100.0%/APnL3.0%/PTPnL1.0%</td><td>CBL</td><td>100.0</td><td>3.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+</table>
+<h2>1H Rules (127)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>CBS01-1h-WR52.2%/APnL88.35%/PTPnL1.92%</td><td>CBS</td><td>52.2</td><td>88.35</td><td>1.92</td><td class="tier2">T2</td></tr>
+<tr><td>2</td><td>CBS02-1h-WR41.7%/APnL87.0%/PTPnL2.42%</td><td>CBS</td><td>41.7</td><td>87.0</td><td>2.42</td><td class="tier2">T2</td></tr>
+<tr><td>3</td><td>CBS03-1h-WR63.6%/APnL75.86%/PTPnL3.45%</td><td>CBS</td><td>63.6</td><td>75.86</td><td>3.45</td><td class="tier2">T2</td></tr>
+<tr><td>4</td><td>CBS04-1h-WR62.8%/APnL74.34%/PTPnL1.73%</td><td>CBS</td><td>62.8</td><td>74.34</td><td>1.73</td><td class="tier2">T2</td></tr>
+<tr><td>5</td><td>CBS05-1h-WR50.0%/APnL70.94%/PTPnL2.73%</td><td>CBS</td><td>50.0</td><td>70.94</td><td>2.73</td><td class="tier2">T2</td></tr>
+<tr><td>6</td><td>CBL01-1h-WR55.0%/APnL65.5%/PTPnL3.27%</td><td>CBL</td><td>55.0</td><td>65.5</td><td>3.27</td><td class="tier2">T2</td></tr>
+<tr><td>7</td><td>CBL02-1h-WR87.5%/APnL65.0%/PTPnL8.12%</td><td>CBL</td><td>87.5</td><td>65.0</td><td>8.12</td><td class="tier2">T2</td></tr>
+<tr><td>8</td><td>CBL03-1h-WR87.5%/APnL65.0%/PTPnL8.12%</td><td>CBL</td><td>87.5</td><td>65.0</td><td>8.12</td><td class="tier2">T2</td></tr>
+<tr><td>9</td><td>CBS06-1h-WR52.9%/APnL63.56%/PTPnL3.74%</td><td>CBS</td><td>52.9</td><td>63.56</td><td>3.74</td><td class="tier2">T2</td></tr>
+<tr><td>10</td><td>CBS07-1h-WR55.6%/APnL62.5%/PTPnL3.47%</td><td>CBS</td><td>55.6</td><td>62.5</td><td>3.47</td><td class="tier2">T2</td></tr>
+<tr><td>11</td><td>CBS08-1h-WR83.3%/APnL61.57%/PTPnL5.13%</td><td>CBS</td><td>83.3</td><td>61.57</td><td>5.13</td><td class="tier2">T2</td></tr>
+<tr><td>12</td><td>CBX01-1h-WR53.3%/APnL59.56%/PTPnL3.97%</td><td>CBX</td><td>53.3</td><td>59.56</td><td>3.97</td><td class="tier2">T2</td></tr>
+<tr><td>13</td><td>CBX02-1h-WR68.8%/APnL58.27%/PTPnL3.64%</td><td>CBX</td><td>68.8</td><td>58.27</td><td>3.64</td><td class="tier2">T2</td></tr>
+<tr><td>14</td><td>CBS09-1h-WR71.4%/APnL57.77%/PTPnL4.13%</td><td>CBS</td><td>71.4</td><td>57.77</td><td>4.13</td><td class="tier2">T2</td></tr>
+<tr><td>15</td><td>CBL04-1h-WR40.0%/APnL57.61%/PTPnL1.92%</td><td>CBL</td><td>40.0</td><td>57.61</td><td>1.92</td><td class="tier2">T2</td></tr>
+<tr><td>16</td><td>CBS10-1h-WR41.3%/APnL57.59%/PTPnL1.25%</td><td>CBS</td><td>41.3</td><td>57.59</td><td>1.25</td><td class="tier2">T2</td></tr>
+<tr><td>17</td><td>CBS11-1h-WR52.6%/APnL57.56%/PTPnL3.03%</td><td>CBS</td><td>52.6</td><td>57.56</td><td>3.03</td><td class="tier2">T2</td></tr>
+<tr><td>18</td><td>CBS12-1h-WR40.0%/APnL57.35%/PTPnL2.29%</td><td>CBS</td><td>40.0</td><td>57.35</td><td>2.29</td><td class="tier2">T2</td></tr>
+<tr><td>19</td><td>CBS13-1h-WR42.3%/APnL57.19%/PTPnL1.1%</td><td>CBS</td><td>42.3</td><td>57.19</td><td>1.1</td><td class="tier2">T2</td></tr>
+<tr><td>20</td><td>CBS14-1h-WR70.0%/APnL56.06%/PTPnL5.61%</td><td>CBS</td><td>70.0</td><td>56.06</td><td>5.61</td><td class="tier2">T2</td></tr>
+<tr><td>21</td><td>CBD01-1h-WR61.5%/APnL56.04%/PTPnL4.31%</td><td>CBD</td><td>61.5</td><td>56.04</td><td>4.31</td><td class="tier2">T2</td></tr>
+<tr><td>22</td><td>CBL05-1h-WR70.0%/APnL55.35%/PTPnL5.54%</td><td>CBL</td><td>70.0</td><td>55.35</td><td>5.54</td><td class="tier2">T2</td></tr>
+<tr><td>23</td><td>CBL06-1h-WR70.0%/APnL55.35%/PTPnL5.54%</td><td>CBL</td><td>70.0</td><td>55.35</td><td>5.54</td><td class="tier2">T2</td></tr>
+<tr><td>24</td><td>CBX03-1h-WR63.6%/APnL55.13%/PTPnL5.01%</td><td>CBX</td><td>63.6</td><td>55.13</td><td>5.01</td><td class="tier2">T2</td></tr>
+<tr><td>25</td><td>CBS15-1h-WR80.0%/APnL54.0%/PTPnL3.6%</td><td>CBS</td><td>80.0</td><td>54.0</td><td>3.6</td><td class="tier2">T2</td></tr>
+<tr><td>26</td><td>CBS16-1h-WR44.4%/APnL53.56%/PTPnL2.98%</td><td>CBS</td><td>44.4</td><td>53.56</td><td>2.98</td><td class="tier2">T2</td></tr>
+<tr><td>27</td><td>CBL07-1h-WR66.7%/APnL53.56%/PTPnL4.46%</td><td>CBL</td><td>66.7</td><td>53.56</td><td>4.46</td><td class="tier2">T2</td></tr>
+<tr><td>28</td><td>CBS17-1h-WR87.5%/APnL53.03%/PTPnL3.31%</td><td>CBS</td><td>87.5</td><td>53.03</td><td>3.31</td><td class="tier2">T2</td></tr>
+<tr><td>29</td><td>CBS18-1h-WR83.3%/APnL52.03%/PTPnL2.89%</td><td>CBS</td><td>83.3</td><td>52.03</td><td>2.89</td><td class="tier2">T2</td></tr>
+<tr><td>30</td><td>CBL08-1h-WR81.8%/APnL52.02%/PTPnL4.73%</td><td>CBL</td><td>81.8</td><td>52.02</td><td>4.73</td><td class="tier2">T2</td></tr>
+<tr><td>31</td><td>CBS19-1h-WR77.8%/APnL51.56%/PTPnL5.73%</td><td>CBS</td><td>77.8</td><td>51.56</td><td>5.73</td><td class="tier2">T2</td></tr>
+<tr><td>32</td><td>CBS20-1h-WR58.3%/APnL51.06%/PTPnL4.25%</td><td>CBS</td><td>58.3</td><td>51.06</td><td>4.25</td><td class="tier2">T2</td></tr>
+<tr><td>33</td><td>CBS21-1h-WR53.1%/APnL51.01%/PTPnL1.59%</td><td>CBS</td><td>53.1</td><td>51.01</td><td>1.59</td><td class="tier2">T2</td></tr>
+<tr><td>34</td><td>CBS22-1h-WR41.9%/APnL50.83%/PTPnL1.18%</td><td>CBS</td><td>41.9</td><td>50.83</td><td>1.18</td><td class="tier2">T2</td></tr>
+<tr><td>35</td><td>CBS23-1h-WR80.0%/APnL50.65%/PTPnL5.06%</td><td>CBS</td><td>80.0</td><td>50.65</td><td>5.06</td><td class="tier2">T2</td></tr>
+<tr><td>36</td><td>CBS24-1h-WR86.7%/APnL48.03%/PTPnL3.2%</td><td>CBS</td><td>86.7</td><td>48.03</td><td>3.2</td><td class="tier2">T2</td></tr>
+<tr><td>37</td><td>CBS25-1h-WR75.0%/APnL47.96%/PTPnL6.0%</td><td>CBS</td><td>75.0</td><td>47.96</td><td>6.0</td><td class="tier2">T2</td></tr>
+<tr><td>38</td><td>CBS26-1h-WR55.0%/APnL47.96%/PTPnL2.4%</td><td>CBS</td><td>55.0</td><td>47.96</td><td>2.4</td><td class="tier2">T2</td></tr>
+<tr><td>39</td><td>CBS27-1h-WR55.0%/APnL47.96%/PTPnL2.4%</td><td>CBS</td><td>55.0</td><td>47.96</td><td>2.4</td><td class="tier2">T2</td></tr>
+<tr><td>40</td><td>CBS28-1h-WR55.0%/APnL47.96%/PTPnL2.4%</td><td>CBS</td><td>55.0</td><td>47.96</td><td>2.4</td><td class="tier2">T2</td></tr>
+<tr><td>41</td><td>CBS29-1h-WR85.7%/APnL47.56%/PTPnL6.79%</td><td>CBS</td><td>85.7</td><td>47.56</td><td>6.79</td><td class="tier2">T2</td></tr>
+<tr><td>42</td><td>CBS30-1h-WR82.4%/APnL47.03%/PTPnL2.77%</td><td>CBS</td><td>82.4</td><td>47.03</td><td>2.77</td><td class="tier2">T2</td></tr>
+<tr><td>43</td><td>CBL09-1h-WR72.7%/APnL47.02%/PTPnL4.27%</td><td>CBL</td><td>72.7</td><td>47.02</td><td>4.27</td><td class="tier2">T2</td></tr>
+<tr><td>44</td><td>CBD02-1h-WR81.8%/APnL47.0%/PTPnL4.27%</td><td>CBD</td><td>81.8</td><td>47.0</td><td>4.27</td><td class="tier2">T2</td></tr>
+<tr><td>45</td><td>CBS31-1h-WR52.6%/APnL46.57%/PTPnL2.45%</td><td>CBS</td><td>52.6</td><td>46.57</td><td>2.45</td><td class="tier2">T2</td></tr>
+<tr><td>46</td><td>CBS32-1h-WR87.5%/APnL46.18%/PTPnL5.77%</td><td>CBS</td><td>87.5</td><td>46.18</td><td>5.77</td><td class="tier2">T2</td></tr>
+<tr><td>47</td><td>CBS33-1h-WR43.8%/APnL45.56%/PTPnL2.85%</td><td>CBS</td><td>43.8</td><td>45.56</td><td>2.85</td><td class="tier2">T2</td></tr>
+<tr><td>48</td><td>CBS34-1h-WR87.5%/APnL45.56%/PTPnL5.7%</td><td>CBS</td><td>87.5</td><td>45.56</td><td>5.7</td><td class="tier2">T2</td></tr>
+<tr><td>49</td><td>CBS35-1h-WR42.9%/APnL45.29%/PTPnL1.08%</td><td>CBS</td><td>42.9</td><td>45.29</td><td>1.08</td><td class="tier2">T2</td></tr>
+<tr><td>50</td><td>CBS36-1h-WR60.0%/APnL45.22%/PTPnL3.01%</td><td>CBS</td><td>60.0</td><td>45.22</td><td>3.01</td><td class="tier2">T2</td></tr>
+<tr><td>51</td><td>CBS37-1h-WR40.5%/APnL45.06%/PTPnL1.07%</td><td>CBS</td><td>40.5</td><td>45.06</td><td>1.07</td><td class="tier2">T2</td></tr>
+<tr><td>52</td><td>CBS38-1h-WR70.0%/APnL44.4%/PTPnL4.44%</td><td>CBS</td><td>70.0</td><td>44.4</td><td>4.44</td><td class="tier2">T2</td></tr>
+<tr><td>53</td><td>CBS39-1h-WR83.3%/APnL44.0%/PTPnL7.33%</td><td>CBS</td><td>83.3</td><td>44.0</td><td>7.33</td><td class="tier2">T2</td></tr>
+<tr><td>54</td><td>CBL10-1h-WR55.0%/APnL43.96%/PTPnL2.2%</td><td>CBL</td><td>55.0</td><td>43.96</td><td>2.2</td><td class="tier2">T2</td></tr>
+<tr><td>55</td><td>CBS40-1h-WR75.0%/APnL43.73%/PTPnL5.47%</td><td>CBS</td><td>75.0</td><td>43.73</td><td>5.47</td><td class="tier2">T2</td></tr>
+<tr><td>56</td><td>CBL11-1h-WR75.0%/APnL43.56%/PTPnL5.45%</td><td>CBL</td><td>75.0</td><td>43.56</td><td>5.45</td><td class="tier2">T2</td></tr>
+<tr><td>57</td><td>CBL12-1h-WR60.0%/APnL43.22%/PTPnL2.16%</td><td>CBL</td><td>60.0</td><td>43.22</td><td>2.16</td><td class="tier2">T2</td></tr>
+<tr><td>58</td><td>CBS41-1h-WR63.2%/APnL42.83%/PTPnL2.25%</td><td>CBS</td><td>63.2</td><td>42.83</td><td>2.25</td><td class="tier2">T2</td></tr>
+<tr><td>59</td><td>CBS42-1h-WR69.2%/APnL42.56%/PTPnL3.27%</td><td>CBS</td><td>69.2</td><td>42.56</td><td>3.27</td><td class="tier2">T2</td></tr>
+<tr><td>60</td><td>CBL13-1h-WR50.0%/APnL42.23%/PTPnL2.64%</td><td>CBL</td><td>50.0</td><td>42.23</td><td>2.64</td><td class="tier2">T2</td></tr>
+<tr><td>61</td><td>CBL14-1h-WR50.0%/APnL42.23%/PTPnL2.64%</td><td>CBL</td><td>50.0</td><td>42.23</td><td>2.64</td><td class="tier2">T2</td></tr>
+<tr><td>62</td><td>CBS43-1h-WR40.0%/APnL42.15%/PTPnL1.2%</td><td>CBS</td><td>40.0</td><td>42.15</td><td>1.2</td><td class="tier2">T2</td></tr>
+<tr><td>63</td><td>CBL15-1h-WR85.7%/APnL42.0%/PTPnL6.0%</td><td>CBL</td><td>85.7</td><td>42.0</td><td>6.0</td><td class="tier2">T2</td></tr>
+<tr><td>64</td><td>CBL16-1h-WR75.0%/APnL42.0%/PTPnL5.25%</td><td>CBL</td><td>75.0</td><td>42.0</td><td>5.25</td><td class="tier2">T2</td></tr>
+<tr><td>65</td><td>CBS44-1h-WR40.6%/APnL41.98%/PTPnL1.31%</td><td>CBS</td><td>40.6</td><td>41.98</td><td>1.31</td><td class="tier2">T2</td></tr>
+<tr><td>66</td><td>CBS45-1h-WR66.7%/APnL41.96%/PTPnL4.66%</td><td>CBS</td><td>66.7</td><td>41.96</td><td>4.66</td><td class="tier2">T2</td></tr>
+<tr><td>67</td><td>CBL17-1h-WR56.5%/APnL40.75%/PTPnL1.77%</td><td>CBL</td><td>56.5</td><td>40.75</td><td>1.77</td><td class="tier2">T2</td></tr>
+<tr><td>68</td><td>CBS46-1h-WR57.1%/APnL40.72%/PTPnL2.91%</td><td>CBS</td><td>57.1</td><td>40.72</td><td>2.91</td><td class="tier2">T2</td></tr>
+<tr><td>69</td><td>CBL18-1h-WR75.0%/APnL40.18%/PTPnL3.35%</td><td>CBL</td><td>75.0</td><td>40.18</td><td>3.35</td><td class="tier2">T2</td></tr>
+<tr><td>70</td><td>CBL19-1h-WR66.7%/APnL40.0%/PTPnL3.33%</td><td>CBL</td><td>66.7</td><td>40.0</td><td>3.33</td><td class="tier2">T2</td></tr>
+<tr><td>71</td><td>CBL20-1h-WR66.7%/APnL40.0%/PTPnL3.33%</td><td>CBL</td><td>66.7</td><td>40.0</td><td>3.33</td><td class="tier2">T2</td></tr>
+<tr><td>72</td><td>CBX04-1h-WR40.0%/APnL39.6%/PTPnL1.98%</td><td>CBX</td><td>40.0</td><td>39.6</td><td>1.98</td><td class="tier2">T2</td></tr>
+<tr><td>73</td><td>CBL21-1h-WR77.8%/APnL39.56%/PTPnL4.4%</td><td>CBL</td><td>77.8</td><td>39.56</td><td>4.4</td><td class="tier2">T2</td></tr>
+<tr><td>74</td><td>CBL22-1h-WR41.2%/APnL39.21%/PTPnL2.31%</td><td>CBL</td><td>41.2</td><td>39.21</td><td>2.31</td><td class="tier2">T2</td></tr>
+<tr><td>75</td><td>CBX05-1h-WR55.6%/APnL38.15%/PTPnL2.12%</td><td>CBX</td><td>55.6</td><td>38.15</td><td>2.12</td><td class="tier2">T2</td></tr>
+<tr><td>76</td><td>CBL23-1h-WR60.0%/APnL38.0%/PTPnL3.8%</td><td>CBL</td><td>60.0</td><td>38.0</td><td>3.8</td><td class="tier2">T2</td></tr>
+<tr><td>77</td><td>CBS47-1h-WR75.0%/APnL37.97%/PTPnL4.75%</td><td>CBS</td><td>75.0</td><td>37.97</td><td>4.75</td><td class="tier2">T2</td></tr>
+<tr><td>78</td><td>CBS48-1h-WR71.4%/APnL37.96%/PTPnL5.42%</td><td>CBS</td><td>71.4</td><td>37.96</td><td>5.42</td><td class="tier2">T2</td></tr>
+<tr><td>79</td><td>CBL24-1h-WR53.8%/APnL37.0%/PTPnL2.85%</td><td>CBL</td><td>53.8</td><td>37.0</td><td>2.85</td><td class="tier2">T2</td></tr>
+<tr><td>80</td><td>CBS49-1h-WR73.7%/APnL35.99%/PTPnL1.89%</td><td>CBS</td><td>73.7</td><td>35.99</td><td>1.89</td><td class="tier2">T2</td></tr>
+<tr><td>81</td><td>CBS50-1h-WR41.7%/APnL35.89%/PTPnL0.75%</td><td>CBS</td><td>41.7</td><td>35.89</td><td>0.75</td><td class="tier2">T2</td></tr>
+<tr><td>82</td><td>CBD03-1h-WR66.7%/APnL35.0%/PTPnL2.33%</td><td>CBD</td><td>66.7</td><td>35.0</td><td>2.33</td><td class="tier2">T2</td></tr>
+<tr><td>83</td><td>CBX06-1h-WR50.0%/APnL35.0%/PTPnL2.5%</td><td>CBX</td><td>50.0</td><td>35.0</td><td>2.5</td><td class="tier2">T2</td></tr>
+<tr><td>84</td><td>CBX07-1h-WR70.0%/APnL34.96%/PTPnL3.5%</td><td>CBX</td><td>70.0</td><td>34.96</td><td>3.5</td><td class="tier2">T2</td></tr>
+<tr><td>85</td><td>CBX08-1h-WR44.4%/APnL34.81%/PTPnL3.87%</td><td>CBX</td><td>44.4</td><td>34.81</td><td>3.87</td><td class="tier2">T2</td></tr>
+<tr><td>86</td><td>CBL25-1h-WR77.8%/APnL34.72%/PTPnL3.86%</td><td>CBL</td><td>77.8</td><td>34.72</td><td>3.86</td><td class="tier2">T2</td></tr>
+<tr><td>87</td><td>CBL26-1h-WR60.0%/APnL34.67%/PTPnL2.31%</td><td>CBL</td><td>60.0</td><td>34.67</td><td>2.31</td><td class="tier2">T2</td></tr>
+<tr><td>88</td><td>CBS51-1h-WR62.5%/APnL33.58%/PTPnL4.2%</td><td>CBS</td><td>62.5</td><td>33.58</td><td>4.2</td><td class="tier2">T2</td></tr>
+<tr><td>89</td><td>CBX09-1h-WR100.0%/APnL33.17%/PTPnL6.63%</td><td>CBX</td><td>100.0</td><td>33.17</td><td>6.63</td><td class="tier1">T1</td></tr>
+<tr><td>90</td><td>CBX10-1h-WR100.0%/APnL33.17%/PTPnL6.63%</td><td>CBX</td><td>100.0</td><td>33.17</td><td>6.63</td><td class="tier1">T1</td></tr>
+<tr><td>91</td><td>CBD04-1h-WR42.1%/APnL32.65%/PTPnL1.72%</td><td>CBD</td><td>42.1</td><td>32.65</td><td>1.72</td><td class="tier2">T2</td></tr>
+<tr><td>92</td><td>CBS52-1h-WR53.8%/APnL32.17%/PTPnL1.24%</td><td>CBS</td><td>53.8</td><td>32.17</td><td>1.24</td><td class="tier2">T2</td></tr>
+<tr><td>93</td><td>CBX11-1h-WR43.8%/APnL31.65%/PTPnL1.98%</td><td>CBX</td><td>43.8</td><td>31.65</td><td>1.98</td><td class="tier2">T2</td></tr>
+<tr><td>94</td><td>CBD05-1h-WR44.4%/APnL31.0%/PTPnL1.72%</td><td>CBD</td><td>44.4</td><td>31.0</td><td>1.72</td><td class="tier2">T2</td></tr>
+<tr><td>95</td><td>CBX12-1h-WR71.4%/APnL30.65%/PTPnL4.38%</td><td>CBX</td><td>71.4</td><td>30.65</td><td>4.38</td><td class="tier2">T2</td></tr>
+<tr><td>96</td><td>CBX13-1h-WR46.7%/APnL30.0%/PTPnL2.0%</td><td>CBX</td><td>46.7</td><td>30.0</td><td>2.0</td><td class="tier2">T2</td></tr>
+<tr><td>97</td><td>CBX14-1h-WR80.0%/APnL30.0%/PTPnL6.0%</td><td>CBX</td><td>80.0</td><td>30.0</td><td>6.0</td><td class="tier2">T2</td></tr>
+<tr><td>98</td><td>CBL27-1h-WR41.7%/APnL29.56%/PTPnL2.46%</td><td>CBL</td><td>41.7</td><td>29.56</td><td>2.46</td><td class="tier2">T2</td></tr>
+<tr><td>99</td><td>CBS53-1h-WR41.0%/APnL29.31%/PTPnL0.75%</td><td>CBS</td><td>41.0</td><td>29.31</td><td>0.75</td><td class="tier2">T2</td></tr>
+<tr><td>100</td><td>CBS54-1h-WR55.6%/APnL29.01%/PTPnL1.07%</td><td>CBS</td><td>55.6</td><td>29.01</td><td>1.07</td><td class="tier2">T2</td></tr>
+<tr><td>101</td><td>CBL28-1h-WR75.0%/APnL28.07%/PTPnL2.34%</td><td>CBL</td><td>75.0</td><td>28.07</td><td>2.34</td><td class="tier2">T2</td></tr>
+<tr><td>102</td><td>CBS55-1h-WR45.8%/APnL27.98%/PTPnL1.17%</td><td>CBS</td><td>45.8</td><td>27.98</td><td>1.17</td><td class="tier2">T2</td></tr>
+<tr><td>103</td><td>CBS56-1h-WR66.7%/APnL27.0%/PTPnL1.0%</td><td>CBS</td><td>66.7</td><td>27.0</td><td>1.0</td><td class="tier2">T2</td></tr>
+<tr><td>104</td><td>CBL29-1h-WR45.5%/APnL26.0%/PTPnL2.36%</td><td>CBL</td><td>45.5</td><td>26.0</td><td>2.36</td><td class="tier2">T2</td></tr>
+<tr><td>105</td><td>CBS57-1h-WR83.3%/APnL25.82%/PTPnL4.3%</td><td>CBS</td><td>83.3</td><td>25.82</td><td>4.3</td><td class="tier2">T2</td></tr>
+<tr><td>106</td><td>CBS58-1h-WR50.0%/APnL25.56%/PTPnL3.19%</td><td>CBS</td><td>50.0</td><td>25.56</td><td>3.19</td><td class="tier2">T2</td></tr>
+<tr><td>107</td><td>CBX15-1h-WR83.3%/APnL25.31%/PTPnL4.22%</td><td>CBX</td><td>83.3</td><td>25.31</td><td>4.22</td><td class="tier2">T2</td></tr>
+<tr><td>108</td><td>CBS59-1h-WR63.6%/APnL25.06%/PTPnL2.28%</td><td>CBS</td><td>63.6</td><td>25.06</td><td>2.28</td><td class="tier2">T2</td></tr>
+<tr><td>109</td><td>CBX16-1h-WR100.0%/APnL24.0%/PTPnL8.0%</td><td>CBX</td><td>100.0</td><td>24.0</td><td>8.0</td><td class="tier1">T1</td></tr>
+<tr><td>110</td><td>CBX17-1h-WR66.7%/APnL23.94%/PTPnL3.99%</td><td>CBX</td><td>66.7</td><td>23.94</td><td>3.99</td><td class="tier2">T2</td></tr>
+<tr><td>111</td><td>CBX18-1h-WR100.0%/APnL23.56%/PTPnL7.85%</td><td>CBX</td><td>100.0</td><td>23.56</td><td>7.85</td><td class="tier1">T1</td></tr>
+<tr><td>112</td><td>CBX19-1h-WR50.0%/APnL22.5%/PTPnL3.75%</td><td>CBX</td><td>50.0</td><td>22.5</td><td>3.75</td><td class="tier2">T2</td></tr>
+<tr><td>113</td><td>CBX20-1h-WR80.0%/APnL22.44%/PTPnL4.49%</td><td>CBX</td><td>80.0</td><td>22.44</td><td>4.49</td><td class="tier2">T2</td></tr>
+<tr><td>114</td><td>CBX21-1h-WR41.7%/APnL21.0%/PTPnL1.75%</td><td>CBX</td><td>41.7</td><td>21.0</td><td>1.75</td><td class="tier2">T2</td></tr>
+<tr><td>115</td><td>CBX22-1h-WR80.0%/APnL20.17%/PTPnL4.03%</td><td>CBX</td><td>80.0</td><td>20.17</td><td>4.03</td><td class="tier2">T2</td></tr>
+<tr><td>116</td><td>CBX23-1h-WR50.0%/APnL19.57%/PTPnL1.22%</td><td>CBX</td><td>50.0</td><td>19.57</td><td>1.22</td><td class="tier2">T2</td></tr>
+<tr><td>117</td><td>CBS60-1h-WR40.7%/APnL17.37%/PTPnL0.64%</td><td>CBS</td><td>40.7</td><td>17.37</td><td>0.64</td><td class="tier2">T2</td></tr>
+<tr><td>118</td><td>CBS61-1h-WR80.0%/APnL16.0%/PTPnL3.2%</td><td>CBS</td><td>80.0</td><td>16.0</td><td>3.2</td><td class="tier2">T2</td></tr>
+<tr><td>119</td><td>CBD06-1h-WR75.0%/APnL16.0%/PTPnL4.0%</td><td>CBD</td><td>75.0</td><td>16.0</td><td>4.0</td><td class="tier2">T2</td></tr>
+<tr><td>120</td><td>CBD07-1h-WR75.0%/APnL16.0%/PTPnL4.0%</td><td>CBD</td><td>75.0</td><td>16.0</td><td>4.0</td><td class="tier2">T2</td></tr>
+<tr><td>121</td><td>CBL30-1h-WR40.0%/APnL15.89%/PTPnL1.59%</td><td>CBL</td><td>40.0</td><td>15.89</td><td>1.59</td><td class="tier2">T2</td></tr>
+<tr><td>122</td><td>CBL31-1h-WR42.9%/APnL15.56%/PTPnL2.22%</td><td>CBL</td><td>42.9</td><td>15.56</td><td>2.22</td><td class="tier2">T2</td></tr>
+<tr><td>123</td><td>CBL32-1h-WR66.7%/APnL15.41%/PTPnL1.28%</td><td>CBL</td><td>66.7</td><td>15.41</td><td>1.28</td><td class="tier2">T2</td></tr>
+<tr><td>124</td><td>CBX24-1h-WR44.4%/APnL14.68%/PTPnL0.82%</td><td>CBX</td><td>44.4</td><td>14.68</td><td>0.82</td><td class="tier2">T2</td></tr>
+<tr><td>125</td><td>CBL33-1h-WR50.0%/APnL13.5%/PTPnL2.25%</td><td>CBL</td><td>50.0</td><td>13.5</td><td>2.25</td><td class="tier2">T2</td></tr>
+<tr><td>126</td><td>CBL34-1h-WR42.9%/APnL13.0%/PTPnL1.86%</td><td>CBL</td><td>42.9</td><td>13.0</td><td>1.86</td><td class="tier2">T2</td></tr>
+<tr><td>127</td><td>CBX25-1h-WR66.7%/APnL11.0%/PTPnL3.67%</td><td>CBX</td><td>66.7</td><td>11.0</td><td>3.67</td><td class="tier2">T2</td></tr>
+</table>
+<h2>Daily Rules (36)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>CBS01-daily-WR68.8%/APnL85.0%/PTPnL5.31%</td><td>CBS</td><td>68.8</td><td>85.0</td><td>5.31</td><td class="tier2">T2</td></tr>
+<tr><td>2</td><td>CBS02-daily-WR76.5%/APnL78.56%/PTPnL4.62%</td><td>CBS</td><td>76.5</td><td>78.56</td><td>4.62</td><td class="tier2">T2</td></tr>
+<tr><td>3</td><td>CBS03-daily-WR58.3%/APnL67.0%/PTPnL2.79%</td><td>CBS</td><td>58.3</td><td>67.0</td><td>2.79</td><td class="tier2">T2</td></tr>
+<tr><td>4</td><td>CBS04-daily-WR46.9%/APnL64.4%/PTPnL2.01%</td><td>CBS</td><td>46.9</td><td>64.4</td><td>2.01</td><td class="tier2">T2</td></tr>
+<tr><td>5</td><td>CBS05-daily-WR46.9%/APnL64.4%/PTPnL2.01%</td><td>CBS</td><td>46.9</td><td>64.4</td><td>2.01</td><td class="tier2">T2</td></tr>
+<tr><td>6</td><td>CBX01-daily-WR70.0%/APnL62.72%/PTPnL3.14%</td><td>CBX</td><td>70.0</td><td>62.72</td><td>3.14</td><td class="tier2">T2</td></tr>
+<tr><td>7</td><td>CBS06-daily-WR63.3%/APnL57.57%/PTPnL1.92%</td><td>CBS</td><td>63.3</td><td>57.57</td><td>1.92</td><td class="tier2">T2</td></tr>
+<tr><td>8</td><td>CBS07-daily-WR52.3%/APnL51.57%/PTPnL1.17%</td><td>CBS</td><td>52.3</td><td>51.57</td><td>1.17</td><td class="tier2">T2</td></tr>
+<tr><td>9</td><td>CBS08-daily-WR52.3%/APnL51.57%/PTPnL1.17%</td><td>CBS</td><td>52.3</td><td>51.57</td><td>1.17</td><td class="tier2">T2</td></tr>
+<tr><td>10</td><td>CBS09-daily-WR72.7%/APnL51.28%/PTPnL4.66%</td><td>CBS</td><td>72.7</td><td>51.28</td><td>4.66</td><td class="tier2">T2</td></tr>
+<tr><td>11</td><td>CBS10-daily-WR54.3%/APnL49.44%/PTPnL1.41%</td><td>CBS</td><td>54.3</td><td>49.44</td><td>1.41</td><td class="tier2">T2</td></tr>
+<tr><td>12</td><td>CBS11-daily-WR50.0%/APnL48.12%/PTPnL2.67%</td><td>CBS</td><td>50.0</td><td>48.12</td><td>2.67</td><td class="tier2">T2</td></tr>
+<tr><td>13</td><td>CBS12-daily-WR50.0%/APnL45.0%/PTPnL4.5%</td><td>CBS</td><td>50.0</td><td>45.0</td><td>4.5</td><td class="tier2">T2</td></tr>
+<tr><td>14</td><td>CBX02-daily-WR64.7%/APnL43.29%/PTPnL2.55%</td><td>CBX</td><td>64.7</td><td>43.29</td><td>2.55</td><td class="tier2">T2</td></tr>
+<tr><td>15</td><td>CBX03-daily-WR48.1%/APnL42.82%/PTPnL1.59%</td><td>CBX</td><td>48.1</td><td>42.82</td><td>1.59</td><td class="tier2">T2</td></tr>
+<tr><td>16</td><td>CBX04-daily-WR66.7%/APnL41.78%/PTPnL2.32%</td><td>CBX</td><td>66.7</td><td>41.78</td><td>2.32</td><td class="tier2">T2</td></tr>
+<tr><td>17</td><td>CBX05-daily-WR50.0%/APnL41.16%/PTPnL2.06%</td><td>CBX</td><td>50.0</td><td>41.16</td><td>2.06</td><td class="tier2">T2</td></tr>
+<tr><td>18</td><td>CBL01-daily-WR60.7%/APnL39.74%/PTPnL1.42%</td><td>CBL</td><td>60.7</td><td>39.74</td><td>1.42</td><td class="tier2">T2</td></tr>
+<tr><td>19</td><td>CBX06-daily-WR68.8%/APnL38.73%/PTPnL2.42%</td><td>CBX</td><td>68.8</td><td>38.73</td><td>2.42</td><td class="tier2">T2</td></tr>
+<tr><td>20</td><td>CBS13-daily-WR50.0%/APnL38.5%/PTPnL4.81%</td><td>CBS</td><td>50.0</td><td>38.5</td><td>4.81</td><td class="tier2">T2</td></tr>
+<tr><td>21</td><td>CBS14-daily-WR71.4%/APnL38.0%/PTPnL5.43%</td><td>CBS</td><td>71.4</td><td>38.0</td><td>5.43</td><td class="tier2">T2</td></tr>
+<tr><td>22</td><td>CBS15-daily-WR50.0%/APnL38.0%/PTPnL4.75%</td><td>CBS</td><td>50.0</td><td>38.0</td><td>4.75</td><td class="tier2">T2</td></tr>
+<tr><td>23</td><td>CBS16-daily-WR75.0%/APnL37.49%/PTPnL4.69%</td><td>CBS</td><td>75.0</td><td>37.49</td><td>4.69</td><td class="tier2">T2</td></tr>
+<tr><td>24</td><td>CBS17-daily-WR42.9%/APnL32.63%/PTPnL2.33%</td><td>CBS</td><td>42.9</td><td>32.63</td><td>2.33</td><td class="tier2">T2</td></tr>
+<tr><td>25</td><td>CBX07-daily-WR44.4%/APnL31.82%/PTPnL1.18%</td><td>CBX</td><td>44.4</td><td>31.82</td><td>1.18</td><td class="tier2">T2</td></tr>
+<tr><td>26</td><td>CBS18-daily-WR80.0%/APnL31.63%/PTPnL3.16%</td><td>CBS</td><td>80.0</td><td>31.63</td><td>3.16</td><td class="tier2">T2</td></tr>
+<tr><td>27</td><td>CBL02-daily-WR55.0%/APnL27.74%/PTPnL1.39%</td><td>CBL</td><td>55.0</td><td>27.74</td><td>1.39</td><td class="tier2">T2</td></tr>
+<tr><td>28</td><td>CBL03-daily-WR50.0%/APnL27.06%/PTPnL1.23%</td><td>CBL</td><td>50.0</td><td>27.06</td><td>1.23</td><td class="tier2">T2</td></tr>
+<tr><td>29</td><td>CBS19-daily-WR50.0%/APnL25.5%/PTPnL4.25%</td><td>CBS</td><td>50.0</td><td>25.5</td><td>4.25</td><td class="tier2">T2</td></tr>
+<tr><td>30</td><td>CBS20-daily-WR75.0%/APnL25.0%/PTPnL6.25%</td><td>CBS</td><td>75.0</td><td>25.0</td><td>6.25</td><td class="tier2">T2</td></tr>
+<tr><td>31</td><td>CBS21-daily-WR72.7%/APnL24.59%/PTPnL2.24%</td><td>CBS</td><td>72.7</td><td>24.59</td><td>2.24</td><td class="tier2">T2</td></tr>
+<tr><td>32</td><td>CBS22-daily-WR44.4%/APnL21.51%/PTPnL2.39%</td><td>CBS</td><td>44.4</td><td>21.51</td><td>2.39</td><td class="tier2">T2</td></tr>
+<tr><td>33</td><td>CBL04-daily-WR47.1%/APnL18.42%/PTPnL1.08%</td><td>CBL</td><td>47.1</td><td>18.42</td><td>1.08</td><td class="tier2">T2</td></tr>
+<tr><td>34</td><td>CBL05-daily-WR100.0%/APnL6.0%/PTPnL2.0%</td><td>CBL</td><td>100.0</td><td>6.0</td><td>2.0</td><td class="tier1">T1</td></tr>
+<tr><td>35</td><td>CBL06-daily-WR100.0%/APnL6.0%/PTPnL2.0%</td><td>CBL</td><td>100.0</td><td>6.0</td><td>2.0</td><td class="tier1">T1</td></tr>
+<tr><td>36</td><td>CBD01-daily-WR100.0%/APnL4.9%/PTPnL0.7%</td><td>CBD</td><td>100.0</td><td>4.9</td><td>0.7</td><td class="tier1">T1</td></tr>
+</table>
+<script>
+document.querySelectorAll('table.sortable th').forEach(function(th){
+  th.addEventListener('click',function(){
+    var table=this.closest('table'),idx=Array.from(this.parentNode.children).indexOf(this);
+    var rows=Array.from(table.querySelectorAll('tr')).slice(1);
+    var asc=this.dataset.asc==='true';this.dataset.asc=!asc;
+    rows.sort(function(a,b){
+      var va=a.children[idx].textContent,vb=b.children[idx].textContent;
+      var na=parseFloat(va),nb=parseFloat(vb);
+      if(!isNaN(na)&&!isNaN(nb))return asc?na-nb:nb-na;
+      return asc?va.localeCompare(vb):vb.localeCompare(va);
+    });
+    rows.forEach(function(r){table.appendChild(r);});
+  });
+});
+</script>
+</body>
+</html>

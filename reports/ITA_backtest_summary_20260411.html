@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITA Backtest Summary (v2)</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a2e; color: #e0e0e0; }
+h1 { color: #00d4ff; }
+h2 { color: #7c83ff; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 12px; text-align: left; border: 1px solid #333; cursor: pointer; }
+th:hover { background: #1e3a6e; }
+td { padding: 6px 12px; border: 1px solid #333; }
+tr:nth-child(even) { background: #0f3460; }
+tr:nth-child(odd) { background: #1a1a2e; }
+.tier1 { color: #00ff88; font-weight: bold; }
+.tier2 { color: #ffdd00; }
+.tier3 { color: #ff6666; }
+.summary { margin: 10px 0; padding: 10px; background: #16213e; border-radius: 5px; }
+.back { color: #53c0f0; text-decoration: none; font-size: 14px; }
+.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="back" href="../index.html">&larr; Back to Overview</a>
+<h1>ITA - Backtest Summary (v2)</h1>
+<div class="summary">
+<p><strong>Pipeline:</strong> create_rules_ITA_v2_20260411</p>
+<p><strong>Lead:</strong> AMD | <strong>Divergence:</strong> UFO | <strong>Inverse:</strong> UNG</p>
+<p><strong>Total Rules:</strong> 338</p>
+<p><strong>Tier 1 (100% WR):</strong> 45 | <strong>Tier 2 (&gt;10% PnL):</strong> 312 | <strong>Tier 3:</strong> 0</p>
+</div>
+<h2>5M Rules (111)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>IAL01-5m-WR75.0%/APnL64.65%/PTPnL1.62%</td><td>IAL</td><td>75.0</td><td>64.65</td><td>1.62</td><td class="tier2">T2</td></tr>
+<tr><td>2</td><td>IAL02-5m-WR69.2%/APnL63.4%/PTPnL2.44%</td><td>IAL</td><td>69.2</td><td>63.4</td><td>2.44</td><td class="tier2">T2</td></tr>
+<tr><td>3</td><td>IAS01-5m-WR62.2%/APnL59.9%/PTPnL1.62%</td><td>IAS</td><td>62.2</td><td>59.9</td><td>1.62</td><td class="tier2">T2</td></tr>
+<tr><td>4</td><td>IAS02-5m-WR58.6%/APnL57.15%/PTPnL1.97%</td><td>IAS</td><td>58.6</td><td>57.15</td><td>1.97</td><td class="tier2">T2</td></tr>
+<tr><td>5</td><td>IAS03-5m-WR64.1%/APnL55.62%/PTPnL1.43%</td><td>IAS</td><td>64.1</td><td>55.62</td><td>1.43</td><td class="tier2">T2</td></tr>
+<tr><td>6</td><td>IAS04-5m-WR48.4%/APnL54.24%/PTPnL1.75%</td><td>IAS</td><td>48.4</td><td>54.24</td><td>1.75</td><td class="tier2">T2</td></tr>
+<tr><td>7</td><td>IAL03-5m-WR69.2%/APnL53.01%/PTPnL2.04%</td><td>IAL</td><td>69.2</td><td>53.01</td><td>2.04</td><td class="tier2">T2</td></tr>
+<tr><td>8</td><td>IAS05-5m-WR59.5%/APnL52.62%/PTPnL1.25%</td><td>IAS</td><td>59.5</td><td>52.62</td><td>1.25</td><td class="tier2">T2</td></tr>
+<tr><td>9</td><td>IAS06-5m-WR59.4%/APnL52.54%/PTPnL1.64%</td><td>IAS</td><td>59.4</td><td>52.54</td><td>1.64</td><td class="tier2">T2</td></tr>
+<tr><td>10</td><td>IAS07-5m-WR62.5%/APnL52.04%/PTPnL1.63%</td><td>IAS</td><td>62.5</td><td>52.04</td><td>1.63</td><td class="tier2">T2</td></tr>
+<tr><td>11</td><td>IAS08-5m-WR62.5%/APnL52.04%/PTPnL1.63%</td><td>IAS</td><td>62.5</td><td>52.04</td><td>1.63</td><td class="tier2">T2</td></tr>
+<tr><td>12</td><td>IAS09-5m-WR71.4%/APnL51.23%/PTPnL2.44%</td><td>IAS</td><td>71.4</td><td>51.23</td><td>2.44</td><td class="tier2">T2</td></tr>
+<tr><td>13</td><td>IAS10-5m-WR70.8%/APnL51.11%/PTPnL2.13%</td><td>IAS</td><td>70.8</td><td>51.11</td><td>2.13</td><td class="tier2">T2</td></tr>
+<tr><td>14</td><td>IAS11-5m-WR65.4%/APnL50.85%/PTPnL1.96%</td><td>IAS</td><td>65.4</td><td>50.85</td><td>1.96</td><td class="tier2">T2</td></tr>
+<tr><td>15</td><td>IAS12-5m-WR69.2%/APnL50.8%/PTPnL1.95%</td><td>IAS</td><td>69.2</td><td>50.8</td><td>1.95</td><td class="tier2">T2</td></tr>
+<tr><td>16</td><td>IAS13-5m-WR67.9%/APnL50.22%/PTPnL1.79%</td><td>IAS</td><td>67.9</td><td>50.22</td><td>1.79</td><td class="tier2">T2</td></tr>
+<tr><td>17</td><td>IAS14-5m-WR67.9%/APnL50.22%/PTPnL1.79%</td><td>IAS</td><td>67.9</td><td>50.22</td><td>1.79</td><td class="tier2">T2</td></tr>
+<tr><td>18</td><td>IAS15-5m-WR69.6%/APnL49.78%/PTPnL2.16%</td><td>IAS</td><td>69.6</td><td>49.78</td><td>2.16</td><td class="tier2">T2</td></tr>
+<tr><td>19</td><td>IAS16-5m-WR69.6%/APnL49.21%/PTPnL2.14%</td><td>IAS</td><td>69.6</td><td>49.21</td><td>2.14</td><td class="tier2">T2</td></tr>
+<tr><td>20</td><td>IAS17-5m-WR63.3%/APnL48.78%/PTPnL1.63%</td><td>IAS</td><td>63.3</td><td>48.78</td><td>1.63</td><td class="tier2">T2</td></tr>
+<tr><td>21</td><td>IAL04-5m-WR77.8%/APnL48.76%/PTPnL1.81%</td><td>IAL</td><td>77.8</td><td>48.76</td><td>1.81</td><td class="tier2">T2</td></tr>
+<tr><td>22</td><td>IAS18-5m-WR72.0%/APnL48.5%/PTPnL1.94%</td><td>IAS</td><td>72.0</td><td>48.5</td><td>1.94</td><td class="tier2">T2</td></tr>
+<tr><td>23</td><td>IAS19-5m-WR56.0%/APnL47.35%/PTPnL1.89%</td><td>IAS</td><td>56.0</td><td>47.35</td><td>1.89</td><td class="tier2">T2</td></tr>
+<tr><td>24</td><td>IAL05-5m-WR72.2%/APnL46.75%/PTPnL2.6%</td><td>IAL</td><td>72.2</td><td>46.75</td><td>2.6</td><td class="tier2">T2</td></tr>
+<tr><td>25</td><td>IAS20-5m-WR66.7%/APnL46.57%/PTPnL2.59%</td><td>IAS</td><td>66.7</td><td>46.57</td><td>2.59</td><td class="tier2">T2</td></tr>
+<tr><td>26</td><td>IAS21-5m-WR66.0%/APnL46.05%/PTPnL0.92%</td><td>IAS</td><td>66.0</td><td>46.05</td><td>0.92</td><td class="tier2">T2</td></tr>
+<tr><td>27</td><td>IAX01-5m-WR76.9%/APnL45.92%/PTPnL3.53%</td><td>IAX</td><td>76.9</td><td>45.92</td><td>3.53</td><td class="tier2">T2</td></tr>
+<tr><td>28</td><td>IAX02-5m-WR71.4%/APnL45.14%/PTPnL3.22%</td><td>IAX</td><td>71.4</td><td>45.14</td><td>3.22</td><td class="tier2">T2</td></tr>
+<tr><td>29</td><td>IAX03-5m-WR77.8%/APnL44.68%/PTPnL2.48%</td><td>IAX</td><td>77.8</td><td>44.68</td><td>2.48</td><td class="tier2">T2</td></tr>
+<tr><td>30</td><td>IAX04-5m-WR71.4%/APnL43.93%/PTPnL3.14%</td><td>IAX</td><td>71.4</td><td>43.93</td><td>3.14</td><td class="tier2">T2</td></tr>
+<tr><td>31</td><td>IAS22-5m-WR68.0%/APnL43.44%/PTPnL1.74%</td><td>IAS</td><td>68.0</td><td>43.44</td><td>1.74</td><td class="tier2">T2</td></tr>
+<tr><td>32</td><td>IAX05-5m-WR69.2%/APnL42.48%/PTPnL3.27%</td><td>IAX</td><td>69.2</td><td>42.48</td><td>3.27</td><td class="tier2">T2</td></tr>
+<tr><td>33</td><td>IAS23-5m-WR61.1%/APnL41.92%/PTPnL2.33%</td><td>IAS</td><td>61.1</td><td>41.92</td><td>2.33</td><td class="tier2">T2</td></tr>
+<tr><td>34</td><td>IAS24-5m-WR61.9%/APnL41.7%/PTPnL1.99%</td><td>IAS</td><td>61.9</td><td>41.7</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>35</td><td>IAL06-5m-WR63.2%/APnL40.76%/PTPnL2.15%</td><td>IAL</td><td>63.2</td><td>40.76</td><td>2.15</td><td class="tier2">T2</td></tr>
+<tr><td>36</td><td>IAL07-5m-WR68.8%/APnL38.79%/PTPnL1.21%</td><td>IAL</td><td>68.8</td><td>38.79</td><td>1.21</td><td class="tier2">T2</td></tr>
+<tr><td>37</td><td>IAL08-5m-WR80.0%/APnL37.55%/PTPnL1.88%</td><td>IAL</td><td>80.0</td><td>37.55</td><td>1.88</td><td class="tier2">T2</td></tr>
+<tr><td>38</td><td>IAL09-5m-WR66.7%/APnL37.32%/PTPnL1.78%</td><td>IAL</td><td>66.7</td><td>37.32</td><td>1.78</td><td class="tier2">T2</td></tr>
+<tr><td>39</td><td>IAL10-5m-WR63.6%/APnL36.85%/PTPnL1.12%</td><td>IAL</td><td>63.6</td><td>36.85</td><td>1.12</td><td class="tier2">T2</td></tr>
+<tr><td>40</td><td>IAS25-5m-WR61.1%/APnL35.74%/PTPnL1.99%</td><td>IAS</td><td>61.1</td><td>35.74</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>41</td><td>IAX06-5m-WR83.3%/APnL34.91%/PTPnL2.91%</td><td>IAX</td><td>83.3</td><td>34.91</td><td>2.91</td><td class="tier2">T2</td></tr>
+<tr><td>42</td><td>IAS26-5m-WR66.7%/APnL34.57%/PTPnL1.65%</td><td>IAS</td><td>66.7</td><td>34.57</td><td>1.65</td><td class="tier2">T2</td></tr>
+<tr><td>43</td><td>IAL11-5m-WR55.6%/APnL34.31%/PTPnL1.91%</td><td>IAL</td><td>55.6</td><td>34.31</td><td>1.91</td><td class="tier2">T2</td></tr>
+<tr><td>44</td><td>IAL12-5m-WR65.2%/APnL34.05%/PTPnL1.48%</td><td>IAL</td><td>65.2</td><td>34.05</td><td>1.48</td><td class="tier2">T2</td></tr>
+<tr><td>45</td><td>IAL13-5m-WR76.9%/APnL33.71%/PTPnL2.59%</td><td>IAL</td><td>76.9</td><td>33.71</td><td>2.59</td><td class="tier2">T2</td></tr>
+<tr><td>46</td><td>IAD01-5m-WR66.7%/APnL33.61%/PTPnL2.24%</td><td>IAD</td><td>66.7</td><td>33.61</td><td>2.24</td><td class="tier2">T2</td></tr>
+<tr><td>47</td><td>IAD02-5m-WR75.0%/APnL33.6%/PTPnL2.8%</td><td>IAD</td><td>75.0</td><td>33.6</td><td>2.8</td><td class="tier2">T2</td></tr>
+<tr><td>48</td><td>IAL14-5m-WR75.0%/APnL32.86%/PTPnL1.64%</td><td>IAL</td><td>75.0</td><td>32.86</td><td>1.64</td><td class="tier2">T2</td></tr>
+<tr><td>49</td><td>IAL15-5m-WR73.3%/APnL32.49%/PTPnL2.17%</td><td>IAL</td><td>73.3</td><td>32.49</td><td>2.17</td><td class="tier2">T2</td></tr>
+<tr><td>50</td><td>IAS27-5m-WR72.7%/APnL32.4%/PTPnL1.47%</td><td>IAS</td><td>72.7</td><td>32.4</td><td>1.47</td><td class="tier2">T2</td></tr>
+<tr><td>51</td><td>IAS28-5m-WR53.8%/APnL32.36%/PTPnL2.49%</td><td>IAS</td><td>53.8</td><td>32.36</td><td>2.49</td><td class="tier2">T2</td></tr>
+<tr><td>52</td><td>IAL16-5m-WR60.9%/APnL32.05%/PTPnL1.39%</td><td>IAL</td><td>60.9</td><td>32.05</td><td>1.39</td><td class="tier2">T2</td></tr>
+<tr><td>53</td><td>IAS29-5m-WR65.0%/APnL32.02%/PTPnL1.6%</td><td>IAS</td><td>65.0</td><td>32.02</td><td>1.6</td><td class="tier2">T2</td></tr>
+<tr><td>54</td><td>IAX07-5m-WR75.0%/APnL31.97%/PTPnL2.66%</td><td>IAX</td><td>75.0</td><td>31.97</td><td>2.66</td><td class="tier2">T2</td></tr>
+<tr><td>55</td><td>IAL17-5m-WR56.0%/APnL31.78%/PTPnL1.27%</td><td>IAL</td><td>56.0</td><td>31.78</td><td>1.27</td><td class="tier2">T2</td></tr>
+<tr><td>56</td><td>IAL18-5m-WR40.9%/APnL31.41%/PTPnL1.43%</td><td>IAL</td><td>40.9</td><td>31.41</td><td>1.43</td><td class="tier2">T2</td></tr>
+<tr><td>57</td><td>IAL19-5m-WR56.5%/APnL30.59%/PTPnL1.33%</td><td>IAL</td><td>56.5</td><td>30.59</td><td>1.33</td><td class="tier2">T2</td></tr>
+<tr><td>58</td><td>IAL20-5m-WR47.6%/APnL30.43%/PTPnL1.45%</td><td>IAL</td><td>47.6</td><td>30.43</td><td>1.45</td><td class="tier2">T2</td></tr>
+<tr><td>59</td><td>IAL21-5m-WR50.0%/APnL30.16%/PTPnL1.37%</td><td>IAL</td><td>50.0</td><td>30.16</td><td>1.37</td><td class="tier2">T2</td></tr>
+<tr><td>60</td><td>IAL22-5m-WR73.3%/APnL30.09%/PTPnL2.01%</td><td>IAL</td><td>73.3</td><td>30.09</td><td>2.01</td><td class="tier2">T2</td></tr>
+<tr><td>61</td><td>IAS30-5m-WR72.2%/APnL29.83%/PTPnL1.66%</td><td>IAS</td><td>72.2</td><td>29.83</td><td>1.66</td><td class="tier2">T2</td></tr>
+<tr><td>62</td><td>IAL23-5m-WR58.8%/APnL29.42%/PTPnL1.73%</td><td>IAL</td><td>58.8</td><td>29.42</td><td>1.73</td><td class="tier2">T2</td></tr>
+<tr><td>63</td><td>IAL24-5m-WR77.8%/APnL29.2%/PTPnL3.24%</td><td>IAL</td><td>77.8</td><td>29.2</td><td>3.24</td><td class="tier2">T2</td></tr>
+<tr><td>64</td><td>IAS31-5m-WR76.9%/APnL29.12%/PTPnL2.24%</td><td>IAS</td><td>76.9</td><td>29.12</td><td>2.24</td><td class="tier2">T2</td></tr>
+<tr><td>65</td><td>IAL25-5m-WR66.7%/APnL29.08%/PTPnL1.94%</td><td>IAL</td><td>66.7</td><td>29.08</td><td>1.94</td><td class="tier2">T2</td></tr>
+<tr><td>66</td><td>IAL26-5m-WR61.1%/APnL29.01%/PTPnL1.61%</td><td>IAL</td><td>61.1</td><td>29.01</td><td>1.61</td><td class="tier2">T2</td></tr>
+<tr><td>67</td><td>IAL27-5m-WR82.4%/APnL28.72%/PTPnL1.69%</td><td>IAL</td><td>82.4</td><td>28.72</td><td>1.69</td><td class="tier2">T2</td></tr>
+<tr><td>68</td><td>IAL28-5m-WR57.9%/APnL28.2%/PTPnL1.48%</td><td>IAL</td><td>57.9</td><td>28.2</td><td>1.48</td><td class="tier2">T2</td></tr>
+<tr><td>69</td><td>IAL29-5m-WR47.8%/APnL28.17%/PTPnL1.22%</td><td>IAL</td><td>47.8</td><td>28.17</td><td>1.22</td><td class="tier2">T2</td></tr>
+<tr><td>70</td><td>IAL30-5m-WR54.2%/APnL28.09%/PTPnL1.17%</td><td>IAL</td><td>54.2</td><td>28.09</td><td>1.17</td><td class="tier2">T2</td></tr>
+<tr><td>71</td><td>IAL31-5m-WR40.0%/APnL27.64%/PTPnL1.84%</td><td>IAL</td><td>40.0</td><td>27.64</td><td>1.84</td><td class="tier2">T2</td></tr>
+<tr><td>72</td><td>IAX08-5m-WR72.7%/APnL27.52%/PTPnL2.5%</td><td>IAX</td><td>72.7</td><td>27.52</td><td>2.5</td><td class="tier2">T2</td></tr>
+<tr><td>73</td><td>IAS32-5m-WR75.0%/APnL26.64%/PTPnL3.33%</td><td>IAS</td><td>75.0</td><td>26.64</td><td>3.33</td><td class="tier2">T2</td></tr>
+<tr><td>74</td><td>IAS33-5m-WR53.3%/APnL26.61%/PTPnL1.77%</td><td>IAS</td><td>53.3</td><td>26.61</td><td>1.77</td><td class="tier2">T2</td></tr>
+<tr><td>75</td><td>IAL32-5m-WR61.1%/APnL25.94%/PTPnL1.44%</td><td>IAL</td><td>61.1</td><td>25.94</td><td>1.44</td><td class="tier2">T2</td></tr>
+<tr><td>76</td><td>IAL33-5m-WR100.0%/APnL25.36%/PTPnL5.07%</td><td>IAL</td><td>100.0</td><td>25.36</td><td>5.07</td><td class="tier1">T1</td></tr>
+<tr><td>77</td><td>IAS34-5m-WR66.7%/APnL25.0%/PTPnL2.78%</td><td>IAS</td><td>66.7</td><td>25.0</td><td>2.78</td><td class="tier2">T2</td></tr>
+<tr><td>78</td><td>IAD03-5m-WR71.4%/APnL24.54%/PTPnL3.51%</td><td>IAD</td><td>71.4</td><td>24.54</td><td>3.51</td><td class="tier2">T2</td></tr>
+<tr><td>79</td><td>IAL34-5m-WR80.0%/APnL24.47%/PTPnL4.89%</td><td>IAL</td><td>80.0</td><td>24.47</td><td>4.89</td><td class="tier2">T2</td></tr>
+<tr><td>80</td><td>IAL35-5m-WR100.0%/APnL23.76%/PTPnL4.75%</td><td>IAL</td><td>100.0</td><td>23.76</td><td>4.75</td><td class="tier1">T1</td></tr>
+<tr><td>81</td><td>IAL36-5m-WR50.0%/APnL22.31%/PTPnL1.39%</td><td>IAL</td><td>50.0</td><td>22.31</td><td>1.39</td><td class="tier2">T2</td></tr>
+<tr><td>82</td><td>IAL37-5m-WR50.0%/APnL22.08%/PTPnL3.68%</td><td>IAL</td><td>50.0</td><td>22.08</td><td>3.68</td><td class="tier2">T2</td></tr>
+<tr><td>83</td><td>IAL38-5m-WR53.8%/APnL22.0%/PTPnL1.69%</td><td>IAL</td><td>53.8</td><td>22.0</td><td>1.69</td><td class="tier2">T2</td></tr>
+<tr><td>84</td><td>IAX09-5m-WR63.6%/APnL21.77%/PTPnL1.98%</td><td>IAX</td><td>63.6</td><td>21.77</td><td>1.98</td><td class="tier2">T2</td></tr>
+<tr><td>85</td><td>IAL39-5m-WR66.7%/APnL21.27%/PTPnL1.18%</td><td>IAL</td><td>66.7</td><td>21.27</td><td>1.18</td><td class="tier2">T2</td></tr>
+<tr><td>86</td><td>IAX10-5m-WR70.6%/APnL21.0%/PTPnL1.24%</td><td>IAX</td><td>70.6</td><td>21.0</td><td>1.24</td><td class="tier2">T2</td></tr>
+<tr><td>87</td><td>IAS35-5m-WR50.0%/APnL20.38%/PTPnL2.04%</td><td>IAS</td><td>50.0</td><td>20.38</td><td>2.04</td><td class="tier2">T2</td></tr>
+<tr><td>88</td><td>IAX11-5m-WR40.0%/APnL19.62%/PTPnL1.96%</td><td>IAX</td><td>40.0</td><td>19.62</td><td>1.96</td><td class="tier2">T2</td></tr>
+<tr><td>89</td><td>IAL40-5m-WR100.0%/APnL18.87%/PTPnL4.72%</td><td>IAL</td><td>100.0</td><td>18.87</td><td>4.72</td><td class="tier1">T1</td></tr>
+<tr><td>90</td><td>IAL41-5m-WR70.0%/APnL18.54%/PTPnL1.85%</td><td>IAL</td><td>70.0</td><td>18.54</td><td>1.85</td><td class="tier2">T2</td></tr>
+<tr><td>91</td><td>IAX12-5m-WR62.5%/APnL18.54%/PTPnL2.32%</td><td>IAX</td><td>62.5</td><td>18.54</td><td>2.32</td><td class="tier2">T2</td></tr>
+<tr><td>92</td><td>IAL42-5m-WR100.0%/APnL18.17%/PTPnL6.06%</td><td>IAL</td><td>100.0</td><td>18.17</td><td>6.06</td><td class="tier1">T1</td></tr>
+<tr><td>93</td><td>IAL43-5m-WR100.0%/APnL18.09%/PTPnL6.03%</td><td>IAL</td><td>100.0</td><td>18.09</td><td>6.03</td><td class="tier1">T1</td></tr>
+<tr><td>94</td><td>IAL44-5m-WR66.7%/APnL17.84%/PTPnL2.97%</td><td>IAL</td><td>66.7</td><td>17.84</td><td>2.97</td><td class="tier2">T2</td></tr>
+<tr><td>95</td><td>IAS36-5m-WR83.3%/APnL17.63%/PTPnL2.94%</td><td>IAS</td><td>83.3</td><td>17.63</td><td>2.94</td><td class="tier2">T2</td></tr>
+<tr><td>96</td><td>IAD04-5m-WR83.3%/APnL17.08%/PTPnL2.85%</td><td>IAD</td><td>83.3</td><td>17.08</td><td>2.85</td><td class="tier2">T2</td></tr>
+<tr><td>97</td><td>IAX13-5m-WR62.5%/APnL16.75%/PTPnL2.09%</td><td>IAX</td><td>62.5</td><td>16.75</td><td>2.09</td><td class="tier2">T2</td></tr>
+<tr><td>98</td><td>IAL45-5m-WR100.0%/APnL15.65%/PTPnL5.22%</td><td>IAL</td><td>100.0</td><td>15.65</td><td>5.22</td><td class="tier1">T1</td></tr>
+<tr><td>99</td><td>IAL46-5m-WR42.9%/APnL15.15%/PTPnL2.16%</td><td>IAL</td><td>42.9</td><td>15.15</td><td>2.16</td><td class="tier2">T2</td></tr>
+<tr><td>100</td><td>IAL47-5m-WR42.9%/APnL15.15%/PTPnL2.16%</td><td>IAL</td><td>42.9</td><td>15.15</td><td>2.16</td><td class="tier2">T2</td></tr>
+<tr><td>101</td><td>IAX14-5m-WR64.7%/APnL15.0%/PTPnL0.88%</td><td>IAX</td><td>64.7</td><td>15.0</td><td>0.88</td><td class="tier2">T2</td></tr>
+<tr><td>102</td><td>IAS37-5m-WR80.0%/APnL14.38%/PTPnL2.88%</td><td>IAS</td><td>80.0</td><td>14.38</td><td>2.88</td><td class="tier2">T2</td></tr>
+<tr><td>103</td><td>IAX15-5m-WR80.0%/APnL14.05%/PTPnL2.81%</td><td>IAX</td><td>80.0</td><td>14.05</td><td>2.81</td><td class="tier2">T2</td></tr>
+<tr><td>104</td><td>IAS38-5m-WR75.0%/APnL13.96%/PTPnL3.49%</td><td>IAS</td><td>75.0</td><td>13.96</td><td>3.49</td><td class="tier2">T2</td></tr>
+<tr><td>105</td><td>IAS39-5m-WR100.0%/APnL13.5%/PTPnL1.5%</td><td>IAS</td><td>100.0</td><td>13.5</td><td>1.5</td><td class="tier1">T1</td></tr>
+<tr><td>106</td><td>IAD05-5m-WR100.0%/APnL12.52%/PTPnL4.17%</td><td>IAD</td><td>100.0</td><td>12.52</td><td>4.17</td><td class="tier1">T1</td></tr>
+<tr><td>107</td><td>IAL48-5m-WR44.4%/APnL11.37%/PTPnL1.26%</td><td>IAL</td><td>44.4</td><td>11.37</td><td>1.26</td><td class="tier2">T2</td></tr>
+<tr><td>108</td><td>IAX16-5m-WR66.7%/APnL11.25%/PTPnL1.88%</td><td>IAX</td><td>66.7</td><td>11.25</td><td>1.88</td><td class="tier2">T2</td></tr>
+<tr><td>109</td><td>IAX17-5m-WR62.5%/APnL10.91%/PTPnL0.68%</td><td>IAX</td><td>62.5</td><td>10.91</td><td>0.68</td><td class="tier2">T2</td></tr>
+<tr><td>110</td><td>IAD06-5m-WR83.3%/APnL10.2%/PTPnL1.7%</td><td>IAD</td><td>83.3</td><td>10.2</td><td>1.7</td><td class="tier2">T2</td></tr>
+<tr><td>111</td><td>IAD07-5m-WR100.0%/APnL3.15%/PTPnL1.05%</td><td>IAD</td><td>100.0</td><td>3.15</td><td>1.05</td><td class="tier1">T1</td></tr>
+</table>
+<h2>15M Rules (110)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>IAS01-15m-WR43.6%/APnL58.41%/PTPnL1.5%</td><td>IAS</td><td>43.6</td><td>58.41</td><td>1.5</td><td class="tier2">T2</td></tr>
+<tr><td>2</td><td>IAS02-15m-WR70.8%/APnL55.51%/PTPnL2.31%</td><td>IAS</td><td>70.8</td><td>55.51</td><td>2.31</td><td class="tier2">T2</td></tr>
+<tr><td>3</td><td>IAS03-15m-WR69.6%/APnL54.27%/PTPnL2.36%</td><td>IAS</td><td>69.6</td><td>54.27</td><td>2.36</td><td class="tier2">T2</td></tr>
+<tr><td>4</td><td>IAS04-15m-WR74.1%/APnL53.32%/PTPnL1.97%</td><td>IAS</td><td>74.1</td><td>53.32</td><td>1.97</td><td class="tier2">T2</td></tr>
+<tr><td>5</td><td>IAS05-15m-WR65.2%/APnL51.89%/PTPnL2.26%</td><td>IAS</td><td>65.2</td><td>51.89</td><td>2.26</td><td class="tier2">T2</td></tr>
+<tr><td>6</td><td>IAL01-15m-WR84.6%/APnL51.68%/PTPnL1.99%</td><td>IAL</td><td>84.6</td><td>51.68</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>7</td><td>IAL02-15m-WR76.5%/APnL51.15%/PTPnL3.01%</td><td>IAL</td><td>76.5</td><td>51.15</td><td>3.01</td><td class="tier2">T2</td></tr>
+<tr><td>8</td><td>IAL03-15m-WR80.8%/APnL50.97%/PTPnL1.96%</td><td>IAL</td><td>80.8</td><td>50.97</td><td>1.96</td><td class="tier2">T2</td></tr>
+<tr><td>9</td><td>IAL04-15m-WR78.9%/APnL50.43%/PTPnL2.65%</td><td>IAL</td><td>78.9</td><td>50.43</td><td>2.65</td><td class="tier2">T2</td></tr>
+<tr><td>10</td><td>IAS06-15m-WR58.3%/APnL48.4%/PTPnL2.02%</td><td>IAS</td><td>58.3</td><td>48.4</td><td>2.02</td><td class="tier2">T2</td></tr>
+<tr><td>11</td><td>IAS07-15m-WR73.1%/APnL48.28%/PTPnL1.86%</td><td>IAS</td><td>73.1</td><td>48.28</td><td>1.86</td><td class="tier2">T2</td></tr>
+<tr><td>12</td><td>IAS08-15m-WR50.0%/APnL48.17%/PTPnL1.42%</td><td>IAS</td><td>50.0</td><td>48.17</td><td>1.42</td><td class="tier2">T2</td></tr>
+<tr><td>13</td><td>IAX01-15m-WR76.5%/APnL47.61%/PTPnL2.8%</td><td>IAX</td><td>76.5</td><td>47.61</td><td>2.8</td><td class="tier2">T2</td></tr>
+<tr><td>14</td><td>IAL05-15m-WR70.6%/APnL47.57%/PTPnL2.8%</td><td>IAL</td><td>70.6</td><td>47.57</td><td>2.8</td><td class="tier2">T2</td></tr>
+<tr><td>15</td><td>IAL06-15m-WR77.3%/APnL47.24%/PTPnL2.15%</td><td>IAL</td><td>77.3</td><td>47.24</td><td>2.15</td><td class="tier2">T2</td></tr>
+<tr><td>16</td><td>IAS09-15m-WR66.7%/APnL46.89%/PTPnL2.23%</td><td>IAS</td><td>66.7</td><td>46.89</td><td>2.23</td><td class="tier2">T2</td></tr>
+<tr><td>17</td><td>IAS10-15m-WR40.5%/APnL45.01%/PTPnL1.22%</td><td>IAS</td><td>40.5</td><td>45.01</td><td>1.22</td><td class="tier2">T2</td></tr>
+<tr><td>18</td><td>IAS11-15m-WR68.8%/APnL43.38%/PTPnL2.71%</td><td>IAS</td><td>68.8</td><td>43.38</td><td>2.71</td><td class="tier2">T2</td></tr>
+<tr><td>19</td><td>IAS12-15m-WR66.7%/APnL43.38%/PTPnL1.81%</td><td>IAS</td><td>66.7</td><td>43.38</td><td>1.81</td><td class="tier2">T2</td></tr>
+<tr><td>20</td><td>IAS13-15m-WR75.0%/APnL43.01%/PTPnL3.58%</td><td>IAS</td><td>75.0</td><td>43.01</td><td>3.58</td><td class="tier2">T2</td></tr>
+<tr><td>21</td><td>IAD01-15m-WR80.0%/APnL42.44%/PTPnL2.12%</td><td>IAD</td><td>80.0</td><td>42.44</td><td>2.12</td><td class="tier2">T2</td></tr>
+<tr><td>22</td><td>IAD02-15m-WR73.7%/APnL40.87%/PTPnL2.15%</td><td>IAD</td><td>73.7</td><td>40.87</td><td>2.15</td><td class="tier2">T2</td></tr>
+<tr><td>23</td><td>IAS14-15m-WR64.5%/APnL40.74%/PTPnL1.31%</td><td>IAS</td><td>64.5</td><td>40.74</td><td>1.31</td><td class="tier2">T2</td></tr>
+<tr><td>24</td><td>IAS15-15m-WR63.6%/APnL39.85%/PTPnL1.81%</td><td>IAS</td><td>63.6</td><td>39.85</td><td>1.81</td><td class="tier2">T2</td></tr>
+<tr><td>25</td><td>IAS16-15m-WR64.7%/APnL39.06%/PTPnL2.3%</td><td>IAS</td><td>64.7</td><td>39.06</td><td>2.3</td><td class="tier2">T2</td></tr>
+<tr><td>26</td><td>IAL07-15m-WR63.6%/APnL38.48%/PTPnL3.5%</td><td>IAL</td><td>63.6</td><td>38.48</td><td>3.5</td><td class="tier2">T2</td></tr>
+<tr><td>27</td><td>IAX02-15m-WR70.6%/APnL36.64%/PTPnL2.16%</td><td>IAX</td><td>70.6</td><td>36.64</td><td>2.16</td><td class="tier2">T2</td></tr>
+<tr><td>28</td><td>IAL08-15m-WR73.7%/APnL35.96%/PTPnL1.89%</td><td>IAL</td><td>73.7</td><td>35.96</td><td>1.89</td><td class="tier2">T2</td></tr>
+<tr><td>29</td><td>IAX03-15m-WR64.0%/APnL35.78%/PTPnL1.43%</td><td>IAX</td><td>64.0</td><td>35.78</td><td>1.43</td><td class="tier2">T2</td></tr>
+<tr><td>30</td><td>IAS17-15m-WR60.0%/APnL35.43%/PTPnL1.77%</td><td>IAS</td><td>60.0</td><td>35.43</td><td>1.77</td><td class="tier2">T2</td></tr>
+<tr><td>31</td><td>IAL09-15m-WR77.8%/APnL35.28%/PTPnL1.96%</td><td>IAL</td><td>77.8</td><td>35.28</td><td>1.96</td><td class="tier2">T2</td></tr>
+<tr><td>32</td><td>IAS18-15m-WR61.9%/APnL34.65%/PTPnL1.65%</td><td>IAS</td><td>61.9</td><td>34.65</td><td>1.65</td><td class="tier2">T2</td></tr>
+<tr><td>33</td><td>IAS19-15m-WR61.9%/APnL34.65%/PTPnL1.65%</td><td>IAS</td><td>61.9</td><td>34.65</td><td>1.65</td><td class="tier2">T2</td></tr>
+<tr><td>34</td><td>IAX04-15m-WR63.2%/APnL34.41%/PTPnL1.81%</td><td>IAX</td><td>63.2</td><td>34.41</td><td>1.81</td><td class="tier2">T2</td></tr>
+<tr><td>35</td><td>IAS20-15m-WR60.0%/APnL34.34%/PTPnL1.72%</td><td>IAS</td><td>60.0</td><td>34.34</td><td>1.72</td><td class="tier2">T2</td></tr>
+<tr><td>36</td><td>IAL10-15m-WR50.0%/APnL33.82%/PTPnL2.42%</td><td>IAL</td><td>50.0</td><td>33.82</td><td>2.42</td><td class="tier2">T2</td></tr>
+<tr><td>37</td><td>IAD03-15m-WR80.0%/APnL32.72%/PTPnL3.27%</td><td>IAD</td><td>80.0</td><td>32.72</td><td>3.27</td><td class="tier2">T2</td></tr>
+<tr><td>38</td><td>IAS21-15m-WR77.8%/APnL32.37%/PTPnL1.2%</td><td>IAS</td><td>77.8</td><td>32.37</td><td>1.2</td><td class="tier2">T2</td></tr>
+<tr><td>39</td><td>IAS22-15m-WR70.0%/APnL32.22%/PTPnL3.22%</td><td>IAS</td><td>70.0</td><td>32.22</td><td>3.22</td><td class="tier2">T2</td></tr>
+<tr><td>40</td><td>IAL11-15m-WR83.3%/APnL32.22%/PTPnL5.37%</td><td>IAL</td><td>83.3</td><td>32.22</td><td>5.37</td><td class="tier2">T2</td></tr>
+<tr><td>41</td><td>IAS23-15m-WR53.3%/APnL32.01%/PTPnL2.13%</td><td>IAS</td><td>53.3</td><td>32.01</td><td>2.13</td><td class="tier2">T2</td></tr>
+<tr><td>42</td><td>IAL12-15m-WR50.0%/APnL31.95%/PTPnL2.66%</td><td>IAL</td><td>50.0</td><td>31.95</td><td>2.66</td><td class="tier2">T2</td></tr>
+<tr><td>43</td><td>IAL13-15m-WR76.5%/APnL31.94%/PTPnL1.88%</td><td>IAL</td><td>76.5</td><td>31.94</td><td>1.88</td><td class="tier2">T2</td></tr>
+<tr><td>44</td><td>IAS24-15m-WR70.0%/APnL29.67%/PTPnL1.48%</td><td>IAS</td><td>70.0</td><td>29.67</td><td>1.48</td><td class="tier2">T2</td></tr>
+<tr><td>45</td><td>IAL14-15m-WR60.0%/APnL29.32%/PTPnL1.95%</td><td>IAL</td><td>60.0</td><td>29.32</td><td>1.95</td><td class="tier2">T2</td></tr>
+<tr><td>46</td><td>IAX05-15m-WR47.6%/APnL29.11%/PTPnL1.39%</td><td>IAX</td><td>47.6</td><td>29.11</td><td>1.39</td><td class="tier2">T2</td></tr>
+<tr><td>47</td><td>IAL15-15m-WR46.2%/APnL28.84%/PTPnL2.22%</td><td>IAL</td><td>46.2</td><td>28.84</td><td>2.22</td><td class="tier2">T2</td></tr>
+<tr><td>48</td><td>IAS25-15m-WR65.2%/APnL28.63%/PTPnL1.24%</td><td>IAS</td><td>65.2</td><td>28.63</td><td>1.24</td><td class="tier2">T2</td></tr>
+<tr><td>49</td><td>IAL16-15m-WR66.7%/APnL27.94%/PTPnL2.33%</td><td>IAL</td><td>66.7</td><td>27.94</td><td>2.33</td><td class="tier2">T2</td></tr>
+<tr><td>50</td><td>IAS26-15m-WR57.1%/APnL27.93%/PTPnL1.33%</td><td>IAS</td><td>57.1</td><td>27.93</td><td>1.33</td><td class="tier2">T2</td></tr>
+<tr><td>51</td><td>IAL17-15m-WR75.0%/APnL27.87%/PTPnL1.74%</td><td>IAL</td><td>75.0</td><td>27.87</td><td>1.74</td><td class="tier2">T2</td></tr>
+<tr><td>52</td><td>IAL18-15m-WR42.9%/APnL27.84%/PTPnL1.99%</td><td>IAL</td><td>42.9</td><td>27.84</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>53</td><td>IAS27-15m-WR69.2%/APnL27.69%/PTPnL2.13%</td><td>IAS</td><td>69.2</td><td>27.69</td><td>2.13</td><td class="tier2">T2</td></tr>
+<tr><td>54</td><td>IAX06-15m-WR76.5%/APnL27.25%/PTPnL1.6%</td><td>IAX</td><td>76.5</td><td>27.25</td><td>1.6</td><td class="tier2">T2</td></tr>
+<tr><td>55</td><td>IAS28-15m-WR58.8%/APnL25.74%/PTPnL1.51%</td><td>IAS</td><td>58.8</td><td>25.74</td><td>1.51</td><td class="tier2">T2</td></tr>
+<tr><td>56</td><td>IAX07-15m-WR60.0%/APnL25.4%/PTPnL1.27%</td><td>IAX</td><td>60.0</td><td>25.4</td><td>1.27</td><td class="tier2">T2</td></tr>
+<tr><td>57</td><td>IAL19-15m-WR62.5%/APnL24.52%/PTPnL3.06%</td><td>IAL</td><td>62.5</td><td>24.52</td><td>3.06</td><td class="tier2">T2</td></tr>
+<tr><td>58</td><td>IAX08-15m-WR60.7%/APnL24.18%/PTPnL0.86%</td><td>IAX</td><td>60.7</td><td>24.18</td><td>0.86</td><td class="tier2">T2</td></tr>
+<tr><td>59</td><td>IAX09-15m-WR76.2%/APnL23.9%/PTPnL1.14%</td><td>IAX</td><td>76.2</td><td>23.9</td><td>1.14</td><td class="tier2">T2</td></tr>
+<tr><td>60</td><td>IAD04-15m-WR100.0%/APnL23.74%/PTPnL2.97%</td><td>IAD</td><td>100.0</td><td>23.74</td><td>2.97</td><td class="tier1">T1</td></tr>
+<tr><td>61</td><td>IAL20-15m-WR40.0%/APnL23.53%/PTPnL1.57%</td><td>IAL</td><td>40.0</td><td>23.53</td><td>1.57</td><td class="tier2">T2</td></tr>
+<tr><td>62</td><td>IAX10-15m-WR85.7%/APnL23.48%/PTPnL3.35%</td><td>IAX</td><td>85.7</td><td>23.48</td><td>3.35</td><td class="tier2">T2</td></tr>
+<tr><td>63</td><td>IAL21-15m-WR66.7%/APnL23.4%/PTPnL3.9%</td><td>IAL</td><td>66.7</td><td>23.4</td><td>3.9</td><td class="tier2">T2</td></tr>
+<tr><td>64</td><td>IAX11-15m-WR100.0%/APnL22.64%/PTPnL7.55%</td><td>IAX</td><td>100.0</td><td>22.64</td><td>7.55</td><td class="tier1">T1</td></tr>
+<tr><td>65</td><td>IAX12-15m-WR100.0%/APnL22.64%/PTPnL7.55%</td><td>IAX</td><td>100.0</td><td>22.64</td><td>7.55</td><td class="tier1">T1</td></tr>
+<tr><td>66</td><td>IAD05-15m-WR77.8%/APnL22.61%/PTPnL2.51%</td><td>IAD</td><td>77.8</td><td>22.61</td><td>2.51</td><td class="tier2">T2</td></tr>
+<tr><td>67</td><td>IAL22-15m-WR58.3%/APnL22.4%/PTPnL1.87%</td><td>IAL</td><td>58.3</td><td>22.4</td><td>1.87</td><td class="tier2">T2</td></tr>
+<tr><td>68</td><td>IAL23-15m-WR80.0%/APnL21.36%/PTPnL4.27%</td><td>IAL</td><td>80.0</td><td>21.36</td><td>4.27</td><td class="tier2">T2</td></tr>
+<tr><td>69</td><td>IAL24-15m-WR71.4%/APnL21.07%/PTPnL3.01%</td><td>IAL</td><td>71.4</td><td>21.07</td><td>3.01</td><td class="tier2">T2</td></tr>
+<tr><td>70</td><td>IAL25-15m-WR50.0%/APnL20.62%/PTPnL1.29%</td><td>IAL</td><td>50.0</td><td>20.62</td><td>1.29</td><td class="tier2">T2</td></tr>
+<tr><td>71</td><td>IAL26-15m-WR41.7%/APnL20.47%/PTPnL1.71%</td><td>IAL</td><td>41.7</td><td>20.47</td><td>1.71</td><td class="tier2">T2</td></tr>
+<tr><td>72</td><td>IAL27-15m-WR66.7%/APnL20.16%/PTPnL3.36%</td><td>IAL</td><td>66.7</td><td>20.16</td><td>3.36</td><td class="tier2">T2</td></tr>
+<tr><td>73</td><td>IAL28-15m-WR43.8%/APnL20.15%/PTPnL1.26%</td><td>IAL</td><td>43.8</td><td>20.15</td><td>1.26</td><td class="tier2">T2</td></tr>
+<tr><td>74</td><td>IAL29-15m-WR83.3%/APnL19.95%/PTPnL3.32%</td><td>IAL</td><td>83.3</td><td>19.95</td><td>3.32</td><td class="tier2">T2</td></tr>
+<tr><td>75</td><td>IAD06-15m-WR100.0%/APnL19.68%/PTPnL3.28%</td><td>IAD</td><td>100.0</td><td>19.68</td><td>3.28</td><td class="tier1">T1</td></tr>
+<tr><td>76</td><td>IAL30-15m-WR100.0%/APnL19.38%/PTPnL6.46%</td><td>IAL</td><td>100.0</td><td>19.38</td><td>6.46</td><td class="tier1">T1</td></tr>
+<tr><td>77</td><td>IAL31-15m-WR58.3%/APnL18.61%/PTPnL1.55%</td><td>IAL</td><td>58.3</td><td>18.61</td><td>1.55</td><td class="tier2">T2</td></tr>
+<tr><td>78</td><td>IAX13-15m-WR66.7%/APnL18.4%/PTPnL6.13%</td><td>IAX</td><td>66.7</td><td>18.4</td><td>6.13</td><td class="tier2">T2</td></tr>
+<tr><td>79</td><td>IAD07-15m-WR83.3%/APnL18.36%/PTPnL3.06%</td><td>IAD</td><td>83.3</td><td>18.36</td><td>3.06</td><td class="tier2">T2</td></tr>
+<tr><td>80</td><td>IAS29-15m-WR58.8%/APnL18.35%/PTPnL1.08%</td><td>IAS</td><td>58.8</td><td>18.35</td><td>1.08</td><td class="tier2">T2</td></tr>
+<tr><td>81</td><td>IAL32-15m-WR77.8%/APnL17.86%/PTPnL0.99%</td><td>IAL</td><td>77.8</td><td>17.86</td><td>0.99</td><td class="tier2">T2</td></tr>
+<tr><td>82</td><td>IAX14-15m-WR71.4%/APnL17.86%/PTPnL2.55%</td><td>IAX</td><td>71.4</td><td>17.86</td><td>2.55</td><td class="tier2">T2</td></tr>
+<tr><td>83</td><td>IAL33-15m-WR45.5%/APnL17.74%/PTPnL1.61%</td><td>IAL</td><td>45.5</td><td>17.74</td><td>1.61</td><td class="tier2">T2</td></tr>
+<tr><td>84</td><td>IAL34-15m-WR45.5%/APnL17.02%/PTPnL1.55%</td><td>IAL</td><td>45.5</td><td>17.02</td><td>1.55</td><td class="tier2">T2</td></tr>
+<tr><td>85</td><td>IAL35-15m-WR40.0%/APnL16.96%/PTPnL1.13%</td><td>IAL</td><td>40.0</td><td>16.96</td><td>1.13</td><td class="tier2">T2</td></tr>
+<tr><td>86</td><td>IAS30-15m-WR87.5%/APnL16.29%/PTPnL2.04%</td><td>IAS</td><td>87.5</td><td>16.29</td><td>2.04</td><td class="tier2">T2</td></tr>
+<tr><td>87</td><td>IAD08-15m-WR41.7%/APnL15.79%/PTPnL1.32%</td><td>IAD</td><td>41.7</td><td>15.79</td><td>1.32</td><td class="tier2">T2</td></tr>
+<tr><td>88</td><td>IAX15-15m-WR71.4%/APnL15.58%/PTPnL2.23%</td><td>IAX</td><td>71.4</td><td>15.58</td><td>2.23</td><td class="tier2">T2</td></tr>
+<tr><td>89</td><td>IAS31-15m-WR80.0%/APnL15.49%/PTPnL3.1%</td><td>IAS</td><td>80.0</td><td>15.49</td><td>3.1</td><td class="tier2">T2</td></tr>
+<tr><td>90</td><td>IAL36-15m-WR80.0%/APnL15.3%/PTPnL3.06%</td><td>IAL</td><td>80.0</td><td>15.3</td><td>3.06</td><td class="tier2">T2</td></tr>
+<tr><td>91</td><td>IAS32-15m-WR50.0%/APnL14.85%/PTPnL2.48%</td><td>IAS</td><td>50.0</td><td>14.85</td><td>2.48</td><td class="tier2">T2</td></tr>
+<tr><td>92</td><td>IAL37-15m-WR75.0%/APnL14.84%/PTPnL3.71%</td><td>IAL</td><td>75.0</td><td>14.84</td><td>3.71</td><td class="tier2">T2</td></tr>
+<tr><td>93</td><td>IAD09-15m-WR57.1%/APnL14.54%/PTPnL2.08%</td><td>IAD</td><td>57.1</td><td>14.54</td><td>2.08</td><td class="tier2">T2</td></tr>
+<tr><td>94</td><td>IAL38-15m-WR75.0%/APnL14.3%/PTPnL3.58%</td><td>IAL</td><td>75.0</td><td>14.3</td><td>3.58</td><td class="tier2">T2</td></tr>
+<tr><td>95</td><td>IAL39-15m-WR57.1%/APnL13.9%/PTPnL1.99%</td><td>IAL</td><td>57.1</td><td>13.9</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>96</td><td>IAL40-15m-WR60.0%/APnL13.6%/PTPnL2.72%</td><td>IAL</td><td>60.0</td><td>13.6</td><td>2.72</td><td class="tier2">T2</td></tr>
+<tr><td>97</td><td>IAS33-15m-WR66.7%/APnL13.5%/PTPnL4.5%</td><td>IAS</td><td>66.7</td><td>13.5</td><td>4.5</td><td class="tier2">T2</td></tr>
+<tr><td>98</td><td>IAD10-15m-WR100.0%/APnL13.03%/PTPnL2.61%</td><td>IAD</td><td>100.0</td><td>13.03</td><td>2.61</td><td class="tier1">T1</td></tr>
+<tr><td>99</td><td>IAS34-15m-WR55.6%/APnL12.51%/PTPnL1.39%</td><td>IAS</td><td>55.6</td><td>12.51</td><td>1.39</td><td class="tier2">T2</td></tr>
+<tr><td>100</td><td>IAL41-15m-WR60.0%/APnL12.45%/PTPnL2.49%</td><td>IAL</td><td>60.0</td><td>12.45</td><td>2.49</td><td class="tier2">T2</td></tr>
+<tr><td>101</td><td>IAX16-15m-WR66.7%/APnL11.23%/PTPnL3.74%</td><td>IAX</td><td>66.7</td><td>11.23</td><td>3.74</td><td class="tier2">T2</td></tr>
+<tr><td>102</td><td>IAS35-15m-WR70.0%/APnL11.18%/PTPnL1.12%</td><td>IAS</td><td>70.0</td><td>11.18</td><td>1.12</td><td class="tier2">T2</td></tr>
+<tr><td>103</td><td>IAS36-15m-WR100.0%/APnL7.5%/PTPnL1.5%</td><td>IAS</td><td>100.0</td><td>7.5</td><td>1.5</td><td class="tier1">T1</td></tr>
+<tr><td>104</td><td>IAL42-15m-WR100.0%/APnL6.0%/PTPnL1.5%</td><td>IAL</td><td>100.0</td><td>6.0</td><td>1.5</td><td class="tier1">T1</td></tr>
+<tr><td>105</td><td>IAS37-15m-WR100.0%/APnL5.0%/PTPnL0.5%</td><td>IAS</td><td>100.0</td><td>5.0</td><td>0.5</td><td class="tier1">T1</td></tr>
+<tr><td>106</td><td>IAS38-15m-WR100.0%/APnL5.0%/PTPnL0.5%</td><td>IAS</td><td>100.0</td><td>5.0</td><td>0.5</td><td class="tier1">T1</td></tr>
+<tr><td>107</td><td>IAS39-15m-WR100.0%/APnL5.0%/PTPnL1.0%</td><td>IAS</td><td>100.0</td><td>5.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>108</td><td>IAX17-15m-WR100.0%/APnL4.13%/PTPnL1.38%</td><td>IAX</td><td>100.0</td><td>4.13</td><td>1.38</td><td class="tier1">T1</td></tr>
+<tr><td>109</td><td>IAD11-15m-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>IAD</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>110</td><td>IAD12-15m-WR100.0%/APnL3.0%/PTPnL1.0%</td><td>IAD</td><td>100.0</td><td>3.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+</table>
+<h2>1H Rules (69)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>IAX01-1h-WR90.0%/APnL63.88%/PTPnL3.19%</td><td>IAX</td><td>90.0</td><td>63.88</td><td>3.19</td><td class="tier2">T2</td></tr>
+<tr><td>2</td><td>IAX02-1h-WR78.9%/APnL51.09%/PTPnL2.69%</td><td>IAX</td><td>78.9</td><td>51.09</td><td>2.69</td><td class="tier2">T2</td></tr>
+<tr><td>3</td><td>IAX03-1h-WR81.8%/APnL49.99%/PTPnL2.27%</td><td>IAX</td><td>81.8</td><td>49.99</td><td>2.27</td><td class="tier2">T2</td></tr>
+<tr><td>4</td><td>IAS01-1h-WR72.7%/APnL48.47%/PTPnL2.2%</td><td>IAS</td><td>72.7</td><td>48.47</td><td>2.2</td><td class="tier2">T2</td></tr>
+<tr><td>5</td><td>IAS02-1h-WR40.7%/APnL42.68%/PTPnL1.58%</td><td>IAS</td><td>40.7</td><td>42.68</td><td>1.58</td><td class="tier2">T2</td></tr>
+<tr><td>6</td><td>IAS03-1h-WR61.9%/APnL42.6%/PTPnL2.03%</td><td>IAS</td><td>61.9</td><td>42.6</td><td>2.03</td><td class="tier2">T2</td></tr>
+<tr><td>7</td><td>IAX04-1h-WR73.7%/APnL41.52%/PTPnL2.19%</td><td>IAX</td><td>73.7</td><td>41.52</td><td>2.19</td><td class="tier2">T2</td></tr>
+<tr><td>8</td><td>IAX05-1h-WR61.1%/APnL40.42%/PTPnL2.25%</td><td>IAX</td><td>61.1</td><td>40.42</td><td>2.25</td><td class="tier2">T2</td></tr>
+<tr><td>9</td><td>IAX06-1h-WR72.7%/APnL39.87%/PTPnL1.81%</td><td>IAX</td><td>72.7</td><td>39.87</td><td>1.81</td><td class="tier2">T2</td></tr>
+<tr><td>10</td><td>IAS04-1h-WR75.0%/APnL38.08%/PTPnL1.19%</td><td>IAS</td><td>75.0</td><td>38.08</td><td>1.19</td><td class="tier2">T2</td></tr>
+<tr><td>11</td><td>IAD01-1h-WR88.9%/APnL37.73%/PTPnL2.1%</td><td>IAD</td><td>88.9</td><td>37.73</td><td>2.1</td><td class="tier2">T2</td></tr>
+<tr><td>12</td><td>IAX07-1h-WR50.0%/APnL36.75%/PTPnL1.53%</td><td>IAX</td><td>50.0</td><td>36.75</td><td>1.53</td><td class="tier2">T2</td></tr>
+<tr><td>13</td><td>IAX08-1h-WR68.4%/APnL35.14%/PTPnL1.85%</td><td>IAX</td><td>68.4</td><td>35.14</td><td>1.85</td><td class="tier2">T2</td></tr>
+<tr><td>14</td><td>IAD02-1h-WR84.6%/APnL34.99%/PTPnL2.69%</td><td>IAD</td><td>84.6</td><td>34.99</td><td>2.69</td><td class="tier2">T2</td></tr>
+<tr><td>15</td><td>IAL01-1h-WR50.0%/APnL34.02%/PTPnL2.84%</td><td>IAL</td><td>50.0</td><td>34.02</td><td>2.84</td><td class="tier2">T2</td></tr>
+<tr><td>16</td><td>IAL02-1h-WR43.8%/APnL31.91%/PTPnL1.99%</td><td>IAL</td><td>43.8</td><td>31.91</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>17</td><td>IAD03-1h-WR94.4%/APnL30.38%/PTPnL1.69%</td><td>IAD</td><td>94.4</td><td>30.38</td><td>1.69</td><td class="tier2">T2</td></tr>
+<tr><td>18</td><td>IAL03-1h-WR54.5%/APnL30.03%/PTPnL2.73%</td><td>IAL</td><td>54.5</td><td>30.03</td><td>2.73</td><td class="tier2">T2</td></tr>
+<tr><td>19</td><td>IAL04-1h-WR61.5%/APnL28.76%/PTPnL2.21%</td><td>IAL</td><td>61.5</td><td>28.76</td><td>2.21</td><td class="tier2">T2</td></tr>
+<tr><td>20</td><td>IAL05-1h-WR54.5%/APnL27.16%/PTPnL2.47%</td><td>IAL</td><td>54.5</td><td>27.16</td><td>2.47</td><td class="tier2">T2</td></tr>
+<tr><td>21</td><td>IAX09-1h-WR57.1%/APnL26.44%/PTPnL1.26%</td><td>IAX</td><td>57.1</td><td>26.44</td><td>1.26</td><td class="tier2">T2</td></tr>
+<tr><td>22</td><td>IAS05-1h-WR62.5%/APnL26.22%/PTPnL3.28%</td><td>IAS</td><td>62.5</td><td>26.22</td><td>3.28</td><td class="tier2">T2</td></tr>
+<tr><td>23</td><td>IAS06-1h-WR53.3%/APnL25.61%/PTPnL1.71%</td><td>IAS</td><td>53.3</td><td>25.61</td><td>1.71</td><td class="tier2">T2</td></tr>
+<tr><td>24</td><td>IAS07-1h-WR68.8%/APnL25.46%/PTPnL1.59%</td><td>IAS</td><td>68.8</td><td>25.46</td><td>1.59</td><td class="tier2">T2</td></tr>
+<tr><td>25</td><td>IAL06-1h-WR71.4%/APnL24.74%/PTPnL3.53%</td><td>IAL</td><td>71.4</td><td>24.74</td><td>3.53</td><td class="tier2">T2</td></tr>
+<tr><td>26</td><td>IAS08-1h-WR50.0%/APnL24.39%/PTPnL2.44%</td><td>IAS</td><td>50.0</td><td>24.39</td><td>2.44</td><td class="tier2">T2</td></tr>
+<tr><td>27</td><td>IAS09-1h-WR71.4%/APnL23.7%/PTPnL1.69%</td><td>IAS</td><td>71.4</td><td>23.7</td><td>1.69</td><td class="tier2">T2</td></tr>
+<tr><td>28</td><td>IAL07-1h-WR77.8%/APnL22.81%/PTPnL2.53%</td><td>IAL</td><td>77.8</td><td>22.81</td><td>2.53</td><td class="tier2">T2</td></tr>
+<tr><td>29</td><td>IAD04-1h-WR87.5%/APnL21.15%/PTPnL2.64%</td><td>IAD</td><td>87.5</td><td>21.15</td><td>2.64</td><td class="tier2">T2</td></tr>
+<tr><td>30</td><td>IAS10-1h-WR70.0%/APnL20.66%/PTPnL2.07%</td><td>IAS</td><td>70.0</td><td>20.66</td><td>2.07</td><td class="tier2">T2</td></tr>
+<tr><td>31</td><td>IAL08-1h-WR62.5%/APnL20.65%/PTPnL2.58%</td><td>IAL</td><td>62.5</td><td>20.65</td><td>2.58</td><td class="tier2">T2</td></tr>
+<tr><td>32</td><td>IAX10-1h-WR88.9%/APnL20.01%/PTPnL2.22%</td><td>IAX</td><td>88.9</td><td>20.01</td><td>2.22</td><td class="tier2">T2</td></tr>
+<tr><td>33</td><td>IAD05-1h-WR85.7%/APnL18.8%/PTPnL2.69%</td><td>IAD</td><td>85.7</td><td>18.8</td><td>2.69</td><td class="tier2">T2</td></tr>
+<tr><td>34</td><td>IAD06-1h-WR41.9%/APnL18.54%/PTPnL0.6%</td><td>IAD</td><td>41.9</td><td>18.54</td><td>0.6</td><td class="tier2">T2</td></tr>
+<tr><td>35</td><td>IAL09-1h-WR60.0%/APnL17.71%/PTPnL1.77%</td><td>IAL</td><td>60.0</td><td>17.71</td><td>1.77</td><td class="tier2">T2</td></tr>
+<tr><td>36</td><td>IAL10-1h-WR66.7%/APnL17.42%/PTPnL1.94%</td><td>IAL</td><td>66.7</td><td>17.42</td><td>1.94</td><td class="tier2">T2</td></tr>
+<tr><td>37</td><td>IAL11-1h-WR72.7%/APnL17.12%/PTPnL1.56%</td><td>IAL</td><td>72.7</td><td>17.12</td><td>1.56</td><td class="tier2">T2</td></tr>
+<tr><td>38</td><td>IAS11-1h-WR68.8%/APnL16.07%/PTPnL1.0%</td><td>IAS</td><td>68.8</td><td>16.07</td><td>1.0</td><td class="tier2">T2</td></tr>
+<tr><td>39</td><td>IAD07-1h-WR100.0%/APnL16.0%/PTPnL4.0%</td><td>IAD</td><td>100.0</td><td>16.0</td><td>4.0</td><td class="tier1">T1</td></tr>
+<tr><td>40</td><td>IAS12-1h-WR59.1%/APnL15.68%/PTPnL0.71%</td><td>IAS</td><td>59.1</td><td>15.68</td><td>0.71</td><td class="tier2">T2</td></tr>
+<tr><td>41</td><td>IAS13-1h-WR60.0%/APnL14.92%/PTPnL1.49%</td><td>IAS</td><td>60.0</td><td>14.92</td><td>1.49</td><td class="tier2">T2</td></tr>
+<tr><td>42</td><td>IAX11-1h-WR66.7%/APnL14.55%/PTPnL1.21%</td><td>IAX</td><td>66.7</td><td>14.55</td><td>1.21</td><td class="tier2">T2</td></tr>
+<tr><td>43</td><td>IAL12-1h-WR81.8%/APnL14.12%/PTPnL1.28%</td><td>IAL</td><td>81.8</td><td>14.12</td><td>1.28</td><td class="tier2">T2</td></tr>
+<tr><td>44</td><td>IAL13-1h-WR63.6%/APnL13.63%/PTPnL1.24%</td><td>IAL</td><td>63.6</td><td>13.63</td><td>1.24</td><td class="tier2">T2</td></tr>
+<tr><td>45</td><td>IAS14-1h-WR50.0%/APnL13.33%/PTPnL2.22%</td><td>IAS</td><td>50.0</td><td>13.33</td><td>2.22</td><td class="tier2">T2</td></tr>
+<tr><td>46</td><td>IAL14-1h-WR66.7%/APnL12.98%/PTPnL4.33%</td><td>IAL</td><td>66.7</td><td>12.98</td><td>4.33</td><td class="tier2">T2</td></tr>
+<tr><td>47</td><td>IAS15-1h-WR66.7%/APnL12.86%/PTPnL2.14%</td><td>IAS</td><td>66.7</td><td>12.86</td><td>2.14</td><td class="tier2">T2</td></tr>
+<tr><td>48</td><td>IAL15-1h-WR66.7%/APnL12.5%/PTPnL1.39%</td><td>IAL</td><td>66.7</td><td>12.5</td><td>1.39</td><td class="tier2">T2</td></tr>
+<tr><td>49</td><td>IAD08-1h-WR80.0%/APnL12.15%/PTPnL1.22%</td><td>IAD</td><td>80.0</td><td>12.15</td><td>1.22</td><td class="tier2">T2</td></tr>
+<tr><td>50</td><td>IAL16-1h-WR66.7%/APnL11.1%/PTPnL3.7%</td><td>IAL</td><td>66.7</td><td>11.1</td><td>3.7</td><td class="tier2">T2</td></tr>
+<tr><td>51</td><td>IAL17-1h-WR50.0%/APnL11.07%/PTPnL2.77%</td><td>IAL</td><td>50.0</td><td>11.07</td><td>2.77</td><td class="tier2">T2</td></tr>
+<tr><td>52</td><td>IAL18-1h-WR50.0%/APnL11.07%/PTPnL2.77%</td><td>IAL</td><td>50.0</td><td>11.07</td><td>2.77</td><td class="tier2">T2</td></tr>
+<tr><td>53</td><td>IAX12-1h-WR60.0%/APnL11.07%/PTPnL1.11%</td><td>IAX</td><td>60.0</td><td>11.07</td><td>1.11</td><td class="tier2">T2</td></tr>
+<tr><td>54</td><td>IAL19-1h-WR100.0%/APnL10.99%/PTPnL3.66%</td><td>IAL</td><td>100.0</td><td>10.99</td><td>3.66</td><td class="tier1">T1</td></tr>
+<tr><td>55</td><td>IAD09-1h-WR100.0%/APnL10.94%/PTPnL3.65%</td><td>IAD</td><td>100.0</td><td>10.94</td><td>3.65</td><td class="tier1">T1</td></tr>
+<tr><td>56</td><td>IAL20-1h-WR50.0%/APnL10.92%/PTPnL1.82%</td><td>IAL</td><td>50.0</td><td>10.92</td><td>1.82</td><td class="tier2">T2</td></tr>
+<tr><td>57</td><td>IAD10-1h-WR100.0%/APnL10.65%/PTPnL3.55%</td><td>IAD</td><td>100.0</td><td>10.65</td><td>3.55</td><td class="tier1">T1</td></tr>
+<tr><td>58</td><td>IAS16-1h-WR100.0%/APnL8.4%/PTPnL0.7%</td><td>IAS</td><td>100.0</td><td>8.4</td><td>0.7</td><td class="tier1">T1</td></tr>
+<tr><td>59</td><td>IAL21-1h-WR100.0%/APnL7.19%/PTPnL1.8%</td><td>IAL</td><td>100.0</td><td>7.19</td><td>1.8</td><td class="tier1">T1</td></tr>
+<tr><td>60</td><td>IAL22-1h-WR100.0%/APnL7.19%/PTPnL1.8%</td><td>IAL</td><td>100.0</td><td>7.19</td><td>1.8</td><td class="tier1">T1</td></tr>
+<tr><td>61</td><td>IAL23-1h-WR100.0%/APnL7.19%/PTPnL1.8%</td><td>IAL</td><td>100.0</td><td>7.19</td><td>1.8</td><td class="tier1">T1</td></tr>
+<tr><td>62</td><td>IAD11-1h-WR100.0%/APnL6.49%/PTPnL1.62%</td><td>IAD</td><td>100.0</td><td>6.49</td><td>1.62</td><td class="tier1">T1</td></tr>
+<tr><td>63</td><td>IAD12-1h-WR100.0%/APnL4.9%/PTPnL1.23%</td><td>IAD</td><td>100.0</td><td>4.9</td><td>1.23</td><td class="tier1">T1</td></tr>
+<tr><td>64</td><td>IAL24-1h-WR100.0%/APnL4.5%/PTPnL0.5%</td><td>IAL</td><td>100.0</td><td>4.5</td><td>0.5</td><td class="tier1">T1</td></tr>
+<tr><td>65</td><td>IAL25-1h-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>IAL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>66</td><td>IAL26-1h-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>IAL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>67</td><td>IAL27-1h-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>IAL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>68</td><td>IAL28-1h-WR100.0%/APnL4.0%/PTPnL1.0%</td><td>IAL</td><td>100.0</td><td>4.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>69</td><td>IAL29-1h-WR100.0%/APnL3.0%/PTPnL1.0%</td><td>IAL</td><td>100.0</td><td>3.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+</table>
+<h2>Daily Rules (48)</h2>
+<table class="sortable">
+<tr><th>#</th><th>Rule ID</th><th>Family</th><th>WR%</th><th>Avg PnL%</th><th>Per-Trade PnL%</th><th>Tier</th></tr>
+<tr><td>1</td><td>IAX01-daily-WR88.2%/APnL48.74%/PTPnL2.87%</td><td>IAX</td><td>88.2</td><td>48.74</td><td>2.87</td><td class="tier2">T2</td></tr>
+<tr><td>2</td><td>IAX02-daily-WR72.2%/APnL44.02%/PTPnL2.45%</td><td>IAX</td><td>72.2</td><td>44.02</td><td>2.45</td><td class="tier2">T2</td></tr>
+<tr><td>3</td><td>IAX03-daily-WR82.4%/APnL42.62%/PTPnL2.51%</td><td>IAX</td><td>82.4</td><td>42.62</td><td>2.51</td><td class="tier2">T2</td></tr>
+<tr><td>4</td><td>IAX04-daily-WR55.0%/APnL40.89%/PTPnL2.04%</td><td>IAX</td><td>55.0</td><td>40.89</td><td>2.04</td><td class="tier2">T2</td></tr>
+<tr><td>5</td><td>IAX05-daily-WR82.4%/APnL37.97%/PTPnL2.23%</td><td>IAX</td><td>82.4</td><td>37.97</td><td>2.23</td><td class="tier2">T2</td></tr>
+<tr><td>6</td><td>IAL01-daily-WR71.4%/APnL34.49%/PTPnL2.46%</td><td>IAL</td><td>71.4</td><td>34.49</td><td>2.46</td><td class="tier2">T2</td></tr>
+<tr><td>7</td><td>IAX06-daily-WR77.8%/APnL33.33%/PTPnL1.85%</td><td>IAX</td><td>77.8</td><td>33.33</td><td>1.85</td><td class="tier2">T2</td></tr>
+<tr><td>8</td><td>IAX07-daily-WR71.4%/APnL31.59%/PTPnL2.26%</td><td>IAX</td><td>71.4</td><td>31.59</td><td>2.26</td><td class="tier2">T2</td></tr>
+<tr><td>9</td><td>IAX08-daily-WR66.7%/APnL31.03%/PTPnL1.48%</td><td>IAX</td><td>66.7</td><td>31.03</td><td>1.48</td><td class="tier2">T2</td></tr>
+<tr><td>10</td><td>IAX09-daily-WR84.2%/APnL30.23%/PTPnL1.59%</td><td>IAX</td><td>84.2</td><td>30.23</td><td>1.59</td><td class="tier2">T2</td></tr>
+<tr><td>11</td><td>IAX10-daily-WR60.0%/APnL29.34%/PTPnL1.96%</td><td>IAX</td><td>60.0</td><td>29.34</td><td>1.96</td><td class="tier2">T2</td></tr>
+<tr><td>12</td><td>IAL02-daily-WR61.5%/APnL25.82%/PTPnL1.99%</td><td>IAL</td><td>61.5</td><td>25.82</td><td>1.99</td><td class="tier2">T2</td></tr>
+<tr><td>13</td><td>IAX11-daily-WR81.2%/APnL24.18%/PTPnL1.51%</td><td>IAX</td><td>81.2</td><td>24.18</td><td>1.51</td><td class="tier2">T2</td></tr>
+<tr><td>14</td><td>IAX12-daily-WR71.4%/APnL23.74%/PTPnL1.7%</td><td>IAX</td><td>71.4</td><td>23.74</td><td>1.7</td><td class="tier2">T2</td></tr>
+<tr><td>15</td><td>IAD01-daily-WR90.0%/APnL22.64%/PTPnL2.26%</td><td>IAD</td><td>90.0</td><td>22.64</td><td>2.26</td><td class="tier2">T2</td></tr>
+<tr><td>16</td><td>IAS01-daily-WR56.2%/APnL21.93%/PTPnL1.37%</td><td>IAS</td><td>56.2</td><td>21.93</td><td>1.37</td><td class="tier2">T2</td></tr>
+<tr><td>17</td><td>IAL03-daily-WR75.0%/APnL20.3%/PTPnL5.08%</td><td>IAL</td><td>75.0</td><td>20.3</td><td>5.08</td><td class="tier2">T2</td></tr>
+<tr><td>18</td><td>IAS02-daily-WR60.0%/APnL19.8%/PTPnL3.96%</td><td>IAS</td><td>60.0</td><td>19.8</td><td>3.96</td><td class="tier2">T2</td></tr>
+<tr><td>19</td><td>IAL04-daily-WR60.0%/APnL19.8%/PTPnL3.96%</td><td>IAL</td><td>60.0</td><td>19.8</td><td>3.96</td><td class="tier2">T2</td></tr>
+<tr><td>20</td><td>IAS03-daily-WR41.7%/APnL19.72%/PTPnL1.64%</td><td>IAS</td><td>41.7</td><td>19.72</td><td>1.64</td><td class="tier2">T2</td></tr>
+<tr><td>21</td><td>IAD02-daily-WR87.5%/APnL19.32%/PTPnL2.42%</td><td>IAD</td><td>87.5</td><td>19.32</td><td>2.42</td><td class="tier2">T2</td></tr>
+<tr><td>22</td><td>IAD03-daily-WR66.7%/APnL17.83%/PTPnL1.19%</td><td>IAD</td><td>66.7</td><td>17.83</td><td>1.19</td><td class="tier2">T2</td></tr>
+<tr><td>23</td><td>IAL05-daily-WR63.6%/APnL17.3%/PTPnL1.57%</td><td>IAL</td><td>63.6</td><td>17.3</td><td>1.57</td><td class="tier2">T2</td></tr>
+<tr><td>24</td><td>IAS04-daily-WR80.0%/APnL16.95%/PTPnL3.39%</td><td>IAS</td><td>80.0</td><td>16.95</td><td>3.39</td><td class="tier2">T2</td></tr>
+<tr><td>25</td><td>IAS05-daily-WR40.0%/APnL16.21%/PTPnL3.24%</td><td>IAS</td><td>40.0</td><td>16.21</td><td>3.24</td><td class="tier2">T2</td></tr>
+<tr><td>26</td><td>IAS06-daily-WR40.0%/APnL16.21%/PTPnL3.24%</td><td>IAS</td><td>40.0</td><td>16.21</td><td>3.24</td><td class="tier2">T2</td></tr>
+<tr><td>27</td><td>IAS07-daily-WR40.0%/APnL16.21%/PTPnL3.24%</td><td>IAS</td><td>40.0</td><td>16.21</td><td>3.24</td><td class="tier2">T2</td></tr>
+<tr><td>28</td><td>IAL06-daily-WR66.7%/APnL16.21%/PTPnL5.4%</td><td>IAL</td><td>66.7</td><td>16.21</td><td>5.4</td><td class="tier2">T2</td></tr>
+<tr><td>29</td><td>IAL07-daily-WR66.7%/APnL16.21%/PTPnL5.4%</td><td>IAL</td><td>66.7</td><td>16.21</td><td>5.4</td><td class="tier2">T2</td></tr>
+<tr><td>30</td><td>IAL08-daily-WR66.7%/APnL16.21%/PTPnL5.4%</td><td>IAL</td><td>66.7</td><td>16.21</td><td>5.4</td><td class="tier2">T2</td></tr>
+<tr><td>31</td><td>IAL09-daily-WR66.7%/APnL16.21%/PTPnL5.4%</td><td>IAL</td><td>66.7</td><td>16.21</td><td>5.4</td><td class="tier2">T2</td></tr>
+<tr><td>32</td><td>IAL10-daily-WR66.7%/APnL15.43%/PTPnL5.14%</td><td>IAL</td><td>66.7</td><td>15.43</td><td>5.14</td><td class="tier2">T2</td></tr>
+<tr><td>33</td><td>IAS08-daily-WR66.7%/APnL15.21%/PTPnL5.07%</td><td>IAS</td><td>66.7</td><td>15.21</td><td>5.07</td><td class="tier2">T2</td></tr>
+<tr><td>34</td><td>IAL11-daily-WR66.7%/APnL15.21%/PTPnL5.07%</td><td>IAL</td><td>66.7</td><td>15.21</td><td>5.07</td><td class="tier2">T2</td></tr>
+<tr><td>35</td><td>IAL12-daily-WR66.7%/APnL15.21%/PTPnL5.07%</td><td>IAL</td><td>66.7</td><td>15.21</td><td>5.07</td><td class="tier2">T2</td></tr>
+<tr><td>36</td><td>IAL13-daily-WR66.7%/APnL15.21%/PTPnL5.07%</td><td>IAL</td><td>66.7</td><td>15.21</td><td>5.07</td><td class="tier2">T2</td></tr>
+<tr><td>37</td><td>IAL14-daily-WR66.7%/APnL15.21%/PTPnL5.07%</td><td>IAL</td><td>66.7</td><td>15.21</td><td>5.07</td><td class="tier2">T2</td></tr>
+<tr><td>38</td><td>IAL15-daily-WR66.7%/APnL15.21%/PTPnL5.07%</td><td>IAL</td><td>66.7</td><td>15.21</td><td>5.07</td><td class="tier2">T2</td></tr>
+<tr><td>39</td><td>IAL16-daily-WR60.0%/APnL14.89%/PTPnL2.98%</td><td>IAL</td><td>60.0</td><td>14.89</td><td>2.98</td><td class="tier2">T2</td></tr>
+<tr><td>40</td><td>IAL17-daily-WR75.0%/APnL14.57%/PTPnL3.64%</td><td>IAL</td><td>75.0</td><td>14.57</td><td>3.64</td><td class="tier2">T2</td></tr>
+<tr><td>41</td><td>IAS09-daily-WR83.3%/APnL13.7%/PTPnL2.28%</td><td>IAS</td><td>83.3</td><td>13.7</td><td>2.28</td><td class="tier2">T2</td></tr>
+<tr><td>42</td><td>IAS10-daily-WR100.0%/APnL13.51%/PTPnL3.38%</td><td>IAS</td><td>100.0</td><td>13.51</td><td>3.38</td><td class="tier1">T1</td></tr>
+<tr><td>43</td><td>IAD04-daily-WR80.0%/APnL11.42%/PTPnL2.28%</td><td>IAD</td><td>80.0</td><td>11.42</td><td>2.28</td><td class="tier2">T2</td></tr>
+<tr><td>44</td><td>IAS11-daily-WR100.0%/APnL9.0%/PTPnL3.0%</td><td>IAS</td><td>100.0</td><td>9.0</td><td>3.0</td><td class="tier1">T1</td></tr>
+<tr><td>45</td><td>IAS12-daily-WR100.0%/APnL7.0%/PTPnL1.0%</td><td>IAS</td><td>100.0</td><td>7.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>46</td><td>IAS13-daily-WR100.0%/APnL6.0%/PTPnL1.0%</td><td>IAS</td><td>100.0</td><td>6.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+<tr><td>47</td><td>IAL18-daily-WR100.0%/APnL3.25%/PTPnL1.08%</td><td>IAL</td><td>100.0</td><td>3.25</td><td>1.08</td><td class="tier1">T1</td></tr>
+<tr><td>48</td><td>IAS14-daily-WR100.0%/APnL3.0%/PTPnL1.0%</td><td>IAS</td><td>100.0</td><td>3.0</td><td>1.0</td><td class="tier1">T1</td></tr>
+</table>
+<script>
+document.querySelectorAll('table.sortable th').forEach(function(th){
+  th.addEventListener('click',function(){
+    var table=this.closest('table'),idx=Array.from(this.parentNode.children).indexOf(this);
+    var rows=Array.from(table.querySelectorAll('tr')).slice(1);
+    var asc=this.dataset.asc==='true';this.dataset.asc=!asc;
+    rows.sort(function(a,b){
+      var va=a.children[idx].textContent,vb=b.children[idx].textContent;
+      var na=parseFloat(va),nb=parseFloat(vb);
+      if(!isNaN(na)&&!isNaN(nb))return asc?na-nb:nb-na;
+      return asc?va.localeCompare(vb):vb.localeCompare(va);
+    });
+    rows.forEach(function(r){table.appendChild(r);});
+  });
+});
+</script>
+</body>
+</html>
