@@ -120,7 +120,8 @@ function render(filter){
   var rows=data.filter(function(d){return !f||d.ticker.toLowerCase().indexOf(f)>=0;});
   rows.sort(function(a,b){
     var va=sortCol==="ticker"?a.ticker:a[sortCol];
-    var vb=sortCol==="ticker"?b.ticker:b[sortCol];
+    var vb=sortCol==="ticker"?b.ticker:b[sortCol  {ticker:"GLD",stock:182,indiv:182,wr100:74,pnl10:167,avgPnl:20.0,ptpnl:3.22,report:"GLD_backtest_summary_20260411.html"},
+];
     if(typeof va==="string")return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
     return sortAsc?va-vb:vb-va;
   });
