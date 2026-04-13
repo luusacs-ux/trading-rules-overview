@@ -39,10 +39,6 @@ a:hover{color:#e94560;text-decoration:underline}
 </div>
 <div style="padding:8px 16px;font-size:12px">
   <a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a>
-  <span style="margin-left:16px">
-    <button onclick="triggerRegression()" style="background:#0f3460;color:#e0e0e0;border:1px solid #e94560;border-radius:4px;padding:4px 12px;cursor:pointer;font-size:11px">Run Regression Test</button>
-    <button onclick="promptForceExit()" style="background:#0f3460;color:#e0e0e0;border:1px solid #e94560;border-radius:4px;padding:4px 12px;cursor:pointer;font-size:11px;margin-left:4px">Force Exit Position</button>
-  </span>
 </div>
 <div class="container">
 <table id="rulesTable">
@@ -299,29 +295,6 @@ document.querySelectorAll("th[data-col]").forEach(function(th){
 });
 render();
 
-// ─── Dashboard Commands (via Telegram Bot API) ───
-var _BT="8792649124:AAFKfE2Up_6a6Wq2urzPmHtgHPlTl-fFMtk";
-var _CI="8687906791";
-function sendTgCmd(cmd,cb){
-  fetch("https://api.telegram.org/bot"+_BT+"/sendMessage",{
-    method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({chat_id:_CI,text:cmd})
-  }).then(function(r){return r.json()}).then(function(d){
-    if(cb)cb(d.ok);
-    else alert(d.ok?"Command sent: "+cmd:"Failed: "+JSON.stringify(d));
-  }).catch(function(e){alert("Error: "+e)});
-}
-function triggerRegression(){
-  if(!confirm("Run regression test with auto-fix?"))return;
-  sendTgCmd("/regression");
-}
-function promptForceExit(){
-  var t=prompt("Enter ticker to force-exit (e.g. CONL):");
-  if(!t)return;
-  t=t.toUpperCase().trim();
-  if(!confirm("Force-close position for "+t+"?"))return;
-  sendTgCmd("/exit "+t);
-}
 </script>
 </body>
 </html>
