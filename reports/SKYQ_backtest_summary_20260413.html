@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKYQ Backtest Summary &mdash; 2026-04-13</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 20px; }
+h1 { color: #00d4ff; margin-bottom: 5px; }
+.subtitle { color: #888; margin-bottom: 20px; font-size: 14px; }
+.cards { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+.card { background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 15px 25px; min-width: 160px; }
+.card .label { color: #888; font-size: 12px; text-transform: uppercase; }
+.card .value { font-size: 28px; font-weight: bold; color: #00d4ff; }
+.card .value.green { color: #00ff88; }
+h2 { color: #00d4ff; margin: 25px 0 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 10px; text-align: left; cursor: pointer; position: sticky; top: 0; }
+th:hover { background: #1a3a5e; }
+td { padding: 6px 10px; border-bottom: 1px solid #222; }
+tr:hover { background: #1a2a4e; }
+tr.wr100 { background: rgba(0, 255, 136, 0.15); }
+tr.tier2 { background: rgba(0, 212, 255, 0.08); }
+.family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
+.fam-SKS { background: #2a4a2a; color: #66ff66; }
+.fam-SKL { background: #2a2a4a; color: #6666ff; }
+.fam-SKD { background: #4a2a4a; color: #ff66ff; }
+.fam-SKX { background: #4a4a2a; color: #ffff66; }
+.pipeline { color: #666; font-size: 12px; margin-top: 30px; }
+.sort-arrow { font-size: 10px; margin-left: 4px; }
+</style>
+</head>
+<body>
+<h1>SKYQ &mdash; Backtest Report</h1>
+<div class="subtitle">Pipeline: create_rules_SKYQ_VALE_20260413_v2 | Ticker: SKYQ | Lead: VALE | Same: MU | Inverse: SOXS | Date: 2026-04-13</div>
+<div class="cards">
+    <div class="card"><div class="label">Total Rules</div><div class="value">275</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">33</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">256</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">56.7%</div></div>
+</div>
+<h2>5M Timeframe (145 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA21</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>10.0</td><td>156</td><td>87</td><td>57</td><td>65.5</td><td><strong>147.97</strong></td><td>1.7</td></tr>
+<tr class="tier2"><td>2</td><td><strong>SA_drop_1d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>78</td><td>67</td><td>49</td><td>73.1</td><td><strong>144.17</strong></td><td>2.15</td></tr>
+<tr class="tier2"><td>3</td><td><strong>SA10b</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>156</td><td>90</td><td>51</td><td>56.7</td><td><strong>140.54</strong></td><td>1.56</td></tr>
+<tr class="tier2"><td>4</td><td><strong>SA23</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>78</td><td>80</td><td>55</td><td>68.8</td><td><strong>140.33</strong></td><td>1.75</td></tr>
+<tr class="tier2"><td>5</td><td><strong>SA24</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>78</td><td>63</td><td>45</td><td>71.4</td><td><strong>139.04</strong></td><td>2.21</td></tr>
+<tr class="tier2"><td>6</td><td><strong>SA10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>78</td><td>100</td><td>54</td><td>54.0</td><td><strong>136.83</strong></td><td>1.37</td></tr>
+<tr class="tier2"><td>7</td><td><strong>SA22</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>10.0</td><td>78</td><td>105</td><td>74</td><td>70.5</td><td><strong>134.81</strong></td><td>1.28</td></tr>
+<tr class="tier2"><td>8</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-SKX">SKX</span></td><td>7.0</td><td>4.0</td><td>156</td><td>59</td><td>33</td><td>55.9</td><td><strong>121.45</strong></td><td>2.06</td></tr>
+<tr class="tier2"><td>9</td><td><strong>DV_12bar_lag_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>3.0</td><td>780</td><td>33</td><td>16</td><td>48.5</td><td><strong>109.0</strong></td><td>3.3</td></tr>
+<tr class="tier2"><td>10</td><td><strong>DV_72bar_lead_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>78</td><td>70</td><td>39</td><td>55.7</td><td><strong>107.98</strong></td><td>1.54</td></tr>
+<tr class="tier2"><td>11</td><td><strong>DV_72bar_lag_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>2.5</td><td>78</td><td>44</td><td>21</td><td>47.7</td><td><strong>106.05</strong></td><td>2.41</td></tr>
+<tr class="tier2"><td>12</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>78</td><td>94</td><td>50</td><td>53.2</td><td><strong>103.71</strong></td><td>1.1</td></tr>
+<tr class="tier2"><td>13</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>10.0</td><td>78</td><td>51</td><td>26</td><td>51.0</td><td><strong>103.33</strong></td><td>2.03</td></tr>
+<tr class="tier2"><td>14</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>4.0</td><td>78</td><td>111</td><td>60</td><td>54.1</td><td><strong>103.12</strong></td><td>0.93</td></tr>
+<tr class="tier2"><td>15</td><td><strong>SA06</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>780</td><td>18</td><td>14</td><td>77.8</td><td><strong>100.0</strong></td><td>5.56</td></tr>
+<tr class="tier2"><td>16</td><td><strong>DV_24bar_lag_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>3.0</td><td>780</td><td>41</td><td>20</td><td>48.8</td><td><strong>97.0</strong></td><td>2.37</td></tr>
+<tr class="tier2"><td>17</td><td><strong>SA_drop_1d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>78</td><td>74</td><td>48</td><td>64.9</td><td><strong>96.28</strong></td><td>1.3</td></tr>
+<tr class="tier2"><td>18</td><td><strong>DV_6bar_lag_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>4.0</td><td>780</td><td>27</td><td>17</td><td>63.0</td><td><strong>96.0</strong></td><td>3.56</td></tr>
+<tr class="tier2"><td>19</td><td><strong>DV_12bar_lag_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>4.0</td><td>780</td><td>25</td><td>14</td><td>56.0</td><td><strong>96.0</strong></td><td>3.84</td></tr>
+<tr class="tier2"><td>20</td><td><strong>SA25</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>6.0</td><td>780</td><td>32</td><td>18</td><td>56.2</td><td><strong>96.0</strong></td><td>3.0</td></tr>
+<tr class="tier2"><td>21</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>2.5</td><td>78</td><td>104</td><td>43</td><td>41.3</td><td><strong>95.26</strong></td><td>0.92</td></tr>
+<tr class="tier2"><td>22</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>4.0</td><td>780</td><td>94</td><td>47</td><td>50.0</td><td><strong>94.0</strong></td><td>1.0</td></tr>
+<tr class="tier2"><td>23</td><td><strong>DV_48bar_lag_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>7.0</td><td>2.0</td><td>780</td><td>44</td><td>20</td><td>45.5</td><td><strong>92.0</strong></td><td>2.09</td></tr>
+<tr class="tier2"><td>24</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-SKX">SKX</span></td><td>7.0</td><td>3.0</td><td>78</td><td>59</td><td>28</td><td>47.5</td><td><strong>91.32</strong></td><td>1.55</td></tr>
+<tr class="tier2"><td>25</td><td><strong>SA04</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>780</td><td>17</td><td>13</td><td>76.5</td><td><strong>90.0</strong></td><td>5.29</td></tr>
+<tr class="wr100"><td>26</td><td><strong>LL_lag0_12</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>780</td><td>9</td><td>9</td><td>100.0</td><td><strong>90.0</strong></td><td>10.0</td></tr>
+<tr class="tier2"><td>27</td><td><strong>DV_24bar_lag_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>3.0</td><td>156</td><td>44</td><td>20</td><td>45.5</td><td><strong>88.0</strong></td><td>2.0</td></tr>
+<tr class="tier2"><td>28</td><td><strong>DV_6bar_lag_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>3.0</td><td>156</td><td>44</td><td>20</td><td>45.5</td><td><strong>88.0</strong></td><td>2.0</td></tr>
+<tr class="tier2"><td>29</td><td><strong>DV_72bar_lag_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>3.0</td><td>780</td><td>40</td><td>23</td><td>57.5</td><td><strong>87.0</strong></td><td>2.17</td></tr>
+<tr class="tier2"><td>30</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-SKX">SKX</span></td><td>7.0</td><td>2.5</td><td>78</td><td>59</td><td>25</td><td>42.4</td><td><strong>86.23</strong></td><td>1.46</td></tr>
+<tr class="tier2"><td>31</td><td><strong>DV_6bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>6.0</td><td>78</td><td>60</td><td>29</td><td>48.3</td><td><strong>85.99</strong></td><td>1.43</td></tr>
+<tr class="tier2"><td>32</td><td><strong>SA15</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>156</td><td>55</td><td>31</td><td>56.4</td><td><strong>85.06</strong></td><td>1.55</td></tr>
+<tr class="tier2"><td>33</td><td><strong>DV_72bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>7.0</td><td>4.0</td><td>78</td><td>62</td><td>30</td><td>48.4</td><td><strong>84.96</strong></td><td>1.37</td></tr>
+<tr class="tier2"><td>34</td><td><strong>DV_48bar_lag_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>10.0</td><td>780</td><td>35</td><td>24</td><td>68.6</td><td><strong>82.0</strong></td><td>2.34</td></tr>
+<tr class="tier2"><td>35</td><td><strong>DV_12bar_lag_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>3.0</td><td>156</td><td>46</td><td>20</td><td>43.5</td><td><strong>82.0</strong></td><td>1.78</td></tr>
+<tr class="tier2"><td>36</td><td><strong>DV_6bar_lag_5_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>6.0</td><td>234</td><td>31</td><td>17</td><td>54.8</td><td><strong>81.23</strong></td><td>2.62</td></tr>
+<tr class="tier2"><td>37</td><td><strong>DV_24bar_lag_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>4.0</td><td>780</td><td>29</td><td>14</td><td>48.3</td><td><strong>80.0</strong></td><td>2.76</td></tr>
+<tr class="tier2"><td>38</td><td><strong>SA01</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>780</td><td>18</td><td>13</td><td>72.2</td><td><strong>80.0</strong></td><td>4.44</td></tr>
+<tr class="tier2"><td>39</td><td><strong>SA30</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>156</td><td>36</td><td>22</td><td>61.1</td><td><strong>79.13</strong></td><td>2.2</td></tr>
+<tr class="tier2"><td>40</td><td><strong>SA_drop_5d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>4.0</td><td>8.0</td><td>78</td><td>70</td><td>52</td><td>74.3</td><td><strong>78.66</strong></td><td>1.12</td></tr>
+<tr class="tier2"><td>41</td><td><strong>INV_lag0_13</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>6.0</td><td>156</td><td>27</td><td>16</td><td>59.3</td><td><strong>78.22</strong></td><td>2.9</td></tr>
+<tr class="tier2"><td>42</td><td><strong>SA08</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>7.0</td><td>780</td><td>35</td><td>19</td><td>54.3</td><td><strong>78.0</strong></td><td>2.23</td></tr>
+<tr class="tier2"><td>43</td><td><strong>DV_48bar_lag_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>7.0</td><td>2.0</td><td>780</td><td>47</td><td>19</td><td>40.4</td><td><strong>77.0</strong></td><td>1.64</td></tr>
+<tr class="tier2"><td>44</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>2.0</td><td>10.0</td><td>780</td><td>92</td><td>83</td><td>90.2</td><td><strong>76.0</strong></td><td>0.83</td></tr>
+<tr class="tier2"><td>45</td><td><strong>SA_drop_5d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>156</td><td>55</td><td>29</td><td>52.7</td><td><strong>75.62</strong></td><td>1.37</td></tr>
+<tr class="tier2"><td>46</td><td><strong>SA_drop_5d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>156</td><td>52</td><td>28</td><td>53.8</td><td><strong>75.6</strong></td><td>1.45</td></tr>
+<tr class="tier2"><td>47</td><td><strong>DV_72bar_lag_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>3.0</td><td>780</td><td>35</td><td>20</td><td>57.1</td><td><strong>75.0</strong></td><td>2.14</td></tr>
+<tr class="tier2"><td>48</td><td><strong>DV_6bar_lead_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>234</td><td>71</td><td>39</td><td>54.9</td><td><strong>74.14</strong></td><td>1.04</td></tr>
+<tr class="tier2"><td>49</td><td><strong>INV_lag0_10</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>6.0</td><td>156</td><td>28</td><td>16</td><td>57.1</td><td><strong>72.22</strong></td><td>2.58</td></tr>
+<tr class="tier2"><td>50</td><td><strong>DV_6bar_lag_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>4.0</td><td>780</td><td>18</td><td>12</td><td>66.7</td><td><strong>72.0</strong></td><td>4.0</td></tr>
+<tr class="tier2"><td>51</td><td><strong>LL_lag2_11</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>156</td><td>37</td><td>22</td><td>59.5</td><td><strong>71.1</strong></td><td>1.92</td></tr>
+<tr class="tier2"><td>52</td><td><strong>SA14</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>78</td><td>81</td><td>42</td><td>51.9</td><td><strong>71.06</strong></td><td>0.88</td></tr>
+<tr class="tier2"><td>53</td><td><strong>LL_lag2_12</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>156</td><td>16</td><td>11</td><td>68.8</td><td><strong>70.0</strong></td><td>4.38</td></tr>
+<tr class="tier2"><td>54</td><td><strong>DV_24bar_lag_8_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>6.0</td><td>234</td><td>25</td><td>14</td><td>56.0</td><td><strong>69.23</strong></td><td>2.77</td></tr>
+<tr class="tier2"><td>55</td><td><strong>SA12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>10.0</td><td>78</td><td>96</td><td>51</td><td>53.1</td><td><strong>68.38</strong></td><td>0.71</td></tr>
+<tr class="tier2"><td>56</td><td><strong>DV_12bar_lag_5_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>8.0</td><td>780</td><td>32</td><td>18</td><td>56.2</td><td><strong>68.0</strong></td><td>2.12</td></tr>
+<tr class="tier2"><td>57</td><td><strong>DV_6bar_lag_3_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>34</td><td>18</td><td>52.9</td><td><strong>68.0</strong></td><td>2.0</td></tr>
+<tr class="tier2"><td>58</td><td><strong>SA32</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>78</td><td>90</td><td>52</td><td>57.8</td><td><strong>67.8</strong></td><td>0.75</td></tr>
+<tr class="tier2"><td>59</td><td><strong>SA_drop_2d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>5.0</td><td>156</td><td>70</td><td>29</td><td>41.4</td><td><strong>67.69</strong></td><td>0.97</td></tr>
+<tr class="tier2"><td>60</td><td><strong>LL_lag3_12</strong></td><td><span class="family fam-SKL">SKL</span></td><td>8.0</td><td>7.0</td><td>780</td><td>14</td><td>11</td><td>78.6</td><td><strong>67.0</strong></td><td>4.79</td></tr>
+<tr class="tier2"><td>61</td><td><strong>DV_12bar_lag_8_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>22</td><td>13</td><td>59.1</td><td><strong>67.0</strong></td><td>3.05</td></tr>
+<tr class="tier2"><td>62</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>156</td><td>74</td><td>39</td><td>52.7</td><td><strong>65.06</strong></td><td>0.88</td></tr>
+<tr class="tier2"><td>63</td><td><strong>SA_drop_3d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>6.0</td><td>78</td><td>77</td><td>44</td><td>57.1</td><td><strong>64.71</strong></td><td>0.84</td></tr>
+<tr class="tier2"><td>64</td><td><strong>LL_lag3_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>78</td><td>54</td><td>28</td><td>51.9</td><td><strong>63.8</strong></td><td>1.18</td></tr>
+<tr class="tier2"><td>65</td><td><strong>SA_drop_3d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>4.0</td><td>78</td><td>65</td><td>36</td><td>55.4</td><td><strong>63.6</strong></td><td>0.98</td></tr>
+<tr class="tier2"><td>66</td><td><strong>SA_drop_1d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>78</td><td>54</td><td>37</td><td>68.5</td><td><strong>62.05</strong></td><td>1.15</td></tr>
+<tr class="tier2"><td>67</td><td><strong>SA31</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>10.0</td><td>780</td><td>10</td><td>9</td><td>90.0</td><td><strong>62.0</strong></td><td>6.2</td></tr>
+<tr class="tier2"><td>68</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>6.0</td><td>78</td><td>84</td><td>45</td><td>53.6</td><td><strong>61.43</strong></td><td>0.73</td></tr>
+<tr class="tier2"><td>69</td><td><strong>SA33</strong></td><td><span class="family fam-SKS">SKS</span></td><td>2.5</td><td>10.0</td><td>78</td><td>105</td><td>86</td><td>81.9</td><td><strong>60.46</strong></td><td>0.58</td></tr>
+<tr class="tier2"><td>70</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>4.0</td><td>780</td><td>75</td><td>30</td><td>40.0</td><td><strong>60.0</strong></td><td>0.8</td></tr>
+<tr class="tier2"><td>71</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>2.5</td><td>10.0</td><td>78</td><td>94</td><td>77</td><td>81.9</td><td><strong>57.53</strong></td><td>0.61</td></tr>
+<tr class="tier2"><td>72</td><td><strong>SA_drop_3d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>6.0</td><td>78</td><td>66</td><td>38</td><td>57.6</td><td><strong>57.02</strong></td><td>0.86</td></tr>
+<tr class="tier2"><td>73</td><td><strong>LL_lag1_11</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>8.0</td><td>78</td><td>39</td><td>25</td><td>64.1</td><td><strong>55.45</strong></td><td>1.42</td></tr>
+<tr class="tier2"><td>74</td><td><strong>SA_drop_2d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>5.0</td><td>78</td><td>58</td><td>34</td><td>58.6</td><td><strong>54.34</strong></td><td>0.94</td></tr>
+<tr class="tier2"><td>75</td><td><strong>DV_24bar_lag_5_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>29</td><td>15</td><td>51.7</td><td><strong>52.0</strong></td><td>1.79</td></tr>
+<tr class="tier2"><td>76</td><td><strong>SA07</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>780</td><td>9</td><td>7</td><td>77.8</td><td><strong>50.0</strong></td><td>5.56</td></tr>
+<tr class="tier2"><td>77</td><td><strong>SA16</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>780</td><td>17</td><td>11</td><td>64.7</td><td><strong>50.0</strong></td><td>2.94</td></tr>
+<tr class="tier2"><td>78</td><td><strong>LL_lag2_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>8.0</td><td>10.0</td><td>156</td><td>52</td><td>31</td><td>59.6</td><td><strong>49.81</strong></td><td>0.96</td></tr>
+<tr class="tier2"><td>79</td><td><strong>DV_24bar_lag_3_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>32</td><td>16</td><td>50.0</td><td><strong>48.0</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>80</td><td><strong>DV_72bar_lag_3_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>4.0</td><td>156</td><td>30</td><td>12</td><td>40.0</td><td><strong>48.0</strong></td><td>1.6</td></tr>
+<tr class="tier2"><td>81</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>156</td><td>57</td><td>32</td><td>56.1</td><td><strong>46.92</strong></td><td>0.82</td></tr>
+<tr class="tier2"><td>82</td><td><strong>INV_lag2_09</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>10.0</td><td>78</td><td>9</td><td>6</td><td>66.7</td><td><strong>46.47</strong></td><td>5.16</td></tr>
+<tr class="tier2"><td>83</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>7.0</td><td>5.0</td><td>78</td><td>67</td><td>32</td><td>47.8</td><td><strong>45.69</strong></td><td>0.68</td></tr>
+<tr class="tier2"><td>84</td><td><strong>DV_48bar_lag_8_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>6.0</td><td>234</td><td>29</td><td>14</td><td>48.3</td><td><strong>45.23</strong></td><td>1.56</td></tr>
+<tr class="tier2"><td>85</td><td><strong>SA13</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>10.0</td><td>78</td><td>100</td><td>63</td><td>63.0</td><td><strong>42.44</strong></td><td>0.42</td></tr>
+<tr class="tier2"><td>86</td><td><strong>DV_6bar_lag_8_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>16</td><td>9</td><td>56.2</td><td><strong>41.0</strong></td><td>2.56</td></tr>
+<tr class="tier2"><td>87</td><td><strong>SA09</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>7.0</td><td>390</td><td>21</td><td>11</td><td>52.4</td><td><strong>40.0</strong></td><td>1.9</td></tr>
+<tr class="tier2"><td>88</td><td><strong>DV_12bar_lag_3_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>6.0</td><td>234</td><td>36</td><td>16</td><td>44.4</td><td><strong>40.0</strong></td><td>1.11</td></tr>
+<tr class="tier2"><td>89</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>10.0</td><td>156</td><td>29</td><td>17</td><td>58.6</td><td><strong>37.82</strong></td><td>1.3</td></tr>
+<tr class="tier2"><td>90</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-SKX">SKX</span></td><td>2.5</td><td>10.0</td><td>78</td><td>53</td><td>43</td><td>81.1</td><td><strong>37.39</strong></td><td>0.71</td></tr>
+<tr class="tier2"><td>91</td><td><strong>LL_lag1_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>5.0</td><td>8.0</td><td>780</td><td>10</td><td>9</td><td>90.0</td><td><strong>37.0</strong></td><td>3.7</td></tr>
+<tr class="tier2"><td>92</td><td><strong>LL_lag1_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>5.0</td><td>8.0</td><td>780</td><td>10</td><td>9</td><td>90.0</td><td><strong>37.0</strong></td><td>3.7</td></tr>
+<tr class="tier2"><td>93</td><td><strong>INV_lag1_13</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>5.0</td><td>156</td><td>27</td><td>12</td><td>44.4</td><td><strong>36.01</strong></td><td>1.33</td></tr>
+<tr class="tier2"><td>94</td><td><strong>SA03</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>2.5</td><td>780</td><td>23</td><td>11</td><td>47.8</td><td><strong>36.0</strong></td><td>1.57</td></tr>
+<tr class="tier2"><td>95</td><td><strong>DV_48bar_lag_5_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>5.0</td><td>3.0</td><td>780</td><td>31</td><td>16</td><td>51.6</td><td><strong>35.0</strong></td><td>1.13</td></tr>
+<tr class="tier2"><td>96</td><td><strong>LL_lag1_12</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>6.0</td><td>780</td><td>13</td><td>7</td><td>53.8</td><td><strong>34.0</strong></td><td>2.62</td></tr>
+<tr class="tier2"><td>97</td><td><strong>SA_drop_2d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>4.0</td><td>78</td><td>69</td><td>31</td><td>44.9</td><td><strong>33.94</strong></td><td>0.49</td></tr>
+<tr class="tier2"><td>98</td><td><strong>LL_lag2_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>8.0</td><td>780</td><td>9</td><td>7</td><td>77.8</td><td><strong>33.0</strong></td><td>3.67</td></tr>
+<tr class="tier2"><td>99</td><td><strong>LL_lag2_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>8.0</td><td>780</td><td>9</td><td>7</td><td>77.8</td><td><strong>33.0</strong></td><td>3.67</td></tr>
+<tr class="tier2"><td>100</td><td><strong>SA19</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>3.0</td><td>780</td><td>16</td><td>9</td><td>56.2</td><td><strong>33.0</strong></td><td>2.06</td></tr>
+<tr class="tier2"><td>101</td><td><strong>LL_lag3_11</strong></td><td><span class="family fam-SKL">SKL</span></td><td>8.0</td><td>4.0</td><td>78</td><td>41</td><td>20</td><td>48.8</td><td><strong>32.88</strong></td><td>0.8</td></tr>
+<tr class="tier2"><td>102</td><td><strong>SA27</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>2.5</td><td>780</td><td>21</td><td>10</td><td>47.6</td><td><strong>32.5</strong></td><td>1.55</td></tr>
+<tr class="tier2"><td>103</td><td><strong>DV_12bar_deep_oversold</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>6.0</td><td>780</td><td>8</td><td>5</td><td>62.5</td><td><strong>32.0</strong></td><td>4.0</td></tr>
+<tr class="tier2"><td>104</td><td><strong>DV_48bar_lag_3_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>32</td><td>15</td><td>46.9</td><td><strong>31.0</strong></td><td>0.97</td></tr>
+<tr class="tier2"><td>105</td><td><strong>DV_24bar_deep_oversold</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>780</td><td>9</td><td>6</td><td>66.7</td><td><strong>30.0</strong></td><td>3.33</td></tr>
+<tr class="tier2"><td>106</td><td><strong>SA34</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>2.5</td><td>780</td><td>22</td><td>10</td><td>45.5</td><td><strong>30.0</strong></td><td>1.36</td></tr>
+<tr class="tier2"><td>107</td><td><strong>DV_72bar_lag_5_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>3.0</td><td>780</td><td>29</td><td>13</td><td>44.8</td><td><strong>30.0</strong></td><td>1.03</td></tr>
+<tr class="tier2"><td>108</td><td><strong>DV_72bar_deep_oversold</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>7.0</td><td>780</td><td>8</td><td>5</td><td>62.5</td><td><strong>29.0</strong></td><td>3.62</td></tr>
+<tr class="tier2"><td>109</td><td><strong>SA05</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>780</td><td>10</td><td>8</td><td>80.0</td><td><strong>28.0</strong></td><td>2.8</td></tr>
+<tr class="tier2"><td>110</td><td><strong>SA18</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>3.0</td><td>78</td><td>18</td><td>9</td><td>50.0</td><td><strong>27.0</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>111</td><td><strong>INV_lag2_13</strong></td><td><span class="family fam-SKX">SKX</span></td><td>5.0</td><td>3.0</td><td>78</td><td>34</td><td>16</td><td>47.1</td><td><strong>26.0</strong></td><td>0.76</td></tr>
+<tr class="tier2"><td>112</td><td><strong>SA28</strong></td><td><span class="family fam-SKS">SKS</span></td><td>2.0</td><td>1.0</td><td>780</td><td>97</td><td>41</td><td>42.3</td><td><strong>26.0</strong></td><td>0.27</td></tr>
+<tr class="tier2"><td>113</td><td><strong>LL_lag3_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>6.0</td><td>780</td><td>9</td><td>5</td><td>55.6</td><td><strong>26.0</strong></td><td>2.89</td></tr>
+<tr class="wr100"><td>114</td><td><strong>INV_lag0_06</strong></td><td><span class="family fam-SKX">SKX</span></td><td>8.0</td><td>10.0</td><td>780</td><td>3</td><td>3</td><td>100.0</td><td><strong>24.0</strong></td><td>8.0</td></tr>
+<tr class="tier2"><td>115</td><td><strong>LL_lag3_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>8.0</td><td>8.0</td><td>780</td><td>9</td><td>6</td><td>66.7</td><td><strong>24.0</strong></td><td>2.67</td></tr>
+<tr class="tier2"><td>116</td><td><strong>SA_drop_1d_10_rsi_g</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>2.0</td><td>78</td><td>16</td><td>7</td><td>43.8</td><td><strong>24.0</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>117</td><td><strong>LL_lag0_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>6.0</td><td>8.0</td><td>780</td><td>6</td><td>5</td><td>83.3</td><td><strong>22.0</strong></td><td>3.67</td></tr>
+<tr class="wr100"><td>118</td><td><strong>INV_lag0_01</strong></td><td><span class="family fam-SKX">SKX</span></td><td>7.0</td><td>10.0</td><td>780</td><td>3</td><td>3</td><td>100.0</td><td><strong>21.0</strong></td><td>7.0</td></tr>
+<tr class="tier2"><td>119</td><td><strong>DV_48bar_deep_oversold</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>780</td><td>8</td><td>5</td><td>62.5</td><td><strong>20.0</strong></td><td>2.5</td></tr>
+<tr class="tier2"><td>120</td><td><strong>DV_6bar_deep_oversold</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>2.0</td><td>780</td><td>7</td><td>4</td><td>57.1</td><td><strong>18.0</strong></td><td>2.57</td></tr>
+<tr class="tier2"><td>121</td><td><strong>INV_lag2_03</strong></td><td><span class="family fam-SKX">SKX</span></td><td>2.0</td><td>10.0</td><td>78</td><td>30</td><td>26</td><td>86.7</td><td><strong>17.52</strong></td><td>0.58</td></tr>
+<tr class="tier2"><td>122</td><td><strong>SA35</strong></td><td><span class="family fam-SKS">SKS</span></td><td>2.5</td><td>2.0</td><td>78</td><td>57</td><td>29</td><td>50.9</td><td><strong>16.5</strong></td><td>0.29</td></tr>
+<tr class="tier2"><td>123</td><td><strong>LL_lag0_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>6.0</td><td>8.0</td><td>780</td><td>5</td><td>4</td><td>80.0</td><td><strong>16.0</strong></td><td>3.2</td></tr>
+<tr class="tier2"><td>124</td><td><strong>LL_lag1_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>5.0</td><td>10.0</td><td>78</td><td>5</td><td>4</td><td>80.0</td><td><strong>16.0</strong></td><td>3.2</td></tr>
+<tr class="wr100"><td>125</td><td><strong>LL_lag1_03</strong></td><td><span class="family fam-SKL">SKL</span></td><td>5.0</td><td>10.0</td><td>780</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.0</strong></td><td>5.0</td></tr>
+<tr class="wr100"><td>126</td><td><strong>LL_lag1_05</strong></td><td><span class="family fam-SKL">SKL</span></td><td>5.0</td><td>10.0</td><td>780</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.0</strong></td><td>5.0</td></tr>
+<tr class="tier2"><td>127</td><td><strong>INV_lag0_03</strong></td><td><span class="family fam-SKX">SKX</span></td><td>2.0</td><td>0.7</td><td>780</td><td>29</td><td>13</td><td>44.8</td><td><strong>14.8</strong></td><td>0.51</td></tr>
+<tr class="tier2"><td>128</td><td><strong>INV_lag0_02</strong></td><td><span class="family fam-SKX">SKX</span></td><td>6.0</td><td>10.0</td><td>78</td><td>4</td><td>3</td><td>75.0</td><td><strong>14.0</strong></td><td>3.5</td></tr>
+<tr class="tier2"><td>129</td><td><strong>LL_lag2_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>6.0</td><td>78</td><td>5</td><td>3</td><td>60.0</td><td><strong>12.6</strong></td><td>2.52</td></tr>
+<tr class="tier2"><td>130</td><td><strong>LL_lag0_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>6.0</td><td>8.0</td><td>78</td><td>6</td><td>4</td><td>66.7</td><td><strong>12.0</strong></td><td>2.0</td></tr>
+<tr class="tier2"><td>131</td><td><strong>LL_lag0_09</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>2.0</td><td>780</td><td>3</td><td>2</td><td>66.7</td><td><strong>12.0</strong></td><td>4.0</td></tr>
+<tr class="tier2"><td>132</td><td><strong>LL_lag0_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>3.0</td><td>5.0</td><td>78</td><td>70</td><td>45</td><td>64.3</td><td><strong>11.0</strong></td><td>0.16</td></tr>
+<tr class="tier2"><td>133</td><td><strong>LL_lag0_03</strong></td><td><span class="family fam-SKL">SKL</span></td><td>6.0</td><td>1.0</td><td>78</td><td>3</td><td>2</td><td>66.7</td><td><strong>11.0</strong></td><td>3.67</td></tr>
+<tr class="wr100"><td>134</td><td><strong>LL_lag1_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.5</td><td>10.0</td><td>78</td><td>7</td><td>7</td><td>100.0</td><td><strong>10.5</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>135</td><td><strong>INV_lag1_06</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>10.0</td><td>780</td><td>3</td><td>2</td><td>66.7</td><td><strong>10.0</strong></td><td>3.33</td></tr>
+<tr class="wr100"><td>136</td><td><strong>LL_lag3_05</strong></td><td><span class="family fam-SKL">SKL</span></td><td>2.0</td><td>6.0</td><td>78</td><td>4</td><td>4</td><td>100.0</td><td><strong>8.0</strong></td><td>2.0</td></tr>
+<tr class="wr100"><td>137</td><td><strong>INV_lag2_02</strong></td><td><span class="family fam-SKX">SKX</span></td><td>2.0</td><td>10.0</td><td>780</td><td>4</td><td>4</td><td>100.0</td><td><strong>8.0</strong></td><td>2.0</td></tr>
+<tr class="wr100"><td>138</td><td><strong>LL_lag3_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>780</td><td>7</td><td>7</td><td>100.0</td><td><strong>7.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>139</td><td><strong>LL_lag1_09</strong></td><td><span class="family fam-SKL">SKL</span></td><td>2.0</td><td>10.0</td><td>780</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.0</strong></td><td>2.0</td></tr>
+<tr class="wr100"><td>140</td><td><strong>LL_lag3_03</strong></td><td><span class="family fam-SKL">SKL</span></td><td>2.0</td><td>6.0</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.0</strong></td><td>2.0</td></tr>
+<tr class="wr100"><td>141</td><td><strong>LL_lag2_03</strong></td><td><span class="family fam-SKL">SKL</span></td><td>2.0</td><td>6.0</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.0</strong></td><td>2.0</td></tr>
+<tr class="wr100"><td>142</td><td><strong>LL_lag3_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>780</td><td>6</td><td>6</td><td>100.0</td><td><strong>6.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>143</td><td><strong>LL_lag0_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>780</td><td>5</td><td>5</td><td>100.0</td><td><strong>5.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>144</td><td><strong>LL_lag2_05</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.5</td><td>6.0</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.5</strong></td><td>1.5</td></tr>
+<tr class="wr100"><td>145</td><td><strong>INV_lag1_08</strong></td><td><span class="family fam-SKX">SKX</span></td><td>1.0</td><td>10.0</td><td>780</td><td>4</td><td>4</td><td>100.0</td><td><strong>4.0</strong></td><td>1.0</td></tr>
+</tbody></table>
+<h2>15M Timeframe (91 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA_drop_1d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>130</td><td>67</td><td>41</td><td>61.2</td><td><strong>155.71</strong></td><td>2.32</td></tr>
+<tr class="tier2"><td>2</td><td><strong>SA20</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>7.0</td><td>52</td><td>108</td><td>53</td><td>49.1</td><td><strong>150.77</strong></td><td>1.4</td></tr>
+<tr class="tier2"><td>3</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>52</td><td>86</td><td>52</td><td>60.5</td><td><strong>147.87</strong></td><td>1.72</td></tr>
+<tr class="tier2"><td>4</td><td><strong>SA26</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>8.0</td><td>52</td><td>86</td><td>53</td><td>61.6</td><td><strong>142.21</strong></td><td>1.65</td></tr>
+<tr class="tier2"><td>5</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>4.0</td><td>260</td><td>100</td><td>49</td><td>49.0</td><td><strong>139.0</strong></td><td>1.39</td></tr>
+<tr class="tier2"><td>6</td><td><strong>DV_72bar_lead_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>52</td><td>59</td><td>35</td><td>59.3</td><td><strong>130.33</strong></td><td>2.21</td></tr>
+<tr class="tier2"><td>7</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>10.0</td><td>52</td><td>62</td><td>37</td><td>59.7</td><td><strong>123.3</strong></td><td>1.99</td></tr>
+<tr class="tier2"><td>8</td><td><strong>DV_72bar_lead_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>52</td><td>65</td><td>37</td><td>56.9</td><td><strong>121.85</strong></td><td>1.87</td></tr>
+<tr class="tier2"><td>9</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>52</td><td>89</td><td>46</td><td>51.7</td><td><strong>116.12</strong></td><td>1.3</td></tr>
+<tr class="tier2"><td>10</td><td><strong>DV_72bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>10.0</td><td>78</td><td>53</td><td>32</td><td>60.4</td><td><strong>115.5</strong></td><td>2.18</td></tr>
+<tr class="tier2"><td>11</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>5.0</td><td>78</td><td>93</td><td>41</td><td>44.1</td><td><strong>112.78</strong></td><td>1.21</td></tr>
+<tr class="tier2"><td>12</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>7.0</td><td>130</td><td>64</td><td>33</td><td>51.6</td><td><strong>111.43</strong></td><td>1.74</td></tr>
+<tr class="tier2"><td>13</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>2.0</td><td>260</td><td>124</td><td>51</td><td>41.1</td><td><strong>109.0</strong></td><td>0.88</td></tr>
+<tr class="tier2"><td>14</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>8.0</td><td>130</td><td>56</td><td>30</td><td>53.6</td><td><strong>103.35</strong></td><td>1.85</td></tr>
+<tr class="tier2"><td>15</td><td><strong>INV_lag2_13</strong></td><td><span class="family fam-SKX">SKX</span></td><td>5.0</td><td>10.0</td><td>52</td><td>38</td><td>32</td><td>84.2</td><td><strong>101.6</strong></td><td>2.67</td></tr>
+<tr class="tier2"><td>16</td><td><strong>DV_48bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>10.0</td><td>52</td><td>59</td><td>43</td><td>72.9</td><td><strong>100.86</strong></td><td>1.71</td></tr>
+<tr class="tier2"><td>17</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>4.0</td><td>52</td><td>34</td><td>18</td><td>52.9</td><td><strong>96.78</strong></td><td>2.85</td></tr>
+<tr class="tier2"><td>18</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-SKX">SKX</span></td><td>8.0</td><td>6.0</td><td>26</td><td>68</td><td>37</td><td>54.4</td><td><strong>93.64</strong></td><td>1.38</td></tr>
+<tr class="tier2"><td>19</td><td><strong>SA_drop_2d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>5.0</td><td>78</td><td>79</td><td>33</td><td>41.8</td><td><strong>92.61</strong></td><td>1.17</td></tr>
+<tr class="tier2"><td>20</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-SKX">SKX</span></td><td>8.0</td><td>4.0</td><td>52</td><td>71</td><td>32</td><td>45.1</td><td><strong>85.42</strong></td><td>1.2</td></tr>
+<tr class="tier2"><td>21</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>10.0</td><td>130</td><td>57</td><td>32</td><td>56.1</td><td><strong>85.26</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>22</td><td><strong>SA_drop_3d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>4.0</td><td>52</td><td>62</td><td>28</td><td>45.2</td><td><strong>81.66</strong></td><td>1.32</td></tr>
+<tr class="tier2"><td>23</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>5.0</td><td>52</td><td>114</td><td>54</td><td>47.4</td><td><strong>79.15</strong></td><td>0.69</td></tr>
+<tr class="tier2"><td>24</td><td><strong>LL_lag3_11</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>7.0</td><td>52</td><td>20</td><td>13</td><td>65.0</td><td><strong>77.48</strong></td><td>3.87</td></tr>
+<tr class="tier2"><td>25</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>4.0</td><td>26</td><td>64</td><td>28</td><td>43.8</td><td><strong>76.4</strong></td><td>1.19</td></tr>
+<tr class="tier2"><td>26</td><td><strong>INV_lag2_10</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>5.0</td><td>52</td><td>27</td><td>15</td><td>55.6</td><td><strong>74.75</strong></td><td>2.77</td></tr>
+<tr class="tier2"><td>27</td><td><strong>SA32</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>2.0</td><td>26</td><td>82</td><td>35</td><td>42.7</td><td><strong>74.36</strong></td><td>0.91</td></tr>
+<tr class="tier2"><td>28</td><td><strong>SA33</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>7.0</td><td>26</td><td>69</td><td>35</td><td>50.7</td><td><strong>72.63</strong></td><td>1.05</td></tr>
+<tr class="tier2"><td>29</td><td><strong>LL_lag1_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>8.0</td><td>5.0</td><td>52</td><td>37</td><td>21</td><td>56.8</td><td><strong>71.53</strong></td><td>1.93</td></tr>
+<tr class="tier2"><td>30</td><td><strong>INV_lag2_03</strong></td><td><span class="family fam-SKX">SKX</span></td><td>5.0</td><td>10.0</td><td>26</td><td>39</td><td>25</td><td>64.1</td><td><strong>71.13</strong></td><td>1.82</td></tr>
+<tr class="tier2"><td>31</td><td><strong>INV_lag1_03</strong></td><td><span class="family fam-SKX">SKX</span></td><td>5.0</td><td>10.0</td><td>78</td><td>37</td><td>29</td><td>78.4</td><td><strong>69.42</strong></td><td>1.88</td></tr>
+<tr class="tier2"><td>32</td><td><strong>INV_lag0_03</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>7.0</td><td>52</td><td>37</td><td>19</td><td>51.4</td><td><strong>69.31</strong></td><td>1.87</td></tr>
+<tr class="tier2"><td>33</td><td><strong>LL_lag0_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>4.0</td><td>26</td><td>39</td><td>18</td><td>46.2</td><td><strong>64.4</strong></td><td>1.65</td></tr>
+<tr class="tier2"><td>34</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>4.0</td><td>2.0</td><td>260</td><td>118</td><td>50</td><td>42.4</td><td><strong>64.0</strong></td><td>0.54</td></tr>
+<tr class="tier2"><td>35</td><td><strong>INV_lag0_13</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>8.0</td><td>52</td><td>35</td><td>19</td><td>54.3</td><td><strong>59.97</strong></td><td>1.71</td></tr>
+<tr class="tier2"><td>36</td><td><strong>SA_drop_1d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>52</td><td>60</td><td>40</td><td>66.7</td><td><strong>58.21</strong></td><td>0.97</td></tr>
+<tr class="tier2"><td>37</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-SKX">SKX</span></td><td>8.0</td><td>4.0</td><td>52</td><td>76</td><td>31</td><td>40.8</td><td><strong>57.32</strong></td><td>0.75</td></tr>
+<tr class="tier2"><td>38</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>52</td><td>80</td><td>38</td><td>47.5</td><td><strong>57.19</strong></td><td>0.71</td></tr>
+<tr class="tier2"><td>39</td><td><strong>SA29</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>130</td><td>52</td><td>28</td><td>53.8</td><td><strong>53.97</strong></td><td>1.04</td></tr>
+<tr class="tier2"><td>40</td><td><strong>INV_lag1_13</strong></td><td><span class="family fam-SKX">SKX</span></td><td>5.0</td><td>8.0</td><td>26</td><td>36</td><td>24</td><td>66.7</td><td><strong>53.14</strong></td><td>1.48</td></tr>
+<tr class="tier2"><td>41</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>5.0</td><td>52</td><td>89</td><td>42</td><td>47.2</td><td><strong>52.35</strong></td><td>0.59</td></tr>
+<tr class="tier2"><td>42</td><td><strong>LL_lag2_11</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>26</td><td>20</td><td>11</td><td>55.0</td><td><strong>51.27</strong></td><td>2.56</td></tr>
+<tr class="tier2"><td>43</td><td><strong>LL_lag3_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>2.5</td><td>10.0</td><td>52</td><td>40</td><td>36</td><td>90.0</td><td><strong>50.0</strong></td><td>1.25</td></tr>
+<tr class="tier2"><td>44</td><td><strong>SA06</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>0.5</td><td>260</td><td>11</td><td>5</td><td>45.5</td><td><strong>47.0</strong></td><td>4.27</td></tr>
+<tr class="tier2"><td>45</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>3.0</td><td>260</td><td>69</td><td>28</td><td>40.6</td><td><strong>45.0</strong></td><td>0.65</td></tr>
+<tr class="tier2"><td>46</td><td><strong>SA17</strong></td><td><span class="family fam-SKS">SKS</span></td><td>4.0</td><td>6.0</td><td>52</td><td>116</td><td>74</td><td>63.8</td><td><strong>43.65</strong></td><td>0.38</td></tr>
+<tr class="tier2"><td>47</td><td><strong>SA14</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>52</td><td>71</td><td>46</td><td>64.8</td><td><strong>42.05</strong></td><td>0.59</td></tr>
+<tr class="tier2"><td>48</td><td><strong>LL_lag2_12</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>78</td><td>7</td><td>6</td><td>85.7</td><td><strong>40.58</strong></td><td>5.8</td></tr>
+<tr class="tier2"><td>49</td><td><strong>SA30</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>10.0</td><td>130</td><td>32</td><td>18</td><td>56.2</td><td><strong>39.55</strong></td><td>1.24</td></tr>
+<tr class="tier2"><td>50</td><td><strong>LL_lag2_15</strong></td><td><span class="family fam-SKL">SKL</span></td><td>2.0</td><td>10.0</td><td>260</td><td>37</td><td>34</td><td>91.9</td><td><strong>38.0</strong></td><td>1.03</td></tr>
+<tr class="tier2"><td>51</td><td><strong>DV_6bar_lag_5_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>7.0</td><td>3.0</td><td>260</td><td>21</td><td>10</td><td>47.6</td><td><strong>37.0</strong></td><td>1.76</td></tr>
+<tr class="tier2"><td>52</td><td><strong>SA31</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>260</td><td>7</td><td>5</td><td>71.4</td><td><strong>34.0</strong></td><td>4.86</td></tr>
+<tr class="tier2"><td>53</td><td><strong>SA25</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>3.0</td><td>260</td><td>22</td><td>10</td><td>45.5</td><td><strong>34.0</strong></td><td>1.55</td></tr>
+<tr class="tier2"><td>54</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>8.0</td><td>52</td><td>85</td><td>38</td><td>44.7</td><td><strong>31.76</strong></td><td>0.37</td></tr>
+<tr class="tier2"><td>55</td><td><strong>SA28</strong></td><td><span class="family fam-SKS">SKS</span></td><td>3.0</td><td>8.0</td><td>26</td><td>54</td><td>39</td><td>72.2</td><td><strong>30.65</strong></td><td>0.57</td></tr>
+<tr class="tier2"><td>56</td><td><strong>SA01</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>10.0</td><td>260</td><td>12</td><td>10</td><td>83.3</td><td><strong>30.0</strong></td><td>2.5</td></tr>
+<tr class="tier2"><td>57</td><td><strong>SA04</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>10.0</td><td>260</td><td>12</td><td>10</td><td>83.3</td><td><strong>30.0</strong></td><td>2.5</td></tr>
+<tr class="wr100"><td>58</td><td><strong>INV_lag1_12</strong></td><td><span class="family fam-SKX">SKX</span></td><td>7.0</td><td>10.0</td><td>260</td><td>4</td><td>4</td><td>100.0</td><td><strong>28.0</strong></td><td>7.0</td></tr>
+<tr class="tier2"><td>59</td><td><strong>INV_lag2_02</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>2.5</td><td>260</td><td>4</td><td>3</td><td>75.0</td><td><strong>27.5</strong></td><td>6.88</td></tr>
+<tr class="tier2"><td>60</td><td><strong>SA08</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>3.0</td><td>26</td><td>23</td><td>10</td><td>43.5</td><td><strong>27.49</strong></td><td>1.2</td></tr>
+<tr class="tier2"><td>61</td><td><strong>SA_drop_5d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>4.0</td><td>52</td><td>86</td><td>41</td><td>47.7</td><td><strong>27.13</strong></td><td>0.32</td></tr>
+<tr class="tier2"><td>62</td><td><strong>SA_drop_5d_12_rsi_g</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>5.0</td><td>130</td><td>12</td><td>7</td><td>58.3</td><td><strong>25.58</strong></td><td>2.13</td></tr>
+<tr class="tier2"><td>63</td><td><strong>SA_drop_5d_10_rsi_g</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>5.0</td><td>130</td><td>12</td><td>7</td><td>58.3</td><td><strong>25.58</strong></td><td>2.13</td></tr>
+<tr class="tier2"><td>64</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>8.0</td><td>5.0</td><td>52</td><td>66</td><td>27</td><td>40.9</td><td><strong>25.56</strong></td><td>0.39</td></tr>
+<tr class="tier2"><td>65</td><td><strong>SA_drop_3d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>4.0</td><td>26</td><td>85</td><td>35</td><td>41.2</td><td><strong>25.41</strong></td><td>0.3</td></tr>
+<tr class="wr100"><td>66</td><td><strong>INV_lag0_12</strong></td><td><span class="family fam-SKX">SKX</span></td><td>6.0</td><td>10.0</td><td>260</td><td>4</td><td>4</td><td>100.0</td><td><strong>24.0</strong></td><td>6.0</td></tr>
+<tr class="tier2"><td>67</td><td><strong>SA_drop_1d_12_rsi_g</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>8.0</td><td>260</td><td>12</td><td>8</td><td>66.7</td><td><strong>24.0</strong></td><td>2.0</td></tr>
+<tr class="tier2"><td>68</td><td><strong>LL_lag3_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>7.0</td><td>130</td><td>5</td><td>3</td><td>60.0</td><td><strong>23.0</strong></td><td>4.6</td></tr>
+<tr class="tier2"><td>69</td><td><strong>LL_lag3_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>7.0</td><td>130</td><td>5</td><td>3</td><td>60.0</td><td><strong>23.0</strong></td><td>4.6</td></tr>
+<tr class="tier2"><td>70</td><td><strong>SA_drop_2d_12_rsi_g</strong></td><td><span class="family fam-SKS">SKS</span></td><td>7.0</td><td>7.0</td><td>260</td><td>11</td><td>7</td><td>63.6</td><td><strong>21.0</strong></td><td>1.91</td></tr>
+<tr class="tier2"><td>71</td><td><strong>LL_lag1_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>4.0</td><td>26</td><td>6</td><td>4</td><td>66.7</td><td><strong>18.46</strong></td><td>3.08</td></tr>
+<tr class="tier2"><td>72</td><td><strong>SA18</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>130</td><td>17</td><td>9</td><td>52.9</td><td><strong>18.23</strong></td><td>1.07</td></tr>
+<tr class="tier2"><td>73</td><td><strong>DV_6bar_lag_8_rsi30</strong></td><td><span class="family fam-SKD">SKD</span></td><td>6.0</td><td>3.0</td><td>260</td><td>18</td><td>8</td><td>44.4</td><td><strong>18.0</strong></td><td>1.0</td></tr>
+<tr class="tier2"><td>74</td><td><strong>LL_lag3_05</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>2.0</td><td>260</td><td>3</td><td>2</td><td>66.7</td><td><strong>18.0</strong></td><td>6.0</td></tr>
+<tr class="tier2"><td>75</td><td><strong>LL_lag3_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>2.0</td><td>260</td><td>3</td><td>2</td><td>66.7</td><td><strong>18.0</strong></td><td>6.0</td></tr>
+<tr class="tier2"><td>76</td><td><strong>LL_lag3_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>2.0</td><td>260</td><td>4</td><td>2</td><td>50.0</td><td><strong>16.0</strong></td><td>4.0</td></tr>
+<tr class="tier2"><td>77</td><td><strong>LL_lag1_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>6.0</td><td>10.0</td><td>26</td><td>6</td><td>5</td><td>83.3</td><td><strong>15.84</strong></td><td>2.64</td></tr>
+<tr class="tier2"><td>78</td><td><strong>SA_drop_3d_10_rsi_g</strong></td><td><span class="family fam-SKS">SKS</span></td><td>5.0</td><td>4.0</td><td>260</td><td>12</td><td>7</td><td>58.3</td><td><strong>15.0</strong></td><td>1.25</td></tr>
+<tr class="tier2"><td>79</td><td><strong>LL_lag2_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>6.0</td><td>260</td><td>4</td><td>3</td><td>75.0</td><td><strong>15.0</strong></td><td>3.75</td></tr>
+<tr class="tier2"><td>80</td><td><strong>LL_lag2_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>7.0</td><td>6.0</td><td>260</td><td>4</td><td>3</td><td>75.0</td><td><strong>15.0</strong></td><td>3.75</td></tr>
+<tr class="wr100"><td>81</td><td><strong>SA19</strong></td><td><span class="family fam-SKS">SKS</span></td><td>1.5</td><td>8.0</td><td>78</td><td>9</td><td>9</td><td>100.0</td><td><strong>13.5</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>82</td><td><strong>DV_6bar_deep_oversold</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>8.0</td><td>260</td><td>3</td><td>2</td><td>66.7</td><td><strong>12.0</strong></td><td>4.0</td></tr>
+<tr class="tier2"><td>83</td><td><strong>LL_lag1_12</strong></td><td><span class="family fam-SKL">SKL</span></td><td>10.0</td><td>10.0</td><td>260</td><td>3</td><td>2</td><td>66.7</td><td><strong>10.0</strong></td><td>3.33</td></tr>
+<tr class="wr100"><td>84</td><td><strong>LL_lag0_04</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>8</td><td>8</td><td>100.0</td><td><strong>8.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>85</td><td><strong>LL_lag0_14</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>8</td><td>8</td><td>100.0</td><td><strong>8.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>86</td><td><strong>LL_lag0_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>6</td><td>6</td><td>100.0</td><td><strong>6.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>87</td><td><strong>LL_lag1_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>4</td><td>4</td><td>100.0</td><td><strong>4.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>88</td><td><strong>LL_lag1_02</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>4</td><td>4</td><td>100.0</td><td><strong>4.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>89</td><td><strong>LL_lag1_08</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>4</td><td>4</td><td>100.0</td><td><strong>4.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>90</td><td><strong>LL_lag0_05</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>3</td><td>3</td><td>100.0</td><td><strong>3.0</strong></td><td>1.0</td></tr>
+<tr class="wr100"><td>91</td><td><strong>LL_lag0_01</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.0</td><td>10.0</td><td>260</td><td>3</td><td>3</td><td>100.0</td><td><strong>3.0</strong></td><td>1.0</td></tr>
+</tbody></table>
+<h2>Daily Timeframe (39 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA_drop_2d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>26</td><td>19</td><td>73.1</td><td><strong>139.95</strong></td><td>5.38</td></tr>
+<tr class="tier2"><td>2</td><td><strong>SA_drop_1d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>21</td><td>14</td><td>66.7</td><td><strong>139.91</strong></td><td>6.66</td></tr>
+<tr class="tier2"><td>3</td><td><strong>SA_drop_2d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>22</td><td>17</td><td>77.3</td><td><strong>135.48</strong></td><td>6.16</td></tr>
+<tr class="tier2"><td>4</td><td><strong>SA23</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>37</td><td>22</td><td>59.5</td><td><strong>128.26</strong></td><td>3.47</td></tr>
+<tr class="tier2"><td>5</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>37</td><td>22</td><td>59.5</td><td><strong>128.26</strong></td><td>3.47</td></tr>
+<tr class="tier2"><td>6</td><td><strong>SA_drop_2d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>30</td><td>20</td><td>66.7</td><td><strong>115.95</strong></td><td>3.87</td></tr>
+<tr class="tier2"><td>7</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>7</td><td>39</td><td>21</td><td>53.8</td><td><strong>111.86</strong></td><td>2.87</td></tr>
+<tr class="tier2"><td>8</td><td><strong>SA10b</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>16</td><td>11</td><td>68.8</td><td><strong>109.7</strong></td><td>6.86</td></tr>
+<tr class="tier2"><td>9</td><td><strong>SA_drop_3d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>35</td><td>20</td><td>57.1</td><td><strong>94.25</strong></td><td>2.69</td></tr>
+<tr class="tier2"><td>10</td><td><strong>SA_drop_3d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>30</td><td>17</td><td>56.7</td><td><strong>80.63</strong></td><td>2.69</td></tr>
+<tr class="tier2"><td>11</td><td><strong>SA_drop_1d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>12</td><td>8</td><td>66.7</td><td><strong>72.0</strong></td><td>6.0</td></tr>
+<tr class="tier2"><td>12</td><td><strong>SA_drop_1d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>26</td><td>14</td><td>53.8</td><td><strong>71.22</strong></td><td>2.74</td></tr>
+<tr class="tier2"><td>13</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>7</td><td>36</td><td>19</td><td>52.8</td><td><strong>67.6</strong></td><td>1.88</td></tr>
+<tr class="tier2"><td>14</td><td><strong>SA20</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>10</td><td>43</td><td>21</td><td>48.8</td><td><strong>65.16</strong></td><td>1.52</td></tr>
+<tr class="tier2"><td>15</td><td><strong>SA21</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>43</td><td>21</td><td>48.8</td><td><strong>63.81</strong></td><td>1.48</td></tr>
+<tr class="tier2"><td>16</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>43</td><td>21</td><td>48.8</td><td><strong>63.81</strong></td><td>1.48</td></tr>
+<tr class="tier2"><td>17</td><td><strong>SA10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>10.0</td><td>5</td><td>10</td><td>6</td><td>60.0</td><td><strong>57.73</strong></td><td>5.77</td></tr>
+<tr class="tier2"><td>18</td><td><strong>SA_drop_5d_8</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>8.0</td><td>5</td><td>33</td><td>16</td><td>48.5</td><td><strong>52.42</strong></td><td>1.59</td></tr>
+<tr class="tier2"><td>19</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>8.0</td><td>7</td><td>38</td><td>19</td><td>50.0</td><td><strong>51.6</strong></td><td>1.36</td></tr>
+<tr class="tier2"><td>20</td><td><strong>SA_drop_5d_10</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>8.0</td><td>5</td><td>30</td><td>14</td><td>46.7</td><td><strong>49.21</strong></td><td>1.64</td></tr>
+<tr class="tier2"><td>21</td><td><strong>LL_lag2_08</strong></td><td><span class="family fam-SKL">SKL</span></td><td>15.0</td><td>12.0</td><td>5</td><td>5</td><td>4</td><td>80.0</td><td><strong>48.0</strong></td><td>9.6</td></tr>
+<tr class="tier2"><td>22</td><td><strong>SA_drop_5d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>8.0</td><td>5</td><td>29</td><td>13</td><td>44.8</td><td><strong>46.79</strong></td><td>1.61</td></tr>
+<tr class="wr100"><td>23</td><td><strong>SA25</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>45.0</strong></td><td>15.0</td></tr>
+<tr class="tier2"><td>24</td><td><strong>SA17</strong></td><td><span class="family fam-SKS">SKS</span></td><td>10.0</td><td>7.0</td><td>30</td><td>13</td><td>8</td><td>61.5</td><td><strong>45.0</strong></td><td>3.46</td></tr>
+<tr class="tier2"><td>25</td><td><strong>SA12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>9</td><td>6</td><td>66.7</td><td><strong>42.94</strong></td><td>4.77</td></tr>
+<tr class="tier2"><td>26</td><td><strong>SA24</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>3.0</td><td>5</td><td>10</td><td>4</td><td>40.0</td><td><strong>42.0</strong></td><td>4.2</td></tr>
+<tr class="wr100"><td>27</td><td><strong>SA02</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>4</td><td>4</td><td>100.0</td><td><strong>39.98</strong></td><td>9.99</td></tr>
+<tr class="tier2"><td>28</td><td><strong>SA14</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>7.0</td><td>5</td><td>7</td><td>4</td><td>57.1</td><td><strong>39.0</strong></td><td>5.57</td></tr>
+<tr class="tier2"><td>29</td><td><strong>SA_drop_3d_12</strong></td><td><span class="family fam-SKS">SKS</span></td><td>15.0</td><td>12.0</td><td>15</td><td>24</td><td>12</td><td>50.0</td><td><strong>36.0</strong></td><td>1.5</td></tr>
+<tr class="tier2"><td>30</td><td><strong>SA13</strong></td><td><span class="family fam-SKS">SKS</span></td><td>6.0</td><td>10.0</td><td>30</td><td>8</td><td>7</td><td>87.5</td><td><strong>32.0</strong></td><td>4.0</td></tr>
+<tr class="tier2"><td>31</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>5.0</td><td>30</td><td>13</td><td>6</td><td>46.2</td><td><strong>30.0</strong></td><td>2.31</td></tr>
+<tr class="tier2"><td>32</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>5.0</td><td>30</td><td>13</td><td>6</td><td>46.2</td><td><strong>30.0</strong></td><td>2.31</td></tr>
+<tr class="wr100"><td>33</td><td><strong>SA04</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>27.98</strong></td><td>9.33</td></tr>
+<tr class="wr100"><td>34</td><td><strong>SA01</strong></td><td><span class="family fam-SKS">SKS</span></td><td>12.0</td><td>12.0</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>27.98</strong></td><td>9.33</td></tr>
+<tr class="tier2"><td>35</td><td><strong>INV_lag2_01</strong></td><td><span class="family fam-SKX">SKX</span></td><td>15.0</td><td>5.0</td><td>5</td><td>3</td><td>2</td><td>66.7</td><td><strong>25.0</strong></td><td>8.33</td></tr>
+<tr class="tier2"><td>36</td><td><strong>INV_lag2_10</strong></td><td><span class="family fam-SKX">SKX</span></td><td>10.0</td><td>4.0</td><td>30</td><td>9</td><td>4</td><td>44.4</td><td><strong>20.0</strong></td><td>2.22</td></tr>
+<tr class="wr100"><td>37</td><td><strong>SA31</strong></td><td><span class="family fam-SKS">SKS</span></td><td>8.0</td><td>12.0</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>16.11</strong></td><td>5.37</td></tr>
+<tr class="tier2"><td>38</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-SKD">SKD</span></td><td>10.0</td><td>5.0</td><td>30</td><td>12</td><td>5</td><td>41.7</td><td><strong>15.0</strong></td><td>1.25</td></tr>
+<tr class="wr100"><td>39</td><td><strong>LL_lag0_09</strong></td><td><span class="family fam-SKL">SKL</span></td><td>1.5</td><td>5.0</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.5</strong></td><td>1.5</td></tr>
+</tbody></table>
+<div class="pipeline">Generated by create_rules_SKYQ_VALE_20260413_v2 pipeline</div>
+<script>
+function sortTable(th) {
+    var table = th.closest("table");
+    var tbody = table.querySelector("tbody");
+    var rows = Array.from(tbody.rows);
+    var col = Array.from(th.parentNode.children).indexOf(th);
+    var asc = th.getAttribute("data-asc") !== "true";
+    th.setAttribute("data-asc", asc);
+    rows.sort(function(a, b) {
+        var va = a.cells[col].textContent.trim();
+        var vb = b.cells[col].textContent.trim();
+        var na = parseFloat(va), nb = parseFloat(vb);
+        if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
+        return asc ? va.localeCompare(vb) : vb.localeCompare(va);
+    });
+    rows.forEach(function(r) { tbody.appendChild(r); });
+}
+</script>
+</body>
+</html>
