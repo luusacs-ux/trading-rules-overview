@@ -6,14 +6,14 @@
 <title>Trading Rules Overview</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;overflow-x:auto}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px}
 .header{background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
 .header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
 .search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none}
 .search-box:focus{border-color:#e94560}
-.container{padding:8px}
+.container{padding:8px;overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
-th{position:sticky;top:0;z-index:10;background:#0f3460;color:#e94560;padding:8px 5px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:11px}
+th{background:#0f3460;color:#e94560;padding:8px 5px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:11px}
 th:first-child{text-align:left}
 th:hover{background:#162d50}
 th .arrow{font-size:9px;margin-left:1px;opacity:.5}
@@ -34,12 +34,10 @@ a:hover{color:#e94560;text-decoration:underline}
 <body>
 <div class="header">
   <h1>Trading Rules Overview</h1>
-  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">54 tickers &#8226; 18,184 rules &#8226; 27.3% avg PnL</p>
+  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">34 tickers &#8226; 9,579 rules &#8226; 26.5%% avg PnL</p>
   <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
 </div>
-<div style="padding:8px 16px;font-size:12px">
-  <a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a>
-</div>
+<div style="padding:8px 16px;font-size:12px"><a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a></div>
 <div class="container">
 <table id="rulesTable">
 <thead>
@@ -58,213 +56,43 @@ a:hover{color:#e94560;text-decoration:underline}
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-04-11</div>
+<div class="footer">Last updated: 2026-04-10</div>
 <script>
 var data = [
-  {ticker:"BWET",stock:307,indiv:307,wr100:31,pnl10:189,avgPnl:34.66,ptpnl:2.87,report:"BWET_backtest_summary_20260411.html"},
-  {ticker:"MP",stock:571,indiv:571,wr100:54,pnl10:564,avgPnl:48.75,ptpnl:2.86,report:"MP_backtest_summary_20260411.html"},
-  {ticker:"ASTS",stock:540,indiv:540,wr100:7,pnl10:200,avgPnl:51.57,ptpnl:1.33,report:"ASTS_backtest_summary_20260411.html"},
-  {ticker:"SMCI",stock:365,indiv:365,wr100:23,pnl10:166,avgPnl:23.39,ptpnl:1.68,report:"SMCI_backtest_summary_20260411.html"},
-  {ticker:"TSAT",stock:561,indiv:561,wr100:7,pnl10:200,avgPnl:50.77,ptpnl:1.67,report:"TSAT_backtest_summary_20260411.html"},
-  {ticker:"GLW",stock:325,indiv:325,wr100:103,pnl10:300,avgPnl:33.53,ptpnl:4.88,report:"GLW_backtest_summary_20260411.html"},
-  {ticker:"HAL",stock:225,indiv:225,wr100:0,pnl10:141,avgPnl:20.93,ptpnl:2.74,report:"HAL_backtest_summary_20260411.html"},
-  {ticker:"CLSK",stock:551,indiv:551,wr100:28,pnl10:538,avgPnl:60.04,ptpnl:2.48,report:"CLSK_backtest_summary_20260411.html"},
-  {ticker:"DAL",stock:113,indiv:113,wr100:23,pnl10:94,avgPnl:10.86,ptpnl:1.60,report:"DAL_backtest_summary_20260411.html"},
-  {ticker:"BKR",stock:341,indiv:341,wr100:48,pnl10:327,avgPnl:33.36,ptpnl:3.04,report:"BKR_backtest_summary.html"},
-  {ticker:"LLY",stock:374,indiv:374,wr100:112,pnl10:336,avgPnl:33.43,ptpnl:3.93,report:"LLY_backtest_summary_20260411.html"},
-  {ticker:"SLB",stock:178,indiv:178,wr100:0,pnl10:120,avgPnl:14.59,ptpnl:2.47,report:"SLB_backtest_summary_20260411.html"},
-  {ticker:"USO",stock:189,indiv:189,wr100:88,pnl10:181,avgPnl:26.58,ptpnl:5.37,report:"USO_backtest_summary_20260411.html"},
-  {ticker:"CNBS",stock:177,indiv:177,wr100:20,pnl10:164,avgPnl:38.36,ptpnl:3.16,report:"CNBS_backtest_summary_20260411.html"},
-  {ticker:"CRWG",stock:247,indiv:247,wr100:20,pnl10:231,avgPnl:35.94,ptpnl:2.21,report:"CRWG_backtest_summary_20260411.html"},
-  {ticker:"USAR",stock:344,indiv:344,wr100:63,pnl10:148,avgPnl:16.18,ptpnl:1.72,report:"USAR_backtest_summary_20260411.html"},
-  {ticker:"DLTR",stock:220,indiv:220,wr100:81,pnl10:153,avgPnl:24.24,ptpnl:2.37,report:"DLTR_backtest_summary_20260411.html"},
-  {ticker:"HUM",stock:173,indiv:173,wr100:6,pnl10:100,avgPnl:17.60,ptpnl:2.00,report:"HUM_backtest_summary_20260411.html"},
-  {ticker:"CI",stock:135,indiv:135,wr100:56,pnl10:99,avgPnl:15.34,ptpnl:2.72,report:"CI_backtest_summary_20260411.html"},
-  {ticker:"ITA",stock:338,indiv:338,wr100:45,pnl10:312,avgPnl:27.07,ptpnl:2.32,report:"ITA_backtest_summary_20260411.html"},
-  {ticker:"UNH",stock:225,indiv:225,wr100:27,pnl10:204,avgPnl:21.66,ptpnl:1.58,report:"UNH_backtest_summary.html"},
-  {ticker:"ELV",stock:461,indiv:461,wr100:135,pnl10:391,avgPnl:21.4,ptpnl:2.22,report:"ELV_backtest_summary.html"},
-  {ticker:"ORCL",stock:534,indiv:534,wr100:68,pnl10:522,avgPnl:30.96,ptpnl:2.62,report:"ORCL_backtest_summary_20260411.html"},
-  {ticker:"LMT",stock:352,indiv:352,wr100:117,pnl10:301,avgPnl:23.61,ptpnl:3.65,report:"LMT_backtest_summary_20260411.html"},
-  {ticker:"LNG",stock:272,indiv:272,wr100:101,pnl10:236,avgPnl:21.76,ptpnl:3.73,report:"LNG_backtest_summary_20260411.html"},
-  {ticker:"PFE",stock:147,indiv:147,wr100:78,pnl10:103,avgPnl:16.84,ptpnl:3.81,report:"PFE_backtest_summary_20260411.html"},
-  {ticker:"F",stock:153,indiv:153,wr100:59,pnl10:120,avgPnl:19.38,ptpnl:3.22,report:"F_backtest_summary_20260411.html"},
-  {ticker:"MSFT",stock:325,indiv:325,wr100:64,pnl10:291,avgPnl:18.74,ptpnl:2.11,report:"MSFT_backtest_summary_20260411.html"},
-  {ticker:"AMZN",stock:433,indiv:433,wr100:46,pnl10:180,avgPnl:26.23,ptpnl:2.17,report:"AMZN_backtest_summary_20260411.html"},
-  {ticker:"NKE",stock:165,indiv:165,wr100:33,pnl10:79,avgPnl:9.04,ptpnl:1.15,report:"NKE_backtest_summary_20260411.html"},
-  {ticker:"MKC",stock:118,indiv:118,wr100:37,pnl10:98,avgPnl:15.05,ptpnl:2.25,report:"MKC_backtest_summary_20260411.html"},
-  {ticker:"CVNA",stock:488,indiv:488,wr100:74,pnl10:475,avgPnl:37.31,ptpnl:3.64,report:"CVNA_backtest_summary_20260411.html"},
-  {ticker:"APLD",stock:244,indiv:244,wr100:40,pnl10:208,avgPnl:40.87,ptpnl:2.45,report:"APLD_backtest_summary_20260411.html"},
-  {ticker:"ASML",stock:454,indiv:454,wr100:43,pnl10:406,avgPnl:41.49,ptpnl:2.96,report:"ASML_backtest_summary_20260411.html"},
-  {ticker:"TSM",stock:286,indiv:286,wr100:0,pnl10:156,avgPnl:19.06,ptpnl:2.02,report:"TSM_backtest_summary_20260411.html"},
-  {ticker:"AMAT",stock:1262,indiv:1262,wr100:49,pnl10:1062,avgPnl:35.31,ptpnl:11.41,report:"AMAT_backtest_summary.html"},
-  {ticker:"RH",stock:667,indiv:667,wr100:28,pnl10:498,avgPnl:32.45,ptpnl:7.82,report:"RH_backtest_summary.html"},
-  {ticker:"VIXY",stock:594,indiv:594,wr100:36,pnl10:539,avgPnl:42.2,ptpnl:10.11,report:"VIXY_backtest_summary.html"},
-  {ticker:"OPEN",stock:498,indiv:498,wr100:113,pnl10:467,avgPnl:36.83,ptpnl:3.36,report:"OPEN_backtest_summary_20260411.html"},
-  {ticker:"GRID",stock:308,indiv:308,wr100:37,pnl10:290,avgPnl:26.90,ptpnl:1.87,report:"GRID_backtest_summary_20260411.html"},
-  {ticker:"ENPH",stock:377,indiv:377,wr100:69,pnl10:347,avgPnl:33.99,ptpnl:2.35,report:"ENPH_backtest_summary_20260411.html"},
-  {ticker:"NFLX",stock:414,indiv:414,wr100:94,pnl10:366,avgPnl:21.28,ptpnl:1.61,report:"NFLX_backtest_summary_20260411.html"},
-  {ticker:"XLK",stock:314,indiv:314,wr100:17,pnl10:309,avgPnl:24.96,ptpnl:1.59,report:"XLK_backtest_summary_20260411.html"},
-  {ticker:"PAVE",stock:103,indiv:103,wr100:19,pnl10:96,avgPnl:18.49,ptpnl:1.65,report:"PAVE_backtest_summary_20260411.html"},
-  {ticker:"ARKK",stock:381,indiv:381,wr100:70,pnl10:355,avgPnl:26.40,ptpnl:1.68,report:"ARKK_backtest_summary_20260411.html"},
-  {ticker:"TQQQ",stock:498,indiv:498,wr100:37,pnl10:486,avgPnl:43.96,ptpnl:1.86,report:"TQQQ_backtest_summary_20260411.html"},
-  {ticker:"DAMD",stock:413,indiv:413,wr100:125,pnl10:394,avgPnl:28.54,ptpnl:4.40,report:"DAMD_backtest_summary_20260411.html"},
-  {ticker:"AAPL",stock:209,indiv:209,wr100:0,pnl10:100,avgPnl:12.62,ptpnl:1.90,report:"AAPL_backtest_summary_20260411.html"},
-  {ticker:"AVGO",stock:367,indiv:367,wr100:0,pnl10:153,avgPnl:29.46,ptpnl:1.78,report:"AVGO_backtest_summary_20260411.html"},
-  {ticker:"COST",stock:159,indiv:159,wr100:0,pnl10:75,avgPnl:9.78,ptpnl:1.78,report:"COST_backtest_summary_20260411.html"},
-  {ticker:"TGT",stock:184,indiv:184,wr100:0,pnl10:93,avgPnl:13.49,ptpnl:1.78,report:"TGT_backtest_summary_20260411.html"},
-  {ticker:"CVX",stock:159,indiv:159,wr100:0,pnl10:130,avgPnl:16.11,ptpnl:2.98,report:"CVX_backtest_summary_20260411.html"},
-  {ticker:"XOM",stock:162,indiv:162,wr100:0,pnl10:134,avgPnl:21.47,ptpnl:3.44,report:"XOM_backtest_summary_20260411.html"},
-  {ticker:"COP",stock:184,indiv:184,wr100:0,pnl10:136,avgPnl:18.96,ptpnl:3.20,report:"COP_backtest_summary_20260411.html"},
-  {ticker:"GLD",stock:272,indiv:272,wr100:40,pnl10:232,avgPnl:20.0,ptpnl:3.22,report:"GLD_backtest_summary_20260412.html"},
-  {ticker:"ARM",stock:453,indiv:453,wr100:33,pnl10:450,avgPnl:49.92,ptpnl:3.22,report:"ARM_backtest_summary_20260412.html"},
-  {ticker:"ORLA",stock:387,indiv:387,wr100:27,pnl10:378,avgPnl:62.4,ptpnl:3.6,report:"ORLA_backtest_summary_20260412.html"},
-  {ticker:"NVDL",stock:390,indiv:390,wr100:15,pnl10:377,avgPnl:69.86,ptpnl:2.98,report:"NVDL_backtest_summary_20260412.html"},
-  {ticker:"SPY",stock:206,indiv:206,wr100:24,pnl10:202,avgPnl:24.22,ptpnl:2.02,report:"SPY_backtest_summary_20260412.html"},
-  {ticker:"BABA",stock:346,indiv:346,wr100:40,pnl10:334,avgPnl:32.92,ptpnl:2.68,report:"BABA_backtest_summary_20260412.html"},
-  {ticker:"KWEB",stock:220,indiv:220,wr100:11,pnl10:209,avgPnl:25.63,ptpnl:1.66,report:"KWEB_backtest_summary_20260412.html"},
-  {ticker:"FXI",stock:225,indiv:225,wr100:8,pnl10:218,avgPnl:24.92,ptpnl:1.62,report:"FXI_backtest_summary_20260412.html"},
-  {ticker:"SPXU",stock:348,indiv:348,wr100:68,pnl10:318,avgPnl:21.66,ptpnl:2.2,report:"SPXU_backtest_summary_20260412.html"},
-  {ticker:"XLI",stock:257,indiv:257,wr100:38,pnl10:234,avgPnl:25.31,ptpnl:2.3,report:"XLI_backtest_summary_20260412.html"},
-  {ticker:"META",stock:476,indiv:476,wr100:109,pnl10:427,avgPnl:27.08,ptpnl:3.29,report:"META_backtest_summary_20260412.html"},
-  {ticker:"CMG",stock:399,indiv:399,wr100:84,pnl10:334,avgPnl:23.08,ptpnl:2.08,report:"CMG_backtest_summary_20260412.html"},
-  {ticker:"AFRM",stock:459,indiv:459,wr100:43,pnl10:443,avgPnl:47.11,ptpnl:3.31,report:"AFRM_backtest_summary_20260412.html"},
-  {ticker:"XRT",stock:342,indiv:342,wr100:65,pnl10:321,avgPnl:28.66,ptpnl:2.64,report:"XRT_backtest_summary_20260412.html"},
-  {ticker:"FMC",stock:322,indiv:322,wr100:32,pnl10:303,avgPnl:32.25,ptpnl:2.56,report:"FMC_backtest_summary_20260412.html"},
-  {ticker:"SARK",stock:449,indiv:449,wr100:72,pnl10:414,avgPnl:24.2,ptpnl:1.84,report:"SARK_backtest_summary_20260412.html"},
-  {ticker:"XLC",stock:211,indiv:211,wr100:20,pnl10:205,avgPnl:25.92,ptpnl:2.36,report:"XLC_backtest_summary_20260412.html"},
-  {ticker:"DIS",stock:257,indiv:257,wr100:42,pnl10:239,avgPnl:22.42,ptpnl:2.35,report:"DIS_backtest_summary_20260412.html"},
-  {ticker:"XLE",stock:224,indiv:224,wr100:33,pnl10:220,avgPnl:32.52,ptpnl:2.69,report:"XLE_backtest_summary_20260412.html"},
-  {ticker:"NOC",stock:241,indiv:241,wr100:34,pnl10:233,avgPnl:31.6,ptpnl:4.45,report:"NOC_backtest_summary_20260412.html"},
-  {ticker:"TSLL",stock:327,indiv:327,wr100:11,pnl10:326,avgPnl:86.65,ptpnl:3.19,report:"TSLL_backtest_summary_20260412.html"},
-  {ticker:"CONL",stock:400,indiv:400,wr100:28,pnl10:387,avgPnl:37.37,ptpnl:1.79,report:"CONL_backtest_summary_20260412.html"},
-  {ticker:"GGLL",stock:527,indiv:527,wr100:35,pnl10:523,avgPnl:58.54,ptpnl:4.01,report:"GGLL_backtest_summary_20260412.html"},
-  {ticker:"SOXL",stock:575,indiv:575,wr100:12,pnl10:574,avgPnl:84.62,ptpnl:3.24,report:"SOXL_backtest_summary_20260412.html"},
-  {ticker:"TECL",stock:564,indiv:564,wr100:39,pnl10:559,avgPnl:55.47,ptpnl:3.41,report:"TECL_backtest_summary_20260412.html"},
-  {ticker:"FNGU",stock:417,indiv:417,wr100:38,pnl10:415,avgPnl:42.5,ptpnl:3.34,report:"FNGU_backtest_summary_20260412.html"},
-  {ticker:"ORCX",stock:484,indiv:484,wr100:48,pnl10:483,avgPnl:53.58,ptpnl:3.24,report:"ORCX_backtest_summary_20260412.html"},
-  {ticker:"OXY",stock:330,indiv:330,wr100:16,pnl10:328,avgPnl:41.03,ptpnl:3.03,report:"OXY_backtest_summary_20260412.html"},
-  {ticker:"RTX",stock:216,indiv:216,wr100:44,pnl10:213,avgPnl:39.28,ptpnl:4.14,report:"RTX_backtest_summary_20260412.html"},
-  {ticker:"RXD",stock:359,indiv:359,wr100:75,pnl10:329,avgPnl:27.07,ptpnl:3.22,report:"RXD_backtest_summary_20260412.html"},
-  {ticker:"SO",stock:217,indiv:217,wr100:78,pnl10:188,avgPnl:17.97,ptpnl:2.78,report:"SO_backtest_summary_20260412.html"},
-  {ticker:"SOXS",stock:385,indiv:385,wr100:7,pnl10:384,avgPnl:37.01,ptpnl:1.64,report:"SOXS_backtest_summary_20260412.html"},
-  {ticker:"SSG",stock:447,indiv:447,wr100:39,pnl10:437,avgPnl:32.81,ptpnl:2.31,report:"SSG_backtest_summary_20260412.html"},
-  {ticker:"TECS",stock:378,indiv:378,wr100:28,pnl10:369,avgPnl:32.99,ptpnl:2.27,report:"TECS_backtest_summary_20260412.html"},
-  {ticker:"TEL",stock:359,indiv:359,wr100:59,pnl10:332,avgPnl:33.94,ptpnl:3.19,report:"TEL_backtest_summary_20260412.html"},
-  {ticker:"AMD",stock:406,indiv:406,wr100:18,pnl10:403,avgPnl:75.23,ptpnl:4.07,report:"AMD_backtest_summary_20260412.html"},
-  {ticker:"AMDL",stock:409,indiv:409,wr100:6,pnl10:406,avgPnl:91.78,ptpnl:3.04,report:"AMDL_backtest_summary_20260412.html"},
-  {ticker:"AN",stock:378,indiv:378,wr100:84,pnl10:346,avgPnl:29.46,ptpnl:3.24,report:"AN_backtest_summary_20260412.html"},
-  {ticker:"APH",stock:538,indiv:538,wr100:86,pnl10:531,avgPnl:48.85,ptpnl:4.38,report:"APH_backtest_summary_20260412.html"},
-  {ticker:"AREC",stock:435,indiv:435,wr100:15,pnl10:433,avgPnl:68.48,ptpnl:2.61,report:"AREC_backtest_summary_20260412.html"},
-  {ticker:"ARKF",stock:389,indiv:389,wr100:56,pnl10:384,avgPnl:30.83,ptpnl:2.91,report:"ARKF_backtest_summary_20260412.html"},
-  {ticker:"ARKG",stock:366,indiv:366,wr100:39,pnl10:361,avgPnl:44.3,ptpnl:2.86,report:"ARKG_backtest_summary_20260412.html"},
-  {ticker:"ARKQ",stock:324,indiv:324,wr100:28,pnl10:318,avgPnl:43.19,ptpnl:3.31,report:"ARKQ_backtest_summary_20260412.html"},
-  {ticker:"ARKW",stock:418,indiv:418,wr100:70,pnl10:395,avgPnl:33.69,ptpnl:2.95,report:"ARKW_backtest_summary_20260412.html"},
-  {ticker:"BAX",stock:286,indiv:286,wr100:60,pnl10:266,avgPnl:24.05,ptpnl:3.43,report:"BAX_backtest_summary_20260412.html"},
-  {ticker:"BIDU",stock:393,indiv:393,wr100:64,pnl10:358,avgPnl:34.52,ptpnl:2.74,report:"BIDU_backtest_summary_20260412.html"},
-  {ticker:"BIIB",stock:284,indiv:284,wr100:27,pnl10:268,avgPnl:31.54,ptpnl:4.02,report:"BIIB_backtest_summary_20260412.html"},
-  {ticker:"BITI",stock:399,indiv:399,wr100:44,pnl10:375,avgPnl:31.82,ptpnl:1.86,report:"BITI_backtest_summary_20260412.html"},
-  {ticker:"BITX",stock:360,indiv:360,wr100:40,pnl10:346,avgPnl:36.81,ptpnl:1.74,report:"BITX_backtest_summary_20260412.html"},
-  {ticker:"IRE",stock:326,indiv:326,wr100:32,pnl10:318,avgPnl:40.61,ptpnl:2.75,report:"IRE_backtest_summary_20260412.html"},
-  {ticker:"IREN",stock:370,indiv:370,wr100:22,pnl10:367,avgPnl:91.84,ptpnl:3.99,report:"IREN_backtest_summary_20260412.html"},
-  {ticker:"IREX",stock:323,indiv:323,wr100:40,pnl10:304,avgPnl:41.15,ptpnl:2.93,report:"IREX_backtest_summary_20260412.html"},
-  {ticker:"IVV",stock:223,indiv:223,wr100:17,pnl10:215,avgPnl:24.5,ptpnl:1.94,report:"IVV_backtest_summary_20260412.html"},
-  {ticker:"IWM",stock:264,indiv:264,wr100:22,pnl10:255,avgPnl:31.2,ptpnl:2.48,report:"IWM_backtest_summary_20260412.html"},
-  {ticker:"IYR",stock:216,indiv:216,wr100:44,pnl10:167,avgPnl:14.71,ptpnl:1.34,report:"IYR_backtest_summary_20260412.html"},
-  {ticker:"IYT",stock:263,indiv:263,wr100:21,pnl10:251,avgPnl:29.58,ptpnl:2.3,report:"IYT_backtest_summary_20260412.html"},
-  {ticker:"JD",stock:272,indiv:272,wr100:35,pnl10:253,avgPnl:23.7,ptpnl:2.6,report:"JD_backtest_summary_20260412.html"},
-  {ticker:"JETS",stock:321,indiv:321,wr100:17,pnl10:319,avgPnl:36.22,ptpnl:2.51,report:"JETS_backtest_summary_20260412.html"},
-  {ticker:"HACK",stock:335,indiv:335,wr100:42,pnl10:322,avgPnl:26.52,ptpnl:2.58,report:"HACK_backtest_summary_20260412.html"},
-  {ticker:"HII",stock:301,indiv:301,wr100:75,pnl10:287,avgPnl:43.32,ptpnl:4.39,report:"HII_backtest_summary_20260412.html"},
-  {ticker:"HYG",stock:7,indiv:7,wr100:6,pnl10:1,avgPnl:5.87,ptpnl:0.63,report:"HYG_backtest_summary_20260412.html"},
-  {ticker:"IAU",stock:242,indiv:242,wr100:28,pnl10:228,avgPnl:39.43,ptpnl:2.85,report:"IAU_backtest_summary_20260412.html"},
-  {ticker:"IBB",stock:265,indiv:265,wr100:14,pnl10:255,avgPnl:30.99,ptpnl:2.3,report:"IBB_backtest_summary_20260412.html"},
-  {ticker:"ICLN",stock:377,indiv:377,wr100:76,pnl10:364,avgPnl:37.17,ptpnl:3.21,report:"ICLN_backtest_summary_20260412.html"},
-  {ticker:"IEF",stock:1,indiv:1,wr100:1,pnl10:0,avgPnl:4.41,ptpnl:1.47,report:"IEF_backtest_summary_20260412.html"},
-  {ticker:"IFRA",stock:227,indiv:227,wr100:20,pnl10:221,avgPnl:26.26,ptpnl:2.08,report:"IFRA_backtest_summary_20260412.html"},
-  {ticker:"IGV",stock:376,indiv:376,wr100:63,pnl10:355,avgPnl:24.02,ptpnl:2.26,report:"IGV_backtest_summary_20260412.html"},
-  {ticker:"PWR",stock:427,indiv:427,wr100:56,pnl10:420,avgPnl:55.36,ptpnl:4.66,report:"PWR_backtest_summary_20260412.html"},
-  {ticker:"QCLN",stock:365,indiv:365,wr100:45,pnl10:337,avgPnl:44.02,ptpnl:3.42,report:"QCLN_backtest_summary_20260412.html"},
-  {ticker:"QID",stock:251,indiv:251,wr100:26,pnl10:232,avgPnl:22.44,ptpnl:1.69,report:"QID_backtest_summary_20260412.html"},
-  {ticker:"QLD",stock:430,indiv:430,wr100:56,pnl10:417,avgPnl:35.56,ptpnl:3.12,report:"QLD_backtest_summary_20260412.html"},
-  {ticker:"QQQ",stock:311,indiv:311,wr100:49,pnl10:295,avgPnl:26.26,ptpnl:2.57,report:"QQQ_backtest_summary_20260412.html"},
-  {ticker:"REMX",stock:431,indiv:431,wr100:34,pnl10:427,avgPnl:56.49,ptpnl:3.92,report:"REMX_backtest_summary_20260412.html"},
-  {ticker:"RIO",stock:341,indiv:341,wr100:39,pnl10:332,avgPnl:40.6,ptpnl:3.52,report:"RIO_backtest_summary_20260412.html"},
-  {ticker:"RIOT",stock:366,indiv:366,wr100:25,pnl10:366,avgPnl:71.05,ptpnl:3.31,report:"RIOT_backtest_summary_20260412.html"},
-  {ticker:"RKLB",stock:428,indiv:428,wr100:31,pnl10:425,avgPnl:73.25,ptpnl:4.24,report:"RKLB_backtest_summary_20260412.html"},
-  {ticker:"ROK",stock:342,indiv:342,wr100:55,pnl10:331,avgPnl:37.34,ptpnl:3.04,report:"ROK_backtest_summary_20260412.html"},
-  {ticker:"ROKU",stock:571,indiv:571,wr100:51,pnl10:564,avgPnl:52.42,ptpnl:4.35,report:"ROKU_backtest_summary_20260412.html"},
-  {ticker:"RSP",stock:241,indiv:241,wr100:45,pnl10:215,avgPnl:20.14,ptpnl:1.94,report:"RSP_backtest_summary_20260412.html"},
-  {ticker:"RWM",stock:204,indiv:204,wr100:50,pnl10:163,avgPnl:14.94,ptpnl:1.05,report:"RWM_backtest_summary_20260412.html"},
-  {ticker:"WEAT",stock:205,indiv:205,wr100:37,pnl10:145,avgPnl:14.59,ptpnl:1.47,report:"WEAT_backtest_summary_20260412.html"},
-  {ticker:"WEC",stock:259,indiv:259,wr100:65,pnl10:214,avgPnl:18.1,ptpnl:1.75,report:"WEC_backtest_summary_20260412.html"},
-  {ticker:"WMT",stock:180,indiv:180,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:0.0,report:"WMT_backtest_summary_20260412.html"},
-  {ticker:"SATS",stock:37,indiv:37,wr100:0,pnl10:37,avgPnl:15.0,ptpnl:2.0,report:"SATS_backtest_summary_20260412.html"},
-  {ticker:"INTC",stock:439,indiv:439,wr100:38,pnl10:429,avgPnl:59.85,ptpnl:3.68,report:"INTC_backtest_summary_20260412.html"},
-  {ticker:"IPO",stock:362,indiv:362,wr100:49,pnl10:346,avgPnl:31.24,ptpnl:2.85,report:"IPO_backtest_summary_20260412.html"},
-  {ticker:"JPM",stock:309,indiv:309,wr100:46,pnl10:287,avgPnl:29.2,ptpnl:2.41,report:"JPM_backtest_summary_20260412.html"},
-  {ticker:"KBE",stock:356,indiv:356,wr100:63,pnl10:321,avgPnl:26.14,ptpnl:2.62,report:"KBE_backtest_summary_20260412.html"},
-  {ticker:"KMI",stock:288,indiv:288,wr100:75,pnl10:277,avgPnl:26.91,ptpnl:3.05,report:"KMI_backtest_summary_20260412.html"},
-  {ticker:"KMX",stock:468,indiv:468,wr100:78,pnl10:442,avgPnl:31.16,ptpnl:3.14,report:"KMX_backtest_summary_20260412.html"},
-  {ticker:"KR",stock:298,indiv:298,wr100:59,pnl10:249,avgPnl:23.8,ptpnl:2.13,report:"KR_backtest_summary_20260412.html"},
-  {ticker:"KRE",stock:367,indiv:367,wr100:67,pnl10:328,avgPnl:27.67,ptpnl:2.71,report:"KRE_backtest_summary_20260412.html"},
-  {ticker:"LABD",stock:432,indiv:432,wr100:55,pnl10:417,avgPnl:35.71,ptpnl:1.84,report:"LABD_backtest_summary_20260412.html"},
-  {ticker:"HD",stock:230,indiv:230,wr100:55,pnl10:197,avgPnl:19.68,ptpnl:1.57,report:"HD_backtest_summary_20260412.html"},
-  {ticker:"CAVA",stock:409,indiv:409,wr100:61,pnl10:391,avgPnl:38.95,ptpnl:2.74,report:"CAVA_backtest_summary_20260412.html"},
-  {ticker:"CROX",stock:448,indiv:448,wr100:109,pnl10:439,avgPnl:34.35,ptpnl:3.78,report:"CROX_backtest_summary_20260412.html"},
-  {ticker:"ABNB",stock:307,indiv:307,wr100:60,pnl10:288,avgPnl:30.89,ptpnl:2.88,report:"ABNB_backtest_summary_20260412.html"},
-  {ticker:"RBLX",stock:407,indiv:407,wr100:36,pnl10:388,avgPnl:36.85,ptpnl:3.0,report:"RBLX_backtest_summary_20260412.html"},
-  {ticker:"ETSY",stock:308,indiv:308,wr100:37,pnl10:299,avgPnl:48.57,ptpnl:3.65,report:"ETSY_backtest_summary_20260412.html"},
-  {ticker:"UPST",stock:415,indiv:415,wr100:50,pnl10:389,avgPnl:45.84,ptpnl:2.43,report:"UPST_backtest_summary_20260412.html"},
-  {ticker:"MA",stock:228,indiv:228,wr100:22,pnl10:217,avgPnl:20.72,ptpnl:1.65,report:"MA_backtest_summary_20260413.html"},
-  {ticker:"MCD",stock:228,indiv:228,wr100:66,pnl10:198,avgPnl:15.48,ptpnl:2.46,report:"MCD_backtest_summary_20260413.html"},
-  {ticker:"V",stock:251,indiv:251,wr100:57,pnl10:209,avgPnl:17.37,ptpnl:1.65,report:"V_backtest_summary_20260413.html"},
-  {ticker:"BA",stock:217,indiv:217,wr100:27,pnl10:198,avgPnl:38.24,ptpnl:3.07,report:"BA_backtest_summary_20260413.html"},
-  {ticker:"LYV",stock:299,indiv:299,wr100:64,pnl10:271,avgPnl:35.58,ptpnl:3.09,report:"LYV_backtest_summary_20260413.html"},
-  {ticker:"PYPL",stock:336,indiv:336,wr100:49,pnl10:311,avgPnl:26.94,ptpnl:2.81,report:"PYPL_backtest_summary_20260413.html"},
-  {ticker:"LULU",stock:268,indiv:268,wr100:52,pnl10:248,avgPnl:27.19,ptpnl:2.54,report:"LULU_backtest_summary_20260413.html"},
-  {ticker:"LUV",stock:305,indiv:305,wr100:39,pnl10:288,avgPnl:38.99,ptpnl:3.23,report:"LUV_backtest_summary_20260413.html"},
-  {ticker:"XYZ",stock:474,indiv:474,wr100:72,pnl10:468,avgPnl:40.65,ptpnl:3.7,report:"XYZ_backtest_summary_20260413.html"},
-  {ticker:"RKT",stock:94,indiv:94,wr100:21,pnl10:92,avgPnl:39.75,ptpnl:5.69,report:"RKT_backtest_summary_20260413.html"},
-  {ticker:"ADBE",stock:251,indiv:251,wr100:74,pnl10:190,avgPnl:15.89,ptpnl:1.48,report:"ADBE_backtest_summary_20260413.html"},
-  {ticker:"GTLB",stock:431,indiv:431,wr100:54,pnl10:423,avgPnl:30.39,ptpnl:2.79,report:"GTLB_backtest_summary_20260413.html"},
-  {ticker:"CAR",stock:430,indiv:430,wr100:39,pnl10:426,avgPnl:59.65,ptpnl:4.17,report:"CAR_backtest_summary_20260413.html"},
-  {ticker:"SHOP",stock:424,indiv:424,wr100:45,pnl10:417,avgPnl:53.12,ptpnl:4.47,report:"SHOP_backtest_summary_20260413.html"},
-  {ticker:"PLTR",stock:399,indiv:399,wr100:35,pnl10:392,avgPnl:58.62,ptpnl:4.01,report:"PLTR_backtest_summary_20260413.html"},
-  {ticker:"CRM",stock:346,indiv:346,wr100:66,pnl10:315,avgPnl:21.4,ptpnl:1.91,report:"CRM_backtest_summary_20260413.html"},
-  {ticker:"ADSK",stock:288,indiv:288,wr100:74,pnl10:247,avgPnl:18.67,ptpnl:2.24,report:"ADSK_backtest_summary_20260413.html"},
-  {ticker:"DOCU",stock:411,indiv:411,wr100:64,pnl10:396,avgPnl:30.24,ptpnl:2.55,report:"DOCU_backtest_summary_20260413.html"},
-  {ticker:"NET",stock:404,indiv:404,wr100:45,pnl10:396,avgPnl:48.88,ptpnl:3.74,report:"NET_backtest_summary_20260413.html"},
-  {ticker:"NOW",stock:323,indiv:323,wr100:58,pnl10:278,avgPnl:20.68,ptpnl:2.02,report:"NOW_backtest_summary_20260413.html"},
-  {ticker:"SNOW",stock:280,indiv:280,wr100:29,pnl10:273,avgPnl:31.06,ptpnl:2.4,report:"SNOW_backtest_summary_20260413.html"},
-  {ticker:"SKYQ",stock:275,indiv:275,wr100:31,pnl10:256,avgPnl:56.67,ptpnl:2.45,report:"SKYQ_backtest_summary_20260413.html"},
-  {ticker:"RYDE",stock:314,indiv:314,wr100:32,pnl10:311,avgPnl:54.94,ptpnl:3.14,report:"RYDE_backtest_summary_20260413.html"},
-  {ticker:"CRWV",stock:391,indiv:391,wr100:13,pnl10:387,avgPnl:76.29,ptpnl:2.89,report:"CRWV_backtest_summary_20260413.html"},
-  {ticker:"CWVX",stock:315,indiv:315,wr100:12,pnl10:313,avgPnl:50.51,ptpnl:2.26,report:"CWVX_backtest_summary_20260413.html"},
-  {ticker:"DAPP",stock:492,indiv:492,wr100:62,pnl10:466,avgPnl:57.91,ptpnl:3.17,report:"DAPP_backtest_summary_20260413.html"},
-  {ticker:"DBC",stock:252,indiv:252,wr100:36,pnl10:246,avgPnl:27.92,ptpnl:1.89,report:"DBC_backtest_summary_20260413.html"},
-  {ticker:"DG",stock:333,indiv:333,wr100:36,pnl10:323,avgPnl:33.53,ptpnl:3.95,report:"DG_backtest_summary_20260413.html"},
-  {ticker:"DHR",stock:258,indiv:258,wr100:57,pnl10:241,avgPnl:24.24,ptpnl:3.21,report:"DHR_backtest_summary_20260413.html"},
-  {ticker:"DHT",stock:311,indiv:311,wr100:42,pnl10:297,avgPnl:39.53,ptpnl:3.41,report:"DHT_backtest_summary_20260413.html"},
-  {ticker:"DIA",stock:253,indiv:253,wr100:53,pnl10:221,avgPnl:19.83,ptpnl:1.9,report:"DIA_backtest_summary_20260413.html"},
-  {ticker:"DOG",stock:103,indiv:103,wr100:51,pnl10:58,avgPnl:10.83,ptpnl:1.29,report:"DOG_backtest_summary_20260413.html"},
-  {ticker:"DRIP",stock:340,indiv:340,wr100:63,pnl10:322,avgPnl:23.73,ptpnl:1.76,report:"DRIP_backtest_summary_20260413.html"},
-  {ticker:"DUG",stock:402,indiv:402,wr100:86,pnl10:370,avgPnl:22.63,ptpnl:2.06,report:"DUG_backtest_summary_20260413.html"},
-  {ticker:"DUK",stock:266,indiv:266,wr100:74,pnl10:210,avgPnl:17.9,ptpnl:1.82,report:"DUK_backtest_summary_20260413.html"},
-  {ticker:"DVN",stock:380,indiv:380,wr100:63,pnl10:353,avgPnl:41.84,ptpnl:3.56,report:"DVN_backtest_summary_20260413.html"},
-  {ticker:"WFC",stock:288,indiv:288,wr100:32,pnl10:269,avgPnl:29.19,ptpnl:2.25,report:"WFC_backtest_summary_20260413.html"},
-  {ticker:"BAC",stock:299,indiv:299,wr100:28,pnl10:272,avgPnl:28.29,ptpnl:2.26,report:"BAC_backtest_summary_20260413.html"},
-  {ticker:"RIVN",stock:434,indiv:434,wr100:53,pnl10:426,avgPnl:47.9,ptpnl:3.12,report:"RIVN_backtest_summary_20260413.html"},
-  {ticker:"BTC",stock:511,indiv:511,wr100:48,pnl10:505,avgPnl:70.28,ptpnl:3.22,report:"BTC_backtest_summary_20260414.html"},
-  {ticker:"FDX",stock:633,indiv:633,wr100:94,pnl10:594,avgPnl:49.62,ptpnl:2.95,report:"FDX_backtest_summary_20260415.html"},
-  {ticker:"FRO",stock:747,indiv:747,wr100:79,pnl10:725,avgPnl:68.14,ptpnl:3.25,report:"FRO_backtest_summary_20260415.html"},
-  {ticker:"FTI",stock:619,indiv:619,wr100:72,pnl10:614,avgPnl:83.48,ptpnl:4.41,report:"FTI_backtest_summary_20260415.html"},
-  {ticker:"FXE",stock:146,indiv:146,wr100:14,pnl10:131,avgPnl:17.42,ptpnl:0.89,report:"FXE_backtest_summary_20260415.html"},
-  {ticker:"GBTC",stock:702,indiv:702,wr100:50,pnl10:695,avgPnl:87.65,ptpnl:3.53,report:"GBTC_backtest_summary_20260415.html"},
-  {ticker:"GD",stock:410,indiv:410,wr100:58,pnl10:387,avgPnl:30.03,ptpnl:1.95,report:"GD_backtest_summary_20260415.html"},
-  {ticker:"GDX",stock:500,indiv:500,wr100:60,pnl10:490,avgPnl:65.56,ptpnl:3.42,report:"GDX_backtest_summary_20260415.html"},
-  {ticker:"GDXJ",stock:518,indiv:518,wr100:72,pnl10:498,avgPnl:67.12,ptpnl:3.42,report:"GDXJ_backtest_summary_20260415.html"},
-  {ticker:"GIS",stock:246,indiv:246,wr100:77,pnl10:180,avgPnl:16.15,ptpnl:1.5,report:"GIS_backtest_summary_20260415.html"},
-  {ticker:"GM",stock:629,indiv:629,wr100:101,pnl10:592,avgPnl:52.35,ptpnl:3.02,report:"GM_backtest_summary_20260415.html"}
+  {ticker:"BWET",stock:69,indiv:69,wr100:8,pnl10:68,avgPnl:46.66,ptpnl:5.31,report:"BWET_backtest_summary.html"}
+  {ticker:"MP",stock:489,indiv:489,wr100:48,pnl10:482,avgPnl:45.55,ptpnl:2.88,report:"MP_backtest_summary.html"}
+  {ticker:"ASTS",stock:307,indiv:307,wr100:50,pnl10:292,avgPnl:42.7,ptpnl:3.38,report:"ASTS_backtest_summary.html"}
+  {ticker:"SMCI",stock:509,indiv:509,wr100:32,pnl10:499,avgPnl:40.2,ptpnl:2.56,report:"SMCI_backtest_summary.html"}
+  {ticker:"TSAT",stock:319,indiv:319,wr100:80,pnl10:308,avgPnl:38.9,ptpnl:4.52,report:"TSAT_backtest_summary.html"}
+  {ticker:"GLW",stock:360,indiv:360,wr100:63,pnl10:338,avgPnl:37.58,ptpnl:3.34,report:"GLW_backtest_summary.html"}
+  {ticker:"HAL",stock:374,indiv:374,wr100:66,pnl10:368,avgPnl:36.71,ptpnl:3.48,report:"HAL_backtest_summary.html"}
+  {ticker:"CLSK",stock:265,indiv:265,wr100:80,pnl10:234,avgPnl:34.25,ptpnl:3.04,report:"CLSK_backtest_summary.html"}
+  {ticker:"DAL",stock:383,indiv:383,wr100:23,pnl10:370,avgPnl:34.16,ptpnl:2.19,report:"DAL_backtest_summary.html"}
+  {ticker:"BKR",stock:341,indiv:341,wr100:48,pnl10:327,avgPnl:33.36,ptpnl:3.04,report:"BKR_backtest_summary.html"}
+  {ticker:"LLY",stock:356,indiv:356,wr100:95,pnl10:327,avgPnl:33.33,ptpnl:3.63,report:"LLY_backtest_summary.html"}
+  {ticker:"SLB",stock:302,indiv:302,wr100:46,pnl10:301,avgPnl:33.2,ptpnl:3.27,report:"SLB_backtest_summary.html"}
+  {ticker:"USO",stock:451,indiv:451,wr100:62,pnl10:437,avgPnl:31.31,ptpnl:2.67,report:"USO_backtest_summary.html"}
+  {ticker:"CNBS",stock:174,indiv:174,wr100:44,pnl10:152,avgPnl:29.99,ptpnl:3.22,report:"CNBS_backtest_summary.html"}
+  {ticker:"CRWG",stock:208,indiv:208,wr100:33,pnl10:194,avgPnl:29.62,ptpnl:5.45,report:"CRWG_backtest_summary.html"}
+  {ticker:"USAR",stock:255,indiv:255,wr100:58,pnl10:226,avgPnl:28.05,ptpnl:4.04,report:"USAR_backtest_summary.html"}
+  {ticker:"DLTR",stock:147,indiv:147,wr100:38,pnl10:127,avgPnl:24.67,ptpnl:2.69,report:"DLTR_backtest_summary.html"}
+  {ticker:"HUM",stock:394,indiv:394,wr100:99,pnl10:344,avgPnl:23.6,ptpnl:2.92,report:"HUM_backtest_summary.html"}
+  {ticker:"CI",stock:329,indiv:329,wr100:101,pnl10:303,avgPnl:23.56,ptpnl:3.49,report:"CI_backtest_summary.html"}
+  {ticker:"ITA",stock:234,indiv:234,wr100:55,pnl10:203,avgPnl:22.05,ptpnl:2.96,report:"ITA_backtest_summary.html"}
+  {ticker:"UNH",stock:225,indiv:225,wr100:27,pnl10:204,avgPnl:21.66,ptpnl:1.58,report:"UNH_backtest_summary.html"}
+  {ticker:"ELV",stock:461,indiv:461,wr100:135,pnl10:391,avgPnl:21.4,ptpnl:2.22,report:"ELV_backtest_summary.html"}
+  {ticker:"ORCL",stock:261,indiv:261,wr100:69,pnl10:233,avgPnl:20.99,ptpnl:3.2,report:"ORCL_backtest_summary.html"}
+  {ticker:"LMT",stock:386,indiv:386,wr100:134,pnl10:326,avgPnl:20.86,ptpnl:3.48,report:"LMT_backtest_summary.html"}
+  {ticker:"LNG",stock:206,indiv:206,wr100:70,pnl10:181,avgPnl:20.41,ptpnl:3.79,report:"LNG_backtest_summary.html"}
+  {ticker:"PFE",stock:120,indiv:120,wr100:67,pnl10:102,avgPnl:20.1,ptpnl:4.04,report:"PFE_backtest_summary.html"}
+  {ticker:"F",stock:111,indiv:111,wr100:34,pnl10:98,avgPnl:19.12,ptpnl:3.43,report:"F_backtest_summary.html"}
+  {ticker:"MSFT",stock:113,indiv:113,wr100:48,pnl10:84,avgPnl:17.1,ptpnl:2.61,report:"MSFT_backtest_summary.html"}
+  {ticker:"AMZN",stock:199,indiv:199,wr100:79,pnl10:159,avgPnl:16.57,ptpnl:2.39,report:"AMZN_backtest_summary.html"}
+  {ticker:"NKE",stock:184,indiv:184,wr100:69,pnl10:137,avgPnl:15.7,ptpnl:2.11,report:"NKE_backtest_summary.html"}
+  {ticker:"MKC",stock:228,indiv:228,wr100:76,pnl10:182,avgPnl:14.65,ptpnl:1.86,report:"MKC_backtest_summary.html"}
+  {ticker:"CVNA",stock:96,indiv:96,wr100:36,pnl10:0,avgPnl:3.14,ptpnl:0.49,report:"CVNA_backtest_summary.html"}
+  {ticker:"APLD",stock:588,indiv:588,wr100:44,pnl10:10,avgPnl:2.98,ptpnl:2.98,report:"APLD_backtest_summary.html"}
+  {ticker:"ASML",stock:63,indiv:63,wr100:21,pnl10:0,avgPnl:2.1,ptpnl:0.31,report:"ASML_backtest_summary.html"}
 ];
 var sortCol="avgPnl",sortAsc=false;
 function render(filter){
@@ -280,7 +108,7 @@ function render(filter){
   rows.forEach(function(d){
     html+="<tr>";
     html+="<td><a href='reports/"+d.report+"'>"+d.ticker+"</a></td>";
-    html+="<td>"+(d.stock||0)+"</td>";
+    html+="<td>"+d.total+"</td>";
     html+="<td>"+(d.stock?'<span class="green">'+d.stock+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.indiv?'<span class="green">'+d.indiv+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.wr100?'<span class="green">'+d.wr100+'</span>':'<span class="zero">0</span>')+"</td>";
@@ -305,7 +133,6 @@ document.querySelectorAll("th[data-col]").forEach(function(th){
   });
 });
 render();
-
 </script>
 </body>
 </html>
