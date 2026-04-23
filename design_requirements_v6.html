@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Requirements — Dashboard v6 + Unified Trader</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.6}
+.header{background:#16213e;padding:16px 20px;border-bottom:2px solid #e94560}
+.header h1{font-size:1.4rem;color:#e94560;margin-bottom:4px}
+.header .subtitle{color:#a0a0b0;font-size:12px}
+.nav{padding:10px 20px;font-size:12px;border-bottom:1px solid #1e2a4a}
+.nav a{color:#53c0f0;text-decoration:none;margin-right:16px}
+.nav a:hover{color:#e94560}
+.content{max-width:900px;margin:0 auto;padding:20px}
+h2{color:#e94560;font-size:1.2rem;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid #0f3460}
+h3{color:#53c0f0;font-size:1rem;margin:20px 0 8px}
+h4{color:#a0c4ff;font-size:0.9rem;margin:14px 0 6px}
+p{margin:8px 0;color:#c8c8d8}
+ul,ol{margin:8px 0 8px 24px;color:#c8c8d8}
+li{margin:4px 0}
+.card{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0}
+.card-title{color:#e94560;font-weight:600;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#0f3460;color:#e94560;padding:8px 10px;text-align:left;border-bottom:2px solid #e94560;font-size:11px;text-transform:uppercase}
+td{padding:8px 10px;border-bottom:1px solid #1e2a4a;color:#c8c8d8}
+tr:hover{background:#1e2a4a}
+code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-size:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin:2px}
+.tag-new{background:#1b5e20;color:#4caf50}
+.tag-change{background:#e65100;color:#ff9800}
+.tag-keep{background:#0d47a1;color:#42a5f5}
+.status-box{background:#1b2838;border-left:3px solid #e94560;padding:12px 16px;margin:16px 0;font-size:13px}
+.flow-diagram{background:#0f1a2e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:12px;color:#53c0f0;line-height:1.8;overflow-x:auto}
+.footer{text-align:center;padding:24px;color:#555;font-size:11px;border-top:1px solid #1e2a4a;margin-top:40px}
+@media(max-width:480px){.content{padding:12px}h2{font-size:1.05rem}table{font-size:11px}th,td{padding:6px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Design Requirements Document</h1>
+  <div class="subtitle">Dashboard v6 + Unified Trader Architecture &bull; Draft v1 &bull; 2026-04-23</div>
+</div>
+
+<div class="nav">
+  <a href="index.html">&larr; Rules Overview</a>
+  <a href="performance.html">Performance Dashboard</a>
+</div>
+
+<div class="content">
+
+<!-- ============================================================ -->
+<h2>1. Document Purpose</h2>
+<p>This document defines the design requirements for the next iteration of the trading system. It covers three areas:</p>
+<ol>
+  <li><strong>Unified Rules Tab</strong> &mdash; a single view of all active rules across all tickers and timeframes</li>
+  <li><strong>Unified Trader Architecture</strong> &mdash; how the individual trader and stock pool trader interact</li>
+  <li><strong>Dashboard v6 Layout</strong> &mdash; updated dashboard structure reflecting the unified architecture</li>
+</ol>
+
+<div class="status-box">
+  <strong>Status:</strong> Requirements only &mdash; no code changes yet. This document is for review and approval before implementation begins.
+</div>
+
+<!-- ============================================================ -->
+<h2>2. Unified Rules Tab</h2>
+
+<h3>2.1 Purpose</h3>
+<p>A single, searchable table showing every active trading rule. Replaces the need to look up rules per-ticker. Every rule on this list is active &mdash; there is no status column.</p>
+
+<h3>2.2 Column Definitions</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Rule_ID</code></td>
+      <td>String</td>
+      <td>Unique rule identifier. Format: <code>{PREFIX}{TF_CODE}_{SEQ}</code> (e.g., <code>AMZNS_001</code>). The prefix encodes the ticker, the TF code encodes the timeframe family (S=5m, L=15m, D=1h, X=daily), and the sequence number is unique within that family. This is the same ID used in rule_index.json and paper traders.</td>
+    </tr>
+    <tr>
+      <td><code>Ticker</code></td>
+      <td>String</td>
+      <td>The stock/ETF ticker the rule trades (e.g., AMZN, AAPL, BTC).</td>
+    </tr>
+    <tr>
+      <td><code>Timeframe</code></td>
+      <td>String</td>
+      <td>Native evaluation timeframe: <code>5M</code>, <code>15M</code>, <code>1H</code>, or <code>DAILY</code>.</td>
+    </tr>
+    <tr>
+      <td><code>Tier</code></td>
+      <td>Integer</td>
+      <td>Backtest quality tier (1 = best, 3 = baseline). Derived from win rate and PnL during rule creation.</td>
+    </tr>
+    <tr>
+      <td><code>Win_Rate</code></td>
+      <td>Percent</td>
+      <td>Backtest win rate from creation pipeline.</td>
+    </tr>
+    <tr>
+      <td><code>Avg_PnL</code></td>
+      <td>Percent</td>
+      <td>Backtest average PnL per trade.</td>
+    </tr>
+    <tr>
+      <td><code>Last_Run_Time</code></td>
+      <td>Datetime</td>
+      <td>The last time this rule was evaluated by the paper trader. Records when the rule was considered for a trade <em>or</em> rejected for a trade. Updated on every evaluation cycle, not just on trade execution.</td>
+    </tr>
+    <tr>
+      <td><code>Correlations</code></td>
+      <td>String</td>
+      <td>Lead / Same / Inverse tickers used during rule creation (e.g., <code>MSFT / QQQ / SQQQ</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2.3 Design Notes</h3>
+<ul>
+  <li><span class="tag tag-change">CHANGE</span> No <code>Status</code> column &mdash; everything on the list is active. Inactive/retired rules are simply removed from the list.</li>
+  <li><span class="tag tag-new">NEW</span> <code>Last_Run_Time</code> column tracks when the paper trader last evaluated the rule, whether it triggered a trade or not.</li>
+  <li>Rule ID must match the format used by <code>rule_index.json</code> so lookups are consistent across the dashboard, paper traders, and rule files.</li>
+  <li>Table should be searchable (by ticker, rule ID) and sortable by any column.</li>
+  <li>Mobile-friendly: horizontal scroll on small screens, same dark theme as rules overview page.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>3. Unified Trader Architecture</h2>
+
+<h3>3.1 Core Principle: Individual = Master, Stock Pool = Follower</h3>
+
+<div class="card">
+  <div class="card-title">Architecture Summary</div>
+  <p>The <strong>individual trader</strong> is the primary decision maker. It evaluates rules, decides to buy or sell, and executes trades on its own portfolio. The <strong>stock pool trader</strong> is a follower &mdash; it does not make independent trading decisions. It mirrors the individual trader's actions when possible.</p>
+</div>
+
+<h3>3.2 Trade Flow: Buy Signal</h3>
+
+<div class="flow-diagram">
+Individual Trader evaluates rules
+        |
+        v
+  Rule triggers BUY for ticker X
+        |
+        v
+  Individual Trader executes BUY
+  (own portfolio, own balance)
+        |
+        v
+  Signal sent to Stock Pool Trader
+        |
+        v
+  Stock Pool checks available balance
+        |
+       / \
+      /   \
+  Balance    No balance
+  available  available
+     |          |
+     v          v
+  Execute    Skip trade
+  BUY        (log: "no balance")
+</div>
+
+<h3>3.3 Trade Flow: Sell Signal</h3>
+
+<div class="flow-diagram">
+Individual Trader evaluates rules
+        |
+        v
+  Rule triggers SELL for ticker X
+        |
+        v
+  Individual Trader executes SELL
+  (closes own position)
+        |
+        v
+  Signal sent to Stock Pool Trader
+        |
+        v
+  Stock Pool checks if ticker X
+  has an open position
+        |
+       / \
+      /   \
+  Position   No position
+  exists     for ticker X
+     |           |
+     v           v
+  Execute     Skip
+  SELL        (no action needed)
+</div>
+
+<h3>3.4 Key Rules</h3>
+<ol>
+  <li><strong>Individual trader always trades.</strong> It never checks the stock pool's state before acting. Its decisions are independent.</li>
+  <li><strong>Stock pool never initiates.</strong> It only acts in response to signals from the individual trader. It does not evaluate rules on its own.</li>
+  <li><strong>Balance gating on buy.</strong> Stock pool only mirrors a buy if it has sufficient available balance. If not, the trade is skipped (not queued).</li>
+  <li><strong>Position check on sell.</strong> Stock pool only mirrors a sell if it currently holds that ticker. If not, no action is taken.</li>
+  <li><strong>No partial fills.</strong> Stock pool either mirrors the full trade or skips entirely.</li>
+  <li><strong>Logging.</strong> Every mirror attempt (success or skip) is logged with the reason.</li>
+</ol>
+
+<h3>3.5 Implementation Considerations</h3>
+<ul>
+  <li>Signal mechanism: individual trader writes trade events to a shared signal file or calls a function directly. Exact mechanism TBD during implementation.</li>
+  <li>Timing: mirror should happen within the same evaluation cycle, not on a delay.</li>
+  <li>The crypto trader operates independently &mdash; it is not part of this master/follower architecture. Crypto has its own rules, its own balance, and its own 24/7 schedule.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>4. Dashboard v6 Layout</h2>
+
+<h3>4.1 Top Section: Summary Cards</h3>
+
+<div class="card">
+  <div class="card-title">Layout (kept from current design)</div>
+  <ul>
+    <li><span class="tag tag-keep">KEEP</span> <strong>Crypto summary card</strong> &mdash; BTC/COIN performance, open positions, balance</li>
+    <li><span class="tag tag-keep">KEEP</span> <strong>Combined stock summary card</strong> &mdash; aggregate P&amp;L across all stock tickers, total balance, open positions count</li>
+  </ul>
+  <p>These remain at the top of the dashboard as they are today.</p>
+</div>
+
+<h3>4.2 Tabs / Sections</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tab</th>
+      <th>Contents</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Overview</strong></td>
+      <td>Summary cards (crypto + stock), recent trades, system health indicators</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+    <tr>
+      <td><strong>Rules</strong></td>
+      <td>Unified rules table (Section 2 above). All active rules, searchable/sortable.</td>
+      <td><span class="tag tag-new">NEW</span></td>
+    </tr>
+    <tr>
+      <td><strong>Individual Trader</strong></td>
+      <td>Per-ticker positions, trade history, balance for the individual (master) trader</td>
+      <td><span class="tag tag-change">CHANGE</span></td>
+    </tr>
+    <tr>
+      <td><strong>Stock Pool</strong></td>
+      <td>Pool balance, mirrored positions, skip log (trades not mirrored due to balance/no-position)</td>
+      <td><span class="tag tag-change">CHANGE</span></td>
+    </tr>
+    <tr>
+      <td><strong>Crypto</strong></td>
+      <td>BTC + COIN trading, independent from stock architecture</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>4.3 Changes from Current Dashboard</h3>
+<ul>
+  <li><span class="tag tag-new">NEW</span> Unified Rules tab replaces per-ticker rule lookups</li>
+  <li><span class="tag tag-change">CHANGE</span> Individual Trader tab becomes the primary trading view (master)</li>
+  <li><span class="tag tag-change">CHANGE</span> Stock Pool tab reframed as a follower view &mdash; shows what was mirrored and what was skipped</li>
+  <li><span class="tag tag-keep">KEEP</span> Crypto and stock summary cards stay at top</li>
+  <li><span class="tag tag-keep">KEEP</span> Dark theme (#1a1a2e background, #e94560 accent)</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>5. Open Questions</h2>
+
+<div class="card">
+  <div class="card-title">Items for Steven's Review</div>
+  <ol>
+    <li><strong>Rule ID format validation:</strong> Current format is <code>{PREFIX}{TF_CODE}_{SEQ}</code> (e.g., AMZNS_001). Does this meet your requirements for the unified rules tab, or do you want a different format?</li>
+    <li><strong>Last_Run_Time granularity:</strong> Should this show date+time down to the second, or is minute-level sufficient?</li>
+    <li><strong>Stock pool allocation:</strong> When the pool mirrors a buy, should it use a fixed dollar amount per trade, a percentage of available balance, or match the individual trader's position size?</li>
+    <li><strong>Signal delivery:</strong> Should the individual trader signal the pool via a shared JSON file (like the telegram bridge pattern) or via direct function call within the same process?</li>
+    <li><strong>Dashboard hosting:</strong> Continue on GitHub Pages (current), or move to a locally-served dashboard?</li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. Appendix: Current System Inventory</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>File</th>
+      <th>Role in v6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Individual Paper Trader</td>
+      <td><code>paper_trader_stock.py</code></td>
+      <td>Master &mdash; evaluates rules, executes trades, signals pool</td>
+    </tr>
+    <tr>
+      <td>Stock Pool Trader</td>
+      <td><code>paper_trader_stock.py</code> (pool section)</td>
+      <td>Follower &mdash; mirrors individual trades when balance allows</td>
+    </tr>
+    <tr>
+      <td>Crypto Trader</td>
+      <td><code>paper_trader_crypto.py</code></td>
+      <td>Independent &mdash; no change to architecture</td>
+    </tr>
+    <tr>
+      <td>Rule Index</td>
+      <td><code>rule_index.json</code></td>
+      <td>Source of truth for active rules &mdash; feeds unified rules tab</td>
+    </tr>
+    <tr>
+      <td>Rule Creation</td>
+      <td><code>create_rules_local3.py</code></td>
+      <td>No change &mdash; continues 5-cycle optimization pipeline</td>
+    </tr>
+    <tr>
+      <td>Dashboard</td>
+      <td><code>gh_pages/</code></td>
+      <td>Add unified rules tab, reframe individual/pool views</td>
+    </tr>
+    <tr>
+      <td>Telegram Bridge</td>
+      <td><code>telegram_bridge.py</code></td>
+      <td>No change &mdash; continues 2-way messaging</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div class="footer">
+  Design Requirements Document v1 &bull; Generated 2026-04-23 &bull; For review only &mdash; no code changes
+</div>
+
+</body>
+</html>

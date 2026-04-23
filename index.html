@@ -37,7 +37,7 @@ a:hover{color:#e94560;text-decoration:underline}
   <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">34 tickers &#8226; 9,579 rules &#8226; 26.5%% avg PnL</p>
   <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
 </div>
-<div style="padding:8px 16px;font-size:12px"><a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a></div>
+<div style="padding:8px 16px;font-size:12px"><a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a> &bull; <a href="design_requirements_v6.html" style="color:#e94560;text-decoration:none;font-weight:600">Design Requirements v6 (NEW)</a></div>
 <div class="container">
 <table id="rulesTable">
 <thead>
@@ -109,7 +109,14 @@ var data = [
   {ticker:"ORLA",stock:1031,total:1031,indiv:1031,wr100:111,pnl10:1007,avgPnl:70.81,ptpnl:3.41,report:"ORLA_backtest_summary_20260419.html"},
   {ticker:"AAPL",stock:1057,total:1057,indiv:1057,wr100:206,pnl10:999,avgPnl:52.69,ptpnl:3.67,report:"AAPL_backtest_summary_20260419.html"},
   {ticker:"INTC",stock:1132,total:1132,indiv:1132,wr100:113,pnl10:1080,avgPnl:58.62,ptpnl:2.74,report:"INTC_backtest_summary_20260419.html"},
-  {ticker:"CWVX",stock:505,total:505,indiv:505,wr100:186,pnl10:503,avgPnl:157.14,ptpnl:18.04,report:"CWVX_backtest_summary_20260421.html"}
+  {ticker:"CWVX",stock:505,total:505,indiv:505,wr100:186,pnl10:503,avgPnl:157.14,ptpnl:18.04,report:"CWVX_backtest_summary_20260421.html"},
+  {ticker:"LRCU",stock:621,total:621,indiv:621,wr100:542,pnl10:620,avgPnl:176.74,ptpnl:29.4,report:"LRCU_backtest_summary_20260423.html"},
+  {ticker:"AMDL",stock:699,total:699,indiv:699,wr100:85,pnl10:699,avgPnl:138.49,ptpnl:6.16,report:"AMDL_backtest_summary_20260423.html"},
+  {ticker:"LRCX",stock:638,total:638,indiv:638,wr100:105,pnl10:633,avgPnl:167.63,ptpnl:9.88,report:"LRCX_backtest_summary_20260423.html"},
+  {ticker:"AN",stock:620,total:620,indiv:620,wr100:127,pnl10:608,avgPnl:72.79,ptpnl:5.48,report:"AN_backtest_summary_20260423.html"},
+  {ticker:"APH",stock:696,total:696,indiv:696,wr100:259,pnl10:669,avgPnl:83.89,ptpnl:5.91,report:"APH_backtest_summary_20260423.html"},
+  {ticker:"AREC",stock:569,total:569,indiv:569,wr100:83,pnl10:569,avgPnl:177.9,ptpnl:12.76,report:"AREC_backtest_summary_20260423.html"},
+  {ticker:"ARKF",stock:421,total:421,indiv:421,wr100:84,pnl10:417,avgPnl:78.23,ptpnl:5.7,report:"ARKF_backtest_summary_20260423.html"}
 ];
 var sortCol="avgPnl",sortAsc=false;
 function render(filter){
