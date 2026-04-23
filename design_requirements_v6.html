@@ -280,7 +280,131 @@ Individual Trader evaluates rules
 </ul>
 
 <!-- ============================================================ -->
-<h2>5. Open Questions</h2>
+<h2>5. Rule Creation &amp; Promotion Pipeline</h2>
+
+<div class="status-box">
+  <strong>Known issue:</strong> Rule promotion (deploying new rules into the paper traders) tends to break the trader processes. This section documents the full pipeline and identifies the failure points that must be addressed.
+</div>
+
+<h3>5.1 Pipeline Overview</h3>
+<p>Two pipeline variants exist for creating trading rules. Both follow the same multi-phase process but differ in optimization depth:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pipeline</th>
+      <th>File</th>
+      <th>Optimization</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>create-rules3</strong></td>
+      <td><code>create_rules_local3.py</code></td>
+      <td>5-cycle adaptive grid optimization</td>
+      <td>Standard rule creation &mdash; used for most tickers. Runs locally with ProcessPoolExecutor (up to 8 workers). Zero API tokens consumed.</td>
+    </tr>
+    <tr>
+      <td><strong>create-rules5</strong></td>
+      <td><code>create_rules_local5.py</code></td>
+      <td>Extended optimization with additional validation passes</td>
+      <td>Deep optimization for high-priority or complex tickers. Longer runtime but higher quality rule output.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>5.2 Pipeline Phases</h3>
+
+<div class="flow-diagram">
+Phase 0: Correlation Research
+  Find lead, same-direction, and inverse tickers
+  (auto-research broad universe or manual override)
+        |
+        v
+Phase 1: Data Download &amp; Preparation
+  Download/update historical data for ticker + correlations
+  Timeframes: 5m, 15m, 1h, daily
+        |
+        v
+Phase 2: Rule Generation (per timeframe)
+  Generate candidate rules using indicator combinations
+  Backtest each candidate against historical data
+  Multi-cycle optimization: refine parameters each cycle
+        |
+        v
+Phase 3: Rule Selection &amp; Tiering
+  Rank rules by win rate + PnL
+  Assign tiers: Tier 1 (best), Tier 2, Tier 3
+  Generate rule files with prefix naming
+        |
+        v
+Phase 4: Deployment  &lt;-- BREAKAGE POINT
+  a) Update rule_index.json
+  b) Generate backtest report (HTML)
+  c) Deploy to paper traders (import validation)
+  d) Update dashboard / GitHub Pages
+</div>
+
+<h3>5.3 Rule Promotion Failure Points</h3>
+
+<p>Phase 4 deployment is where the paper traders tend to break. Known failure modes:</p>
+
+<div class="card">
+  <div class="card-title">Failure Mode 1: Import Validation Errors</div>
+  <p>New rule files may reference indicator functions or parameters that the paper trader doesn't recognize. The trader crashes on startup with <code>NameError</code> or <code>ImportError</code>.</p>
+  <ul>
+    <li><strong>Example:</strong> <code>NameError: name 'fetch_coin_5m' is not defined</code> &mdash; rule referenced wrong function name</li>
+    <li><strong>Prevention:</strong> Compile-only validation (no trader startup) during pipeline. Verify all indicator function names exist before deploying.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Failure Mode 2: Timeframe Case Mismatch</div>
+  <p>Rule exports must use UPPERCASE timeframes (<code>5M</code>, <code>15M</code>, <code>1H</code>, <code>DAILY</code>). Lowercase exports (<code>5m</code>) cause silent import failures &mdash; rules are loaded but never matched to incoming data.</p>
+  <ul>
+    <li><strong>Prevention:</strong> Pipeline enforces uppercase on export. Recurring issue &mdash; must be validated every time.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Failure Mode 3: Rule Index Corruption</div>
+  <p>Concurrent pipeline runs writing to <code>rule_index.json</code> can corrupt the file (partial writes, missing commas, duplicate entries). The paper trader fails to parse the index and crashes.</p>
+  <ul>
+    <li><strong>Prevention:</strong> Max 2 concurrent pipelines. File locking on rule_index.json writes. JSON syntax validation after every write.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Failure Mode 4: Trader Process Not Restarted</div>
+  <p>New rules are deployed to rule files and index, but the running paper trader still has the old rules in memory. The trader must be restarted to pick up new rules, but restarting during market hours risks missing trades on existing rules.</p>
+  <ul>
+    <li><strong>Current approach:</strong> Pipeline does NOT restart traders automatically. Uses compile-only validation to avoid sending startup notifications during pipeline runs.</li>
+    <li><strong>Required:</strong> Hot-reload mechanism or safe restart window.</li>
+  </ul>
+</div>
+
+<h3>5.4 Pipeline Safeguards (Current)</h3>
+<ul>
+  <li>Max 2 concurrent pipeline runs (prevents index corruption)</li>
+  <li>Compile-only import validation (no trader startup during pipeline)</li>
+  <li>Uppercase timeframe enforcement on all exports</li>
+  <li>JSON syntax validation on index.html before GitHub Pages push</li>
+  <li>Backtest report generated with unique timestamped filename (never overwrite)</li>
+  <li>Rules always run on their native timeframe indicators</li>
+</ul>
+
+<h3>5.5 Required Improvements</h3>
+<ol>
+  <li><strong>Pre-deployment smoke test:</strong> Before adding rules to rule_index.json, run a lightweight import test that verifies every function referenced in the rule exists in the trader's namespace.</li>
+  <li><strong>Atomic index update:</strong> Write to a temp file, validate JSON, then rename &mdash; prevents partial writes from corrupting rule_index.json.</li>
+  <li><strong>Hot-reload support:</strong> Paper traders should be able to pick up new rules without a full restart. Watch rule_index.json for changes and reload on modification.</li>
+  <li><strong>Rollback on failure:</strong> If a new rule set causes the trader to crash, automatically revert to the previous rule_index.json and alert via Telegram.</li>
+  <li><strong>Post-deploy health check:</strong> After rule promotion, verify the paper trader is still running and processing rules within 60 seconds. Alert if not.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>6. Open Questions</h2>
 
 <div class="card">
   <div class="card-title">Items for Steven's Review</div>
@@ -294,7 +418,7 @@ Individual Trader evaluates rules
 </div>
 
 <!-- ============================================================ -->
-<h2>6. Appendix: Current System Inventory</h2>
+<h2>7. Appendix: Current System Inventory</h2>
 
 <table>
   <thead>
@@ -326,9 +450,14 @@ Individual Trader evaluates rules
       <td>Source of truth for active rules &mdash; feeds unified rules tab</td>
     </tr>
     <tr>
-      <td>Rule Creation</td>
+      <td>Rule Creation (3-cycle)</td>
       <td><code>create_rules_local3.py</code></td>
-      <td>No change &mdash; continues 5-cycle optimization pipeline</td>
+      <td>Standard pipeline &mdash; 5-cycle adaptive optimization. See Section 5.</td>
+    </tr>
+    <tr>
+      <td>Rule Creation (5-cycle)</td>
+      <td><code>create_rules_local5.py</code></td>
+      <td>Extended pipeline &mdash; deeper optimization for priority tickers. See Section 5.</td>
     </tr>
     <tr>
       <td>Dashboard</td>
