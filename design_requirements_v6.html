@@ -34,6 +34,12 @@ code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-siz
 .status-box{background:#1b2838;border-left:3px solid #e94560;padding:12px 16px;margin:16px 0;font-size:13px}
 .flow-diagram{background:#0f1a2e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:12px;color:#53c0f0;line-height:1.8;overflow-x:auto}
 .footer{text-align:center;padding:24px;color:#555;font-size:11px;border-top:1px solid #1e2a4a;margin-top:40px}
+.toc{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:16px 20px;margin:16px 0}
+.toc-title{color:#e94560;font-weight:600;font-size:14px;margin-bottom:10px}
+.toc ol{margin:0 0 0 20px;padding:0}
+.toc li{margin:4px 0}
+.toc a{color:#53c0f0;text-decoration:none;font-size:13px}
+.toc a:hover{color:#e94560;text-decoration:underline}
 @media(max-width:480px){.content{padding:12px}h2{font-size:1.05rem}table{font-size:11px}th,td{padding:6px}}
 </style>
 </head>
@@ -52,20 +58,31 @@ code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-siz
 <div class="content">
 
 <!-- ============================================================ -->
-<h2>1. Document Purpose</h2>
-<p>This document defines the design requirements for the next iteration of the trading system. It covers three areas:</p>
-<ol>
-  <li><strong>Unified Rules Tab</strong> &mdash; a single view of all active rules across all tickers and timeframes</li>
-  <li><strong>Unified Trader Architecture</strong> &mdash; how the individual trader and stock pool trader interact</li>
-  <li><strong>Dashboard v6 Layout</strong> &mdash; updated dashboard structure reflecting the unified architecture</li>
-</ol>
+<h2 id="s1">1. Document Purpose</h2>
+<p>This document defines the complete design requirements for the trading system's next iteration. It serves as the single reference for all system components &mdash; from trading architecture and rule creation through deployment, monitoring, and communication infrastructure.</p>
+
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <ol>
+    <li><a href="#s1">Document Purpose</a></li>
+    <li><a href="#s2">Unified Rules Tab</a></li>
+    <li><a href="#s3">Unified Trader Architecture</a></li>
+    <li><a href="#s4">Dashboard v6 Layout</a></li>
+    <li><a href="#s5">Rule Creation &amp; Promotion Pipeline</a></li>
+    <li><a href="#s6">2-Way Telegram Communication</a></li>
+    <li><a href="#s7">GitHub Pages Design</a></li>
+    <li><a href="#s8">Regression Test Suite</a></li>
+    <li><a href="#s9">Open Questions</a></li>
+    <li><a href="#s10">Appendix: Current System Inventory</a></li>
+  </ol>
+</div>
 
 <div class="status-box">
   <strong>Status:</strong> Requirements only &mdash; no code changes yet. This document is for review and approval before implementation begins.
 </div>
 
 <!-- ============================================================ -->
-<h2>2. Unified Rules Tab</h2>
+<h2 id="s2">2. Unified Rules Tab</h2>
 
 <h3>2.1 Purpose</h3>
 <p>A single, searchable table showing every active trading rule. Replaces the need to look up rules per-ticker. Every rule on this list is active &mdash; there is no status column.</p>
@@ -134,7 +151,7 @@ code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-siz
 </ul>
 
 <!-- ============================================================ -->
-<h2>3. Unified Trader Architecture</h2>
+<h2 id="s3">3. Unified Trader Architecture</h2>
 
 <h3>3.1 Core Principle: Individual = Master, Stock Pool = Follower</h3>
 
@@ -218,7 +235,7 @@ Individual Trader evaluates rules
 </ul>
 
 <!-- ============================================================ -->
-<h2>4. Dashboard v6 Layout</h2>
+<h2 id="s4">4. Dashboard v6 Layout</h2>
 
 <h3>4.1 Top Section: Summary Cards</h3>
 
@@ -280,7 +297,7 @@ Individual Trader evaluates rules
 </ul>
 
 <!-- ============================================================ -->
-<h2>5. Rule Creation &amp; Promotion Pipeline</h2>
+<h2 id="s5">5. Rule Creation &amp; Promotion Pipeline</h2>
 
 <div class="status-box">
   <strong>Known issue:</strong> Rule promotion (deploying new rules into the paper traders) tends to break the trader processes. This section documents the full pipeline and identifies the failure points that must be addressed.
@@ -404,7 +421,7 @@ Phase 4: Deployment  &lt;-- BREAKAGE POINT
 </ol>
 
 <!-- ============================================================ -->
-<h2>6. 2-Way Telegram Communication</h2>
+<h2 id="s6">6. 2-Way Telegram Communication</h2>
 
 <h3>6.1 Architecture</h3>
 <p>The system uses a bridge process to communicate between Claude Code and Steven's Telegram. Only one component may call the Telegram API &mdash; the bridge. This prevents 409 Conflict errors from multiple consumers.</p>
@@ -494,7 +511,7 @@ Steven's Telegram App
 </table>
 
 <!-- ============================================================ -->
-<h2>7. GitHub Pages Design</h2>
+<h2 id="s7">7. GitHub Pages Design</h2>
 
 <h3>7.1 Purpose</h3>
 <p>Phone-accessible reporting and monitoring. Steven reviews trading rules, backtest reports, and system status from his phone. Hosted on GitHub Pages for zero-infrastructure access.</p>
@@ -550,7 +567,7 @@ Steven's Telegram App
 </ol>
 
 <!-- ============================================================ -->
-<h2>8. Regression Test Suite</h2>
+<h2 id="s8">8. Regression Test Suite</h2>
 
 <h3>8.1 Purpose</h3>
 <p>Automated validation that catches data issues, deployment mismatches, and dashboard corruption before they affect paper trading. Runs on-demand or after pipeline deployments.</p>
@@ -619,7 +636,7 @@ Steven's Telegram App
 </ol>
 
 <!-- ============================================================ -->
-<h2>9. Open Questions</h2>
+<h2 id="s9">9. Open Questions</h2>
 
 <div class="card">
   <div class="card-title">Items for Steven's Review</div>
@@ -633,7 +650,7 @@ Steven's Telegram App
 </div>
 
 <!-- ============================================================ -->
-<h2>10. Appendix: Current System Inventory</h2>
+<h2 id="s10">10. Appendix: Current System Inventory</h2>
 
 <table>
   <thead>
