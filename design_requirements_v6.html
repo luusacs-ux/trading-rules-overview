@@ -404,7 +404,222 @@ Phase 4: Deployment  &lt;-- BREAKAGE POINT
 </ol>
 
 <!-- ============================================================ -->
-<h2>6. Open Questions</h2>
+<h2>6. 2-Way Telegram Communication</h2>
+
+<h3>6.1 Architecture</h3>
+<p>The system uses a bridge process to communicate between Claude Code and Steven's Telegram. Only one component may call the Telegram API &mdash; the bridge. This prevents 409 Conflict errors from multiple consumers.</p>
+
+<div class="flow-diagram">
+Steven's Telegram App
+        |
+        v
+  Telegram Bot API (getUpdates, long-poll)
+        |
+        v
+  telegram_bridge.py (PID file, single instance)
+    |                    |
+    v                    v
+  telegram_inbox.json    telegram_outbox.json
+  (bridge WRITES)        (bridge READS &amp; sends)
+    |                    ^
+    v                    |
+  Claude Code watch loop
+  (READS inbox,          WRITES outbox)
+</div>
+
+<h3>6.2 Message Structure</h3>
+
+<h4>Inbox (telegram_inbox.json)</h4>
+<p>Array of message objects. Bridge appends new messages; Claude Code reads and marks as processed.</p>
+<table>
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>message</code></td><td>String</td><td>Message text content from Steven</td></tr>
+    <tr><td><code>sender</code></td><td>String</td><td>Telegram sender name</td></tr>
+    <tr><td><code>reply_chat</code></td><td>Integer</td><td>Telegram chat ID for reply routing</td></tr>
+    <tr><td><code>timestamp</code></td><td>ISO 8601</td><td>When the message was received by the bridge</td></tr>
+    <tr><td><code>status</code></td><td>String</td><td><code>"pending"</code> (unread) or <code>"processed"</code> (handled by watch loop)</td></tr>
+    <tr><td><code>processed_at</code></td><td>ISO 8601</td><td>When the watch loop processed the message (added on processing)</td></tr>
+  </tbody>
+</table>
+
+<h4>Outbox (telegram_outbox.json)</h4>
+<p>Array of response objects. Claude Code writes; bridge reads, sends via Telegram API, and clears.</p>
+<table>
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>message</code></td><td>String</td><td>Response text to send to Steven</td></tr>
+    <tr><td><code>timestamp</code></td><td>ISO 8601</td><td>When the response was queued</td></tr>
+    <tr><td><code>status</code></td><td>String</td><td><code>"pending"</code> (unsent) &rarr; bridge sends and removes entry</td></tr>
+  </tbody>
+</table>
+
+<h3>6.3 Bridge Process (telegram_bridge.py)</h3>
+<ul>
+  <li>Runs as a detached background process (<code>subprocess.Popen</code> with <code>DETACHED_PROCESS</code>)</li>
+  <li>Single-instance enforcement: kills existing bridge PIDs before starting</li>
+  <li>Polls Telegram API every 3 seconds with 25s long-poll timeout</li>
+  <li>Uses <code>requests</code> library (not urllib) for reliable Windows timeout handling</li>
+  <li>Threading hard-deadline: 90s timeout on getUpdates to prevent silent hangs</li>
+  <li>Heartbeat written to <code>telegram_bridge_heartbeat.json</code> every poll cycle</li>
+  <li>Auto-respawn after 10 consecutive errors</li>
+  <li>Crash log: <code>logs/telegram_bridge_crash.log</code></li>
+</ul>
+
+<h3>6.4 Watch Loop (Claude Code)</h3>
+<ul>
+  <li>Polls <code>telegram_inbox.json</code> using Python <code>json.load(encoding='utf-8')</code> &mdash; never ripgrep (encoding failures on non-ASCII)</li>
+  <li>Controlled by <code>telegram_watch.json</code>: <code>{"active": true/false, "last_check_at": ..., "empty_checks": N}</code></li>
+  <li>Wake-up procedure: (1) check active flag, (2) read inbox, (3) process pending, (4) write outbox, (5) schedule next wake-up</li>
+  <li>P0 rule: NEVER call Telegram API directly. Only bridge calls getUpdates.</li>
+  <li>Adaptive polling: 270s when active, widening to 1200s after consecutive empty checks</li>
+</ul>
+
+<h3>6.5 Known Issues &amp; Mitigations</h3>
+<table>
+  <thead>
+    <tr><th>#</th><th>Issue</th><th>Root Cause</th><th>Mitigation</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Bridge hangs silently</td><td>urllib SSL timeout unreliable on Windows</td><td>Replaced with <code>requests</code> + 90s thread deadline</td></tr>
+    <tr><td>2</td><td>409 Conflict errors</td><td>Multiple bridge instances polling same bot</td><td>Single-instance enforcement, PID file</td></tr>
+    <tr><td>3</td><td>Watch loop misses messages</td><td>ripgrep fails on UTF-8 with curly quotes</td><td>Use Python json.load, never Grep on inbox</td></tr>
+    <tr><td>4</td><td>Wrong field name</td><td>Assumed "text" but bridge uses "message"</td><td>Verified field names against bridge output</td></tr>
+    <tr><td>5</td><td>Batch download steals messages</td><td>Confirmation polling reads inbox</td><td>Removed confirmation gates from batch download</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2>7. GitHub Pages Design</h2>
+
+<h3>7.1 Purpose</h3>
+<p>Phone-accessible reporting and monitoring. Steven reviews trading rules, backtest reports, and system status from his phone. Hosted on GitHub Pages for zero-infrastructure access.</p>
+
+<h3>7.2 Repository</h3>
+<table>
+  <thead>
+    <tr><th>Property</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Repo</td><td><code>luusacs-ux/trading-rules-overview</code></td></tr>
+    <tr><td>Branch</td><td><code>main</code></td></tr>
+    <tr><td>URL</td><td><code>https://luusacs-ux.github.io/trading-rules-overview/</code></td></tr>
+    <tr><td>Push method</td><td><code>git push origin main</code> from <code>gh_pages/</code></td></tr>
+  </tbody>
+</table>
+
+<h3>7.3 Theme &amp; Style</h3>
+<ul>
+  <li>Dark theme: background <code>#1a1a2e</code>, card background <code>#16213e</code>, borders <code>#0f3460</code></li>
+  <li>Accent color: <code>#e94560</code> (headings, highlights, active states)</li>
+  <li>Link color: <code>#53c0f0</code></li>
+  <li>Font: system font stack (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto)</li>
+  <li>Mobile-first: responsive tables with horizontal scroll, touch-friendly tap targets</li>
+</ul>
+
+<h3>7.4 Pages</h3>
+<table>
+  <thead>
+    <tr><th>Page</th><th>File</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Rules Overview</td><td><code>index.html</code></td><td>Main dashboard: searchable/sortable table of all tickers with rule counts, win rates, PnL. Links to individual reports.</td></tr>
+    <tr><td>Performance</td><td><code>performance.html</code></td><td>Paper trading performance dashboard: live P&amp;L, trade history, drawdown tracking</td></tr>
+    <tr><td>Design Requirements</td><td><code>design_requirements_v6.html</code></td><td>This document</td></tr>
+    <tr><td>Backtest Reports</td><td><code>reports/{TICKER}_backtest_summary_{date}.html</code></td><td>Per-ticker detailed backtest results. Never overwritten &mdash; timestamped filenames.</td></tr>
+  </tbody>
+</table>
+
+<h3>7.5 Build &amp; Deploy</h3>
+<ul>
+  <li><code>_build_index.py</code> generates <code>index.html</code> from template + rule data</li>
+  <li>JS syntax validation required before every push (missing commas in data array have broken the page twice)</li>
+  <li>Deploy: <code>git add . && git commit && git push origin main</code> from <code>gh_pages/</code></li>
+  <li>GitHub Pages auto-publishes from main branch within ~60 seconds</li>
+</ul>
+
+<h3>7.6 Required Improvements</h3>
+<ol>
+  <li><strong>Automated index rebuild:</strong> Pipeline should auto-regenerate index.html after adding new ticker reports</li>
+  <li><strong>Build validation gate:</strong> Pre-push hook that validates JS syntax in index.html data array</li>
+  <li><strong>Last-updated timestamp:</strong> Auto-update footer date on every push</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>8. Regression Test Suite</h2>
+
+<h3>8.1 Purpose</h3>
+<p>Automated validation that catches data issues, deployment mismatches, and dashboard corruption before they affect paper trading. Runs on-demand or after pipeline deployments.</p>
+
+<h3>8.2 Test Steps</h3>
+
+<table>
+  <thead>
+    <tr><th>Step</th><th>Name</th><th>What It Checks</th><th>Pass Criteria</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Data Completeness</strong></td>
+      <td>All tickers in rule_index have historical data files for all 4 timeframes (5m, 15m, 1h, daily). Checks for &ge;85% of expected trading days.</td>
+      <td>&ge;85% completeness per timeframe per ticker</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Data Accuracy</strong></td>
+      <td>Cross-timeframe alignment: aggregates 5m/15m bars into 1h/daily OHLC and compares. Catches source mismatches (yfinance adjusted prices vs raw).</td>
+      <td>&lt;1% mean price deviation between aggregated and native timeframe</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Rule Deployment</strong></td>
+      <td>All tickers in rule_index.json are deployed to both paper traders (individual + stock pool). Rule files exist and are importable.</td>
+      <td>Every indexed rule has a matching deployed file; compile check passes</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Dashboard Integrity</strong></td>
+      <td>All tickers appear in gh-pages index.html. Report links resolve to existing HTML files. JavaScript data array has valid syntax.</td>
+      <td>All tickers present, all links valid, JS parses without error</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>8.3 Invocation</h3>
+<table>
+  <thead>
+    <tr><th>Method</th><th>Command</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>CLI</td><td><code>python regression_test.py</code></td></tr>
+    <tr><td>CLI with auto-fix</td><td><code>python regression_test.py --fix</code></td></tr>
+    <tr><td>Specific steps only</td><td><code>python regression_test.py --step 1,3</code></td></tr>
+    <tr><td>Telegram</td><td><code>/regression</code> or <code>/regtest</code></td></tr>
+    <tr><td>Dashboard button</td><td>Both <code>dashboard_v4.pyw</code> and <code>dashboard_individual.pyw</code> have a regression test button</td></tr>
+  </tbody>
+</table>
+
+<h3>8.4 Auto-Fix Behavior (<code>--fix</code> flag)</h3>
+<ul>
+  <li><strong>Step 1:</strong> Re-downloads missing data files using appropriate source (yfinance/Alpha Vantage/Twelve Data)</li>
+  <li><strong>Step 2:</strong> Re-downloads from single source if cross-source mismatch detected</li>
+  <li><strong>Step 3:</strong> Re-runs import validation; cannot auto-fix rule code errors (requires manual review)</li>
+  <li><strong>Step 4:</strong> Regenerates index.html from current rule data; fixes missing report links</li>
+</ul>
+
+<h3>8.5 Required Improvements</h3>
+<ol>
+  <li><strong>Post-pipeline auto-run:</strong> Automatically run regression test after every create-rules pipeline completes</li>
+  <li><strong>Telegram results:</strong> Send regression test pass/fail summary to Steven via Telegram after completion</li>
+  <li><strong>Historical tracking:</strong> Log regression results with timestamps so trends in data quality or deployment issues are visible over time</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>9. Open Questions</h2>
 
 <div class="card">
   <div class="card-title">Items for Steven's Review</div>
@@ -418,7 +633,7 @@ Phase 4: Deployment  &lt;-- BREAKAGE POINT
 </div>
 
 <!-- ============================================================ -->
-<h2>7. Appendix: Current System Inventory</h2>
+<h2>10. Appendix: Current System Inventory</h2>
 
 <table>
   <thead>
