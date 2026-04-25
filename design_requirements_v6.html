@@ -33,6 +33,7 @@ code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-siz
 .tag-keep{background:#0d47a1;color:#42a5f5}
 .status-box{background:#1b2838;border-left:3px solid #e94560;padding:12px 16px;margin:16px 0;font-size:13px}
 .flow-diagram{background:#0f1a2e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:12px;color:#53c0f0;line-height:1.8;overflow-x:auto}
+.mermaid{background:#0f1a2e;border:1px solid #0f3460;border-radius:8px;padding:20px;margin:12px 0;overflow-x:auto}
 .footer{text-align:center;padding:24px;color:#555;font-size:11px;border-top:1px solid #1e2a4a;margin-top:40px}
 .toc{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:16px 20px;margin:16px 0}
 .toc-title{color:#e94560;font-weight:600;font-size:14px;margin-bottom:10px}
@@ -708,474 +709,250 @@ Steven's Telegram App
 <!-- ============================================================ -->
 <h2 id="s11">11. Appendix B: Workflow Diagrams</h2>
 
-<p>This appendix contains workflow diagrams for all major system workflows and sub-workflows. Each diagram is referenced from its corresponding requirements section.</p>
+<p>This appendix contains visual workflow diagrams for all major system workflows. Each diagram follows standard flowchart conventions: rounded rectangles for start/end, rectangles for processes, diamonds for decisions, and color-coded stages.</p>
 
 <!-- 11.1 Create-Rules Pipeline -->
 <h3>11.1 Create-Rules Pipeline Workflow <span class="tag tag-keep">Ref: Section 5</span></h3>
 
 <h4>11.1.1 Top-Level Pipeline</h4>
-<div class="flow-diagram">
-Steven sends "create-rules [TICKER]" via Telegram
-        |
-        v
-  Telegram Bridge receives message
-  Writes to telegram_inbox.json
-        |
-        v
-  Watch Monitor detects pending message
-        |
-        v
-  Pipeline Monitor (pipeline_monitor.py) starts
-        |
-        v
-  +---------------------------------+
-  | Step 1: Correlation Research    |
-  | - Auto-search ticker universe  |
-  | - Find: same, lead, inverse    |
-  | - Or use manual correlations    |
-  +---------------------------------+
-        |
-        v
-  +---------------------------------+
-  | Step 2: Prefix Assignment       |
-  | - Assign rule prefix (e.g. AMZN)|
-  | - Create family codes:          |
-  |   S=5m, L=15m, D=1h, X=daily   |
-  +---------------------------------+
-        |
-        v
-  +---------------------------------+
-  | Step 3: Phases 1-3 Optimization |
-  | (See sub-workflow 11.1.2)       |
-  | - Runs per-timeframe in parallel|
-  | - Up to 8 grid workers          |
-  | - 5-cycle adaptive optimization |
-  +---------------------------------+
-        |
-        v
-  +---------------------------------+
-  | Step 4: Generate Rule Files     |
-  | - Export .py rule files          |
-  | - UPPERCASE timeframes required |
-  +---------------------------------+
-        |
-        v
-  +---------------------------------+
-  | Step 5: Deploy                  |
-  | (See sub-workflow 11.1.3)       |
-  +---------------------------------+
-        |
-        v
-  Send completion report via Telegram
-  (total rules, per-timeframe, tiers)
+<div class="mermaid">
+flowchart TD
+    A([Steven sends create-rules TICKER via Telegram]):::startEnd --> B[Telegram Bridge receives message]
+    B --> C[Watch Monitor detects pending message]
+    C --> D[Pipeline Monitor starts]
+    D --> E[Step 1: Correlation Research\nAuto-search ticker universe\nFind same / lead / inverse]:::process
+    E --> F[Step 2: Prefix Assignment\nAssign rule prefix\nCreate family codes: S L D X]:::process
+    F --> G[Step 3: Phases 1-3 Optimization\n4 timeframes in parallel\nUp to 8 grid workers\n5-cycle adaptive optimization]:::highlight
+    G --> H[Step 4: Generate Rule Files\nExport .py files\nUPPERCASE timeframes required]:::process
+    H --> I[Step 5: Deploy Pipeline\nSee sub-workflow 11.1.3]:::process
+    I --> J([Send completion report via Telegram]):::startEnd
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef process fill:#0d47a1,stroke:#42a5f5,color:#fff
+    classDef highlight fill:#4a148c,stroke:#ce93d8,color:#fff
 </div>
 
 <h4>11.1.2 Sub-Workflow: Phases 1-3 Optimization (per timeframe)</h4>
-<div class="flow-diagram">
-For each timeframe (5m, 15m, 1h, daily) in parallel:
-        |
-        v
-  +-----------------------------+
-  | PHASE 1: Analysis           |
-  | - Load historic data        |
-  | - Calculate indicators      |
-  | - Identify candidate        |
-  |   conditions for rules      |
-  | Output: phase1_{tf}_        |
-  |   analysis.json             |
-  +-----------------------------+
-        |
-        v
-  +-----------------------------+
-  | PHASE 2: Backtest Discovery |
-  | - Test all candidate combos |
-  | - Filter by win rate + PnL  |
-  | - Separate high-PnL and    |
-  |   100% WR candidates       |
-  | Output: phase2_{tf}_       |
-  |   highpnl_raw.csv          |
-  |   phase2_{tf}_100wr_raw.csv|
-  +-----------------------------+
-        |
-        v
-  +-----------------------------+
-  | PHASE 3: Grid Optimization  |
-  | - ProcessPoolExecutor       |
-  |   (up to 8 workers)        |
-  | - Optimize entry/exit       |
-  |   thresholds per condition  |
-  | - 5 optimization cycles    |
-  | - Maximize WR + PnL per    |
-  |   rule, revert to best     |
-  | - 10-min timeout per       |
-  |   condition                 |
-  | Output: phase3_{tf}_       |
-  |   optimized.csv            |
-  +-----------------------------+
-        |
-        v
-  Merge results across timeframes
-  Total rules = sum of all TFs
+<div class="mermaid">
+flowchart TD
+    A([For each timeframe: 5m / 15m / 1h / daily]):::startEnd --> B[PHASE 1: Analysis\nLoad historic data\nCalculate indicators\nIdentify candidate conditions]:::phase1
+    B --> C[PHASE 2: Backtest Discovery\nTest all candidate combos\nFilter by win rate + PnL\nSeparate high-PnL and 100% WR]:::phase2
+    C --> D[PHASE 3: Grid Optimization\nProcessPoolExecutor up to 8 workers\nOptimize entry/exit thresholds\n5 cycles, maximize WR + PnL\n10-min timeout per condition]:::phase3
+    D --> E([Merge results across timeframes]):::startEnd
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef phase1 fill:#0d47a1,stroke:#42a5f5,color:#fff
+    classDef phase2 fill:#e65100,stroke:#ff9800,color:#fff
+    classDef phase3 fill:#4a148c,stroke:#ce93d8,color:#fff
 </div>
 
 <h4>11.1.3 Sub-Workflow: Deploy Pipeline</h4>
-<div class="flow-diagram">
-Phase 3 optimization complete
-        |
-        v
-  Generate rule .py files
-  (UPPERCASE timeframe codes)
-        |
-        v
-  Generate index block
-  (rule_index.json update)
-        |
-        v
-  Update backtest_results.json
-  (add entries for new rules)
-        |
-        v
-  Import validation
-  (verify all rules import cleanly)
-        |
-       / \
-      /   \
-  Pass     Fail
-   |        |
-   v        v
-  Deploy   Stop + alert
-  rule     (manual review
-  index    required)
-   |
-   v
-  Compile-only validation
-  (no paper trader startup)
-   |
-   v
-  Deploy dashboard
-  (update gh-pages index.html)
-   |
-   v
-  Generate backtest report
-  (HTML report in gh_pages/reports/)
-   |
-   v
-  COMPLETE
+<div class="mermaid">
+flowchart TD
+    A([Phase 3 complete]):::startEnd --> B[Generate rule .py files\nUPPERCASE timeframe codes]
+    B --> C[Generate rule index block]
+    C --> D[Update backtest_results.json]
+    D --> E[Import validation\nVerify all rules import cleanly]
+    E --> F{Validation passed?}:::decision
+    F -- Pass --> G[Deploy rule index]
+    F -- Fail --> H([Stop + Alert\nManual review required]):::fail
+    G --> I[Compile-only validation\nNo paper trader startup]
+    I --> J[Deploy dashboard\nUpdate gh-pages index.html]
+    J --> K[Generate backtest report\nHTML in gh_pages/reports/]
+    K --> L([COMPLETE]):::startEnd
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef fail fill:#b71c1c,stroke:#ef5350,color:#fff
 </div>
 
 <!-- 11.2 Paper Trading Workflow -->
 <h3>11.2 Paper Trading Workflow <span class="tag tag-keep">Ref: Section 3</span></h3>
 
 <h4>11.2.1 Individual Trader Evaluation Loop</h4>
-<div class="flow-diagram">
-paper_trader_stock.py starts
-        |
-        v
-  Load rule_index.json
-  (active rules, tiers, timeframes)
-        |
-        v
-  +--- EVALUATION LOOP (every interval) ---+
-  |                                         |
-  |  For each active rule:                  |
-  |    1. Fetch current market data         |
-  |    2. Calculate indicators on NATIVE    |
-  |       timeframe (5m/15m/1h/daily)       |
-  |    3. Evaluate entry conditions         |
-  |         |                               |
-  |        / \                              |
-  |    Signal  No signal                    |
-  |      |       |                          |
-  |      v       v                          |
-  |    Check   Continue                     |
-  |    position to next                     |
-  |    state    rule                        |
-  |      |                                  |
-  |     / \                                 |
-  |  No      Has                            |
-  |  position position                      |
-  |   |        |                            |
-  |   v        v                            |
-  |  BUY     Evaluate                       |
-  |  signal  exit conditions                |
-  |   |        |                            |
-  |   v       / \                           |
-  |  Execute  Exit   Hold                   |
-  |  BUY    signal    |                     |
-  |   |       |       v                     |
-  |   |       v     Continue                |
-  |   |    Execute                          |
-  |   |    SELL                             |
-  |   |       |                             |
-  |   v       v                             |
-  |  Signal Stock Pool Trader               |
-  |  (trade details via shared JSON)        |
-  |                                         |
-  +---- Wait for next interval ----+
+<div class="mermaid">
+flowchart TD
+    A([paper_trader_stock.py starts]):::startEnd --> B[Load rule_index.json\nActive rules / tiers / timeframes]
+    B --> C[For each active rule]:::loop
+    C --> D[Fetch current market data]
+    D --> E[Calculate indicators on\nNATIVE timeframe]
+    E --> F{Entry signal?}:::decision
+    F -- No signal --> C
+    F -- Signal --> G{Has open position?}:::decision
+    G -- No position --> H[Execute BUY]:::buy
+    G -- Has position --> I{Exit conditions met?}:::decision
+    I -- Hold --> C
+    I -- Exit signal --> J[Execute SELL]:::sell
+    H --> K[Signal Stock Pool Trader\nvia shared JSON]
+    J --> K
+    K --> L([Wait for next interval]):::startEnd
+    L --> C
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef loop fill:#0d47a1,stroke:#42a5f5,color:#fff
+    classDef buy fill:#1b5e20,stroke:#4caf50,color:#fff
+    classDef sell fill:#b71c1c,stroke:#ef5350,color:#fff
 </div>
 
 <h4>11.2.2 Stock Pool Mirror Workflow</h4>
-<div class="flow-diagram">
-Stock Pool Trader (runs in same process)
-        |
-        v
-  +--- SIGNAL LISTENER LOOP ---+
-  |                             |
-  |  Receive signal from        |
-  |  Individual Trader          |
-  |        |                    |
-  |       / \                   |
-  |    BUY    SELL              |
-  |    signal  signal           |
-  |      |       |              |
-  |      v       v              |
-  |   Check    Check if         |
-  |   pool     pool holds       |
-  |   balance  this ticker      |
-  |      |       |              |
-  |     / \     / \             |
-  |   Has  No  Has  No          |
-  |   bal  bal  pos  pos        |
-  |    |    |    |    |         |
-  |    v    v    v    v         |
-  |   BUY  Skip SELL Skip      |
-  |   (log) (log)(log)(log)    |
-  |                             |
-  +-----------------------------+
+<div class="mermaid">
+flowchart TD
+    A([Receive signal from Individual Trader]):::startEnd --> B{Signal type?}:::decision
+    B -- BUY --> C{Pool has balance?}:::decision
+    B -- SELL --> D{Pool holds ticker?}:::decision
+    C -- Yes --> E[Execute BUY\nLog trade]:::buy
+    C -- No --> F[Skip\nLog insufficient balance]
+    D -- Yes --> G[Execute SELL\nLog trade]:::sell
+    D -- No --> H[Skip\nLog no position]
+    E --> I([Return to listener]):::startEnd
+    F --> I
+    G --> I
+    H --> I
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef buy fill:#1b5e20,stroke:#4caf50,color:#fff
+    classDef sell fill:#b71c1c,stroke:#ef5350,color:#fff
 </div>
 
 <!-- 11.3 Telegram Command Workflow -->
 <h3>11.3 Telegram Command Workflow <span class="tag tag-keep">Ref: Section 6</span></h3>
 
 <h4>11.3.1 Inbound Message Flow</h4>
-<div class="flow-diagram">
-Steven sends message via Telegram app
-        |
-        v
-  Telegram API (cloud)
-        |
-        v
-  telegram_bridge.py polls getUpdates
-  (requests library, 90s hard timeout)
-        |
-        v
-  Bridge receives message
-        |
-        v
-  Is it a local command?
-  (/status, /rules, /trades, etc.)
-       / \
-      /   \
-    Yes    No
-     |      |
-     v      v
-  Handle  Write to telegram_inbox.json
-  locally   status: "pending"
-  (zero      |
-  tokens)    v
-     |     Watch Monitor or Claude
-     |     session picks up message
-     v      |
-  Send      v
-  response  Process command
-  via API   (may invoke Claude
-     |      for complex tasks)
-     v      |
-  Done      v
-          Write response to
-          telegram_outbox.json
-              |
-              v
-          Bridge sends response
-          via Telegram API
+<div class="mermaid">
+flowchart TD
+    A([Steven sends message via Telegram]):::startEnd --> B[Telegram API cloud]
+    B --> C[telegram_bridge.py\npolls getUpdates\n90s hard timeout]
+    C --> D{Local command?\n/status /rules /trades}:::decision
+    D -- Yes --> E[Handle locally\nZero tokens]
+    D -- No --> F[Write to telegram_inbox.json\nstatus: pending]
+    E --> G[Send response via API]
+    F --> H[Watch Monitor or Claude\nsession picks up message]
+    H --> I[Process command]
+    I --> J[Write response to\ntelegram_outbox.json]
+    J --> K[Bridge sends response\nvia Telegram API]
+    G --> L([Steven receives response]):::startEnd
+    K --> L
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
 </div>
 
 <h4>11.3.2 Outbound Message Flow</h4>
-<div class="flow-diagram">
-System generates message
-(pipeline completion, alert, response)
-        |
-        v
-  Write to telegram_outbox.json
-  {chat_id, text, parse_mode}
-        |
-        v
-  telegram_bridge.py polls outbox
-  (every ~25s cycle)
-        |
-        v
-  Bridge reads outbox entries
-        |
-        v
-  For each entry:
-    POST to Telegram API
-    (4096 char chunks if needed)
-        |
-        v
-  Clear outbox after send
-        |
-        v
-  Steven receives message
-  on Telegram app
+<div class="mermaid">
+flowchart TD
+    A([System generates message]):::startEnd --> B[Write to telegram_outbox.json\nchat_id / text / parse_mode]
+    B --> C[telegram_bridge.py\npolls outbox every ~25s]
+    C --> D[Read outbox entries]
+    D --> E[POST to Telegram API\n4096 char chunks if needed]
+    E --> F[Clear outbox after send]
+    F --> G([Steven receives message]):::startEnd
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
 </div>
 
 <!-- 11.4 Data Download Workflow -->
 <h3>11.4 Data Download Workflow <span class="tag tag-keep">Ref: Section 5</span></h3>
 
-<div class="flow-diagram">
-"download historic data for [TICKER]"
-        |
-        v
-  Determine data sources needed:
-  - Polygon.io (5m, 15m intraday)
-  - yfinance (1h, daily)
-        |
-        v
-  +--- Per timeframe ---+
-  |                      |
-  |  Query API for max   |
-  |  available history   |
-  |        |             |
-  |        v             |
-  |  Save to data/       |
-  |  {TICKER}_{TF}.csv   |
-  |        |             |
-  |        v             |
-  |  Validate data       |
-  |  (no gaps, correct   |
-  |   columns, timezone) |
-  |        |             |
-  +--------+-------------+
-        |
-        v
-  "update historic data to current"
-  (incremental: fetch only new bars
-   since last download date)
-        |
-        v
-  Append to existing CSV files
-        |
-        v
-  Data ready for create-rules
-  or paper trader consumption
+<div class="mermaid">
+flowchart TD
+    A([Download historic data for TICKER]):::startEnd --> B{Determine data sources}:::decision
+    B --> C[Polygon.io\n5m and 15m intraday]:::polygon
+    B --> D[yfinance\n1h and daily]:::yf
+    C --> E[Save to data/TICKER_TF.csv]
+    D --> E
+    E --> F[Validate data\nNo gaps / correct columns / timezone]
+    F --> G{Update or fresh?}:::decision
+    G -- Fresh download --> H([Data ready for pipeline]):::startEnd
+    G -- Incremental update --> I[Fetch only new bars\nsince last download date]
+    I --> J[Append to existing CSV]
+    J --> H
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef polygon fill:#4a148c,stroke:#ce93d8,color:#fff
+    classDef yf fill:#0d47a1,stroke:#42a5f5,color:#fff
 </div>
 
 <!-- 11.5 Pipeline Monitor Workflow -->
 <h3>11.5 Pipeline Monitor Workflow</h3>
 
-<div class="flow-diagram">
-pipeline_monitor.py receives queue
-(list of tickers with correlations)
-        |
-        v
-  +--- QUEUE LOOP (series, max 1) ---+
-  |                                    |
-  |  Launch create_rules_local3.py     |
-  |  for next ticker in queue          |
-  |  (subprocess with logging)         |
-  |        |                           |
-  |        v                           |
-  |  +--- MONITOR LOOP ---+           |
-  |  |                     |           |
-  |  |  Poll pipeline_log  |           |
-  |  |  JSON for status    |           |
-  |  |  changes            |           |
-  |  |       |             |           |
-  |  |      / \            |           |
-  |  |  Complete  Running  |           |
-  |  |    |         |      |           |
-  |  |    v         v      |           |
-  |  |  Record   Check     |           |
-  |  |  result   timeout   |           |
-  |  |    |      (6h for   |           |
-  |  |    |      phases)   |           |
-  |  |    |         |      |           |
-  |  |    |        / \     |           |
-  |  |    |    OK   Hung   |           |
-  |  |    |     |     |    |           |
-  |  |    |     v     v    |           |
-  |  |    |   Wait   Kill  |           |
-  |  |    |   45s    proc  |           |
-  |  |    |     |     |    |           |
-  |  |    |     +--+--+    |           |
-  |  |    |        |       |           |
-  |  +----+--------+-------+          |
-  |        |                           |
-  |        v                           |
-  |  Send completion/failure           |
-  |  report via Telegram               |
-  |        |                           |
-  |        v                           |
-  |  Check failure count               |
-  |       / \                           |
-  |   < 2    >= 2                       |
-  |    |       |                        |
-  |    v       v                        |
-  |  Next    CIRCUIT BREAKER            |
-  |  ticker  Stop queue, report         |
-  |    |     remaining tickers          |
-  +----+                                |
-        |                               |
-        v                               |
-  Queue complete                        |
-  Send summary via Telegram             |
+<div class="mermaid">
+flowchart TD
+    A([pipeline_monitor.py receives queue]):::startEnd --> B[Launch create_rules_local3.py\nfor next ticker\nSubprocess with logging]
+    B --> C[Poll pipeline_log JSON\nfor status changes]:::loop
+    C --> D{Pipeline status?}:::decision
+    D -- Completed --> E[Record result]
+    D -- Running --> F{Timeout exceeded?\n6h for phases}:::decision
+    F -- OK --> G[Wait 45s] --> C
+    F -- Hung --> H[Kill process]:::fail
+    H --> E
+    E --> I[Send completion/failure\nreport via Telegram]
+    I --> J{Failure count >= 2?}:::decision
+    J -- No --> K{More tickers\nin queue?}:::decision
+    J -- Yes --> L([CIRCUIT BREAKER\nStop queue / report remaining]):::fail
+    K -- Yes --> B
+    K -- No --> M([Queue complete\nSend summary via Telegram]):::startEnd
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef loop fill:#0d47a1,stroke:#42a5f5,color:#fff
+    classDef fail fill:#b71c1c,stroke:#ef5350,color:#fff
 </div>
 
 <!-- 11.6 Watch Monitor Workflow -->
 <h3>11.6 Watch Monitor Workflow</h3>
 
-<div class="flow-diagram">
-Watch Monitor (Claude Code /loop)
-        |
-        v
-  +--- POLL CYCLE ---+
-  |                    |
-  |  1. Check active   |
-  |     flag in        |
-  |     telegram_      |
-  |     watch.json     |
-  |       |            |
-  |      / \           |
-  |   Active  Inactive |
-  |    |        |      |
-  |    v        v      |
-  |  Continue  STOP    |
-  |    |       loop    |
-  |    v               |
-  |  2. Read inbox     |
-  |     (Python        |
-  |     json.load,     |
-  |     UTF-8 safe)    |
-  |       |            |
-  |      / \           |
-  |  Pending  Empty    |
-  |  msgs      |       |
-  |    |       v       |
-  |    v     Schedule  |
-  |  Process  next     |
-  |  each     wake-up  |
-  |  message           |
-  |    |               |
-  |    v               |
-  |  Write response    |
-  |  to outbox         |
-  |    |               |
-  |    v               |
-  |  Mark processed    |
-  |  in inbox          |
-  |    |               |
-  +----+---------------+
-        |
-        v
-  Schedule next wake-up
-  (4.5 min active, 20-30 min idle)
+<div class="mermaid">
+flowchart TD
+    A([Watch Monitor starts\nClaude Code /loop]):::startEnd --> B[Check active flag\ntelegram_watch.json]
+    B --> C{Active?}:::decision
+    C -- Inactive --> D([STOP loop]):::fail
+    C -- Active --> E[Read inbox\nPython json.load UTF-8]
+    E --> F{Pending messages?}:::decision
+    F -- Empty --> G[Schedule next wake-up\n4.5 min active / 20-30 min idle]
+    F -- Pending --> H[Process each message]
+    H --> I[Write response to outbox]
+    I --> J[Mark processed in inbox]
+    J --> G
+    G --> K([Sleep until next tick]):::startEnd
+    K --> B
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef fail fill:#b71c1c,stroke:#ef5350,color:#fff
 </div>
 
 </div>
 
 <div class="footer">
-  Design Requirements Document v1.1 &bull; Updated 2026-04-25 &bull; Added Appendix B: Workflow Diagrams &bull; For review only &mdash; no code changes
+  Design Requirements Document v1.2 &bull; Updated 2026-04-25 &bull; Workflow Diagrams upgraded to visual flowcharts &bull; For review only &mdash; no code changes
 </div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    darkMode: true,
+    background: '#0f1a2e',
+    primaryColor: '#0d47a1',
+    primaryTextColor: '#e0e0e0',
+    primaryBorderColor: '#42a5f5',
+    lineColor: '#53c0f0',
+    secondaryColor: '#4a148c',
+    tertiaryColor: '#1b5e20',
+    fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    fontSize: '13px'
+  },
+  flowchart: {
+    useMaxWidth: true,
+    htmlLabels: true,
+    curve: 'basis'
+  }
+});
+</script>
 
 </body>
 </html>
