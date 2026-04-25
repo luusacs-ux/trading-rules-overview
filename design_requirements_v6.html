@@ -73,7 +73,8 @@ code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-siz
     <li><a href="#s7">GitHub Pages Design</a></li>
     <li><a href="#s8">Regression Test Suite</a></li>
     <li><a href="#s9">Open Questions</a></li>
-    <li><a href="#s10">Appendix: Current System Inventory</a></li>
+    <li><a href="#s10">Appendix A: Current System Inventory</a></li>
+    <li><a href="#s11">Appendix B: Workflow Diagrams</a></li>
   </ol>
 </div>
 
@@ -650,7 +651,7 @@ Steven's Telegram App
 </div>
 
 <!-- ============================================================ -->
-<h2 id="s10">10. Appendix: Current System Inventory</h2>
+<h2 id="s10">10. Appendix A: Current System Inventory</h2>
 
 <table>
   <thead>
@@ -704,10 +705,476 @@ Steven's Telegram App
   </tbody>
 </table>
 
+<!-- ============================================================ -->
+<h2 id="s11">11. Appendix B: Workflow Diagrams</h2>
+
+<p>This appendix contains workflow diagrams for all major system workflows and sub-workflows. Each diagram is referenced from its corresponding requirements section.</p>
+
+<!-- 11.1 Create-Rules Pipeline -->
+<h3>11.1 Create-Rules Pipeline Workflow <span class="tag tag-keep">Ref: Section 5</span></h3>
+
+<h4>11.1.1 Top-Level Pipeline</h4>
+<div class="flow-diagram">
+Steven sends "create-rules [TICKER]" via Telegram
+        |
+        v
+  Telegram Bridge receives message
+  Writes to telegram_inbox.json
+        |
+        v
+  Watch Monitor detects pending message
+        |
+        v
+  Pipeline Monitor (pipeline_monitor.py) starts
+        |
+        v
+  +---------------------------------+
+  | Step 1: Correlation Research    |
+  | - Auto-search ticker universe  |
+  | - Find: same, lead, inverse    |
+  | - Or use manual correlations    |
+  +---------------------------------+
+        |
+        v
+  +---------------------------------+
+  | Step 2: Prefix Assignment       |
+  | - Assign rule prefix (e.g. AMZN)|
+  | - Create family codes:          |
+  |   S=5m, L=15m, D=1h, X=daily   |
+  +---------------------------------+
+        |
+        v
+  +---------------------------------+
+  | Step 3: Phases 1-3 Optimization |
+  | (See sub-workflow 11.1.2)       |
+  | - Runs per-timeframe in parallel|
+  | - Up to 8 grid workers          |
+  | - 5-cycle adaptive optimization |
+  +---------------------------------+
+        |
+        v
+  +---------------------------------+
+  | Step 4: Generate Rule Files     |
+  | - Export .py rule files          |
+  | - UPPERCASE timeframes required |
+  +---------------------------------+
+        |
+        v
+  +---------------------------------+
+  | Step 5: Deploy                  |
+  | (See sub-workflow 11.1.3)       |
+  +---------------------------------+
+        |
+        v
+  Send completion report via Telegram
+  (total rules, per-timeframe, tiers)
+</div>
+
+<h4>11.1.2 Sub-Workflow: Phases 1-3 Optimization (per timeframe)</h4>
+<div class="flow-diagram">
+For each timeframe (5m, 15m, 1h, daily) in parallel:
+        |
+        v
+  +-----------------------------+
+  | PHASE 1: Analysis           |
+  | - Load historic data        |
+  | - Calculate indicators      |
+  | - Identify candidate        |
+  |   conditions for rules      |
+  | Output: phase1_{tf}_        |
+  |   analysis.json             |
+  +-----------------------------+
+        |
+        v
+  +-----------------------------+
+  | PHASE 2: Backtest Discovery |
+  | - Test all candidate combos |
+  | - Filter by win rate + PnL  |
+  | - Separate high-PnL and    |
+  |   100% WR candidates       |
+  | Output: phase2_{tf}_       |
+  |   highpnl_raw.csv          |
+  |   phase2_{tf}_100wr_raw.csv|
+  +-----------------------------+
+        |
+        v
+  +-----------------------------+
+  | PHASE 3: Grid Optimization  |
+  | - ProcessPoolExecutor       |
+  |   (up to 8 workers)        |
+  | - Optimize entry/exit       |
+  |   thresholds per condition  |
+  | - 5 optimization cycles    |
+  | - Maximize WR + PnL per    |
+  |   rule, revert to best     |
+  | - 10-min timeout per       |
+  |   condition                 |
+  | Output: phase3_{tf}_       |
+  |   optimized.csv            |
+  +-----------------------------+
+        |
+        v
+  Merge results across timeframes
+  Total rules = sum of all TFs
+</div>
+
+<h4>11.1.3 Sub-Workflow: Deploy Pipeline</h4>
+<div class="flow-diagram">
+Phase 3 optimization complete
+        |
+        v
+  Generate rule .py files
+  (UPPERCASE timeframe codes)
+        |
+        v
+  Generate index block
+  (rule_index.json update)
+        |
+        v
+  Update backtest_results.json
+  (add entries for new rules)
+        |
+        v
+  Import validation
+  (verify all rules import cleanly)
+        |
+       / \
+      /   \
+  Pass     Fail
+   |        |
+   v        v
+  Deploy   Stop + alert
+  rule     (manual review
+  index    required)
+   |
+   v
+  Compile-only validation
+  (no paper trader startup)
+   |
+   v
+  Deploy dashboard
+  (update gh-pages index.html)
+   |
+   v
+  Generate backtest report
+  (HTML report in gh_pages/reports/)
+   |
+   v
+  COMPLETE
+</div>
+
+<!-- 11.2 Paper Trading Workflow -->
+<h3>11.2 Paper Trading Workflow <span class="tag tag-keep">Ref: Section 3</span></h3>
+
+<h4>11.2.1 Individual Trader Evaluation Loop</h4>
+<div class="flow-diagram">
+paper_trader_stock.py starts
+        |
+        v
+  Load rule_index.json
+  (active rules, tiers, timeframes)
+        |
+        v
+  +--- EVALUATION LOOP (every interval) ---+
+  |                                         |
+  |  For each active rule:                  |
+  |    1. Fetch current market data         |
+  |    2. Calculate indicators on NATIVE    |
+  |       timeframe (5m/15m/1h/daily)       |
+  |    3. Evaluate entry conditions         |
+  |         |                               |
+  |        / \                              |
+  |    Signal  No signal                    |
+  |      |       |                          |
+  |      v       v                          |
+  |    Check   Continue                     |
+  |    position to next                     |
+  |    state    rule                        |
+  |      |                                  |
+  |     / \                                 |
+  |  No      Has                            |
+  |  position position                      |
+  |   |        |                            |
+  |   v        v                            |
+  |  BUY     Evaluate                       |
+  |  signal  exit conditions                |
+  |   |        |                            |
+  |   v       / \                           |
+  |  Execute  Exit   Hold                   |
+  |  BUY    signal    |                     |
+  |   |       |       v                     |
+  |   |       v     Continue                |
+  |   |    Execute                          |
+  |   |    SELL                             |
+  |   |       |                             |
+  |   v       v                             |
+  |  Signal Stock Pool Trader               |
+  |  (trade details via shared JSON)        |
+  |                                         |
+  +---- Wait for next interval ----+
+</div>
+
+<h4>11.2.2 Stock Pool Mirror Workflow</h4>
+<div class="flow-diagram">
+Stock Pool Trader (runs in same process)
+        |
+        v
+  +--- SIGNAL LISTENER LOOP ---+
+  |                             |
+  |  Receive signal from        |
+  |  Individual Trader          |
+  |        |                    |
+  |       / \                   |
+  |    BUY    SELL              |
+  |    signal  signal           |
+  |      |       |              |
+  |      v       v              |
+  |   Check    Check if         |
+  |   pool     pool holds       |
+  |   balance  this ticker      |
+  |      |       |              |
+  |     / \     / \             |
+  |   Has  No  Has  No          |
+  |   bal  bal  pos  pos        |
+  |    |    |    |    |         |
+  |    v    v    v    v         |
+  |   BUY  Skip SELL Skip      |
+  |   (log) (log)(log)(log)    |
+  |                             |
+  +-----------------------------+
+</div>
+
+<!-- 11.3 Telegram Command Workflow -->
+<h3>11.3 Telegram Command Workflow <span class="tag tag-keep">Ref: Section 6</span></h3>
+
+<h4>11.3.1 Inbound Message Flow</h4>
+<div class="flow-diagram">
+Steven sends message via Telegram app
+        |
+        v
+  Telegram API (cloud)
+        |
+        v
+  telegram_bridge.py polls getUpdates
+  (requests library, 90s hard timeout)
+        |
+        v
+  Bridge receives message
+        |
+        v
+  Is it a local command?
+  (/status, /rules, /trades, etc.)
+       / \
+      /   \
+    Yes    No
+     |      |
+     v      v
+  Handle  Write to telegram_inbox.json
+  locally   status: "pending"
+  (zero      |
+  tokens)    v
+     |     Watch Monitor or Claude
+     |     session picks up message
+     v      |
+  Send      v
+  response  Process command
+  via API   (may invoke Claude
+     |      for complex tasks)
+     v      |
+  Done      v
+          Write response to
+          telegram_outbox.json
+              |
+              v
+          Bridge sends response
+          via Telegram API
+</div>
+
+<h4>11.3.2 Outbound Message Flow</h4>
+<div class="flow-diagram">
+System generates message
+(pipeline completion, alert, response)
+        |
+        v
+  Write to telegram_outbox.json
+  {chat_id, text, parse_mode}
+        |
+        v
+  telegram_bridge.py polls outbox
+  (every ~25s cycle)
+        |
+        v
+  Bridge reads outbox entries
+        |
+        v
+  For each entry:
+    POST to Telegram API
+    (4096 char chunks if needed)
+        |
+        v
+  Clear outbox after send
+        |
+        v
+  Steven receives message
+  on Telegram app
+</div>
+
+<!-- 11.4 Data Download Workflow -->
+<h3>11.4 Data Download Workflow <span class="tag tag-keep">Ref: Section 5</span></h3>
+
+<div class="flow-diagram">
+"download historic data for [TICKER]"
+        |
+        v
+  Determine data sources needed:
+  - Polygon.io (5m, 15m intraday)
+  - yfinance (1h, daily)
+        |
+        v
+  +--- Per timeframe ---+
+  |                      |
+  |  Query API for max   |
+  |  available history   |
+  |        |             |
+  |        v             |
+  |  Save to data/       |
+  |  {TICKER}_{TF}.csv   |
+  |        |             |
+  |        v             |
+  |  Validate data       |
+  |  (no gaps, correct   |
+  |   columns, timezone) |
+  |        |             |
+  +--------+-------------+
+        |
+        v
+  "update historic data to current"
+  (incremental: fetch only new bars
+   since last download date)
+        |
+        v
+  Append to existing CSV files
+        |
+        v
+  Data ready for create-rules
+  or paper trader consumption
+</div>
+
+<!-- 11.5 Pipeline Monitor Workflow -->
+<h3>11.5 Pipeline Monitor Workflow</h3>
+
+<div class="flow-diagram">
+pipeline_monitor.py receives queue
+(list of tickers with correlations)
+        |
+        v
+  +--- QUEUE LOOP (series, max 1) ---+
+  |                                    |
+  |  Launch create_rules_local3.py     |
+  |  for next ticker in queue          |
+  |  (subprocess with logging)         |
+  |        |                           |
+  |        v                           |
+  |  +--- MONITOR LOOP ---+           |
+  |  |                     |           |
+  |  |  Poll pipeline_log  |           |
+  |  |  JSON for status    |           |
+  |  |  changes            |           |
+  |  |       |             |           |
+  |  |      / \            |           |
+  |  |  Complete  Running  |           |
+  |  |    |         |      |           |
+  |  |    v         v      |           |
+  |  |  Record   Check     |           |
+  |  |  result   timeout   |           |
+  |  |    |      (6h for   |           |
+  |  |    |      phases)   |           |
+  |  |    |         |      |           |
+  |  |    |        / \     |           |
+  |  |    |    OK   Hung   |           |
+  |  |    |     |     |    |           |
+  |  |    |     v     v    |           |
+  |  |    |   Wait   Kill  |           |
+  |  |    |   45s    proc  |           |
+  |  |    |     |     |    |           |
+  |  |    |     +--+--+    |           |
+  |  |    |        |       |           |
+  |  +----+--------+-------+          |
+  |        |                           |
+  |        v                           |
+  |  Send completion/failure           |
+  |  report via Telegram               |
+  |        |                           |
+  |        v                           |
+  |  Check failure count               |
+  |       / \                           |
+  |   < 2    >= 2                       |
+  |    |       |                        |
+  |    v       v                        |
+  |  Next    CIRCUIT BREAKER            |
+  |  ticker  Stop queue, report         |
+  |    |     remaining tickers          |
+  +----+                                |
+        |                               |
+        v                               |
+  Queue complete                        |
+  Send summary via Telegram             |
+</div>
+
+<!-- 11.6 Watch Monitor Workflow -->
+<h3>11.6 Watch Monitor Workflow</h3>
+
+<div class="flow-diagram">
+Watch Monitor (Claude Code /loop)
+        |
+        v
+  +--- POLL CYCLE ---+
+  |                    |
+  |  1. Check active   |
+  |     flag in        |
+  |     telegram_      |
+  |     watch.json     |
+  |       |            |
+  |      / \           |
+  |   Active  Inactive |
+  |    |        |      |
+  |    v        v      |
+  |  Continue  STOP    |
+  |    |       loop    |
+  |    v               |
+  |  2. Read inbox     |
+  |     (Python        |
+  |     json.load,     |
+  |     UTF-8 safe)    |
+  |       |            |
+  |      / \           |
+  |  Pending  Empty    |
+  |  msgs      |       |
+  |    |       v       |
+  |    v     Schedule  |
+  |  Process  next     |
+  |  each     wake-up  |
+  |  message           |
+  |    |               |
+  |    v               |
+  |  Write response    |
+  |  to outbox         |
+  |    |               |
+  |    v               |
+  |  Mark processed    |
+  |  in inbox          |
+  |    |               |
+  +----+---------------+
+        |
+        v
+  Schedule next wake-up
+  (4.5 min active, 20-30 min idle)
+</div>
+
 </div>
 
 <div class="footer">
-  Design Requirements Document v1 &bull; Generated 2026-04-23 &bull; For review only &mdash; no code changes
+  Design Requirements Document v1.1 &bull; Updated 2026-04-25 &bull; Added Appendix B: Workflow Diagrams &bull; For review only &mdash; no code changes
 </div>
 
 </body>
