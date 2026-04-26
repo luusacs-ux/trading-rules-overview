@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOG Backtest Summary &mdash; 2026-04-26</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 20px; }
+h1 { color: #00d4ff; margin-bottom: 5px; }
+.subtitle { color: #888; margin-bottom: 20px; font-size: 14px; }
+.cards { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+.card { background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 15px 25px; min-width: 160px; }
+.card .label { color: #888; font-size: 12px; text-transform: uppercase; }
+.card .value { font-size: 28px; font-weight: bold; color: #00d4ff; }
+.card .value.green { color: #00ff88; }
+h2 { color: #00d4ff; margin: 25px 0 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 10px; text-align: left; cursor: pointer; position: sticky; top: 0; }
+th:hover { background: #1a3a5e; }
+td { padding: 6px 10px; border-bottom: 1px solid #222; }
+tr:hover { background: #1a2a4e; }
+tr.wr100 { background: rgba(0, 255, 136, 0.15); }
+tr.tier2 { background: rgba(0, 212, 255, 0.08); }
+.family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
+.fam-DOGS { background: #2a4a2a; color: #66ff66; }
+.fam-DOGL { background: #2a2a4a; color: #6666ff; }
+.fam-DOGD { background: #4a2a4a; color: #ff66ff; }
+.fam-DOGX { background: #4a4a2a; color: #ffff66; }
+.pipeline { color: #666; font-size: 12px; margin-top: 30px; }
+.sort-arrow { font-size: 10px; margin-left: 4px; }
+</style>
+</head>
+<body>
+<h1>DOG &mdash; Backtest Report</h1>
+<div class="subtitle">Pipeline: create_rules_DOG_SPDN_20260426_v2 | Ticker: DOG | Lead: SPDN | Same: SDOW | Inverse: DIA | Date: 2026-04-26</div>
+<div class="cards">
+    <div class="card"><div class="label">Total Rules</div><div class="value">101</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">31</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">36</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">14.6%</div></div>
+</div>
+<h2>5M Timeframe (44 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>LL_lag1_04</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>2.805</td><td>0.47</td><td>78</td><td>185</td><td>91</td><td>49.2</td><td><strong>27.43</strong></td><td>0.15</td></tr>
+<tr><td>2</td><td><strong>SA09</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>0.959</td><td>0.465</td><td>78</td><td>224</td><td>112</td><td>50.0</td><td><strong>27.09</strong></td><td>0.12</td></tr>
+<tr><td>3</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>191</td><td>98</td><td>51.3</td><td><strong>25.76</strong></td><td>0.13</td></tr>
+<tr><td>4</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>323</td><td>168</td><td>52.0</td><td><strong>25.4</strong></td><td>0.08</td></tr>
+<tr><td>5</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>201</td><td>72</td><td>35.8</td><td><strong>24.1</strong></td><td>0.12</td></tr>
+<tr><td>6</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>300</td><td>147</td><td>49.0</td><td><strong>24.04</strong></td><td>0.08</td></tr>
+<tr><td>7</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>289</td><td>133</td><td>46.0</td><td><strong>22.2</strong></td><td>0.08</td></tr>
+<tr><td>8</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>181</td><td>84</td><td>46.4</td><td><strong>21.9</strong></td><td>0.12</td></tr>
+<tr class="tier2"><td>9</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>54</td><td>46</td><td>85.2</td><td><strong>21.54</strong></td><td>0.4</td></tr>
+<tr><td>10</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>224</td><td>116</td><td>51.8</td><td><strong>20.47</strong></td><td>0.09</td></tr>
+<tr><td>11</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>162</td><td>77</td><td>47.5</td><td><strong>20.35</strong></td><td>0.13</td></tr>
+<tr><td>12</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>142</td><td>66</td><td>46.5</td><td><strong>20.11</strong></td><td>0.14</td></tr>
+<tr><td>13</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>223</td><td>115</td><td>51.6</td><td><strong>19.51</strong></td><td>0.09</td></tr>
+<tr><td>14</td><td><strong>INV_lag2_08</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>5.865</td><td>0.495</td><td>78</td><td>141</td><td>62</td><td>44.0</td><td><strong>18.36</strong></td><td>0.13</td></tr>
+<tr><td>15</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>227</td><td>94</td><td>41.4</td><td><strong>14.94</strong></td><td>0.07</td></tr>
+<tr><td>16</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>161</td><td>68</td><td>42.2</td><td><strong>14.51</strong></td><td>0.09</td></tr>
+<tr class="tier2"><td>17</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>5</td><td>83.3</td><td><strong>14.37</strong></td><td>2.4</td></tr>
+<tr class="tier2"><td>18</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>3</td><td>75.0</td><td><strong>13.97</strong></td><td>3.49</td></tr>
+<tr class="tier2"><td>19</td><td><strong>DV_72bar_lead_5</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>4.848</td><td>2.26</td><td>546</td><td>7</td><td>6</td><td>85.7</td><td><strong>13.59</strong></td><td>1.94</td></tr>
+<tr class="tier2"><td>20</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>99</td><td>84</td><td>84.8</td><td><strong>13.19</strong></td><td>0.13</td></tr>
+<tr class="tier2"><td>21</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>22</td><td>19</td><td>86.4</td><td><strong>12.56</strong></td><td>0.57</td></tr>
+<tr class="tier2"><td>22</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>108</td><td>85</td><td>78.7</td><td><strong>12.51</strong></td><td>0.12</td></tr>
+<tr class="tier2"><td>23</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>31</td><td>27</td><td>87.1</td><td><strong>12.39</strong></td><td>0.4</td></tr>
+<tr class="tier2"><td>24</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>33</td><td>28</td><td>84.8</td><td><strong>11.97</strong></td><td>0.36</td></tr>
+<tr class="tier2"><td>25</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>129</td><td>107</td><td>82.9</td><td><strong>11.81</strong></td><td>0.09</td></tr>
+<tr class="tier2"><td>26</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>9</td><td>8</td><td>88.9</td><td><strong>11.4</strong></td><td>1.27</td></tr>
+<tr class="tier2"><td>27</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>20</td><td>14</td><td>70.0</td><td><strong>11.06</strong></td><td>0.55</td></tr>
+<tr class="tier2"><td>28</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>224</td><td>223</td><td>99.6</td><td><strong>10.84</strong></td><td>0.05</td></tr>
+<tr class="wr100"><td>29</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>9.35</strong></td><td>2.34</td></tr>
+<tr class="wr100"><td>30</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>5</td><td>100.0</td><td><strong>9.06</strong></td><td>1.81</td></tr>
+<tr class="wr100"><td>31</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>9.02</strong></td><td>2.25</td></tr>
+<tr class="wr100"><td>32</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>8.99</strong></td><td>2.25</td></tr>
+<tr class="wr100"><td>33</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>6</td><td>100.0</td><td><strong>8.71</strong></td><td>1.45</td></tr>
+<tr class="wr100"><td>34</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>8.36</strong></td><td>2.79</td></tr>
+<tr class="wr100"><td>35</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>7.62</strong></td><td>2.54</td></tr>
+<tr class="wr100"><td>36</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.97</strong></td><td>2.32</td></tr>
+<tr class="wr100"><td>37</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.96</strong></td><td>2.32</td></tr>
+<tr class="wr100"><td>38</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.88</strong></td><td>2.29</td></tr>
+<tr class="wr100"><td>39</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>6.68</strong></td><td>1.67</td></tr>
+<tr class="wr100"><td>40</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.6</strong></td><td>2.2</td></tr>
+<tr class="wr100"><td>41</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.08</strong></td><td>2.03</td></tr>
+<tr class="wr100"><td>42</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.07</strong></td><td>2.02</td></tr>
+<tr class="wr100"><td>43</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.79</strong></td><td>1.6</td></tr>
+<tr class="wr100"><td>44</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>3.89</strong></td><td>0.97</td></tr>
+</tbody></table>
+<h2>15M Timeframe (36 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>LL_lag0_12</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>14.3</td><td>2.178</td><td>260</td><td>45</td><td>21</td><td>46.7</td><td><strong>29.53</strong></td><td>0.66</td></tr>
+<tr><td>2</td><td><strong>DV_72bar_lead_3</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>14.3</td><td>1.564</td><td>78</td><td>77</td><td>35</td><td>45.5</td><td><strong>24.76</strong></td><td>0.32</td></tr>
+<tr><td>3</td><td><strong>SA05</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>16.2</td><td>2.228</td><td>260</td><td>43</td><td>22</td><td>51.2</td><td><strong>23.72</strong></td><td>0.55</td></tr>
+<tr><td>4</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>54</td><td>28</td><td>51.9</td><td><strong>20.96</strong></td><td>0.39</td></tr>
+<tr><td>5</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>174</td><td>108</td><td>62.1</td><td><strong>20.73</strong></td><td>0.12</td></tr>
+<tr><td>6</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>48</td><td>24</td><td>50.0</td><td><strong>20.19</strong></td><td>0.42</td></tr>
+<tr><td>7</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>173</td><td>107</td><td>61.8</td><td><strong>19.93</strong></td><td>0.12</td></tr>
+<tr><td>8</td><td><strong>INV_lag1_08</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>14.3</td><td>2.425</td><td>260</td><td>50</td><td>25</td><td>50.0</td><td><strong>19.02</strong></td><td>0.38</td></tr>
+<tr><td>9</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>48</td><td>24</td><td>50.0</td><td><strong>18.84</strong></td><td>0.39</td></tr>
+<tr><td>10</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>22</td><td>12</td><td>54.5</td><td><strong>18.82</strong></td><td>0.86</td></tr>
+<tr><td>11</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>185</td><td>91</td><td>49.2</td><td><strong>18.6</strong></td><td>0.1</td></tr>
+<tr class="tier2"><td>12</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>33</td><td>27</td><td>81.8</td><td><strong>18.5</strong></td><td>0.56</td></tr>
+<tr><td>13</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>145</td><td>87</td><td>60.0</td><td><strong>17.76</strong></td><td>0.12</td></tr>
+<tr><td>14</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>48</td><td>33</td><td>68.8</td><td><strong>17.38</strong></td><td>0.36</td></tr>
+<tr><td>15</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>46</td><td>23</td><td>50.0</td><td><strong>17.09</strong></td><td>0.37</td></tr>
+<tr><td>16</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>58</td><td>31</td><td>53.4</td><td><strong>17.0</strong></td><td>0.29</td></tr>
+<tr><td>17</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>49</td><td>30</td><td>61.2</td><td><strong>16.86</strong></td><td>0.34</td></tr>
+<tr class="tier2"><td>18</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>5</td><td>83.3</td><td><strong>15.18</strong></td><td>2.53</td></tr>
+<tr class="wr100"><td>19</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>14.53</strong></td><td>4.84</td></tr>
+<tr><td>20</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>14</td><td>9</td><td>64.3</td><td><strong>14.39</strong></td><td>1.03</td></tr>
+<tr><td>21</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>34</td><td>19</td><td>55.9</td><td><strong>14.37</strong></td><td>0.42</td></tr>
+<tr><td>22</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>89</td><td>38</td><td>42.7</td><td><strong>14.21</strong></td><td>0.16</td></tr>
+<tr class="tier2"><td>23</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>54</td><td>39</td><td>72.2</td><td><strong>13.91</strong></td><td>0.26</td></tr>
+<tr><td>24</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>122</td><td>67</td><td>54.9</td><td><strong>13.38</strong></td><td>0.11</td></tr>
+<tr class="tier2"><td>25</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>61</td><td>60</td><td>98.4</td><td><strong>12.25</strong></td><td>0.2</td></tr>
+<tr><td>26</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>185</td><td>125</td><td>67.6</td><td><strong>12.15</strong></td><td>0.07</td></tr>
+<tr class="wr100"><td>27</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>7</td><td>7</td><td>100.0</td><td><strong>11.96</strong></td><td>1.71</td></tr>
+<tr><td>28</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>51</td><td>27</td><td>52.9</td><td><strong>11.83</strong></td><td>0.23</td></tr>
+<tr class="tier2"><td>29</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>25</td><td>21</td><td>84.0</td><td><strong>10.63</strong></td><td>0.43</td></tr>
+<tr class="tier2"><td>30</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>3</td><td>75.0</td><td><strong>10.54</strong></td><td>2.63</td></tr>
+<tr class="wr100"><td>31</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>10.36</strong></td><td>2.59</td></tr>
+<tr class="wr100"><td>32</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.25</strong></td><td>3.42</td></tr>
+<tr class="wr100"><td>33</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>5</td><td>100.0</td><td><strong>9.22</strong></td><td>1.84</td></tr>
+<tr class="wr100"><td>34</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>5</td><td>100.0</td><td><strong>8.52</strong></td><td>1.7</td></tr>
+<tr class="wr100"><td>35</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>7.98</strong></td><td>2.66</td></tr>
+<tr class="wr100"><td>36</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>6</td><td>100.0</td><td><strong>4.98</strong></td><td>0.83</td></tr>
+</tbody></table>
+<h2>Daily Timeframe (21 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA28</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>4.326</td><td>4.95</td><td>25</td><td>17</td><td>12</td><td>70.6</td><td><strong>22.96</strong></td><td>1.35</td></tr>
+<tr class="tier2"><td>2</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>2.496</td><td>5.13</td><td>15</td><td>27</td><td>20</td><td>74.1</td><td><strong>21.28</strong></td><td>0.79</td></tr>
+<tr class="tier2"><td>3</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>5</td><td>83.3</td><td><strong>18.83</strong></td><td>3.14</td></tr>
+<tr class="wr100"><td>4</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>4.532</td><td>3.23</td><td>35</td><td>4</td><td>4</td><td>100.0</td><td><strong>18.13</strong></td><td>4.53</td></tr>
+<tr class="tier2"><td>5</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>17</td><td>14</td><td>82.4</td><td><strong>17.61</strong></td><td>1.04</td></tr>
+<tr><td>6</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>18</td><td>11</td><td>61.1</td><td><strong>17.35</strong></td><td>0.96</td></tr>
+<tr class="tier2"><td>7</td><td><strong>LL_lag1_09</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>4.4</td><td>5.586</td><td>25</td><td>8</td><td>7</td><td>87.5</td><td><strong>16.51</strong></td><td>2.06</td></tr>
+<tr><td>8</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>26</td><td>17</td><td>65.4</td><td><strong>16.47</strong></td><td>0.63</td></tr>
+<tr class="tier2"><td>9</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>9</td><td>8</td><td>88.9</td><td><strong>16.27</strong></td><td>1.81</td></tr>
+<tr class="tier2"><td>10</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>7</td><td>6</td><td>85.7</td><td><strong>15.15</strong></td><td>2.16</td></tr>
+<tr class="tier2"><td>11</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>14</td><td>10</td><td>71.4</td><td><strong>14.94</strong></td><td>1.07</td></tr>
+<tr class="tier2"><td>12</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>17</td><td>13</td><td>76.5</td><td><strong>14.75</strong></td><td>0.87</td></tr>
+<tr class="wr100"><td>13</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>6</td><td>100.0</td><td><strong>14.4</strong></td><td>2.4</td></tr>
+<tr><td>14</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>35</td><td>23</td><td>65.7</td><td><strong>13.17</strong></td><td>0.38</td></tr>
+<tr class="tier2"><td>15</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>59</td><td>56</td><td>94.9</td><td><strong>13.09</strong></td><td>0.22</td></tr>
+<tr><td>16</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>4</td><td>66.7</td><td><strong>11.59</strong></td><td>1.93</td></tr>
+<tr class="wr100"><td>17</td><td><strong>DOGD00001</strong></td><td><span class="family fam-DOGD">DOGD</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>11.52</strong></td><td>3.84</td></tr>
+<tr class="wr100"><td>18</td><td><strong>DOGS00001</strong></td><td><span class="family fam-DOGS">DOGS</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>6.82</strong></td><td>1.71</td></tr>
+<tr class="wr100"><td>19</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>5</td><td>100.0</td><td><strong>6.69</strong></td><td>1.34</td></tr>
+<tr class="wr100"><td>20</td><td><strong>DOGX00001</strong></td><td><span class="family fam-DOGX">DOGX</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>5.79</strong></td><td>1.45</td></tr>
+<tr class="wr100"><td>21</td><td><strong>DOGL00001</strong></td><td><span class="family fam-DOGL">DOGL</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.02</strong></td><td>1.34</td></tr>
+</tbody></table>
+<div class="pipeline">Generated by create_rules_DOG_SPDN_20260426_v2 pipeline</div>
+<script>
+function sortTable(th) {
+    var table = th.closest("table");
+    var tbody = table.querySelector("tbody");
+    var rows = Array.from(tbody.rows);
+    var col = Array.from(th.parentNode.children).indexOf(th);
+    var asc = th.getAttribute("data-asc") !== "true";
+    th.setAttribute("data-asc", asc);
+    rows.sort(function(a, b) {
+        var va = a.cells[col].textContent.trim();
+        var vb = b.cells[col].textContent.trim();
+        var na = parseFloat(va), nb = parseFloat(vb);
+        if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
+        return asc ? va.localeCompare(vb) : vb.localeCompare(va);
+    });
+    rows.forEach(function(r) { tbody.appendChild(r); });
+}
+</script>
+</body>
+</html>

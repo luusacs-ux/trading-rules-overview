@@ -34,7 +34,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <body>
 <div class="header">
   <h1>Trading Rules Overview</h1>
-  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">34 tickers &#8226; 9,579 rules &#8226; 26.5%% avg PnL</p>
+  <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">97 tickers &#8226; 46,273 rules &#8226; 62.8% avg PnL</p>
   <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
 </div>
 <div style="padding:8px 16px;font-size:12px"><a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a> &bull; <a href="design_requirements_v6.html" style="color:#e94560;text-decoration:none;font-weight:600">Design Requirements v6 (NEW)</a></div>
@@ -56,7 +56,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-04-10</div>
+<div class="footer">Last updated: 2026-04-25</div>
 <script>
 var data = [
   {ticker:"BWET",stock:69,total:69,indiv:69,wr100:8,pnl10:68,avgPnl:46.66,ptpnl:5.31,report:"BWET_backtest_summary.html"},
@@ -150,7 +150,12 @@ var data = [
   {ticker:"DHR",stock:561,total:561,indiv:561,wr100:173,pnl10:521,avgPnl:37.87,ptpnl:4.42,report:"DHR_backtest_summary_20260425.html"},
   {ticker:"DHT",stock:520,total:520,indiv:520,wr100:292,pnl10:519,avgPnl:66.09,ptpnl:10.71,report:"DHT_backtest_summary_20260425.html"},
   {ticker:"DIA",stock:380,total:380,indiv:380,wr100:110,pnl10:375,avgPnl:35.25,ptpnl:2.88,report:"DIA_backtest_summary_20260425.html"},
-  {ticker:"DIS",stock:404,total:404,indiv:404,wr100:183,pnl10:387,avgPnl:25.02,ptpnl:3.54,report:"DIS_backtest_summary_20260425.html"}
+  {ticker:"DIS",stock:404,total:404,indiv:404,wr100:183,pnl10:387,avgPnl:25.02,ptpnl:3.54,report:"DIS_backtest_summary_20260425.html"},
+  {ticker:"DOCU",stock:641,total:641,indiv:641,wr100:152,pnl10:617,avgPnl:29.88,ptpnl:3.03,report:"DOCU_backtest_summary_20260426.html"},
+  {ticker:"DOG",stock:108,total:108,indiv:108,wr100:36,pnl10:79,avgPnl:14.13,ptpnl:1.18,report:"DOG_backtest_summary_20260426.html"},
+  {ticker:"DRIP",stock:324,total:324,indiv:324,wr100:78,pnl10:320,avgPnl:53.56,ptpnl:5.68,report:"DRIP_backtest_summary_20260426.html"},
+  {ticker:"DUG",stock:404,total:404,indiv:404,wr100:122,pnl10:393,avgPnl:38.92,ptpnl:4.22,report:"DUG_backtest_summary_20260426.html"},
+  {ticker:"DUK",stock:330,total:330,indiv:330,wr100:82,pnl10:318,avgPnl:38.53,ptpnl:2.56,report:"DUK_backtest_summary_20260426.html"}
 ];
 var sortCol="avgPnl",sortAsc=false;
 function render(filter){
@@ -192,6 +197,6 @@ document.querySelectorAll("th[data-col]").forEach(function(th){
 });
 render();
 </script>
-<div style="margin:20px;text-align:center;"><a href="short_squeeze_report.html" style="color:#58a6ff;font-size:16px;">Short Squeeze Monitor Report</a></div>
+<div style="margin:20px;text-align:center;"><a href="short_squeeze_report.html" style="color:#58a6ff;font-size:16px;">Short Squeeze Monitor Report</a> &bull; <a href="active_rules.html" style="color:#58a6ff;font-size:16px;">Active Rules Reference</a></div>
 </body>
 </html>
