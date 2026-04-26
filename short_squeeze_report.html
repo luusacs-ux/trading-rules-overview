@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short Squeeze Monitor</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+         background: #0d1117; color: #c9d1d9; margin: 0; padding: 16px; max-width: 900px; margin: 0 auto; }
+  h1 { color: #58a6ff; margin-bottom: 4px; }
+  .subtitle { color: #8b949e; margin-bottom: 20px; }
+  .stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+           padding: 12px 20px; min-width: 120px; }
+  .stat-label { color: #8b949e; font-size: 12px; text-transform: uppercase; }
+  .stat-value { font-size: 24px; font-weight: bold; margin-top: 4px; }
+  .positive { color: #4CAF50; }
+  .negative { color: #f44336; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; background: #161b22; border-radius: 8px; overflow: hidden; }
+  th { background: #21262d; color: #8b949e; text-align: left; padding: 10px 12px; font-size: 12px; text-transform: uppercase; }
+  td { padding: 8px 12px; border-top: 1px solid #21262d; }
+  tr:hover { background: #1c2128; }
+  h2 { color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 8px; margin-top: 32px; }
+  .summary-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
+  .footer { color: #484f58; font-size: 12px; margin-top: 40px; text-align: center; }
+</style>
+</head>
+<body>
+<h1>Short Squeeze Monitor</h1>
+<p class="subtitle">Last scan: 2026-04-26T05:40:01 UTC</p>
+
+<div class="summary-box">
+  <b>Scan Summary:</b> Reviewed <b>207</b> tickers from active paper trader universe.
+  Found <b>54</b> with elevated short interest (SI% &ge; 15.0% or DTC &ge; 3.0).
+  Generated <b>0</b> active squeeze signals.
+  Top 10 candidates ranked below by squeeze score and short interest metrics.
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-label">Tickers Scanned</div><div class="stat-value">207</div></div>
+  <div class="stat"><div class="stat-label">High SI</div><div class="stat-value">54</div></div>
+  <div class="stat"><div class="stat-label">Signals</div><div class="stat-value">0</div></div>
+  <div class="stat"><div class="stat-label">Open Positions</div><div class="stat-value">0/5</div></div>
+  <div class="stat"><div class="stat-label">Win Rate</div><div class="stat-value">0%</div></div>
+  <div class="stat"><div class="stat-label">Total PnL</div><div class="stat-value positive">$+0.00</div></div>
+</div>
+
+<h2>Top 10 Short Squeeze Candidates</h2>
+
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#1</span>
+    <span style="font-size:20px;font-weight:bold;">CAR</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>80.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>2.8</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Very high short interest (80.0% of float) — heavy short exposure creates strong squeeze potential</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#2</span>
+    <span style="font-size:20px;font-weight:bold;">SKYQ</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>67.5%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>0.1</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Very high short interest (67.5% of float) — heavy short exposure creates strong squeeze potential</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#3</span>
+    <span style="font-size:20px;font-weight:bold;">CLSK</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>46.2%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>4.3</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Very high short interest (46.2% of float) — heavy short exposure creates strong squeeze potential</li><li>Days to cover: 4.3 — above 3-day threshold, meaning shorts cannot quickly unwind positions</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#4</span>
+    <span style="font-size:20px;font-weight:bold;">UPST</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>33.4%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>6.0</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Very high short interest (33.4% of float) — heavy short exposure creates strong squeeze potential</li><li>Days to cover: 6.0 — above 3-day threshold, meaning shorts cannot quickly unwind positions</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#5</span>
+    <span style="font-size:20px;font-weight:bold;">SATS</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>30.6%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>4.2</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Very high short interest (30.6% of float) — heavy short exposure creates strong squeeze potential</li><li>Days to cover: 4.2 — above 3-day threshold, meaning shorts cannot quickly unwind positions</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#6</span>
+    <span style="font-size:20px;font-weight:bold;">APLD</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>30.4%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>3.8</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Very high short interest (30.4% of float) — heavy short exposure creates strong squeeze potential</li><li>Days to cover: 3.8 — above 3-day threshold, meaning shorts cannot quickly unwind positions</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#7</span>
+    <span style="font-size:20px;font-weight:bold;">ENPH</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>24.2%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>4.7</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Elevated short interest (24.2% of float) — above the 15% threshold indicating crowded short positioning</li><li>Days to cover: 4.7 — above 3-day threshold, meaning shorts cannot quickly unwind positions</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#8</span>
+    <span style="font-size:20px;font-weight:bold;">CRWV</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>21.9%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>2.1</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Elevated short interest (21.9% of float) — above the 15% threshold indicating crowded short positioning</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#9</span>
+    <span style="font-size:20px;font-weight:bold;">ASTS</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>21.3%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>3.5</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Elevated short interest (21.3% of float) — above the 15% threshold indicating crowded short positioning</li><li>Days to cover: 3.5 — above 3-day threshold, meaning shorts cannot quickly unwind positions</li></ul>
+  </div>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:12px;">
+  <div style="display:flex;align-items:center;margin-bottom:8px;">
+    <span style="color:#58a6ff;font-size:14px;font-weight:bold;margin-right:8px;">#10</span>
+    <span style="font-size:20px;font-weight:bold;">SMCI</span>
+    <span style="background:#2196F3;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;margin-left:8px;">WATCHLIST</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:10px;">
+    <div><span style="color:#8b949e;font-size:11px;">SI%</span><br><b>19.3%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">DAYS TO COVER</span><br><b>1.8</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">VOL SURGE</span><br><b>0.0x</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">PRICE CHG</span><br><b style="color:#4CAF50">+0.0%</b></div>
+    <div><span style="color:#8b949e;font-size:11px;">SCORE</span><br><b style="color:#8b949e">0/100</b></div>
+  </div>
+  <div style="color:#c9d1d9;font-size:13px;">
+    <b>Why this qualifies:</b>
+    <ul style="margin:4px 0 0 0;padding-left:20px;"><li>Elevated short interest (19.3% of float) — above the 15% threshold indicating crowded short positioning</li></ul>
+  </div>
+</div>
+
+<h2>Open Positions</h2>
+<table>
+<tr><th>Ticker</th><th>Entry</th><th>Current</th><th>PnL %</th><th>PnL $</th><th>Score</th><th>SI% at Entry</th></tr>
+<tr><td colspan="7" style="text-align:center;color:#888;">No open positions</td></tr>
+</table>
+
+<h2>Closed Trades (Last 20)</h2>
+<table>
+<tr><th>Ticker</th><th>Entry</th><th>Exit</th><th>PnL %</th><th>PnL $</th><th>Reason</th><th>Date</th></tr>
+<tr><td colspan="7" style="text-align:center;color:#888;">No closed trades yet</td></tr>
+</table>
+
+<div class="footer">Short Squeeze Monitor &bull; 207 tickers reviewed &bull; Auto-updated after each scan</div>
+</body>
+</html>
