@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paper Trading Performance</title>
+<title>AAL - Rule Performance</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px}
@@ -37,26 +37,24 @@ a:hover{color:#e94560;text-decoration:underline}
 </head>
 <body>
 <div class="header">
-  <h1>Paper Trading Performance</h1>
-  <p class="subtitle">1 tickers &bull; 1 trades &bull; <span class="red">$-241.88</span> total PnL</p>
-  <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
+  <h1>AAL Rule Performance</h1>
+  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="red">$-241.88</span> total PnL</p>
 </div>
-<div class="nav"><a href="index.html">Rules Overview</a></div>
-<div class="container"><p style="color:#a0a0b0;font-size:12px;padding:8px">No open positions</p></div>
-<h3 style="color:#e94560;margin:8px 8px 4px;font-size:14px">Closed Trades</h3>
+<div class="nav"><a href="../performance.html">Back to Summary</a> <a href="../index.html">Rules Overview</a></div>
 <div class="container">
 <table id="mainTable">
 <thead>
 <tr class="group-header">
   <th></th>
+  <th></th>
   <th colspan="3">This Month</th>
   <th colspan="3">This Week</th>
   <th colspan="3">Prior Day</th>
   <th colspan="3">ITD (All Time)</th>
-  <th></th>
 </tr>
 <tr>
-  <th data-col="ticker" data-type="str">Ticker <span class="arrow">&#9650;</span></th>
+  <th data-col="rule" data-type="str">Rule <span class="arrow">&#9650;</span></th>
+  <th data-col="since" data-type="str">Since <span class="arrow">&#9650;</span></th>
   <th data-col="m_trades" data-type="num">#Trades</th>
   <th data-col="m_pnl" data-type="num">PnL $</th>
   <th data-col="m_pct" data-type="num">PnL %</th>
@@ -69,12 +67,12 @@ a:hover{color:#e94560;text-decoration:underline}
   <th data-col="i_trades" data-type="num">#Trades</th>
   <th data-col="i_pnl" data-type="num">PnL $</th>
   <th data-col="i_pct" data-type="num">PnL %</th>
-  <th data-col="detail" data-type="str">Detail</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>AAL</td>
+  <td title="AAL_S5m_00005_WR77.2%/APnL118.87%/PTPnL0.59%: vol_ratio={vr:.1f}">AAL_S5m_00005_WR77.2%/APnL118.87%/PTPnL0.59%: vol_ratio={vr:...</td>
+  <td>2026-04-24</td>
   <td data-v="1">1</td>
   <td data-v="-241.88"><span class="red">$-241.88</span></td>
   <td data-v="-6.06"><span class="red">-6.06%</span></td>
@@ -87,10 +85,10 @@ a:hover{color:#e94560;text-decoration:underline}
   <td data-v="1">1</td>
   <td data-v="-241.88"><span class="red">$-241.88</span></td>
   <td data-v="-6.06"><span class="red">-6.06%</span></td>
-  <td><a href="reports/AAL_perf.html">View</a></td>
 </tr>
 <tr style="font-weight:bold;border-top:2px solid #e94560">
   <td>TOTAL</td>
+  <td></td>
   <td data-v="1">1</td>
   <td data-v="-241.88"><span class="red">$-241.88</span></td>
   <td data-v="-6.06"><span class="red">-6.06%</span></td>
@@ -103,7 +101,6 @@ a:hover{color:#e94560;text-decoration:underline}
   <td data-v="1">1</td>
   <td data-v="-241.88"><span class="red">$-241.88</span></td>
   <td data-v="-6.06"><span class="red">-6.06%</span></td>
-  <td></td>
 </tr>
 </tbody>
 </table>
