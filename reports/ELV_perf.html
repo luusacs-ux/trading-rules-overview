@@ -50,7 +50,7 @@ a:hover{color:#e94560;text-decoration:underline}
   <th colspan="3">This Month</th>
   <th colspan="3">This Week</th>
   <th colspan="3">Prior Day</th>
-  <th colspan="3">ITD (All Time)</th>
+  <th colspan="4">ITD (All Time)</th>
 </tr>
 <tr>
   <th data-col="rule" data-type="str">Rule <span class="arrow">&#9650;</span></th>
@@ -65,6 +65,7 @@ a:hover{color:#e94560;text-decoration:underline}
   <th data-col="d_pnl" data-type="num">PnL $</th>
   <th data-col="d_pct" data-type="num">PnL %</th>
   <th data-col="i_trades" data-type="num">#Trades</th>
+  <th data-col="i_wr" data-type="num">WR</th>
   <th data-col="i_pnl" data-type="num">PnL $</th>
   <th data-col="i_pct" data-type="num">PnL %</th>
 </tr>
@@ -83,6 +84,7 @@ a:hover{color:#e94560;text-decoration:underline}
   <td data-v="0.0"><span class="zero">$0.00</span></td>
   <td data-v="0.0"><span class="zero">+0.00%</span></td>
   <td data-v="1">1</td>
+  <td data-v="0.0"><span class="zero">—</span></td>
   <td data-v="-49.85"><span class="red">$-49.85</span></td>
   <td data-v="-1.32"><span class="red">-1.32%</span></td>
 </tr>
@@ -99,18 +101,19 @@ a:hover{color:#e94560;text-decoration:underline}
   <td data-v="0.0"><span class="zero">$0.00</span></td>
   <td data-v="0.0"><span class="zero">+0.00%</span></td>
   <td data-v="1">1</td>
+  <td data-v="0.0"><span class="zero">—</span></td>
   <td data-v="-49.85"><span class="red">$-49.85</span></td>
   <td data-v="-1.32"><span class="red">-1.32%</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-05-04 17:24 UTC</div>
+<div class="footer">Last updated: 2026-05-04 22:22 UTC</div>
 
 <script>
 function sortTable(table, col, type, asc) {
   var tbody = table.querySelector('tbody');
-  var rows = Array.from(tbody.querySelectorAll('tr'));
+  var rows = Array.from(tbody.querySelectorAll('tr')).filter(function(r){return !r.style.fontWeight;});
   rows.sort(function(a, b) {
     var av = a.cells[col].getAttribute('data-v') || a.cells[col].textContent;
     var bv = b.cells[col].getAttribute('data-v') || b.cells[col].textContent;
@@ -120,21 +123,26 @@ function sortTable(table, col, type, asc) {
   });
   rows.forEach(function(r) { tbody.appendChild(r); });
 }
-document.querySelectorAll('th[data-col]').forEach(function(th, idx) {
+document.querySelectorAll('th[data-col]').forEach(function(th) {
   th.addEventListener('click', function() {
     var table = th.closest('table');
+    var headerRow = th.closest('tr');
+    var col = Array.from(headerRow.children).indexOf(th);
     var asc = !th.classList.contains('asc');
-    table.querySelectorAll('th').forEach(function(h) { h.classList.remove('asc', 'desc', 'active'); });
+    headerRow.querySelectorAll('th').forEach(function(h) { h.classList.remove('asc', 'desc', 'active'); });
     th.classList.add(asc ? 'asc' : 'desc', 'active');
-    sortTable(table, idx, th.getAttribute('data-type'), asc);
+    sortTable(table, col, th.getAttribute('data-type'), asc);
   });
 });
 var search = document.getElementById('search');
 if (search) {
   search.addEventListener('input', function() {
-    var q = this.value.toLowerCase();
-    document.querySelectorAll('#mainTable tbody tr').forEach(function(r) {
-      r.style.display = r.cells[0].textContent.toLowerCase().includes(q) ? '' : 'none';
+    var raw = this.value.toLowerCase().trim();
+    var terms = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);
+    document.querySelectorAll('#openTable tbody tr, #mainTable tbody tr').forEach(function(r) {
+      var tk = r.cells[0].textContent.toLowerCase();
+      var show = terms.length === 0 || terms.some(function(t){return tk.includes(t);});
+      r.style.display = show ? '' : 'none';
     });
   });
 }
