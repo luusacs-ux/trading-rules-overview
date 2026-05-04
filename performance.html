@@ -1715,7 +1715,7 @@ a:hover{color:#e94560;text-decoration:underline}
 </tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-05-04 22:01 UTC</div>
+<div class="footer">Last updated: 2026-05-04 22:13 UTC</div>
 
 <script>
 function sortTable(table, col, type, asc) {
@@ -1744,9 +1744,12 @@ document.querySelectorAll('th[data-col]').forEach(function(th) {
 var search = document.getElementById('search');
 if (search) {
   search.addEventListener('input', function() {
-    var q = this.value.toLowerCase();
+    var raw = this.value.toLowerCase().trim();
+    var terms = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);
     document.querySelectorAll('#openTable tbody tr, #mainTable tbody tr').forEach(function(r) {
-      r.style.display = r.cells[0].textContent.toLowerCase().includes(q) ? '' : 'none';
+      var tk = r.cells[0].textContent.toLowerCase();
+      var show = terms.length === 0 || terms.some(function(t){return tk.includes(t);});
+      r.style.display = show ? '' : 'none';
     });
   });
 }
