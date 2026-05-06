@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMZN — Backtest vs 1m Simulation</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px}
+.header{background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
+.header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
+.subtitle{color:#a0a0b0;font-size:12px;margin:4px 0}
+.summary{display:flex;gap:12px;flex-wrap:wrap;padding:12px 16px}
+.card{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:10px 14px;min-width:140px}
+.card .label{font-size:10px;color:#888;text-transform:uppercase}
+.card .value{font-size:1.2rem;font-weight:700;margin-top:2px}
+.card .sub{font-size:11px;color:#888;margin-top:2px}
+.green{color:#4caf50}.red{color:#ef5350}.yellow{color:#ffc107}
+.container{padding:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:1100px}
+th{background:#0f3460;color:#e94560;padding:7px 4px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:10px;position:sticky;top:0;z-index:2}
+th:first-child{text-align:left}
+th:hover{background:#162d50}
+th .arrow{font-size:9px;margin-left:1px;opacity:.5}
+th.active .arrow{opacity:1}
+td{padding:5px 4px;text-align:right;border-bottom:1px solid #1e2a4a;white-space:nowrap}
+td:first-child{text-align:left;font-weight:600;color:#53c0f0}
+tr:hover{background:#1e2a4a}
+.footer{text-align:center;padding:16px;color:#555;font-size:11px}
+.search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>AMZN — Backtest vs 1m Simulation</h1>
+  <p class="subtitle">325 rules compared &#8226; 323 matched to backtest &#8226; 85976 sim trades</p>
+  <input type="text" class="search-box" id="search" placeholder="Filter rules..." autocomplete="off">
+</div>
+<div class="summary">
+  <div class="card"><div class="label">Sim Trades</div><div class="value">85976</div></div>
+  <div class="card"><div class="label">Sim WR</div><div class="value green">74.4%</div><div class="sub">BT avg: 85.8%</div></div>
+  <div class="card"><div class="label">Sim Total PnL</div><div class="value green">259083.92%</div></div>
+  <div class="card"><div class="label">Sim PTPnL</div><div class="value green">3.01%</div></div>
+  <div class="card"><div class="label">TP Exits</div><div class="value green">36254</div></div>
+  <div class="card"><div class="label">SL Exits</div><div class="value red">11626</div></div>
+  <div class="card"><div class="label">Hold Exits</div><div class="value yellow">37342</div></div>
+</div>
+<div class="container">
+<table id="tbl">
+<thead><tr>
+  <th data-col="r" data-type="str">Rule <span class="arrow">&#9650;</span></th>
+  <th data-col="tf" data-type="str">TF <span class="arrow">&#9650;</span></th>
+  <th data-col="bt" data-type="num">BT Trades <span class="arrow">&#9650;</span></th>
+  <th data-col="st" data-type="num">Sim Trades <span class="arrow">&#9650;</span></th>
+  <th data-col="bw" data-type="num">BT WR% <span class="arrow">&#9650;</span></th>
+  <th data-col="sw" data-type="num">Sim WR% <span class="arrow">&#9650;</span></th>
+  <th data-col="wd" data-type="num">WR Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="ba" data-type="num">BT APnL <span class="arrow">&#9650;</span></th>
+  <th data-col="sa" data-type="num">Sim APnL <span class="arrow">&#9650;</span></th>
+  <th data-col="ad" data-type="num">APnL Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="bp" data-type="num">BT PTPnL <span class="arrow">&#9650;</span></th>
+  <th data-col="sp" data-type="num">Sim PTPnL <span class="arrow">&#9650;</span></th>
+  <th data-col="pd" data-type="num" class="active">PTPnL Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="tp" data-type="num">TP <span class="arrow">&#9650;</span></th>
+  <th data-col="sl" data-type="num">SL <span class="arrow">&#9650;</span></th>
+  <th data-col="mh" data-type="num">Hold <span class="arrow">&#9650;</span></th>
+  <th data-col="hm" data-type="num">Avg Min <span class="arrow">&#9650;</span></th>
+</tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<div class="footer">Generated: 2026-05-06 04:54 | 1m Simulation Engine</div>
+<script>
+var data = [
+  {r:"AMZN_SD_00041_WR91.7%/APnL38.74%/PTPnL3.23%",tf:"DAILY",fam:"AMZNS",bt:3,st:23,bw:100.0,sw:65.2,wd:-34.8,ba:46.96,sa:0.27,ad:-46.69,bp:15.65,sp:0.01,pd:-15.64,tp:15,sl:8,mh:0,hm:2224.2},
+  {r:"AMZN_SD_00042_WR91.7%/APnL38.74%/PTPnL3.23%",tf:"DAILY",fam:"AMZNS",bt:3,st:23,bw:100.0,sw:65.2,wd:-34.8,ba:46.96,sa:0.27,ad:-46.69,bp:15.65,sp:0.01,pd:-15.64,tp:15,sl:8,mh:0,hm:2224.2},
+  {r:"AMZN_L1H_00021_WR100.0%/APnL31.5%/PTPnL10.5%",tf:"1H",fam:"AMZNL",bt:4,st:4,bw:100.0,sw:0.0,wd:-100.0,ba:54.92,sa:-6.4,ad:-61.32,bp:13.73,sp:-1.6,pd:-15.33,tp:0,sl:4,mh:0,hm:2268.8},
+  {r:"AMZN_S1H_00051_WR100.0%/APnL39.08%/PTPnL9.77%",tf:"1H",fam:"AMZNS",bt:4,st:8,bw:100.0,sw:37.5,wd:-62.5,ba:45.66,sa:-30.58,ad:-76.24,bp:11.41,sp:-3.82,pd:-15.23,tp:1,sl:5,mh:2,hm:4473.9},
+  {r:"AMZN_S1H_00050_WR66.7%/APnL40.46%/PTPnL3.37%",tf:"1H",fam:"AMZNS",bt:3,st:17,bw:100.0,sw:58.8,wd:-41.2,ba:47.98,sa:29.1,ad:-18.88,bp:15.99,sp:1.71,pd:-14.28,tp:2,sl:1,mh:14,hm:3199.7},
+  {r:"AMZN_LD_00002_WR75.0%/APnL54.73%/PTPnL13.68%",tf:"DAILY",fam:"AMZNL",bt:3,st:17,bw:100.0,sw:52.9,wd:-47.1,ba:68.44,sa:146.54,ad:78.1,bp:22.81,sp:8.62,pd:-14.19,tp:9,sl:8,mh:0,hm:12660.6},
+  {r:"AMZN_SD_00043_WR100.0%/APnL38.4%/PTPnL2.4%",tf:"DAILY",fam:"AMZNS",bt:3,st:32,bw:100.0,sw:96.9,wd:-3.1,ba:46.96,sa:68.1,ad:21.14,bp:15.65,sp:2.13,pd:-13.52,tp:31,sl:1,mh:0,hm:526.7},
+  {r:"AMZN_LD_00012_WR66.7%/APnL10.25%/PTPnL3.42%",tf:"DAILY",fam:"AMZNL",bt:4,st:3,bw:100.0,sw:33.3,wd:-66.7,ba:55.5,sa:3.25,ad:-52.25,bp:13.88,sp:1.08,pd:-12.8,tp:1,sl:2,mh:0,hm:3616.0},
+  {r:"AMZN_SD_00019_WR100.0%/APnL52.14%/PTPnL17.38%",tf:"DAILY",fam:"AMZNS",bt:10,st:3,bw:90.0,sw:0.0,wd:-90.0,ba:68.24,sa:-17.43,ad:-85.67,bp:6.82,sp:-5.81,pd:-12.63,tp:0,sl:3,mh:0,hm:17039.7},
+  {r:"AMZN_L15M_00048_WR100.0%/APnL25.0%/PTPnL5.0%",tf:"15M",fam:"AMZNL",bt:4,st:6,bw:75.0,sw:83.3,wd:8.3,ba:51.34,sa:2.3,ad:-49.04,bp:12.84,sp:0.38,pd:-12.46,tp:4,sl:1,mh:1,hm:4592.7},
+  {r:"AMZN_S1H_00053_WR100.0%/APnL35.47%/PTPnL11.82%",tf:"1H",fam:"AMZNS",bt:12,st:1,bw:91.7,sw:0.0,wd:-91.7,ba:37.3,sa:-9.12,ad:-46.42,bp:3.11,sp:-9.12,pd:-12.23,tp:0,sl:1,mh:0,hm:389.0},
+  {r:"AMZN_S5M_00059_WR100.0%/APnL49.92%/PTPnL6.24%",tf:"5M",fam:"AMZNS",bt:3,st:16,bw:100.0,sw:68.8,wd:-31.2,ba:40.58,sa:34.43,ad:-6.15,bp:13.53,sp:2.15,pd:-11.38,tp:11,sl:4,mh:1,hm:3731.8},
+  {r:"AMZN_XD_00015_WR100.0%/APnL59.4%/PTPnL1.8%",tf:"DAILY",fam:"AMZNX",bt:6,st:83,bw:83.3,sw:95.2,wd:11.9,ba:74.78,sa:94.2,ad:19.42,bp:12.46,sp:1.13,pd:-11.33,tp:79,sl:4,mh:0,hm:1067.6},
+  {r:"AMZN_S5M_00060_WR88.9%/APnL45.15%/PTPnL5.02%",tf:"5M",fam:"AMZNS",bt:3,st:14,bw:100.0,sw:78.6,wd:-21.4,ba:40.48,sa:34.7,ad:-5.78,bp:13.49,sp:2.48,pd:-11.01,tp:9,sl:2,mh:3,hm:3583.6},
+  {r:"AMZN_SD_00048_WR100.0%/APnL13.0%/PTPnL2.6%",tf:"DAILY",fam:"AMZNS",bt:4,st:5,bw:75.0,sw:40.0,wd:-35.0,ba:40.85,sa:-3.8,ad:-44.65,bp:10.21,sp:-0.76,pd:-10.97,tp:2,sl:3,mh:0,hm:443.2},
+  {r:"AMZN_S15M_00061_WR87.5%/APnL41.4%/PTPnL5.17%",tf:"15M",fam:"AMZNS",bt:3,st:15,bw:100.0,sw:66.7,wd:-33.3,ba:38.07,sa:28.36,ad:-9.71,bp:12.69,sp:1.89,pd:-10.8,tp:9,sl:5,mh:1,hm:2893.8},
+  {r:"AMZN_L1H_00019_WR90.0%/APnL36.48%/PTPnL3.65%",tf:"1H",fam:"AMZNL",bt:5,st:11,bw:100.0,sw:72.7,wd:-27.3,ba:56.1,sa:4.93,ad:-51.17,bp:11.22,sp:0.45,pd:-10.77,tp:8,sl:3,mh:0,hm:3188.3},
+  {r:"AMZN_SD_00015_WR100.0%/APnL64.43%/PTPnL10.74%",tf:"DAILY",fam:"AMZNS",bt:6,st:15,bw:100.0,sw:46.7,wd:-53.3,ba:77.67,sa:33.03,ad:-44.64,bp:12.95,sp:2.2,pd:-10.75,tp:7,sl:8,mh:0,hm:9299.9},
+  {r:"AMZN_S1H_00060_WR100.0%/APnL29.28%/PTPnL4.88%",tf:"1H",fam:"AMZNS",bt:3,st:5,bw:100.0,sw:60.0,wd:-40.0,ba:29.58,sa:-3.6,ad:-33.18,bp:9.86,sp:-0.72,pd:-10.58,tp:3,sl:2,mh:0,hm:1368.8},
+  {r:"AMZN_S15M_00041_WR88.3%/APnL78.68%/PTPnL1.31%",tf:"15M",fam:"AMZNS",bt:10,st:196,bw:80.0,sw:81.6,wd:1.6,ba:111.01,sa:118.73,ad:7.72,bp:11.1,sp:0.61,pd:-10.49,tp:159,sl:36,mh:1,hm:2424.9},
+  {r:"AMZN_SD_00047_WR100.0%/APnL24.24%/PTPnL3.03%",tf:"DAILY",fam:"AMZNS",bt:4,st:20,bw:75.0,sw:80.0,wd:5.0,ba:40.85,sa:-5.66,ad:-46.51,bp:10.21,sp:-0.28,pd:-10.49,tp:16,sl:4,mh:0,hm:2630.6},
+  {r:"AMZN_SD_00049_WR100.0%/APnL10.4%/PTPnL2.6%",tf:"DAILY",fam:"AMZNS",bt:4,st:4,bw:75.0,sw:50.0,wd:-25.0,ba:40.85,sa:-0.8,ad:-41.65,bp:10.21,sp:-0.2,pd:-10.41,tp:2,sl:2,mh:0,hm:522.2},
+  {r:"AMZN_S1H_00038_WR83.3%/APnL67.02%/PTPnL11.17%",tf:"1H",fam:"AMZNS",bt:7,st:8,bw:100.0,sw:62.5,wd:-37.5,ba:73.58,sa:4.92,ad:-68.66,bp:10.51,sp:0.62,pd:-9.89,tp:0,sl:3,mh:5,hm:9547.2},
+  {r:"AMZN_S1H_00055_WR88.9%/APnL29.88%/PTPnL3.32%",tf:"1H",fam:"AMZNS",bt:3,st:12,bw:100.0,sw:83.3,wd:-16.7,ba:34.85,sa:22.6,ad:-12.25,bp:11.62,sp:1.88,pd:-9.74,tp:9,sl:0,mh:3,hm:2387.9},
+  {r:"AMZN_S1H_00026_WR92.3%/APnL83.6%/PTPnL3.22%",tf:"1H",fam:"AMZNS",bt:9,st:71,bw:100.0,sw:84.5,wd:-15.5,ba:95.79,sa:111.92,ad:16.13,bp:10.64,sp:1.58,pd:-9.06,tp:59,sl:8,mh:4,hm:4046.1},
+  {r:"AMZN_L15M_00035_WR81.8%/APnL57.63%/PTPnL2.62%",tf:"15M",fam:"AMZNL",bt:10,st:36,bw:80.0,sw:69.4,wd:-10.6,ba:102.95,sa:45.48,ad:-57.47,bp:10.29,sp:1.26,pd:-9.03,tp:18,sl:3,mh:15,hm:1637.6},
+  {r:"AMZN_S1H_00046_WR100.0%/APnL48.36%/PTPnL16.12%",tf:"1H",fam:"AMZNS",bt:8,st:4,bw:87.5,sw:25.0,wd:-62.5,ba:54.01,sa:-8.54,ad:-62.55,bp:6.75,sp:-2.13,pd:-8.88,tp:0,sl:3,mh:1,hm:3793.2},
+  {r:"AMZN_S5M_00050_WR92.9%/APnL57.92%/PTPnL4.14%",tf:"5M",fam:"AMZNS",bt:5,st:23,bw:80.0,sw:69.6,wd:-10.4,ba:48.04,sa:19.02,ad:-29.02,bp:9.61,sp:0.83,pd:-8.78,tp:15,sl:7,mh:1,hm:2582.6},
+  {r:"AMZN_L1H_00022_WR100.0%/APnL31.5%/PTPnL10.5%",tf:"1H",fam:"AMZNL",bt:6,st:7,bw:83.3,sw:14.3,wd:-69.0,ba:52.94,sa:0.9,ad:-52.04,bp:8.82,sp:0.13,pd:-8.69,tp:1,sl:6,mh:0,hm:2635.9},
+  {r:"AMZN_L15M_00045_WR88.9%/APnL26.96%/PTPnL3.0%",tf:"15M",fam:"AMZNL",bt:8,st:14,bw:75.0,sw:71.4,wd:-3.6,ba:78.56,sa:16.45,ad:-62.11,bp:9.82,sp:1.18,pd:-8.64,tp:7,sl:0,mh:7,hm:2023.1},
+  {r:"AMZN_SD_00050_WR100.0%/APnL5.61%/PTPnL1.87%",tf:"DAILY",fam:"AMZNS",bt:4,st:4,bw:75.0,sw:75.0,wd:0.0,ba:37.65,sa:3.77,ad:-33.88,bp:9.41,sp:0.94,pd:-8.47,tp:3,sl:1,mh:0,hm:85.8},
+  {r:"AMZN_S1H_00049_WR100.0%/APnL40.58%/PTPnL10.14%",tf:"1H",fam:"AMZNS",bt:4,st:16,bw:100.0,sw:75.0,wd:-25.0,ba:48.4,sa:64.68,ad:16.28,bp:12.1,sp:4.04,pd:-8.06,tp:8,sl:4,mh:4,hm:7724.2},
+  {r:"AMZN_S5M_00058_WR100.0%/APnL51.07%/PTPnL12.77%",tf:"5M",fam:"AMZNS",bt:4,st:4,bw:100.0,sw:50.0,wd:-50.0,ba:40.61,sa:9.29,ad:-31.32,bp:10.15,sp:2.32,pd:-7.83,tp:0,sl:1,mh:3,hm:10431.0},
+  {r:"AMZN_S1H_00059_WR100.0%/APnL29.36%/PTPnL3.67%",tf:"1H",fam:"AMZNS",bt:3,st:8,bw:100.0,sw:87.5,wd:-12.5,ba:29.58,sa:20.91,ad:-8.67,bp:9.86,sp:2.61,pd:-7.25,tp:7,sl:0,mh:1,hm:1558.8},
+  {r:"AMZN_L5M_00048_WR33.3%/APnL29.3%/PTPnL9.77%",tf:"5M",fam:"AMZNL",bt:8,st:3,bw:87.5,sw:0.0,wd:-87.5,ba:55.01,sa:-1.05,ad:-56.06,bp:6.88,sp:-0.35,pd:-7.23,tp:0,sl:3,mh:0,hm:25.0},
+  {r:"AMZN_XD_00018_WR100.0%/APnL48.6%/PTPnL16.2%",tf:"DAILY",fam:"AMZNX",bt:3,st:3,bw:100.0,sw:66.7,wd:-33.3,ba:57.35,sa:36.38,ad:-20.97,bp:19.12,sp:12.13,pd:-6.99,tp:2,sl:1,mh:0,hm:9229.7},
+  {r:"AMZN_S5M_00010_WR75.9%/APnL122.52%/PTPnL4.22%",tf:"5M",fam:"AMZNS",bt:17,st:154,bw:88.2,sw:63.0,wd:-25.2,ba:163.4,sa:407.91,ad:244.51,bp:9.61,sp:2.65,pd:-6.96,tp:7,sl:29,mh:118,hm:4189.3},
+  {r:"AMZN_S1H_00044_WR87.5%/APnL53.31%/PTPnL3.33%",tf:"1H",fam:"AMZNS",bt:6,st:15,bw:83.3,sw:80.0,wd:-3.3,ba:58.14,sa:41.22,ad:-16.92,bp:9.69,sp:2.75,pd:-6.94,tp:11,sl:0,mh:4,hm:6015.3},
+  {r:"AMZN_L5M_00043_WR92.9%/APnL53.42%/PTPnL1.91%",tf:"5M",fam:"AMZNL",bt:10,st:66,bw:80.0,sw:93.9,wd:13.9,ba:84.56,sa:114.66,ad:30.1,bp:8.46,sp:1.74,pd:-6.72,tp:62,sl:0,mh:4,hm:3272.0},
+  {r:"AMZN_S5M_00042_WR93.6%/APnL79.62%/PTPnL1.02%",tf:"5M",fam:"AMZNS",bt:13,st:723,bw:84.6,sw:92.3,wd:7.7,ba:96.11,sa:646.66,ad:550.55,bp:7.39,sp:0.89,pd:-6.5,tp:667,sl:51,mh:4,hm:2123.0},
+  {r:"AMZN_S5M_00040_WR94.0%/APnL84.73%/PTPnL1.02%",tf:"5M",fam:"AMZNS",bt:16,st:562,bw:81.2,sw:89.1,wd:7.9,ba:112.65,sa:315.86,ad:203.21,bp:7.04,sp:0.56,pd:-6.48,tp:501,sl:55,mh:5,hm:1911.4},
+  {r:"AMZN_S5M_00032_WR93.2%/APnL97.12%/PTPnL1.31%",tf:"5M",fam:"AMZNS",bt:17,st:677,bw:76.5,sw:89.1,wd:12.6,ba:124.86,sa:620.84,ad:495.98,bp:7.34,sp:0.92,pd:-6.42,tp:603,sl:63,mh:10,hm:2250.4},
+  {r:"AMZN_SD_00003_WR83.3%/APnL101.59%/PTPnL8.47%",tf:"DAILY",fam:"AMZNS",bt:20,st:31,bw:85.0,sw:35.5,wd:-49.5,ba:145.29,sa:27.58,ad:-117.71,bp:7.26,sp:0.89,pd:-6.37,tp:11,sl:20,mh:0,hm:12132.6},
+  {r:"AMZN_SD_00012_WR84.2%/APnL73.71%/PTPnL3.88%",tf:"DAILY",fam:"AMZNS",bt:11,st:49,bw:100.0,sw:69.4,wd:-30.6,ba:84.98,sa:74.51,ad:-10.47,bp:7.73,sp:1.52,pd:-6.21,tp:34,sl:15,mh:0,hm:5900.0},
+  {r:"AMZN_S1H_00061_WR100.0%/APnL29.12%/PTPnL4.16%",tf:"1H",fam:"AMZNS",bt:3,st:19,bw:100.0,sw:94.7,wd:-5.3,ba:29.58,sa:69.64,ad:40.06,bp:9.86,sp:3.67,pd:-6.19,tp:16,sl:0,mh:3,hm:1307.1},
+  {r:"AMZN_SD_00034_WR100.0%/APnL45.77%/PTPnL11.44%",tf:"DAILY",fam:"AMZNS",bt:3,st:5,bw:100.0,sw:60.0,wd:-40.0,ba:46.96,sa:47.64,ad:0.68,bp:15.65,sp:9.53,pd:-6.12,tp:3,sl:2,mh:0,hm:17660.6},
+  {r:"AMZN_S15M_00033_WR79.1%/APnL93.71%/PTPnL2.18%",tf:"15M",fam:"AMZNS",bt:17,st:106,bw:70.6,sw:67.9,wd:-2.7,ba:120.33,sa:103.12,ad:-17.21,bp:7.08,sp:0.97,pd:-6.11,tp:72,sl:34,mh:0,hm:3098.7},
+  {r:"AMZN_S5M_00049_WR100.0%/APnL60.07%/PTPnL15.02%",tf:"5M",fam:"AMZNS",bt:3,st:20,bw:100.0,sw:85.0,wd:-15.0,ba:48.74,sa:204.13,ad:155.39,bp:16.25,sp:10.21,pd:-6.04,tp:0,sl:2,mh:18,hm:12727.9},
+  {r:"AMZN_L1H_00017_WR90.0%/APnL54.17%/PTPnL5.42%",tf:"1H",fam:"AMZNL",bt:8,st:12,bw:62.5,sw:50.0,wd:-12.5,ba:58.86,sa:15.92,ad:-42.94,bp:7.36,sp:1.33,pd:-6.03,tp:5,sl:1,mh:6,hm:5552.6},
+  {r:"AMZN_S1H_00035_WR60.0%/APnL68.09%/PTPnL6.81%",tf:"1H",fam:"AMZNS",bt:8,st:13,bw:100.0,sw:53.8,wd:-46.2,ba:84.58,sa:59.5,ad:-25.08,bp:10.57,sp:4.58,pd:-5.99,tp:0,sl:6,mh:7,hm:5732.2},
+  {r:"AMZN_S1H_00054_WR90.0%/APnL30.96%/PTPnL3.1%",tf:"1H",fam:"AMZNS",bt:4,st:29,bw:100.0,sw:93.1,wd:-6.9,ba:36.03,sa:88.49,ad:52.46,bp:9.01,sp:3.05,pd:-5.96,tp:25,sl:0,mh:4,hm:2537.3},
+  {r:"AMZN_X1H_00004_WR77.8%/APnL74.0%/PTPnL4.11%",tf:"1H",fam:"AMZNX",bt:18,st:42,bw:83.3,sw:64.3,wd:-19.0,ba:155.49,sa:112.72,ad:-42.77,bp:8.64,sp:2.68,pd:-5.96,tp:22,sl:11,mh:9,hm:7014.8},
+  {r:"AMZN_SD_00006_WR75.0%/APnL95.11%/PTPnL4.76%",tf:"DAILY",fam:"AMZNS",bt:14,st:62,bw:92.9,sw:61.3,wd:-31.6,ba:126.04,sa:190.8,ad:64.76,bp:9.0,sp:3.08,pd:-5.92,tp:38,sl:24,mh:0,hm:11619.2},
+  {r:"AMZN_SD_00007_WR75.0%/APnL95.11%/PTPnL4.76%",tf:"DAILY",fam:"AMZNS",bt:14,st:62,bw:92.9,sw:61.3,wd:-31.6,ba:126.04,sa:190.8,ad:64.76,bp:9.0,sp:3.08,pd:-5.92,tp:38,sl:24,mh:0,hm:11619.2},
+  {r:"AMZN_SD_00014_WR100.0%/APnL69.54%/PTPnL7.73%",tf:"DAILY",fam:"AMZNS",bt:8,st:8,bw:100.0,sw:75.0,wd:-25.0,ba:78.82,sa:32.24,ad:-46.58,bp:9.85,sp:4.03,pd:-5.82,tp:6,sl:2,mh:0,hm:4014.2},
+  {r:"AMZN_SD_00004_WR83.3%/APnL101.59%/PTPnL8.47%",tf:"DAILY",fam:"AMZNS",bt:19,st:31,bw:78.9,sw:35.5,wd:-43.4,ba:127.21,sa:27.58,ad:-99.63,bp:6.7,sp:0.89,pd:-5.81,tp:11,sl:20,mh:0,hm:12132.6},
+  {r:"AMZN_S5M_00033_WR93.1%/APnL95.88%/PTPnL1.33%",tf:"5M",fam:"AMZNS",bt:18,st:500,bw:83.3,sw:91.6,wd:8.3,ba:123.5,sa:579.01,ad:455.51,bp:6.86,sp:1.16,pd:-5.7,tp:457,sl:42,mh:0,hm:1985.3},
+  {r:"AMZN_S15M_00027_WR77.8%/APnL94.9%/PTPnL10.54%",tf:"15M",fam:"AMZNS",bt:17,st:18,bw:82.4,sw:44.4,wd:-38.0,ba:130.93,sa:38.97,ad:-91.96,bp:7.7,sp:2.16,pd:-5.54,tp:0,sl:8,mh:9,hm:8657.2},
+  {r:"AMZN_S1H_00033_WR81.2%/APnL70.45%/PTPnL4.4%",tf:"1H",fam:"AMZNS",bt:12,st:66,bw:66.7,sw:63.6,wd:-3.1,ba:86.75,sa:114.22,ad:27.47,bp:7.23,sp:1.73,pd:-5.5,tp:24,sl:18,mh:24,hm:9191.2},
+  {r:"AMZN_SD_00016_WR81.8%/APnL58.9%/PTPnL5.35%",tf:"DAILY",fam:"AMZNS",bt:6,st:13,bw:100.0,sw:69.2,wd:-30.8,ba:77.45,sa:96.36,ad:18.91,bp:12.91,sp:7.41,pd:-5.5,tp:9,sl:4,mh:0,hm:11723.2},
+  {r:"AMZN_S5M_00024_WR91.6%/APnL104.16%/PTPnL1.25%",tf:"5M",fam:"AMZNS",bt:22,st:436,bw:81.8,sw:82.8,wd:1.0,ba:136.98,sa:328.13,ad:191.15,bp:6.23,sp:0.75,pd:-5.48,tp:352,sl:20,mh:63,hm:1608.6},
+  {r:"AMZN_SD_00010_WR85.7%/APnL80.14%/PTPnL5.72%",tf:"DAILY",fam:"AMZNS",bt:11,st:56,bw:81.8,sw:51.8,wd:-30.0,ba:96.13,sa:185.01,ad:88.88,bp:8.74,sp:3.3,pd:-5.44,tp:27,sl:27,mh:0,hm:19414.4},
+  {r:"AMZN_S1H_00016_WR66.7%/APnL99.3%/PTPnL8.28%",tf:"1H",fam:"AMZNS",bt:15,st:28,bw:73.3,sw:46.4,wd:-26.9,ba:121.6,sa:76.29,ad:-45.31,bp:8.11,sp:2.72,pd:-5.39,tp:1,sl:14,mh:13,hm:8065.9},
+  {r:"AMZN_S15M_00003_WR76.9%/APnL125.76%/PTPnL4.84%",tf:"15M",fam:"AMZNS",bt:22,st:120,bw:81.8,sw:64.2,wd:-17.6,ba:164.58,sa:254.19,ad:89.61,bp:7.48,sp:2.12,pd:-5.36,tp:34,sl:25,mh:59,hm:5980.5},
+  {r:"AMZN_SD_00013_WR85.7%/APnL72.11%/PTPnL5.15%",tf:"DAILY",fam:"AMZNS",bt:13,st:18,bw:92.3,sw:55.6,wd:-36.7,ba:83.05,sa:18.76,ad:-64.29,bp:6.39,sp:1.04,pd:-5.35,tp:10,sl:7,mh:0,hm:4222.6},
+  {r:"AMZN_SD_00035_WR75.0%/APnL42.51%/PTPnL10.63%",tf:"DAILY",fam:"AMZNS",bt:3,st:5,bw:100.0,sw:60.0,wd:-40.0,ba:46.96,sa:51.71,ad:4.75,bp:15.65,sp:10.34,pd:-5.31,tp:3,sl:2,mh:0,hm:10772.8},
+  {r:"AMZN_S15M_00014_WR78.6%/APnL110.64%/PTPnL3.95%",tf:"15M",fam:"AMZNS",bt:20,st:188,bw:70.0,sw:67.6,wd:-2.4,ba:148.02,sa:416.58,ad:268.56,bp:7.4,sp:2.22,pd:-5.18,tp:122,sl:56,mh:10,hm:5286.9},
+  {r:"AMZN_S15M_00026_WR78.3%/APnL95.99%/PTPnL2.09%",tf:"15M",fam:"AMZNS",bt:21,st:110,bw:81.0,sw:69.1,wd:-11.9,ba:131.17,sa:120.12,ad:-11.05,bp:6.25,sp:1.09,pd:-5.16,tp:76,sl:34,mh:0,hm:3047.4},
+  {r:"AMZN_S5M_00025_WR92.6%/APnL103.8%/PTPnL1.53%",tf:"5M",fam:"AMZNS",bt:22,st:573,bw:81.8,sw:87.6,wd:5.8,ba:136.82,sa:617.49,ad:480.67,bp:6.22,sp:1.08,pd:-5.14,tp:502,sl:60,mh:10,hm:2261.7},
+  {r:"AMZN_SD_00002_WR75.0%/APnL107.2%/PTPnL5.36%",tf:"DAILY",fam:"AMZNS",bt:21,st:72,bw:76.2,sw:62.5,wd:-13.7,ba:145.48,sa:130.5,ad:-14.98,bp:6.93,sp:1.81,pd:-5.12,tp:45,sl:27,mh:0,hm:10296.6},
+  {r:"AMZN_S5M_00062_WR75.0%/APnL41.22%/PTPnL10.3%",tf:"5M",fam:"AMZNS",bt:3,st:8,bw:100.0,sw:62.5,wd:-37.5,ba:31.17,sa:42.51,ad:11.34,bp:10.39,sp:5.31,pd:-5.08,tp:1,sl:1,mh:6,hm:12144.1},
+  {r:"AMZN_S5M_00013_WR78.6%/APnL121.34%/PTPnL4.33%",tf:"5M",fam:"AMZNS",bt:20,st:247,bw:80.0,sw:67.2,wd:-12.8,ba:152.98,sa:643.22,ad:490.24,bp:7.65,sp:2.6,pd:-5.05,tp:69,sl:44,mh:131,hm:6029.8},
+  {r:"AMZN_S1H_00042_WR100.0%/APnL62.58%/PTPnL10.43%",tf:"1H",fam:"AMZNS",bt:8,st:9,bw:87.5,sw:66.7,wd:-20.8,ba:60.01,sa:22.05,ad:-37.96,bp:7.5,sp:2.45,pd:-5.05,tp:3,sl:2,mh:4,hm:9572.9},
+  {r:"AMZN_X15M_00004_WR75.0%/APnL113.75%/PTPnL5.69%",tf:"15M",fam:"AMZNX",bt:19,st:58,bw:84.2,sw:62.1,wd:-22.1,ba:155.49,sa:188.52,ad:33.03,bp:8.18,sp:3.25,pd:-4.93,tp:23,sl:19,mh:16,hm:6837.6},
+  {r:"AMZN_S5M_00056_WR100.0%/APnL53.48%/PTPnL17.83%",tf:"5M",fam:"AMZNS",bt:3,st:8,bw:100.0,sw:62.5,wd:-37.5,ba:41.52,sa:71.47,ad:29.95,bp:13.84,sp:8.93,pd:-4.91,tp:0,sl:2,mh:6,hm:11400.4},
+  {r:"AMZN_S15M_00021_WR88.1%/APnL98.46%/PTPnL1.47%",tf:"15M",fam:"AMZNS",bt:22,st:374,bw:72.7,sw:88.0,wd:15.3,ba:140.39,sa:553.4,ad:413.01,bp:6.38,sp:1.48,pd:-4.9,tp:329,sl:44,mh:1,hm:2230.9},
+  {r:"AMZN_S5M_00014_WR76.0%/APnL119.03%/PTPnL4.76%",tf:"5M",fam:"AMZNS",bt:19,st:112,bw:84.2,sw:68.8,wd:-15.4,ba:149.01,sa:339.49,ad:190.48,bp:7.84,sp:3.03,pd:-4.81,tp:10,sl:0,mh:100,hm:4502.5},
+  {r:"AMZN_S1H_00002_WR77.8%/APnL116.29%/PTPnL6.46%",tf:"1H",fam:"AMZNS",bt:26,st:44,bw:76.9,sw:47.7,wd:-29.2,ba:154.57,sa:50.23,ad:-104.34,bp:5.94,sp:1.14,pd:-4.8,tp:15,sl:22,mh:7,hm:4992.1},
+  {r:"AMZN_S1H_00062_WR100.0%/APnL24.96%/PTPnL4.16%",tf:"1H",fam:"AMZNS",bt:3,st:4,bw:100.0,sw:100.0,wd:0.0,ba:26.84,sa:16.64,ad:-10.2,bp:8.95,sp:4.16,pd:-4.79,tp:4,sl:0,mh:0,hm:903.2},
+  {r:"AMZN_X5M_00003_WR72.4%/APnL114.58%/PTPnL3.95%",tf:"5M",fam:"AMZNX",bt:23,st:107,bw:82.6,sw:64.5,wd:-18.1,ba:159.07,sa:231.13,ad:72.06,bp:6.92,sp:2.16,pd:-4.76,tp:25,sl:17,mh:62,hm:3829.0},
+  {r:"AMZN_S1H_00019_WR76.5%/APnL90.92%/PTPnL5.35%",tf:"1H",fam:"AMZNS",bt:16,st:159,bw:81.2,sw:65.4,wd:-15.8,ba:116.09,sa:412.84,ad:296.75,bp:7.26,sp:2.6,pd:-4.66,tp:60,sl:41,mh:58,hm:10051.1},
+  {r:"AMZN_L1H_00005_WR81.8%/APnL80.84%/PTPnL7.35%",tf:"1H",fam:"AMZNL",bt:12,st:21,bw:75.0,sw:61.9,wd:-13.1,ba:87.8,sa:56.91,ad:-30.89,bp:7.32,sp:2.71,pd:-4.61,tp:0,sl:6,mh:15,hm:6956.6},
+  {r:"AMZN_S1H_00017_WR66.7%/APnL99.3%/PTPnL8.28%",tf:"1H",fam:"AMZNS",bt:15,st:26,bw:73.3,sw:50.0,wd:-23.3,ba:121.6,sa:91.05,ad:-30.55,bp:8.11,sp:3.5,pd:-4.61,tp:1,sl:12,mh:13,hm:8627.1},
+  {r:"AMZN_X1H_00013_WR100.0%/APnL53.46%/PTPnL3.56%",tf:"1H",fam:"AMZNX",bt:20,st:40,bw:75.0,sw:80.0,wd:5.0,ba:102.95,sa:21.9,ad:-81.05,bp:5.15,sp:0.55,pd:-4.6,tp:32,sl:2,mh:6,hm:4134.5},
+  {r:"AMZN_S15M_00046_WR78.6%/APnL53.81%/PTPnL3.84%",tf:"15M",fam:"AMZNS",bt:11,st:31,bw:100.0,sw:61.3,wd:-38.7,ba:62.63,sa:34.23,ad:-28.4,bp:5.69,sp:1.1,pd:-4.59,tp:18,sl:12,mh:1,hm:5066.9},
+  {r:"AMZN_S1H_00048_WR90.5%/APnL44.26%/PTPnL2.11%",tf:"1H",fam:"AMZNS",bt:11,st:46,bw:54.5,sw:71.7,wd:17.2,ba:52.26,sa:10.06,ad:-42.2,bp:4.75,sp:0.22,pd:-4.53,tp:30,sl:4,mh:12,hm:2236.5},
+  {r:"AMZN_X1H_00021_WR92.0%/APnL39.5%/PTPnL1.58%",tf:"1H",fam:"AMZNX",bt:13,st:32,bw:69.2,sw:90.6,wd:21.4,ba:75.58,sa:40.96,ad:-34.62,bp:5.81,sp:1.28,pd:-4.53,tp:29,sl:3,mh:0,hm:672.3},
+  {r:"AMZN_X5M_00028_WR87.5%/APnL44.43%/PTPnL5.55%",tf:"5M",fam:"AMZNX",bt:9,st:15,bw:88.9,sw:86.7,wd:-2.2,ba:72.25,sa:53.91,ad:-18.34,bp:8.03,sp:3.59,pd:-4.44,tp:11,sl:2,mh:2,hm:2847.9},
+  {r:"AMZN_S15M_00050_WR100.0%/APnL49.9%/PTPnL16.63%",tf:"15M",fam:"AMZNS",bt:4,st:7,bw:100.0,sw:71.4,wd:-28.6,ba:46.94,sa:51.02,ad:4.08,bp:11.73,sp:7.29,pd:-4.44,tp:1,sl:2,mh:4,hm:8678.3},
+  {r:"AMZN_S5M_00018_WR75.0%/APnL116.87%/PTPnL4.87%",tf:"5M",fam:"AMZNS",bt:20,st:91,bw:65.0,sw:68.1,wd:3.1,ba:144.0,sa:258.93,ad:114.93,bp:7.2,sp:2.85,pd:-4.35,tp:9,sl:0,mh:81,hm:4493.1},
+  {r:"AMZN_S5M_00038_WR85.2%/APnL91.98%/PTPnL3.41%",tf:"5M",fam:"AMZNS",bt:20,st:197,bw:85.0,sw:75.1,wd:-9.9,ba:117.52,sa:301.93,ad:184.41,bp:5.88,sp:1.53,pd:-4.35,tp:143,sl:37,mh:17,hm:5103.4},
+  {r:"AMZN_S5M_00057_WR100.0%/APnL52.55%/PTPnL17.52%",tf:"5M",fam:"AMZNS",bt:3,st:7,bw:100.0,sw:71.4,wd:-28.6,ba:40.61,sa:64.36,ad:23.75,bp:13.54,sp:9.19,pd:-4.35,tp:0,sl:1,mh:6,hm:11803.4},
+  {r:"AMZN_S15M_00039_WR90.1%/APnL84.34%/PTPnL0.93%",tf:"15M",fam:"AMZNS",bt:24,st:383,bw:95.8,sw:86.4,wd:-9.4,ba:112.42,sa:147.39,ad:34.97,bp:4.68,sp:0.38,pd:-4.3,tp:324,sl:26,mh:32,hm:1710.6},
+  {r:"AMZN_S1H_00034_WR81.2%/APnL70.45%/PTPnL4.4%",tf:"1H",fam:"AMZNS",bt:14,st:61,bw:71.4,sw:63.9,wd:-7.5,ba:86.52,sa:117.16,ad:30.64,bp:6.18,sp:1.92,pd:-4.26,tp:22,sl:16,mh:23,hm:9303.3},
+  {r:"AMZN_S1H_00003_WR82.6%/APnL109.05%/PTPnL4.74%",tf:"1H",fam:"AMZNS",bt:19,st:141,bw:84.2,sw:73.8,wd:-10.4,ba:146.89,sa:494.45,ad:347.56,bp:7.73,sp:3.51,pd:-4.22,tp:69,sl:18,mh:53,hm:8448.7},
+  {r:"AMZN_S15M_00029_WR84.6%/APnL94.79%/PTPnL3.65%",tf:"15M",fam:"AMZNS",bt:18,st:455,bw:66.7,sw:69.9,wd:3.2,ba:129.87,sa:1369.24,ad:1239.37,bp:7.21,sp:3.01,pd:-4.2,tp:19,sl:59,mh:369,hm:7115.8},
+  {r:"AMZN_X1H_00031_WR100.0%/APnL19.6%/PTPnL4.9%",tf:"1H",fam:"AMZNX",bt:6,st:5,bw:83.3,sw:60.0,wd:-23.3,ba:18.97,sa:-5.19,ad:-24.16,bp:3.16,sp:-1.04,pd:-4.2,tp:2,sl:2,mh:1,hm:3740.6},
+  {r:"AMZN_L15M_00012_WR82.4%/APnL94.54%/PTPnL5.56%",tf:"15M",fam:"AMZNL",bt:16,st:89,bw:87.5,sw:75.3,wd:-12.2,ba:138.6,sa:399.99,ad:261.39,bp:8.66,sp:4.49,pd:-4.17,tp:42,sl:7,mh:38,hm:10388.4},
+  {r:"AMZN_S5M_00023_WR87.1%/APnL104.36%/PTPnL3.37%",tf:"5M",fam:"AMZNS",bt:22,st:65,bw:81.8,sw:75.4,wd:-6.4,ba:136.99,sa:141.32,ad:4.33,bp:6.23,sp:2.17,pd:-4.06,tp:49,sl:16,mh:0,hm:2300.4},
+  {r:"AMZN_S1H_00010_WR71.4%/APnL103.01%/PTPnL7.36%",tf:"1H",fam:"AMZNS",bt:21,st:30,bw:85.7,sw:53.3,wd:-32.4,ba:134.86,sa:70.84,ad:-64.02,bp:6.42,sp:2.36,pd:-4.06,tp:0,sl:13,mh:17,hm:6191.4},
+  {r:"AMZN_SD_00037_WR75.0%/APnL40.81%/PTPnL10.2%",tf:"DAILY",fam:"AMZNS",bt:3,st:6,bw:100.0,sw:66.7,wd:-33.3,ba:46.96,sa:69.61,ad:22.65,bp:15.65,sp:11.6,pd:-4.05,tp:4,sl:2,mh:0,hm:11116.7},
+  {r:"AMZN_SD_00038_WR75.0%/APnL40.81%/PTPnL10.2%",tf:"DAILY",fam:"AMZNS",bt:3,st:6,bw:100.0,sw:66.7,wd:-33.3,ba:46.96,sa:69.61,ad:22.65,bp:15.65,sp:11.6,pd:-4.05,tp:4,sl:2,mh:0,hm:11116.7},
+  {r:"AMZN_SD_00039_WR75.0%/APnL40.81%/PTPnL10.2%",tf:"DAILY",fam:"AMZNS",bt:3,st:6,bw:100.0,sw:66.7,wd:-33.3,ba:46.96,sa:69.61,ad:22.65,bp:15.65,sp:11.6,pd:-4.05,tp:4,sl:2,mh:0,hm:11116.7},
+  {r:"AMZN_SD_00040_WR75.0%/APnL40.81%/PTPnL10.2%",tf:"DAILY",fam:"AMZNS",bt:3,st:6,bw:100.0,sw:66.7,wd:-33.3,ba:46.96,sa:69.61,ad:22.65,bp:15.65,sp:11.6,pd:-4.05,tp:4,sl:2,mh:0,hm:11116.7},
+  {r:"AMZN_S5M_00005_WR74.2%/APnL134.14%/PTPnL4.33%",tf:"5M",fam:"AMZNS",bt:26,st:245,bw:80.8,sw:67.3,wd:-13.5,ba:169.86,sa:609.36,ad:439.5,bp:6.53,sp:2.49,pd:-4.04,tp:43,sl:50,mh:147,hm:4771.9},
+  {r:"AMZN_S1H_00008_WR85.7%/APnL105.56%/PTPnL7.54%",tf:"1H",fam:"AMZNS",bt:15,st:80,bw:86.7,sw:80.0,wd:-6.7,ba:138.38,sa:418.94,ad:280.56,bp:9.23,sp:5.24,pd:-3.99,tp:28,sl:9,mh:42,hm:11550.9},
+  {r:"AMZN_X5M_00016_WR83.3%/APnL70.58%/PTPnL5.88%",tf:"5M",fam:"AMZNX",bt:19,st:26,bw:78.9,sw:65.4,wd:-13.5,ba:121.24,sa:62.61,ad:-58.63,bp:6.38,sp:2.41,pd:-3.97,tp:0,sl:1,mh:25,hm:4606.6},
+  {r:"AMZN_S15M_00009_WR76.5%/APnL113.47%/PTPnL6.67%",tf:"15M",fam:"AMZNS",bt:25,st:41,bw:76.0,sw:51.2,wd:-24.8,ba:153.8,sa:89.23,ad:-64.57,bp:6.15,sp:2.18,pd:-3.97,tp:15,sl:19,mh:7,hm:5887.7},
+  {r:"AMZN_SD_00045_WR75.0%/APnL37.65%/PTPnL9.41%",tf:"DAILY",fam:"AMZNS",bt:4,st:13,bw:75.0,sw:53.8,wd:-21.2,ba:42.4,sa:87.5,ad:45.1,bp:10.6,sp:6.73,pd:-3.87,tp:7,sl:6,mh:0,hm:10985.4},
+  {r:"AMZN_S15M_00052_WR92.9%/APnL48.8%/PTPnL3.49%",tf:"15M",fam:"AMZNS",bt:7,st:23,bw:100.0,sw:82.6,wd:-17.4,ba:44.58,sa:57.91,ad:13.33,bp:6.37,sp:2.52,pd:-3.85,tp:19,sl:0,mh:4,hm:2447.0},
+  {r:"AMZN_S15M_00058_WR100.0%/APnL42.45%/PTPnL14.15%",tf:"15M",fam:"AMZNS",bt:3,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:41.12,sa:39.56,ad:-1.56,bp:13.71,sp:9.89,pd:-3.82,tp:1,sl:1,mh:2,hm:8384.5},
+  {r:"AMZN_S15M_00044_WR94.7%/APnL60.8%/PTPnL3.2%",tf:"15M",fam:"AMZNS",bt:14,st:43,bw:78.6,sw:86.0,wd:7.4,ba:81.74,sa:87.9,ad:6.16,bp:5.84,sp:2.04,pd:-3.8,tp:37,sl:6,mh:0,hm:3249.4},
+  {r:"AMZN_S5M_00043_WR81.8%/APnL72.4%/PTPnL6.58%",tf:"5M",fam:"AMZNS",bt:13,st:40,bw:76.9,sw:60.0,wd:-16.9,ba:88.81,sa:121.62,ad:32.81,bp:6.83,sp:3.04,pd:-3.79,tp:8,sl:13,mh:19,hm:9244.4},
+  {r:"AMZN_XD_00026_WR100.0%/APnL24.63%/PTPnL6.16%",tf:"DAILY",fam:"AMZNX",bt:3,st:8,bw:66.7,sw:100.0,wd:33.3,ba:33.53,sa:59.36,ad:25.83,bp:11.18,sp:7.42,pd:-3.76,tp:8,sl:0,mh:0,hm:6146.2},
+  {r:"AMZN_S15M_00048_WR100.0%/APnL50.9%/PTPnL16.97%",tf:"15M",fam:"AMZNS",bt:10,st:4,bw:90.0,sw:50.0,wd:-40.0,ba:60.79,sa:9.48,ad:-51.31,bp:6.08,sp:2.37,pd:-3.71,tp:0,sl:2,mh:2,hm:5947.0},
+  {r:"AMZN_S1H_00018_WR69.2%/APnL97.84%/PTPnL7.53%",tf:"1H",fam:"AMZNS",bt:20,st:27,bw:55.0,sw:51.9,wd:-3.1,ba:120.11,sa:62.1,ad:-58.01,bp:6.01,sp:2.3,pd:-3.71,tp:0,sl:10,mh:17,hm:6324.6},
+  {r:"AMZN_S1H_00027_WR83.3%/APnL79.22%/PTPnL4.4%",tf:"1H",fam:"AMZNS",bt:13,st:121,bw:76.9,sw:79.3,wd:2.4,ba:94.74,sa:437.11,ad:342.37,bp:7.29,sp:3.61,pd:-3.68,tp:80,sl:1,mh:39,hm:9203.3},
+  {r:"AMZN_S1H_00009_WR82.4%/APnL104.68%/PTPnL6.16%",tf:"1H",fam:"AMZNS",bt:18,st:307,bw:83.3,sw:66.8,wd:-16.5,ba:137.39,sa:1240.68,ad:1103.29,bp:7.63,sp:4.04,pd:-3.59,tp:50,sl:75,mh:178,hm:11862.6},
+  {r:"AMZN_XD_00002_WR82.6%/APnL88.42%/PTPnL3.84%",tf:"DAILY",fam:"AMZNX",bt:19,st:79,bw:89.5,sw:86.1,wd:-3.4,ba:146.45,sa:331.93,ad:185.48,bp:7.71,sp:4.2,pd:-3.51,tp:67,sl:11,mh:0,hm:4998.5},
+  {r:"AMZN_L15M_00030_WR92.9%/APnL68.37%/PTPnL2.44%",tf:"15M",fam:"AMZNL",bt:20,st:52,bw:80.0,sw:92.3,wd:12.3,ba:115.26,sa:119.16,ad:3.9,bp:5.76,sp:2.29,pd:-3.47,tp:47,sl:3,mh:2,hm:3215.4},
+  {r:"AMZN_SD_00046_WR100.0%/APnL32.92%/PTPnL8.23%",tf:"DAILY",fam:"AMZNS",bt:4,st:4,bw:75.0,sw:75.0,wd:0.0,ba:40.85,sa:26.96,ad:-13.89,bp:10.21,sp:6.74,pd:-3.47,tp:3,sl:1,mh:0,hm:8928.8},
+  {r:"AMZN_S5M_00052_WR100.0%/APnL56.28%/PTPnL18.76%",tf:"5M",fam:"AMZNS",bt:3,st:5,bw:100.0,sw:80.0,wd:-20.0,ba:45.57,sa:58.7,ad:13.13,bp:15.19,sp:11.74,pd:-3.45,tp:0,sl:0,mh:5,hm:13650.0},
+  {r:"AMZN_S1H_00024_WR62.5%/APnL85.61%/PTPnL10.7%",tf:"1H",fam:"AMZNS",bt:19,st:21,bw:84.2,sw:38.1,wd:-46.1,ba:100.29,sa:38.33,ad:-61.96,bp:5.28,sp:1.83,pd:-3.45,tp:0,sl:13,mh:8,hm:7840.2},
+  {r:"AMZN_S15M_00049_WR100.0%/APnL49.92%/PTPnL6.24%",tf:"15M",fam:"AMZNS",bt:8,st:15,bw:75.0,sw:80.0,wd:5.0,ba:55.07,sa:52.08,ad:-2.99,bp:6.88,sp:3.47,pd:-3.41,tp:12,sl:3,mh:0,hm:3596.8},
+  {r:"AMZN_X15M_00006_WR75.0%/APnL111.75%/PTPnL9.31%",tf:"15M",fam:"AMZNX",bt:22,st:37,bw:81.8,sw:62.2,wd:-19.6,ba:147.19,sa:121.47,ad:-25.72,bp:6.69,sp:3.28,pd:-3.41,tp:0,sl:1,mh:35,hm:13529.9},
+  {r:"AMZN_S1H_00028_WR72.7%/APnL78.52%/PTPnL7.14%",tf:"1H",fam:"AMZNS",bt:16,st:26,bw:68.8,sw:61.5,wd:-7.3,ba:91.9,sa:62.66,ad:-29.24,bp:5.74,sp:2.41,pd:-3.33,tp:0,sl:9,mh:17,hm:10150.6},
+  {r:"AMZN_S1H_00006_WR71.4%/APnL107.32%/PTPnL7.67%",tf:"1H",fam:"AMZNS",bt:26,st:31,bw:76.9,sw:51.6,wd:-25.3,ba:143.4,sa:70.66,ad:-72.74,bp:5.52,sp:2.28,pd:-3.24,tp:0,sl:12,mh:19,hm:6268.9},
+  {r:"AMZN_L5M_00004_WR80.6%/APnL125.58%/PTPnL3.49%",tf:"5M",fam:"AMZNL",bt:33,st:143,bw:75.8,sw:68.5,wd:-7.3,ba:168.41,sa:274.4,ad:105.99,bp:5.1,sp:1.92,pd:-3.18,tp:66,sl:27,mh:50,hm:2992.1},
+  {r:"AMZN_S1H_00039_WR66.7%/APnL66.64%/PTPnL7.4%",tf:"1H",fam:"AMZNS",bt:13,st:13,bw:92.3,sw:46.2,wd:-46.1,ba:70.88,sa:29.96,ad:-40.92,bp:5.45,sp:2.3,pd:-3.15,tp:0,sl:6,mh:7,hm:8896.8},
+  {r:"AMZN_S1H_00043_WR78.9%/APnL60.65%/PTPnL3.19%",tf:"1H",fam:"AMZNS",bt:12,st:49,bw:58.3,sw:69.4,wd:11.1,ba:59.94,sa:91.05,ad:31.11,bp:5.0,sp:1.86,pd:-3.14,tp:32,sl:14,mh:3,hm:5059.7},
+  {r:"AMZN_SD_00018_WR85.7%/APnL52.83%/PTPnL7.55%",tf:"DAILY",fam:"AMZNS",bt:10,st:15,bw:90.0,sw:60.0,wd:-30.0,ba:68.24,sa:55.19,ad:-13.05,bp:6.82,sp:3.68,pd:-3.14,tp:9,sl:6,mh:0,hm:5082.9},
+  {r:"AMZN_X15M_00002_WR78.6%/APnL134.46%/PTPnL9.6%",tf:"15M",fam:"AMZNX",bt:20,st:33,bw:80.0,sw:60.6,wd:-19.4,ba:162.49,sa:165.5,ad:3.01,bp:8.12,sp:5.02,pd:-3.1,tp:11,sl:10,mh:12,hm:8762.3},
+  {r:"AMZN_S15M_00018_WR81.4%/APnL104.32%/PTPnL2.43%",tf:"15M",fam:"AMZNS",bt:35,st:102,bw:74.3,sw:68.6,wd:-5.7,ba:144.16,sa:106.22,ad:-37.94,bp:4.12,sp:1.04,pd:-3.08,tp:70,sl:32,mh:0,hm:3103.3},
+  {r:"AMZN_S1H_00030_WR70.0%/APnL76.49%/PTPnL7.65%",tf:"1H",fam:"AMZNS",bt:16,st:20,bw:68.8,sw:50.0,wd:-18.8,ba:89.69,sa:50.97,ad:-38.72,bp:5.61,sp:2.55,pd:-3.06,tp:0,sl:10,mh:10,hm:8035.0},
+  {r:"AMZN_S1H_00004_WR70.0%/APnL109.02%/PTPnL5.45%",tf:"1H",fam:"AMZNS",bt:23,st:132,bw:87.0,sw:66.7,wd:-20.3,ba:144.81,sa:428.49,ad:283.68,bp:6.3,sp:3.25,pd:-3.05,tp:2,sl:15,mh:115,hm:7975.9},
+  {r:"AMZN_L5M_00010_WR88.0%/APnL122.76%/PTPnL4.91%",tf:"5M",fam:"AMZNL",bt:24,st:56,bw:87.5,sw:75.0,wd:-12.5,ba:154.22,sa:190.68,ad:36.46,bp:6.43,sp:3.4,pd:-3.03,tp:42,sl:14,mh:0,hm:2884.2},
+  {r:"AMZN_S15M_00011_WR80.0%/APnL113.15%/PTPnL7.54%",tf:"15M",fam:"AMZNS",bt:17,st:113,bw:88.2,sw:74.3,wd:-13.9,ba:151.83,sa:672.22,ad:520.39,bp:8.93,sp:5.95,pd:-2.98,tp:8,sl:0,mh:103,hm:13192.9},
+  {r:"AMZN_L5M_00017_WR79.4%/APnL116.27%/PTPnL3.42%",tf:"5M",fam:"AMZNL",bt:30,st:110,bw:73.3,sw:66.4,wd:-6.9,ba:143.22,sa:205.84,ad:62.62,bp:4.77,sp:1.87,pd:-2.9,tp:48,sl:23,mh:38,hm:3089.6},
+  {r:"AMZN_S1H_00041_WR100.0%/APnL62.58%/PTPnL10.43%",tf:"1H",fam:"AMZNS",bt:11,st:10,bw:54.5,sw:70.0,wd:15.5,ba:62.35,sa:27.67,ad:-34.68,bp:5.67,sp:2.77,pd:-2.9,tp:3,sl:2,mh:5,hm:10085.6},
+  {r:"AMZN_X5M_00014_WR85.7%/APnL73.79%/PTPnL5.27%",tf:"5M",fam:"AMZNX",bt:18,st:38,bw:88.9,sw:84.2,wd:-4.7,ba:128.75,sa:161.9,ad:33.15,bp:7.15,sp:4.26,pd:-2.89,tp:19,sl:3,mh:15,hm:5161.6},
+  {r:"AMZN_X15M_00012_WR75.0%/APnL76.28%/PTPnL9.54%",tf:"15M",fam:"AMZNX",bt:18,st:14,bw:83.3,sw:50.0,wd:-33.3,ba:125.14,sa:56.9,ad:-68.24,bp:6.95,sp:4.06,pd:-2.89,tp:1,sl:6,mh:7,hm:8156.5},
+  {r:"AMZN_S5M_00053_WR100.0%/APnL54.61%/PTPnL18.2%",tf:"5M",fam:"AMZNS",bt:6,st:3,bw:100.0,sw:33.3,wd:-66.7,ba:44.33,sa:13.78,ad:-30.55,bp:7.39,sp:4.59,pd:-2.8,tp:0,sl:1,mh:2,hm:9228.0},
+  {r:"AMZN_X15M_00011_WR72.7%/APnL83.95%/PTPnL7.63%",tf:"15M",fam:"AMZNX",bt:17,st:26,bw:88.2,sw:53.8,wd:-34.4,ba:126.68,sa:121.43,ad:-5.25,bp:7.45,sp:4.67,pd:-2.78,tp:9,sl:11,mh:6,hm:7446.0},
+  {r:"AMZN_L5M_00047_WR80.0%/APnL44.55%/PTPnL8.91%",tf:"5M",fam:"AMZNL",bt:6,st:7,bw:100.0,sw:71.4,wd:-28.6,ba:59.86,sa:50.49,ad:-9.37,bp:9.98,sp:7.21,pd:-2.77,tp:0,sl:1,mh:6,hm:13001.7},
+  {r:"AMZN_S1H_00025_WR100.0%/APnL84.11%/PTPnL10.51%",tf:"1H",fam:"AMZNS",bt:17,st:24,bw:70.6,sw:62.5,wd:-8.1,ba:98.64,sa:73.35,ad:-25.29,bp:5.8,sp:3.06,pd:-2.74,tp:7,sl:8,mh:9,hm:9692.2},
+  {r:"AMZN_L5M_00037_WR81.8%/APnL86.82%/PTPnL7.89%",tf:"5M",fam:"AMZNL",bt:13,st:126,bw:84.6,sw:71.4,wd:-13.2,ba:101.89,sa:648.09,ad:546.2,bp:7.84,sp:5.14,pd:-2.7,tp:18,sl:10,mh:96,hm:12491.9},
+  {r:"AMZN_S15M_00005_WR81.8%/APnL120.09%/PTPnL3.64%",tf:"15M",fam:"AMZNS",bt:38,st:96,bw:73.7,sw:62.5,wd:-11.2,ba:159.44,sa:146.46,ad:-12.98,bp:4.2,sp:1.53,pd:-2.67,tp:16,sl:16,mh:63,hm:3243.6},
+  {r:"AMZN_S5M_00051_WR100.0%/APnL56.73%/PTPnL18.91%",tf:"5M",fam:"AMZNS",bt:5,st:10,bw:100.0,sw:70.0,wd:-30.0,ba:46.18,sa:66.22,ad:20.04,bp:9.24,sp:6.62,pd:-2.62,tp:0,sl:2,mh:8,hm:11791.8},
+  {r:"AMZN_L1H_00013_WR100.0%/APnL62.56%/PTPnL8.94%",tf:"1H",fam:"AMZNL",bt:7,st:13,bw:85.7,sw:84.6,wd:-1.1,ba:66.23,sa:88.86,ad:22.63,bp:9.46,sp:6.84,pd:-2.62,tp:9,sl:0,mh:4,hm:9126.5},
+  {r:"AMZN_S1H_00012_WR75.0%/APnL100.4%/PTPnL6.28%",tf:"1H",fam:"AMZNS",bt:27,st:59,bw:96.3,sw:61.0,wd:-35.3,ba:129.18,sa:128.07,ad:-1.11,bp:4.78,sp:2.17,pd:-2.61,tp:0,sl:18,mh:40,hm:6911.4},
+  {r:"AMZN_S15M_00022_WR88.0%/APnL97.45%/PTPnL1.95%",tf:"15M",fam:"AMZNS",bt:33,st:354,bw:75.8,sw:83.6,wd:7.8,ba:135.99,sa:541.94,ad:405.95,bp:4.12,sp:1.53,pd:-2.59,tp:295,sl:52,mh:7,hm:3777.1},
+  {r:"AMZN_S1H_00040_WR63.6%/APnL64.13%/PTPnL5.83%",tf:"1H",fam:"AMZNS",bt:7,st:36,bw:85.7,sw:72.2,wd:-13.5,ba:63.77,sa:234.8,ad:171.03,bp:9.11,sp:6.52,pd:-2.59,tp:1,sl:9,mh:26,hm:10688.6},
+  {r:"AMZN_SD_00044_WR75.0%/APnL37.65%/PTPnL9.41%",tf:"DAILY",fam:"AMZNS",bt:4,st:10,bw:100.0,sw:60.0,wd:-40.0,ba:44.55,sa:85.64,ad:41.09,bp:11.14,sp:8.56,pd:-2.58,tp:6,sl:4,mh:0,hm:11244.1},
+  {r:"AMZN_X5M_00024_WR80.0%/APnL49.67%/PTPnL9.93%",tf:"5M",fam:"AMZNX",bt:11,st:16,bw:81.8,sw:68.8,wd:-13.0,ba:80.86,sa:76.44,ad:-4.42,bp:7.35,sp:4.78,pd:-2.57,tp:1,sl:4,mh:11,hm:10347.9},
+  {r:"AMZN_L1H_00023_WR80.0%/APnL29.92%/PTPnL2.99%",tf:"1H",fam:"AMZNL",bt:11,st:18,bw:90.9,sw:83.3,wd:-7.6,ba:51.84,sa:38.92,ad:-12.92,bp:4.71,sp:2.16,pd:-2.55,tp:12,sl:2,mh:4,hm:3193.2},
+  {r:"AMZN_S15M_00024_WR80.8%/APnL97.03%/PTPnL3.73%",tf:"15M",fam:"AMZNS",bt:30,st:54,bw:73.3,sw:68.5,wd:-4.8,ba:134.23,sa:104.5,ad:-29.73,bp:4.47,sp:1.94,pd:-2.53,tp:36,sl:17,mh:1,hm:4133.3},
+  {r:"AMZN_SD_00021_WR100.0%/APnL50.69%/PTPnL12.67%",tf:"DAILY",fam:"AMZNS",bt:6,st:9,bw:83.3,sw:55.6,wd:-27.7,ba:65.83,sa:75.92,ad:10.09,bp:10.97,sp:8.44,pd:-2.53,tp:5,sl:4,mh:0,hm:12917.4},
+  {r:"AMZN_S1H_00031_WR72.7%/APnL74.7%/PTPnL6.79%",tf:"1H",fam:"AMZNS",bt:12,st:13,bw:75.0,sw:61.5,wd:-13.5,ba:88.21,sa:63.31,ad:-24.9,bp:7.35,sp:4.87,pd:-2.48,tp:0,sl:4,mh:9,hm:6443.7},
+  {r:"AMZN_S1H_00011_WR71.4%/APnL103.01%/PTPnL7.36%",tf:"1H",fam:"AMZNS",bt:26,st:29,bw:88.5,sw:55.2,wd:-33.3,ba:130.25,sa:76.38,ad:-53.87,bp:5.01,sp:2.63,pd:-2.38,tp:0,sl:12,mh:17,hm:6279.8},
+  {r:"AMZN_S1H_00021_WR89.5%/APnL88.61%/PTPnL4.66%",tf:"1H",fam:"AMZNS",bt:15,st:45,bw:86.7,sw:88.9,wd:2.2,ba:112.66,sa:232.16,ad:119.5,bp:7.51,sp:5.16,pd:-2.35,tp:34,sl:2,mh:9,hm:7787.7},
+  {r:"AMZN_X1H_00023_WR100.0%/APnL35.47%/PTPnL11.82%",tf:"1H",fam:"AMZNX",bt:12,st:6,bw:75.0,sw:66.7,wd:-8.3,ba:73.21,sa:22.7,ad:-50.51,bp:6.1,sp:3.78,pd:-2.32,tp:2,sl:2,mh:2,hm:8022.8},
+  {r:"AMZN_S15M_00043_WR87.5%/APnL67.84%/PTPnL8.48%",tf:"15M",fam:"AMZNS",bt:13,st:12,bw:84.6,sw:83.3,wd:-1.3,ba:94.11,sa:59.64,ad:-34.47,bp:7.24,sp:4.97,pd:-2.27,tp:0,sl:0,mh:12,hm:5850.0},
+  {r:"AMZN_S15M_00053_WR100.0%/APnL48.52%/PTPnL12.13%",tf:"15M",fam:"AMZNS",bt:4,st:9,bw:100.0,sw:88.9,wd:-11.1,ba:43.98,sa:78.75,ad:34.77,bp:10.99,sp:8.75,pd:-2.24,tp:1,sl:0,mh:8,hm:11483.2},
+  {r:"AMZN_XD_00001_WR89.5%/APnL92.93%/PTPnL4.89%",tf:"DAILY",fam:"AMZNX",bt:4,st:75,bw:100.0,sw:82.7,wd:-17.3,ba:24.63,sa:297.96,ad:273.33,bp:6.16,sp:3.97,pd:-2.19,tp:60,sl:13,mh:0,hm:5851.3},
+  {r:"AMZN_S15M_00006_WR82.4%/APnL116.62%/PTPnL6.86%",tf:"15M",fam:"AMZNS",bt:21,st:54,bw:81.0,sw:72.2,wd:-8.8,ba:158.91,sa:292.24,ad:133.33,bp:7.57,sp:5.41,pd:-2.16,tp:24,sl:0,mh:29,hm:10226.4},
+  {r:"AMZN_S15M_00015_WR73.3%/APnL110.25%/PTPnL7.35%",tf:"15M",fam:"AMZNS",bt:18,st:99,bw:83.3,sw:74.7,wd:-8.6,ba:147.36,sa:598.1,ad:450.74,bp:8.19,sp:6.04,pd:-2.15,tp:19,sl:0,mh:79,hm:12468.1},
+  {r:"AMZN_S5M_00065_WR88.9%/APnL30.97%/PTPnL3.44%",tf:"5M",fam:"AMZNS",bt:5,st:32,bw:60.0,sw:90.6,wd:30.6,ba:25.15,sa:93.32,ad:68.17,bp:5.03,sp:2.92,pd:-2.11,tp:28,sl:2,mh:2,hm:3783.1},
+  {r:"AMZN_S1H_00037_WR60.0%/APnL67.78%/PTPnL6.78%",tf:"1H",fam:"AMZNS",bt:18,st:20,bw:72.2,sw:40.0,wd:-32.2,ba:74.0,sa:40.68,ad:-33.32,bp:4.11,sp:2.03,pd:-2.08,tp:0,sl:12,mh:8,hm:6786.6},
+  {r:"AMZN_S15M_00047_WR88.9%/APnL51.76%/PTPnL5.75%",tf:"15M",fam:"AMZNS",bt:10,st:15,bw:100.0,sw:80.0,wd:-20.0,ba:62.4,sa:63.09,ad:0.69,bp:6.24,sp:4.21,pd:-2.03,tp:10,sl:0,mh:5,hm:4298.3},
+  {r:"AMZN_S1H_00015_WR66.7%/APnL99.3%/PTPnL8.28%",tf:"1H",fam:"AMZNS",bt:24,st:27,bw:79.2,sw:48.1,wd:-31.1,ba:121.86,sa:82.66,ad:-39.2,bp:5.08,sp:3.06,pd:-2.02,tp:1,sl:13,mh:13,hm:8351.3},
+  {r:"AMZN_S5M_00002_WR84.6%/APnL142.82%/PTPnL10.99%",tf:"5M",fam:"AMZNS",bt:42,st:39,bw:71.4,sw:59.0,wd:-12.4,ba:189.83,sa:98.55,ad:-91.28,bp:4.52,sp:2.53,pd:-1.99,tp:1,sl:12,mh:25,hm:6076.3},
+  {r:"AMZN_S5M_00009_WR80.0%/APnL123.05%/PTPnL4.92%",tf:"5M",fam:"AMZNS",bt:36,st:183,bw:77.8,sw:66.1,wd:-11.7,ba:166.56,sa:494.87,ad:328.31,bp:4.63,sp:2.7,pd:-1.93,tp:51,sl:29,mh:101,hm:6100.9},
+  {r:"AMZN_S5M_00006_WR74.2%/APnL134.14%/PTPnL4.33%",tf:"5M",fam:"AMZNS",bt:38,st:245,bw:73.7,sw:67.3,wd:-6.4,ba:167.46,sa:609.36,ad:441.9,bp:4.41,sp:2.49,pd:-1.92,tp:43,sl:50,mh:147,hm:4771.9},
+  {r:"AMZN_S1H_00001_WR71.4%/APnL122.39%/PTPnL5.83%",tf:"1H",fam:"AMZNS",bt:7,st:115,bw:100.0,sw:66.1,wd:-33.9,ba:29.12,sa:257.59,ad:228.47,bp:4.16,sp:2.24,pd:-1.92,tp:0,sl:26,mh:89,hm:7344.7},
+  {r:"AMZN_X15M_00030_WR100.0%/APnL27.54%/PTPnL4.59%",tf:"15M",fam:"AMZNX",bt:24,st:13,bw:83.3,sw:76.9,wd:-6.4,ba:86.31,sa:22.67,ad:-63.64,bp:3.6,sp:1.74,pd:-1.86,tp:10,sl:2,mh:1,hm:3234.5},
+  {r:"AMZN_X1H_00027_WR100.0%/APnL24.96%/PTPnL4.16%",tf:"1H",fam:"AMZNX",bt:11,st:13,bw:63.6,sw:76.9,wd:13.3,ba:37.44,sa:20.39,ad:-17.05,bp:3.4,sp:1.57,pd:-1.83,tp:10,sl:2,mh:1,hm:2392.8},
+  {r:"AMZN_SD_00036_WR75.0%/APnL40.81%/PTPnL10.2%",tf:"DAILY",fam:"AMZNS",bt:3,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:46.96,sa:55.28,ad:8.32,bp:15.65,sp:13.82,pd:-1.83,tp:3,sl:1,mh:0,hm:11409.0},
+  {r:"AMZN_L1H_00027_WR83.3%/APnL25.76%/PTPnL4.29%",tf:"1H",fam:"AMZNL",bt:14,st:7,bw:64.3,sw:57.1,wd:-7.2,ba:49.39,sa:12.04,ad:-37.35,bp:3.53,sp:1.72,pd:-1.81,tp:1,sl:3,mh:3,hm:2265.1},
+  {r:"AMZN_X5M_00009_WR81.8%/APnL95.77%/PTPnL8.71%",tf:"5M",fam:"AMZNX",bt:21,st:90,bw:85.7,sw:72.2,wd:-13.5,ba:139.14,sa:436.87,ad:297.73,bp:6.63,sp:4.85,pd:-1.78,tp:10,sl:0,mh:77,hm:12656.4},
+  {r:"AMZN_S1H_00005_WR91.7%/APnL108.04%/PTPnL4.5%",tf:"1H",fam:"AMZNS",bt:28,st:33,bw:82.1,sw:81.8,wd:-0.3,ba:144.02,sa:112.97,ad:-31.05,bp:5.14,sp:3.42,pd:-1.72,tp:27,sl:6,mh:0,hm:2886.7},
+  {r:"AMZN_SD_00009_WR82.4%/APnL84.07%/PTPnL4.95%",tf:"DAILY",fam:"AMZNS",bt:21,st:38,bw:81.0,sw:57.9,wd:-23.1,ba:114.97,sa:142.33,ad:27.36,bp:5.47,sp:3.75,pd:-1.72,tp:21,sl:16,mh:1,hm:8625.8},
+  {r:"AMZN_X1H_00012_WR71.4%/APnL55.82%/PTPnL7.97%",tf:"1H",fam:"AMZNX",bt:21,st:11,bw:76.2,sw:72.7,wd:-3.5,ba:106.95,sa:37.82,ad:-69.13,bp:5.09,sp:3.44,pd:-1.65,tp:0,sl:3,mh:8,hm:5514.3},
+  {r:"AMZN_S15M_00010_WR80.0%/APnL113.15%/PTPnL7.54%",tf:"15M",fam:"AMZNS",bt:20,st:113,bw:75.0,sw:74.3,wd:-0.7,ba:151.85,sa:672.22,ad:520.37,bp:7.59,sp:5.95,pd:-1.64,tp:8,sl:0,mh:103,hm:13192.9},
+  {r:"AMZN_S15M_00035_WR72.0%/APnL91.59%/PTPnL3.66%",tf:"15M",fam:"AMZNS",bt:31,st:61,bw:77.4,sw:60.7,wd:-16.7,ba:119.5,sa:135.91,ad:16.41,bp:3.85,sp:2.23,pd:-1.62,tp:4,sl:15,mh:42,hm:4023.9},
+  {r:"AMZN_S5M_00001_WR80.0%/APnL145.04%/PTPnL4.83%",tf:"5M",fam:"AMZNS",bt:6,st:109,bw:83.3,sw:62.4,wd:-20.9,ba:22.21,sa:237.82,ad:215.61,bp:3.7,sp:2.18,pd:-1.52,tp:4,sl:14,mh:90,hm:3634.0},
+  {r:"AMZN_S5M_00064_WR87.5%/APnL34.89%/PTPnL4.36%",tf:"5M",fam:"AMZNS",bt:6,st:11,bw:100.0,sw:90.9,wd:-9.1,ba:29.06,sa:36.98,ad:7.92,bp:4.84,sp:3.36,pd:-1.48,tp:6,sl:1,mh:4,hm:3536.5},
+  {r:"AMZN_S15M_00016_WR75.0%/APnL107.98%/PTPnL4.5%",tf:"15M",fam:"AMZNS",bt:33,st:155,bw:75.8,sw:65.8,wd:-10.0,ba:147.1,sa:475.11,ad:328.01,bp:4.46,sp:3.07,pd:-1.39,tp:39,sl:26,mh:90,hm:6406.5},
+  {r:"AMZN_S1H_00032_WR63.6%/APnL70.99%/PTPnL6.45%",tf:"1H",fam:"AMZNS",bt:19,st:16,bw:89.5,sw:50.0,wd:-39.5,ba:87.09,sa:51.92,ad:-35.17,bp:4.58,sp:3.24,pd:-1.34,tp:0,sl:8,mh:8,hm:7738.7},
+  {r:"AMZN_S15M_00028_WR89.8%/APnL94.86%/PTPnL1.61%",tf:"15M",fam:"AMZNS",bt:46,st:590,bw:80.4,sw:88.3,wd:7.9,ba:130.5,sa:888.72,ad:758.22,bp:2.84,sp:1.51,pd:-1.33,tp:520,sl:64,mh:4,hm:3029.7},
+  {r:"AMZN_XD_00005_WR75.0%/APnL84.01%/PTPnL5.25%",tf:"DAILY",fam:"AMZNX",bt:20,st:34,bw:90.0,sw:58.8,wd:-31.2,ba:138.92,sa:191.0,ad:52.08,bp:6.95,sp:5.62,pd:-1.33,tp:20,sl:14,mh:0,hm:15596.1},
+  {r:"AMZN_S5M_00047_WR88.9%/APnL61.5%/PTPnL6.83%",tf:"5M",fam:"AMZNS",bt:10,st:20,bw:90.0,sw:65.0,wd:-25.0,ba:54.1,sa:81.86,ad:27.76,bp:5.41,sp:4.09,pd:-1.32,tp:3,sl:1,mh:16,hm:3548.0},
+  {r:"AMZN_L5M_00031_WR81.8%/APnL99.42%/PTPnL9.04%",tf:"5M",fam:"AMZNL",bt:18,st:208,bw:88.9,sw:72.1,wd:-16.8,ba:121.19,sa:1129.28,ad:1008.09,bp:6.73,sp:5.43,pd:-1.3,tp:7,sl:0,mh:196,hm:13213.0},
+  {r:"AMZN_L5M_00015_WR80.0%/APnL117.02%/PTPnL3.9%",tf:"5M",fam:"AMZNL",bt:38,st:77,bw:81.6,sw:68.8,wd:-12.8,ba:146.31,sa:199.88,ad:53.57,bp:3.85,sp:2.6,pd:-1.25,tp:53,sl:24,mh:0,hm:3103.2},
+  {r:"AMZN_S15M_00025_WR78.6%/APnL96.3%/PTPnL6.88%",tf:"15M",fam:"AMZNS",bt:21,st:215,bw:81.0,sw:70.7,wd:-10.3,ba:131.17,sa:1078.92,ad:947.75,bp:6.25,sp:5.02,pd:-1.23,tp:4,sl:0,mh:205,hm:13331.6},
+  {r:"AMZN_S15M_00002_WR78.6%/APnL139.87%/PTPnL9.99%",tf:"15M",fam:"AMZNS",bt:36,st:42,bw:77.8,sw:54.8,wd:-23.0,ba:167.56,sa:147.8,ad:-19.76,bp:4.65,sp:3.52,pd:-1.13,tp:11,sl:18,mh:13,hm:7556.6},
+  {r:"AMZN_S1H_00023_WR76.5%/APnL86.85%/PTPnL5.11%",tf:"1H",fam:"AMZNS",bt:34,st:60,bw:91.2,sw:63.3,wd:-27.9,ba:103.69,sa:115.35,ad:11.66,bp:3.05,sp:1.92,pd:-1.13,tp:29,sl:21,mh:10,hm:7456.1},
+  {r:"AMZN_S15M_00045_WR100.0%/APnL55.08%/PTPnL6.12%",tf:"15M",fam:"AMZNS",bt:15,st:31,bw:80.0,sw:87.1,wd:7.1,ba:79.72,sa:129.98,ad:50.26,bp:5.31,sp:4.19,pd:-1.12,tp:26,sl:3,mh:2,hm:4500.5},
+  {r:"AMZN_S5M_00003_WR77.8%/APnL136.28%/PTPnL5.05%",tf:"5M",fam:"AMZNS",bt:51,st:228,bw:80.4,sw:66.2,wd:-14.2,ba:188.42,sa:588.01,ad:399.59,bp:3.69,sp:2.58,pd:-1.11,tp:54,sl:45,mh:126,hm:6089.5},
+  {r:"AMZN_S15M_00062_WR100.0%/APnL41.12%/PTPnL13.71%",tf:"15M",fam:"AMZNS",bt:3,st:4,bw:100.0,sw:100.0,wd:0.0,ba:36.67,sa:44.44,ad:7.77,bp:12.22,sp:11.11,pd:-1.11,tp:2,sl:0,mh:2,hm:10996.8},
+  {r:"AMZN_S1H_00036_WR71.4%/APnL67.99%/PTPnL9.71%",tf:"1H",fam:"AMZNS",bt:10,st:15,bw:70.0,sw:73.3,wd:3.3,ba:74.47,sa:95.39,ad:20.92,bp:7.45,sp:6.36,pd:-1.09,tp:0,sl:0,mh:15,hm:8400.0},
+  {r:"AMZN_S1H_00013_WR81.8%/APnL99.93%/PTPnL9.08%",tf:"1H",fam:"AMZNS",bt:18,st:36,bw:72.2,sw:69.4,wd:-2.8,ba:127.39,sa:217.45,ad:90.06,bp:7.08,sp:6.04,pd:-1.04,tp:2,sl:0,mh:34,hm:12502.4},
+  {r:"AMZN_S15M_00056_WR100.0%/APnL45.52%/PTPnL11.38%",tf:"15M",fam:"AMZNS",bt:5,st:20,bw:100.0,sw:85.0,wd:-15.0,ba:42.38,sa:148.91,ad:106.53,bp:8.48,sp:7.45,pd:-1.03,tp:4,sl:2,mh:14,hm:9967.5},
+  {r:"AMZN_S5M_00048_WR100.0%/APnL60.49%/PTPnL20.16%",tf:"5M",fam:"AMZNS",bt:4,st:7,bw:100.0,sw:71.4,wd:-28.6,ba:50.16,sa:81.17,ad:31.01,bp:12.54,sp:11.6,pd:-0.94,tp:1,sl:1,mh:5,hm:11959.3},
+  {r:"AMZN_S15M_00004_WR77.3%/APnL124.63%/PTPnL5.67%",tf:"15M",fam:"AMZNS",bt:37,st:145,bw:78.4,sw:64.1,wd:-14.3,ba:163.04,sa:506.02,ad:342.98,bp:4.41,sp:3.49,pd:-0.92,tp:58,sl:40,mh:47,hm:7594.2},
+  {r:"AMZN_X1H_00007_WR70.6%/APnL66.4%/PTPnL3.91%",tf:"1H",fam:"AMZNX",bt:32,st:34,bw:81.2,sw:67.6,wd:-13.6,ba:129.44,sa:106.06,ad:-23.38,bp:4.04,sp:3.12,pd:-0.92,tp:12,sl:8,mh:14,hm:2754.4},
+  {r:"AMZN_S5M_00035_WR83.3%/APnL93.44%/PTPnL7.79%",tf:"5M",fam:"AMZNS",bt:21,st:151,bw:85.7,sw:72.2,wd:-13.5,ba:121.77,sa:740.09,ad:618.32,bp:5.8,sp:4.9,pd:-0.9,tp:7,sl:0,mh:140,hm:13168.4},
+  {r:"AMZN_S15M_00037_WR72.2%/APnL87.92%/PTPnL4.88%",tf:"15M",fam:"AMZNS",bt:35,st:61,bw:88.6,sw:60.7,wd:-27.9,ba:117.03,sa:150.93,ad:33.9,bp:3.34,sp:2.47,pd:-0.87,tp:26,sl:22,mh:11,hm:6834.1},
+  {r:"AMZN_S5M_00020_WR80.0%/APnL108.6%/PTPnL5.43%",tf:"5M",fam:"AMZNS",bt:31,st:119,bw:83.9,sw:74.8,wd:-9.1,ba:140.44,sa:442.34,ad:301.9,bp:4.53,sp:3.72,pd:-0.81,tp:57,sl:22,mh:39,hm:8336.4},
+  {r:"AMZN_S15M_00059_WR100.0%/APnL41.74%/PTPnL13.91%",tf:"15M",fam:"AMZNS",bt:4,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:39.26,sa:36.14,ad:-3.12,bp:9.81,sp:9.04,pd:-0.77,tp:1,sl:1,mh:2,hm:9835.8},
+  {r:"AMZN_S15M_00013_WR75.0%/APnL112.54%/PTPnL9.38%",tf:"15M",fam:"AMZNS",bt:19,st:53,bw:84.2,sw:73.6,wd:-10.6,ba:151.07,sa:385.38,ad:234.31,bp:7.95,sp:7.27,pd:-0.68,tp:1,sl:0,mh:52,hm:13560.5},
+  {r:"AMZN_S1H_00007_WR71.4%/APnL107.32%/PTPnL7.67%",tf:"1H",fam:"AMZNS",bt:49,st:31,bw:79.6,sw:51.6,wd:-28.0,ba:142.99,sa:70.66,ad:-72.33,bp:2.92,sp:2.28,pd:-0.64,tp:0,sl:12,mh:19,hm:6268.9},
+  {r:"AMZN_S1H_00045_WR100.0%/APnL50.36%/PTPnL16.79%",tf:"1H",fam:"AMZNS",bt:8,st:9,bw:87.5,sw:66.7,wd:-20.8,ba:55.11,sa:56.21,ad:1.1,bp:6.89,sp:6.25,pd:-0.64,tp:2,sl:3,mh:4,hm:9191.4},
+  {r:"AMZN_S1H_00047_WR100.0%/APnL44.81%/PTPnL14.94%",tf:"1H",fam:"AMZNS",bt:6,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:53.75,sa:33.58,ad:-20.17,bp:8.96,sp:8.4,pd:-0.56,tp:0,sl:1,mh:3,hm:11122.2},
+  {r:"AMZN_S5M_00004_WR77.8%/APnL135.76%/PTPnL5.03%",tf:"5M",fam:"AMZNS",bt:57,st:235,bw:78.9,sw:66.8,wd:-12.1,ba:181.54,sa:618.3,ad:436.76,bp:3.18,sp:2.63,pd:-0.55,tp:56,sl:46,mh:129,hm:6065.2},
+  {r:"AMZN_S15M_00001_WR69.6%/APnL150.1%/PTPnL2.68%",tf:"15M",fam:"AMZNS",bt:14,st:565,bw:92.9,sw:61.1,wd:-31.8,ba:21.76,sa:598.68,ad:576.92,bp:1.55,sp:1.06,pd:-0.49,tp:0,sl:46,mh:514,hm:3008.8},
+  {r:"AMZN_S5M_00055_WR100.0%/APnL54.45%/PTPnL18.15%",tf:"5M",fam:"AMZNS",bt:10,st:3,bw:90.0,sw:33.3,wd:-56.7,ba:42.9,sa:11.46,ad:-31.44,bp:4.29,sp:3.82,pd:-0.47,tp:0,sl:1,mh:2,hm:9219.7},
+  {r:"AMZN_S15M_00054_WR100.0%/APnL48.32%/PTPnL12.08%",tf:"15M",fam:"AMZNS",bt:3,st:5,bw:100.0,sw:100.0,wd:0.0,ba:43.67,sa:70.71,ad:27.04,bp:14.56,sp:14.14,pd:-0.42,tp:1,sl:0,mh:4,hm:11309.8},
+  {r:"AMZN_S15M_00051_WR100.0%/APnL49.09%/PTPnL16.36%",tf:"15M",fam:"AMZNS",bt:3,st:3,bw:100.0,sw:100.0,wd:0.0,ba:44.94,sa:43.74,ad:-1.2,bp:14.98,sp:14.58,pd:-0.4,tp:1,sl:0,mh:2,hm:10919.7},
+  {r:"AMZN_S5M_00008_WR70.6%/APnL126.63%/PTPnL3.72%",tf:"5M",fam:"AMZNS",bt:77,st:172,bw:77.9,sw:57.0,wd:-20.9,ba:166.58,sa:331.6,ad:165.02,bp:2.16,sp:1.93,pd:-0.23,tp:21,sl:64,mh:87,hm:3383.8},
+  {r:"AMZN_S1H_00020_WR85.7%/APnL89.07%/PTPnL6.36%",tf:"1H",fam:"AMZNS",bt:20,st:119,bw:85.0,sw:67.2,wd:-17.8,ba:113.06,sa:649.12,ad:536.06,bp:5.65,sp:5.45,pd:-0.2,tp:1,sl:4,mh:112,hm:12441.9},
+  {r:"AMZN_X1H_00025_WR100.0%/APnL32.48%/PTPnL5.41%",tf:"1H",fam:"AMZNX",bt:12,st:7,bw:58.3,sw:100.0,wd:41.7,ba:66.13,sa:37.9,ad:-28.23,bp:5.51,sp:5.41,pd:-0.1,tp:7,sl:0,mh:0,hm:2077.4},
+  {r:"AMZN_S15M_00038_WR75.0%/APnL85.61%/PTPnL5.35%",tf:"15M",fam:"AMZNS",bt:76,st:29,bw:88.2,sw:51.7,wd:-36.5,ba:115.99,sa:43.04,ad:-72.95,bp:1.53,sp:1.48,pd:-0.05,tp:7,sl:13,mh:9,hm:2881.5},
+  {r:"AMZN_X5M_00033_WR100.0%/APnL27.33%/PTPnL3.04%",tf:"5M",fam:"AMZNX",bt:0,st:16,bw:0,sw:75.0,wd:null,ba:0,sa:29.27,ad:null,bp:0,sp:1.83,pd:null,tp:2,sl:2,mh:12,hm:614.8},
+  {r:"AMZN_S15M_00067_WR92.9%/APnL21.76%/PTPnL1.55%",tf:"15M",fam:"AMZNS",bt:0,st:24,bw:0,sw:91.7,wd:null,ba:0,sa:26.84,ad:null,bp:0,sp:1.12,pd:null,tp:22,sl:1,mh:1,hm:1245.6},
+  {r:"AMZN_X1H_00006_WR62.5%/APnL69.15%/PTPnL8.64%",tf:"1H",fam:"AMZNX",bt:17,st:10,bw:88.2,sw:80.0,wd:-8.2,ba:139.25,sa:82.0,ad:-57.25,bp:8.19,sp:8.2,pd:0.01,tp:0,sl:2,mh:8,hm:10657.7},
+  {r:"AMZN_SD_00008_WR87.5%/APnL92.46%/PTPnL11.56%",tf:"DAILY",fam:"AMZNS",bt:21,st:13,bw:81.0,sw:30.8,wd:-50.2,ba:114.97,sa:71.52,ad:-43.45,bp:5.47,sp:5.5,pd:0.03,tp:2,sl:9,mh:0,hm:16345.1},
+  {r:"AMZN_L15M_00018_WR76.9%/APnL90.61%/PTPnL6.97%",tf:"15M",fam:"AMZNL",bt:23,st:54,bw:78.3,sw:68.5,wd:-9.8,ba:133.55,sa:316.6,ad:183.05,bp:5.81,sp:5.86,pd:0.05,tp:4,sl:0,mh:50,hm:11378.6},
+  {r:"AMZN_L5M_00005_WR84.2%/APnL125.02%/PTPnL6.58%",tf:"5M",fam:"AMZNL",bt:55,st:102,bw:83.6,sw:72.5,wd:-11.1,ba:163.79,sa:312.38,ad:148.59,bp:2.98,sp:3.06,pd:0.08,tp:22,sl:7,mh:69,hm:6735.0},
+  {r:"AMZN_L15M_00019_WR76.9%/APnL90.61%/PTPnL6.97%",tf:"15M",fam:"AMZNL",bt:23,st:54,bw:82.6,sw:68.5,wd:-14.1,ba:132.34,sa:316.6,ad:184.26,bp:5.75,sp:5.86,pd:0.11,tp:4,sl:0,mh:50,hm:11378.6},
+  {r:"AMZN_X5M_00023_WR100.0%/APnL51.07%/PTPnL12.77%",tf:"5M",fam:"AMZNX",bt:12,st:6,bw:83.3,sw:66.7,wd:-16.6,ba:88.97,sa:45.27,ad:-43.7,bp:7.41,sp:7.55,pd:0.14,tp:1,sl:1,mh:4,hm:10855.5},
+  {r:"AMZN_S5M_00017_WR84.2%/APnL116.94%/PTPnL6.15%",tf:"5M",fam:"AMZNS",bt:54,st:276,bw:85.2,sw:67.8,wd:-17.4,ba:144.87,sa:781.53,ad:636.66,bp:2.68,sp:2.83,pd:0.15,tp:16,sl:7,mh:245,hm:7444.3},
+  {r:"AMZN_S15M_00031_WR86.7%/APnL94.23%/PTPnL6.28%",tf:"15M",fam:"AMZNS",bt:27,st:121,bw:74.1,sw:72.7,wd:-1.4,ba:127.69,sa:592.18,ad:464.49,bp:4.73,sp:4.89,pd:0.16,tp:26,sl:23,mh:71,hm:11184.2},
+  {r:"AMZN_S5M_00022_WR83.3%/APnL106.2%/PTPnL8.85%",tf:"5M",fam:"AMZNS",bt:26,st:258,bw:76.9,sw:74.4,wd:-2.5,ba:138.88,sa:1434.94,ad:1296.06,bp:5.34,sp:5.56,pd:0.22,tp:12,sl:2,mh:239,hm:13257.6},
+  {r:"AMZN_S5M_00016_WR84.2%/APnL116.94%/PTPnL6.15%",tf:"5M",fam:"AMZNS",bt:57,st:276,bw:82.5,sw:67.8,wd:-14.7,ba:147.79,sa:781.53,ad:633.74,bp:2.59,sp:2.83,pd:0.24,tp:16,sl:7,mh:245,hm:7444.3},
+  {r:"AMZN_L15M_00010_WR75.0%/APnL97.66%/PTPnL8.14%",tf:"15M",fam:"AMZNL",bt:20,st:58,bw:85.0,sw:77.6,wd:-7.4,ba:146.22,sa:439.35,ad:293.13,bp:7.31,sp:7.58,pd:0.27,tp:4,sl:0,mh:54,hm:13432.2},
+  {r:"AMZN_S1H_00014_WR78.6%/APnL99.46%/PTPnL7.1%",tf:"1H",fam:"AMZNS",bt:24,st:80,bw:83.3,sw:72.5,wd:-10.8,ba:127.15,sa:448.43,ad:321.28,bp:5.3,sp:5.61,pd:0.31,tp:28,sl:10,mh:42,hm:10384.9},
+  {r:"AMZN_L5M_00036_WR81.8%/APnL86.82%/PTPnL7.89%",tf:"5M",fam:"AMZNL",bt:22,st:126,bw:77.3,sw:71.4,wd:-5.9,ba:103.79,sa:648.09,ad:544.3,bp:4.72,sp:5.14,pd:0.42,tp:18,sl:10,mh:96,hm:12491.9},
+  {r:"AMZN_S5M_00015_WR83.3%/APnL117.86%/PTPnL6.55%",tf:"5M",fam:"AMZNS",bt:53,st:214,bw:83.0,sw:69.2,wd:-13.8,ba:148.05,sa:695.95,ad:547.9,bp:2.79,sp:3.25,pd:0.46,tp:9,sl:30,mh:171,hm:7093.9},
+  {r:"AMZN_S5M_00012_WR82.1%/APnL122.19%/PTPnL4.36%",tf:"5M",fam:"AMZNS",bt:75,st:88,bw:85.3,sw:68.2,wd:-17.1,ba:153.93,sa:221.87,ad:67.94,bp:2.05,sp:2.52,pd:0.47,tp:60,sl:25,mh:3,hm:4419.0},
+  {r:"AMZN_SD_00005_WR88.9%/APnL95.28%/PTPnL10.59%",tf:"DAILY",fam:"AMZNS",bt:19,st:17,bw:84.2,sw:35.3,wd:-48.9,ba:126.39,sa:122.84,ad:-3.55,bp:6.65,sp:7.23,pd:0.58,tp:3,sl:11,mh:0,hm:18571.3},
+  {r:"AMZN_S5M_00037_WR80.0%/APnL92.16%/PTPnL9.22%",tf:"5M",fam:"AMZNS",bt:34,st:22,bw:88.2,sw:68.2,wd:-20.0,ba:120.06,sa:91.29,ad:-28.77,bp:3.53,sp:4.15,pd:0.62,tp:0,sl:3,mh:19,hm:7404.6},
+  {r:"AMZN_X1H_00008_WR83.3%/APnL66.31%/PTPnL3.68%",tf:"1H",fam:"AMZNX",bt:31,st:52,bw:90.3,sw:82.7,wd:-7.6,ba:121.49,sa:238.89,ad:117.4,bp:3.92,sp:4.59,pd:0.67,tp:38,sl:6,mh:8,hm:6913.1},
+  {r:"AMZN_X15M_00015_WR71.4%/APnL65.08%/PTPnL9.3%",tf:"15M",fam:"AMZNX",bt:24,st:18,bw:83.3,sw:61.1,wd:-22.2,ba:119.56,sa:102.03,ad:-17.53,bp:4.98,sp:5.67,pd:0.69,tp:0,sl:6,mh:12,hm:11009.3},
+  {r:"AMZN_S15M_00008_WR75.0%/APnL114.51%/PTPnL5.73%",tf:"15M",fam:"AMZNS",bt:43,st:113,bw:76.7,sw:73.5,wd:-3.2,ba:154.75,sa:487.52,ad:332.77,bp:3.6,sp:4.31,pd:0.71,tp:1,sl:0,mh:110,hm:7707.0},
+  {r:"AMZN_L5M_00045_WR66.7%/APnL49.51%/PTPnL16.5%",tf:"5M",fam:"AMZNL",bt:9,st:5,bw:77.8,sw:60.0,wd:-17.8,ba:72.02,sa:43.97,ad:-28.05,bp:8.0,sp:8.79,pd:0.79,tp:0,sl:2,mh:3,hm:8345.6},
+  {r:"AMZN_S5M_00007_WR77.8%/APnL129.76%/PTPnL7.21%",tf:"5M",fam:"AMZNS",bt:77,st:143,bw:77.9,sw:71.3,wd:-6.6,ba:166.58,sa:443.18,ad:276.6,bp:2.16,sp:3.1,pd:0.94,tp:7,sl:8,mh:125,hm:7415.1},
+  {r:"AMZN_S15M_00057_WR100.0%/APnL42.45%/PTPnL14.15%",tf:"15M",fam:"AMZNS",bt:5,st:8,bw:80.0,sw:75.0,wd:-5.0,ba:41.66,sa:74.39,ad:32.73,bp:8.33,sp:9.3,pd:0.97,tp:2,sl:2,mh:4,hm:9059.5},
+  {r:"AMZN_L15M_00026_WR77.8%/APnL83.39%/PTPnL9.27%",tf:"15M",fam:"AMZNL",bt:20,st:23,bw:80.0,sw:82.6,wd:2.6,ba:118.31,sa:158.9,ad:40.59,bp:5.92,sp:6.91,pd:0.99,tp:1,sl:0,mh:22,hm:13443.9},
+  {r:"AMZN_S15M_00019_WR84.6%/APnL104.08%/PTPnL8.01%",tf:"15M",fam:"AMZNS",bt:48,st:41,bw:81.2,sw:70.7,wd:-10.5,ba:141.6,sa:161.65,ad:20.05,bp:2.95,sp:3.94,pd:0.99,tp:7,sl:4,mh:29,hm:10297.4},
+  {r:"AMZN_S5M_00027_WR83.9%/APnL101.0%/PTPnL3.26%",tf:"5M",fam:"AMZNS",bt:61,st:259,bw:85.2,sw:82.2,wd:-3.0,ba:134.81,sa:832.91,ad:698.1,bp:2.21,sp:3.22,pd:1.01,tp:204,sl:35,mh:19,hm:5199.4},
+  {r:"AMZN_S5M_00067_WR83.3%/APnL22.21%/PTPnL3.7%",tf:"5M",fam:"AMZNS",bt:7,st:9,bw:85.7,sw:77.8,wd:-7.9,ba:13.15,sa:26.13,ad:12.98,bp:1.88,sp:2.9,pd:1.02,tp:5,sl:0,mh:4,hm:3263.2},
+  {r:"AMZN_S15M_00065_WR100.0%/APnL31.35%/PTPnL10.45%",tf:"15M",fam:"AMZNS",bt:7,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:28.0,sa:20.17,ad:-7.83,bp:4.0,sp:5.04,pd:1.04,tp:0,sl:1,mh:3,hm:9209.2},
+  {r:"AMZN_S15M_00032_WR84.6%/APnL93.98%/PTPnL7.23%",tf:"15M",fam:"AMZNS",bt:23,st:143,bw:73.9,sw:76.2,wd:2.3,ba:124.88,sa:926.52,ad:801.64,bp:5.43,sp:6.48,pd:1.05,tp:6,sl:3,mh:131,hm:13190.7},
+  {r:"AMZN_S15M_00012_WR80.0%/APnL112.71%/PTPnL5.64%",tf:"15M",fam:"AMZNS",bt:52,st:64,bw:80.8,sw:68.8,wd:-12.0,ba:151.3,sa:258.14,ad:106.84,bp:2.91,sp:4.03,pd:1.12,tp:27,sl:13,mh:22,hm:8709.4},
+  {r:"AMZN_X5M_00022_WR100.0%/APnL51.07%/PTPnL12.77%",tf:"5M",fam:"AMZNX",bt:17,st:7,bw:70.6,sw:57.1,wd:-13.5,ba:101.17,sa:49.71,ad:-51.46,bp:5.95,sp:7.1,pd:1.15,tp:1,sl:2,mh:4,hm:9928.4},
+  {r:"AMZN_S15M_00020_WR76.9%/APnL100.89%/PTPnL7.76%",tf:"15M",fam:"AMZNS",bt:39,st:48,bw:74.4,sw:70.8,wd:-3.6,ba:140.81,sa:229.97,ad:89.16,bp:3.61,sp:4.79,pd:1.18,tp:0,sl:5,mh:42,hm:11183.7},
+  {r:"AMZN_L1H_00012_WR100.0%/APnL62.56%/PTPnL8.94%",tf:"1H",fam:"AMZNL",bt:13,st:13,bw:61.5,sw:84.6,wd:23.1,ba:71.63,sa:88.86,ad:17.23,bp:5.51,sp:6.84,pd:1.33,tp:9,sl:0,mh:4,hm:9126.5},
+  {r:"AMZN_S15M_00055_WR100.0%/APnL47.32%/PTPnL11.83%",tf:"15M",fam:"AMZNS",bt:4,st:5,bw:100.0,sw:100.0,wd:0.0,ba:42.76,sa:60.81,ad:18.05,bp:10.69,sp:12.16,pd:1.47,tp:2,sl:0,mh:3,hm:10564.2},
+  {r:"AMZN_S15M_00007_WR84.6%/APnL115.44%/PTPnL8.88%",tf:"15M",fam:"AMZNS",bt:49,st:36,bw:79.6,sw:72.2,wd:-7.4,ba:155.19,sa:168.15,ad:12.96,bp:3.17,sp:4.67,pd:1.5,tp:5,sl:7,mh:23,hm:9618.5},
+  {r:"AMZN_XD_00020_WR75.0%/APnL40.81%/PTPnL10.2%",tf:"DAILY",fam:"AMZNX",bt:5,st:6,bw:80.0,sw:66.7,wd:-13.3,ba:50.32,sa:69.61,ad:19.29,bp:10.06,sp:11.6,pd:1.54,tp:4,sl:2,mh:0,hm:11116.7},
+  {r:"AMZN_S5M_00066_WR87.5%/APnL30.78%/PTPnL3.85%",tf:"5M",fam:"AMZNS",bt:13,st:17,bw:100.0,sw:82.4,wd:-17.6,ba:18.59,sa:51.79,ad:33.2,bp:1.43,sp:3.05,pd:1.62,tp:14,sl:0,mh:3,hm:2371.8},
+  {r:"AMZN_S5M_00019_WR80.0%/APnL111.89%/PTPnL7.46%",tf:"5M",fam:"AMZNS",bt:40,st:67,bw:80.0,sw:64.2,wd:-15.8,ba:142.17,sa:348.57,ad:206.4,bp:3.55,sp:5.2,pd:1.65,tp:23,sl:17,mh:27,hm:8370.2},
+  {r:"AMZN_S1H_00029_WR66.7%/APnL77.23%/PTPnL8.58%",tf:"1H",fam:"AMZNS",bt:13,st:17,bw:69.2,sw:76.5,wd:7.3,ba:90.9,sa:149.04,ad:58.14,bp:6.99,sp:8.77,pd:1.78,tp:0,sl:4,mh:13,hm:10682.6},
+  {r:"AMZN_S5M_00041_WR84.6%/APnL82.21%/PTPnL3.16%",tf:"5M",fam:"AMZNS",bt:106,st:428,bw:93.4,sw:82.0,wd:-11.4,ba:112.57,sa:1233.54,ad:1120.97,bp:1.06,sp:2.88,pd:1.82,tp:327,sl:5,mh:93,hm:6891.1},
+  {r:"AMZN_S15M_00023_WR76.9%/APnL97.06%/PTPnL3.73%",tf:"15M",fam:"AMZNS",bt:110,st:273,bw:88.2,sw:68.9,wd:-19.3,ba:134.85,sa:843.42,ad:708.57,bp:1.23,sp:3.09,pd:1.86,tp:14,sl:50,mh:203,hm:6759.3},
+  {r:"AMZN_S5M_00021_WR75.0%/APnL108.43%/PTPnL9.04%",tf:"5M",fam:"AMZNS",bt:38,st:69,bw:78.9,sw:66.7,wd:-12.2,ba:140.04,sa:394.16,ad:254.12,bp:3.69,sp:5.71,pd:2.02,tp:4,sl:5,mh:60,hm:11309.8},
+  {r:"AMZN_S15M_00017_WR78.6%/APnL105.79%/PTPnL7.56%",tf:"15M",fam:"AMZNS",bt:38,st:90,bw:76.3,sw:74.4,wd:-1.9,ba:144.35,sa:534.26,ad:389.91,bp:3.8,sp:5.94,pd:2.14,tp:25,sl:11,mh:54,hm:11442.3},
+  {r:"AMZN_S5M_00011_WR83.3%/APnL122.37%/PTPnL10.2%",tf:"5M",fam:"AMZNS",bt:54,st:96,bw:81.5,sw:69.8,wd:-11.7,ba:158.18,sa:487.25,ad:329.07,bp:2.93,sp:5.08,pd:2.15,tp:2,sl:9,mh:85,hm:11368.5},
+  {r:"AMZN_L5M_00027_WR93.3%/APnL103.78%/PTPnL6.92%",tf:"5M",fam:"AMZNL",bt:45,st:34,bw:88.9,sw:76.5,wd:-12.4,ba:126.6,sa:169.38,ad:42.78,bp:2.81,sp:4.98,pd:2.17,tp:11,sl:0,mh:23,hm:3400.2},
+  {r:"AMZN_SD_00017_WR100.0%/APnL56.4%/PTPnL11.28%",tf:"DAILY",fam:"AMZNS",bt:10,st:7,bw:90.0,sw:85.7,wd:-4.3,ba:70.08,sa:64.26,ad:-5.82,bp:7.01,sp:9.18,pd:2.17,tp:6,sl:1,mh:0,hm:10208.3},
+  {r:"AMZN_S1H_00022_WR89.5%/APnL88.61%/PTPnL4.66%",tf:"1H",fam:"AMZNS",bt:36,st:45,bw:88.9,sw:88.9,wd:0.0,ba:106.66,sa:232.16,ad:125.5,bp:2.96,sp:5.16,pd:2.2,tp:34,sl:2,mh:9,hm:7787.7},
+  {r:"AMZN_X15M_00021_WR66.7%/APnL43.5%/PTPnL4.83%",tf:"15M",fam:"AMZNX",bt:32,st:24,bw:96.9,sw:75.0,wd:-21.9,ba:106.31,sa:133.65,ad:27.34,bp:3.32,sp:5.57,pd:2.25,tp:14,sl:5,mh:5,hm:6219.7},
+  {r:"AMZN_S1H_00058_WR100.0%/APnL29.58%/PTPnL9.86%",tf:"1H",fam:"AMZNS",bt:10,st:5,bw:90.0,sw:80.0,wd:-10.0,ba:30.07,sa:27.82,ad:-2.25,bp:3.01,sp:5.56,pd:2.55,tp:3,sl:1,mh:1,hm:6275.6},
+  {r:"AMZN_S15M_00042_WR83.3%/APnL74.3%/PTPnL12.38%",tf:"15M",fam:"AMZNS",bt:21,st:9,bw:71.4,sw:77.8,wd:6.4,ba:104.55,sa:68.53,ad:-36.02,bp:4.98,sp:7.61,pd:2.63,tp:1,sl:1,mh:7,hm:10847.4},
+  {r:"AMZN_SD_00020_WR100.0%/APnL51.82%/PTPnL12.96%",tf:"DAILY",fam:"AMZNS",bt:14,st:4,bw:92.9,sw:50.0,wd:-42.9,ba:67.79,sa:30.16,ad:-37.63,bp:4.84,sp:7.54,pd:2.7,tp:2,sl:2,mh:0,hm:19410.0},
+  {r:"AMZN_S5M_00054_WR100.0%/APnL54.61%/PTPnL18.2%",tf:"5M",fam:"AMZNS",bt:4,st:5,bw:100.0,sw:60.0,wd:-40.0,ba:43.15,sa:67.92,ad:24.77,bp:10.79,sp:13.58,pd:2.79,tp:1,sl:1,mh:3,hm:10220.6},
+  {r:"AMZN_S5M_00034_WR84.6%/APnL95.31%/PTPnL7.33%",tf:"5M",fam:"AMZNS",bt:64,st:603,bw:82.8,sw:72.6,wd:-10.2,ba:122.28,sa:2950.69,ad:2828.41,bp:1.91,sp:4.89,pd:2.98,tp:25,sl:6,mh:559,hm:13237.9},
+  {r:"AMZN_S15M_00036_WR78.6%/APnL89.45%/PTPnL6.39%",tf:"15M",fam:"AMZNS",bt:80,st:186,bw:96.2,sw:71.5,wd:-24.7,ba:118.33,sa:858.14,ad:739.81,bp:1.48,sp:4.61,pd:3.13,tp:6,sl:17,mh:161,hm:12984.7},
+  {r:"AMZN_S1H_00052_WR100.0%/APnL35.47%/PTPnL11.82%",tf:"1H",fam:"AMZNS",bt:16,st:7,bw:68.8,sw:71.4,wd:2.6,ba:44.63,sa:42.63,ad:-2.0,bp:2.79,sp:6.09,pd:3.3,tp:3,sl:2,mh:2,hm:10482.1},
+  {r:"AMZN_S5M_00030_WR77.8%/APnL97.32%/PTPnL10.81%",tf:"5M",fam:"AMZNS",bt:84,st:29,bw:90.5,sw:58.6,wd:-31.9,ba:131.52,sa:142.82,ad:11.3,bp:1.57,sp:4.92,pd:3.35,tp:2,sl:0,mh:27,hm:11459.7},
+  {r:"AMZN_S15M_00066_WR66.7%/APnL25.81%/PTPnL8.6%",tf:"15M",fam:"AMZNS",bt:4,st:6,bw:75.0,sw:83.3,wd:8.3,ba:21.84,sa:53.05,ad:31.21,bp:5.46,sp:8.84,pd:3.38,tp:1,sl:0,mh:5,hm:11374.8},
+  {r:"AMZN_X15M_00016_WR83.3%/APnL56.91%/PTPnL4.74%",tf:"15M",fam:"AMZNX",bt:48,st:40,bw:93.8,sw:85.0,wd:-8.8,ba:114.95,sa:231.17,ad:116.22,bp:2.39,sp:5.78,pd:3.39,tp:30,sl:0,mh:10,hm:7006.3},
+  {r:"AMZN_L15M_00009_WR81.8%/APnL97.71%/PTPnL8.88%",tf:"15M",fam:"AMZNL",bt:35,st:39,bw:85.7,sw:79.5,wd:-6.2,ba:146.32,sa:299.63,ad:153.31,bp:4.18,sp:7.68,pd:3.5,tp:4,sl:0,mh:35,hm:13326.2},
+  {r:"AMZN_S5M_00031_WR83.3%/APnL97.24%/PTPnL8.1%",tf:"5M",fam:"AMZNS",bt:85,st:353,bw:90.6,sw:72.5,wd:-18.1,ba:129.36,sa:1785.48,ad:1656.12,bp:1.52,sp:5.06,pd:3.54,tp:14,sl:6,mh:326,hm:13206.5},
+  {r:"AMZN_S15M_00040_WR93.8%/APnL80.02%/PTPnL5.0%",tf:"15M",fam:"AMZNS",bt:129,st:38,bw:96.1,sw:92.1,wd:-4.0,ba:111.62,sa:167.69,ad:56.07,bp:0.87,sp:4.41,pd:3.54,tp:33,sl:1,mh:4,hm:5093.7},
+  {r:"AMZN_X5M_00021_WR80.0%/APnL51.22%/PTPnL10.24%",tf:"5M",fam:"AMZNX",bt:26,st:11,bw:76.9,sw:81.8,wd:4.9,ba:103.01,sa:83.11,ad:-19.9,bp:3.96,sp:7.56,pd:3.6,tp:3,sl:1,mh:7,hm:9650.0},
+  {r:"AMZN_L15M_00041_WR100.0%/APnL32.17%/PTPnL10.72%",tf:"15M",fam:"AMZNL",bt:12,st:4,bw:91.7,sw:100.0,wd:8.3,ba:94.71,sa:46.09,ad:-48.62,bp:7.89,sp:11.52,pd:3.63,tp:3,sl:0,mh:1,hm:3393.0},
+  {r:"AMZN_S5M_00029_WR83.3%/APnL99.24%/PTPnL8.27%",tf:"5M",fam:"AMZNS",bt:85,st:369,bw:92.9,sw:72.4,wd:-20.5,ba:133.3,sa:1921.95,ad:1788.65,bp:1.57,sp:5.21,pd:3.64,tp:15,sl:4,mh:343,hm:13263.1},
+  {r:"AMZN_SD_00028_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:3,st:3,bw:100.0,sw:100.0,wd:0.0,ba:49.5,sa:61.44,ad:11.94,bp:16.5,sp:20.48,pd:3.98,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00029_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:3,st:3,bw:100.0,sw:100.0,wd:0.0,ba:49.5,sa:61.44,ad:11.94,bp:16.5,sp:20.48,pd:3.98,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_S15M_00030_WR86.7%/APnL94.23%/PTPnL6.28%",tf:"15M",fam:"AMZNS",bt:157,st:121,bw:95.5,sw:72.7,wd:-22.8,ba:127.7,sa:592.18,ad:464.48,bp:0.81,sp:4.89,pd:4.08,tp:26,sl:23,mh:71,hm:11184.2},
+  {r:"AMZN_L15M_00033_WR83.3%/APnL59.99%/PTPnL10.0%",tf:"15M",fam:"AMZNL",bt:18,st:13,bw:88.9,sw:84.6,wd:-4.3,ba:109.28,sa:133.39,ad:24.11,bp:6.07,sp:10.26,pd:4.19,tp:0,sl:0,mh:13,hm:11700.0},
+  {r:"AMZN_S15M_00064_WR100.0%/APnL41.12%/PTPnL13.71%",tf:"15M",fam:"AMZNS",bt:19,st:10,bw:94.7,sw:80.0,wd:-14.7,ba:31.76,sa:58.75,ad:26.99,bp:1.67,sp:5.88,pd:4.21,tp:3,sl:2,mh:5,hm:9659.5},
+  {r:"AMZN_X5M_00018_WR75.0%/APnL55.43%/PTPnL13.86%",tf:"5M",fam:"AMZNX",bt:51,st:10,bw:94.1,sw:60.0,wd:-34.1,ba:109.53,sa:66.61,ad:-42.92,bp:2.15,sp:6.66,pd:4.51,tp:1,sl:4,mh:5,hm:8830.4},
+  {r:"AMZN_L15M_00024_WR72.7%/APnL83.93%/PTPnL7.63%",tf:"15M",fam:"AMZNL",bt:27,st:28,bw:74.1,sw:78.6,wd:4.5,ba:120.9,sa:254.87,ad:133.97,bp:4.48,sp:9.1,pd:4.62,tp:3,sl:0,mh:25,hm:11460.9},
+  {r:"AMZN_S5M_00063_WR75.0%/APnL35.41%/PTPnL8.85%",tf:"5M",fam:"AMZNS",bt:11,st:11,bw:90.9,sw:72.7,wd:-18.2,ba:30.93,sa:82.84,ad:51.91,bp:2.81,sp:7.53,pd:4.72,tp:1,sl:1,mh:9,hm:12902.6},
+  {r:"AMZN_SD_00032_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:3,st:3,bw:100.0,sw:100.0,wd:0.0,ba:46.96,sa:61.44,ad:14.48,bp:15.65,sp:20.48,pd:4.83,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00033_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:3,st:3,bw:100.0,sw:100.0,wd:0.0,ba:46.96,sa:61.44,ad:14.48,bp:15.65,sp:20.48,pd:4.83,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_S5M_00044_WR100.0%/APnL63.49%/PTPnL21.16%",tf:"5M",fam:"AMZNS",bt:20,st:4,bw:75.0,sw:50.0,wd:-25.0,ba:74.63,sa:34.39,ad:-40.24,bp:3.73,sp:8.6,pd:4.87,tp:0,sl:1,mh:3,hm:10329.8},
+  {r:"AMZN_S5M_00039_WR84.6%/APnL88.75%/PTPnL6.83%",tf:"5M",fam:"AMZNS",bt:104,st:129,bw:93.3,sw:73.6,wd:-19.7,ba:116.54,sa:776.47,ad:659.93,bp:1.12,sp:6.02,pd:4.9,tp:5,sl:0,mh:121,hm:11345.1},
+  {r:"AMZN_S15M_00060_WR100.0%/APnL41.74%/PTPnL13.91%",tf:"15M",fam:"AMZNS",bt:4,st:3,bw:100.0,sw:100.0,wd:0.0,ba:38.66,sa:43.74,ad:5.08,bp:9.66,sp:14.58,pd:4.92,tp:1,sl:0,mh:2,hm:11049.7},
+  {r:"AMZN_S1H_00057_WR100.0%/APnL29.58%/PTPnL9.86%",tf:"1H",fam:"AMZNS",bt:9,st:3,bw:100.0,sw:100.0,wd:0.0,ba:32.72,sa:25.94,ad:-6.78,bp:3.64,sp:8.65,pd:5.01,tp:2,sl:0,mh:1,hm:9777.3},
+  {r:"AMZN_S1H_00056_WR100.0%/APnL29.58%/PTPnL9.86%",tf:"1H",fam:"AMZNS",bt:8,st:4,bw:100.0,sw:100.0,wd:0.0,ba:32.8,sa:36.94,ad:4.14,bp:4.1,sp:9.24,pd:5.14,tp:3,sl:0,mh:1,hm:6474.8},
+  {r:"AMZN_S5M_00028_WR72.7%/APnL99.92%/PTPnL9.08%",tf:"5M",fam:"AMZNS",bt:133,st:59,bw:91.7,sw:69.5,wd:-22.2,ba:134.41,sa:368.11,ad:233.7,bp:1.01,sp:6.24,pd:5.23,tp:3,sl:5,mh:51,hm:11309.8},
+  {r:"AMZN_S5M_00045_WR100.0%/APnL61.88%/PTPnL12.38%",tf:"5M",fam:"AMZNS",bt:9,st:7,bw:100.0,sw:100.0,wd:0.0,ba:56.16,sa:81.52,ad:25.36,bp:6.24,sp:11.65,pd:5.41,tp:3,sl:0,mh:4,hm:9030.4},
+  {r:"AMZN_SD_00011_WR90.0%/APnL79.6%/PTPnL7.96%",tf:"DAILY",fam:"AMZNS",bt:10,st:23,bw:90.0,sw:95.7,wd:5.7,ba:88.27,sa:343.93,ad:255.66,bp:8.83,sp:14.95,pd:6.12,tp:22,sl:1,mh:0,hm:24949.1},
+  {r:"AMZN_X15M_00018_WR100.0%/APnL47.32%/PTPnL11.83%",tf:"15M",fam:"AMZNX",bt:16,st:6,bw:87.5,sw:100.0,wd:12.5,ba:111.97,sa:78.81,ad:-33.16,bp:7.0,sp:13.14,pd:6.14,tp:3,sl:0,mh:3,hm:9185.8},
+  {r:"AMZN_S15M_00034_WR81.8%/APnL92.23%/PTPnL8.38%",tf:"15M",fam:"AMZNS",bt:124,st:55,bw:94.4,sw:74.5,wd:-19.9,ba:119.91,sa:391.41,ad:271.5,bp:0.97,sp:7.12,pd:6.15,tp:2,sl:3,mh:50,hm:13271.1},
+  {r:"AMZN_S5M_00036_WR72.7%/APnL92.23%/PTPnL8.38%",tf:"5M",fam:"AMZNS",bt:129,st:45,bw:93.8,sw:73.3,wd:-20.5,ba:121.12,sa:328.5,ad:207.38,bp:0.94,sp:7.3,pd:6.36,tp:2,sl:10,mh:33,hm:10055.0},
+  {r:"AMZN_X15M_00019_WR100.0%/APnL47.32%/PTPnL11.83%",tf:"15M",fam:"AMZNX",bt:20,st:5,bw:80.0,sw:100.0,wd:20.0,ba:110.03,sa:60.81,ad:-49.22,bp:5.5,sp:12.16,pd:6.66,tp:2,sl:0,mh:3,hm:10564.2},
+  {r:"AMZN_S5M_00061_WR100.0%/APnL43.51%/PTPnL14.5%",tf:"5M",fam:"AMZNS",bt:4,st:5,bw:100.0,sw:80.0,wd:-20.0,ba:35.05,sa:77.97,ad:42.92,bp:8.76,sp:15.59,pd:6.83,tp:1,sl:0,mh:4,hm:12871.8},
+  {r:"AMZN_S15M_00063_WR100.0%/APnL41.12%/PTPnL13.71%",tf:"15M",fam:"AMZNS",bt:8,st:9,bw:87.5,sw:100.0,wd:12.5,ba:35.48,sa:101.52,ad:66.04,bp:4.43,sp:11.28,pd:6.85,tp:4,sl:0,mh:5,hm:9342.1},
+  {r:"AMZN_XD_00019_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNX",bt:4,st:3,bw:75.0,sw:100.0,wd:25.0,ba:51.65,sa:61.44,ad:9.79,bp:12.91,sp:20.48,pd:7.57,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00001_WR81.2%/APnL110.03%/PTPnL6.88%",tf:"DAILY",fam:"AMZNS",bt:3,st:75,bw:100.0,sw:81.3,wd:-18.7,ba:5.61,sa:724.77,ad:719.16,bp:1.87,sp:9.66,pd:7.79,tp:59,sl:14,mh:0,hm:22716.2},
+  {r:"AMZN_SD_00030_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:4,st:3,bw:100.0,sw:100.0,wd:0.0,ba:47.97,sa:61.44,ad:13.47,bp:11.99,sp:20.48,pd:8.49,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_S5M_00026_WR90.0%/APnL102.58%/PTPnL10.26%",tf:"5M",fam:"AMZNS",bt:104,st:27,bw:92.3,sw:85.2,wd:-7.1,ba:135.6,sa:268.17,ad:132.57,bp:1.3,sp:9.93,pd:8.63,tp:13,sl:1,mh:13,hm:9936.8},
+  {r:"AMZN_SD_00026_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:5,st:3,bw:80.0,sw:100.0,wd:20.0,ba:54.59,sa:61.44,ad:6.85,bp:10.92,sp:20.48,pd:9.56,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00022_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:6,st:3,bw:100.0,sw:100.0,wd:0.0,ba:64.54,sa:61.44,ad:-3.1,bp:10.76,sp:20.48,pd:9.72,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00023_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:6,st:3,bw:83.3,sw:100.0,wd:16.7,ba:62.69,sa:61.44,ad:-1.25,bp:10.45,sp:20.48,pd:10.03,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00027_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:5,st:3,bw:80.0,sw:100.0,wd:20.0,ba:50.74,sa:61.44,ad:10.7,bp:10.15,sp:20.48,pd:10.33,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00031_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:5,st:3,bw:100.0,sw:100.0,wd:0.0,ba:47.83,sa:61.44,ad:13.61,bp:9.57,sp:20.48,pd:10.91,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_S5M_00046_WR100.0%/APnL61.69%/PTPnL20.56%",tf:"5M",fam:"AMZNS",bt:20,st:3,bw:90.0,sw:66.7,wd:-23.3,ba:54.72,sa:49.18,ad:-5.54,bp:2.74,sp:16.39,pd:13.65,tp:1,sl:0,mh:2,hm:12353.3},
+  {r:"AMZN_XD_00012_WR90.0%/APnL67.35%/PTPnL6.73%",tf:"DAILY",fam:"AMZNX",bt:18,st:28,bw:83.3,sw:85.7,wd:2.4,ba:98.62,sa:537.52,ad:438.9,bp:5.48,sp:19.2,pd:13.72,tp:22,sl:4,mh:0,hm:31060.4},
+  {r:"AMZN_SD_00024_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:9,st:3,bw:88.9,sw:100.0,wd:11.1,ba:60.44,sa:61.44,ad:1.0,bp:6.72,sp:20.48,pd:13.76,tp:3,sl:0,mh:0,hm:12742.3},
+  {r:"AMZN_SD_00025_WR100.0%/APnL46.96%/PTPnL15.65%",tf:"DAILY",fam:"AMZNS",bt:14,st:3,bw:92.9,sw:100.0,wd:7.1,ba:57.47,sa:61.44,ad:3.97,bp:4.1,sp:20.48,pd:16.38,tp:3,sl:0,mh:0,hm:12742.3}
+];
+var sortCol="pd",sortAsc=true,searchVal="";
+function clr(v){if(v===null)return'';if(v>0)return'green';if(v<0)return'red';return''}
+function fmt(v){if(v===null)return'-';return v}
+function render(){
+  var f=data.filter(function(r){if(searchVal){var s=searchVal.toLowerCase();return r.r.toLowerCase().indexOf(s)>=0||r.tf.toLowerCase().indexOf(s)>=0||r.fam.toLowerCase().indexOf(s)>=0}return true});
+  f.sort(function(a,b){var va=a[sortCol],vb=b[sortCol];if(va===null)va=sortAsc?1e9:-1e9;if(vb===null)vb=sortAsc?1e9:-1e9;if(typeof va==="string"){va=va.toLowerCase();vb=vb.toLowerCase()}return sortAsc?(va<vb?-1:va>vb?1:0):(va>vb?-1:va<vb?1:0)});
+  var h="";
+  f.forEach(function(r){h+="<tr><td>"+r.r+"</td><td>"+r.tf+"</td><td>"+r.bt+"</td><td>"+r.st+"</td>"
+    +"<td>"+r.bw+"%</td><td>"+r.sw+"%</td><td class='"+clr(r.wd)+"'>"+fmt(r.wd)+"</td>"
+    +"<td>"+r.ba+"%</td><td>"+r.sa+"%</td><td class='"+clr(r.ad)+"'>"+fmt(r.ad)+"</td>"
+    +"<td>"+r.bp+"%</td><td>"+r.sp+"%</td><td class='"+clr(r.pd)+"'>"+fmt(r.pd)+"</td>"
+    +"<td class='green'>"+r.tp+"</td><td class='red'>"+r.sl+"</td><td class='yellow'>"+r.mh+"</td><td>"+r.hm+"</td></tr>"});
+  document.getElementById("tbody").innerHTML=h;
+}
+document.querySelectorAll("th").forEach(function(th){th.addEventListener("click",function(){var col=this.dataset.col;if(sortCol===col)sortAsc=!sortAsc;else{sortCol=col;sortAsc=this.dataset.type==="str"}document.querySelectorAll("th").forEach(function(h){h.classList.remove("active");h.querySelector(".arrow").innerHTML="&#9650;"});this.classList.add("active");this.querySelector(".arrow").innerHTML=sortAsc?"&#9650;":"&#9660;";render()});});
+document.getElementById("search").addEventListener("input",function(){searchVal=this.value;render()});
+render();
+</script>
+</body>
+</html>

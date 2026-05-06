@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLUG — Backtest vs 1m Simulation</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px}
+.header{background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
+.header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
+.subtitle{color:#a0a0b0;font-size:12px;margin:4px 0}
+.summary{display:flex;gap:12px;flex-wrap:wrap;padding:12px 16px}
+.card{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:10px 14px;min-width:140px}
+.card .label{font-size:10px;color:#888;text-transform:uppercase}
+.card .value{font-size:1.2rem;font-weight:700;margin-top:2px}
+.card .sub{font-size:11px;color:#888;margin-top:2px}
+.green{color:#4caf50}.red{color:#ef5350}.yellow{color:#ffc107}
+.container{padding:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:1100px}
+th{background:#0f3460;color:#e94560;padding:7px 4px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:10px;position:sticky;top:0;z-index:2}
+th:first-child{text-align:left}
+th:hover{background:#162d50}
+th .arrow{font-size:9px;margin-left:1px;opacity:.5}
+th.active .arrow{opacity:1}
+td{padding:5px 4px;text-align:right;border-bottom:1px solid #1e2a4a;white-space:nowrap}
+td:first-child{text-align:left;font-weight:600;color:#53c0f0}
+tr:hover{background:#1e2a4a}
+.footer{text-align:center;padding:16px;color:#555;font-size:11px}
+.search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>PLUG — Backtest vs 1m Simulation</h1>
+  <p class="subtitle">185 rules compared &#8226; 4 matched to backtest &#8226; 151804 sim trades</p>
+  <input type="text" class="search-box" id="search" placeholder="Filter rules..." autocomplete="off">
+</div>
+<div class="summary">
+  <div class="card"><div class="label">Sim Trades</div><div class="value">151804</div></div>
+  <div class="card"><div class="label">Sim WR</div><div class="value red">49.9%</div><div class="sub">BT avg: 85.4%</div></div>
+  <div class="card"><div class="label">Sim Total PnL</div><div class="value red">-107647.45%</div></div>
+  <div class="card"><div class="label">Sim PTPnL</div><div class="value red">-0.71%</div></div>
+  <div class="card"><div class="label">TP Exits</div><div class="value green">64204</div></div>
+  <div class="card"><div class="label">SL Exits</div><div class="value red">60284</div></div>
+  <div class="card"><div class="label">Hold Exits</div><div class="value yellow">26586</div></div>
+</div>
+<div class="container">
+<table id="tbl">
+<thead><tr>
+  <th data-col="r" data-type="str">Rule <span class="arrow">&#9650;</span></th>
+  <th data-col="tf" data-type="str">TF <span class="arrow">&#9650;</span></th>
+  <th data-col="bt" data-type="num">BT Trades <span class="arrow">&#9650;</span></th>
+  <th data-col="st" data-type="num">Sim Trades <span class="arrow">&#9650;</span></th>
+  <th data-col="bw" data-type="num">BT WR% <span class="arrow">&#9650;</span></th>
+  <th data-col="sw" data-type="num">Sim WR% <span class="arrow">&#9650;</span></th>
+  <th data-col="wd" data-type="num">WR Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="ba" data-type="num">BT APnL <span class="arrow">&#9650;</span></th>
+  <th data-col="sa" data-type="num">Sim APnL <span class="arrow">&#9650;</span></th>
+  <th data-col="ad" data-type="num">APnL Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="bp" data-type="num">BT PTPnL <span class="arrow">&#9650;</span></th>
+  <th data-col="sp" data-type="num">Sim PTPnL <span class="arrow">&#9650;</span></th>
+  <th data-col="pd" data-type="num" class="active">PTPnL Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="tp" data-type="num">TP <span class="arrow">&#9650;</span></th>
+  <th data-col="sl" data-type="num">SL <span class="arrow">&#9650;</span></th>
+  <th data-col="mh" data-type="num">Hold <span class="arrow">&#9650;</span></th>
+  <th data-col="hm" data-type="num">Avg Min <span class="arrow">&#9650;</span></th>
+</tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<div class="footer">Generated: 2026-05-06 06:03 | 1m Simulation Engine</div>
+<script>
+var data = [
+  {r:"PLUG_L5M_00001_WR85.7%/APnL78.26%/PTPnL11.18%",tf:"5M",fam:"PLUGL",bt:3,st:261,bw:100.0,sw:33.3,wd:-66.7,ba:22.73,sa:-35.9,ad:-58.63,bp:7.58,sp:-0.14,pd:-7.72,tp:10,sl:155,mh:96,hm:1228.0},
+  {r:"PLUG_S5M_00001_WR80.0%/APnL82.46%/PTPnL16.49%",tf:"5M",fam:"PLUGS",bt:3,st:192,bw:66.7,sw:23.4,wd:-43.3,ba:20.37,sa:48.44,ad:28.07,bp:6.79,sp:0.25,pd:-6.54,tp:11,sl:141,mh:40,hm:1208.3},
+  {r:"PLUG_S15M_00001_WR100.0%/APnL93.27%/PTPnL23.32%",tf:"15M",fam:"PLUGS",bt:4,st:137,bw:75.0,sw:29.9,wd:-45.1,ba:19.41,sa:123.07,ad:103.66,bp:4.85,sp:0.9,pd:-3.95,tp:33,sl:91,mh:12,hm:3327.5},
+  {r:"PLUG_S1H_00001_WR80.0%/APnL84.21%/PTPnL16.84%",tf:"1H",fam:"PLUGS",bt:3,st:214,bw:100.0,sw:15.4,wd:-84.6,ba:7.08,sa:-10.54,ad:-17.62,bp:2.36,sp:-0.05,pd:-2.41,tp:13,sl:180,mh:21,hm:1090.2},
+  {r:"PLUG_L5M_00007_WR100.0%/APnL48.64%/PTPnL12.16%",tf:"5M",fam:"PLUGL",bt:0,st:181,bw:0,sw:49.2,wd:null,ba:0,sa:-275.96,ad:null,bp:0,sp:-1.52,pd:null,tp:87,sl:81,mh:13,hm:2744.5},
+  {r:"PLUG_L5M_00009_WR100.0%/APnL48.64%/PTPnL12.16%",tf:"5M",fam:"PLUGL",bt:0,st:181,bw:0,sw:49.2,wd:null,ba:0,sa:-275.96,ad:null,bp:0,sp:-1.52,pd:null,tp:87,sl:81,mh:13,hm:2744.5},
+  {r:"PLUG_L5M_00013_WR100.0%/APnL48.48%/PTPnL12.12%",tf:"5M",fam:"PLUGL",bt:0,st:166,bw:0,sw:48.8,wd:null,ba:0,sa:-331.03,ad:null,bp:0,sp:-1.99,pd:null,tp:78,sl:77,mh:11,hm:2918.4},
+  {r:"PLUG_L5M_00014_WR100.0%/APnL48.48%/PTPnL12.12%",tf:"5M",fam:"PLUGL",bt:0,st:131,bw:0,sw:49.6,wd:null,ba:0,sa:-189.76,ad:null,bp:0,sp:-1.45,pd:null,tp:63,sl:58,mh:10,hm:2840.5},
+  {r:"PLUG_L5M_00015_WR100.0%/APnL48.48%/PTPnL12.12%",tf:"5M",fam:"PLUGL",bt:0,st:108,bw:0,sw:50.9,wd:null,ba:0,sa:-140.57,ad:null,bp:0,sp:-1.3,pd:null,tp:53,sl:47,mh:8,hm:2803.0},
+  {r:"PLUG_L5M_00023_WR66.7%/APnL45.06%/PTPnL15.02%",tf:"5M",fam:"PLUGL",bt:0,st:141,bw:0,sw:24.1,wd:null,ba:0,sa:-304.66,ad:null,bp:0,sp:-2.16,pd:null,tp:32,sl:107,mh:1,hm:3050.8},
+  {r:"PLUG_L5M_00030_WR100.0%/APnL35.0%/PTPnL7.0%",tf:"5M",fam:"PLUGL",bt:0,st:141,bw:0,sw:65.2,wd:null,ba:0,sa:5.95,ad:null,bp:0,sp:0.04,pd:null,tp:86,sl:39,mh:16,hm:1511.2},
+  {r:"PLUG_L5M_00034_WR100.0%/APnL26.18%/PTPnL8.73%",tf:"5M",fam:"PLUGL",bt:0,st:51,bw:0,sw:58.8,wd:null,ba:0,sa:-8.74,ad:null,bp:0,sp:-0.17,pd:null,tp:30,sl:20,mh:1,hm:1622.3},
+  {r:"PLUG_S5M_00002_WR64.3%/APnL81.15%/PTPnL5.8%",tf:"5M",fam:"PLUGS",bt:0,st:518,bw:0,sw:22.2,wd:null,ba:0,sa:-161.35,ad:null,bp:0,sp:-0.31,pd:null,tp:3,sl:381,mh:134,hm:382.6},
+  {r:"PLUG_S5M_00003_WR80.0%/APnL76.25%/PTPnL15.25%",tf:"5M",fam:"PLUGS",bt:0,st:156,bw:0,sw:19.2,wd:null,ba:0,sa:28.39,ad:null,bp:0,sp:0.18,pd:null,tp:11,sl:124,mh:21,hm:1464.5},
+  {r:"PLUG_S5M_00004_WR80.0%/APnL76.21%/PTPnL15.24%",tf:"5M",fam:"PLUGS",bt:0,st:180,bw:0,sw:21.1,wd:null,ba:0,sa:94.63,ad:null,bp:0,sp:0.53,pd:null,tp:13,sl:140,mh:26,hm:1524.6},
+  {r:"PLUG_S5M_00005_WR80.0%/APnL75.5%/PTPnL15.1%",tf:"5M",fam:"PLUGS",bt:0,st:155,bw:0,sw:21.9,wd:null,ba:0,sa:134.81,ad:null,bp:0,sp:0.87,pd:null,tp:13,sl:119,mh:23,hm:1547.6},
+  {r:"PLUG_S5M_00006_WR80.0%/APnL73.75%/PTPnL14.75%",tf:"5M",fam:"PLUGS",bt:0,st:211,bw:0,sw:19.9,wd:null,ba:0,sa:26.6,ad:null,bp:0,sp:0.13,pd:null,tp:12,sl:167,mh:30,hm:1448.4},
+  {r:"PLUG_S5M_00007_WR100.0%/APnL68.0%/PTPnL17.0%",tf:"5M",fam:"PLUGS",bt:0,st:80,bw:0,sw:51.2,wd:null,ba:0,sa:-152.51,ad:null,bp:0,sp:-1.91,pd:null,tp:36,sl:23,mh:20,hm:4233.8},
+  {r:"PLUG_S5M_00008_WR80.0%/APnL64.6%/PTPnL12.92%",tf:"5M",fam:"PLUGS",bt:0,st:318,bw:0,sw:39.6,wd:null,ba:0,sa:105.48,ad:null,bp:0,sp:0.33,pd:null,tp:39,sl:133,mh:145,hm:2910.6},
+  {r:"PLUG_S5M_00009_WR75.0%/APnL64.59%/PTPnL16.15%",tf:"5M",fam:"PLUGS",bt:0,st:131,bw:0,sw:32.8,wd:null,ba:0,sa:-419.38,ad:null,bp:0,sp:-3.2,pd:null,tp:17,sl:60,mh:52,hm:3351.8},
+  {r:"PLUG_S5M_00010_WR66.7%/APnL63.0%/PTPnL21.0%",tf:"5M",fam:"PLUGS",bt:0,st:102,bw:0,sw:32.4,wd:null,ba:0,sa:171.25,ad:null,bp:0,sp:1.68,pd:null,tp:10,sl:67,mh:25,hm:1968.4},
+  {r:"PLUG_S5M_00011_WR66.7%/APnL62.65%/PTPnL20.88%",tf:"5M",fam:"PLUGS",bt:0,st:126,bw:0,sw:23.8,wd:null,ba:0,sa:-148.93,ad:null,bp:0,sp:-1.18,pd:null,tp:7,sl:90,mh:28,hm:1966.7},
+  {r:"PLUG_S5M_00012_WR100.0%/APnL60.8%/PTPnL15.2%",tf:"5M",fam:"PLUGS",bt:0,st:246,bw:0,sw:49.6,wd:null,ba:0,sa:-535.76,ad:null,bp:0,sp:-2.18,pd:null,tp:113,sl:94,mh:37,hm:4074.4},
+  {r:"PLUG_S5M_00013_WR100.0%/APnL60.8%/PTPnL15.2%",tf:"5M",fam:"PLUGS",bt:0,st:232,bw:0,sw:48.7,wd:null,ba:0,sa:-567.11,ad:null,bp:0,sp:-2.44,pd:null,tp:105,sl:90,mh:35,hm:4075.1},
+  {r:"PLUG_S5M_00014_WR100.0%/APnL60.8%/PTPnL15.2%",tf:"5M",fam:"PLUGS",bt:0,st:236,bw:0,sw:48.7,wd:null,ba:0,sa:-568.1,ad:null,bp:0,sp:-2.41,pd:null,tp:107,sl:91,mh:36,hm:4087.3},
+  {r:"PLUG_S5M_00015_WR100.0%/APnL60.73%/PTPnL20.24%",tf:"5M",fam:"PLUGS",bt:0,st:128,bw:0,sw:26.6,wd:null,ba:0,sa:-214.99,ad:null,bp:0,sp:-1.68,pd:null,tp:8,sl:82,mh:38,hm:2211.4},
+  {r:"PLUG_S5M_00016_WR100.0%/APnL60.6%/PTPnL12.12%",tf:"5M",fam:"PLUGS",bt:0,st:106,bw:0,sw:40.6,wd:null,ba:0,sa:-48.29,ad:null,bp:0,sp:-0.46,pd:null,tp:41,sl:60,mh:5,hm:1378.8},
+  {r:"PLUG_S5M_00017_WR100.0%/APnL60.0%/PTPnL7.5%",tf:"5M",fam:"PLUGS",bt:0,st:259,bw:0,sw:42.1,wd:null,ba:0,sa:-240.75,ad:null,bp:0,sp:-0.93,pd:null,tp:86,sl:125,mh:48,hm:580.7},
+  {r:"PLUG_S5M_00018_WR66.7%/APnL59.51%/PTPnL19.84%",tf:"5M",fam:"PLUGS",bt:0,st:132,bw:0,sw:21.2,wd:null,ba:0,sa:-72.39,ad:null,bp:0,sp:-0.55,pd:null,tp:19,sl:101,mh:12,hm:2277.3},
+  {r:"PLUG_S5M_00019_WR100.0%/APnL58.15%/PTPnL19.38%",tf:"5M",fam:"PLUGS",bt:0,st:84,bw:0,sw:32.1,wd:null,ba:0,sa:-62.83,ad:null,bp:0,sp:-0.75,pd:null,tp:22,sl:52,mh:9,hm:2368.7},
+  {r:"PLUG_S5M_00020_WR100.0%/APnL57.6%/PTPnL3.6%",tf:"5M",fam:"PLUGS",bt:0,st:579,bw:0,sw:72.5,wd:null,ba:0,sa:-400.31,ad:null,bp:0,sp:-0.69,pd:null,tp:419,sl:145,mh:13,hm:846.9},
+  {r:"PLUG_S5M_00021_WR100.0%/APnL57.12%/PTPnL14.28%",tf:"5M",fam:"PLUGS",bt:0,st:125,bw:0,sw:52.0,wd:null,ba:0,sa:-242.74,ad:null,bp:0,sp:-1.94,pd:null,tp:62,sl:43,mh:19,hm:3532.6},
+  {r:"PLUG_S5M_00022_WR80.0%/APnL56.79%/PTPnL2.84%",tf:"5M",fam:"PLUGS",bt:0,st:717,bw:0,sw:54.5,wd:null,ba:0,sa:-3.06,ad:null,bp:0,sp:-0.0,pd:null,tp:350,sl:253,mh:112,hm:519.6},
+  {r:"PLUG_S5M_00023_WR66.7%/APnL55.88%/PTPnL18.63%",tf:"5M",fam:"PLUGS",bt:0,st:112,bw:0,sw:25.9,wd:null,ba:0,sa:175.74,ad:null,bp:0,sp:1.57,pd:null,tp:28,sl:82,mh:2,hm:3179.2},
+  {r:"PLUG_S5M_00024_WR66.7%/APnL55.78%/PTPnL18.59%",tf:"5M",fam:"PLUGS",bt:0,st:85,bw:0,sw:23.5,wd:null,ba:0,sa:45.1,ad:null,bp:0,sp:0.53,pd:null,tp:19,sl:64,mh:2,hm:3099.6},
+  {r:"PLUG_S5M_00025_WR100.0%/APnL54.95%/PTPnL13.74%",tf:"5M",fam:"PLUGS",bt:0,st:126,bw:0,sw:42.9,wd:null,ba:0,sa:115.27,ad:null,bp:0,sp:0.91,pd:null,tp:4,sl:64,mh:57,hm:825.9},
+  {r:"PLUG_S5M_00026_WR100.0%/APnL54.1%/PTPnL7.73%",tf:"5M",fam:"PLUGS",bt:0,st:157,bw:0,sw:47.1,wd:null,ba:0,sa:48.1,ad:null,bp:0,sp:0.31,pd:null,tp:68,sl:79,mh:10,hm:1000.4},
+  {r:"PLUG_S5M_00027_WR100.0%/APnL54.1%/PTPnL7.73%",tf:"5M",fam:"PLUGS",bt:0,st:189,bw:0,sw:48.1,wd:null,ba:0,sa:86.66,ad:null,bp:0,sp:0.46,pd:null,tp:85,sl:94,mh:10,hm:996.7},
+  {r:"PLUG_S5M_00028_WR85.7%/APnL53.45%/PTPnL7.64%",tf:"5M",fam:"PLUGS",bt:0,st:452,bw:0,sw:44.7,wd:null,ba:0,sa:65.37,ad:null,bp:0,sp:0.14,pd:null,tp:53,sl:23,mh:374,hm:2177.7},
+  {r:"PLUG_S5M_00029_WR100.0%/APnL52.36%/PTPnL13.09%",tf:"5M",fam:"PLUGS",bt:0,st:276,bw:0,sw:51.4,wd:null,ba:0,sa:-239.92,ad:null,bp:0,sp:-0.87,pd:null,tp:134,sl:102,mh:40,hm:2895.1},
+  {r:"PLUG_S5M_00030_WR100.0%/APnL49.45%/PTPnL12.36%",tf:"5M",fam:"PLUGS",bt:0,st:467,bw:0,sw:51.0,wd:null,ba:0,sa:-643.0,ad:null,bp:0,sp:-1.38,pd:null,tp:224,sl:169,mh:72,hm:2903.5},
+  {r:"PLUG_S5M_00031_WR100.0%/APnL49.0%/PTPnL7.0%",tf:"5M",fam:"PLUGS",bt:0,st:260,bw:0,sw:65.8,wd:null,ba:0,sa:-130.08,ad:null,bp:0,sp:-0.5,pd:null,tp:169,sl:60,mh:30,hm:1840.7},
+  {r:"PLUG_S5M_00032_WR100.0%/APnL49.0%/PTPnL7.0%",tf:"5M",fam:"PLUGS",bt:0,st:235,bw:0,sw:65.1,wd:null,ba:0,sa:-118.16,ad:null,bp:0,sp:-0.5,pd:null,tp:151,sl:55,mh:28,hm:1884.4},
+  {r:"PLUG_S5M_00033_WR100.0%/APnL49.0%/PTPnL7.0%",tf:"5M",fam:"PLUGS",bt:0,st:260,bw:0,sw:65.8,wd:null,ba:0,sa:-130.08,ad:null,bp:0,sp:-0.5,pd:null,tp:169,sl:60,mh:30,hm:1840.7},
+  {r:"PLUG_S5M_00034_WR100.0%/APnL48.95%/PTPnL9.79%",tf:"5M",fam:"PLUGS",bt:0,st:238,bw:0,sw:52.9,wd:null,ba:0,sa:-400.3,ad:null,bp:0,sp:-1.68,pd:null,tp:125,sl:103,mh:9,hm:2342.3},
+  {r:"PLUG_S5M_00035_WR100.0%/APnL48.93%/PTPnL3.5%",tf:"5M",fam:"PLUGS",bt:0,st:286,bw:0,sw:62.6,wd:null,ba:0,sa:37.04,ad:null,bp:0,sp:0.13,pd:null,tp:170,sl:78,mh:38,hm:327.7},
+  {r:"PLUG_S5M_00036_WR100.0%/APnL48.48%/PTPnL12.12%",tf:"5M",fam:"PLUGS",bt:0,st:170,bw:0,sw:53.5,wd:null,ba:0,sa:-43.12,ad:null,bp:0,sp:-0.25,pd:null,tp:87,sl:64,mh:19,hm:2483.0},
+  {r:"PLUG_S5M_00037_WR100.0%/APnL48.48%/PTPnL12.12%",tf:"5M",fam:"PLUGS",bt:0,st:78,bw:0,sw:39.7,wd:null,ba:0,sa:-42.25,ad:null,bp:0,sp:-0.54,pd:null,tp:30,sl:45,mh:3,hm:1398.2},
+  {r:"PLUG_S5M_00038_WR100.0%/APnL48.4%/PTPnL12.1%",tf:"5M",fam:"PLUGS",bt:0,st:390,bw:0,sw:52.3,wd:null,ba:0,sa:-426.95,ad:null,bp:0,sp:-1.09,pd:null,tp:195,sl:142,mh:53,hm:2784.3},
+  {r:"PLUG_S5M_00039_WR100.0%/APnL48.4%/PTPnL12.1%",tf:"5M",fam:"PLUGS",bt:0,st:152,bw:0,sw:52.6,wd:null,ba:0,sa:-176.31,ad:null,bp:0,sp:-1.16,pd:null,tp:76,sl:57,mh:19,hm:2615.4},
+  {r:"PLUG_S5M_00040_WR100.0%/APnL48.32%/PTPnL3.72%",tf:"5M",fam:"PLUGS",bt:0,st:283,bw:0,sw:63.3,wd:null,ba:0,sa:121.47,ad:null,bp:0,sp:0.43,pd:null,tp:177,sl:100,mh:4,hm:362.7},
+  {r:"PLUG_S5M_00041_WR100.0%/APnL47.73%/PTPnL5.3%",tf:"5M",fam:"PLUGS",bt:0,st:377,bw:0,sw:64.2,wd:null,ba:0,sa:-381.45,ad:null,bp:0,sp:-1.01,pd:null,tp:240,sl:113,mh:23,hm:1262.8},
+  {r:"PLUG_S5M_00042_WR100.0%/APnL47.73%/PTPnL5.3%",tf:"5M",fam:"PLUGS",bt:0,st:370,bw:0,sw:63.8,wd:null,ba:0,sa:-409.35,ad:null,bp:0,sp:-1.11,pd:null,tp:234,sl:114,mh:21,hm:1255.8},
+  {r:"PLUG_S5M_00043_WR100.0%/APnL47.52%/PTPnL7.92%",tf:"5M",fam:"PLUGS",bt:0,st:162,bw:0,sw:56.2,wd:null,ba:0,sa:-40.54,ad:null,bp:0,sp:-0.25,pd:null,tp:88,sl:64,mh:10,hm:1308.5},
+  {r:"PLUG_S5M_00044_WR100.0%/APnL47.52%/PTPnL5.94%",tf:"5M",fam:"PLUGS",bt:0,st:472,bw:0,sw:69.1,wd:null,ba:0,sa:-42.08,ad:null,bp:0,sp:-0.09,pd:null,tp:324,sl:126,mh:21,hm:1413.6},
+  {r:"PLUG_S5M_00045_WR100.0%/APnL46.2%/PTPnL11.55%",tf:"5M",fam:"PLUGS",bt:0,st:465,bw:0,sw:50.5,wd:null,ba:0,sa:-907.24,ad:null,bp:0,sp:-1.95,pd:null,tp:220,sl:173,mh:69,hm:2817.6},
+  {r:"PLUG_S5M_00046_WR75.0%/APnL45.63%/PTPnL11.41%",tf:"5M",fam:"PLUGS",bt:0,st:435,bw:0,sw:37.9,wd:null,ba:0,sa:958.51,ad:null,bp:0,sp:2.2,pd:null,tp:71,sl:224,mh:132,hm:2732.0},
+  {r:"PLUG_S5M_00047_WR100.0%/APnL43.2%/PTPnL5.4%",tf:"5M",fam:"PLUGS",bt:0,st:363,bw:0,sw:71.9,wd:null,ba:0,sa:16.09,ad:null,bp:0,sp:0.04,pd:null,tp:260,sl:91,mh:11,hm:1347.0},
+  {r:"PLUG_S5M_00048_WR100.0%/APnL42.9%/PTPnL14.3%",tf:"5M",fam:"PLUGS",bt:0,st:119,bw:0,sw:57.1,wd:null,ba:0,sa:-1.59,ad:null,bp:0,sp:-0.01,pd:null,tp:67,sl:25,mh:27,hm:3960.9},
+  {r:"PLUG_S5M_00049_WR100.0%/APnL42.42%/PTPnL4.24%",tf:"5M",fam:"PLUGS",bt:0,st:331,bw:0,sw:71.9,wd:null,ba:0,sa:-445.04,ad:null,bp:0,sp:-1.34,pd:null,tp:238,sl:75,mh:17,hm:1289.6},
+  {r:"PLUG_S5M_00050_WR100.0%/APnL41.16%/PTPnL6.86%",tf:"5M",fam:"PLUGS",bt:0,st:274,bw:0,sw:56.6,wd:null,ba:0,sa:-308.38,ad:null,bp:0,sp:-1.13,pd:null,tp:149,sl:95,mh:29,hm:1601.5},
+  {r:"PLUG_S5M_00051_WR85.7%/APnL41.1%/PTPnL5.87%",tf:"5M",fam:"PLUGS",bt:0,st:263,bw:0,sw:33.8,wd:null,ba:0,sa:-365.19,ad:null,bp:0,sp:-1.39,pd:null,tp:60,sl:146,mh:56,hm:793.1},
+  {r:"PLUG_S5M_00052_WR92.9%/APnL41.01%/PTPnL1.46%",tf:"5M",fam:"PLUGS",bt:0,st:701,bw:0,sw:73.0,wd:null,ba:0,sa:-42.4,ad:null,bp:0,sp:-0.06,pd:null,tp:506,sl:120,mh:73,hm:273.8},
+  {r:"PLUG_S5M_00053_WR92.3%/APnL40.7%/PTPnL1.57%",tf:"5M",fam:"PLUGS",bt:0,st:643,bw:0,sw:72.6,wd:null,ba:0,sa:155.73,ad:null,bp:0,sp:0.24,pd:null,tp:465,sl:164,mh:13,hm:136.7},
+  {r:"PLUG_S5M_00054_WR100.0%/APnL40.18%/PTPnL13.39%",tf:"5M",fam:"PLUGS",bt:0,st:231,bw:0,sw:53.7,wd:null,ba:0,sa:-201.89,ad:null,bp:0,sp:-0.87,pd:null,tp:118,sl:95,mh:17,hm:3122.8},
+  {r:"PLUG_S5M_00055_WR83.3%/APnL39.86%/PTPnL3.32%",tf:"5M",fam:"PLUGS",bt:0,st:540,bw:0,sw:62.2,wd:null,ba:0,sa:157.76,ad:null,bp:0,sp:0.29,pd:null,tp:325,sl:153,mh:59,hm:845.3},
+  {r:"PLUG_S5M_00056_WR100.0%/APnL39.32%/PTPnL9.83%",tf:"5M",fam:"PLUGS",bt:0,st:173,bw:0,sw:53.8,wd:null,ba:0,sa:-189.17,ad:null,bp:0,sp:-1.09,pd:null,tp:92,sl:74,mh:7,hm:2242.5},
+  {r:"PLUG_S5M_00057_WR100.0%/APnL39.04%/PTPnL13.01%",tf:"5M",fam:"PLUGS",bt:0,st:164,bw:0,sw:46.3,wd:null,ba:0,sa:-209.42,ad:null,bp:0,sp:-1.28,pd:null,tp:64,sl:58,mh:40,hm:6623.9},
+  {r:"PLUG_S5M_00058_WR100.0%/APnL37.9%/PTPnL6.32%",tf:"5M",fam:"PLUGS",bt:0,st:150,bw:0,sw:54.7,wd:null,ba:0,sa:37.03,ad:null,bp:0,sp:0.25,pd:null,tp:64,sl:13,mh:73,hm:839.3},
+  {r:"PLUG_S5M_00059_WR88.9%/APnL36.64%/PTPnL4.07%",tf:"5M",fam:"PLUGS",bt:0,st:181,bw:0,sw:70.2,wd:null,ba:0,sa:233.78,ad:null,bp:0,sp:1.29,pd:null,tp:125,sl:46,mh:10,hm:852.5},
+  {r:"PLUG_S5M_00060_WR85.7%/APnL33.8%/PTPnL4.83%",tf:"5M",fam:"PLUGS",bt:0,st:416,bw:0,sw:57.5,wd:null,ba:0,sa:-46.91,ad:null,bp:0,sp:-0.11,pd:null,tp:212,sl:131,mh:72,hm:1168.9},
+  {r:"PLUG_S5M_00061_WR100.0%/APnL32.83%/PTPnL2.53%",tf:"5M",fam:"PLUGS",bt:0,st:325,bw:0,sw:58.2,wd:null,ba:0,sa:-166.62,ad:null,bp:0,sp:-0.51,pd:null,tp:173,sl:28,mh:124,hm:240.1},
+  {r:"PLUG_S5M_00062_WR100.0%/APnL32.72%/PTPnL3.64%",tf:"5M",fam:"PLUGS",bt:0,st:443,bw:0,sw:77.4,wd:null,ba:0,sa:-243.76,ad:null,bp:0,sp:-0.55,pd:null,tp:343,sl:79,mh:19,hm:1087.0},
+  {r:"PLUG_S5M_00063_WR100.0%/APnL32.72%/PTPnL3.64%",tf:"5M",fam:"PLUGS",bt:0,st:444,bw:0,sw:77.5,wd:null,ba:0,sa:-240.12,ad:null,bp:0,sp:-0.54,pd:null,tp:344,sl:79,mh:19,hm:1084.0},
+  {r:"PLUG_S5M_00064_WR100.0%/APnL30.84%/PTPnL10.28%",tf:"5M",fam:"PLUGS",bt:0,st:252,bw:0,sw:61.5,wd:null,ba:0,sa:-358.7,ad:null,bp:0,sp:-1.42,pd:null,tp:152,sl:57,mh:43,hm:3455.7},
+  {r:"PLUG_S5M_00065_WR66.7%/APnL26.56%/PTPnL8.85%",tf:"5M",fam:"PLUGS",bt:0,st:78,bw:0,sw:25.6,wd:null,ba:0,sa:125.88,ad:null,bp:0,sp:1.61,pd:null,tp:20,sl:58,mh:0,hm:607.1},
+  {r:"PLUG_S5M_00066_WR66.7%/APnL20.37%/PTPnL6.79%",tf:"5M",fam:"PLUGS",bt:0,st:193,bw:0,sw:34.2,wd:null,ba:0,sa:-46.9,ad:null,bp:0,sp:-0.24,pd:null,tp:62,sl:125,mh:6,hm:1326.1},
+  {r:"PLUG_X5M_00004_WR92.3%/APnL63.68%/PTPnL4.9%",tf:"5M",fam:"PLUGX",bt:0,st:41,bw:0,sw:58.5,wd:null,ba:0,sa:56.88,ad:null,bp:0,sp:1.39,pd:null,tp:22,sl:17,mh:1,hm:516.0},
+  {r:"PLUG_X5M_00008_WR100.0%/APnL53.84%/PTPnL10.77%",tf:"5M",fam:"PLUGX",bt:0,st:6,bw:0,sw:66.7,wd:null,ba:0,sa:21.97,ad:null,bp:0,sp:3.66,pd:null,tp:0,sl:1,mh:4,hm:967.0},
+  {r:"PLUG_X5M_00012_WR100.0%/APnL48.68%/PTPnL8.11%",tf:"5M",fam:"PLUGX",bt:0,st:10,bw:0,sw:80.0,wd:null,ba:0,sa:50.29,ad:null,bp:0,sp:5.03,pd:null,tp:6,sl:2,mh:1,hm:627.8},
+  {r:"PLUG_X5M_00015_WR100.0%/APnL48.4%/PTPnL12.1%",tf:"5M",fam:"PLUGX",bt:0,st:12,bw:0,sw:66.7,wd:null,ba:0,sa:49.12,ad:null,bp:0,sp:4.09,pd:null,tp:7,sl:2,mh:2,hm:2930.6},
+  {r:"PLUG_X5M_00016_WR84.2%/APnL48.11%/PTPnL2.53%",tf:"5M",fam:"PLUGX",bt:0,st:50,bw:0,sw:70.0,wd:null,ba:0,sa:64.31,ad:null,bp:0,sp:1.29,pd:null,tp:34,sl:11,mh:3,hm:540.1},
+  {r:"PLUG_X5M_00017_WR82.4%/APnL47.72%/PTPnL2.81%",tf:"5M",fam:"PLUGX",bt:0,st:45,bw:0,sw:66.7,wd:null,ba:0,sa:57.52,ad:null,bp:0,sp:1.28,pd:null,tp:25,sl:5,mh:14,hm:505.5},
+  {r:"PLUG_X5M_00021_WR100.0%/APnL35.2%/PTPnL8.8%",tf:"5M",fam:"PLUGX",bt:0,st:6,bw:0,sw:66.7,wd:null,ba:0,sa:-3.48,ad:null,bp:0,sp:-0.58,pd:null,tp:3,sl:2,mh:1,hm:3918.8},
+  {r:"PLUG_X5M_00023_WR83.3%/APnL32.02%/PTPnL5.34%",tf:"5M",fam:"PLUGX",bt:0,st:21,bw:0,sw:66.7,wd:null,ba:0,sa:64.62,ad:null,bp:0,sp:3.08,pd:null,tp:13,sl:3,mh:5,hm:1941.3},
+  {r:"PLUG_X5M_00024_WR100.0%/APnL31.81%/PTPnL10.6%",tf:"5M",fam:"PLUGX",bt:0,st:7,bw:0,sw:85.7,wd:null,ba:0,sa:62.99,ad:null,bp:0,sp:9.0,pd:null,tp:6,sl:0,mh:0,hm:2533.6},
+  {r:"PLUG_L15M_00009_WR100.0%/APnL61.59%/PTPnL7.7%",tf:"15M",fam:"PLUGL",bt:0,st:133,bw:0,sw:54.1,wd:null,ba:0,sa:130.3,ad:null,bp:0,sp:0.98,pd:null,tp:49,sl:37,mh:47,hm:1013.0},
+  {r:"PLUG_L15M_00014_WR100.0%/APnL39.24%/PTPnL13.08%",tf:"15M",fam:"PLUGL",bt:0,st:71,bw:0,sw:35.2,wd:null,ba:0,sa:-95.39,ad:null,bp:0,sp:-1.34,pd:null,tp:3,sl:38,mh:30,hm:1126.7},
+  {r:"PLUG_L15M_00015_WR66.7%/APnL34.33%/PTPnL11.44%",tf:"15M",fam:"PLUGL",bt:0,st:69,bw:0,sw:26.1,wd:null,ba:0,sa:-27.44,ad:null,bp:0,sp:-0.4,pd:null,tp:8,sl:50,mh:10,hm:2932.8},
+  {r:"PLUG_S15M_00002_WR100.0%/APnL84.62%/PTPnL21.16%",tf:"15M",fam:"PLUGS",bt:0,st:65,bw:0,sw:41.5,wd:null,ba:0,sa:-31.38,ad:null,bp:0,sp:-0.48,pd:null,tp:18,sl:31,mh:15,hm:4437.3},
+  {r:"PLUG_S15M_00003_WR83.3%/APnL82.03%/PTPnL13.67%",tf:"15M",fam:"PLUGS",bt:0,st:207,bw:0,sw:31.9,wd:null,ba:0,sa:184.47,ad:null,bp:0,sp:0.89,pd:null,tp:24,sl:126,mh:55,hm:2546.7},
+  {r:"PLUG_S15M_00004_WR83.3%/APnL77.47%/PTPnL12.91%",tf:"15M",fam:"PLUGS",bt:0,st:187,bw:0,sw:44.4,wd:null,ba:0,sa:-59.95,ad:null,bp:0,sp:-0.32,pd:null,tp:14,sl:32,mh:139,hm:2845.5},
+  {r:"PLUG_S15M_00005_WR85.7%/APnL76.47%/PTPnL10.92%",tf:"15M",fam:"PLUGS",bt:0,st:434,bw:0,sw:39.6,wd:null,ba:0,sa:-262.42,ad:null,bp:0,sp:-0.6,pd:null,tp:84,sl:175,mh:170,hm:3277.9},
+  {r:"PLUG_S15M_00006_WR85.7%/APnL75.11%/PTPnL10.73%",tf:"15M",fam:"PLUGS",bt:0,st:296,bw:0,sw:40.9,wd:null,ba:0,sa:-181.87,ad:null,bp:0,sp:-0.61,pd:null,tp:58,sl:99,mh:135,hm:3459.9},
+  {r:"PLUG_S15M_00007_WR100.0%/APnL72.72%/PTPnL12.12%",tf:"15M",fam:"PLUGS",bt:0,st:368,bw:0,sw:57.6,wd:null,ba:0,sa:-670.48,ad:null,bp:0,sp:-1.82,pd:null,tp:211,sl:146,mh:11,hm:3650.0},
+  {r:"PLUG_S15M_00008_WR80.0%/APnL71.2%/PTPnL14.24%",tf:"15M",fam:"PLUGS",bt:0,st:135,bw:0,sw:31.1,wd:null,ba:0,sa:-51.75,ad:null,bp:0,sp:-0.38,pd:null,tp:32,sl:88,mh:13,hm:3127.8},
+  {r:"PLUG_S15M_00009_WR83.3%/APnL71.18%/PTPnL11.86%",tf:"15M",fam:"PLUGS",bt:0,st:393,bw:0,sw:37.7,wd:null,ba:0,sa:-70.58,ad:null,bp:0,sp:-0.18,pd:null,tp:50,sl:159,mh:182,hm:3527.9},
+  {r:"PLUG_S15M_00010_WR83.3%/APnL70.64%/PTPnL11.77%",tf:"15M",fam:"PLUGS",bt:0,st:451,bw:0,sw:34.1,wd:null,ba:0,sa:256.45,ad:null,bp:0,sp:0.57,pd:null,tp:61,sl:245,mh:142,hm:2850.0},
+  {r:"PLUG_S15M_00011_WR100.0%/APnL68.18%/PTPnL7.58%",tf:"15M",fam:"PLUGS",bt:0,st:166,bw:0,sw:25.3,wd:null,ba:0,sa:-406.29,ad:null,bp:0,sp:-2.45,pd:null,tp:38,sl:122,mh:5,hm:496.4},
+  {r:"PLUG_S15M_00012_WR100.0%/APnL68.18%/PTPnL7.58%",tf:"15M",fam:"PLUGS",bt:0,st:443,bw:0,sw:67.9,wd:null,ba:0,sa:-561.06,ad:null,bp:0,sp:-1.27,pd:null,tp:298,sl:119,mh:26,hm:2572.5},
+  {r:"PLUG_S15M_00013_WR82.4%/APnL66.46%/PTPnL3.91%",tf:"15M",fam:"PLUGS",bt:0,st:559,bw:0,sw:56.9,wd:null,ba:0,sa:-63.62,ad:null,bp:0,sp:-0.11,pd:null,tp:297,sl:133,mh:126,hm:1195.7},
+  {r:"PLUG_S15M_00014_WR100.0%/APnL66.0%/PTPnL13.2%",tf:"15M",fam:"PLUGS",bt:0,st:125,bw:0,sw:48.8,wd:null,ba:0,sa:-251.66,ad:null,bp:0,sp:-2.01,pd:null,tp:58,sl:51,mh:16,hm:3485.9},
+  {r:"PLUG_S15M_00015_WR100.0%/APnL66.0%/PTPnL13.2%",tf:"15M",fam:"PLUGS",bt:0,st:122,bw:0,sw:49.2,wd:null,ba:0,sa:-228.86,ad:null,bp:0,sp:-1.88,pd:null,tp:57,sl:49,mh:16,hm:3527.8},
+  {r:"PLUG_S15M_00016_WR100.0%/APnL66.0%/PTPnL13.2%",tf:"15M",fam:"PLUGS",bt:0,st:117,bw:0,sw:48.7,wd:null,ba:0,sa:-244.82,ad:null,bp:0,sp:-2.09,pd:null,tp:54,sl:48,mh:15,hm:3491.8},
+  {r:"PLUG_S15M_00017_WR100.0%/APnL64.8%/PTPnL5.4%",tf:"15M",fam:"PLUGS",bt:0,st:566,bw:0,sw:76.9,wd:null,ba:0,sa:-1080.54,ad:null,bp:0,sp:-1.91,pd:null,tp:434,sl:95,mh:34,hm:2727.0},
+  {r:"PLUG_S15M_00018_WR87.5%/APnL64.6%/PTPnL8.07%",tf:"15M",fam:"PLUGS",bt:0,st:379,bw:0,sw:40.9,wd:null,ba:0,sa:-230.71,ad:null,bp:0,sp:-0.61,pd:null,tp:16,sl:57,mh:303,hm:2145.7},
+  {r:"PLUG_S15M_00019_WR80.0%/APnL63.58%/PTPnL12.72%",tf:"15M",fam:"PLUGS",bt:0,st:336,bw:0,sw:38.7,wd:null,ba:0,sa:719.39,ad:null,bp:0,sp:2.14,pd:null,tp:39,sl:174,mh:120,hm:2434.9},
+  {r:"PLUG_S15M_00020_WR66.7%/APnL63.2%/PTPnL21.07%",tf:"15M",fam:"PLUGS",bt:0,st:116,bw:0,sw:17.2,wd:null,ba:0,sa:-97.52,ad:null,bp:0,sp:-0.84,pd:null,tp:16,sl:96,mh:4,hm:2418.9},
+  {r:"PLUG_S15M_00021_WR100.0%/APnL60.44%/PTPnL3.18%",tf:"15M",fam:"PLUGS",bt:0,st:445,bw:0,sw:87.0,wd:null,ba:0,sa:156.46,ad:null,bp:0,sp:0.35,pd:null,tp:386,sl:49,mh:9,hm:800.9},
+  {r:"PLUG_S15M_00022_WR100.0%/APnL57.91%/PTPnL11.58%",tf:"15M",fam:"PLUGS",bt:0,st:132,bw:0,sw:56.1,wd:null,ba:0,sa:-164.03,ad:null,bp:0,sp:-1.24,pd:null,tp:70,sl:32,mh:30,hm:4114.4},
+  {r:"PLUG_S15M_00023_WR66.7%/APnL57.57%/PTPnL19.19%",tf:"15M",fam:"PLUGS",bt:0,st:68,bw:0,sw:25.0,wd:null,ba:0,sa:79.79,ad:null,bp:0,sp:1.17,pd:null,tp:15,sl:51,mh:2,hm:2651.1},
+  {r:"PLUG_S15M_00024_WR66.7%/APnL57.57%/PTPnL19.19%",tf:"15M",fam:"PLUGS",bt:0,st:90,bw:0,sw:23.3,wd:null,ba:0,sa:58.13,ad:null,bp:0,sp:0.65,pd:null,tp:19,sl:69,mh:2,hm:2563.2},
+  {r:"PLUG_S15M_00025_WR66.7%/APnL57.57%/PTPnL19.19%",tf:"15M",fam:"PLUGS",bt:0,st:44,bw:0,sw:29.5,wd:null,ba:0,sa:141.73,ad:null,bp:0,sp:3.22,pd:null,tp:12,sl:31,mh:1,hm:3047.3},
+  {r:"PLUG_S15M_00026_WR100.0%/APnL56.2%/PTPnL14.05%",tf:"15M",fam:"PLUGS",bt:0,st:122,bw:0,sw:37.7,wd:null,ba:0,sa:-571.47,ad:null,bp:0,sp:-4.68,pd:null,tp:41,sl:66,mh:13,hm:4727.2},
+  {r:"PLUG_S15M_00027_WR100.0%/APnL56.0%/PTPnL8.0%",tf:"15M",fam:"PLUGS",bt:0,st:332,bw:0,sw:64.5,wd:null,ba:0,sa:-744.68,ad:null,bp:0,sp:-2.24,pd:null,tp:214,sl:113,mh:4,hm:2651.5},
+  {r:"PLUG_S15M_00028_WR75.0%/APnL55.99%/PTPnL14.0%",tf:"15M",fam:"PLUGS",bt:0,st:298,bw:0,sw:41.9,wd:null,ba:0,sa:-278.35,ad:null,bp:0,sp:-0.93,pd:null,tp:32,sl:43,mh:223,hm:3522.4},
+  {r:"PLUG_S15M_00029_WR75.0%/APnL55.62%/PTPnL13.9%",tf:"15M",fam:"PLUGS",bt:0,st:232,bw:0,sw:43.5,wd:null,ba:0,sa:138.19,ad:null,bp:0,sp:0.6,pd:null,tp:31,sl:28,mh:173,hm:3476.8},
+  {r:"PLUG_S15M_00030_WR100.0%/APnL55.47%/PTPnL13.87%",tf:"15M",fam:"PLUGS",bt:0,st:245,bw:0,sw:47.3,wd:null,ba:0,sa:-47.09,ad:null,bp:0,sp:-0.19,pd:null,tp:115,sl:123,mh:4,hm:3834.0},
+  {r:"PLUG_S15M_00031_WR100.0%/APnL55.47%/PTPnL13.87%",tf:"15M",fam:"PLUGS",bt:0,st:245,bw:0,sw:47.3,wd:null,ba:0,sa:-47.09,ad:null,bp:0,sp:-0.19,pd:null,tp:115,sl:123,mh:4,hm:3834.0},
+  {r:"PLUG_S15M_00032_WR100.0%/APnL54.72%/PTPnL9.12%",tf:"15M",fam:"PLUGS",bt:0,st:258,bw:0,sw:60.9,wd:null,ba:0,sa:-571.85,ad:null,bp:0,sp:-2.22,pd:null,tp:155,sl:78,mh:25,hm:3139.7},
+  {r:"PLUG_S15M_00033_WR100.0%/APnL54.4%/PTPnL13.6%",tf:"15M",fam:"PLUGS",bt:0,st:224,bw:0,sw:48.2,wd:null,ba:0,sa:-581.76,ad:null,bp:0,sp:-2.6,pd:null,tp:107,sl:111,mh:4,hm:3316.6},
+  {r:"PLUG_S15M_00034_WR100.0%/APnL53.96%/PTPnL17.99%",tf:"15M",fam:"PLUGS",bt:0,st:108,bw:0,sw:35.2,wd:null,ba:0,sa:-370.43,ad:null,bp:0,sp:-3.43,pd:null,tp:19,sl:58,mh:30,hm:6895.9},
+  {r:"PLUG_S15M_00035_WR100.0%/APnL53.8%/PTPnL13.45%",tf:"15M",fam:"PLUGS",bt:0,st:254,bw:0,sw:52.8,wd:null,ba:0,sa:-589.86,ad:null,bp:0,sp:-2.32,pd:null,tp:134,sl:112,mh:8,hm:3819.0},
+  {r:"PLUG_S15M_00036_WR100.0%/APnL52.8%/PTPnL10.56%",tf:"15M",fam:"PLUGS",bt:0,st:208,bw:0,sw:57.2,wd:null,ba:0,sa:-546.78,ad:null,bp:0,sp:-2.63,pd:null,tp:115,sl:59,mh:34,hm:3681.1},
+  {r:"PLUG_S15M_00037_WR100.0%/APnL52.8%/PTPnL10.56%",tf:"15M",fam:"PLUGS",bt:0,st:218,bw:0,sw:56.9,wd:null,ba:0,sa:-546.07,ad:null,bp:0,sp:-2.5,pd:null,tp:120,sl:61,mh:37,hm:3658.0},
+  {r:"PLUG_S15M_00038_WR100.0%/APnL51.7%/PTPnL10.34%",tf:"15M",fam:"PLUGS",bt:0,st:345,bw:0,sw:62.9,wd:null,ba:0,sa:-749.53,ad:null,bp:0,sp:-2.17,pd:null,tp:216,sl:114,mh:14,hm:3841.5},
+  {r:"PLUG_S15M_00039_WR100.0%/APnL51.52%/PTPnL17.17%",tf:"15M",fam:"PLUGS",bt:0,st:179,bw:0,sw:47.5,wd:null,ba:0,sa:-310.33,ad:null,bp:0,sp:-1.73,pd:null,tp:85,sl:88,mh:6,hm:4160.9},
+  {r:"PLUG_S15M_00040_WR66.7%/APnL51.24%/PTPnL17.08%",tf:"15M",fam:"PLUGS",bt:0,st:112,bw:0,sw:24.1,wd:null,ba:0,sa:-112.97,ad:null,bp:0,sp:-1.01,pd:null,tp:24,sl:85,mh:2,hm:3185.0},
+  {r:"PLUG_S15M_00041_WR66.7%/APnL51.24%/PTPnL17.08%",tf:"15M",fam:"PLUGS",bt:0,st:108,bw:0,sw:27.8,wd:null,ba:0,sa:64.53,ad:null,bp:0,sp:0.6,pd:null,tp:27,sl:78,mh:3,hm:3611.5},
+  {r:"PLUG_S15M_00042_WR66.7%/APnL51.24%/PTPnL17.08%",tf:"15M",fam:"PLUGS",bt:0,st:115,bw:0,sw:25.2,wd:null,ba:0,sa:-74.6,ad:null,bp:0,sp:-0.65,pd:null,tp:25,sl:86,mh:3,hm:3342.3},
+  {r:"PLUG_S15M_00043_WR80.0%/APnL50.57%/PTPnL10.11%",tf:"15M",fam:"PLUGS",bt:0,st:123,bw:0,sw:45.5,wd:null,ba:0,sa:30.29,ad:null,bp:0,sp:0.25,pd:null,tp:14,sl:8,mh:99,hm:3630.1},
+  {r:"PLUG_S15M_00044_WR100.0%/APnL48.0%/PTPnL8.0%",tf:"15M",fam:"PLUGS",bt:0,st:330,bw:0,sw:62.1,wd:null,ba:0,sa:-1024.37,ad:null,bp:0,sp:-3.1,pd:null,tp:205,sl:118,mh:4,hm:2815.2},
+  {r:"PLUG_S15M_00045_WR75.0%/APnL47.03%/PTPnL11.76%",tf:"15M",fam:"PLUGS",bt:0,st:130,bw:0,sw:33.8,wd:null,ba:0,sa:-234.8,ad:null,bp:0,sp:-1.81,pd:null,tp:36,sl:73,mh:16,hm:5089.2},
+  {r:"PLUG_S15M_00046_WR100.0%/APnL45.0%/PTPnL5.0%",tf:"15M",fam:"PLUGS",bt:0,st:227,bw:0,sw:75.3,wd:null,ba:0,sa:319.61,ad:null,bp:0,sp:1.41,pd:null,tp:169,sl:51,mh:7,hm:559.4},
+  {r:"PLUG_S15M_00047_WR100.0%/APnL43.18%/PTPnL14.39%",tf:"15M",fam:"PLUGS",bt:0,st:89,bw:0,sw:55.1,wd:null,ba:0,sa:-98.33,ad:null,bp:0,sp:-1.1,pd:null,tp:49,sl:34,mh:6,hm:4057.2},
+  {r:"PLUG_S15M_00048_WR100.0%/APnL40.48%/PTPnL3.68%",tf:"15M",fam:"PLUGS",bt:0,st:423,bw:0,sw:82.5,wd:null,ba:0,sa:-241.62,ad:null,bp:0,sp:-0.57,pd:null,tp:347,sl:68,mh:7,hm:1422.7},
+  {r:"PLUG_S15M_00049_WR100.0%/APnL36.0%/PTPnL4.0%",tf:"15M",fam:"PLUGS",bt:0,st:351,bw:0,sw:75.8,wd:null,ba:0,sa:-782.48,ad:null,bp:0,sp:-2.23,pd:null,tp:265,sl:60,mh:25,hm:2222.0},
+  {r:"PLUG_S15M_00050_WR75.0%/APnL19.41%/PTPnL4.85%",tf:"15M",fam:"PLUGS",bt:0,st:179,bw:0,sw:29.1,wd:null,ba:0,sa:-127.62,ad:null,bp:0,sp:-0.71,pd:null,tp:41,sl:123,mh:15,hm:448.8},
+  {r:"PLUG_X15M_00003_WR100.0%/APnL75.0%/PTPnL5.0%",tf:"15M",fam:"PLUGX",bt:0,st:35,bw:0,sw:80.0,wd:null,ba:0,sa:87.4,ad:null,bp:0,sp:2.5,pd:null,tp:28,sl:4,mh:1,hm:716.1},
+  {r:"PLUG_X15M_00005_WR100.0%/APnL66.22%/PTPnL4.41%",tf:"15M",fam:"PLUGX",bt:0,st:44,bw:0,sw:86.4,wd:null,ba:0,sa:101.19,ad:null,bp:0,sp:2.3,pd:null,tp:38,sl:3,mh:0,hm:848.3},
+  {r:"PLUG_X15M_00011_WR75.0%/APnL53.43%/PTPnL13.36%",tf:"15M",fam:"PLUGX",bt:0,st:43,bw:0,sw:83.7,wd:null,ba:0,sa:674.47,ad:null,bp:0,sp:15.69,pd:null,tp:11,sl:0,mh:21,hm:5957.2},
+  {r:"PLUG_X15M_00014_WR85.7%/APnL26.58%/PTPnL3.8%",tf:"15M",fam:"PLUGX",bt:0,st:20,bw:0,sw:80.0,wd:null,ba:0,sa:41.65,ad:null,bp:0,sp:2.08,pd:null,tp:15,sl:4,mh:0,hm:1232.1},
+  {r:"PLUG_X15M_00015_WR100.0%/APnL6.24%/PTPnL2.08%",tf:"15M",fam:"PLUGX",bt:0,st:5,bw:0,sw:80.0,wd:null,ba:0,sa:6.4,ad:null,bp:0,sp:1.28,pd:null,tp:4,sl:1,mh:0,hm:107.2},
+  {r:"PLUG_L1H_00004_WR100.0%/APnL9.44%/PTPnL2.36%",tf:"1H",fam:"PLUGL",bt:0,st:78,bw:0,sw:32.1,wd:null,ba:0,sa:-115.09,ad:null,bp:0,sp:-1.48,pd:null,tp:21,sl:48,mh:9,hm:178.7},
+  {r:"PLUG_S1H_00002_WR90.0%/APnL81.4%/PTPnL8.14%",tf:"1H",fam:"PLUGS",bt:0,st:241,bw:0,sw:37.3,wd:null,ba:0,sa:-231.69,ad:null,bp:0,sp:-0.96,pd:null,tp:11,sl:67,mh:162,hm:1450.4},
+  {r:"PLUG_S1H_00003_WR80.0%/APnL78.52%/PTPnL15.7%",tf:"1H",fam:"PLUGS",bt:0,st:300,bw:0,sw:40.0,wd:null,ba:0,sa:-203.18,ad:null,bp:0,sp:-0.68,pd:null,tp:33,sl:66,mh:197,hm:4300.3},
+  {r:"PLUG_S1H_00004_WR75.0%/APnL76.32%/PTPnL6.36%",tf:"1H",fam:"PLUGS",bt:0,st:372,bw:0,sw:18.3,wd:null,ba:0,sa:-1061.97,ad:null,bp:0,sp:-2.85,pd:null,tp:56,sl:301,mh:15,hm:686.0},
+  {r:"PLUG_S1H_00005_WR80.0%/APnL74.64%/PTPnL7.46%",tf:"1H",fam:"PLUGS",bt:0,st:229,bw:0,sw:10.0,wd:null,ba:0,sa:-774.48,ad:null,bp:0,sp:-3.38,pd:null,tp:2,sl:199,mh:28,hm:454.2},
+  {r:"PLUG_S1H_00006_WR87.5%/APnL74.25%/PTPnL9.28%",tf:"1H",fam:"PLUGS",bt:0,st:328,bw:0,sw:44.8,wd:null,ba:0,sa:-149.26,ad:null,bp:0,sp:-0.46,pd:null,tp:103,sl:108,mh:116,hm:1947.9},
+  {r:"PLUG_S1H_00007_WR83.3%/APnL72.79%/PTPnL12.13%",tf:"1H",fam:"PLUGS",bt:0,st:352,bw:0,sw:25.9,wd:null,ba:0,sa:-83.67,ad:null,bp:0,sp:-0.24,pd:null,tp:25,sl:247,mh:78,hm:1635.7},
+  {r:"PLUG_S1H_00008_WR87.5%/APnL71.11%/PTPnL8.89%",tf:"1H",fam:"PLUGS",bt:0,st:337,bw:0,sw:42.4,wd:null,ba:0,sa:-856.92,ad:null,bp:0,sp:-2.54,pd:null,tp:128,sl:135,mh:71,hm:2754.8},
+  {r:"PLUG_S1H_00009_WR83.3%/APnL70.43%/PTPnL11.74%",tf:"1H",fam:"PLUGS",bt:0,st:391,bw:0,sw:38.4,wd:null,ba:0,sa:-175.92,ad:null,bp:0,sp:-0.45,pd:null,tp:57,sl:163,mh:168,hm:3716.5},
+  {r:"PLUG_S1H_00010_WR100.0%/APnL70.0%/PTPnL11.67%",tf:"1H",fam:"PLUGS",bt:0,st:181,bw:0,sw:49.7,wd:null,ba:0,sa:-626.9,ad:null,bp:0,sp:-3.46,pd:null,tp:90,sl:85,mh:5,hm:2932.4},
+  {r:"PLUG_S1H_00011_WR100.0%/APnL64.85%/PTPnL12.97%",tf:"1H",fam:"PLUGS",bt:0,st:174,bw:0,sw:54.0,wd:null,ba:0,sa:-227.31,ad:null,bp:0,sp:-1.31,pd:null,tp:93,sl:67,mh:13,hm:3463.1},
+  {r:"PLUG_S1H_00012_WR85.7%/APnL64.66%/PTPnL9.24%",tf:"1H",fam:"PLUGS",bt:0,st:285,bw:0,sw:35.8,wd:null,ba:0,sa:14.87,ad:null,bp:0,sp:0.05,pd:null,tp:97,sl:176,mh:9,hm:1291.6},
+  {r:"PLUG_S1H_00013_WR85.7%/APnL64.42%/PTPnL9.2%",tf:"1H",fam:"PLUGS",bt:0,st:382,bw:0,sw:59.2,wd:null,ba:0,sa:-769.69,ad:null,bp:0,sp:-2.01,pd:null,tp:223,sl:100,mh:57,hm:3820.5},
+  {r:"PLUG_S1H_00014_WR66.7%/APnL64.18%/PTPnL21.39%",tf:"1H",fam:"PLUGS",bt:0,st:155,bw:0,sw:11.0,wd:null,ba:0,sa:-282.65,ad:null,bp:0,sp:-1.82,pd:null,tp:9,sl:138,mh:8,hm:1493.2},
+  {r:"PLUG_S1H_00015_WR80.0%/APnL63.18%/PTPnL12.64%",tf:"1H",fam:"PLUGS",bt:0,st:359,bw:0,sw:40.1,wd:null,ba:0,sa:-404.81,ad:null,bp:0,sp:-1.13,pd:null,tp:53,sl:51,mh:250,hm:4436.0},
+  {r:"PLUG_S1H_00016_WR100.0%/APnL63.0%/PTPnL12.6%",tf:"1H",fam:"PLUGS",bt:0,st:113,bw:0,sw:58.4,wd:null,ba:0,sa:53.86,ad:null,bp:0,sp:0.48,pd:null,tp:66,sl:41,mh:6,hm:2932.5},
+  {r:"PLUG_S1H_00017_WR100.0%/APnL63.0%/PTPnL12.6%",tf:"1H",fam:"PLUGS",bt:0,st:113,bw:0,sw:58.4,wd:null,ba:0,sa:53.86,ad:null,bp:0,sp:0.48,pd:null,tp:66,sl:41,mh:6,hm:2933.6},
+  {r:"PLUG_S1H_00018_WR66.7%/APnL61.61%/PTPnL20.54%",tf:"1H",fam:"PLUGS",bt:0,st:151,bw:0,sw:14.6,wd:null,ba:0,sa:-235.16,ad:null,bp:0,sp:-1.56,pd:null,tp:10,sl:129,mh:12,hm:1686.2},
+  {r:"PLUG_S1H_00019_WR66.7%/APnL61.59%/PTPnL20.53%",tf:"1H",fam:"PLUGS",bt:0,st:201,bw:0,sw:19.9,wd:null,ba:0,sa:287.21,ad:null,bp:0,sp:1.43,pd:null,tp:26,sl:160,mh:15,hm:1780.3},
+  {r:"PLUG_S1H_00020_WR66.7%/APnL61.05%/PTPnL20.35%",tf:"1H",fam:"PLUGS",bt:0,st:267,bw:0,sw:18.7,wd:null,ba:0,sa:40.95,ad:null,bp:0,sp:0.15,pd:null,tp:41,sl:215,mh:11,hm:2077.4},
+  {r:"PLUG_S1H_00021_WR75.0%/APnL60.97%/PTPnL15.24%",tf:"1H",fam:"PLUGS",bt:0,st:112,bw:0,sw:21.4,wd:null,ba:0,sa:88.65,ad:null,bp:0,sp:0.79,pd:null,tp:22,sl:87,mh:1,hm:1976.4},
+  {r:"PLUG_S1H_00022_WR100.0%/APnL53.36%/PTPnL13.34%",tf:"1H",fam:"PLUGS",bt:0,st:34,bw:0,sw:55.9,wd:null,ba:0,sa:29.37,ad:null,bp:0,sp:0.86,pd:null,tp:19,sl:14,mh:1,hm:2198.9},
+  {r:"PLUG_S1H_00023_WR100.0%/APnL53.07%/PTPnL17.69%",tf:"1H",fam:"PLUGS",bt:0,st:124,bw:0,sw:33.9,wd:null,ba:0,sa:-426.56,ad:null,bp:0,sp:-3.44,pd:null,tp:24,sl:78,mh:21,hm:6621.2},
+  {r:"PLUG_S1H_00024_WR100.0%/APnL51.03%/PTPnL10.21%",tf:"1H",fam:"PLUGS",bt:0,st:209,bw:0,sw:53.6,wd:null,ba:0,sa:-268.96,ad:null,bp:0,sp:-1.29,pd:null,tp:108,sl:90,mh:10,hm:3105.2},
+  {r:"PLUG_S1H_00025_WR100.0%/APnL50.63%/PTPnL16.88%",tf:"1H",fam:"PLUGS",bt:0,st:404,bw:0,sw:35.9,wd:null,ba:0,sa:-1251.16,ad:null,bp:0,sp:-3.1,pd:null,tp:98,sl:204,mh:99,hm:7892.1},
+  {r:"PLUG_S1H_00026_WR100.0%/APnL47.2%/PTPnL5.9%",tf:"1H",fam:"PLUGS",bt:0,st:174,bw:0,sw:66.1,wd:null,ba:0,sa:-309.55,ad:null,bp:0,sp:-1.78,pd:null,tp:115,sl:56,mh:2,hm:2055.3},
+  {r:"PLUG_S1H_00027_WR100.0%/APnL39.27%/PTPnL13.09%",tf:"1H",fam:"PLUGS",bt:0,st:117,bw:0,sw:53.8,wd:null,ba:0,sa:-181.23,ad:null,bp:0,sp:-1.55,pd:null,tp:62,sl:46,mh:9,hm:3610.4},
+  {r:"PLUG_S1H_00028_WR100.0%/APnL36.36%/PTPnL6.06%",tf:"1H",fam:"PLUGS",bt:0,st:92,bw:0,sw:58.7,wd:null,ba:0,sa:-109.33,ad:null,bp:0,sp:-1.19,pd:null,tp:54,sl:37,mh:1,hm:1179.6},
+  {r:"PLUG_S1H_00029_WR66.7%/APnL26.17%/PTPnL8.72%",tf:"1H",fam:"PLUGS",bt:0,st:156,bw:0,sw:24.4,wd:null,ba:0,sa:-123.82,ad:null,bp:0,sp:-0.79,pd:null,tp:38,sl:117,mh:1,hm:1103.2},
+  {r:"PLUG_S1H_00030_WR80.0%/APnL25.12%/PTPnL5.02%",tf:"1H",fam:"PLUGS",bt:0,st:161,bw:0,sw:50.3,wd:null,ba:0,sa:-24.79,ad:null,bp:0,sp:-0.15,pd:null,tp:74,sl:68,mh:18,hm:727.1},
+  {r:"PLUG_S1H_00031_WR80.0%/APnL19.06%/PTPnL3.81%",tf:"1H",fam:"PLUGS",bt:0,st:105,bw:0,sw:75.2,wd:null,ba:0,sa:326.8,ad:null,bp:0,sp:3.11,pd:null,tp:76,sl:22,mh:7,hm:551.9},
+  {r:"PLUG_S1H_00032_WR100.0%/APnL12.24%/PTPnL4.08%",tf:"1H",fam:"PLUGS",bt:0,st:52,bw:0,sw:50.0,wd:null,ba:0,sa:-85.28,ad:null,bp:0,sp:-1.64,pd:null,tp:26,sl:26,mh:0,hm:372.3},
+  {r:"PLUG_S1H_00033_WR100.0%/APnL7.48%/PTPnL1.87%",tf:"1H",fam:"PLUGS",bt:0,st:101,bw:0,sw:29.7,wd:null,ba:0,sa:-51.82,ad:null,bp:0,sp:-0.51,pd:null,tp:30,sl:71,mh:0,hm:49.6},
+  {r:"PLUG_S1H_00034_WR100.0%/APnL7.08%/PTPnL2.36%",tf:"1H",fam:"PLUGS",bt:0,st:91,bw:0,sw:31.9,wd:null,ba:0,sa:-130.92,ad:null,bp:0,sp:-1.44,pd:null,tp:29,sl:58,mh:4,hm:137.3},
+  {r:"PLUG_S1H_00035_WR100.0%/APnL7.08%/PTPnL2.36%",tf:"1H",fam:"PLUGS",bt:0,st:87,bw:0,sw:28.7,wd:null,ba:0,sa:-141.72,ad:null,bp:0,sp:-1.63,pd:null,tp:24,sl:58,mh:5,hm:139.6},
+  {r:"PLUG_S1H_00036_WR100.0%/APnL7.08%/PTPnL2.36%",tf:"1H",fam:"PLUGS",bt:0,st:65,bw:0,sw:33.8,wd:null,ba:0,sa:-89.83,ad:null,bp:0,sp:-1.38,pd:null,tp:21,sl:41,mh:3,hm:122.4},
+  {r:"PLUG_X1H_00002_WR80.0%/APnL69.38%/PTPnL13.88%",tf:"1H",fam:"PLUGX",bt:0,st:21,bw:0,sw:66.7,wd:null,ba:0,sa:216.94,ad:null,bp:0,sp:10.33,pd:null,tp:3,sl:2,mh:13,hm:4115.8},
+  {r:"PLUG_X1H_00004_WR87.5%/APnL65.86%/PTPnL8.23%",tf:"1H",fam:"PLUGX",bt:0,st:37,bw:0,sw:86.5,wd:null,ba:0,sa:230.24,ad:null,bp:0,sp:6.22,pd:null,tp:30,sl:2,mh:1,hm:2829.0},
+  {r:"PLUG_X1H_00006_WR87.5%/APnL62.36%/PTPnL7.79%",tf:"1H",fam:"PLUGX",bt:0,st:31,bw:0,sw:83.9,wd:null,ba:0,sa:164.42,ad:null,bp:0,sp:5.3,pd:null,tp:24,sl:3,mh:1,hm:2410.9},
+  {r:"PLUG_X1H_00011_WR80.0%/APnL51.93%/PTPnL10.39%",tf:"1H",fam:"PLUGX",bt:0,st:28,bw:0,sw:89.3,wd:null,ba:0,sa:403.05,ad:null,bp:0,sp:14.39,pd:null,tp:19,sl:1,mh:3,hm:4365.0},
+  {r:"PLUG_X1H_00013_WR83.3%/APnL45.87%/PTPnL7.64%",tf:"1H",fam:"PLUGX",bt:0,st:9,bw:0,sw:66.7,wd:null,ba:0,sa:49.18,ad:null,bp:0,sp:5.46,pd:null,tp:5,sl:2,mh:1,hm:1994.6},
+  {r:"PLUG_X1H_00015_WR100.0%/APnL45.0%/PTPnL15.0%",tf:"1H",fam:"PLUGX",bt:0,st:1,bw:0,sw:0.0,wd:null,ba:0,sa:-4.0,ad:null,bp:0,sp:-4.0,pd:null,tp:0,sl:1,mh:0,hm:194.0}
+];
+var sortCol="pd",sortAsc=true,searchVal="";
+function clr(v){if(v===null)return'';if(v>0)return'green';if(v<0)return'red';return''}
+function fmt(v){if(v===null)return'-';return v}
+function render(){
+  var f=data.filter(function(r){if(searchVal){var s=searchVal.toLowerCase();return r.r.toLowerCase().indexOf(s)>=0||r.tf.toLowerCase().indexOf(s)>=0||r.fam.toLowerCase().indexOf(s)>=0}return true});
+  f.sort(function(a,b){var va=a[sortCol],vb=b[sortCol];if(va===null)va=sortAsc?1e9:-1e9;if(vb===null)vb=sortAsc?1e9:-1e9;if(typeof va==="string"){va=va.toLowerCase();vb=vb.toLowerCase()}return sortAsc?(va<vb?-1:va>vb?1:0):(va>vb?-1:va<vb?1:0)});
+  var h="";
+  f.forEach(function(r){h+="<tr><td>"+r.r+"</td><td>"+r.tf+"</td><td>"+r.bt+"</td><td>"+r.st+"</td>"
+    +"<td>"+r.bw+"%</td><td>"+r.sw+"%</td><td class='"+clr(r.wd)+"'>"+fmt(r.wd)+"</td>"
+    +"<td>"+r.ba+"%</td><td>"+r.sa+"%</td><td class='"+clr(r.ad)+"'>"+fmt(r.ad)+"</td>"
+    +"<td>"+r.bp+"%</td><td>"+r.sp+"%</td><td class='"+clr(r.pd)+"'>"+fmt(r.pd)+"</td>"
+    +"<td class='green'>"+r.tp+"</td><td class='red'>"+r.sl+"</td><td class='yellow'>"+r.mh+"</td><td>"+r.hm+"</td></tr>"});
+  document.getElementById("tbody").innerHTML=h;
+}
+document.querySelectorAll("th").forEach(function(th){th.addEventListener("click",function(){var col=this.dataset.col;if(sortCol===col)sortAsc=!sortAsc;else{sortCol=col;sortAsc=this.dataset.type==="str"}document.querySelectorAll("th").forEach(function(h){h.classList.remove("active");h.querySelector(".arrow").innerHTML="&#9650;"});this.classList.add("active");this.querySelector(".arrow").innerHTML=sortAsc?"&#9650;":"&#9660;";render()});});
+document.getElementById("search").addEventListener("input",function(){searchVal=this.value;render()});
+render();
+</script>
+</body>
+</html>
