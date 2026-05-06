@@ -51,6 +51,7 @@ a:hover{color:#e94560;text-decoration:underline}
   <th data-col="avgPnl" data-type="num" class="active">Avg PnL% <span class="arrow">&#9660;</span></th>
   <th data-col="ptpnl" data-type="num">PTPnL% <span class="arrow">&#9650;</span></th>
   <th data-col="report" data-type="str">Report <span class="arrow">&#9650;</span></th>
+  <th data-col="sim" data-type="str">Sim <span class="arrow">&#9650;</span></th>
 </tr>
 </thead>
 <tbody id="tbody"></tbody>
@@ -69,7 +70,7 @@ var data = [
   {ticker:"AMAT",stock:655,total:655,indiv:655,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:0.0,report:"AMAT_backtest_summary.html"},
   {ticker:"AMD",stock:720,total:720,indiv:720,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:0.0,report:"AMD_backtest_summary.html"},
   {ticker:"AMDL",stock:699,total:699,indiv:699,wr100:85,pnl10:699,avgPnl:138.49,ptpnl:6.16,report:"AMDL_backtest_summary_20260423.html"},
-  {ticker:"AMZN",stock:721,total:721,indiv:721,wr100:79,pnl10:159,avgPnl:16.57,ptpnl:2.39,report:"AMZN_backtest_summary.html"},
+  {ticker:"AMZN",stock:803,total:803,indiv:803,wr100:265,pnl10:796,avgPnl:71.1,ptpnl:8.49,report:"AMZN_backtest_summary_20260506.html",sim:"AMZN_sim_vs_backtest.html"},
   {ticker:"AN",stock:620,total:620,indiv:620,wr100:127,pnl10:608,avgPnl:72.79,ptpnl:5.48,report:"AN_backtest_summary_20260423.html"},
   {ticker:"APH",stock:696,total:696,indiv:696,wr100:259,pnl10:669,avgPnl:83.89,ptpnl:5.91,report:"APH_backtest_summary_20260423.html"},
   {ticker:"APLD",stock:691,total:691,indiv:691,wr100:44,pnl10:10,avgPnl:2.98,ptpnl:2.98,report:"APLD_backtest_summary.html"},
@@ -272,7 +273,7 @@ var data = [
   {ticker:"RH",stock:563,total:563,indiv:563,wr100:98,pnl10:551,avgPnl:50.97,ptpnl:4.0,report:"RH_backtest_summary_20260502.html"},
   {ticker:"CL",stock:364,total:364,indiv:364,wr100:109,pnl10:349,avgPnl:29.6,ptpnl:3.7,report:"CL_backtest_summary_20260503.html"},
   {ticker:"BL",stock:407,total:407,indiv:407,wr100:86,pnl10:398,avgPnl:42.41,ptpnl:3.38,report:"BL_backtest_summary_20260503.html"},
-  {ticker:"PLUG",stock:464,total:464,indiv:464,wr100:279,pnl10:455,avgPnl:55.25,ptpnl:11.1,report:"PLUG_backtest_summary_20260506.html"}
+  {ticker:"PLUG",stock:464,total:464,indiv:464,wr100:279,pnl10:455,avgPnl:55.25,ptpnl:11.1,report:"PLUG_backtest_summary_20260506.html",sim:"PLUG_sim_vs_backtest.html"}
 ];
 var sortCol="avgPnl",sortAsc=false;
 function render(filter){
@@ -296,6 +297,7 @@ function render(filter){
     html+="<td><strong>"+(d.avgPnl>0?d.avgPnl.toFixed(1)+"%":'<span class="zero">0</span>')+"</strong></td>";
     html+="<td>"+(d.ptpnl>0?d.ptpnl.toFixed(2)+"%":'<span class="zero">0</span>')+"</td>";
     html+='<td class="report-link"><a href="reports/'+d.report+'">View</a></td>';
+    html+='<td class="report-link">'+(d.sim?'<a href="sim_reports/'+d.sim+'">View</a>':'<span class="dim">&mdash;</span>')+'</td>';
     html+="</tr>";
   });
   document.getElementById("tbody").innerHTML=html;
@@ -304,7 +306,7 @@ document.getElementById("search").addEventListener("input",function(){render(thi
 document.querySelectorAll("th[data-col]").forEach(function(th){
   th.addEventListener("click",function(){
     var col=this.getAttribute("data-col");
-    if(col==="report")return;
+    if(col==="report"||col==="sim")return;
     if(sortCol===col)sortAsc=!sortAsc;else{sortCol=col;sortAsc=col==="ticker";}
     document.querySelectorAll("th").forEach(function(h){h.classList.remove("active");h.querySelector(".arrow").innerHTML="&#9650;";});
     this.classList.add("active");
