@@ -306,7 +306,7 @@ Individual Trader evaluates rules
 </div>
 
 <h3>5.1 Pipeline Overview</h3>
-<p>Two pipeline variants exist for creating trading rules. Both follow the same multi-phase process but differ in optimization depth:</p>
+<p>The create-rules pipeline uses a <strong>13-phase architecture</strong> with two optimization loops: a fast backtest loop that covers all rules, and a slower simulation loop that refines only Tier 1/2 winners. Rules are never filtered during optimization &mdash; a ratchet mechanism ensures rules can only improve or stay the same. Tier labeling after optimization is the only filter.</p>
 
 <table>
   <thead>
@@ -321,48 +321,92 @@ Individual Trader evaluates rules
     <tr>
       <td><strong>create-rules3</strong></td>
       <td><code>create_rules_local3.py</code></td>
-      <td>5-cycle adaptive grid optimization</td>
-      <td>Standard rule creation &mdash; used for most tickers. Runs locally with ProcessPoolExecutor (up to 8 workers). Zero API tokens consumed.</td>
-    </tr>
-    <tr>
-      <td><strong>create-rules5</strong></td>
-      <td><code>create_rules_local5.py</code></td>
-      <td>Extended optimization with additional validation passes</td>
-      <td>Deep optimization for high-priority or complex tickers. Longer runtime but higher quality rule output.</td>
+      <td>13-phase: 5-cycle backtest loop + sim optimization loop</td>
+      <td>Standard rule creation &mdash; used for all tickers. Runs locally with ProcessPoolExecutor (up to 8 workers). Zero API tokens consumed.</td>
     </tr>
   </tbody>
 </table>
 
 <h3>5.2 Pipeline Phases</h3>
 
+<h4>Pre-Pipeline: Setup</h4>
 <div class="flow-diagram">
 Phase 0: Correlation Research
   Find lead, same-direction, and inverse tickers
   (auto-research broad universe or manual override)
         |
         v
-Phase 1: Data Download &amp; Preparation
+Data Download &amp; Preparation
   Download/update historical data for ticker + correlations
-  Timeframes: 5m, 15m, 1h, daily
+  Timeframes: 1m, 5m, 15m, 1h, daily (Polygon for stocks, Binance for crypto)
+</div>
+
+<h4>Backtest Optimization Loop (all rules, no filtering)</h4>
+<div class="flow-diagram">
+Phase 1: Generate all parameter combinations and backtest each one
+  Indicator combos × TP/SL × hold periods × directions
+  No filtering — ALL rules survive
         |
         v
-Phase 2: Rule Generation (per timeframe)
-  Generate candidate rules using indicator combinations
-  Backtest each candidate against historical data
-  Multi-cycle optimization: refine parameters each cycle
+Phase 2: Optimize all rules by tweaking parameters
+  Adjust TP/SL ratios, hold periods, indicator thresholds
+  Goal: improve WR and PnL for every rule
         |
         v
-Phase 3: Rule Selection &amp; Tiering
-  Rank rules by win rate + PnL
-  Assign tiers: Tier 1 (best), Tier 2, Tier 3
-  Generate rule files with prefix naming
+Phase 3: Re-backtest all rules with new parameters
         |
         v
-Phase 4: Deployment  &lt;-- BREAKAGE POINT
-  a) Update rule_index.json
-  b) Generate backtest report (HTML)
-  c) Deploy to paper traders (import validation)
-  d) Update dashboard / GitHub Pages
+Phase 4: Per-rule ratchet comparison
+  If rule improved (WR or PnL) → keep new parameters
+  If rule got worse → revert to prior parameters
+  Rules can only improve or stay the same
+        |
+        v
+Phase 5: Repeat Phases 2–4 (5 cycles total)
+  Each cycle: optimize → backtest → compare → ratchet
+</div>
+
+<h4>Tier Gate (the ONLY filter)</h4>
+<div class="flow-diagram">
+Phase 6: Apply Tier 1 &amp; Tier 2 labels
+  Tier 1: highest WR + PnL
+  Tier 2: strong WR + PnL
+  Unlabeled rules are discarded
+  This is the ONLY point where rules are filtered out
+</div>
+
+<h4>Simulation Optimization Loop (Tier 1/2 only)</h4>
+<div class="flow-diagram">
+Phase 7: Run 1-minute simulation on Tier 1/2 rules (baseline)
+  Replays every rule on 1m bars for intrabar TP/SL accuracy
+        |
+        v
+Phase 8: Optimize Tier 1/2 rules by tweaking parameters
+  Same optimization as Phase 2, but informed by sim results
+        |
+        v
+Phase 9: Re-run 1-minute simulation with new parameters
+        |
+        v
+Phase 10: Per-rule ratchet comparison
+  If rule improved → keep new parameters
+  If rule got worse → revert to prior parameters
+  Report % delta for WR and PnL from Phase 7 baseline
+  Overall summary: WR = all wins / all trades
+                    PnL = (end balance − start balance) / start balance
+        |
+        v
+Phase 11: Pause for human approval (temporary — commentable)
+  Present sim results + deltas for review
+  Approve → continue to Phase 12 or Phase 13
+        |
+        v
+Phase 12: If approved and optimization is still improving
+  Repeat Phases 8–11 (manual cycle count for now)
+        |
+        v
+Phase 13: Exit optimization cycle
+  Continue down pipeline → deploy rules, generate reports, update dashboards
 </div>
 
 <h3>5.3 Rule Promotion Failure Points</h3>
@@ -405,12 +449,14 @@ Phase 4: Deployment  &lt;-- BREAKAGE POINT
 
 <h3>5.4 Pipeline Safeguards (Current)</h3>
 <ul>
-  <li>Max 2 concurrent pipeline runs (prevents index corruption)</li>
+  <li>Max 1 concurrent pipeline run &mdash; strictly serial, no parallel ever</li>
   <li>Compile-only import validation (no trader startup during pipeline)</li>
-  <li>Uppercase timeframe enforcement on all exports</li>
+  <li>Uppercase timeframe enforcement via <code>tf_utils.normalize_tf()</code> at all boundaries</li>
   <li>JSON syntax validation on index.html before GitHub Pages push</li>
   <li>Backtest report generated with unique timestamped filename (never overwrite)</li>
   <li>Rules always run on their native timeframe indicators</li>
+  <li>Ratchet-only optimization &mdash; rules can never get worse between cycles</li>
+  <li>Retry with exponential backoff on Polygon API connection errors during data download</li>
 </ul>
 
 <h3>5.5 Required Improvements</h3>
@@ -714,36 +760,70 @@ Steven's Telegram App
 <!-- 11.1 Create-Rules Pipeline -->
 <h3>11.1 Create-Rules Pipeline Workflow <span class="tag tag-keep">Ref: Section 5</span></h3>
 
-<h4>11.1.1 Top-Level Pipeline</h4>
+<h4>11.1.1 Top-Level Pipeline (13 Phases)</h4>
 <div class="mermaid">
 flowchart TD
-    A([Steven sends create-rules TICKER via Telegram]):::startEnd --> B[Telegram Bridge receives message]
-    B --> C[Watch Monitor detects pending message]
-    C --> D[Pipeline Monitor starts]
-    D --> E[Step 1: Correlation Research\nAuto-search ticker universe\nFind same / lead / inverse]:::process
-    E --> F[Step 2: Prefix Assignment\nAssign rule prefix\nCreate family codes: S L D X]:::process
-    F --> G[Step 3: Phases 1-3 Optimization\n4 timeframes in parallel\nUp to 8 grid workers\n5-cycle adaptive optimization]:::highlight
-    G --> H[Step 4: Generate Rule Files\nExport .py files\nUPPERCASE timeframes required]:::process
-    H --> I[Step 5: Deploy Pipeline\nSee sub-workflow 11.1.3]:::process
-    I --> J([Send completion report via Telegram]):::startEnd
+    A([Steven sends create-rules TICKER]):::startEnd --> B[Phase 0: Correlation Research\nAuto-search ticker universe\nFind same / lead / inverse]:::process
+    B --> C[Data Download\nPolygon: 1m 5m 15m 1h daily\nRetry with backoff on errors]:::process
+    C --> D[Phases 1–5: Backtest Optimization Loop\nAll rules, no filtering\n5 ratchet cycles]:::highlight
+    D --> E[Phase 6: Tier Gate\nApply Tier 1 and Tier 2 labels\nONLY filter in the pipeline]:::gate
+    E --> F[Phases 7–12: Simulation Optimization Loop\nTier 1/2 only, 1m bars\nManual approval between rounds]:::sim
+    F --> G[Phase 13: Deploy Pipeline\nRule files + index + reports + dashboards]:::process
+    G --> H([Send completion report via Telegram]):::startEnd
 
     classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
     classDef process fill:#0d47a1,stroke:#42a5f5,color:#fff
     classDef highlight fill:#4a148c,stroke:#ce93d8,color:#fff
+    classDef gate fill:#e65100,stroke:#ff9800,color:#fff
+    classDef sim fill:#006064,stroke:#4dd0e1,color:#fff
 </div>
 
-<h4>11.1.2 Sub-Workflow: Phases 1-3 Optimization (per timeframe)</h4>
+<h4>11.1.2 Sub-Workflow: Backtest Optimization Loop (Phases 1–5)</h4>
 <div class="mermaid">
 flowchart TD
-    A([For each timeframe: 5m / 15m / 1h / daily]):::startEnd --> B[PHASE 1: Analysis\nLoad historic data\nCalculate indicators\nIdentify candidate conditions]:::phase1
-    B --> C[PHASE 2: Backtest Discovery\nTest all candidate combos\nFilter by win rate + PnL\nSeparate high-PnL and 100% WR]:::phase2
-    C --> D[PHASE 3: Grid Optimization\nProcessPoolExecutor up to 8 workers\nOptimize entry/exit thresholds\n5 cycles, maximize WR + PnL\n10-min timeout per condition]:::phase3
-    D --> E([Merge results across timeframes]):::startEnd
+    A([For each timeframe: 5m / 15m / 1h / daily]):::startEnd --> B[PHASE 1: Generate ALL combos\nIndicators × TP/SL × hold × direction\nBacktest each one\nNo filtering — all rules survive]:::phase1
+    B --> C[PHASE 2: Optimize all rules\nTweak TP/SL, hold, thresholds\nGoal: improve WR + PnL]:::phase2
+    C --> D[PHASE 3: Re-backtest all rules\nwith new parameters]:::phase3
+    D --> E{PHASE 4: Per-rule compare}:::decision
+    E -- Improved WR or PnL --> F[Keep new parameters]:::keep
+    E -- Got worse --> G[Revert to prior parameters]:::revert
+    F --> H{PHASE 5: Cycle count < 5?}:::decision
+    G --> H
+    H -- Yes --> C
+    H -- No --> I([Merge results across timeframes\nProceed to Phase 6: Tier Gate]):::startEnd
 
     classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
     classDef phase1 fill:#0d47a1,stroke:#42a5f5,color:#fff
     classDef phase2 fill:#e65100,stroke:#ff9800,color:#fff
     classDef phase3 fill:#4a148c,stroke:#ce93d8,color:#fff
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef keep fill:#1b5e20,stroke:#4caf50,color:#fff
+    classDef revert fill:#b71c1c,stroke:#ef5350,color:#fff
+</div>
+
+<h4>11.1.2b Sub-Workflow: Simulation Optimization Loop (Phases 7–12)</h4>
+<div class="mermaid">
+flowchart TD
+    A([Tier 1/2 rules from Phase 6]):::startEnd --> B[PHASE 7: Run 1m simulation\nBaseline metrics for all Tier 1/2 rules]:::sim
+    B --> C[PHASE 8: Optimize Tier 1/2 rules\nTweak parameters to improve\nWR + PnL on 1m bars]:::phase2
+    C --> D[PHASE 9: Re-run 1m simulation\nwith new parameters]:::sim
+    D --> E{PHASE 10: Per-rule compare}:::decision
+    E -- Improved --> F[Keep new parameters]:::keep
+    E -- Got worse --> G[Revert to prior parameters]:::revert
+    F --> H[Report % delta from baseline\nWR = all wins / all trades\nPnL = end−start / start]
+    G --> H
+    H --> I[PHASE 11: Pause for approval\nPresent results + deltas]:::approval
+    I --> J{Approved?}:::decision
+    J -- Continue optimizing --> C
+    J -- Exit optimization --> K([PHASE 13: Deploy pipeline]):::startEnd
+
+    classDef startEnd fill:#1b5e20,stroke:#4caf50,color:#fff,rx:20
+    classDef sim fill:#006064,stroke:#4dd0e1,color:#fff
+    classDef phase2 fill:#e65100,stroke:#ff9800,color:#fff
+    classDef decision fill:#f57f17,stroke:#ffee58,color:#000
+    classDef keep fill:#1b5e20,stroke:#4caf50,color:#fff
+    classDef revert fill:#b71c1c,stroke:#ef5350,color:#fff
+    classDef approval fill:#4a148c,stroke:#ce93d8,color:#fff
 </div>
 
 <h4>11.1.3 Sub-Workflow: Deploy Pipeline</h4>
@@ -927,7 +1007,7 @@ flowchart TD
 </div>
 
 <div class="footer">
-  Design Requirements Document v1.2 &bull; Updated 2026-04-25 &bull; Workflow Diagrams upgraded to visual flowcharts &bull; For review only &mdash; no code changes
+  Design Requirements Document v1.3 &bull; Updated 2026-05-06 &bull; Section 5 + 11: 13-phase pipeline with backtest loop, tier gate, simulation optimization loop &bull; For review only &mdash; no code changes
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
