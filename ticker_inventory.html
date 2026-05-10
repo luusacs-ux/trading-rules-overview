@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,422 tickers &#8226; 527 with 1m data &#8226; 2,895 missing 1m &#8226; 159 with deployed rules &#8226; 1 with bear rules</p>
+  <p class="subtitle">3,422 tickers &#8226; 533 with 1m data &#8226; 2,889 missing 1m &#8226; 160 with deployed rules &#8226; 1 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -1050,7 +1050,7 @@ var data = [
   {t:"DNOW",n:"DNOW Inc.",s:"Industrials",i:"Industrial Distribution",v:3435513,mc:2530377984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SLNO",n:"Soleno Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:3432069,mc:2758198016,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BRO",n:"Brown &amp; Brown, Inc.",s:"Financial Services",i:"Insurance Brokers",v:3427896,mc:19492890624,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"TER",n:"Teradyne, Inc.",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:3423428,mc:55901204480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"TER",n:"Teradyne, Inc.",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:3423428,mc:55901204480,qt:"EQUITY",d1m:1,d5m:1,rules:824,br:0},
   {t:"ALHC",n:"Alignment Healthcare, Inc.",s:"Healthcare",i:"Healthcare Plans",v:3413510,mc:3783228928,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CCJ",n:"Cameco Corporation",s:"Energy",i:"Uranium",v:3409491,mc:49851105280,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"REAL",n:"The RealReal, Inc.",s:"Consumer Cyclical",i:"Luxury Goods",v:3405066,mc:1532287488,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2154,7 +2154,7 @@ var data = [
   {t:"VMC",n:"Vulcan Materials Company (Holdi",s:"Basic Materials",i:"Building Materials",v:1313384,mc:37824847872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RH",n:"RH",s:"Consumer Cyclical",i:"Specialty Retail",v:1312652,mc:2333867008,qt:"EQUITY",d1m:1,d5m:1,rules:92,br:0},
   {t:"MDXG",n:"MiMedx Group, Inc",s:"Healthcare",i:"Biotechnology",v:1312623,mc:542162496,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MKSI",n:"MKS Inc.",s:"Technology",i:"Scientific &amp; Technical Instruments",v:1311337,mc:19365085184,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MKSI",n:"MKS Inc.",s:"Technology",i:"Scientific &amp; Technical Instruments",v:1311337,mc:19365085184,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"TTAN",n:"ServiceTitan, Inc.",s:"Technology",i:"Software - Application",v:1311159,mc:6088621056,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NKTR",n:"Nektar Therapeutics",s:"Healthcare",i:"Biotechnology",v:1309842,mc:2839739392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"STAG",n:"Stag Industrial, Inc.",s:"Real Estate",i:"REIT - Industrial",v:1309255,mc:7427527680,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3026,7 +3026,7 @@ var data = [
   {t:"ABX",n:"Abacus Global Management, Inc.",s:"Financial Services",i:"Insurance - Life",v:654968,mc:890243008,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RFIX",n:"Simplify Bond Bull ETF",s:"",i:"",v:654332,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"EQIX",n:"Equinix, Inc.",s:"Real Estate",i:"REIT - Specialty",v:653161,mc:106362306560,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AEIS",n:"Advanced Energy Industries, Inc",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:652991,mc:13144536064,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AEIS",n:"Advanced Energy Industries, Inc",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:652991,mc:13144536064,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SIGA",n:"SIGA Technologies Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:652942,mc:332799808,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"OSK",n:"Oshkosh Corporation (Holding Co",s:"Industrials",i:"Farm &amp; Heavy Construction Machinery",v:648211,mc:9602240512,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NEAR",n:"iShares Short Duration Bond Act",s:"",i:"",v:647940,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -3245,7 +3245,7 @@ var data = [
   {t:"UXRP",n:"ProShares Ultra XRP ETF",s:"",i:"",v:464193,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MSTW",n:"Roundhill MSTR WeeklyPay ETF",s:"",i:"",v:464105,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"MLPX",n:"Global X MLP &amp; Energy Infrastru",s:"",i:"",v:463025,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"AIPO",n:"Defiance AI &amp; Power Infrastruct",s:"",i:"",v:462965,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AIPO",n:"Defiance AI &amp; Power Infrastruct",s:"",i:"",v:462965,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"WTFC",n:"Wintrust Financial Corporation",s:"Financial Services",i:"Banks - Regional",v:462891,mc:10146278400,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CAMT",n:"Camtek Ltd.",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:462170,mc:9179385856,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AGX",n:"Argan, Inc.",s:"Industrials",i:"Engineering &amp; Construction",v:460151,mc:10051534848,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3296,7 +3296,7 @@ var data = [
   {t:"AMG",n:"Affiliated Managers Group, Inc.",s:"Financial Services",i:"Asset Management",v:405955,mc:8062888960,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MOO",n:"VanEck Agribusiness ETF",s:"",i:"",v:404118,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"WLAC",n:"Willow Lane Acquisition Corp.",s:"Financial Services",i:"Shell Companies",v:402515,mc:328640384,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SPHB",n:"Invesco S&amp;P 500 High Beta ETF",s:"",i:"",v:402040,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SPHB",n:"Invesco S&amp;P 500 High Beta ETF",s:"",i:"",v:402040,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IMCR",n:"Immunocore Holdings plc",s:"Healthcare",i:"Biotechnology",v:401227,mc:1465992832,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"OSBC",n:"Old Second Bancorp, Inc.",s:"Financial Services",i:"Banks - Regional",v:400928,mc:1104399232,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LE",n:"Lands End, Inc.",s:"Consumer Cyclical",i:"Apparel Retail",v:400250,mc:334432288,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3352,7 +3352,7 @@ var data = [
   {t:"HYPD",n:"Hyperion DeFi, Inc.",s:"Healthcare",i:"Biotechnology",v:348044,mc:53198984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VIXM",n:"VIX Mid-Term Futures ETF",s:"",i:"",v:346732,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ANIP",n:"ANI Pharmaceuticals, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:344301,mc:1925349248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"QTUM",n:"Defiance Quantum ETF",s:"",i:"",v:343262,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"QTUM",n:"Defiance Quantum ETF",s:"",i:"",v:343262,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IFRA",n:"iShares U.S. Infrastructure ETF",s:"",i:"",v:343091,mc:0,qt:"ETF",d1m:1,d5m:1,rules:26,br:0},
   {t:"PLCE",n:"Childrens Place, Inc. (The)",s:"Consumer Cyclical",i:"Apparel Manufacturing",v:341037,mc:66857760,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FCFS",n:"FirstCash Holdings, Inc.",s:"Financial Services",i:"Credit Services",v:340728,mc:9850980352,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
