@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,426 tickers &#8226; 536 with 1m data &#8226; 2,890 missing 1m &#8226; 162 with deployed rules &#8226; 3 with bear rules</p>
+  <p class="subtitle">3,426 tickers &#8226; 541 with 1m data &#8226; 2,885 missing 1m &#8226; 163 with deployed rules &#8226; 3 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -89,7 +89,7 @@ tr:hover{background:#1e2a4a}
 var data = [
   {t:"NVDA",n:"NVIDIA Corporation",s:"Technology",i:"Semiconductors",v:171892757,mc:4775932329984,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"TZA",n:"Direxion Small Cap Bear 3X ETF",s:"",i:"",v:141958100,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"BMNU",n:"T-REX 2X Long BMNR Daily Target",s:"",i:"",v:126724915,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"BMNU",n:"T-REX 2X Long BMNR Daily Target",s:"",i:"",v:126724915,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BITO",n:"ProShares Bitcoin ETF",s:"",i:"",v:106211061,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"INTC",n:"Intel Corporation",s:"Technology",i:"Semiconductors",v:104654610,mc:543561908224,qt:"EQUITY",d1m:1,d5m:1,rules:525,br:0},
   {t:"TQQQ",n:"ProShares UltraPro QQQ",s:"",i:"",v:99471811,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -131,7 +131,7 @@ var data = [
   {t:"LQD",n:"iShares iBoxx $ Investment Grad",s:"",i:"",v:41254488,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IWM",n:"iShares Russell 2000 Index Fund",s:"",i:"",v:40755589,mc:0,qt:"ETF",d1m:1,d5m:1,rules:45,br:0},
   {t:"T",n:"AT&amp;T Inc.",s:"Communication Services",i:"Telecom Services",v:40600927,mc:179961970688,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"NIO",n:"NIO Inc.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:40561908,mc:14783435776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"NIO",n:"NIO Inc.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:40561908,mc:14783435776,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BAC",n:"Bank of America Corporation",s:"Financial Services",i:"Banks - Diversified",v:40185415,mc:376970903552,qt:"EQUITY",d1m:1,d5m:1,rules:372,br:0},
   {t:"EEM",n:"iShares MSCI Emerging Index Fun",s:"",i:"",v:40157266,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"OPEN",n:"Opendoor Technologies Inc",s:"Real Estate",i:"Real Estate Services",v:40135444,mc:5045404160,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -154,7 +154,7 @@ var data = [
   {t:"TSDD",n:"GraniteShares 2x Short TSLA Dai",s:"",i:"",v:33544906,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BTG",n:"B2Gold Corp",s:"Basic Materials",i:"Gold",v:33144006,mc:5664264704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WULF",n:"TeraWulf Inc.",s:"Financial Services",i:"Capital Markets",v:32761840,mc:11571992576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"BITF",n:"Bitfarms Ltd.",s:"Financial Services",i:"Capital Markets",v:32660486,mc:1199686528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"BITF",n:"Bitfarms Ltd.",s:"Financial Services",i:"Capital Markets",v:32660486,mc:1199686528,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"DRIP",n:"Direxion Daily S&amp;P Oil &amp; Gas Ex",s:"",i:"",v:32564125,mc:0,qt:"ETF",d1m:1,d5m:1,rules:162,br:0},
   {t:"HOOD",n:"Robinhood Markets, Inc.",s:"Financial Services",i:"Capital Markets",v:32017754,mc:69365907456,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AMC",n:"AMC Entertainment Holdings, Inc",s:"Communication Services",i:"Entertainment",v:31998815,mc:1179383424,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -218,7 +218,7 @@ var data = [
   {t:"APLD",n:"Applied Digital Corporation",s:"Technology",i:"Information Technology Services",v:21507911,mc:11396489216,qt:"EQUITY",d1m:1,d5m:1,rules:52,br:0},
   {t:"BKLN",n:"Invesco Senior Loan ETF",s:"",i:"",v:21319840,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"RKLB",n:"Rocket Lab Corporation",s:"Industrials",i:"Aerospace &amp; Defense",v:21142974,mc:45526769664,qt:"EQUITY",d1m:1,d5m:1,rules:182,br:0},
-  {t:"CLSK",n:"CleanSpark, Inc.",s:"Financial Services",i:"Capital Markets",v:20934483,mc:3429646592,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"CLSK",n:"CleanSpark, Inc.",s:"Financial Services",i:"Capital Markets",v:20934483,mc:3429646592,qt:"EQUITY",d1m:1,d5m:1,rules:603,br:0},
   {t:"NKE",n:"Nike, Inc.",s:"Consumer Cyclical",i:"Footwear &amp; Accessories",v:20855344,mc:63766999040,qt:"EQUITY",d1m:1,d5m:1,rules:1260,br:1260},
   {t:"WMT",n:"Walmart Inc.",s:"Consumer Defensive",i:"Discount Stores",v:20722857,mc:1042525782016,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"STLA",n:"Stellantis N.V.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:20592071,mc:20862056448,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -235,7 +235,7 @@ var data = [
   {t:"PINS",n:"Pinterest, Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:19618296,mc:12480305152,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AUR",n:"Aurora Innovation, Inc.",s:"Consumer Cyclical",i:"Auto Parts",v:19601908,mc:12799900672,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CLF",n:"Cleveland-Cliffs Inc.",s:"Basic Materials",i:"Steel",v:19511883,mc:6074915840,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MSTZ",n:"T-Rex 2X Inverse MSTR Daily Tar",s:"",i:"",v:19448530,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MSTZ",n:"T-Rex 2X Inverse MSTR Daily Tar",s:"",i:"",v:19448530,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PYPL",n:"PayPal Holdings, Inc.",s:"Financial Services",i:"Credit Services",v:19385193,mc:41825845248,qt:"EQUITY",d1m:1,d5m:1,rules:55,br:0},
   {t:"AG",n:"First Majestic Silver Corp.",s:"Basic Materials",i:"Silver",v:19145020,mc:9430462464,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AMDD",n:"Direxion Daily AMD Bear 1X ETF",s:"",i:"",v:18784578,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -339,7 +339,7 @@ var data = [
   {t:"QUBT",n:"Quantum Computing Inc.",s:"Technology",i:"Computer Hardware",v:12216011,mc:2155991808,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"COIN",n:"Coinbase Global, Inc.",s:"Financial Services",i:"Financial Data &amp; Stock Exchanges",v:12212280,mc:52220862464,qt:"EQUITY",d1m:1,d5m:1,rules:100,br:0},
   {t:"CVX",n:"Chevron Corporation",s:"Energy",i:"Oil &amp; Gas Integrated",v:12203823,mc:380849258496,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"HIVE",n:"HIVE Digital Technologies Ltd",s:"Financial Services",i:"Capital Markets",v:12172762,mc:719249216,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"HIVE",n:"HIVE Digital Technologies Ltd",s:"Financial Services",i:"Capital Markets",v:12172762,mc:719249216,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"IWF",n:"iShares Russell 1000 Growth Fun",s:"",i:"",v:12021100,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"BOIL",n:"ProShares Ultra Bloomberg Natur",s:"",i:"",v:11983621,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ADT",n:"ADT Inc.",s:"Industrials",i:"Security &amp; Protection Services",v:11938695,mc:5535757312,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
