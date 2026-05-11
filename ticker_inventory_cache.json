@@ -27374,5 +27374,37 @@
   "marketCap": 0,
   "name": "",
   "quoteType": ""
+ },
+ "CLPT": {
+  "sector": "Healthcare",
+  "industry": "Medical Devices",
+  "volume": 732585,
+  "marketCap": 384420704,
+  "name": "ClearPoint Neuro Inc.",
+  "quoteType": "EQUITY"
+ },
+ "ENR": {
+  "sector": "Industrials",
+  "industry": "Electrical Equipment & Parts",
+  "volume": 1201429,
+  "marketCap": 1291410048,
+  "name": "Energizer Holdings, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "IMPP": {
+  "sector": "Energy",
+  "industry": "Oil & Gas Midstream",
+  "volume": 713031,
+  "marketCap": 226520432,
+  "name": "Imperial Petroleum Inc.",
+  "quoteType": "EQUITY"
+ },
+ "LOAR": {
+  "sector": "Industrials",
+  "industry": "Aerospace & Defense",
+  "volume": 1134937,
+  "marketCap": 5598743552,
+  "name": "Loar Holdings Inc.",
+  "quoteType": "EQUITY"
  }
 }

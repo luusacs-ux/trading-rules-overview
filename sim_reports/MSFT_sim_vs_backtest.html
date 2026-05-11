@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSFT — Backtest vs 1m Simulation</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px}
+.header{background:#16213e;padding:12px 16px;border-bottom:1px solid #0f3460}
+.header h1{font-size:1.3rem;color:#e94560;margin-bottom:4px}
+.subtitle{color:#a0a0b0;font-size:12px;margin:4px 0}
+.summary{display:flex;gap:12px;flex-wrap:wrap;padding:12px 16px}
+.card{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:10px 14px;min-width:140px}
+.card .label{font-size:10px;color:#888;text-transform:uppercase}
+.card .value{font-size:1.2rem;font-weight:700;margin-top:2px}
+.card .sub{font-size:11px;color:#888;margin-top:2px}
+.green{color:#4caf50}.red{color:#ef5350}.yellow{color:#ffc107}
+.container{padding:8px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:1100px}
+th{background:#0f3460;color:#e94560;padding:7px 4px;text-align:right;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:2px solid #e94560;font-size:10px;position:sticky;top:0;z-index:2}
+th:first-child{text-align:left}
+th:hover{background:#162d50}
+th .arrow{font-size:9px;margin-left:1px;opacity:.5}
+th.active .arrow{opacity:1}
+td{padding:5px 4px;text-align:right;border-bottom:1px solid #1e2a4a;white-space:nowrap}
+td:first-child{text-align:left;font-weight:600;color:#53c0f0}
+tr:hover{background:#1e2a4a}
+.footer{text-align:center;padding:16px;color:#555;font-size:11px}
+.search-box{width:100%;padding:8px 12px;background:#1a1a2e;border:1px solid #0f3460;border-radius:6px;color:#e0e0e0;font-size:14px;outline:none;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>MSFT — Backtest vs 1m Simulation</h1>
+  <p class="subtitle">248 rules compared &#8226; 248 matched to backtest &#8226; 78082 sim trades</p>
+  <input type="text" class="search-box" id="search" placeholder="Filter rules..." autocomplete="off">
+</div>
+<div class="summary">
+  <div class="card"><div class="label">Sim Trades</div><div class="value">78082</div></div>
+  <div class="card"><div class="label">Sim WR</div><div class="value green">78.5%</div><div class="sub">BT avg: 84.6%</div></div>
+  <div class="card"><div class="label">Sim Total PnL</div><div class="value green">29689.63%</div></div>
+  <div class="card"><div class="label">Sim PTPnL</div><div class="value green">0.38%</div></div>
+  <div class="card"><div class="label">TP Exits</div><div class="value green">51790</div></div>
+  <div class="card"><div class="label">SL Exits</div><div class="value red">6582</div></div>
+  <div class="card"><div class="label">Hold Exits</div><div class="value yellow">19178</div></div>
+</div>
+<div class="container">
+<table id="tbl">
+<thead><tr>
+  <th data-col="r" data-type="str">Rule <span class="arrow">&#9650;</span></th>
+  <th data-col="tf" data-type="str">TF <span class="arrow">&#9650;</span></th>
+  <th data-col="bt" data-type="num">BT Trades <span class="arrow">&#9650;</span></th>
+  <th data-col="st" data-type="num">Sim Trades <span class="arrow">&#9650;</span></th>
+  <th data-col="bw" data-type="num">BT WR% <span class="arrow">&#9650;</span></th>
+  <th data-col="sw" data-type="num">Sim WR% <span class="arrow">&#9650;</span></th>
+  <th data-col="wd" data-type="num">WR Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="ba" data-type="num">BT APnL <span class="arrow">&#9650;</span></th>
+  <th data-col="sa" data-type="num">Sim APnL <span class="arrow">&#9650;</span></th>
+  <th data-col="ad" data-type="num">APnL Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="bp" data-type="num">BT PTPnL <span class="arrow">&#9650;</span></th>
+  <th data-col="sp" data-type="num">Sim PTPnL <span class="arrow">&#9650;</span></th>
+  <th data-col="pd" data-type="num" class="active">PTPnL Delta <span class="arrow">&#9650;</span></th>
+  <th data-col="tp" data-type="num">TP <span class="arrow">&#9650;</span></th>
+  <th data-col="sl" data-type="num">SL <span class="arrow">&#9650;</span></th>
+  <th data-col="mh" data-type="num">Hold <span class="arrow">&#9650;</span></th>
+  <th data-col="hm" data-type="num">Avg Min <span class="arrow">&#9650;</span></th>
+</tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<div class="footer">Generated: 2026-05-10 00:57 | 1m Simulation Engine</div>
+<script>
+var data = [
+  {r:"MSFT_XD_00001_WR100.0%/APnL48.43%/PTPnL16.14%",tf:"DAILY",fam:"MSFTX",bt:3,st:3,bw:100.0,sw:0.0,wd:-100.0,ba:48.43,sa:-1.62,ad:-50.05,bp:16.14,sp:-0.54,pd:-16.68,tp:0,sl:3,mh:0,hm:18731.7},
+  {r:"MSFT_L5M_00013_WR66.7%/APnL45.9%/PTPnL15.3%",tf:"5M",fam:"MSFTL",bt:3,st:5,bw:66.7,sw:40.0,wd:-26.7,ba:45.9,sa:7.7,ad:-38.2,bp:15.3,sp:1.54,pd:-13.76,tp:0,sl:3,mh:2,hm:8504.0},
+  {r:"MSFT_SD_00008_WR66.7%/APnL37.89%/PTPnL12.63%",tf:"DAILY",fam:"MSFTS",bt:3,st:3,bw:66.7,sw:0.0,wd:-66.7,ba:37.89,sa:-1.61,ad:-39.5,bp:12.63,sp:-0.54,pd:-13.17,tp:0,sl:3,mh:0,hm:19900.3},
+  {r:"MSFT_X5M_00001_WR100.0%/APnL55.88%/PTPnL18.63%",tf:"5M",fam:"MSFTX",bt:3,st:7,bw:100.0,sw:71.4,wd:-28.6,ba:55.88,sa:63.97,ad:8.09,bp:18.63,sp:9.14,pd:-9.49,tp:2,sl:2,mh:3,hm:6136.0},
+  {r:"MSFT_S1H_00038_WR66.7%/APnL23.03%/PTPnL7.68%",tf:"1H",fam:"MSFTS",bt:3,st:4,bw:66.7,sw:0.0,wd:-66.7,ba:23.03,sa:-6.08,ad:-29.11,bp:7.68,sp:-1.52,pd:-9.2,tp:0,sl:4,mh:0,hm:250.0},
+  {r:"MSFT_SD_00001_WR100.0%/APnL46.65%/PTPnL15.55%",tf:"DAILY",fam:"MSFTS",bt:3,st:3,bw:100.0,sw:33.3,wd:-66.7,ba:46.65,sa:20.7,ad:-25.95,bp:15.55,sp:6.9,pd:-8.65,tp:1,sl:2,mh:0,hm:53710.0},
+  {r:"MSFT_S15M_00022_WR33.3%/APnL29.06%/PTPnL9.69%",tf:"15M",fam:"MSFTS",bt:3,st:5,bw:33.3,sw:20.0,wd:-13.3,ba:29.06,sa:7.92,ad:-21.14,bp:9.69,sp:1.58,pd:-8.11,tp:0,sl:4,mh:1,hm:2760.4},
+  {r:"MSFT_SD_00006_WR42.9%/APnL39.65%/PTPnL5.66%",tf:"DAILY",fam:"MSFTS",bt:7,st:8,bw:42.9,sw:0.0,wd:-42.9,ba:39.65,sa:-17.1,ad:-56.75,bp:5.66,sp:-2.14,pd:-7.8,tp:0,sl:8,mh:0,hm:11406.8},
+  {r:"MSFT_LD_00003_WR66.7%/APnL32.49%/PTPnL10.83%",tf:"DAILY",fam:"MSFTL",bt:3,st:4,bw:66.7,sw:25.0,wd:-41.7,ba:32.49,sa:12.48,ad:-20.01,bp:10.83,sp:3.12,pd:-7.71,tp:1,sl:3,mh:0,hm:23541.5},
+  {r:"MSFT_SD_00011_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTS",bt:3,st:4,bw:100.0,sw:25.0,wd:-75.0,ba:34.34,sa:18.88,ad:-15.46,bp:11.45,sp:4.72,pd:-6.73,tp:1,sl:3,mh:0,hm:19515.8},
+  {r:"MSFT_SD_00012_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTS",bt:3,st:4,bw:100.0,sw:25.0,wd:-75.0,ba:34.34,sa:18.88,ad:-15.46,bp:11.45,sp:4.72,pd:-6.73,tp:1,sl:3,mh:0,hm:19515.8},
+  {r:"MSFT_SD_00013_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTS",bt:3,st:4,bw:100.0,sw:25.0,wd:-75.0,ba:34.34,sa:18.88,ad:-15.46,bp:11.45,sp:4.72,pd:-6.73,tp:1,sl:3,mh:0,hm:19515.8},
+  {r:"MSFT_SD_00015_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTS",bt:3,st:4,bw:100.0,sw:25.0,wd:-75.0,ba:34.34,sa:18.88,ad:-15.46,bp:11.45,sp:4.72,pd:-6.73,tp:1,sl:3,mh:0,hm:19515.8},
+  {r:"MSFT_XD_00009_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTX",bt:3,st:4,bw:100.0,sw:25.0,wd:-75.0,ba:34.34,sa:18.88,ad:-15.46,bp:11.45,sp:4.72,pd:-6.73,tp:1,sl:3,mh:0,hm:19515.8},
+  {r:"MSFT_S1H_00039_WR100.0%/APnL21.84%/PTPnL3.12%",tf:"1H",fam:"MSFTS",bt:7,st:8,bw:100.0,sw:37.5,wd:-62.5,ba:21.84,sa:-24.24,ad:-46.08,bp:3.12,sp:-3.03,pd:-6.15,tp:3,sl:5,mh:0,hm:2764.1},
+  {r:"MSFT_X15M_00006_WR75.0%/APnL32.19%/PTPnL8.05%",tf:"15M",fam:"MSFTX",bt:4,st:11,bw:75.0,sw:27.3,wd:-47.7,ba:32.19,sa:21.9,ad:-10.29,bp:8.05,sp:1.99,pd:-6.06,tp:3,sl:8,mh:0,hm:1799.9},
+  {r:"MSFT_SD_00009_WR62.5%/APnL34.91%/PTPnL4.36%",tf:"DAILY",fam:"MSFTS",bt:8,st:19,bw:62.5,sw:26.3,wd:-36.2,ba:34.91,sa:-19.38,ad:-54.29,bp:4.36,sp:-1.02,pd:-5.38,tp:4,sl:13,mh:0,hm:20224.2},
+  {r:"MSFT_SD_00010_WR62.5%/APnL34.91%/PTPnL4.36%",tf:"DAILY",fam:"MSFTS",bt:8,st:19,bw:62.5,sw:26.3,wd:-36.2,ba:34.91,sa:-19.38,ad:-54.29,bp:4.36,sp:-1.02,pd:-5.38,tp:4,sl:13,mh:0,hm:20224.2},
+  {r:"MSFT_L5M_00002_WR66.7%/APnL60.11%/PTPnL10.02%",tf:"5M",fam:"MSFTL",bt:6,st:30,bw:66.7,sw:73.3,wd:6.6,ba:60.11,sa:142.43,ad:82.32,bp:10.02,sp:4.75,pd:-5.27,tp:3,sl:4,mh:23,hm:7181.5},
+  {r:"MSFT_X5M_00018_WR100.0%/APnL13.52%/PTPnL4.51%",tf:"5M",fam:"MSFTX",bt:3,st:8,bw:100.0,sw:25.0,wd:-75.0,ba:13.52,sa:-5.11,ad:-18.63,bp:4.51,sp:-0.64,pd:-5.15,tp:0,sl:6,mh:2,hm:435.9},
+  {r:"MSFT_S5M_00014_WR83.3%/APnL37.18%/PTPnL6.2%",tf:"5M",fam:"MSFTS",bt:6,st:12,bw:83.3,sw:41.7,wd:-41.6,ba:37.18,sa:14.01,ad:-23.17,bp:6.2,sp:1.17,pd:-5.03,tp:1,sl:4,mh:7,hm:3281.6},
+  {r:"MSFT_S1H_00002_WR75.0%/APnL54.19%/PTPnL6.77%",tf:"1H",fam:"MSFTS",bt:8,st:12,bw:75.0,sw:50.0,wd:-25.0,ba:54.19,sa:27.82,ad:-26.37,bp:6.77,sp:2.32,pd:-4.45,tp:0,sl:2,mh:9,hm:3508.9},
+  {r:"MSFT_SD_00004_WR83.3%/APnL40.31%/PTPnL6.72%",tf:"DAILY",fam:"MSFTS",bt:6,st:10,bw:83.3,sw:40.0,wd:-43.3,ba:40.31,sa:24.93,ad:-15.38,bp:6.72,sp:2.49,pd:-4.23,tp:1,sl:5,mh:1,hm:13506.6},
+  {r:"MSFT_SD_00014_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTS",bt:3,st:3,bw:100.0,sw:33.3,wd:-66.7,ba:34.34,sa:21.92,ad:-12.42,bp:11.45,sp:7.31,pd:-4.14,tp:1,sl:2,mh:0,hm:24591.0},
+  {r:"MSFT_XD_00008_WR100.0%/APnL34.34%/PTPnL11.45%",tf:"DAILY",fam:"MSFTX",bt:3,st:3,bw:100.0,sw:33.3,wd:-66.7,ba:34.34,sa:21.92,ad:-12.42,bp:11.45,sp:7.31,pd:-4.14,tp:1,sl:2,mh:0,hm:24591.0},
+  {r:"MSFT_S5M_00012_WR33.3%/APnL37.48%/PTPnL12.49%",tf:"5M",fam:"MSFTS",bt:3,st:5,bw:33.3,sw:40.0,wd:6.7,ba:37.48,sa:41.86,ad:4.38,bp:12.49,sp:8.37,pd:-4.12,tp:0,sl:3,mh:2,hm:4746.2},
+  {r:"MSFT_L5M_00015_WR66.7%/APnL42.74%/PTPnL14.25%",tf:"5M",fam:"MSFTL",bt:3,st:3,bw:66.7,sw:66.7,wd:0.0,ba:42.74,sa:30.43,ad:-12.31,bp:14.25,sp:10.14,pd:-4.11,tp:0,sl:1,mh:2,hm:11829.7},
+  {r:"MSFT_SD_00025_WR87.5%/APnL25.12%/PTPnL3.14%",tf:"DAILY",fam:"MSFTS",bt:8,st:10,bw:87.5,sw:60.0,wd:-27.5,ba:25.12,sa:-8.54,ad:-33.66,bp:3.14,sp:-0.85,pd:-3.99,tp:6,sl:4,mh:0,hm:15435.9},
+  {r:"MSFT_S5M_00004_WR71.4%/APnL47.03%/PTPnL6.72%",tf:"5M",fam:"MSFTS",bt:7,st:9,bw:71.4,sw:66.7,wd:-4.7,ba:47.03,sa:26.34,ad:-20.69,bp:6.72,sp:2.93,pd:-3.79,tp:0,sl:1,mh:7,hm:4784.3},
+  {r:"MSFT_S5M_00013_WR71.4%/APnL37.28%/PTPnL5.33%",tf:"5M",fam:"MSFTS",bt:7,st:8,bw:71.4,sw:50.0,wd:-21.4,ba:37.28,sa:13.94,ad:-23.34,bp:5.33,sp:1.74,pd:-3.59,tp:0,sl:4,mh:3,hm:3474.9},
+  {r:"MSFT_L15M_00041_WR100.0%/APnL14.42%/PTPnL4.81%",tf:"15M",fam:"MSFTL",bt:3,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:14.42,sa:5.04,ad:-9.38,bp:4.81,sp:1.26,pd:-3.55,tp:2,sl:1,mh:1,hm:1278.2},
+  {r:"MSFT_SD_00018_WR100.0%/APnL27.45%/PTPnL9.15%",tf:"DAILY",fam:"MSFTS",bt:3,st:3,bw:100.0,sw:66.7,wd:-33.3,ba:27.45,sa:16.88,ad:-10.57,bp:9.15,sp:5.63,pd:-3.52,tp:0,sl:1,mh:1,hm:21088.7},
+  {r:"MSFT_SD_00019_WR100.0%/APnL27.45%/PTPnL9.15%",tf:"DAILY",fam:"MSFTS",bt:3,st:3,bw:100.0,sw:66.7,wd:-33.3,ba:27.45,sa:16.88,ad:-10.57,bp:9.15,sp:5.63,pd:-3.52,tp:0,sl:1,mh:1,hm:21088.7},
+  {r:"MSFT_S1H_00009_WR90.0%/APnL40.55%/PTPnL4.05%",tf:"1H",fam:"MSFTS",bt:10,st:12,bw:90.0,sw:58.3,wd:-31.7,ba:40.55,sa:8.3,ad:-32.25,bp:4.05,sp:0.69,pd:-3.36,tp:5,sl:4,mh:3,hm:2680.0},
+  {r:"MSFT_SD_00035_WR100.0%/APnL7.27%/PTPnL2.42%",tf:"DAILY",fam:"MSFTS",bt:3,st:3,bw:100.0,sw:66.7,wd:-33.3,ba:7.27,sa:-2.75,ad:-10.02,bp:2.42,sp:-0.92,pd:-3.34,tp:2,sl:1,mh:0,hm:779.0},
+  {r:"MSFT_S5M_00010_WR77.8%/APnL39.03%/PTPnL4.34%",tf:"5M",fam:"MSFTS",bt:9,st:25,bw:77.8,sw:56.0,wd:-21.8,ba:39.03,sa:25.51,ad:-13.52,bp:4.34,sp:1.02,pd:-3.32,tp:8,sl:2,mh:14,hm:6429.2},
+  {r:"MSFT_L15M_00006_WR80.0%/APnL44.73%/PTPnL8.95%",tf:"15M",fam:"MSFTL",bt:5,st:14,bw:80.0,sw:71.4,wd:-8.6,ba:44.73,sa:79.59,ad:34.86,bp:8.95,sp:5.68,pd:-3.27,tp:2,sl:3,mh:9,hm:11303.6},
+  {r:"MSFT_SD_00007_WR60.0%/APnL39.45%/PTPnL3.95%",tf:"DAILY",fam:"MSFTS",bt:10,st:18,bw:60.0,sw:55.6,wd:-4.4,ba:39.45,sa:17.95,ad:-21.5,bp:3.95,sp:1.0,pd:-2.95,tp:9,sl:8,mh:0,hm:12688.3},
+  {r:"MSFT_X5M_00016_WR100.0%/APnL21.87%/PTPnL7.29%",tf:"5M",fam:"MSFTX",bt:3,st:8,bw:100.0,sw:75.0,wd:-25.0,ba:21.87,sa:35.14,ad:13.27,bp:7.29,sp:4.39,pd:-2.9,tp:4,sl:0,mh:3,hm:9551.8},
+  {r:"MSFT_S15M_00010_WR71.4%/APnL38.97%/PTPnL5.57%",tf:"15M",fam:"MSFTS",bt:7,st:11,bw:71.4,sw:54.5,wd:-16.9,ba:38.97,sa:30.74,ad:-8.23,bp:5.57,sp:2.79,pd:-2.78,tp:1,sl:5,mh:4,hm:8247.8},
+  {r:"MSFT_S15M_00037_WR90.0%/APnL21.77%/PTPnL2.18%",tf:"15M",fam:"MSFTS",bt:10,st:13,bw:90.0,sw:61.5,wd:-28.5,ba:21.77,sa:-7.65,ad:-29.42,bp:2.18,sp:-0.59,pd:-2.77,tp:7,sl:2,mh:2,hm:1510.2},
+  {r:"MSFT_S5M_00022_WR57.1%/APnL34.39%/PTPnL4.91%",tf:"5M",fam:"MSFTS",bt:7,st:14,bw:57.1,sw:57.1,wd:0.0,ba:34.39,sa:30.86,ad:-3.53,bp:4.91,sp:2.2,pd:-2.71,tp:0,sl:2,mh:10,hm:4901.1},
+  {r:"MSFT_S1H_00027_WR78.6%/APnL28.55%/PTPnL2.04%",tf:"1H",fam:"MSFTS",bt:14,st:27,bw:78.6,sw:44.4,wd:-34.2,ba:28.55,sa:-17.95,ad:-46.5,bp:2.04,sp:-0.66,pd:-2.7,tp:5,sl:12,mh:9,hm:2983.9},
+  {r:"MSFT_X5M_00008_WR71.4%/APnL34.6%/PTPnL4.94%",tf:"5M",fam:"MSFTX",bt:7,st:11,bw:71.4,sw:63.6,wd:-7.8,ba:34.6,sa:26.29,ad:-8.31,bp:4.94,sp:2.39,pd:-2.55,tp:0,sl:1,mh:9,hm:5036.2},
+  {r:"MSFT_LD_00009_WR100.0%/APnL19.5%/PTPnL1.5%",tf:"DAILY",fam:"MSFTL",bt:13,st:20,bw:100.0,sw:70.0,wd:-30.0,ba:19.5,sa:-21.0,ad:-40.5,bp:1.5,sp:-1.05,pd:-2.55,tp:14,sl:6,mh:0,hm:3274.6},
+  {r:"MSFT_S15M_00023_WR100.0%/APnL28.85%/PTPnL2.22%",tf:"15M",fam:"MSFTS",bt:13,st:24,bw:100.0,sw:58.3,wd:-41.7,ba:28.85,sa:-7.38,ad:-36.23,bp:2.22,sp:-0.31,pd:-2.53,tp:13,sl:6,mh:4,hm:1826.1},
+  {r:"MSFT_S5M_00024_WR77.8%/APnL33.59%/PTPnL3.73%",tf:"5M",fam:"MSFTS",bt:9,st:18,bw:77.8,sw:55.6,wd:-22.2,ba:33.59,sa:21.88,ad:-11.71,bp:3.73,sp:1.22,pd:-2.51,tp:0,sl:0,mh:17,hm:1881.8},
+  {r:"MSFT_S15M_00004_WR71.4%/APnL49.02%/PTPnL7.0%",tf:"15M",fam:"MSFTS",bt:7,st:9,bw:71.4,sw:55.6,wd:-15.8,ba:49.02,sa:40.5,ad:-8.52,bp:7.0,sp:4.5,pd:-2.5,tp:0,sl:4,mh:4,hm:8456.2},
+  {r:"MSFT_SD_00003_WR83.3%/APnL40.31%/PTPnL6.72%",tf:"DAILY",fam:"MSFTS",bt:6,st:12,bw:83.3,sw:50.0,wd:-33.3,ba:40.31,sa:51.15,ad:10.84,bp:6.72,sp:4.26,pd:-2.46,tp:2,sl:5,mh:2,hm:16163.4},
+  {r:"MSFT_S15M_00018_WR75.0%/APnL32.07%/PTPnL8.02%",tf:"15M",fam:"MSFTS",bt:4,st:10,bw:75.0,sw:60.0,wd:-15.0,ba:32.07,sa:55.69,ad:23.62,bp:8.02,sp:5.57,pd:-2.45,tp:1,sl:4,mh:5,hm:5700.5},
+  {r:"MSFT_SD_00023_WR80.0%/APnL25.53%/PTPnL2.55%",tf:"DAILY",fam:"MSFTS",bt:10,st:11,bw:80.0,sw:18.2,wd:-61.8,ba:25.53,sa:1.19,ad:-24.34,bp:2.55,sp:0.11,pd:-2.44,tp:2,sl:9,mh:0,hm:2119.7},
+  {r:"MSFT_SD_00024_WR80.0%/APnL25.53%/PTPnL2.55%",tf:"DAILY",fam:"MSFTS",bt:10,st:11,bw:80.0,sw:18.2,wd:-61.8,ba:25.53,sa:1.19,ad:-24.34,bp:2.55,sp:0.11,pd:-2.44,tp:2,sl:9,mh:0,hm:2119.7},
+  {r:"MSFT_S1H_00049_WR100.0%/APnL9.7%/PTPnL2.42%",tf:"1H",fam:"MSFTS",bt:4,st:4,bw:100.0,sw:50.0,wd:-50.0,ba:9.7,sa:-0.04,ad:-9.74,bp:2.42,sp:-0.01,pd:-2.43,tp:1,sl:2,mh:0,hm:880.2},
+  {r:"MSFT_S1H_00021_WR95.2%/APnL31.05%/PTPnL1.48%",tf:"1H",fam:"MSFTS",bt:21,st:30,bw:95.2,sw:66.7,wd:-28.5,ba:31.05,sa:-27.33,ad:-58.38,bp:1.48,sp:-0.91,pd:-2.39,tp:20,sl:6,mh:4,hm:2641.4},
+  {r:"MSFT_S5M_00049_WR100.0%/APnL15.76%/PTPnL2.63%",tf:"5M",fam:"MSFTS",bt:6,st:10,bw:100.0,sw:50.0,wd:-50.0,ba:15.76,sa:2.75,ad:-13.01,bp:2.63,sp:0.28,pd:-2.35,tp:1,sl:3,mh:6,hm:293.9},
+  {r:"MSFT_S5M_00019_WR71.4%/APnL35.96%/PTPnL5.14%",tf:"5M",fam:"MSFTS",bt:7,st:12,bw:71.4,sw:66.7,wd:-4.7,ba:35.96,sa:34.26,ad:-1.7,bp:5.14,sp:2.86,pd:-2.28,tp:0,sl:2,mh:9,hm:5004.8},
+  {r:"MSFT_S1H_00048_WR100.0%/APnL12.85%/PTPnL2.57%",tf:"1H",fam:"MSFTS",bt:5,st:4,bw:100.0,sw:50.0,wd:-50.0,ba:12.85,sa:1.2,ad:-11.65,bp:2.57,sp:0.3,pd:-2.27,tp:2,sl:2,mh:0,hm:769.2},
+  {r:"MSFT_X1H_00021_WR100.0%/APnL21.36%/PTPnL2.67%",tf:"1H",fam:"MSFTX",bt:8,st:9,bw:100.0,sw:77.8,wd:-22.2,ba:21.36,sa:4.59,ad:-16.77,bp:2.67,sp:0.51,pd:-2.16,tp:7,sl:2,mh:0,hm:1493.8},
+  {r:"MSFT_S1H_00035_WR91.7%/APnL23.61%/PTPnL1.97%",tf:"1H",fam:"MSFTS",bt:12,st:17,bw:91.7,sw:52.9,wd:-38.8,ba:23.61,sa:-1.66,ad:-25.27,bp:1.97,sp:-0.1,pd:-2.07,tp:6,sl:1,mh:9,hm:1321.8},
+  {r:"MSFT_S15M_00044_WR100.0%/APnL17.62%/PTPnL5.87%",tf:"15M",fam:"MSFTS",bt:3,st:5,bw:100.0,sw:80.0,wd:-20.0,ba:17.62,sa:19.07,ad:1.45,bp:5.87,sp:3.81,pd:-2.06,tp:0,sl:0,mh:5,hm:1950.0},
+  {r:"MSFT_S1H_00005_WR70.6%/APnL44.16%/PTPnL2.6%",tf:"1H",fam:"MSFTS",bt:17,st:29,bw:70.6,sw:48.3,wd:-22.3,ba:44.16,sa:16.64,ad:-27.52,bp:2.6,sp:0.57,pd:-2.03,tp:3,sl:10,mh:14,hm:4253.2},
+  {r:"MSFT_S1H_00026_WR95.2%/APnL29.05%/PTPnL1.38%",tf:"1H",fam:"MSFTS",bt:21,st:31,bw:95.2,sw:74.2,wd:-21.0,ba:29.05,sa:-18.05,ad:-47.1,bp:1.38,sp:-0.58,pd:-1.96,tp:23,sl:6,mh:2,hm:2099.7},
+  {r:"MSFT_X15M_00015_WR85.7%/APnL20.16%/PTPnL2.88%",tf:"15M",fam:"MSFTX",bt:7,st:12,bw:85.7,sw:58.3,wd:-27.4,ba:20.16,sa:11.45,ad:-8.71,bp:2.88,sp:0.95,pd:-1.93,tp:4,sl:0,mh:8,hm:1289.5},
+  {r:"MSFT_S1H_00020_WR88.9%/APnL31.07%/PTPnL1.73%",tf:"1H",fam:"MSFTS",bt:18,st:30,bw:88.9,sw:63.3,wd:-25.6,ba:31.07,sa:-5.55,ad:-36.62,bp:1.73,sp:-0.18,pd:-1.91,tp:19,sl:2,mh:9,hm:3650.0},
+  {r:"MSFT_L1H_00032_WR100.0%/APnL15.0%/PTPnL3.0%",tf:"1H",fam:"MSFTL",bt:5,st:7,bw:100.0,sw:85.7,wd:-14.3,ba:15.0,sa:8.0,ad:-7.0,bp:3.0,sp:1.14,pd:-1.86,tp:6,sl:1,mh:0,hm:3221.7},
+  {r:"MSFT_XD_00004_WR85.7%/APnL42.98%/PTPnL6.14%",tf:"DAILY",fam:"MSFTX",bt:7,st:55,bw:85.7,sw:58.2,wd:-27.5,ba:42.98,sa:239.25,ad:196.27,bp:6.14,sp:4.35,pd:-1.79,tp:31,sl:19,mh:0,hm:15699.0},
+  {r:"MSFT_S1H_00044_WR84.6%/APnL15.31%/PTPnL1.18%",tf:"1H",fam:"MSFTS",bt:13,st:20,bw:84.6,sw:65.0,wd:-19.6,ba:15.31,sa:-12.01,ad:-27.32,bp:1.18,sp:-0.6,pd:-1.78,tp:12,sl:0,mh:6,hm:6173.6},
+  {r:"MSFT_L5M_00010_WR81.8%/APnL49.49%/PTPnL4.5%",tf:"5M",fam:"MSFTL",bt:11,st:65,bw:81.8,sw:66.2,wd:-15.6,ba:49.49,sa:177.53,ad:128.04,bp:4.5,sp:2.73,pd:-1.77,tp:6,sl:0,mh:58,hm:5620.2},
+  {r:"MSFT_L1H_00035_WR75.0%/APnL12.84%/PTPnL1.6%",tf:"1H",fam:"MSFTL",bt:8,st:10,bw:75.0,sw:50.0,wd:-25.0,ba:12.84,sa:-1.49,ad:-14.33,bp:1.6,sp:-0.15,pd:-1.75,tp:0,sl:5,mh:5,hm:543.2},
+  {r:"MSFT_SD_00031_WR91.3%/APnL16.57%/PTPnL0.72%",tf:"DAILY",fam:"MSFTS",bt:23,st:37,bw:91.3,sw:83.8,wd:-7.5,ba:16.57,sa:-37.55,ad:-54.12,bp:0.72,sp:-1.01,pd:-1.73,tp:30,sl:6,mh:0,hm:3753.5},
+  {r:"MSFT_S15M_00015_WR93.8%/APnL36.04%/PTPnL2.25%",tf:"15M",fam:"MSFTS",bt:16,st:22,bw:93.8,sw:77.3,wd:-16.5,ba:36.04,sa:11.91,ad:-24.13,bp:2.25,sp:0.54,pd:-1.71,tp:14,sl:2,mh:4,hm:1834.6},
+  {r:"MSFT_S1H_00003_WR68.0%/APnL46.32%/PTPnL1.85%",tf:"1H",fam:"MSFTS",bt:25,st:82,bw:68.0,sw:48.8,wd:-19.2,ba:46.32,sa:11.59,ad:-34.73,bp:1.85,sp:0.14,pd:-1.71,tp:24,sl:40,mh:17,hm:3347.4},
+  {r:"MSFT_S15M_00028_WR91.7%/APnL23.82%/PTPnL1.99%",tf:"15M",fam:"MSFTS",bt:12,st:16,bw:91.7,sw:68.8,wd:-22.9,ba:23.82,sa:4.69,ad:-19.13,bp:1.99,sp:0.29,pd:-1.7,tp:10,sl:4,mh:1,hm:1126.0},
+  {r:"MSFT_S1H_00040_WR100.0%/APnL19.15%/PTPnL2.74%",tf:"1H",fam:"MSFTS",bt:7,st:6,bw:100.0,sw:66.7,wd:-33.3,ba:19.15,sa:6.26,ad:-12.89,bp:2.74,sp:1.04,pd:-1.7,tp:3,sl:2,mh:0,hm:709.7},
+  {r:"MSFT_S1H_00004_WR68.0%/APnL46.32%/PTPnL1.85%",tf:"1H",fam:"MSFTS",bt:25,st:83,bw:68.0,sw:49.4,wd:-18.6,ba:46.32,sa:17.59,ad:-28.73,bp:1.85,sp:0.21,pd:-1.64,tp:25,sl:40,mh:17,hm:3332.3},
+  {r:"MSFT_SD_00020_WR71.4%/APnL27.24%/PTPnL1.95%",tf:"DAILY",fam:"MSFTS",bt:14,st:21,bw:71.4,sw:42.9,wd:-28.5,ba:27.24,sa:7.11,ad:-20.13,bp:1.95,sp:0.34,pd:-1.61,tp:9,sl:12,mh:0,hm:4656.8},
+  {r:"MSFT_SD_00034_WR92.3%/APnL10.84%/PTPnL0.83%",tf:"DAILY",fam:"MSFTS",bt:13,st:28,bw:92.3,sw:82.1,wd:-10.2,ba:10.84,sa:-21.25,ad:-32.09,bp:0.83,sp:-0.76,pd:-1.59,tp:23,sl:5,mh:0,hm:2730.4},
+  {r:"MSFT_XD_00010_WR76.5%/APnL32.65%/PTPnL1.92%",tf:"DAILY",fam:"MSFTX",bt:17,st:32,bw:76.5,sw:65.6,wd:-10.9,ba:32.65,sa:10.6,ad:-22.05,bp:1.92,sp:0.33,pd:-1.59,tp:19,sl:11,mh:2,hm:8412.2},
+  {r:"MSFT_S5M_00006_WR81.0%/APnL40.32%/PTPnL1.92%",tf:"5M",fam:"MSFTS",bt:21,st:62,bw:81.0,sw:59.7,wd:-21.3,ba:40.32,sa:22.86,ad:-17.46,bp:1.92,sp:0.37,pd:-1.55,tp:32,sl:16,mh:14,hm:3146.5},
+  {r:"MSFT_S15M_00026_WR78.6%/APnL25.6%/PTPnL1.83%",tf:"15M",fam:"MSFTS",bt:14,st:57,bw:78.6,sw:64.9,wd:-13.7,ba:25.6,sa:17.29,ad:-8.31,bp:1.83,sp:0.3,pd:-1.53,tp:35,sl:3,mh:19,hm:6005.0},
+  {r:"MSFT_SD_00021_WR68.8%/APnL26.61%/PTPnL1.66%",tf:"DAILY",fam:"MSFTS",bt:16,st:26,bw:68.8,sw:34.6,wd:-34.2,ba:26.61,sa:3.55,ad:-23.06,bp:1.66,sp:0.14,pd:-1.52,tp:5,sl:16,mh:5,hm:6715.2},
+  {r:"MSFT_L1H_00018_WR88.9%/APnL24.29%/PTPnL2.7%",tf:"1H",fam:"MSFTL",bt:9,st:16,bw:88.9,sw:68.8,wd:-20.1,ba:24.29,sa:19.29,ad:-5.0,bp:2.7,sp:1.21,pd:-1.49,tp:10,sl:2,mh:4,hm:3865.1},
+  {r:"MSFT_SD_00030_WR91.4%/APnL17.61%/PTPnL0.5%",tf:"DAILY",fam:"MSFTS",bt:35,st:56,bw:91.4,sw:64.3,wd:-27.1,ba:17.61,sa:-55.62,ad:-73.23,bp:0.5,sp:-0.99,pd:-1.49,tp:36,sl:20,mh:0,hm:1133.2},
+  {r:"MSFT_SD_00027_WR83.3%/APnL21.15%/PTPnL1.76%",tf:"DAILY",fam:"MSFTS",bt:12,st:25,bw:83.3,sw:80.0,wd:-3.3,ba:21.15,sa:7.45,ad:-13.7,bp:1.76,sp:0.3,pd:-1.46,tp:20,sl:5,mh:0,hm:5345.4},
+  {r:"MSFT_S5M_00008_WR33.3%/APnL39.16%/PTPnL13.05%",tf:"5M",fam:"MSFTS",bt:3,st:4,bw:33.3,sw:50.0,wd:16.7,ba:39.16,sa:46.56,ad:7.4,bp:13.05,sp:11.64,pd:-1.41,tp:0,sl:2,mh:2,hm:5873.5},
+  {r:"MSFT_X1H_00026_WR100.0%/APnL9.67%/PTPnL2.42%",tf:"1H",fam:"MSFTX",bt:4,st:6,bw:100.0,sw:66.7,wd:-33.3,ba:9.67,sa:6.24,ad:-3.43,bp:2.42,sp:1.04,pd:-1.38,tp:3,sl:2,mh:0,hm:1253.5},
+  {r:"MSFT_S1H_00008_WR69.2%/APnL40.71%/PTPnL3.13%",tf:"1H",fam:"MSFTS",bt:13,st:29,bw:69.2,sw:55.2,wd:-14.0,ba:40.71,sa:51.33,ad:10.62,bp:3.13,sp:1.77,pd:-1.36,tp:2,sl:7,mh:19,hm:6957.6},
+  {r:"MSFT_SD_00028_WR64.7%/APnL20.61%/PTPnL1.21%",tf:"DAILY",fam:"MSFTS",bt:17,st:44,bw:64.7,sw:56.8,wd:-7.9,ba:20.61,sa:-6.75,ad:-27.36,bp:1.21,sp:-0.15,pd:-1.36,tp:24,sl:19,mh:0,hm:6158.2},
+  {r:"MSFT_SD_00029_WR64.7%/APnL20.61%/PTPnL1.21%",tf:"DAILY",fam:"MSFTS",bt:17,st:44,bw:64.7,sw:56.8,wd:-7.9,ba:20.61,sa:-6.75,ad:-27.36,bp:1.21,sp:-0.15,pd:-1.36,tp:24,sl:19,mh:0,hm:6158.2},
+  {r:"MSFT_S15M_00009_WR97.8%/APnL41.0%/PTPnL0.91%",tf:"15M",fam:"MSFTS",bt:45,st:91,bw:97.8,sw:84.6,wd:-13.2,ba:41.0,sa:-39.08,ad:-80.08,bp:0.91,sp:-0.43,pd:-1.34,tp:76,sl:9,mh:5,hm:2659.2},
+  {r:"MSFT_X15M_00010_WR90.5%/APnL28.57%/PTPnL1.36%",tf:"15M",fam:"MSFTX",bt:21,st:32,bw:90.5,sw:71.9,wd:-18.6,ba:28.57,sa:0.64,ad:-27.93,bp:1.36,sp:0.02,pd:-1.34,tp:22,sl:2,mh:7,hm:3268.2},
+  {r:"MSFT_S5M_00027_WR87.5%/APnL30.39%/PTPnL1.9%",tf:"5M",fam:"MSFTS",bt:16,st:21,bw:87.5,sw:71.4,wd:-16.1,ba:30.39,sa:12.56,ad:-17.83,bp:1.9,sp:0.6,pd:-1.3,tp:11,sl:5,mh:4,hm:1166.9},
+  {r:"MSFT_X1H_00025_WR100.0%/APnL9.67%/PTPnL2.42%",tf:"1H",fam:"MSFTX",bt:4,st:3,bw:100.0,sw:66.7,wd:-33.3,ba:9.67,sa:3.5,ad:-6.17,bp:2.42,sp:1.17,pd:-1.25,tp:2,sl:1,mh:0,hm:1857.3},
+  {r:"MSFT_S5M_00030_WR87.5%/APnL27.47%/PTPnL1.72%",tf:"5M",fam:"MSFTS",bt:16,st:29,bw:87.5,sw:69.0,wd:-18.5,ba:27.47,sa:16.2,ad:-11.27,bp:1.72,sp:0.56,pd:-1.16,tp:13,sl:3,mh:13,hm:1295.7},
+  {r:"MSFT_S15M_00036_WR90.5%/APnL21.92%/PTPnL1.04%",tf:"15M",fam:"MSFTS",bt:21,st:52,bw:90.5,sw:76.9,wd:-13.6,ba:21.92,sa:-5.52,ad:-27.44,bp:1.04,sp:-0.11,pd:-1.15,tp:39,sl:2,mh:10,hm:4219.3},
+  {r:"MSFT_S5M_00023_WR72.7%/APnL33.72%/PTPnL1.53%",tf:"5M",fam:"MSFTS",bt:22,st:55,bw:72.7,sw:52.7,wd:-20.0,ba:33.72,sa:21.37,ad:-12.35,bp:1.53,sp:0.39,pd:-1.14,tp:21,sl:10,mh:23,hm:2112.8},
+  {r:"MSFT_L5M_00022_WR63.0%/APnL39.98%/PTPnL1.48%",tf:"5M",fam:"MSFTL",bt:27,st:102,bw:63.0,sw:50.0,wd:-13.0,ba:39.98,sa:35.99,ad:-3.99,bp:1.48,sp:0.35,pd:-1.13,tp:20,sl:7,mh:74,hm:2071.6},
+  {r:"MSFT_L15M_00005_WR78.6%/APnL49.2%/PTPnL1.76%",tf:"15M",fam:"MSFTL",bt:28,st:95,bw:78.6,sw:64.2,wd:-14.4,ba:49.2,sa:59.87,ad:10.67,bp:1.76,sp:0.63,pd:-1.13,tp:51,sl:13,mh:31,hm:3729.9},
+  {r:"MSFT_S15M_00008_WR98.0%/APnL43.12%/PTPnL0.88%",tf:"15M",fam:"MSFTS",bt:49,st:94,bw:98.0,sw:86.2,wd:-11.8,ba:43.12,sa:-23.47,ad:-66.59,bp:0.88,sp:-0.25,pd:-1.13,tp:80,sl:7,mh:6,hm:2610.8},
+  {r:"MSFT_X5M_00017_WR100.0%/APnL14.48%/PTPnL2.9%",tf:"5M",fam:"MSFTX",bt:5,st:10,bw:100.0,sw:70.0,wd:-30.0,ba:14.48,sa:17.94,ad:3.46,bp:2.9,sp:1.79,pd:-1.11,tp:3,sl:0,mh:7,hm:342.3},
+  {r:"MSFT_S1H_00043_WR100.0%/APnL15.67%/PTPnL2.61%",tf:"1H",fam:"MSFTS",bt:6,st:11,bw:100.0,sw:72.7,wd:-27.3,ba:15.67,sa:16.49,ad:0.82,bp:2.61,sp:1.5,pd:-1.11,tp:7,sl:3,mh:0,hm:1051.8},
+  {r:"MSFT_S1H_00010_WR82.4%/APnL40.09%/PTPnL2.36%",tf:"1H",fam:"MSFTS",bt:17,st:22,bw:82.4,sw:68.2,wd:-14.2,ba:40.09,sa:27.82,ad:-12.27,bp:2.36,sp:1.26,pd:-1.1,tp:13,sl:6,mh:3,hm:2978.5},
+  {r:"MSFT_S15M_00007_WR98.0%/APnL43.12%/PTPnL0.88%",tf:"15M",fam:"MSFTS",bt:49,st:98,bw:98.0,sw:86.7,wd:-11.3,ba:43.12,sa:-19.35,ad:-62.47,bp:0.88,sp:-0.2,pd:-1.08,tp:84,sl:7,mh:6,hm:2503.6},
+  {r:"MSFT_S1H_00037_WR80.0%/APnL23.29%/PTPnL1.16%",tf:"1H",fam:"MSFTS",bt:20,st:50,bw:80.0,sw:54.0,wd:-26.0,ba:23.29,sa:3.81,ad:-19.48,bp:1.16,sp:0.08,pd:-1.08,tp:26,sl:2,mh:22,hm:1410.8},
+  {r:"MSFT_SD_00005_WR83.3%/APnL40.15%/PTPnL6.69%",tf:"DAILY",fam:"MSFTS",bt:6,st:11,bw:83.3,sw:63.6,wd:-19.7,ba:40.15,sa:61.7,ad:21.55,bp:6.69,sp:5.61,pd:-1.08,tp:2,sl:4,mh:2,hm:16785.0},
+  {r:"MSFT_S5M_00007_WR69.2%/APnL40.17%/PTPnL1.55%",tf:"5M",fam:"MSFTS",bt:26,st:62,bw:69.2,sw:56.5,wd:-12.7,ba:40.17,sa:31.13,ad:-9.04,bp:1.55,sp:0.5,pd:-1.05,tp:18,sl:9,mh:35,hm:1745.3},
+  {r:"MSFT_S15M_00002_WR63.6%/APnL58.1%/PTPnL2.64%",tf:"15M",fam:"MSFTS",bt:22,st:55,bw:63.6,sw:52.7,wd:-10.9,ba:58.1,sa:87.69,ad:29.59,bp:2.64,sp:1.59,pd:-1.05,tp:0,sl:2,mh:52,hm:3856.6},
+  {r:"MSFT_SD_00032_WR100.0%/APnL12.5%/PTPnL2.5%",tf:"DAILY",fam:"MSFTS",bt:5,st:8,bw:100.0,sw:87.5,wd:-12.5,ba:12.5,sa:11.62,ad:-0.88,bp:2.5,sp:1.45,pd:-1.05,tp:7,sl:1,mh:0,hm:2549.1},
+  {r:"MSFT_SD_00033_WR100.0%/APnL12.5%/PTPnL2.5%",tf:"DAILY",fam:"MSFTS",bt:5,st:8,bw:100.0,sw:87.5,wd:-12.5,ba:12.5,sa:11.62,ad:-0.88,bp:2.5,sp:1.45,pd:-1.05,tp:7,sl:1,mh:0,hm:2549.1},
+  {r:"MSFT_S15M_00042_WR90.5%/APnL18.28%/PTPnL0.87%",tf:"15M",fam:"MSFTS",bt:21,st:33,bw:90.5,sw:54.5,wd:-36.0,ba:18.28,sa:-5.46,ad:-23.74,bp:0.87,sp:-0.17,pd:-1.04,tp:18,sl:15,mh:0,hm:318.9},
+  {r:"MSFT_SD_00002_WR94.1%/APnL43.07%/PTPnL1.27%",tf:"DAILY",fam:"MSFTS",bt:34,st:73,bw:94.1,sw:86.3,wd:-7.8,ba:43.07,sa:16.63,ad:-26.44,bp:1.27,sp:0.23,pd:-1.04,tp:63,sl:9,mh:0,hm:1903.1},
+  {r:"MSFT_L1H_00019_WR100.0%/APnL24.0%/PTPnL3.0%",tf:"1H",fam:"MSFTL",bt:8,st:10,bw:100.0,sw:90.0,wd:-10.0,ba:24.0,sa:19.72,ad:-4.28,bp:3.0,sp:1.97,pd:-1.03,tp:9,sl:1,mh:0,hm:2603.5},
+  {r:"MSFT_S5M_00001_WR64.0%/APnL62.38%/PTPnL2.5%",tf:"5M",fam:"MSFTS",bt:25,st:88,bw:64.0,sw:60.2,wd:-3.8,ba:62.38,sa:130.03,ad:67.65,bp:2.5,sp:1.48,pd:-1.02,tp:0,sl:0,mh:86,hm:2707.3},
+  {r:"MSFT_S5M_00020_WR82.4%/APnL34.69%/PTPnL2.04%",tf:"5M",fam:"MSFTS",bt:17,st:53,bw:82.4,sw:73.6,wd:-8.8,ba:34.69,sa:54.18,ad:19.49,bp:2.04,sp:1.02,pd:-1.02,tp:37,sl:10,mh:5,hm:4600.7},
+  {r:"MSFT_S1H_00046_WR100.0%/APnL14.5%/PTPnL0.5%",tf:"1H",fam:"MSFTS",bt:29,st:44,bw:100.0,sw:88.6,wd:-11.4,ba:14.5,sa:-22.62,ad:-37.12,bp:0.5,sp:-0.51,pd:-1.01,tp:39,sl:3,mh:2,hm:1720.5},
+  {r:"MSFT_X5M_00009_WR83.3%/APnL34.24%/PTPnL2.85%",tf:"5M",fam:"MSFTX",bt:12,st:18,bw:83.3,sw:77.8,wd:-5.5,ba:34.24,sa:33.26,ad:-0.98,bp:2.85,sp:1.85,pd:-1.0,tp:9,sl:0,mh:7,hm:1910.2},
+  {r:"MSFT_S5M_00034_WR90.0%/APnL26.54%/PTPnL1.33%",tf:"5M",fam:"MSFTS",bt:20,st:37,bw:90.0,sw:70.3,wd:-19.7,ba:26.54,sa:12.59,ad:-13.95,bp:1.33,sp:0.34,pd:-0.99,tp:19,sl:1,mh:17,hm:510.9},
+  {r:"MSFT_L15M_00008_WR50.0%/APnL43.49%/PTPnL5.44%",tf:"15M",fam:"MSFTL",bt:8,st:25,bw:50.0,sw:60.0,wd:10.0,ba:43.49,sa:111.74,ad:68.25,bp:5.44,sp:4.47,pd:-0.97,tp:0,sl:6,mh:18,hm:11778.1},
+  {r:"MSFT_X15M_00005_WR84.6%/APnL33.91%/PTPnL2.61%",tf:"15M",fam:"MSFTX",bt:13,st:21,bw:84.6,sw:76.2,wd:-8.4,ba:33.91,sa:34.46,ad:0.55,bp:2.61,sp:1.64,pd:-0.97,tp:12,sl:0,mh:8,hm:2509.8},
+  {r:"MSFT_S1H_00012_WR84.0%/APnL39.24%/PTPnL1.57%",tf:"1H",fam:"MSFTS",bt:25,st:143,bw:84.0,sw:71.3,wd:-12.7,ba:39.24,sa:87.49,ad:48.25,bp:1.57,sp:0.61,pd:-0.96,tp:90,sl:12,mh:40,hm:4406.1},
+  {r:"MSFT_S5M_00011_WR82.6%/APnL37.61%/PTPnL1.64%",tf:"5M",fam:"MSFTS",bt:23,st:158,bw:82.6,sw:69.0,wd:-13.6,ba:37.61,sa:113.97,ad:76.36,bp:1.64,sp:0.72,pd:-0.92,tp:95,sl:8,mh:53,hm:3587.7},
+  {r:"MSFT_S5M_00026_WR66.7%/APnL33.24%/PTPnL1.11%",tf:"5M",fam:"MSFTS",bt:30,st:164,bw:66.7,sw:53.7,wd:-13.0,ba:33.24,sa:30.45,ad:-2.79,bp:1.11,sp:0.19,pd:-0.92,tp:43,sl:10,mh:110,hm:1982.1},
+  {r:"MSFT_L15M_00024_WR87.5%/APnL26.72%/PTPnL1.67%",tf:"15M",fam:"MSFTL",bt:16,st:44,bw:87.5,sw:81.8,wd:-5.7,ba:26.72,sa:33.0,ad:6.28,bp:1.67,sp:0.75,pd:-0.92,tp:36,sl:7,mh:1,hm:3906.4},
+  {r:"MSFT_S1H_00028_WR83.3%/APnL28.39%/PTPnL1.58%",tf:"1H",fam:"MSFTS",bt:18,st:30,bw:83.3,sw:76.7,wd:-6.6,ba:28.39,sa:22.51,ad:-5.88,bp:1.58,sp:0.75,pd:-0.83,tp:22,sl:2,mh:5,hm:2237.6},
+  {r:"MSFT_S1H_00050_WR100.0%/APnL9.67%/PTPnL2.42%",tf:"1H",fam:"MSFTS",bt:4,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:9.67,sa:6.5,ad:-3.17,bp:2.42,sp:1.62,pd:-0.8,tp:3,sl:1,mh:0,hm:1403.5},
+  {r:"MSFT_X15M_00012_WR66.7%/APnL25.87%/PTPnL4.31%",tf:"15M",fam:"MSFTX",bt:6,st:10,bw:66.7,sw:70.0,wd:3.3,ba:25.87,sa:35.26,ad:9.39,bp:4.31,sp:3.53,pd:-0.78,tp:3,sl:2,mh:3,hm:5516.0},
+  {r:"MSFT_X5M_00014_WR100.0%/APnL27.0%/PTPnL1.0%",tf:"5M",fam:"MSFTX",bt:27,st:70,bw:100.0,sw:92.9,wd:-7.1,ba:27.0,sa:16.23,ad:-10.77,bp:1.0,sp:0.23,pd:-0.77,tp:64,sl:1,mh:4,hm:1878.3},
+  {r:"MSFT_S15M_00030_WR100.0%/APnL23.22%/PTPnL2.58%",tf:"15M",fam:"MSFTS",bt:9,st:13,bw:100.0,sw:84.6,wd:-15.4,ba:23.22,sa:23.54,ad:0.32,bp:2.58,sp:1.81,pd:-0.77,tp:6,sl:2,mh:5,hm:526.7},
+  {r:"MSFT_S1H_00047_WR100.0%/APnL13.44%/PTPnL1.68%",tf:"1H",fam:"MSFTS",bt:8,st:13,bw:100.0,sw:92.3,wd:-7.7,ba:13.44,sa:11.9,ad:-1.54,bp:1.68,sp:0.92,pd:-0.76,tp:12,sl:0,mh:1,hm:1743.5},
+  {r:"MSFT_S15M_00043_WR92.3%/APnL17.68%/PTPnL0.68%",tf:"15M",fam:"MSFTS",bt:26,st:50,bw:92.3,sw:88.0,wd:-4.3,ba:17.68,sa:-3.57,ad:-21.25,bp:0.68,sp:-0.07,pd:-0.75,tp:44,sl:4,mh:2,hm:2280.7},
+  {r:"MSFT_S1H_00045_WR88.9%/APnL15.08%/PTPnL1.68%",tf:"1H",fam:"MSFTS",bt:9,st:10,bw:88.9,sw:70.0,wd:-18.9,ba:15.08,sa:9.81,ad:-5.27,bp:1.68,sp:0.98,pd:-0.7,tp:5,sl:2,mh:3,hm:763.8},
+  {r:"MSFT_S1H_00024_WR83.3%/APnL29.47%/PTPnL1.23%",tf:"1H",fam:"MSFTS",bt:24,st:67,bw:83.3,sw:85.1,wd:1.8,ba:29.47,sa:37.53,ad:8.06,bp:1.23,sp:0.56,pd:-0.67,tp:57,sl:7,mh:3,hm:3552.0},
+  {r:"MSFT_S5M_00025_WR97.7%/APnL33.47%/PTPnL0.78%",tf:"5M",fam:"MSFTS",bt:43,st:122,bw:97.7,sw:87.7,wd:-10.0,ba:33.47,sa:18.57,ad:-14.9,bp:0.78,sp:0.15,pd:-0.63,tp:106,sl:0,mh:15,hm:1572.9},
+  {r:"MSFT_S5M_00032_WR100.0%/APnL26.97%/PTPnL2.45%",tf:"5M",fam:"MSFTS",bt:11,st:14,bw:100.0,sw:92.9,wd:-7.1,ba:26.97,sa:25.53,ad:-1.44,bp:2.45,sp:1.82,pd:-0.63,tp:1,sl:0,mh:13,hm:364.1},
+  {r:"MSFT_S5M_00003_WR64.3%/APnL51.11%/PTPnL1.83%",tf:"5M",fam:"MSFTS",bt:28,st:105,bw:64.3,sw:62.9,wd:-1.4,ba:51.11,sa:128.15,ad:77.04,bp:1.83,sp:1.22,pd:-0.61,tp:0,sl:7,mh:97,hm:2283.9},
+  {r:"MSFT_X5M_00004_WR83.3%/APnL44.57%/PTPnL1.24%",tf:"5M",fam:"MSFTX",bt:36,st:102,bw:83.3,sw:71.6,wd:-11.7,ba:44.57,sa:64.52,ad:19.95,bp:1.24,sp:0.63,pd:-0.61,tp:59,sl:0,mh:41,hm:1965.6},
+  {r:"MSFT_S1H_00016_WR88.9%/APnL35.95%/PTPnL2.0%",tf:"1H",fam:"MSFTS",bt:18,st:23,bw:88.9,sw:82.6,wd:-6.3,ba:35.95,sa:32.05,ad:-3.9,bp:2.0,sp:1.39,pd:-0.61,tp:17,sl:2,mh:3,hm:2247.4},
+  {r:"MSFT_SD_00016_WR66.7%/APnL33.09%/PTPnL3.68%",tf:"DAILY",fam:"MSFTS",bt:9,st:23,bw:66.7,sw:43.5,wd:-23.2,ba:33.09,sa:70.54,ad:37.45,bp:3.68,sp:3.07,pd:-0.61,tp:5,sl:13,mh:2,hm:12879.0},
+  {r:"MSFT_S15M_00024_WR73.1%/APnL26.42%/PTPnL1.02%",tf:"15M",fam:"MSFTS",bt:26,st:159,bw:73.1,sw:65.4,wd:-7.7,ba:26.42,sa:68.97,ad:42.55,bp:1.02,sp:0.43,pd:-0.59,tp:70,sl:24,mh:64,hm:3884.0},
+  {r:"MSFT_L5M_00048_WR100.0%/APnL3.21%/PTPnL1.07%",tf:"5M",fam:"MSFTL",bt:3,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:3.21,sa:2.14,ad:-1.07,bp:1.07,sp:0.54,pd:-0.53,tp:3,sl:1,mh:0,hm:7.8},
+  {r:"MSFT_S1H_00001_WR75.9%/APnL54.24%/PTPnL1.0%",tf:"1H",fam:"MSFTS",bt:54,st:136,bw:75.9,sw:67.6,wd:-8.3,ba:54.24,sa:63.85,ad:9.61,bp:1.0,sp:0.47,pd:-0.53,tp:70,sl:5,mh:60,hm:1967.2},
+  {r:"MSFT_S1H_00006_WR86.4%/APnL43.22%/PTPnL1.96%",tf:"1H",fam:"MSFTS",bt:22,st:40,bw:86.4,sw:80.0,wd:-6.4,ba:43.22,sa:57.48,ad:14.26,bp:1.96,sp:1.44,pd:-0.52,tp:30,sl:5,mh:4,hm:2747.6},
+  {r:"MSFT_XD_00013_WR65.0%/APnL28.29%/PTPnL1.41%",tf:"DAILY",fam:"MSFTX",bt:20,st:30,bw:65.0,sw:46.7,wd:-18.3,ba:28.29,sa:26.68,ad:-1.61,bp:1.41,sp:0.89,pd:-0.52,tp:11,sl:16,mh:2,hm:4902.8},
+  {r:"MSFT_S1H_00042_WR100.0%/APnL15.95%/PTPnL0.29%",tf:"1H",fam:"MSFTS",bt:55,st:119,bw:100.0,sw:94.1,wd:-5.9,ba:15.95,sa:-23.4,ad:-39.35,bp:0.29,sp:-0.2,pd:-0.49,tp:112,sl:6,mh:1,hm:1054.4},
+  {r:"MSFT_S15M_00013_WR59.3%/APnL36.73%/PTPnL0.62%",tf:"15M",fam:"MSFTS",bt:59,st:220,bw:59.3,sw:53.2,wd:-6.1,ba:36.73,sa:31.79,ad:-4.94,bp:0.62,sp:0.14,pd:-0.48,tp:7,sl:15,mh:198,hm:1516.4},
+  {r:"MSFT_S15M_00016_WR93.3%/APnL34.98%/PTPnL0.58%",tf:"15M",fam:"MSFTS",bt:60,st:181,bw:93.3,sw:86.2,wd:-7.1,ba:34.98,sa:20.3,ad:-14.68,bp:0.58,sp:0.11,pd:-0.47,tp:155,sl:1,mh:24,hm:2162.4},
+  {r:"MSFT_S5M_00036_WR80.0%/APnL25.68%/PTPnL0.64%",tf:"5M",fam:"MSFTS",bt:40,st:265,bw:80.0,sw:64.9,wd:-15.1,ba:25.68,sa:48.56,ad:22.88,bp:0.64,sp:0.18,pd:-0.46,tp:154,sl:2,mh:107,hm:2005.1},
+  {r:"MSFT_S5M_00037_WR80.0%/APnL25.68%/PTPnL0.64%",tf:"5M",fam:"MSFTS",bt:40,st:265,bw:80.0,sw:64.9,wd:-15.1,ba:25.68,sa:48.56,ad:22.88,bp:0.64,sp:0.18,pd:-0.46,tp:154,sl:2,mh:107,hm:2005.1},
+  {r:"MSFT_S15M_00014_WR93.8%/APnL36.14%/PTPnL0.56%",tf:"15M",fam:"MSFTS",bt:64,st:192,bw:93.8,sw:87.0,wd:-6.8,ba:36.14,sa:18.63,ad:-17.51,bp:0.56,sp:0.1,pd:-0.46,tp:166,sl:7,mh:18,hm:2017.3},
+  {r:"MSFT_X15M_00017_WR66.7%/APnL18.21%/PTPnL6.07%",tf:"15M",fam:"MSFTX",bt:3,st:11,bw:66.7,sw:81.8,wd:15.1,ba:18.21,sa:61.77,ad:43.56,bp:6.07,sp:5.62,pd:-0.45,tp:5,sl:1,mh:4,hm:8419.2},
+  {r:"MSFT_S1H_00017_WR81.6%/APnL35.07%/PTPnL0.92%",tf:"1H",fam:"MSFTS",bt:38,st:151,bw:81.6,sw:79.5,wd:-2.1,ba:35.07,sa:71.23,ad:36.16,bp:0.92,sp:0.47,pd:-0.45,tp:119,sl:9,mh:22,hm:3183.3},
+  {r:"MSFT_X1H_00009_WR100.0%/APnL30.5%/PTPnL2.35%",tf:"1H",fam:"MSFTX",bt:13,st:21,bw:100.0,sw:85.7,wd:-14.3,ba:30.5,sa:39.9,ad:9.4,bp:2.35,sp:1.9,pd:-0.45,tp:18,sl:1,mh:2,hm:1445.5},
+  {r:"MSFT_S5M_00005_WR66.7%/APnL44.29%/PTPnL0.92%",tf:"5M",fam:"MSFTS",bt:48,st:247,bw:66.7,sw:59.5,wd:-7.2,ba:44.29,sa:117.98,ad:73.69,bp:0.92,sp:0.48,pd:-0.44,tp:123,sl:83,mh:41,hm:2463.7},
+  {r:"MSFT_S1H_00018_WR87.5%/APnL32.98%/PTPnL2.06%",tf:"1H",fam:"MSFTS",bt:16,st:13,bw:87.5,sw:76.9,wd:-10.6,ba:32.98,sa:21.09,ad:-11.89,bp:2.06,sp:1.62,pd:-0.44,tp:7,sl:0,mh:5,hm:986.1},
+  {r:"MSFT_S15M_00027_WR89.8%/APnL24.1%/PTPnL0.27%",tf:"15M",fam:"MSFTS",bt:88,st:347,bw:89.8,sw:84.1,wd:-5.7,ba:24.1,sa:-54.55,ad:-78.65,bp:0.27,sp:-0.16,pd:-0.43,tp:288,sl:3,mh:56,hm:1399.3},
+  {r:"MSFT_S1H_00015_WR82.6%/APnL38.76%/PTPnL1.69%",tf:"1H",fam:"MSFTS",bt:23,st:32,bw:82.6,sw:78.1,wd:-4.5,ba:38.76,sa:40.79,ad:2.03,bp:1.69,sp:1.27,pd:-0.42,tp:23,sl:7,mh:1,hm:2227.2},
+  {r:"MSFT_S5M_00038_WR100.0%/APnL25.4%/PTPnL0.75%",tf:"5M",fam:"MSFTS",bt:34,st:59,bw:100.0,sw:94.9,wd:-5.1,ba:25.4,sa:20.84,ad:-4.56,bp:0.75,sp:0.35,pd:-0.4,tp:56,sl:1,mh:2,hm:775.2},
+  {r:"MSFT_L15M_00015_WR77.8%/APnL31.71%/PTPnL1.76%",tf:"15M",fam:"MSFTL",bt:18,st:40,bw:77.8,sw:77.5,wd:-0.3,ba:31.71,sa:54.53,ad:22.82,bp:1.76,sp:1.36,pd:-0.4,tp:29,sl:6,mh:5,hm:4585.0},
+  {r:"MSFT_S1H_00032_WR100.0%/APnL26.52%/PTPnL1.02%",tf:"1H",fam:"MSFTS",bt:26,st:47,bw:100.0,sw:95.7,wd:-4.3,ba:26.52,sa:28.98,ad:2.46,bp:1.02,sp:0.62,pd:-0.4,tp:45,sl:2,mh:0,hm:1584.7},
+  {r:"MSFT_S1H_00033_WR100.0%/APnL26.52%/PTPnL1.02%",tf:"1H",fam:"MSFTS",bt:26,st:47,bw:100.0,sw:95.7,wd:-4.3,ba:26.52,sa:28.98,ad:2.46,bp:1.02,sp:0.62,pd:-0.4,tp:45,sl:2,mh:0,hm:1584.7},
+  {r:"MSFT_S15M_00033_WR76.0%/APnL22.29%/PTPnL0.89%",tf:"15M",fam:"MSFTS",bt:25,st:47,bw:76.0,sw:70.2,wd:-5.8,ba:22.29,sa:23.48,ad:1.19,bp:0.89,sp:0.5,pd:-0.39,tp:31,sl:0,mh:15,hm:2556.6},
+  {r:"MSFT_S1H_00036_WR91.7%/APnL23.51%/PTPnL1.96%",tf:"1H",fam:"MSFTS",bt:12,st:30,bw:91.7,sw:90.0,wd:-1.7,ba:23.51,sa:46.95,ad:23.44,bp:1.96,sp:1.57,pd:-0.39,tp:27,sl:2,mh:1,hm:4004.9},
+  {r:"MSFT_L5M_00032_WR94.6%/APnL32.17%/PTPnL0.87%",tf:"5M",fam:"MSFTL",bt:37,st:146,bw:94.6,sw:89.0,wd:-5.6,ba:32.17,sa:71.95,ad:39.78,bp:0.87,sp:0.49,pd:-0.38,tp:130,sl:0,mh:15,hm:1491.4},
+  {r:"MSFT_L5M_00034_WR96.4%/APnL29.07%/PTPnL1.04%",tf:"5M",fam:"MSFTL",bt:28,st:106,bw:96.4,sw:95.3,wd:-1.1,ba:29.07,sa:71.06,ad:41.99,bp:1.04,sp:0.67,pd:-0.37,tp:101,sl:2,mh:3,hm:1809.0},
+  {r:"MSFT_L5M_00026_WR75.0%/APnL36.38%/PTPnL4.55%",tf:"5M",fam:"MSFTL",bt:8,st:87,bw:75.0,sw:66.7,wd:-8.3,ba:36.38,sa:364.7,ad:328.32,bp:4.55,sp:4.19,pd:-0.36,tp:4,sl:1,mh:78,hm:11420.5},
+  {r:"MSFT_SD_00022_WR96.8%/APnL25.75%/PTPnL0.83%",tf:"DAILY",fam:"MSFTS",bt:31,st:68,bw:96.8,sw:95.6,wd:-1.2,ba:25.75,sa:32.1,ad:6.35,bp:0.83,sp:0.47,pd:-0.36,tp:65,sl:3,mh:0,hm:2747.3},
+  {r:"MSFT_S15M_00031_WR94.3%/APnL22.95%/PTPnL0.66%",tf:"15M",fam:"MSFTS",bt:35,st:119,bw:94.3,sw:89.9,wd:-4.4,ba:22.95,sa:37.28,ad:14.33,bp:0.66,sp:0.31,pd:-0.35,tp:107,sl:3,mh:9,hm:2058.8},
+  {r:"MSFT_S15M_00011_WR58.0%/APnL38.23%/PTPnL0.76%",tf:"15M",fam:"MSFTS",bt:50,st:145,bw:58.0,sw:58.6,wd:0.6,ba:38.23,sa:62.99,ad:24.76,bp:0.76,sp:0.43,pd:-0.33,tp:0,sl:3,mh:142,hm:1158.1},
+  {r:"MSFT_S15M_00012_WR58.0%/APnL38.23%/PTPnL0.76%",tf:"15M",fam:"MSFTS",bt:50,st:145,bw:58.0,sw:58.6,wd:0.6,ba:38.23,sa:62.99,ad:24.76,bp:0.76,sp:0.43,pd:-0.33,tp:0,sl:3,mh:142,hm:1158.1},
+  {r:"MSFT_S5M_00040_WR100.0%/APnL24.8%/PTPnL0.31%",tf:"5M",fam:"MSFTS",bt:80,st:231,bw:100.0,sw:96.1,wd:-3.9,ba:24.8,sa:-3.03,ad:-27.83,bp:0.31,sp:-0.01,pd:-0.32,tp:222,sl:1,mh:8,hm:1167.9},
+  {r:"MSFT_S15M_00047_WR95.7%/APnL16.54%/PTPnL0.36%",tf:"15M",fam:"MSFTS",bt:46,st:101,bw:95.7,sw:88.1,wd:-7.6,ba:16.54,sa:4.22,ad:-12.32,bp:0.36,sp:0.04,pd:-0.32,tp:89,sl:1,mh:11,hm:668.4},
+  {r:"MSFT_S5M_00033_WR100.0%/APnL26.66%/PTPnL0.31%",tf:"5M",fam:"MSFTS",bt:86,st:240,bw:100.0,sw:96.2,wd:-3.8,ba:26.66,sa:-0.5,ad:-27.16,bp:0.31,sp:-0.0,pd:-0.31,tp:231,sl:1,mh:8,hm:1128.2},
+  {r:"MSFT_S1H_00022_WR88.9%/APnL30.47%/PTPnL1.69%",tf:"1H",fam:"MSFTS",bt:18,st:38,bw:88.9,sw:84.2,wd:-4.7,ba:30.47,sa:52.32,ad:21.85,bp:1.69,sp:1.38,pd:-0.31,tp:32,sl:1,mh:5,hm:3117.3},
+  {r:"MSFT_S1H_00041_WR91.2%/APnL18.12%/PTPnL0.53%",tf:"1H",fam:"MSFTS",bt:34,st:103,bw:91.2,sw:86.4,wd:-4.8,ba:18.12,sa:22.69,ad:4.57,bp:0.53,sp:0.22,pd:-0.31,tp:88,sl:0,mh:13,hm:2186.3},
+  {r:"MSFT_S5M_00021_WR57.1%/APnL34.61%/PTPnL1.65%",tf:"5M",fam:"MSFTS",bt:21,st:206,bw:57.1,sw:58.3,wd:1.2,ba:34.61,sa:278.78,ad:244.17,bp:1.65,sp:1.35,pd:-0.3,tp:0,sl:0,mh:202,hm:3865.5},
+  {r:"MSFT_S5M_00031_WR100.0%/APnL27.28%/PTPnL0.31%",tf:"5M",fam:"MSFTS",bt:88,st:246,bw:100.0,sw:96.3,wd:-3.7,ba:27.28,sa:1.36,ad:-25.92,bp:0.31,sp:0.01,pd:-0.3,tp:237,sl:1,mh:8,hm:1057.8},
+  {r:"MSFT_S15M_00003_WR52.4%/APnL57.94%/PTPnL0.55%",tf:"15M",fam:"MSFTS",bt:105,st:570,bw:52.4,sw:53.9,wd:1.5,ba:57.94,sa:142.08,ad:84.14,bp:0.55,sp:0.25,pd:-0.3,tp:0,sl:132,mh:436,hm:1038.0},
+  {r:"MSFT_S15M_00017_WR82.6%/APnL34.49%/PTPnL1.5%",tf:"15M",fam:"MSFTS",bt:23,st:66,bw:82.6,sw:77.3,wd:-5.3,ba:34.49,sa:79.71,ad:45.22,bp:1.5,sp:1.21,pd:-0.29,tp:47,sl:4,mh:14,hm:3619.3},
+  {r:"MSFT_S1H_00023_WR86.7%/APnL30.15%/PTPnL2.01%",tf:"1H",fam:"MSFTS",bt:15,st:18,bw:86.7,sw:83.3,wd:-3.4,ba:30.15,sa:30.97,ad:0.82,bp:2.01,sp:1.72,pd:-0.29,tp:14,sl:3,mh:0,hm:1803.7},
+  {r:"MSFT_S1H_00031_WR100.0%/APnL27.11%/PTPnL2.71%",tf:"1H",fam:"MSFTS",bt:10,st:8,bw:100.0,sw:87.5,wd:-12.5,ba:27.11,sa:19.33,ad:-7.78,bp:2.71,sp:2.42,pd:-0.29,tp:7,sl:0,mh:1,hm:1484.0},
+  {r:"MSFT_S15M_00001_WR61.2%/APnL67.17%/PTPnL0.38%",tf:"15M",fam:"MSFTS",bt:178,st:581,bw:61.2,sw:52.2,wd:-9.0,ba:67.17,sa:57.85,ad:-9.32,bp:0.38,sp:0.1,pd:-0.28,tp:1,sl:86,mh:493,hm:354.7},
+  {r:"MSFT_S5M_00017_WR100.0%/APnL36.3%/PTPnL0.3%",tf:"5M",fam:"MSFTS",bt:121,st:365,bw:100.0,sw:96.7,wd:-3.3,ba:36.3,sa:10.76,ad:-25.54,bp:0.3,sp:0.03,pd:-0.27,tp:353,sl:6,mh:6,hm:765.6},
+  {r:"MSFT_S15M_00032_WR88.9%/APnL22.76%/PTPnL2.53%",tf:"15M",fam:"MSFTS",bt:9,st:12,bw:88.9,sw:75.0,wd:-13.9,ba:22.76,sa:27.18,ad:4.42,bp:2.53,sp:2.26,pd:-0.27,tp:6,sl:0,mh:5,hm:1020.2},
+  {r:"MSFT_S1H_00013_WR82.6%/APnL38.76%/PTPnL1.69%",tf:"1H",fam:"MSFTS",bt:23,st:40,bw:82.6,sw:80.0,wd:-2.6,ba:38.76,sa:57.23,ad:18.47,bp:1.69,sp:1.43,pd:-0.26,tp:30,sl:8,mh:1,hm:2592.2},
+  {r:"MSFT_S1H_00014_WR82.6%/APnL38.76%/PTPnL1.69%",tf:"1H",fam:"MSFTS",bt:23,st:40,bw:82.6,sw:80.0,wd:-2.6,ba:38.76,sa:57.23,ad:18.47,bp:1.69,sp:1.43,pd:-0.26,tp:30,sl:8,mh:1,hm:2592.2},
+  {r:"MSFT_X1H_00008_WR86.7%/APnL32.14%/PTPnL2.14%",tf:"1H",fam:"MSFTX",bt:15,st:19,bw:86.7,sw:84.2,wd:-2.5,ba:32.14,sa:35.74,ad:3.6,bp:2.14,sp:1.88,pd:-0.26,tp:13,sl:0,mh:5,hm:1780.7},
+  {r:"MSFT_S5M_00018_WR100.0%/APnL36.0%/PTPnL0.3%",tf:"5M",fam:"MSFTS",bt:120,st:353,bw:100.0,sw:96.9,wd:-3.1,ba:36.0,sa:16.89,ad:-19.11,bp:0.3,sp:0.05,pd:-0.25,tp:342,sl:6,mh:5,hm:801.8},
+  {r:"MSFT_S5M_00042_WR86.1%/APnL23.46%/PTPnL0.22%",tf:"5M",fam:"MSFTS",bt:108,st:567,bw:86.1,sw:79.2,wd:-6.9,ba:23.46,sa:-19.43,ad:-42.89,bp:0.22,sp:-0.03,pd:-0.25,tp:438,sl:1,mh:126,hm:666.6},
+  {r:"MSFT_S5M_00046_WR96.2%/APnL20.83%/PTPnL0.39%",tf:"5M",fam:"MSFTS",bt:53,st:128,bw:96.2,sw:91.4,wd:-4.8,ba:20.83,sa:17.29,ad:-3.54,bp:0.39,sp:0.14,pd:-0.25,tp:117,sl:4,mh:7,hm:441.7},
+  {r:"MSFT_X1H_00002_WR71.4%/APnL37.6%/PTPnL5.37%",tf:"1H",fam:"MSFTX",bt:7,st:9,bw:71.4,sw:77.8,wd:6.4,ba:37.6,sa:46.2,ad:8.6,bp:5.37,sp:5.13,pd:-0.24,tp:1,sl:1,mh:6,hm:7146.3},
+  {r:"MSFT_S5M_00009_WR100.0%/APnL39.04%/PTPnL0.61%",tf:"5M",fam:"MSFTS",bt:64,st:199,bw:100.0,sw:97.0,wd:-3.0,ba:39.04,sa:76.23,ad:37.19,bp:0.61,sp:0.38,pd:-0.23,tp:193,sl:4,mh:2,hm:727.5},
+  {r:"MSFT_S5M_00035_WR100.0%/APnL26.04%/PTPnL0.31%",tf:"5M",fam:"MSFTS",bt:84,st:436,bw:100.0,sw:97.7,wd:-2.3,ba:26.04,sa:34.43,ad:8.39,bp:0.31,sp:0.08,pd:-0.23,tp:426,sl:0,mh:10,hm:882.8},
+  {r:"MSFT_S15M_00039_WR98.1%/APnL20.66%/PTPnL0.13%",tf:"15M",fam:"MSFTS",bt:157,st:362,bw:98.1,sw:94.5,wd:-3.6,ba:20.66,sa:-30.82,ad:-51.48,bp:0.13,sp:-0.09,pd:-0.22,tp:342,sl:2,mh:18,hm:511.8},
+  {r:"MSFT_S1H_00011_WR92.3%/APnL39.27%/PTPnL1.51%",tf:"1H",fam:"MSFTS",bt:26,st:82,bw:92.3,sw:92.7,wd:0.4,ba:39.27,sa:106.01,ad:66.74,bp:1.51,sp:1.29,pd:-0.22,tp:76,sl:3,mh:3,hm:2678.4},
+  {r:"MSFT_L1H_00021_WR80.0%/APnL22.57%/PTPnL1.5%",tf:"1H",fam:"MSFTL",bt:15,st:24,bw:80.0,sw:75.0,wd:-5.0,ba:22.57,sa:30.87,ad:8.3,bp:1.5,sp:1.29,pd:-0.21,tp:9,sl:2,mh:13,hm:1007.2},
+  {r:"MSFT_S5M_00028_WR96.2%/APnL28.02%/PTPnL0.18%",tf:"5M",fam:"MSFTS",bt:159,st:686,bw:96.2,sw:89.9,wd:-6.3,ba:28.02,sa:-13.72,ad:-41.74,bp:0.18,sp:-0.02,pd:-0.2,tp:615,sl:1,mh:69,hm:379.8},
+  {r:"MSFT_S15M_00045_WR75.8%/APnL17.31%/PTPnL0.26%",tf:"15M",fam:"MSFTS",bt:66,st:113,bw:75.8,sw:64.6,wd:-11.2,ba:17.31,sa:6.35,ad:-10.96,bp:0.26,sp:0.06,pd:-0.2,tp:73,sl:40,mh:0,hm:266.8},
+  {r:"MSFT_S5M_00047_WR97.8%/APnL17.96%/PTPnL0.39%",tf:"5M",fam:"MSFTS",bt:46,st:109,bw:97.8,sw:92.7,wd:-5.1,ba:17.96,sa:22.01,ad:4.05,bp:0.39,sp:0.2,pd:-0.19,tp:101,sl:1,mh:7,hm:489.2},
+  {r:"MSFT_S15M_00019_WR90.0%/APnL30.78%/PTPnL1.54%",tf:"15M",fam:"MSFTS",bt:20,st:35,bw:90.0,sw:88.6,wd:-1.4,ba:30.78,sa:47.48,ad:16.7,bp:1.54,sp:1.36,pd:-0.18,tp:30,sl:0,mh:5,hm:1384.9},
+  {r:"MSFT_S15M_00041_WR88.9%/APnL18.41%/PTPnL1.02%",tf:"15M",fam:"MSFTS",bt:18,st:40,bw:88.9,sw:87.5,wd:-1.4,ba:18.41,sa:34.55,ad:16.14,bp:1.02,sp:0.86,pd:-0.16,tp:35,sl:0,mh:5,hm:2937.8},
+  {r:"MSFT_S15M_00048_WR100.0%/APnL11.5%/PTPnL0.5%",tf:"15M",fam:"MSFTS",bt:23,st:38,bw:100.0,sw:97.4,wd:-2.6,ba:11.5,sa:13.01,ad:1.51,bp:0.5,sp:0.34,pd:-0.16,tp:37,sl:0,mh:1,hm:724.1},
+  {r:"MSFT_S5M_00043_WR97.3%/APnL22.03%/PTPnL0.15%",tf:"5M",fam:"MSFTS",bt:146,st:603,bw:97.3,sw:94.7,wd:-2.6,ba:22.03,sa:-0.16,ad:-22.19,bp:0.15,sp:-0.0,pd:-0.15,tp:571,sl:7,mh:25,hm:315.3},
+  {r:"MSFT_S15M_00034_WR94.6%/APnL22.04%/PTPnL0.39%",tf:"15M",fam:"MSFTS",bt:56,st:101,bw:94.6,sw:94.1,wd:-0.5,ba:22.04,sa:24.53,ad:2.49,bp:0.39,sp:0.24,pd:-0.15,tp:95,sl:3,mh:3,hm:559.3},
+  {r:"MSFT_S15M_00035_WR94.6%/APnL22.04%/PTPnL0.39%",tf:"15M",fam:"MSFTS",bt:56,st:101,bw:94.6,sw:94.1,wd:-0.5,ba:22.04,sa:24.53,ad:2.49,bp:0.39,sp:0.24,pd:-0.15,tp:95,sl:3,mh:3,hm:559.3},
+  {r:"MSFT_S5M_00015_WR96.0%/APnL37.02%/PTPnL0.3%",tf:"5M",fam:"MSFTS",bt:124,st:520,bw:96.0,sw:92.3,wd:-3.7,ba:37.02,sa:83.83,ad:46.81,bp:0.3,sp:0.16,pd:-0.14,tp:479,sl:7,mh:32,hm:337.3},
+  {r:"MSFT_S5M_00016_WR65.9%/APnL36.48%/PTPnL0.29%",tf:"5M",fam:"MSFTS",bt:126,st:710,bw:65.9,sw:59.7,wd:-6.2,ba:36.48,sa:102.95,ad:66.47,bp:0.29,sp:0.15,pd:-0.14,tp:296,sl:158,mh:255,hm:507.8},
+  {r:"MSFT_S1H_00034_WR80.3%/APnL25.08%/PTPnL0.33%",tf:"1H",fam:"MSFTS",bt:76,st:309,bw:80.3,sw:81.2,wd:0.9,ba:25.08,sa:59.09,ad:34.01,bp:0.33,sp:0.19,pd:-0.14,tp:243,sl:7,mh:57,hm:1126.5},
+  {r:"MSFT_S5M_00039_WR97.0%/APnL25.34%/PTPnL0.26%",tf:"5M",fam:"MSFTS",bt:99,st:467,bw:97.0,sw:94.2,wd:-2.8,ba:25.34,sa:58.57,ad:33.23,bp:0.26,sp:0.13,pd:-0.13,tp:438,sl:13,mh:13,hm:716.0},
+  {r:"MSFT_S5M_00002_WR56.1%/APnL52.15%/PTPnL0.42%",tf:"5M",fam:"MSFTS",bt:123,st:576,bw:56.1,sw:56.2,wd:0.1,ba:52.15,sa:170.75,ad:118.6,bp:0.42,sp:0.3,pd:-0.12,tp:17,sl:120,mh:438,hm:331.3},
+  {r:"MSFT_X15M_00004_WR77.8%/APnL36.23%/PTPnL1.34%",tf:"15M",fam:"MSFTX",bt:27,st:56,bw:77.8,sw:75.0,wd:-2.8,ba:36.23,sa:68.26,ad:32.03,bp:1.34,sp:1.22,pd:-0.12,tp:36,sl:0,mh:19,hm:2700.1},
+  {r:"MSFT_L5M_00035_WR81.1%/APnL24.74%/PTPnL0.67%",tf:"5M",fam:"MSFTL",bt:37,st:152,bw:81.1,sw:71.7,wd:-9.4,ba:24.74,sa:84.79,ad:60.05,bp:0.67,sp:0.56,pd:-0.11,tp:106,sl:0,mh:45,hm:2107.5},
+  {r:"MSFT_L5M_00036_WR81.1%/APnL24.74%/PTPnL0.67%",tf:"5M",fam:"MSFTL",bt:37,st:152,bw:81.1,sw:71.7,wd:-9.4,ba:24.74,sa:84.79,ad:60.05,bp:0.67,sp:0.56,pd:-0.11,tp:106,sl:0,mh:45,hm:2107.5},
+  {r:"MSFT_L5M_00045_WR100.0%/APnL12.96%/PTPnL0.36%",tf:"5M",fam:"MSFTL",bt:36,st:105,bw:100.0,sw:99.0,wd:-1.0,ba:12.96,sa:25.82,ad:12.86,bp:0.36,sp:0.25,pd:-0.11,tp:104,sl:0,mh:1,hm:644.7},
+  {r:"MSFT_S5M_00048_WR100.0%/APnL17.0%/PTPnL1.0%",tf:"5M",fam:"MSFTS",bt:17,st:35,bw:100.0,sw:97.1,wd:-2.9,ba:17.0,sa:31.48,ad:14.48,bp:1.0,sp:0.9,pd:-0.1,tp:34,sl:0,mh:1,hm:925.2},
+  {r:"MSFT_L15M_00032_WR95.8%/APnL23.32%/PTPnL0.97%",tf:"15M",fam:"MSFTL",bt:24,st:51,bw:95.8,sw:96.1,wd:0.3,ba:23.32,sa:44.24,ad:20.92,bp:0.97,sp:0.87,pd:-0.1,tp:49,sl:0,mh:2,hm:1361.9},
+  {r:"MSFT_S5M_00041_WR95.3%/APnL24.17%/PTPnL0.56%",tf:"5M",fam:"MSFTS",bt:43,st:253,bw:95.3,sw:96.4,wd:1.1,ba:24.17,sa:127.64,ad:103.47,bp:0.56,sp:0.5,pd:-0.06,tp:244,sl:0,mh:9,hm:1312.4},
+  {r:"MSFT_S1H_00029_WR64.3%/APnL27.98%/PTPnL2.0%",tf:"1H",fam:"MSFTS",bt:14,st:79,bw:64.3,sw:53.2,wd:-11.1,ba:27.98,sa:153.19,ad:125.21,bp:2.0,sp:1.94,pd:-0.06,tp:2,sl:2,mh:74,hm:8232.1},
+  {r:"MSFT_S15M_00005_WR78.2%/APnL46.98%/PTPnL0.39%",tf:"15M",fam:"MSFTS",bt:119,st:335,bw:78.2,sw:76.4,wd:-1.8,ba:46.98,sa:113.02,ad:66.04,bp:0.39,sp:0.34,pd:-0.05,tp:254,sl:77,mh:4,hm:479.9},
+  {r:"MSFT_S15M_00020_WR94.8%/APnL30.4%/PTPnL0.26%",tf:"15M",fam:"MSFTS",bt:116,st:405,bw:94.8,sw:93.8,wd:-1.0,ba:30.4,sa:83.92,ad:53.52,bp:0.26,sp:0.21,pd:-0.05,tp:380,sl:20,mh:5,hm:481.9},
+  {r:"MSFT_S15M_00021_WR98.5%/APnL29.32%/PTPnL0.44%",tf:"15M",fam:"MSFTS",bt:67,st:132,bw:98.5,sw:97.7,wd:-0.8,ba:29.32,sa:51.75,ad:22.43,bp:0.44,sp:0.39,pd:-0.05,tp:129,sl:1,mh:2,hm:673.1},
+  {r:"MSFT_S15M_00038_WR84.2%/APnL21.29%/PTPnL1.12%",tf:"15M",fam:"MSFTS",bt:19,st:44,bw:84.2,sw:86.4,wd:2.2,ba:21.29,sa:47.02,ad:25.73,bp:1.12,sp:1.07,pd:-0.05,tp:37,sl:0,mh:7,hm:2885.5},
+  {r:"MSFT_L5M_00037_WR98.5%/APnL21.31%/PTPnL0.33%",tf:"5M",fam:"MSFTL",bt:65,st:215,bw:98.5,sw:97.7,wd:-0.8,ba:21.31,sa:62.01,ad:40.7,bp:0.33,sp:0.29,pd:-0.04,tp:210,sl:1,mh:4,hm:560.4},
+  {r:"MSFT_S5M_00029_WR95.2%/APnL27.71%/PTPnL0.66%",tf:"5M",fam:"MSFTS",bt:42,st:126,bw:95.2,sw:97.6,wd:2.4,ba:27.71,sa:79.02,ad:51.31,bp:0.66,sp:0.63,pd:-0.03,tp:123,sl:0,mh:3,hm:1066.7},
+  {r:"MSFT_S5M_00044_WR94.3%/APnL21.84%/PTPnL0.25%",tf:"5M",fam:"MSFTS",bt:88,st:232,bw:94.3,sw:93.1,wd:-1.2,ba:21.84,sa:53.56,ad:31.72,bp:0.25,sp:0.23,pd:-0.02,tp:216,sl:0,mh:16,hm:373.7},
+  {r:"MSFT_S5M_00045_WR94.3%/APnL21.84%/PTPnL0.25%",tf:"5M",fam:"MSFTS",bt:88,st:232,bw:94.3,sw:93.1,wd:-1.2,ba:21.84,sa:53.56,ad:31.72,bp:0.25,sp:0.23,pd:-0.02,tp:216,sl:0,mh:16,hm:373.7},
+  {r:"MSFT_X5M_00024_WR100.0%/APnL4.64%/PTPnL1.16%",tf:"5M",fam:"MSFTX",bt:4,st:5,bw:100.0,sw:100.0,wd:0.0,ba:4.64,sa:5.8,ad:1.16,bp:1.16,sp:1.16,pd:0.0,tp:5,sl:0,mh:0,hm:203.8},
+  {r:"MSFT_X5M_00026_WR100.0%/APnL3.48%/PTPnL1.16%",tf:"5M",fam:"MSFTX",bt:3,st:3,bw:100.0,sw:100.0,wd:0.0,ba:3.48,sa:3.48,ad:0.0,bp:1.16,sp:1.16,pd:0.0,tp:3,sl:0,mh:0,hm:305.0},
+  {r:"MSFT_L15M_00030_WR80.0%/APnL24.05%/PTPnL1.2%",tf:"15M",fam:"MSFTL",bt:20,st:50,bw:80.0,sw:80.0,wd:0.0,ba:24.05,sa:60.16,ad:36.11,bp:1.2,sp:1.2,pd:0.0,tp:40,sl:0,mh:10,hm:3041.4},
+  {r:"MSFT_S15M_00025_WR97.1%/APnL25.63%/PTPnL0.37%",tf:"15M",fam:"MSFTS",bt:69,st:120,bw:97.1,sw:95.8,wd:-1.3,ba:25.63,sa:45.97,ad:20.34,bp:0.37,sp:0.38,pd:0.01,tp:114,sl:2,mh:4,hm:186.0},
+  {r:"MSFT_S15M_00029_WR86.7%/APnL23.45%/PTPnL0.78%",tf:"15M",fam:"MSFTS",bt:30,st:87,bw:86.7,sw:81.6,wd:-5.1,ba:23.45,sa:70.59,ad:47.14,bp:0.78,sp:0.81,pd:0.03,tp:71,sl:0,mh:15,hm:2692.1},
+  {r:"MSFT_X15M_00022_WR100.0%/APnL10.95%/PTPnL3.65%",tf:"15M",fam:"MSFTX",bt:3,st:5,bw:100.0,sw:80.0,wd:-20.0,ba:10.95,sa:18.43,ad:7.48,bp:3.65,sp:3.69,pd:0.04,tp:4,sl:1,mh:0,hm:513.4},
+  {r:"MSFT_X1H_00004_WR100.0%/APnL35.06%/PTPnL2.92%",tf:"1H",fam:"MSFTX",bt:12,st:18,bw:100.0,sw:100.0,wd:0.0,ba:35.06,sa:54.0,ad:18.94,bp:2.92,sp:3.0,pd:0.08,tp:18,sl:0,mh:0,hm:2280.1},
+  {r:"MSFT_S1H_00019_WR100.0%/APnL32.06%/PTPnL2.91%",tf:"1H",fam:"MSFTS",bt:11,st:11,bw:100.0,sw:100.0,wd:0.0,ba:32.06,sa:33.0,ad:0.94,bp:2.91,sp:3.0,pd:0.09,tp:11,sl:0,mh:0,hm:2737.0},
+  {r:"MSFT_S1H_00025_WR100.0%/APnL29.06%/PTPnL2.91%",tf:"1H",fam:"MSFTS",bt:10,st:10,bw:100.0,sw:100.0,wd:0.0,ba:29.06,sa:30.0,ad:0.94,bp:2.91,sp:3.0,pd:0.09,tp:10,sl:0,mh:0,hm:2914.8},
+  {r:"MSFT_S15M_00046_WR97.4%/APnL16.76%/PTPnL0.15%",tf:"15M",fam:"MSFTS",bt:115,st:469,bw:97.4,sw:98.5,wd:1.1,ba:16.76,sa:122.02,ad:105.26,bp:0.15,sp:0.26,pd:0.11,tp:462,sl:0,mh:6,hm:368.9},
+  {r:"MSFT_S1H_00007_WR66.7%/APnL41.74%/PTPnL3.48%",tf:"1H",fam:"MSFTS",bt:12,st:13,bw:66.7,sw:46.2,wd:-20.5,ba:41.74,sa:47.1,ad:5.36,bp:3.48,sp:3.62,pd:0.14,tp:1,sl:6,mh:6,hm:4397.5},
+  {r:"MSFT_S1H_00030_WR70.0%/APnL27.89%/PTPnL2.79%",tf:"1H",fam:"MSFTS",bt:10,st:17,bw:70.0,sw:64.7,wd:-5.3,ba:27.89,sa:50.21,ad:22.32,bp:2.79,sp:2.95,pd:0.16,tp:5,sl:6,mh:6,hm:3241.4},
+  {r:"MSFT_S15M_00040_WR85.7%/APnL18.98%/PTPnL1.36%",tf:"15M",fam:"MSFTS",bt:14,st:21,bw:85.7,sw:90.5,wd:4.8,ba:18.98,sa:32.59,ad:13.61,bp:1.36,sp:1.55,pd:0.19,tp:18,sl:0,mh:3,hm:1477.3},
+  {r:"MSFT_L1H_00024_WR83.3%/APnL18.49%/PTPnL1.54%",tf:"1H",fam:"MSFTL",bt:12,st:19,bw:83.3,sw:84.2,wd:0.9,ba:18.49,sa:34.54,ad:16.05,bp:1.54,sp:1.82,pd:0.28,tp:15,sl:0,mh:4,hm:3498.6},
+  {r:"MSFT_S15M_00006_WR66.7%/APnL44.31%/PTPnL3.69%",tf:"15M",fam:"MSFTS",bt:12,st:30,bw:66.7,sw:63.3,wd:-3.4,ba:44.31,sa:122.14,ad:77.83,bp:3.69,sp:4.07,pd:0.38,tp:0,sl:2,mh:27,hm:5457.4},
+  {r:"MSFT_L15M_00025_WR60.0%/APnL26.71%/PTPnL2.67%",tf:"15M",fam:"MSFTL",bt:10,st:57,bw:60.0,sw:57.9,wd:-2.1,ba:26.71,sa:175.83,ad:149.12,bp:2.67,sp:3.08,pd:0.41,tp:3,sl:14,mh:38,hm:11577.9},
+  {r:"MSFT_L15M_00026_WR60.0%/APnL26.71%/PTPnL2.67%",tf:"15M",fam:"MSFTL",bt:10,st:57,bw:60.0,sw:57.9,wd:-2.1,ba:26.71,sa:175.83,ad:149.12,bp:2.67,sp:3.08,pd:0.41,tp:3,sl:14,mh:38,hm:11577.9},
+  {r:"MSFT_XD_00018_WR81.8%/APnL24.31%/PTPnL1.1%",tf:"DAILY",fam:"MSFTX",bt:22,st:39,bw:81.8,sw:87.2,wd:5.4,ba:24.31,sa:81.71,ad:57.4,bp:1.1,sp:2.1,pd:1.0,tp:34,sl:5,mh:0,hm:1372.1},
+  {r:"MSFT_X1H_00005_WR57.1%/APnL34.66%/PTPnL2.48%",tf:"1H",fam:"MSFTX",bt:14,st:29,bw:57.1,sw:72.4,wd:15.3,ba:34.66,sa:101.62,ad:66.96,bp:2.48,sp:3.5,pd:1.02,tp:0,sl:1,mh:26,hm:5843.3},
+  {r:"MSFT_L15M_00012_WR55.6%/APnL34.26%/PTPnL3.81%",tf:"15M",fam:"MSFTL",bt:9,st:31,bw:55.6,sw:67.7,wd:12.1,ba:34.26,sa:169.93,ad:135.67,bp:3.81,sp:5.48,pd:1.67,tp:0,sl:5,mh:25,hm:12427.6},
+  {r:"MSFT_SD_00026_WR71.4%/APnL23.45%/PTPnL3.35%",tf:"DAILY",fam:"MSFTS",bt:7,st:12,bw:71.4,sw:50.0,wd:-21.4,ba:23.45,sa:74.05,ad:50.6,bp:3.35,sp:6.17,pd:2.82,tp:4,sl:6,mh:2,hm:25938.2},
+  {r:"MSFT_XD_00011_WR61.5%/APnL31.1%/PTPnL2.39%",tf:"DAILY",fam:"MSFTX",bt:13,st:37,bw:61.5,sw:54.1,wd:-7.4,ba:31.1,sa:235.16,ad:204.06,bp:2.39,sp:6.36,pd:3.97,tp:18,sl:15,mh:1,hm:21957.0},
+  {r:"MSFT_SD_00017_WR100.0%/APnL32.2%/PTPnL8.05%",tf:"DAILY",fam:"MSFTS",bt:4,st:4,bw:100.0,sw:75.0,wd:-25.0,ba:32.2,sa:50.28,ad:18.08,bp:8.05,sp:12.57,pd:4.52,tp:2,sl:1,mh:1,hm:21665.0}
+];
+var sortCol="pd",sortAsc=true,searchVal="";
+function clr(v){if(v===null)return'';if(v>0)return'green';if(v<0)return'red';return''}
+function fmt(v){if(v===null)return'-';return v}
+function render(){
+  var f=data.filter(function(r){if(searchVal){var s=searchVal.toLowerCase();return r.r.toLowerCase().indexOf(s)>=0||r.tf.toLowerCase().indexOf(s)>=0||r.fam.toLowerCase().indexOf(s)>=0}return true});
+  f.sort(function(a,b){var va=a[sortCol],vb=b[sortCol];if(va===null)va=sortAsc?1e9:-1e9;if(vb===null)vb=sortAsc?1e9:-1e9;if(typeof va==="string"){va=va.toLowerCase();vb=vb.toLowerCase()}return sortAsc?(va<vb?-1:va>vb?1:0):(va>vb?-1:va<vb?1:0)});
+  var h="";
+  f.forEach(function(r){h+="<tr><td>"+r.r+"</td><td>"+r.tf+"</td><td>"+r.bt+"</td><td>"+r.st+"</td>"
+    +"<td>"+r.bw+"%</td><td>"+r.sw+"%</td><td class='"+clr(r.wd)+"'>"+fmt(r.wd)+"</td>"
+    +"<td>"+r.ba+"%</td><td>"+r.sa+"%</td><td class='"+clr(r.ad)+"'>"+fmt(r.ad)+"</td>"
+    +"<td>"+r.bp+"%</td><td>"+r.sp+"%</td><td class='"+clr(r.pd)+"'>"+fmt(r.pd)+"</td>"
+    +"<td class='green'>"+r.tp+"</td><td class='red'>"+r.sl+"</td><td class='yellow'>"+r.mh+"</td><td>"+r.hm+"</td></tr>"});
+  document.getElementById("tbody").innerHTML=h;
+}
+document.querySelectorAll("th").forEach(function(th){th.addEventListener("click",function(){var col=this.dataset.col;if(sortCol===col)sortAsc=!sortAsc;else{sortCol=col;sortAsc=this.dataset.type==="str"}document.querySelectorAll("th").forEach(function(h){h.classList.remove("active");h.querySelector(".arrow").innerHTML="&#9650;"});this.classList.add("active");this.querySelector(".arrow").innerHTML=sortAsc?"&#9650;":"&#9660;";render()});});
+document.getElementById("search").addEventListener("input",function(){searchVal=this.value;render()});
+render();
+</script>
+</body>
+</html>
