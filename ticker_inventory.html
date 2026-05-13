@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,426 tickers &#8226; 548 with 1m data &#8226; 2,878 missing 1m &#8226; 166 with deployed rules &#8226; 11 with bear rules</p>
+  <p class="subtitle">3,426 tickers &#8226; 551 with 1m data &#8226; 2,875 missing 1m &#8226; 166 with deployed rules &#8226; 11 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -115,7 +115,7 @@ var data = [
   {t:"IBIT",n:"iShares Bitcoin Trust ETF",s:"",i:"",v:52908571,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AMZN",n:"Amazon.com, Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:52578968,mc:2942607294464,qt:"EQUITY",d1m:1,d5m:1,rules:803,br:0},
   {t:"NU",n:"Nu Holdings Ltd.",s:"Financial Services",i:"Banks - Regional",v:51802281,mc:69263540224,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SNAP",n:"Snap Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:51702293,mc:10319496192,qt:"EQUITY",d1m:1,d5m:1,rules:429,br:429},
+  {t:"SNAP",n:"Snap Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:51702293,mc:10319496192,qt:"EQUITY",d1m:1,d5m:1,rules:858,br:858},
   {t:"XLF",n:"State Street Financial Select S",s:"",i:"",v:51234010,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BMNG",n:"Leverage Shares 2X Long BMNR Da",s:"",i:"",v:51047460,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TSLG",n:"Leverage Shares 2X Long TSLA Da",s:"",i:"",v:50224027,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -247,7 +247,7 @@ var data = [
   {t:"INFY",n:"Infosys Limited",s:"Technology",i:"Information Technology Services",v:18271855,mc:50425716736,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SCHG",n:"Schwab U.S. Large-Cap Growth ET",s:"",i:"",v:18173916,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"USHY",n:"iShares Broad USD High Yield Co",s:"",i:"",v:18166530,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SNDK",n:"Sandisk Corporation",s:"Technology",i:"Computer Hardware",v:18062874,mc:208261578752,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SNDK",n:"Sandisk Corporation",s:"Technology",i:"Computer Hardware",v:18062874,mc:208261578752,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"XLP",n:"State Street Consumer Staples S",s:"",i:"",v:17773066,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SLB",n:"SLB Limited",s:"Energy",i:"Oil &amp; Gas Equipment &amp; Services",v:17699669,mc:83723231232,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"LYFT",n:"Lyft, Inc.",s:"Technology",i:"Software - Application",v:17519600,mc:5384125952,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1328,7 +1328,7 @@ var data = [
   {t:"PLTU",n:"Direxion Daily PLTR Bull 2X ETF",s:"",i:"",v:2554283,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"EVTL",n:"Vertical Aerospace Ltd.",s:"Industrials",i:"Aerospace &amp; Defense",v:2554033,mc:304313920,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RNG",n:"Ringcentral, Inc.",s:"Technology",i:"Software - Application",v:2552784,mc:4088609792,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MUU",n:"Direxion Daily MU Bull 2X ETF",s:"",i:"",v:2551032,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MUU",n:"Direxion Daily MU Bull 2X ETF",s:"",i:"",v:2551032,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DEI",n:"Douglas Emmett, Inc.",s:"Real Estate",i:"REIT - Office",v:2548161,mc:2299823104,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNM",n:"Core &amp; Main, Inc.",s:"Industrials",i:"Industrial Distribution",v:2546080,mc:9587923968,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FUSE",n:"Fusemachines Inc.",s:"Technology",i:"Software - Application",v:2545381,mc:44855820,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -2821,7 +2821,7 @@ var data = [
   {t:"FCPT",n:"Four Corners Property Trust, In",s:"Real Estate",i:"REIT - Retail",v:784241,mc:2759094784,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CTA",n:"Simplify Managed Futures Strate",s:"",i:"",v:783521,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"MAIN",n:"Main Street Capital Corporation",s:"Financial Services",i:"Asset Management",v:783428,mc:5168413184,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"ICVT",n:"iShares Convertible Bond ETF",s:"",i:"",v:783220,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ICVT",n:"iShares Convertible Bond ETF",s:"",i:"",v:783220,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CXT",n:"Crane NXT, Co.",s:"Industrials",i:"Specialty Industrial Machinery",v:782646,mc:2550628096,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NNBR",n:"NN, Inc.",s:"Industrials",i:"Conglomerates",v:782076,mc:123969608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"APAM",n:"Artisan Partners Asset Manageme",s:"Financial Services",i:"Asset Management",v:781960,mc:2667926784,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
