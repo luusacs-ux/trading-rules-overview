@@ -27406,5 +27406,13 @@
   "marketCap": 5598743552,
   "name": "Loar Holdings Inc.",
   "quoteType": "EQUITY"
+ },
+ "MRAM": {
+  "sector": "Technology",
+  "industry": "Semiconductors",
+  "volume": 1962698,
+  "marketCap": 905076416,
+  "name": "Everspin Technologies, Inc.",
+  "quoteType": "EQUITY"
  }
 }
