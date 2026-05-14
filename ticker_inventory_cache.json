@@ -22349,7 +22349,7 @@
   "volume": 0,
   "marketCap": 0,
   "name": "",
-  "quoteType": ""
+  "quoteType": "NONE"
  },
  "SOLUSD": {
   "sector": "",
@@ -26693,7 +26693,7 @@
   "volume": 0,
   "marketCap": 0,
   "name": "",
-  "quoteType": ""
+  "quoteType": "NONE"
  },
  "XAR": {
   "sector": "",
