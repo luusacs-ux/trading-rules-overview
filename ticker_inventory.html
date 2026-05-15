@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 614 with 1m data &#8226; 2,813 missing 1m &#8226; 180 with deployed rules &#8226; 19 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 617 with 1m data &#8226; 2,810 missing 1m &#8226; 181 with deployed rules &#8226; 19 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -319,7 +319,7 @@ var data = [
   {t:"WIT",n:"Wipro Limited",s:"Technology",i:"Information Technology Services",v:13340649,mc:21552996352,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AES",n:"The AES Corporation",s:"Utilities",i:"Utilities - Diversified",v:13223473,mc:10246839296,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CCC",n:"CCC Intelligent Solutions Holdi",s:"Technology",i:"Software - Application",v:13199300,mc:3122523904,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"PL",n:"Planet Labs PBC",s:"Industrials",i:"Aerospace &amp; Defense",v:13057805,mc:13232879616,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"PL",n:"Planet Labs PBC",s:"Industrials",i:"Aerospace &amp; Defense",v:13057805,mc:13232879616,qt:"EQUITY",d1m:1,d5m:1,rules:413,br:0},
   {t:"VCIT",n:"Vanguard Intermediate-Term Corp",s:"",i:"",v:13010996,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"LUNR",n:"Intuitive Machines, Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:12893766,mc:3967053824,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"XLV",n:"State Street Health Care Select",s:"",i:"",v:12890915,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -1137,7 +1137,7 @@ var data = [
   {t:"SAIL",n:"SailPoint, Inc.",s:"Technology",i:"Software - Infrastructure",v:3111025,mc:6850211840,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DUST",n:"Direxion Daily Gold Miners Inde",s:"",i:"",v:3104311,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SCHI",n:"Schwab 5-10 Year Corporate Bond",s:"",i:"",v:3103125,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FCEL",n:"FuelCell Energy, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:3102741,mc:717850048,qt:"EQUITY",d1m:1,d5m:1,rules:12,br:0},
+  {t:"FCEL",n:"FuelCell Energy, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:3102741,mc:717850048,qt:"EQUITY",d1m:1,d5m:1,rules:536,br:0},
   {t:"STWD",n:"STARWOOD PROPERTY TRUST, INC. S",s:"Real Estate",i:"REIT - Mortgage",v:3101206,mc:6943906816,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HIMX",n:"Himax Technologies, Inc.",s:"Technology",i:"Semiconductors",v:3099864,mc:2124507776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DG",n:"Dollar General Corporation",s:"Consumer Defensive",i:"Discount Stores",v:3099196,mc:25768681472,qt:"EQUITY",d1m:1,d5m:1,rules:134,br:0},
@@ -1741,7 +1741,7 @@ var data = [
   {t:"IYW",n:"iShares U.S. Technology ETF",s:"",i:"",v:1807683,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ORI",n:"Old Republic International Corp",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:1807494,mc:9559496704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ARIS",n:"Aris Mining Corporation",s:"Basic Materials",i:"Gold",v:1807005,mc:3567174144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GEMI",n:"Gemini Space Station, Inc.",s:"Financial Services",i:"Capital Markets",v:1800085,mc:571807872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GEMI",n:"Gemini Space Station, Inc.",s:"Financial Services",i:"Capital Markets",v:1800085,mc:571807872,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ZTO",n:"ZTO Express (Cayman) Inc.",s:"Industrials",i:"Integrated Freight &amp; Logistics",v:1800069,mc:19458447360,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"APLX",n:"Tradr 2X Long APLD Daily ETF",s:"",i:"",v:1797745,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BMNZ",n:"Defiance Daily Target 2X Short ",s:"",i:"",v:1795166,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -1941,7 +1941,7 @@ var data = [
   {t:"DBC",n:"Invesco DB Commodity Index Trac",s:"",i:"",v:1536255,mc:0,qt:"ETF",d1m:1,d5m:1,rules:49,br:0},
   {t:"AMTX",n:"Aemetis, Inc",s:"Basic Materials",i:"Specialty Chemicals",v:1534868,mc:249412848,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MORT",n:"VanEck Mortgage REIT Income ETF",s:"",i:"",v:1534149,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CRWU",n:"T-REX 2X Long CRWV Daily Target",s:"",i:"",v:1531063,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CRWU",n:"T-REX 2X Long CRWV Daily Target",s:"",i:"",v:1531063,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PLTZ",n:"Defiance Daily Target 2x Short ",s:"",i:"",v:1529098,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FRPT",n:"Freshpet, Inc.",s:"Consumer Defensive",i:"Packaged Foods",v:1528001,mc:2956904704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NOMD",n:"Nomad Foods Limited",s:"Consumer Defensive",i:"Packaged Foods",v:1526622,mc:1319979776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
