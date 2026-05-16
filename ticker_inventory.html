@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 629 with 1m data &#8226; 2,798 missing 1m &#8226; 185 with deployed rules &#8226; 23 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 634 with 1m data &#8226; 2,793 missing 1m &#8226; 185 with deployed rules &#8226; 22 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -412,7 +412,7 @@ var data = [
   {t:"RUN",n:"Sunrun Inc.",s:"Technology",i:"Solar",v:9789589,mc:3169986816,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EXK",n:"Endeavour Silver Corporation",s:"Basic Materials",i:"Silver",v:9761500,mc:2543088384,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VUG",n:"Vanguard Growth ETF",s:"",i:"",v:9733511,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"JPM",n:"JP Morgan Chase &amp; Co.",s:"Financial Services",i:"Banks - Diversified",v:9729976,mc:829040754688,qt:"EQUITY",d1m:1,d5m:1,rules:1210,br:1160},
+  {t:"JPM",n:"JP Morgan Chase &amp; Co.",s:"Financial Services",i:"Banks - Diversified",v:9729976,mc:829040754688,qt:"EQUITY",d1m:1,d5m:1,rules:1154,br:0},
   {t:"COP",n:"ConocoPhillips",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:9715688,mc:150240018432,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BAX",n:"Baxter International Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:9700136,mc:8650855424,qt:"EQUITY",d1m:1,d5m:1,rules:241,br:0},
   {t:"TME",n:"Tencent Music Entertainment Gro",s:"Communication Services",i:"Internet Content &amp; Information",v:9682674,mc:14433875968,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -995,7 +995,7 @@ var data = [
   {t:"UDR",n:"UDR, Inc.",s:"Real Estate",i:"REIT - Residential",v:3703869,mc:13686847488,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MCHI",n:"iShares MSCI China ETF",s:"",i:"",v:3702877,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"FIGS",n:"FIGS, Inc.",s:"Consumer Cyclical",i:"Apparel Manufacturing",v:3696986,mc:2428830720,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AXP",n:"American Express Company",s:"Financial Services",i:"Credit Services",v:3696485,mc:215581048832,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AXP",n:"American Express Company",s:"Financial Services",i:"Credit Services",v:3696485,mc:215581048832,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ALLY",n:"Ally Financial Inc.",s:"Financial Services",i:"Credit Services",v:3694918,mc:13283099648,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IGSB",n:"iShares 1-5 Year Investment Gra",s:"",i:"",v:3685986,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"SERV",n:"Serve Robotics Inc.",s:"Industrials",i:"Specialty Industrial Machinery",v:3685750,mc:691808256,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1125,7 +1125,7 @@ var data = [
   {t:"VNOM",n:"Viper Energy, Inc.",s:"Energy",i:"Oil &amp; Gas Midstream",v:3147761,mc:18745622528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ALDX",n:"Aldeyra Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:3147216,mc:103752240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WELL",n:"Welltower Inc.",s:"Real Estate",i:"REIT - Healthcare Facilities",v:3136583,mc:151277469696,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AMT",n:"American Tower Corporation (REI",s:"Real Estate",i:"REIT - Specialty",v:3135738,mc:82984869888,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AMT",n:"American Tower Corporation (REI",s:"Real Estate",i:"REIT - Specialty",v:3135738,mc:82984869888,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SPLV",n:"Invesco S&amp;P 500 Low Volatility ",s:"",i:"",v:3134130,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SGHC",n:"Super Group (SGHC) Limited",s:"Consumer Cyclical",i:"Gambling",v:3123557,mc:6726936576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DBRG",n:"DigitalBridge Group, Inc.",s:"Financial Services",i:"Asset Management",v:3118980,mc:3036745728,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1387,7 +1387,7 @@ var data = [
   {t:"LNT",n:"Alliant Energy Corporation",s:"Utilities",i:"Utilities - Regulated Electric",v:2435350,mc:18872262656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IRDM",n:"Iridium Communications Inc",s:"Communication Services",i:"Telecom Services",v:2430077,mc:4147699456,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"AHR",n:"American Healthcare REIT, Inc.",s:"Real Estate",i:"REIT - Healthcare Facilities",v:2430061,mc:9532110848,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"PNC",n:"PNC Financial Services Group, I",s:"Financial Services",i:"Banks - Regional",v:2427761,mc:89399099392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"PNC",n:"PNC Financial Services Group, I",s:"Financial Services",i:"Banks - Regional",v:2427761,mc:89399099392,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CSIQ",n:"Canadian Solar Inc.",s:"Technology",i:"Solar",v:2427631,mc:1139320832,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ARE",n:"Alexandria Real Estate Equities",s:"Real Estate",i:"REIT - Office",v:2426736,mc:7633002496,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XXRP",n:"Teucrium 2x Long Daily XRP ETF",s:"",i:"",v:2423088,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -1474,7 +1474,7 @@ var data = [
   {t:"BTQ",n:"BTQ Technologies Corp.",s:"Technology",i:"Software - Infrastructure",v:2260948,mc:402736128,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BIRK",n:"Birkenstock Holding plc",s:"Consumer Cyclical",i:"Footwear &amp; Accessories",v:2258823,mc:6881763840,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ODFL",n:"Old Dominion Freight Line, Inc.",s:"Industrials",i:"Trucking",v:2257918,mc:40868093952,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GS",n:"Goldman Sachs Group, Inc. (The)",s:"Financial Services",i:"Capital Markets",v:2256428,mc:271079374848,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GS",n:"Goldman Sachs Group, Inc. (The)",s:"Financial Services",i:"Capital Markets",v:2256428,mc:271079374848,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"LXRX",n:"Lexicon Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:2253464,mc:732768832,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IEI",n:"iShares 3-7 Year Treasury Bond ",s:"",i:"",v:2249886,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNX",n:"CNX Resources Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:2248288,mc:5378978304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2797,7 +2797,7 @@ var data = [
   {t:"MSDL",n:"Morgan Stanley Direct Lending Fund",s:"Financial Services",i:"Asset Management",v:804359,mc:1330076544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CGBD",n:"Carlyle Secured Lending, Inc.",s:"Financial Services",i:"Asset Management",v:803423,mc:847822656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PRIM",n:"Primoris Services Corporation",s:"Industrials",i:"Engineering &amp; Construction",v:803240,mc:11004661760,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"BMO",n:"Bank Of Montreal",s:"Financial Services",i:"Banks - Diversified",v:803033,mc:106457014272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"BMO",n:"Bank Of Montreal",s:"Financial Services",i:"Banks - Diversified",v:803033,mc:106457014272,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"POOL",n:"Pool Corporation",s:"Industrials",i:"Industrial Distribution",v:802789,mc:6816299008,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"QTRX",n:"Quanterix Corporation",s:"Healthcare",i:"Medical Devices",v:801586,mc:155314448,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MNRO",n:"Monro, Inc.",s:"Consumer Cyclical",i:"Auto Parts",v:801286,mc:513936608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
