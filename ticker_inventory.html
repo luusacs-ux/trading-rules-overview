@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 617 with 1m data &#8226; 2,810 missing 1m &#8226; 183 with deployed rules &#8226; 21 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 622 with 1m data &#8226; 2,805 missing 1m &#8226; 184 with deployed rules &#8226; 21 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -204,7 +204,7 @@ var data = [
   {t:"ORBS",n:"Eightco Holdings Inc.",s:"Consumer Cyclical",i:"Packaging &amp; Containers",v:23632128,mc:298778912,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SCHD",n:"Schwab US Dividend Equity ETF",s:"",i:"",v:23476866,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"NCLH",n:"Norwegian Cruise Line Holdings ",s:"Consumer Cyclical",i:"Travel Services",v:23145357,mc:7777326080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MRVL",n:"Marvell Technology, Inc.",s:"Technology",i:"Semiconductors",v:22833345,mc:147564822528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MRVL",n:"Marvell Technology, Inc.",s:"Technology",i:"Semiconductors",v:22833345,mc:147564822528,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CSCO",n:"Cisco Systems, Inc.",s:"Technology",i:"Communication Equipment",v:22723421,mc:372474937344,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BTE",n:"Baytex Energy Corp",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:22607718,mc:3861397760,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PCG",n:"Pacific Gas &amp; Electric Co.",s:"Utilities",i:"Utilities - Regulated Electric",v:22586101,mc:35962327040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -330,7 +330,7 @@ var data = [
   {t:"XLI",n:"State Street Industrial Select ",s:"",i:"",v:12638650,mc:0,qt:"ETF",d1m:1,d5m:1,rules:36,br:0},
   {t:"CORZ",n:"Core Scientific, Inc.",s:"Technology",i:"Software - Infrastructure",v:12527356,mc:7003048960,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LUMN",n:"Lumen Technologies, Inc.",s:"Communication Services",i:"Telecom Services",v:12524125,mc:9508362240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"UAMY",n:"United States Antimony Corporat",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:12491352,mc:1595322624,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"UAMY",n:"United States Antimony Corporat",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:12491352,mc:1595322624,qt:"EQUITY",d1m:1,d5m:1,rules:473,br:0},
   {t:"SCHF",n:"Schwab International Equity ETF",s:"",i:"",v:12488616,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"BULL",n:"Webull Corporation",s:"Technology",i:"Software - Application",v:12427501,mc:3898230784,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BITX",n:"2x Bitcoin Strategy ETF",s:"",i:"",v:12413800,mc:0,qt:"ETF",d1m:1,d5m:1,rules:95,br:0},
@@ -343,7 +343,7 @@ var data = [
   {t:"IWF",n:"iShares Russell 1000 Growth Fun",s:"",i:"",v:12021100,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"BOIL",n:"ProShares Ultra Bloomberg Natur",s:"",i:"",v:11983621,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ADT",n:"ADT Inc.",s:"Industrials",i:"Security &amp; Protection Services",v:11938695,mc:5535757312,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VXX",n:"iPath Series B S&amp;P 500 VIX Shor",s:"",i:"",v:11903067,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VXX",n:"iPath Series B S&amp;P 500 VIX Shor",s:"",i:"",v:11903067,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DAL",n:"Delta Air Lines, Inc.",s:"Industrials",i:"Airlines",v:11886605,mc:46554619904,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GLD",n:"SPDR Gold Shares",s:"",i:"",v:11858943,mc:0,qt:"ETF",d1m:1,d5m:1,rules:163,br:0},
   {t:"CRML",n:"Critical Metals Corp.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:11819558,mc:1759961216,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -1415,7 +1415,7 @@ var data = [
   {t:"APPS",n:"Digital Turbine, Inc.",s:"Technology",i:"Software - Application",v:2373885,mc:466410752,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EFG",n:"iShares MSCI EAFE Growth ETF",s:"",i:"",v:2372531,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ORLA",n:"Orla Mining Ltd.",s:"Basic Materials",i:"Gold",v:2371493,mc:4640065024,qt:"EQUITY",d1m:1,d5m:1,rules:692,br:0},
-  {t:"STIM",n:"Neuronetics, Inc.",s:"Healthcare",i:"Medical Devices",v:2369755,mc:150987536,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"STIM",n:"Neuronetics, Inc.",s:"Healthcare",i:"Medical Devices",v:2369755,mc:150987536,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"XME",n:"State Street SPDR S&amp;P Metals &amp; ",s:"",i:"",v:2367113,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RES",n:"RPC, Inc.",s:"Energy",i:"Oil &amp; Gas Equipment &amp; Services",v:2365950,mc:1728786304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ZBH",n:"Zimmer Biomet Holdings, Inc.",s:"Healthcare",i:"Medical Devices",v:2364162,mc:16059321344,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1497,7 +1497,7 @@ var data = [
   {t:"YINN",n:"Direxion Daily FTSE China Bull ",s:"",i:"",v:2218688,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"VRSK",n:"Verisk Analytics, Inc.",s:"Industrials",i:"Consulting Services",v:2217786,mc:23642890240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BUD",n:"Anheuser-Busch Inbev SA Sponsor",s:"Consumer Defensive",i:"Beverages - Brewers",v:2216811,mc:155748204544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CENX",n:"Century Aluminum Company",s:"Basic Materials",i:"Aluminum",v:2215516,mc:6164103680,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CENX",n:"Century Aluminum Company",s:"Basic Materials",i:"Aluminum",v:2215516,mc:6164103680,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"RMBS",n:"Rambus, Inc.",s:"Technology",i:"Semiconductors",v:2214881,mc:12760162304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SJM",n:"The J.M. Smucker Company",s:"Consumer Defensive",i:"Packaged Foods",v:2214430,mc:10311826432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EWU",n:"iShares MSCI",s:"",i:"",v:2208611,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
