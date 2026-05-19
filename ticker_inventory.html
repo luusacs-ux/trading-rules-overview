@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 652 with 1m data &#8226; 2,775 missing 1m &#8226; 188 with deployed rules &#8226; 28 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 660 with 1m data &#8226; 2,767 missing 1m &#8226; 188 with deployed rules &#8226; 28 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -417,7 +417,7 @@ var data = [
   {t:"BAX",n:"Baxter International Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:9700136,mc:8650855424,qt:"EQUITY",d1m:1,d5m:1,rules:241,br:0},
   {t:"TME",n:"Tencent Music Entertainment Gro",s:"Communication Services",i:"Internet Content &amp; Information",v:9682674,mc:14433875968,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NEM",n:"Newmont Corporation",s:"Basic Materials",i:"Gold",v:9666920,mc:116373929984,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"MDLZ",n:"Mondelez International, Inc.",s:"Consumer Defensive",i:"Confectioners",v:9581386,mc:78764752896,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MDLZ",n:"Mondelez International, Inc.",s:"Consumer Defensive",i:"Confectioners",v:9581386,mc:78764752896,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ERIC",n:"Ericsson",s:"Technology",i:"Communication Equipment",v:9564911,mc:39693950976,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RR",n:"Richtech Robotics Inc.",s:"Industrials",i:"Specialty Industrial Machinery",v:9541342,mc:538866304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EQX",n:"Equinox Gold Corp.",s:"Basic Materials",i:"Gold",v:9519638,mc:10732320768,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -501,7 +501,7 @@ var data = [
   {t:"FRSH",n:"Freshworks Inc.",s:"Technology",i:"Software - Application",v:7884488,mc:2563598080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SBUX",n:"Starbucks Corporation",s:"Consumer Cyclical",i:"Restaurants",v:7811577,mc:119600119808,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"IAG",n:"Iamgold Corporation",s:"Basic Materials",i:"Gold",v:7795286,mc:9496039424,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CVS",n:"CVS Health Corporation",s:"Healthcare",i:"Healthcare Plans",v:7771218,mc:103412662272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CVS",n:"CVS Health Corporation",s:"Healthcare",i:"Healthcare Plans",v:7771218,mc:103412662272,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"FNB",n:"F.N.B. Corporation",s:"Financial Services",i:"Banks - Regional",v:7751830,mc:6366509056,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ARCC",n:"Ares Capital Corporation",s:"Financial Services",i:"Asset Management",v:7748596,mc:13893742592,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TEAM",n:"Atlassian Corporation",s:"Technology",i:"Software - Application",v:7742879,mc:23435460608,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -579,7 +579,7 @@ var data = [
   {t:"GTLB",n:"GitLab Inc.",s:"Technology",i:"Software - Infrastructure",v:6582322,mc:4194279680,qt:"EQUITY",d1m:1,d5m:1,rules:100,br:0},
   {t:"CSGP",n:"CoStar Group, Inc.",s:"Real Estate",i:"Real Estate Services",v:6572886,mc:14251615232,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SILJ",n:"Amplify Junior Silver Miners ET",s:"",i:"",v:6572305,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"PEP",n:"Pepsico, Inc.",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:6565867,mc:211930513408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"PEP",n:"Pepsico, Inc.",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:6565867,mc:211930513408,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CX",n:"Cemex, S.A.B. de C.V. Sponsored",s:"Basic Materials",i:"Building Materials",v:6555541,mc:18570797056,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EWT",n:"iShares MSCI Taiwan ETF",s:"",i:"",v:6547985,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CELH",n:"Celsius Holdings, Inc.",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:6544288,mc:8611156992,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -716,7 +716,7 @@ var data = [
   {t:"UPST",n:"Upstart Holdings, Inc.",s:"Financial Services",i:"Credit Services",v:5366766,mc:2983195392,qt:"EQUITY",d1m:1,d5m:1,rules:61,br:0},
   {t:"SID",n:"Companhia Siderurgica Nacional ",s:"Basic Materials",i:"Steel",v:5358849,mc:1728686592,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GDXJ",n:"VanEck Junior Gold Miners ETF",s:"",i:"",v:5354168,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"FLO",n:"Flowers Foods, Inc.",s:"Consumer Defensive",i:"Packaged Foods",v:5350991,mc:1830439936,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FLO",n:"Flowers Foods, Inc.",s:"Consumer Defensive",i:"Packaged Foods",v:5350991,mc:1830439936,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BEN",n:"Franklin Resources, Inc.",s:"Financial Services",i:"Asset Management",v:5339263,mc:15828147200,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNP",n:"CenterPoint Energy, Inc (Holdin",s:"Utilities",i:"Utilities - Regulated Electric",v:5298150,mc:28475996160,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"UPXI",n:"Upexi, Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:5294628,mc:95695208,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1051,7 +1051,7 @@ var data = [
   {t:"SLNO",n:"Soleno Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:3432069,mc:2758198016,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BRO",n:"Brown &amp; Brown, Inc.",s:"Financial Services",i:"Insurance Brokers",v:3427896,mc:19492890624,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TER",n:"Teradyne, Inc.",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:3423428,mc:55901204480,qt:"EQUITY",d1m:1,d5m:1,rules:824,br:0},
-  {t:"ALHC",n:"Alignment Healthcare, Inc.",s:"Healthcare",i:"Healthcare Plans",v:3413510,mc:3783228928,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ALHC",n:"Alignment Healthcare, Inc.",s:"Healthcare",i:"Healthcare Plans",v:3413510,mc:3783228928,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CCJ",n:"Cameco Corporation",s:"Energy",i:"Uranium",v:3409491,mc:49851105280,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"REAL",n:"The RealReal, Inc.",s:"Consumer Cyclical",i:"Luxury Goods",v:3405066,mc:1532287488,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HYMC",n:"Hycroft Mining Holding Corporat",s:"Basic Materials",i:"Gold",v:3403488,mc:3231424256,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1499,7 +1499,7 @@ var data = [
   {t:"BUD",n:"Anheuser-Busch Inbev SA Sponsor",s:"Consumer Defensive",i:"Beverages - Brewers",v:2216811,mc:155748204544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CENX",n:"Century Aluminum Company",s:"Basic Materials",i:"Aluminum",v:2215516,mc:6164103680,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"RMBS",n:"Rambus, Inc.",s:"Technology",i:"Semiconductors",v:2214881,mc:12760162304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SJM",n:"The J.M. Smucker Company",s:"Consumer Defensive",i:"Packaged Foods",v:2214430,mc:10311826432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SJM",n:"The J.M. Smucker Company",s:"Consumer Defensive",i:"Packaged Foods",v:2214430,mc:10311826432,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"EWU",n:"iShares MSCI",s:"",i:"",v:2208611,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"RLJ",n:"RLJ Lodging Trust",s:"Real Estate",i:"REIT - Hotel &amp; Motel",v:2205338,mc:1339192704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CGNX",n:"Cognex Corporation",s:"Technology",i:"Scientific &amp; Technical Instruments",v:2202515,mc:9825425408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1771,7 +1771,7 @@ var data = [
   {t:"DC",n:"Dakota Gold Corp.",s:"Basic Materials",i:"Gold",v:1760888,mc:718322432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AIOT",n:"PowerFleet, Inc.",s:"Technology",i:"Software - Infrastructure",v:1760805,mc:446710432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MYGN",n:"Myriad Genetics, Inc.",s:"Healthcare",i:"Diagnostics &amp; Research",v:1759793,mc:475048480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MOH",n:"Molina Healthcare Inc",s:"Healthcare",i:"Healthcare Plans",v:1755816,mc:10012056576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MOH",n:"Molina Healthcare Inc",s:"Healthcare",i:"Healthcare Plans",v:1755816,mc:10012056576,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ILMN",n:"Illumina, Inc.",s:"Healthcare",i:"Diagnostics &amp; Research",v:1755115,mc:21041291264,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"EFX",n:"Equifax, Inc.",s:"Industrials",i:"Consulting Services",v:1754125,mc:20510296064,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TOI",n:"The Oncology Institute, Inc.",s:"Healthcare",i:"Medical Care Facilities",v:1752962,mc:397932096,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3182,7 +3182,7 @@ var data = [
   {t:"UTHR",n:"United Therapeutics Corporation",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:528855,mc:24282585088,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NJR",n:"NewJersey Resources Corporation",s:"Utilities",i:"Utilities - Regulated Gas",v:528132,mc:5649391104,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IDXX",n:"IDEXX Laboratories, Inc.",s:"Healthcare",i:"Diagnostics &amp; Research",v:526406,mc:44825546752,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CRDU",n:"Tradr 2X Long CRDO Daily ETF",s:"",i:"",v:525778,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CRDU",n:"Tradr 2X Long CRDO Daily ETF",s:"",i:"",v:525778,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SCZM",n:"Santacruz Silver Mining Ltd.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:525205,mc:718880640,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"COHX",n:"Tradr 2X Long COHR Daily ETF",s:"",i:"",v:525048,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"LZM",n:"Lifezone Metals Limited",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:522232,mc:502563296,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
