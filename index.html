@@ -28,6 +28,16 @@ a{color:#53c0f0;text-decoration:none}
 a:hover{color:#e94560;text-decoration:underline}
 .report-link{font-size:12px}
 .footer{text-align:center;padding:16px;color:#555;font-size:11px}
+.api-bar{background:#16213e;padding:8px 16px;border-bottom:1px solid #0f3460;display:flex;align-items:center;gap:16px;font-size:12px;flex-wrap:wrap}
+.api-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:12px;font-weight:600;font-size:11px}
+.api-pill .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.api-pill.active{background:#1b3a2a;color:#4caf50;border:1px solid #2e7d32}
+.api-pill.active .dot{background:#4caf50}
+.api-pill.standby{background:#2a2a1b;color:#ffb74d;border:1px solid #e65100}
+.api-pill.standby .dot{background:#ffb74d}
+.api-pill.off{background:#2a1b1b;color:#ef5350;border:1px solid #c62828}
+.api-pill.off .dot{background:#ef5350}
+.api-label{color:#a0a0b0}
 @media(max-width:480px){table{font-size:11px}th,td{padding:5px 3px}th{font-size:10px}}
 </style>
 </head>
@@ -36,6 +46,13 @@ a:hover{color:#e94560;text-decoration:underline}
   <h1>Trading Rules Overview</h1>
   <p style="color:#a0a0b0;font-size:12px;margin:4px 0 8px">207 tickers &#8226; 98,277 rules &#8226; 62.8% avg PnL</p>
   <input type="text" class="search-box" id="search" placeholder="Filter tickers..." autocomplete="off">
+</div>
+<div class="api-bar" id="apiBar">
+  <span class="api-label">Data API:</span>
+  <span class="api-pill off" id="pillPolygon"><span class="dot"></span>Polygon</span>
+  <span class="api-pill off" id="pillAlpaca"><span class="dot"></span>Alpaca</span>
+  <span class="api-pill off" id="pillYfinance"><span class="dot"></span>yfinance</span>
+  <span class="api-label" id="apiUptime" style="margin-left:auto"></span>
 </div>
 <div style="padding:8px 16px;font-size:12px"><a href="performance.html" style="color:#53c0f0;text-decoration:none">Paper Trading Performance Dashboard</a> &bull; <a href="design_requirements_v6.html" style="color:#e94560;text-decoration:none;font-weight:600">Design Requirements v6 (NEW)</a> &bull; <a href="ticker_inventory.html" style="color:#4caf50;text-decoration:none;font-weight:600">Ticker Data Inventory (3,422)</a></div>
 <div class="container">
@@ -349,5 +366,44 @@ document.querySelectorAll("th[data-col]").forEach(function(th){
 render();
 </script>
 <div style="margin:20px;text-align:center;"><a href="short_squeeze_report.html" style="color:#58a6ff;font-size:16px;">Short Squeeze Monitor Report</a> &bull; <a href="active_rules.html" style="color:#58a6ff;font-size:16px;">Active Rules Reference</a></div>
+<script>
+(function(){
+  function updateApiStatus(){
+    fetch("api_status.json?t="+Date.now()).then(function(r){return r.json();}).then(function(s){
+      var poly=document.getElementById("pillPolygon");
+      var alp=document.getElementById("pillAlpaca");
+      var yf=document.getElementById("pillYfinance");
+      var up=document.getElementById("apiUptime");
+      poly.className="api-pill off";
+      alp.className="api-pill off";
+      yf.className="api-pill off";
+      if(s.provider==="polygon"){
+        poly.className="api-pill "+(s.connected?"active":"off");
+        alp.className="api-pill standby";
+        yf.className="api-pill standby";
+      }else if(s.provider==="alpaca"){
+        alp.className="api-pill "+(s.connected?"active":"off");
+        poly.className="api-pill off";
+        yf.className="api-pill standby";
+      }else{
+        yf.className="api-pill active";
+      }
+      if(s.uptime_seconds>0){
+        var h=Math.floor(s.uptime_seconds/3600);
+        var m=Math.floor((s.uptime_seconds%3600)/60);
+        up.textContent="Uptime: "+(h>0?h+"h ":"")+m+"m | "+s.tickers+" tickers";
+      }
+      if(s.timestamp){
+        var d=new Date(s.timestamp);
+        up.textContent+=" | Updated: "+d.toLocaleTimeString();
+      }
+    }).catch(function(){
+      document.getElementById("apiUptime").textContent="API status unavailable";
+    });
+  }
+  updateApiStatus();
+  setInterval(updateApiStatus,60000);
+})();
+</script>
 </body>
 </html>
