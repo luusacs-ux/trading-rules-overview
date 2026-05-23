@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 712 with 1m data &#8226; 2,715 missing 1m &#8226; 202 with deployed rules &#8226; 42 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 718 with 1m data &#8226; 2,709 missing 1m &#8226; 203 with deployed rules &#8226; 43 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -103,7 +103,7 @@ var data = [
   {t:"SOXS",n:"Direxion Daily Semiconductor Be",s:"",i:"",v:74446471,mc:0,qt:"ETF",d1m:1,d5m:1,rules:175,br:0},
   {t:"SPDN",n:"Direxion Daily S&amp;P 500 Bear 1X ",s:"",i:"",v:73545766,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NOK",n:"Nokia Corporation Sponsored",s:"Technology",i:"Communication Equipment",v:73232828,mc:74917609472,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SOFI",n:"SoFi Technologies, Inc.",s:"Financial Services",i:"Credit Services",v:66316954,mc:20549416960,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SOFI",n:"SoFi Technologies, Inc.",s:"Financial Services",i:"Credit Services",v:66316954,mc:20549416960,qt:"EQUITY",d1m:1,d5m:1,rules:439,br:439},
   {t:"AAL",n:"American Airlines Group, Inc.",s:"Industrials",i:"Airlines",v:65516420,mc:8181334016,qt:"EQUITY",d1m:1,d5m:1,rules:273,br:0},
   {t:"TSLA",n:"Tesla, Inc.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:62555650,mc:1462366109696,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"QQQ",n:"Invesco QQQ Trust, Series 1",s:"",i:"",v:60154913,mc:0,qt:"ETF",d1m:1,d5m:1,rules:60,br:0},
@@ -111,7 +111,7 @@ var data = [
   {t:"PLTD",n:"Direxion Daily PLTR Bear 1X ETF",s:"",i:"",v:57801916,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"UVIX",n:"2x Long VIX Futures ETF",s:"",i:"",v:57281115,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"XLE",n:"State Street Energy Select Sect",s:"",i:"",v:56253828,mc:0,qt:"ETF",d1m:1,d5m:1,rules:43,br:0},
-  {t:"F",n:"Ford Motor Company",s:"Consumer Cyclical",i:"Auto Manufacturers",v:55797581,mc:46581055488,qt:"EQUITY",d1m:1,d5m:1,rules:203,br:0},
+  {t:"F",n:"Ford Motor Company",s:"Consumer Cyclical",i:"Auto Manufacturers",v:55797581,mc:46581055488,qt:"EQUITY",d1m:1,d5m:1,rules:203,br:"N/A"},
   {t:"HYG",n:"iShares iBoxx $ High Yield Corp",s:"",i:"",v:54313233,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IBIT",n:"iShares Bitcoin Trust ETF",s:"",i:"",v:52908571,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AMZN",n:"Amazon.com, Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:52578968,mc:2942607294464,qt:"EQUITY",d1m:1,d5m:1,rules:803,br:0},
@@ -225,7 +225,7 @@ var data = [
   {t:"STLA",n:"Stellantis N.V.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:20592071,mc:20862056448,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GOOG",n:"Alphabet Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:20391586,mc:4655601418240,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"POET",n:"POET Technologies Inc.",s:"Technology",i:"Semiconductors",v:20335635,mc:1406470016,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"NVO",n:"Novo Nordisk A/S",s:"Healthcare",i:"Drug Manufacturers - General",v:20304957,mc:198962642944,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"NVO",n:"Novo Nordisk A/S",s:"Healthcare",i:"Drug Manufacturers - General",v:20304957,mc:198962642944,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GGB",n:"Gerdau S.A.",s:"Basic Materials",i:"Steel",v:20244195,mc:9443529728,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CONL",n:"GraniteShares 2x Long COIN Dail",s:"",i:"",v:20082333,mc:0,qt:"ETF",d1m:1,d5m:1,rules:94,br:0},
   {t:"MSTR",n:"Strategy Inc",s:"Technology",i:"Software - Application",v:20012966,mc:65487298560,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -547,7 +547,7 @@ var data = [
   {t:"GEN",n:"Gen Digital Inc.",s:"Technology",i:"Software - Infrastructure",v:7010611,mc:11937632256,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"M",n:"Macys Inc",s:"Consumer Cyclical",i:"Department Stores",v:7009618,mc:5085321728,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PDD",n:"PDD Holdings Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:7002416,mc:137713614848,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"ABBV",n:"AbbVie Inc.",s:"Healthcare",i:"Drug Manufacturers - General",v:6984505,mc:364559597568,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ABBV",n:"AbbVie Inc.",s:"Healthcare",i:"Drug Manufacturers - General",v:6984505,mc:364559597568,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"XLC",n:"State Street Communication Serv",s:"",i:"",v:6964845,mc:0,qt:"ETF",d1m:1,d5m:1,rules:24,br:0},
   {t:"MS",n:"Morgan Stanley",s:"Financial Services",i:"Capital Markets",v:6962272,mc:300502548480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FSM",n:"Fortuna Mining Corp.",s:"Basic Materials",i:"Gold",v:6957748,mc:2814110208,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -833,7 +833,7 @@ var data = [
   {t:"UDOW",n:"ProShares UltraPro Dow30",s:"",i:"",v:4490276,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AQN",n:"Algonquin Power &amp; Utilities Cor",s:"Utilities",i:"Utilities - Diversified",v:4484188,mc:4865819136,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NB",n:"NioCorp Developments Ltd.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:4483791,mc:842092480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"XRAY",n:"DENTSPLY SIRONA Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:4477784,mc:2277644032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"XRAY",n:"DENTSPLY SIRONA Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:4477784,mc:2277644032,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ZM",n:"Zoom Communications, Inc.",s:"Technology",i:"Software - Application",v:4464501,mc:32156301312,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BBY",n:"Best Buy Co., Inc.",s:"Consumer Cyclical",i:"Specialty Retail",v:4463820,mc:12066512896,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PCT",n:"PureCycle Technologies, Inc.",s:"Industrials",i:"Pollution &amp; Treatment Controls",v:4441506,mc:1382548352,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1914,7 +1914,7 @@ var data = [
   {t:"GCTS",n:"GCT Semiconductor Holding, Inc.",s:"Technology",i:"Semiconductors",v:1576866,mc:110191048,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GWRE",n:"Guidewire Software, Inc.",s:"Technology",i:"Software - Application",v:1576577,mc:11904385024,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RYAAY",n:"Ryanair Holdings plc",s:"Industrials",i:"Airlines",v:1574981,mc:28344764416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"ROBN",n:"T-Rex 2X Long HOOD Daily Target",s:"",i:"",v:1572698,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ROBN",n:"T-Rex 2X Long HOOD Daily Target",s:"",i:"",v:1572698,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"WES",n:"Western Midstream Partners, LP",s:"Energy",i:"Oil &amp; Gas Midstream",v:1572296,mc:17449975808,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NMAX",n:"Newsmax, Inc.",s:"Communication Services",i:"Broadcasting",v:1571698,mc:779996288,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NNN",n:"NNN REIT, Inc.",s:"Real Estate",i:"REIT - Retail",v:1570432,mc:8448921600,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1991,7 +1991,7 @@ var data = [
   {t:"ALL",n:"Allstate Corporation (The)",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:1477465,mc:56249044992,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ANTX",n:"AN2 Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:1477193,mc:168819104,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TRGP",n:"Targa Resources, Inc.",s:"Energy",i:"Oil &amp; Gas Midstream",v:1477089,mc:55827279872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"DUHP",n:"Dimensional US High Profitabili",s:"",i:"",v:1476933,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"DUHP",n:"Dimensional US High Profitabili",s:"",i:"",v:1476933,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DE",n:"Deere &amp; Company",s:"Industrials",i:"Farm &amp; Heavy Construction Machinery",v:1474765,mc:155525070848,qt:"EQUITY",d1m:1,d5m:1,rules:1228,br:625},
   {t:"AEVA",n:"Aeva Technologies, Inc.",s:"Technology",i:"Software - Infrastructure",v:1474548,mc:960523264,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TW",n:"Tradeweb Markets Inc.",s:"Financial Services",i:"Capital Markets",v:1474405,mc:24028647424,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
