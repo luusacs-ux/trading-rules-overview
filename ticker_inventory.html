@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 711 with 1m data &#8226; 2,716 missing 1m &#8226; 201 with deployed rules &#8226; 39 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 712 with 1m data &#8226; 2,715 missing 1m &#8226; 201 with deployed rules &#8226; 39 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -59,6 +59,7 @@ tr:hover{background:#1e2a4a}
       <option value="ready">Pipeline Ready (1m, no rules)</option>
       <option value="hasBear">Has Bear Rules</option>
       <option value="noBear">No Bear Rules</option>
+      <option value="bearNA">Bear N/A (thin data)</option>
     </select>
   </div>
 </div>
@@ -247,7 +248,7 @@ var data = [
   {t:"INFY",n:"Infosys Limited",s:"Technology",i:"Information Technology Services",v:18271855,mc:50425716736,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SCHG",n:"Schwab U.S. Large-Cap Growth ET",s:"",i:"",v:18173916,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"USHY",n:"iShares Broad USD High Yield Co",s:"",i:"",v:18166530,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SNDK",n:"Sandisk Corporation",s:"Technology",i:"Computer Hardware",v:18062874,mc:208261578752,qt:"EQUITY",d1m:1,d5m:1,rules:316,br:0},
+  {t:"SNDK",n:"Sandisk Corporation",s:"Technology",i:"Computer Hardware",v:18062874,mc:208261578752,qt:"EQUITY",d1m:1,d5m:1,rules:316,br:"N/A"},
   {t:"XLP",n:"State Street Consumer Staples S",s:"",i:"",v:17773066,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SLB",n:"SLB Limited",s:"Energy",i:"Oil &amp; Gas Equipment &amp; Services",v:17699669,mc:83723231232,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"LYFT",n:"Lyft, Inc.",s:"Technology",i:"Software - Application",v:17519600,mc:5384125952,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -257,7 +258,7 @@ var data = [
   {t:"VEA",n:"Vanguard FTSE Developed Markets",s:"",i:"",v:17306894,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"GGLS",n:"Direxion Daily GOOGL Bear 1X ET",s:"",i:"",v:17298070,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"UBER",n:"Uber Technologies, Inc.",s:"Technology",i:"Software - Application",v:17195894,mc:150139551744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"OXY",n:"Occidental Petroleum Corporatio",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:17116323,mc:58847191040,qt:"EQUITY",d1m:1,d5m:1,rules:648,br:0},
+  {t:"OXY",n:"Occidental Petroleum Corporatio",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:17116323,mc:58847191040,qt:"EQUITY",d1m:1,d5m:1,rules:648,br:"N/A"},
   {t:"HL",n:"Hecla Mining Company",s:"Basic Materials",i:"Other Precious Metals &amp; Mining",v:17112110,mc:11433147392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"U",n:"Unity Software Inc.",s:"Technology",i:"Software - Application",v:17020186,mc:11929263104,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SPXS",n:"Direxion Daily S&amp;P 500 Bear 3X ",s:"",i:"",v:16868964,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -268,7 +269,7 @@ var data = [
   {t:"BTCZ",n:"T-Rex 2X Inverse Bitcoin Daily ",s:"",i:"",v:16581310,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CRCL",n:"Circle Internet Group, Inc.",s:"Financial Services",i:"Capital Markets",v:16403810,mc:30365984768,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNH",n:"CNH Industrial N.V.",s:"Industrials",i:"Farm &amp; Heavy Construction Machinery",v:16400300,mc:12796290048,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"NBIS",n:"Nebius Group N.V.",s:"Communication Services",i:"Internet Content &amp; Information",v:16383972,mc:44665769984,qt:"EQUITY",d1m:1,d5m:1,rules:519,br:0},
+  {t:"NBIS",n:"Nebius Group N.V.",s:"Communication Services",i:"Internet Content &amp; Information",v:16383972,mc:44665769984,qt:"EQUITY",d1m:1,d5m:1,rules:519,br:"N/A"},
   {t:"BSX",n:"Boston Scientific Corporation",s:"Healthcare",i:"Medical Devices",v:16377975,mc:83206160384,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KO",n:"Coca-Cola Company (The)",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:16349016,mc:337658839040,qt:"EQUITY",d1m:1,d5m:1,rules:510,br:322},
   {t:"ET",n:"Energy Transfer LP",s:"Energy",i:"Oil &amp; Gas Midstream",v:16316145,mc:70148014080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -282,7 +283,7 @@ var data = [
   {t:"SIDU",n:"Sidus Space, Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:16035059,mc:238551328,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"UWMC",n:"UWM Holdings Corporation",s:"Financial Services",i:"Mortgage Finance",v:15933344,mc:5587354624,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BATL",n:"Battalion Oil Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:15833293,mc:74496864,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"KHC",n:"The Kraft Heinz Company",s:"Consumer Defensive",i:"Packaged Foods",v:15651547,mc:26681608192,qt:"EQUITY",d1m:1,d5m:1,rules:730,br:0},
+  {t:"KHC",n:"The Kraft Heinz Company",s:"Consumer Defensive",i:"Packaged Foods",v:15651547,mc:26681608192,qt:"EQUITY",d1m:1,d5m:1,rules:730,br:"N/A"},
   {t:"IEFA",n:"iShares Core MSCI EAFE ETF",s:"",i:"",v:15603371,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RSP",n:"Invesco S&amp;P 500 Equal Weight ET",s:"",i:"",v:15453544,mc:0,qt:"ETF",d1m:1,d5m:1,rules:26,br:0},
   {t:"META",n:"Meta Platforms, Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:15326545,mc:1535644663808,qt:"EQUITY",d1m:1,d5m:1,rules:284,br:0},
@@ -290,7 +291,7 @@ var data = [
   {t:"XLB",n:"State Street Materials Select S",s:"",i:"",v:15127572,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FSLY",n:"Fastly, Inc.",s:"Technology",i:"Software - Application",v:15121638,mc:5060066304,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ABTC",n:"American Bitcoin Corp.",s:"Financial Services",i:"Capital Markets",v:15101013,mc:2204989440,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"USAR",n:"USA Rare Earth, Inc.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:15063025,mc:5977165312,qt:"EQUITY",d1m:1,d5m:1,rules:465,br:0},
+  {t:"USAR",n:"USA Rare Earth, Inc.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:15063025,mc:5977165312,qt:"EQUITY",d1m:1,d5m:1,rules:465,br:"N/A"},
   {t:"HAL",n:"Halliburton Company",s:"Energy",i:"Oil &amp; Gas Equipment &amp; Services",v:15057223,mc:34852794368,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"RMSG",n:"Real Messenger Corporation",s:"Technology",i:"Software - Application",v:15056071,mc:13304080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IJH",n:"iShares Core S&amp;P Mid-Cap ETF",s:"",i:"",v:14912025,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -330,7 +331,7 @@ var data = [
   {t:"XLI",n:"State Street Industrial Select ",s:"",i:"",v:12638650,mc:0,qt:"ETF",d1m:1,d5m:1,rules:36,br:0},
   {t:"CORZ",n:"Core Scientific, Inc.",s:"Technology",i:"Software - Infrastructure",v:12527356,mc:7003048960,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LUMN",n:"Lumen Technologies, Inc.",s:"Communication Services",i:"Telecom Services",v:12524125,mc:9508362240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"UAMY",n:"United States Antimony Corporat",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:12491352,mc:1595322624,qt:"EQUITY",d1m:1,d5m:1,rules:473,br:0},
+  {t:"UAMY",n:"United States Antimony Corporat",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:12491352,mc:1595322624,qt:"EQUITY",d1m:1,d5m:1,rules:473,br:"N/A"},
   {t:"SCHF",n:"Schwab International Equity ETF",s:"",i:"",v:12488616,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"BULL",n:"Webull Corporation",s:"Technology",i:"Software - Application",v:12427501,mc:3898230784,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BITX",n:"2x Bitcoin Strategy ETF",s:"",i:"",v:12413800,mc:0,qt:"ETF",d1m:1,d5m:1,rules:95,br:0},
@@ -346,7 +347,7 @@ var data = [
   {t:"VXX",n:"iPath Series B S&amp;P 500 VIX Shor",s:"",i:"",v:11903067,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DAL",n:"Delta Air Lines, Inc.",s:"Industrials",i:"Airlines",v:11886605,mc:46554619904,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GLD",n:"SPDR Gold Shares",s:"",i:"",v:11858943,mc:0,qt:"ETF",d1m:1,d5m:1,rules:163,br:0},
-  {t:"CRML",n:"Critical Metals Corp.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:11819558,mc:1759961216,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"CRML",n:"Critical Metals Corp.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:11819558,mc:1759961216,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:"N/A"},
   {t:"GOVT",n:"iShares U.S. Treasury Bond ETF",s:"",i:"",v:11760493,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNQ",n:"Canadian Natural Resources Limi",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:11713343,mc:99854835712,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BB",n:"BlackBerry Limited",s:"Technology",i:"Software - Infrastructure",v:11711341,mc:3292141312,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -390,7 +391,7 @@ var data = [
   {t:"PG",n:"Procter &amp; Gamble Company (The)",s:"Consumer Defensive",i:"Household &amp; Personal Products",v:10412610,mc:337413996544,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BABA",n:"Alibaba Group Holding Limited",s:"Consumer Cyclical",i:"Internet Retail",v:10373533,mc:326362300416,qt:"EQUITY",d1m:1,d5m:1,rules:1598,br:772},
   {t:"QXO",n:"QXO, Inc.",s:"Industrials",i:"Industrial Distribution",v:10373455,mc:13679390720,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"OKLO",n:"Oklo Inc.",s:"Utilities",i:"Utilities - Independent Power Producers",v:10339596,mc:11892637696,qt:"EQUITY",d1m:1,d5m:1,rules:484,br:0},
+  {t:"OKLO",n:"Oklo Inc.",s:"Utilities",i:"Utilities - Independent Power Producers",v:10339596,mc:11892637696,qt:"EQUITY",d1m:1,d5m:1,rules:484,br:"N/A"},
   {t:"IEF",n:"iShares 7-10 Year Treasury Bond",s:"",i:"",v:10314610,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"UUUU",n:"Energy Fuels Inc",s:"Energy",i:"Uranium",v:10248637,mc:5222828544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KGC",n:"Kinross Gold Corporation",s:"Basic Materials",i:"Gold",v:10245086,mc:34402291712,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -871,7 +872,7 @@ var data = [
   {t:"NUVB",n:"Nuvation Bio Inc.",s:"Healthcare",i:"Biotechnology",v:4272094,mc:1681815552,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SJNK",n:"State Street SPDR Bloomberg Sho",s:"",i:"",v:4268689,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ABNB",n:"Airbnb, Inc.",s:"Consumer Cyclical",i:"Travel Services",v:4260076,mc:83073007616,qt:"EQUITY",d1m:1,d5m:1,rules:204,br:0},
-  {t:"UMAC",n:"Unusual Machines, Inc.",s:"Technology",i:"Computer Hardware",v:4259903,mc:649430976,qt:"EQUITY",d1m:1,d5m:1,rules:547,br:0},
+  {t:"UMAC",n:"Unusual Machines, Inc.",s:"Technology",i:"Computer Hardware",v:4259903,mc:649430976,qt:"EQUITY",d1m:1,d5m:1,rules:547,br:"N/A"},
   {t:"ENVB",n:"Enveric Biosciences, Inc.",s:"Healthcare",i:"Biotechnology",v:4229630,mc:6909662,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CHYM",n:"Chime Financial, Inc.",s:"Technology",i:"Software - Application",v:4224321,mc:7985435136,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EVGO",n:"EVgo Inc.",s:"Consumer Cyclical",i:"Specialty Retail",v:4221171,mc:658517952,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1718,7 +1719,7 @@ var data = [
   {t:"GNL",n:"Global Net Lease, Inc.",s:"Real Estate",i:"REIT - Diversified",v:1848055,mc:1939172736,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GOVZ",n:"iShares 25  Year Treasury STRIP",s:"",i:"",v:1845651,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ACAD",n:"ACADIA Pharmaceuticals Inc.",s:"Healthcare",i:"Biotechnology",v:1841228,mc:3826661120,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"COST",n:"Costco Wholesale Corporation",s:"Consumer Defensive",i:"Discount Stores",v:1840480,mc:450937323520,qt:"EQUITY",d1m:1,d5m:1,rules:669,br:0},
+  {t:"COST",n:"Costco Wholesale Corporation",s:"Consumer Defensive",i:"Discount Stores",v:1840480,mc:450937323520,qt:"EQUITY",d1m:1,d5m:1,rules:669,br:"N/A"},
   {t:"HTHT",n:"H World Group Limited",s:"Consumer Cyclical",i:"Lodging",v:1838384,mc:15028687872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VVV",n:"Valvoline Inc.",s:"Consumer Cyclical",i:"Auto &amp; Truck Dealerships",v:1837718,mc:4128852224,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FDX",n:"FedEx Corporation",s:"Industrials",i:"Integrated Freight &amp; Logistics",v:1836208,mc:86554599424,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -1780,7 +1781,7 @@ var data = [
   {t:"AVPT",n:"AvePoint, Inc.",s:"Technology",i:"Software - Infrastructure",v:1741343,mc:2280524288,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"UDMY",n:"Udemy, Inc.",s:"Consumer Defensive",i:"Education &amp; Training Services",v:1739515,mc:691734336,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ZION",n:"Zions Bancorporation N.A.",s:"Financial Services",i:"Banks - Regional",v:1735023,mc:9284970496,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CB",n:"Chubb Limited",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:1734695,mc:125112033280,qt:"EQUITY",d1m:1,d5m:1,rules:589,br:0},
+  {t:"CB",n:"Chubb Limited",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:1734695,mc:125112033280,qt:"EQUITY",d1m:1,d5m:1,rules:589,br:"N/A"},
   {t:"IFF",n:"International Flavors &amp; Fragran",s:"Basic Materials",i:"Specialty Chemicals",v:1734430,mc:18077333504,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WYNN",n:"Wynn Resorts, Limited",s:"Consumer Cyclical",i:"Resorts &amp; Casinos",v:1731398,mc:11079057408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNI",n:"Canadian National Railway Compa",s:"Industrials",i:"Railroads",v:1727050,mc:66719932416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1945,7 +1946,7 @@ var data = [
   {t:"PLTZ",n:"Defiance Daily Target 2x Short ",s:"",i:"",v:1529098,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FRPT",n:"Freshpet, Inc.",s:"Consumer Defensive",i:"Packaged Foods",v:1528001,mc:2956904704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NOMD",n:"Nomad Foods Limited",s:"Consumer Defensive",i:"Packaged Foods",v:1526622,mc:1319979776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"LGN",n:"Legence Corp.",s:"Industrials",i:"Engineering &amp; Construction",v:1526072,mc:16322905088,qt:"EQUITY",d1m:1,d5m:1,rules:471,br:0},
+  {t:"LGN",n:"Legence Corp.",s:"Industrials",i:"Engineering &amp; Construction",v:1526072,mc:16322905088,qt:"EQUITY",d1m:1,d5m:1,rules:471,br:"N/A"},
   {t:"FLJP",n:"Franklin FTSE Japan ETF",s:"",i:"",v:1524865,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"PPTA",n:"Perpetua Resources Corp.",s:"Basic Materials",i:"Other Precious Metals &amp; Mining",v:1523447,mc:3421312000,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AON",n:"Aon plc",s:"Financial Services",i:"Insurance Brokers",v:1522501,mc:67180625920,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3308,7 +3309,7 @@ var data = [
   {t:"AZ",n:"A2Z Cust2Mate Solutions Corp.",s:"Technology",i:"Software - Application",v:399628,mc:317605920,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ARDT",n:"Ardent Health, Inc.",s:"Healthcare",i:"Medical Care Facilities",v:399591,mc:1449559040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XHLF",n:"BondBloxx Bloomberg Six Month T",s:"",i:"",v:399023,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CDNL",n:"Cardinal Infrastructure Group I",s:"Industrials",i:"Engineering &amp; Construction",v:397271,mc:855336576,qt:"EQUITY",d1m:1,d5m:1,rules:289,br:0},
+  {t:"CDNL",n:"Cardinal Infrastructure Group I",s:"Industrials",i:"Engineering &amp; Construction",v:397271,mc:855336576,qt:"EQUITY",d1m:1,d5m:1,rules:289,br:"N/A"},
   {t:"ELPC",n:"Companhia Paranaense de Energia",s:"Utilities",i:"Utilities - Regulated Electric",v:395863,mc:9556255744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NBR",n:"Nabors Industries Ltd.",s:"Energy",i:"Oil &amp; Gas Drilling",v:395274,mc:1557713280,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ANL",n:"Adlai Nortye Ltd.",s:"Healthcare",i:"Biotechnology",v:394273,mc:961461184,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3348,7 +3349,7 @@ var data = [
   {t:"BATRK",n:"Atlanta Braves Holdings, Inc. -",s:"Communication Services",i:"Entertainment",v:354375,mc:3169224704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CNS",n:"Cohen &amp; Steers Inc",s:"Financial Services",i:"Asset Management",v:354090,mc:3574746112,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BZUN",n:"Baozun Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:353830,mc:159271776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AMBQ",n:"Ambiq Micro, Inc.",s:"Technology",i:"Semiconductors",v:353425,mc:865065408,qt:"EQUITY",d1m:1,d5m:1,rules:430,br:0},
+  {t:"AMBQ",n:"Ambiq Micro, Inc.",s:"Technology",i:"Semiconductors",v:353425,mc:865065408,qt:"EQUITY",d1m:1,d5m:1,rules:430,br:"N/A"},
   {t:"BMA",n:"Banco Macro S.A.",s:"Financial Services",i:"Banks - Regional",v:353235,mc:4451435520,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MYXXU",n:"Maywood Acquisition Corp. 2",s:"Financial Services",i:"Shell Companies",v:352700,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SR",n:"Spire Inc.",s:"Utilities",i:"Utilities - Regulated Gas",v:351761,mc:5307464192,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3502,7 +3503,7 @@ var data = [
   {t:"BTCUSD",n:"",s:"",i:"",v:0,mc:0,qt:"",d1m:1,d5m:1,rules:1096,br:0},
   {t:"ETHUSD",n:"",s:"",i:"",v:0,mc:0,qt:"",d1m:1,d5m:1,rules:0,br:0},
   {t:"EXAI",n:"",s:"",i:"",v:0,mc:0,qt:"NONE",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GPS",n:"",s:"",i:"",v:0,mc:0,qt:"NONE",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GPS",n:"",s:"",i:"",v:0,mc:0,qt:"NONE",d1m:1,d5m:1,rules:0,br:0},
   {t:"LILM",n:"",s:"",i:"",v:0,mc:0,qt:"",d1m:0,d5m:1,rules:0,br:0},
   {t:"NOVA",n:"",s:"",i:"",v:0,mc:0,qt:"NONE",d1m:1,d5m:1,rules:0,br:0},
   {t:"SOLUSD",n:"",s:"",i:"",v:0,mc:0,qt:"",d1m:1,d5m:1,rules:0,br:0},
@@ -3535,13 +3536,15 @@ function render(){
     if(dataVal==="hasRules"&&r.rules===0)return false;
     if(dataVal==="noRules"&&r.rules>0)return false;
     if(dataVal==="ready"&&(!r.d1m||r.rules>0))return false;
-    if(dataVal==="hasBear"&&r.br===0)return false;
+    if(dataVal==="hasBear"&&(r.br===0||r.br==="N/A"))return false;
     if(dataVal==="noBear"&&r.br>0)return false;
+    if(dataVal==="bearNA"&&r.br!=="N/A")return false;
     return true;
   });
   filtered.sort(function(a,b){
     var va=a[sortCol],vb=b[sortCol];
-    if(typeof va==="string"){va=va.toLowerCase();vb=vb.toLowerCase()}
+    if(sortCol==="br"){va=va==="N/A"?-1:va;vb=vb==="N/A"?-1:vb}
+    else if(typeof va==="string"){va=va.toLowerCase();vb=vb.toLowerCase()}
     if(va<vb)return sortAsc?-1:1;
     if(va>vb)return sortAsc?1:-1;
     return 0;
@@ -3561,7 +3564,7 @@ function render(){
     var d1=r.d1m?'<span class="badge badge-yes">YES</span>':'<span class="badge badge-no">NO</span>';
     var d5=r.d5m?'<span class="badge badge-yes">YES</span>':'<span class="badge badge-no">NO</span>';
     var rb=r.rules>0?'<span class="badge badge-rules">'+r.rules+'</span>':'<span class="dim">0</span>';
-    var bb=r.br>0?'<span class="badge" style="background:#6b2020;color:#ff9999">'+r.br+'</span>':'<span class="dim">0</span>';
+    var bb=r.br==="N/A"?'<span class="dim" title="Bear attempted but insufficient data">N/A</span>':r.br>0?'<span class="badge" style="background:#6b2020;color:#ff9999">'+r.br+'</span>':'<span class="dim">0</span>';
     html+="<tr><td>"+r.t+"</td><td>"+r.n+"</td><td>"+r.s+"</td><td>"+r.i+"</td>"
       +"<td>"+fmt(r.v)+"</td><td>"+fmt(r.mc)+"</td><td>"+r.qt+"</td>"
       +"<td>"+d1+"</td><td>"+d5+"</td><td>"+rb+"</td><td>"+bb+"</td></tr>";
