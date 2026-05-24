@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 746 with 1m data &#8226; 2,681 missing 1m &#8226; 210 with deployed rules &#8226; 50 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 751 with 1m data &#8226; 2,676 missing 1m &#8226; 210 with deployed rules &#8226; 51 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -132,7 +132,7 @@ var data = [
   {t:"LQD",n:"iShares iBoxx $ Investment Grad",s:"",i:"",v:41254488,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IWM",n:"iShares Russell 2000 Index Fund",s:"",i:"",v:40755589,mc:0,qt:"ETF",d1m:1,d5m:1,rules:45,br:0},
   {t:"T",n:"AT&amp;T Inc.",s:"Communication Services",i:"Telecom Services",v:40600927,mc:179961970688,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"NIO",n:"NIO Inc.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:40561908,mc:14783435776,qt:"EQUITY",d1m:1,d5m:1,rules:865,br:"N/A"},
+  {t:"NIO",n:"NIO Inc.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:40561908,mc:14783435776,qt:"EQUITY",d1m:1,d5m:1,rules:1665,br:800},
   {t:"BAC",n:"Bank of America Corporation",s:"Financial Services",i:"Banks - Diversified",v:40185415,mc:376970903552,qt:"EQUITY",d1m:1,d5m:1,rules:372,br:0},
   {t:"EEM",n:"iShares MSCI Emerging Index Fun",s:"",i:"",v:40157266,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"OPEN",n:"Opendoor Technologies Inc",s:"Real Estate",i:"Real Estate Services",v:40135444,mc:5045404160,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -433,7 +433,7 @@ var data = [
   {t:"UMC",n:"United Microelectronics Corpora",s:"Technology",i:"Semiconductors",v:9364781,mc:35240710144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HDB",n:"HDFC Bank Limited",s:"Financial Services",i:"Banks - Regional",v:9329391,mc:127422824448,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WU",n:"Western Union Company (The)",s:"Financial Services",i:"Credit Services",v:9301527,mc:2849408000,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SATL",n:"Satellogic Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:9222488,mc:1002704512,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SATL",n:"Satellogic Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:9222488,mc:1002704512,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CPRT",n:"Copart, Inc.",s:"Industrials",i:"Specialty Business Services",v:9216228,mc:31933675520,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TFC",n:"Truist Financial Corporation",s:"Financial Services",i:"Banks - Regional",v:9195815,mc:62231658496,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"NVDL",n:"GraniteShares 2x Long NVDA Dail",s:"",i:"",v:9190779,mc:0,qt:"ETF",d1m:1,d5m:1,rules:665,br:0},
@@ -733,7 +733,7 @@ var data = [
   {t:"TMC",n:"TMC the metals company Inc.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:5235359,mc:2923341824,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FBTC",n:"Fidelity Wise Origin Bitcoin Fu",s:"",i:"",v:5227611,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"EW",n:"Edwards Lifesciences Corporatio",s:"Healthcare",i:"Medical Devices",v:5221340,mc:47801073664,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FLY",n:"Firefly Aerospace Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:5211748,mc:5050614272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FLY",n:"Firefly Aerospace Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:5211748,mc:5050614272,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"VTI",n:"Vanguard Total Stock Market ETF",s:"",i:"",v:5211359,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ONFO",n:"Onfolio Holdings Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:5208642,mc:6918461,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DYNF",n:"iShares U.S. Equity Factor Rota",s:"",i:"",v:5196993,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -2057,7 +2057,7 @@ var data = [
   {t:"HP",n:"Helmerich &amp; Payne, Inc.",s:"Energy",i:"Oil &amp; Gas Drilling",v:1420403,mc:4222195456,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PVAL",n:"Putnam Focused Large Cap Value ",s:"",i:"",v:1419757,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"MIAX",n:"Miami International Holdings, I",s:"Financial Services",i:"Capital Markets",v:1419750,mc:4522911232,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VOYG",n:"Voyager Technologies, Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:1418467,mc:1561517824,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VOYG",n:"Voyager Technologies, Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:1418467,mc:1561517824,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CNDT",n:"Conduent Incorporated",s:"Technology",i:"Information Technology Services",v:1415260,mc:269868448,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XOVR",n:"ERShares Private-Public Crossov",s:"",i:"",v:1413452,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EPAM",n:"EPAM Systems, Inc.",s:"Technology",i:"Information Technology Services",v:1413153,mc:5784260608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3023,7 +3023,7 @@ var data = [
   {t:"SPUS",n:"SP Funds S&amp;P 500 Sharia Industr",s:"",i:"",v:661018,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"VYGR",n:"Voyager Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:659432,mc:235625872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PRDO",n:"Perdoceo Education Corporation",s:"Consumer Defensive",i:"Education &amp; Training Services",v:658115,mc:2178873856,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"ASTN",n:"Defiance Daily Target 2X Short ",s:"",i:"",v:657945,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ASTN",n:"Defiance Daily Target 2X Short ",s:"",i:"",v:657945,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"UFO",n:"Procure Space ETF",s:"",i:"",v:657489,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BABX",n:"GraniteShares 2x Long BABA Dail",s:"",i:"",v:657190,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"IMTM",n:"iShares MSCI Intl Momentum Fact",s:"",i:"",v:656493,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -3446,7 +3446,7 @@ var data = [
   {t:"MIND",n:"MIND Technology, Inc.",s:"Technology",i:"Scientific &amp; Technical Instruments",v:174711,mc:58488068,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WTID",n:"MicroSectors Energy 3X Inverse ",s:"",i:"",v:171338,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BDRY",n:"Breakwave Dry Bulk Shipping ETF",s:"",i:"",v:169223,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MRAL",n:"GraniteShares 2x Long MARA Dail",s:"",i:"",v:168846,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MRAL",n:"GraniteShares 2x Long MARA Dail",s:"",i:"",v:168846,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SNTI",n:"Senti Biosciences Holdings, Inc",s:"Healthcare",i:"Biotechnology",v:162311,mc:29712096,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MSEX",n:"Middlesex Water Company",s:"Utilities",i:"Utilities - Regulated Water",v:158301,mc:948537024,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CWCO",n:"Consolidated Water Co. Ltd.",s:"Utilities",i:"Utilities - Regulated Water",v:152508,mc:524806208,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
