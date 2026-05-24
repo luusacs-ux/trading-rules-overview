@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 751 with 1m data &#8226; 2,676 missing 1m &#8226; 210 with deployed rules &#8226; 51 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 754 with 1m data &#8226; 2,673 missing 1m &#8226; 211 with deployed rules &#8226; 52 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -433,7 +433,7 @@ var data = [
   {t:"UMC",n:"United Microelectronics Corpora",s:"Technology",i:"Semiconductors",v:9364781,mc:35240710144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HDB",n:"HDFC Bank Limited",s:"Financial Services",i:"Banks - Regional",v:9329391,mc:127422824448,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WU",n:"Western Union Company (The)",s:"Financial Services",i:"Credit Services",v:9301527,mc:2849408000,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SATL",n:"Satellogic Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:9222488,mc:1002704512,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"SATL",n:"Satellogic Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:9222488,mc:1002704512,qt:"EQUITY",d1m:1,d5m:1,rules:358,br:358},
   {t:"CPRT",n:"Copart, Inc.",s:"Industrials",i:"Specialty Business Services",v:9216228,mc:31933675520,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TFC",n:"Truist Financial Corporation",s:"Financial Services",i:"Banks - Regional",v:9195815,mc:62231658496,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"NVDL",n:"GraniteShares 2x Long NVDA Dail",s:"",i:"",v:9190779,mc:0,qt:"ETF",d1m:1,d5m:1,rules:665,br:0},
@@ -1796,7 +1796,7 @@ var data = [
   {t:"PLNT",n:"Planet Fitness, Inc.",s:"Consumer Cyclical",i:"Leisure",v:1719472,mc:5145701376,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SPHQ",n:"Invesco S&amp;P 500 Quality ETF",s:"",i:"",v:1716693,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"LASR",n:"nLIGHT, Inc.",s:"Technology",i:"Semiconductors",v:1715798,mc:3776412416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"BEZ",n:"Tradr 2X Short BE Daily ETF",s:"",i:"",v:1713091,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"BEZ",n:"Tradr 2X Short BE Daily ETF",s:"",i:"",v:1713091,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EFC",n:"Ellington Financial Inc.",s:"Real Estate",i:"REIT - Mortgage",v:1711223,mc:1634148608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FOX",n:"Fox Corporation",s:"Communication Services",i:"Entertainment",v:1709933,mc:23783892992,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ZENA",n:"ZenaTech, Inc.",s:"Technology",i:"Software - Infrastructure",v:1708145,mc:164852352,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2197,7 +2197,7 @@ var data = [
   {t:"SHAK",n:"Shake Shack, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:1285766,mc:4133453568,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GSAT",n:"Globalstar, Inc.",s:"Communication Services",i:"Telecom Services",v:1285530,mc:10528302080,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"NBIG",n:"Leverage Shares 2X Long NBIS Da",s:"",i:"",v:1285498,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"EDV",n:"Vanguard Extended Duration Trea",s:"",i:"",v:1283346,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"EDV",n:"Vanguard Extended Duration Trea",s:"",i:"",v:1283346,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"WDS",n:"Woodside Energy Group Limited",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:1282113,mc:44618817536,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KLC",n:"KinderCare Learning Companies, ",s:"Consumer Defensive",i:"Education &amp; Training Services",v:1281328,mc:471344608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FA",n:"First Advantage Corporation",s:"Industrials",i:"Specialty Business Services",v:1281021,mc:2179226368,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2804,7 +2804,7 @@ var data = [
   {t:"MNRO",n:"Monro, Inc.",s:"Consumer Cyclical",i:"Auto Parts",v:801286,mc:513936608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NPKI",n:"NPK International Inc.",s:"Energy",i:"Oil &amp; Gas Equipment &amp; Services",v:801098,mc:1332340224,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CINF",n:"Cincinnati Financial Corporatio",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:799375,mc:24804018176,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"GILT",n:"Gilat Satellite Networks Ltd.",s:"Technology",i:"Communication Equipment",v:799185,mc:1514701824,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GILT",n:"Gilat Satellite Networks Ltd.",s:"Technology",i:"Communication Equipment",v:799185,mc:1514701824,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:"N/A"},
   {t:"FNV",n:"Franco-Nevada Corporation",s:"Basic Materials",i:"Gold",v:798830,mc:43393200128,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"UHS",n:"Universal Health Services, Inc.",s:"Healthcare",i:"Medical Care Facilities",v:798135,mc:10094316544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"JMBS",n:"Janus Henderson Mortgage-Backed",s:"",i:"",v:797220,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
