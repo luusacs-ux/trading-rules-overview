@@ -56,11 +56,12 @@ tr:hover{background:#1e2a4a}
   <a href="#phases">2. Pipeline Phases</a>
   <a href="#features">3. Feature Vector (210 dimensions)</a>
   <a href="#clustering">4. Clustering Approach</a>
-  <a href="#validation">5. Validation &amp; Overfitting Prevention</a>
-  <a href="#compute">6. Computational Estimates</a>
-  <a href="#yield">7. Expected Yield</a>
-  <a href="#modules">8. New Modules</a>
-  <a href="#risks">9. Risks &amp; Open Questions</a>
+  <a href="#actuarial">5. Actuarial Science Integration</a>
+  <a href="#validation">6. Validation &amp; Overfitting Prevention</a>
+  <a href="#compute">7. Computational Estimates</a>
+  <a href="#yield">8. Expected Yield</a>
+  <a href="#modules">9. New Modules</a>
+  <a href="#risks">10. Risks &amp; Open Questions</a>
   <a href="#example">Appendix: Example Conversion</a>
 </div>
 
@@ -293,20 +294,137 @@ move_threshold_pct = max(0.5, min(10.0, atr_pct * 1.5))</code></pre>
   <tr><td><code>cluster_selection_method</code></td><td>eom</td><td>Favors larger clusters</td></tr>
 </table>
 
-<h2 id="validation"><span class="section-num">5.</span> Validation &amp; Overfitting Prevention</h2>
+<h2 id="actuarial"><span class="section-num">5.</span> Actuarial Science Integration</h2>
+
+<p>Trading pattern validation shares deep structural parallels with insurance pricing: both involve estimating future event probabilities from limited historical observations, managing tail risk, and deciding how much to trust small-sample evidence.</p>
+
+<h3>5.1 Credibility Theory &mdash; Small-Sample Pattern Scoring</h3>
+
+<p><strong>Problem:</strong> A cluster with 12 members showing 92% WR &mdash; real or noise? Raw WR is unreliable at low N.</p>
+
+<p><strong>Solution:</strong> B&uuml;hlmann credibility blends observed performance with the population average, weighted by sample size:</p>
+
+<pre><code>credibility_WR = Z &times; observed_WR + (1 - Z) &times; population_WR
+
+where Z = n / (n + k)
+  n = number of trades for this pattern
+  k = B&uuml;hlmann parameter (fitted from inter-pattern variance)</code></pre>
+
+<table>
+  <tr><th>Trades (n)</th><th>Z (k=20)</th><th>Effect</th></tr>
+  <tr><td>5</td><td>0.20</td><td>80% population prior, 20% observed</td></tr>
+  <tr><td>10</td><td>0.33</td><td>Pattern gets 1/3 weight</td></tr>
+  <tr><td>20</td><td>0.50</td><td>Equal blend</td></tr>
+  <tr><td>50</td><td>0.71</td><td>Pattern dominates</td></tr>
+  <tr><td>100</td><td>0.83</td><td>Nearly full credibility</td></tr>
+</table>
 
 <div class="highlight">
-  <strong>5 layers of protection:</strong>
+  <strong>Advantage over hard cutoffs:</strong> A pattern with 8 trades at 100% WR isn't discarded &mdash; it gets partial credibility (Z=0.29), scoring <code>0.29 &times; 100% + 0.71 &times; 62%</code> &asymp; 73% credibility WR. If that meets T2, it deploys.
+</div>
+
+<h3>5.2 Survival Analysis &mdash; Trade Duration &amp; Hold Optimization</h3>
+
+<p><strong>Problem:</strong> Current hold time optimization grid-searches discrete values. This misses the continuous dynamics of how trades evolve over time.</p>
+
+<p><strong>Framework:</strong> Each trade is a survival process with competing terminal events:</p>
+<ul>
+  <li><strong>TP hit</strong> &mdash; profit (the "claim pays out")</li>
+  <li><strong>SL hit</strong> &mdash; loss</li>
+  <li><strong>Hold expiry</strong> &mdash; forced exit ("policy lapses")</li>
+</ul>
+
+<h4>Kaplan-Meier Survival Curve</h4>
+<pre><code>S(t) = P(trade still open at time t)
+     = &Pi;  (1 - d_i / n_i)    for all t_i &le; t
+
+where d_i = trades exiting at time t_i
+      n_i = trades still open just before t_i</code></pre>
+
+<h4>Competing Risks: Cumulative Incidence Functions</h4>
+<pre><code>CIF_TP(t) = P(exited via TP by time t)
+CIF_SL(t) = P(exited via SL by time t)
+
+At any time t:  S(t) + CIF_TP(t) + CIF_SL(t) = 1</code></pre>
+
+<h4>Hazard Ratio for Optimal Hold</h4>
+<pre><code>h_TP(t) = instantaneous probability of TP hit at time t, given trade still open
+h_SL(t) = instantaneous probability of SL hit at time t, given trade still open
+
+hazard_ratio(t) = h_TP(t) / h_SL(t)</code></pre>
+
+<div class="highlight">
+  <strong>Optimal hold = last time t where hazard_ratio(t) &gt; 1.0</strong><br>
+  When SL hazard exceeds TP hazard, the trade is more likely to lose than win from that point forward &mdash; close it.
+</div>
+
+<p>Implementation uses <code>lifelines.AalenJohansenFitter</code> for competing risks estimation. Each validated pattern gets a survival report: median duration, CIF curves, optimal hold from hazard crossover.</p>
+
+<h3>5.3 Loss Distribution Modeling &mdash; Tail Risk Assessment</h3>
+
+<p><strong>Problem:</strong> Two patterns can have identical WR and average PnL but vastly different risk profiles. Pattern A: consistent &plusmn;1.5%. Pattern B: occasional +15%, frequent -3%. Averages look similar, but B has catastrophic downside.</p>
+
+<p>Fit parametric distributions (normal, Student's t, skew-normal) to per-trade PnL, select by AIC:</p>
+
+<table>
+  <tr><th>Risk Metric</th><th>Formula</th><th>Threshold</th></tr>
+  <tr><td><strong>VaR(95%)</strong></td><td>5th percentile of PnL distribution</td><td>Must be &gt; -3% per trade</td></tr>
+  <tr><td><strong>CVaR / Expected Shortfall</strong></td><td>E[PnL | PnL &lt; VaR(95%)]</td><td>Must be &gt; -5% per trade</td></tr>
+  <tr><td><strong>Loss Ratio</strong></td><td>E[loss amount] / E[win amount]</td><td>Must be &lt; 2.0</td></tr>
+  <tr><td><strong>Ruin Probability</strong></td><td>P(drawdown &gt; 50% over 100 trades)</td><td>Must be &lt; 1%</td></tr>
+  <tr><td><strong>Profit Factor</strong></td><td>sum(wins) / sum(losses)</td><td>Must be &gt; 1.5</td></tr>
+</table>
+
+<h4>Ruin Probability (Lundberg Approximation)</h4>
+<p>From classical ruin theory &mdash; probability that cumulative losses exceed a threshold:</p>
+<pre><code>&psi;(u) &asymp; e^{-R &times; u}
+
+where u = initial surplus (safety margin per trade)
+      R = adjustment coefficient from loss MGF</code></pre>
+<p>For practical computation: Monte Carlo simulation of 10,000 trade sequences per pattern, measuring maximum drawdown distribution.</p>
+
+<div class="warning">
+  <strong>Rejection gates:</strong> Patterns with CVaR &lt; -5% or ruin probability &gt; 1% are rejected regardless of WR. Tier 1 additionally requires profit factor &gt; 2.0 AND CVaR &gt; -2%.
+</div>
+
+<h3>5.4 Experience Rating &mdash; Post-Deployment Feedback</h3>
+
+<p>After deployment, patterns accumulate live trade results. Experience rating updates the prior:</p>
+
+<pre><code>updated_WR = Z_new &times; live_WR + (1 - Z_new) &times; backtest_credibility_WR
+
+where Z_new uses total trades (backtest + live)</code></pre>
+
+<p>Patterns that underperform in live trading get their credibility-weighted WR pulled down, eventually falling below tier thresholds and getting auto-retired.</p>
+
+<h3>5.5 Where Actuarial Methods Apply</h3>
+
+<table>
+  <tr><th>Pipeline Phase</th><th>Actuarial Method</th><th>What It Replaces</th></tr>
+  <tr><td>Phase 4: Validation</td><td>B&uuml;hlmann credibility</td><td>Hard min-trade cutoffs</td></tr>
+  <tr><td>Phase 4: Validation</td><td>Loss distribution + CVaR</td><td>Simple PnL &gt; 0 check</td></tr>
+  <tr><td>Phase 4: Validation</td><td>Ruin probability</td><td>No equivalent exists</td></tr>
+  <tr><td>Phase 7: Sim optimization</td><td>Survival analysis / hazard ratio</td><td>Grid-searched hold times</td></tr>
+  <tr><td>Phase 6: Tier gate</td><td>Credibility-adjusted WR + profit factor</td><td>Raw WR thresholds</td></tr>
+  <tr><td>Post-deployment</td><td>Experience rating</td><td>Manual review</td></tr>
+</table>
+
+<h2 id="validation"><span class="section-num">6.</span> Validation &amp; Overfitting Prevention</h2>
+
+<div class="highlight">
+  <strong>7 layers of protection:</strong>
   <ol>
     <li>Temporal train/validation split &mdash; no data leakage</li>
     <li>Permutation significance testing &mdash; p &lt; 0.05</li>
+    <li>Credibility-weighted scoring &mdash; small samples blended with population prior</li>
+    <li>Tail risk gates &mdash; CVaR and ruin probability thresholds</li>
     <li>Minimum trade counts &mdash; 10+ for T1, 5+ for T2</li>
-    <li>1m simulation optimization &mdash; realistic bar-by-bar execution</li>
+    <li>1m simulation optimization &mdash; realistic bar-by-bar execution with survival-based hold times</li>
     <li>3-fold temporal cross-validation &mdash; pattern must appear in all folds</li>
   </ol>
 </div>
 
-<h2 id="compute"><span class="section-num">6.</span> Computational Estimates</h2>
+<h2 id="compute"><span class="section-num">7.</span> Computational Estimates</h2>
 
 <table>
   <tr><th>Phase</th><th>Time</th><th>Parallelizable?</th></tr>
@@ -316,14 +434,15 @@ move_threshold_pct = max(0.5, min(10.0, atr_pct * 1.5))</code></pre>
   <tr><td>Clustering</td><td>30-120 sec</td><td>Single-threaded</td></tr>
   <tr><td>Backtesting</td><td>5-15 min</td><td>ProcessPoolExecutor</td></tr>
   <tr><td>Permutation test</td><td>10-30 min</td><td>ProcessPoolExecutor</td></tr>
+  <tr><td>Actuarial scoring</td><td>2-5 min</td><td>Vectorized + MC simulation</td></tr>
   <tr><td>Rule generation</td><td>5-10 sec</td><td>Sequential</td></tr>
   <tr><td>Sim optimization</td><td>30-90 min</td><td>Existing parallelization</td></tr>
-  <tr style="font-weight:bold;color:#4caf50"><td>Total</td><td>~50-170 min</td><td></td></tr>
+  <tr style="font-weight:bold;color:#4caf50"><td>Total</td><td>~55-180 min</td><td></td></tr>
 </table>
 
-<p>Dependencies: <code>hdbscan</code>, <code>scikit-learn</code>, <code>joblib</code>. No GPU required.</p>
+<p>Dependencies: <code>hdbscan</code>, <code>scikit-learn</code>, <code>joblib</code>, <code>lifelines</code>, <code>scipy</code>. No GPU required.</p>
 
-<h2 id="yield"><span class="section-num">7.</span> Expected Yield per Ticker</h2>
+<h2 id="yield"><span class="section-num">8.</span> Expected Yield per Ticker</h2>
 
 <table>
   <tr><th>Stage</th><th>Count</th></tr>
@@ -334,7 +453,7 @@ move_threshold_pct = max(0.5, min(10.0, atr_pct * 1.5))</code></pre>
   <tr style="font-weight:bold;color:#4caf50"><td>Final deployable rules</td><td>2-8</td></tr>
 </table>
 
-<h2 id="modules"><span class="section-num">8.</span> New Modules</h2>
+<h2 id="modules"><span class="section-num">9.</span> New Modules</h2>
 
 <table>
   <tr><th>Module</th><th>Purpose</th></tr>
@@ -343,6 +462,7 @@ move_threshold_pct = max(0.5, min(10.0, atr_pct * 1.5))</code></pre>
   <tr><td><code>snapshot_builder.py</code></td><td>Phase 2: Multi-TF feature vectors</td></tr>
   <tr><td><code>pattern_clusterer.py</code></td><td>Phase 3: HDBSCAN + validation</td></tr>
   <tr><td><code>pattern_validator.py</code></td><td>Phase 4: Backtesting + OOS</td></tr>
+  <tr><td><code>actuarial_scoring.py</code></td><td>Credibility, survival analysis, loss distributions</td></tr>
   <tr><td><code>pattern_rule_generator.py</code></td><td>Phase 5: Cluster-to-rule conversion</td></tr>
 </table>
 
@@ -350,7 +470,7 @@ move_threshold_pct = max(0.5, min(10.0, atr_pct * 1.5))</code></pre>
 python pattern_discovery.py AAPL --lead MSFT --same GOOGL --inverse SH
 python pattern_discovery.py AAPL --move-threshold 2.5 --min-cluster-size 15</code></pre>
 
-<h2 id="risks"><span class="section-num">9.</span> Risks &amp; Open Questions</h2>
+<h2 id="risks"><span class="section-num">10.</span> Risks &amp; Open Questions</h2>
 
 <div class="warning">
   <strong>Risks:</strong>
@@ -367,6 +487,9 @@ python pattern_discovery.py AAPL --move-threshold 2.5 --min-cluster-size 15</cod
   <li>How many signature features per rule? (Default: 4-6)</li>
   <li>Should correlation tickers be in clustering or added as supplementary filters in Phase 5?</li>
   <li>UMAP vs PCA for dimensionality reduction? (PCA first, UMAP in v2)</li>
+  <li>B&uuml;hlmann k parameter &mdash; fit empirically from existing pipeline results or use a fixed prior (k=20)?</li>
+  <li>Should ruin probability use Lundberg approximation or full Monte Carlo? (MC is slower but handles non-stationary distributions)</li>
+  <li>Experience rating feedback loop &mdash; auto-retire rules that drop below tier, or flag for human review?</li>
 </ol>
 
 <h2 id="example">Appendix: Example Cluster-to-Rule Conversion</h2>
