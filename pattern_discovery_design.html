@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern Discovery Pipeline — Design Doc</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.6}
+.header{background:#16213e;padding:16px;border-bottom:2px solid #e94560}
+.header h1{font-size:1.4rem;color:#e94560;margin-bottom:4px}
+.header .meta{color:#a0a0b0;font-size:12px}
+.content{max-width:900px;margin:0 auto;padding:16px}
+h2{color:#e94560;font-size:1.2rem;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid #0f3460}
+h3{color:#53c0f0;font-size:1rem;margin:20px 0 8px}
+h4{color:#ffb74d;font-size:0.9rem;margin:14px 0 6px}
+p{margin:8px 0}
+ul,ol{margin:8px 0 8px 20px}
+li{margin:4px 0}
+code{background:#0f3460;color:#4caf50;padding:2px 6px;border-radius:3px;font-size:13px;font-family:'Cascadia Code',Consolas,monospace}
+pre{background:#0d1b2a;border:1px solid #0f3460;border-radius:6px;padding:12px;overflow-x:auto;font-size:12px;line-height:1.5;margin:10px 0}
+pre code{background:none;padding:0;color:#e0e0e0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+th{background:#0f3460;color:#e94560;padding:8px 6px;text-align:left;font-size:11px;white-space:nowrap}
+td{padding:7px 6px;border-bottom:1px solid #1e2a4a}
+tr:hover{background:#1e2a4a}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.draft{background:#2a2a1b;color:#ffb74d;border:1px solid #e65100}
+.section-num{color:#e94560;margin-right:4px}
+.feature-group{background:#16213e;border-radius:8px;padding:12px;margin:10px 0}
+.feature-group h4{margin-top:0;color:#53c0f0}
+.toc{background:#16213e;border-radius:8px;padding:14px;margin:16px 0}
+.toc a{color:#53c0f0;text-decoration:none;display:block;padding:4px 0;font-size:13px}
+.toc a:hover{color:#e94560}
+.back-link{display:inline-block;margin:12px 0;color:#53c0f0;text-decoration:none;font-size:13px}
+.back-link:hover{color:#e94560}
+.highlight{background:#1b3a2a;border-left:3px solid #4caf50;padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.warning{background:#2a2a1b;border-left:3px solid #ffb74d;padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+@media(max-width:480px){body{font-size:13px}pre{font-size:11px}table{font-size:11px}th,td{padding:5px 4px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Outcome-First Pattern Discovery Pipeline</h1>
+  <div class="meta">Design Document v1.0 &bull; 2026-05-23 &bull; <span class="badge draft">DRAFT</span></div>
+</div>
+
+<div class="content">
+
+<a href="index.html" class="back-link">&larr; Back to Dashboard</a>
+
+<div class="toc">
+  <strong style="color:#e94560">Contents</strong>
+  <a href="#motivation">1. Motivation</a>
+  <a href="#phases">2. Pipeline Phases</a>
+  <a href="#features">3. Feature Vector (210 dimensions)</a>
+  <a href="#clustering">4. Clustering Approach</a>
+  <a href="#validation">5. Validation &amp; Overfitting Prevention</a>
+  <a href="#compute">6. Computational Estimates</a>
+  <a href="#yield">7. Expected Yield</a>
+  <a href="#modules">8. New Modules</a>
+  <a href="#risks">9. Risks &amp; Open Questions</a>
+  <a href="#example">Appendix: Example Conversion</a>
+</div>
+
+<h2 id="motivation"><span class="section-num">1.</span> Motivation</h2>
+
+<h3>The Problem with Hypothesis-First</h3>
+<p>The existing <code>create_rules_local3.py</code> pipeline tests ~180 hand-coded condition templates (SA01-SA35, LL_lag variants, DV, INV) against historical data. Each condition is a hypothesis: "when RSI &le; 25 and the candle is green, buy."</p>
+
+<p>Two structural limitations:</p>
+<ol>
+  <li><strong>Condition space is manually enumerated.</strong> Multi-factor market states that don't match templates are invisible.</li>
+  <li><strong>No multi-timeframe confluence in conditions.</strong> Entry signals can't express "15m RSI oversold AND 1h EMA rising AND daily above 50 SMA."</li>
+</ol>
+
+<h3>The Outcome-First Alternative</h3>
+<div class="highlight">
+  Instead of asking "does this pattern predict a move?", we start from the other end: <strong>"before every significant move, what did the market look like?"</strong>
+</div>
+
+<ol>
+  <li>Find all historical instances where price moved significantly (the <strong>outcomes</strong>)</li>
+  <li>Capture a rich, multi-timeframe <strong>snapshot</strong> of market state preceding each move</li>
+  <li>Cluster similar snapshots to discover <strong>recurring pre-move structures</strong></li>
+  <li>Validate each cluster as a predictive pattern against the full dataset</li>
+  <li>Convert validated patterns into deployable rule files (same format as existing pipeline)</li>
+</ol>
+
+<h3>Integration</h3>
+<p>Produces the exact same output artifacts: <code>rules_{ticker}_{tf}.py</code>, <code>_rule_index_block.py</code>, backtest JSON. Rules flow through existing Phase 6 tier gate, Phases 7-12 sim optimization, Phase 13 deployment &mdash; unchanged. Replaces Phases 1-5 only.</p>
+<p>Naming: rules use suffix <code>_P</code> (Pattern-discovered): <code>{TICKER}_P_S</code>, <code>{TICKER}_P_L</code>, <code>{TICKER}_P_D</code>, <code>{TICKER}_P_X</code></p>
+
+<h2 id="phases"><span class="section-num">2.</span> Pipeline Phases</h2>
+
+<h3>Phase 0: Data Preparation</h3>
+<p>Reuses existing <code>download_missing_data()</code>, <code>load_data()</code>, <code>add_indicators()</code>. Downloads OHLCV for all 5 timeframes (1m, 5m, 15m, 1h, daily). <strong>No new code needed.</strong></p>
+
+<h3>Phase 1: Outcome Labeling</h3>
+<p>Identify all bars where price made a significant move:</p>
+<pre><code>max_advance(i) = max(high[i+1:i+hold]) / close[i] - 1
+max_decline(i) = 1 - min(low[i+1:i+hold]) / close[i]</code></pre>
+<p>A bar is a <strong>bullish outcome</strong> if <code>max_advance &ge; threshold</code> before <code>max_decline &ge; stop</code>.</p>
+
+<table>
+  <tr><th>Parameter</th><th>Default</th><th>Range</th><th>Description</th></tr>
+  <tr><td><code>move_threshold_pct</code></td><td>2.0%</td><td>0.5-10.0</td><td>Min % move to qualify</td></tr>
+  <tr><td><code>stop_threshold_pct</code></td><td>1.5%</td><td>0.3-8.0</td><td>Max adverse move before target</td></tr>
+  <tr><td><code>lookforward_bars</code></td><td>5 &times; bars/day</td><td>1-30 days</td><td>Forward window</td></tr>
+  <tr><td><code>cooldown_bars</code></td><td>bars/day</td><td>-</td><td>Min spacing between outcomes</td></tr>
+  <tr><td><code>min_outcomes</code></td><td>30</td><td>20-100</td><td>Min outcomes to proceed</td></tr>
+</table>
+
+<p>Thresholds are <strong>asset-adaptive</strong> via ATR:</p>
+<pre><code>atr_pct = (daily_atr / avg_price) * 100
+move_threshold_pct = max(0.5, min(10.0, atr_pct * 1.5))</code></pre>
+
+<p>Outcomes labeled on <strong>5m</strong> (finest usable TF with sufficient history). Output: list of <code>(timestamp, direction, actual_move_pct, time_to_target)</code>.</p>
+
+<h3>Phase 2: Multi-Timeframe Snapshot Capture</h3>
+<p>For each outcome, look backwards and capture a 210-feature vector. <a href="#features">See full feature list below.</a></p>
+
+<table>
+  <tr><th>Timeframe</th><th>Lookback Bars</th><th>Duration</th></tr>
+  <tr><td>1m</td><td>60</td><td>1 hour</td></tr>
+  <tr><td>5m</td><td>78</td><td>1 trading day</td></tr>
+  <tr><td>15m</td><td>52</td><td>2 trading days</td></tr>
+  <tr><td>1h</td><td>35</td><td>5 trading days</td></tr>
+  <tr><td>daily</td><td>20</td><td>20 trading days</td></tr>
+</table>
+
+<h3>Phase 3: Pattern Clustering (HDBSCAN)</h3>
+<p>Pipeline: Raw features (210 dims) &rarr; StandardScaler &rarr; PCA (95% variance, ~50-80 dims) &rarr; HDBSCAN &rarr; Filter &rarr; Extract signatures &rarr; Convert to conditions</p>
+
+<p>Ensemble: 5 parameter configs, keep clusters appearing in &ge; 3 of 5 runs.</p>
+
+<p>Cluster retained if:</p>
+<ul>
+  <li>&ge; 10 outcome instances</li>
+  <li>Members span &ge; 6 calendar months</li>
+  <li>Mean intra-cluster distance &lt; 2&times; global mean</li>
+  <li>&ge; 70% same direction (bull or bear)</li>
+</ul>
+
+<h3>Phase 4: Pattern Validation</h3>
+<p>Walk full dataset bar-by-bar, compute snapshot, check distance to each centroid. Grid-search TP/SL/hold.</p>
+
+<div class="highlight">
+  <strong>Out-of-Sample:</strong> Train on 2023-01 to 2025-06, validate 2025-07 to present.<br>
+  Pattern passes if: val WR &ge; 0.8 &times; train WR, positive PnL, &ge; 3 val trades.<br>
+  <strong>Permutation test:</strong> Shuffle labels 100&times;, pattern significant if p &lt; 0.05.
+</div>
+
+<h3>Phase 5: Rule Generation</h3>
+<p>Convert cluster's top 4-6 signature features into threshold conditions. Same format as existing SA/LL/DV rules. No numpy/sklearn at runtime.</p>
+
+<h3>Phases 6-7: Existing Infrastructure</h3>
+<p>Hand off to existing tier gate, sim optimization (Phases 6-12), and <code>deploy_worker_rules.py</code> (Phase 13) &mdash; unchanged.</p>
+
+<h2 id="features"><span class="section-num">3.</span> Feature Vector (210 dimensions)</h2>
+
+<div class="feature-group">
+  <h4>A. Candle Structure (9 &times; 5 TFs = 45 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>green_ratio</code></td><td>Fraction of green candles in lookback</td></tr>
+    <tr><td><code>avg_body_pct</code></td><td>mean(|close-open| / (high-low))</td></tr>
+    <tr><td><code>avg_upper_wick_pct</code></td><td>mean((high - max(O,C)) / range)</td></tr>
+    <tr><td><code>avg_lower_wick_pct</code></td><td>mean((min(O,C) - low) / range)</td></tr>
+    <tr><td><code>last_body_pct</code></td><td>Body % of most recent bar</td></tr>
+    <tr><td><code>last_green</code></td><td>1 if last bar green</td></tr>
+    <tr><td><code>consec_green</code></td><td>Consecutive green ending at T</td></tr>
+    <tr><td><code>consec_red</code></td><td>Consecutive red ending at T</td></tr>
+    <tr><td><code>range_vs_atr</code></td><td>(H-L) / ATR(14)</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>B. Moving Averages (9 &times; 5 TFs = 45 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>price_vs_ema20</code></td><td>(close - EMA20) / EMA20 &times; 100</td></tr>
+    <tr><td><code>price_vs_ema50</code></td><td>(close - EMA50) / EMA50 &times; 100</td></tr>
+    <tr><td><code>price_vs_sma200</code></td><td>(close - SMA200) / SMA200 &times; 100 (daily only)</td></tr>
+    <tr><td><code>ema20_slope</code></td><td>(EMA20[0] - EMA20[-5]) / EMA20[-5] &times; 100</td></tr>
+    <tr><td><code>ema50_slope</code></td><td>(EMA50[0] - EMA50[-5]) / EMA50[-5] &times; 100</td></tr>
+    <tr><td><code>ema20_vs_ema50</code></td><td>(EMA20 - EMA50) / EMA50 &times; 100</td></tr>
+    <tr><td><code>ema_cross_state</code></td><td>+1 golden, -1 death, 0 neutral</td></tr>
+    <tr><td><code>ema_cross_bars_ago</code></td><td>Bars since last EMA20/50 cross</td></tr>
+    <tr><td><code>slope_category</code></td><td>-2 steep down to +2 steep up</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>C. Momentum / Oscillators (8 &times; 5 TFs = 40 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>rsi</code></td><td>RSI(14) / 100</td></tr>
+    <tr><td><code>rsi_slope</code></td><td>RSI[0] - RSI[-5]</td></tr>
+    <tr><td><code>stoch</code></td><td>Stochastic(14) / 100</td></tr>
+    <tr><td><code>willr</code></td><td>Williams %R / 100</td></tr>
+    <tr><td><code>adx</code></td><td>ADX(14) / 100</td></tr>
+    <tr><td><code>macd_hist</code></td><td>MACD histogram / ATR</td></tr>
+    <tr><td><code>macd_hist_slope</code></td><td>(hist[0] - hist[-3]) / ATR</td></tr>
+    <tr><td><code>macd_cross_state</code></td><td>+1 above signal, -1 below</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>D. Bollinger Bands (3 &times; 5 TFs = 15 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>bb_position</code></td><td>(close - lower) / (upper - lower)</td></tr>
+    <tr><td><code>bb_width</code></td><td>(upper - lower) / mid &times; 100</td></tr>
+    <tr><td><code>bb_width_pctile</code></td><td>Percentile rank vs last 100 bars</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>E. Volume (4 &times; 5 TFs = 20 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>vol_ratio</code></td><td>volume / SMA(volume, 20)</td></tr>
+    <tr><td><code>vol_trend</code></td><td>Linear regression slope of volume</td></tr>
+    <tr><td><code>up_vol_ratio</code></td><td>sum(green vol) / sum(red vol)</td></tr>
+    <tr><td><code>vol_spike</code></td><td>1 if vol_ratio &gt; 2.0</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>F. Price Action / Returns (6 &times; 5 TFs = 30 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>return_1</code></td><td>pct_change(1) / daily ATR%</td></tr>
+    <tr><td><code>return_3</code></td><td>pct_change(3) / daily ATR%</td></tr>
+    <tr><td><code>return_6</code></td><td>pct_change(6) / daily ATR%</td></tr>
+    <tr><td><code>return_12</code></td><td>pct_change(12) / daily ATR%</td></tr>
+    <tr><td><code>drawdown_from_high</code></td><td>(close - rolling_max(20)) / max &times; 100</td></tr>
+    <tr><td><code>distance_from_low</code></td><td>(close - rolling_min(20)) / min &times; 100</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>G. Cross-Timeframe Alignment (7 features)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>ma_trend_alignment</code></td><td>Count of TFs where EMA20 slope &gt; 0, mapped [-1,+1]</td></tr>
+    <tr><td><code>rsi_alignment</code></td><td>std(RSI across all TFs) &mdash; low = aligned</td></tr>
+    <tr><td><code>momentum_agreement</code></td><td>Count of TFs where MACD_hist &gt; 0, mapped [-1,+1]</td></tr>
+    <tr><td><code>bb_squeeze_count</code></td><td>Count of TFs where bb_width_pctile &lt; 20</td></tr>
+    <tr><td><code>vol_surge_count</code></td><td>Count of TFs where vol_ratio &gt; 1.5</td></tr>
+    <tr><td><code>trend_vs_momentum</code></td><td>Daily EMA slope sign vs 5m RSI zone</td></tr>
+    <tr><td><code>higher_tf_support</code></td><td>1 if above daily EMA50 and 1h EMA20</td></tr>
+  </table>
+</div>
+
+<div class="feature-group">
+  <h4>H. Correlation Tickers (5 &times; 3 = 15 features, optional)</h4>
+  <table>
+    <tr><th>Feature</th><th>Formula</th></tr>
+    <tr><td><code>{corr}_rsi</code></td><td>RSI(14) / 100 on 5m</td></tr>
+    <tr><td><code>{corr}_return_3</code></td><td>pct_change(3) / ATR%</td></tr>
+    <tr><td><code>{corr}_vol_ratio</code></td><td>vol / SMA(vol, 20)</td></tr>
+    <tr><td><code>{corr}_ema_cross</code></td><td>+1/-1 EMA20 vs EMA50</td></tr>
+    <tr><td><code>{corr}_divergence</code></td><td>target_return_12 - corr_return_12</td></tr>
+  </table>
+</div>
+
+<table>
+  <tr><th>Category</th><th>Features</th></tr>
+  <tr><td>A. Candle structure</td><td>45</td></tr>
+  <tr><td>B. Moving averages</td><td>45</td></tr>
+  <tr><td>C. Momentum/Oscillators</td><td>40</td></tr>
+  <tr><td>D. Bollinger Bands</td><td>15</td></tr>
+  <tr><td>E. Volume</td><td>20</td></tr>
+  <tr><td>F. Price action</td><td>30</td></tr>
+  <tr><td>G. Cross-TF alignment</td><td>7</td></tr>
+  <tr><td>H. Correlation tickers</td><td>0-15</td></tr>
+  <tr style="font-weight:bold;color:#4caf50"><td>Total</td><td>202-217</td></tr>
+</table>
+
+<h2 id="clustering"><span class="section-num">4.</span> Clustering Approach</h2>
+
+<h3>Why HDBSCAN over K-Means?</h3>
+<p>K-Means requires specifying K upfront. We don't know how many pre-move patterns exist. HDBSCAN discovers the number naturally from data density. It also identifies noise points (expected 30-60% of snapshots) &mdash; moves without recurring structure are excluded.</p>
+
+<table>
+  <tr><th>Parameter</th><th>Default</th><th>Rationale</th></tr>
+  <tr><td><code>min_cluster_size</code></td><td>10</td><td>Min samples for a pattern</td></tr>
+  <tr><td><code>min_samples</code></td><td>5</td><td>Core point density</td></tr>
+  <tr><td><code>metric</code></td><td>euclidean</td><td>Standard for PCA data</td></tr>
+  <tr><td><code>cluster_selection_method</code></td><td>eom</td><td>Favors larger clusters</td></tr>
+</table>
+
+<h2 id="validation"><span class="section-num">5.</span> Validation &amp; Overfitting Prevention</h2>
+
+<div class="highlight">
+  <strong>5 layers of protection:</strong>
+  <ol>
+    <li>Temporal train/validation split &mdash; no data leakage</li>
+    <li>Permutation significance testing &mdash; p &lt; 0.05</li>
+    <li>Minimum trade counts &mdash; 10+ for T1, 5+ for T2</li>
+    <li>1m simulation optimization &mdash; realistic bar-by-bar execution</li>
+    <li>3-fold temporal cross-validation &mdash; pattern must appear in all folds</li>
+  </ol>
+</div>
+
+<h2 id="compute"><span class="section-num">6.</span> Computational Estimates</h2>
+
+<table>
+  <tr><th>Phase</th><th>Time</th><th>Parallelizable?</th></tr>
+  <tr><td>Data download</td><td>2-5 min</td><td>Via Polygon lock</td></tr>
+  <tr><td>Outcome labeling</td><td>10-30 sec</td><td>Vectorized numpy</td></tr>
+  <tr><td>Snapshot capture</td><td>1-3 min</td><td>Vectorized per TF</td></tr>
+  <tr><td>Clustering</td><td>30-120 sec</td><td>Single-threaded</td></tr>
+  <tr><td>Backtesting</td><td>5-15 min</td><td>ProcessPoolExecutor</td></tr>
+  <tr><td>Permutation test</td><td>10-30 min</td><td>ProcessPoolExecutor</td></tr>
+  <tr><td>Rule generation</td><td>5-10 sec</td><td>Sequential</td></tr>
+  <tr><td>Sim optimization</td><td>30-90 min</td><td>Existing parallelization</td></tr>
+  <tr style="font-weight:bold;color:#4caf50"><td>Total</td><td>~50-170 min</td><td></td></tr>
+</table>
+
+<p>Dependencies: <code>hdbscan</code>, <code>scikit-learn</code>, <code>joblib</code>. No GPU required.</p>
+
+<h2 id="yield"><span class="section-num">7.</span> Expected Yield per Ticker</h2>
+
+<table>
+  <tr><th>Stage</th><th>Count</th></tr>
+  <tr><td>Outcomes labeled</td><td>200-600</td></tr>
+  <tr><td>Clusters found</td><td>10-30</td></tr>
+  <tr><td>Clusters passing validation</td><td>5-15</td></tr>
+  <tr><td>Meeting Tier 1/2</td><td>2-8</td></tr>
+  <tr style="font-weight:bold;color:#4caf50"><td>Final deployable rules</td><td>2-8</td></tr>
+</table>
+
+<h2 id="modules"><span class="section-num">8.</span> New Modules</h2>
+
+<table>
+  <tr><th>Module</th><th>Purpose</th></tr>
+  <tr><td><code>pattern_discovery.py</code></td><td>Main CLI entry point</td></tr>
+  <tr><td><code>outcome_labeler.py</code></td><td>Phase 1: Adaptive outcome labeling</td></tr>
+  <tr><td><code>snapshot_builder.py</code></td><td>Phase 2: Multi-TF feature vectors</td></tr>
+  <tr><td><code>pattern_clusterer.py</code></td><td>Phase 3: HDBSCAN + validation</td></tr>
+  <tr><td><code>pattern_validator.py</code></td><td>Phase 4: Backtesting + OOS</td></tr>
+  <tr><td><code>pattern_rule_generator.py</code></td><td>Phase 5: Cluster-to-rule conversion</td></tr>
+</table>
+
+<pre><code>python pattern_discovery.py AAPL --skip-approval --skip-deploy
+python pattern_discovery.py AAPL --lead MSFT --same GOOGL --inverse SH
+python pattern_discovery.py AAPL --move-threshold 2.5 --min-cluster-size 15</code></pre>
+
+<h2 id="risks"><span class="section-num">9.</span> Risks &amp; Open Questions</h2>
+
+<div class="warning">
+  <strong>Risks:</strong>
+  <ol>
+    <li>High feature-to-sample ratio (210 features for ~500 outcomes). PCA mitigates but doesn't eliminate.</li>
+    <li>Threshold conversion fidelity &mdash; continuous centroids to discrete thresholds loses information.</li>
+    <li>Regime sensitivity &mdash; 2023 clusters may not hold in 2026. Temporal spread filter mitigates.</li>
+  </ol>
+</div>
+
+<p><strong>Open Questions:</strong></p>
+<ol>
+  <li>Should outcomes be labeled on 5m or 15m?</li>
+  <li>How many signature features per rule? (Default: 4-6)</li>
+  <li>Should correlation tickers be in clustering or added as supplementary filters in Phase 5?</li>
+  <li>UMAP vs PCA for dimensionality reduction? (PCA first, UMAP in v2)</li>
+</ol>
+
+<h2 id="example">Appendix: Example Cluster-to-Rule Conversion</h2>
+
+<p><strong>Cluster #7:</strong> 38 members, 89% LONG purity</p>
+
+<p>Signature features (|z| &gt; 1.5):</p>
+<table>
+  <tr><th>#</th><th>Feature</th><th>Value</th><th>z-score</th><th>Meaning</th></tr>
+  <tr><td>1</td><td><code>5m_rsi</code></td><td>0.21</td><td>-2.3</td><td>RSI ~21</td></tr>
+  <tr><td>2</td><td><code>1h_ema20_slope</code></td><td>+0.45</td><td>+1.8</td><td>1h EMA20 rising</td></tr>
+  <tr><td>3</td><td><code>5m_vol_ratio</code></td><td>2.8</td><td>+2.1</td><td>High volume</td></tr>
+  <tr><td>4</td><td><code>15m_bb_position</code></td><td>0.05</td><td>-1.9</td><td>At lower BB</td></tr>
+  <tr><td>5</td><td><code>daily_price_vs_ema50</code></td><td>+2.1%</td><td>+1.6</td><td>Daily uptrend</td></tr>
+</table>
+
+<p>Training: 34 trades, WR=85.3%, APnL=52.1%<br>
+Validation: 8 trades, WR=87.5%, APnL=14.2%<br>
+Permutation p-value: 0.02</p>
+
+<pre><code>class AAPL_P_S5M_00001(BaseAAPL_P_S5m):
+    name = "AAPL_P_S5M_00001"
+
+    def evaluate(self, aapl_row):
+        rsi = self._safe(aapl_row, "rsi")
+        vol_ratio = self._safe(aapl_row, "vol_ratio")
+        h1_ema20_slope = self._safe(aapl_row, "h1_ema20_slope")
+        m15_bb_position = self._safe(aapl_row, "m15_bb_position")
+        daily_price_vs_ema50 = self._safe(aapl_row, "daily_price_vs_ema50")
+
+        if (rsi &lt;= 28 and vol_ratio &gt;= 2.0 and h1_ema20_slope &gt; 0
+                and m15_bb_position &lt;= 0.15 and daily_price_vs_ema50 &gt; 0):
+            return AaplSignal(
+                direction="LONG", tp_pct=2.0, sl_pct=1.5,
+                hold_bars=390, cd_bars=78,
+                reason="P_S5M_00001: RSI oversold + 1h MA rising + "
+                       "vol spike + near 15m lower BB + daily uptrend"
+            )
+        return None</code></pre>
+
+<div class="highlight">
+  This condition spans <strong>4 timeframes simultaneously</strong> &mdash; something the existing template library cannot express.
+</div>
+
+<div class="footer" style="text-align:center;padding:24px;color:#555;font-size:11px;margin-top:40px;border-top:1px solid #0f3460">
+  Pattern Discovery Pipeline Design v1.0 &bull; DRAFT &bull; 2026-05-23
+</div>
+
+</div>
+</body>
+</html>
