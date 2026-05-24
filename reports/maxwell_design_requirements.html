@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maxwell — Design &amp; Requirements</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#d0d0d0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.65}
+.header{background:#16213e;padding:16px 20px;border-bottom:2px solid #e94560}
+.header h1{font-size:1.5rem;color:#e94560;margin-bottom:2px}
+.header .sub{font-size:12px;color:#888}
+.container{max-width:960px;margin:0 auto;padding:16px 20px}
+h2{color:#e94560;font-size:1.15rem;margin:28px 0 10px;padding-bottom:4px;border-bottom:1px solid #0f3460}
+h3{color:#53c0f0;font-size:1rem;margin:20px 0 8px}
+h4{color:#ffb74d;font-size:0.9rem;margin:14px 0 6px}
+p{margin:6px 0}
+ul,ol{margin:6px 0 6px 24px}
+li{margin:4px 0}
+code{background:#0f1a2e;color:#4caf50;padding:1px 5px;border-radius:3px;font-size:13px}
+pre{background:#0f1a2e;padding:12px;border-radius:6px;overflow-x:auto;font-size:12px;color:#a0d0a0;margin:8px 0;border:1px solid #1e2a4a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+th{background:#0f3460;color:#e94560;padding:8px 10px;text-align:left;border-bottom:2px solid #e94560;font-size:12px}
+td{padding:7px 10px;border-bottom:1px solid #1e2a4a;vertical-align:top}
+tr:hover{background:#1e2a4a}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin:1px 2px}
+.tag-api{background:#1b3a2a;color:#4caf50;border:1px solid #2e7d32}
+.tag-calc{background:#2a2a1b;color:#ffb74d;border:1px solid #e65100}
+.tag-llm{background:#2a1b3a;color:#ce93d8;border:1px solid #7b1fa2}
+.tag-state{background:#1b2a3a;color:#53c0f0;border:1px solid #0277bd}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.section-box{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:14px;margin:12px 0}
+.formula{background:#0f1a2e;border-left:3px solid #e94560;padding:8px 14px;margin:8px 0;font-family:monospace;font-size:13px;color:#e0e0e0}
+.flow-step{display:flex;align-items:flex-start;gap:10px;margin:6px 0}
+.flow-num{background:#e94560;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.flow-text{flex:1}
+.arch-box{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.arch-card{background:#0f1a2e;border:1px solid #1e2a4a;border-radius:6px;padding:12px}
+.arch-card h4{margin-top:0}
+a{color:#53c0f0}
+.footer{text-align:center;padding:20px;color:#555;font-size:11px;margin-top:30px;border-top:1px solid #0f3460}
+@media(max-width:600px){.arch-box{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>Maxwell — Design &amp; Requirements Document</h1>
+<div class="sub">Conversational Options Analysis Engine &bull; Last updated: 2026-05-24</div>
+</div>
+
+<div class="container">
+
+<!-- ===== OVERVIEW ===== -->
+<h2>1. Overview</h2>
+<p>Maxwell is a conversational financial analyst that lives inside Telegram. Users send natural-language questions about stocks, options, crypto, or the market, and Maxwell responds with quantitative analysis wrapped in a distinctive street-smart personality. The system uses a <strong>2-pass Ollama LLM architecture</strong> backed by real-time options math and news sentiment.</p>
+
+<div class="section-box">
+<h4>Key Design Principles</h4>
+<ul>
+<li><strong>Math first, opinion second</strong> — every response is grounded in computed metrics, never pure LLM hallucination</li>
+<li><strong>Zero API cost for LLM</strong> — Ollama runs locally, no OpenAI/Anthropic spend</li>
+<li><strong>Sub-90s response time</strong> — full pipeline (ticker extraction + data fetch + analysis + response generation) within Ollama timeout</li>
+<li><strong>Personality is a feature</strong> — cocky, street-smart tone differentiates from generic bots and keeps the group engaged</li>
+</ul>
+</div>
+
+<!-- ===== ARCHITECTURE ===== -->
+<h2>2. System Architecture</h2>
+
+<h3>2.1 Component Map</h3>
+<table>
+<tr><th>Component</th><th>File</th><th>Role</th></tr>
+<tr><td>Telegram Bridge</td><td><code>telegram_bridge.py</code></td><td>2-way polling bridge: Telegram &harr; Claude Code / Maxwell. Long-polls <code>getUpdates</code> every 3s, routes commands, manages inbox/outbox JSON queues.</td></tr>
+<tr><td>Maxwell Engine</td><td><code>maxwell_chat.py</code></td><td>2-pass LLM orchestrator. Pass 1: intent extraction. Pass 2: math-backed response generation.</td></tr>
+<tr><td>Options Data</td><td><code>options_data.py</code></td><td>All quantitative analysis: IV, max pain, GEX, S/R, sentiment scoring, unusual activity detection.</td></tr>
+<tr><td>News Sentiment</td><td><code>alpha_vantage_sentiment.py</code></td><td>Alpha Vantage NEWS_SENTIMENT API client with file-based caching (12h TTL).</td></tr>
+<tr><td>Options Bot</td><td><code>options_bot.py</code></td><td>Secondary Telegram bot for the 100% WR group chat. Same Maxwell engine, different bot token.</td></tr>
+<tr><td>Slang Updater</td><td><code>maxwell_slang_updater.py</code></td><td>Fetches trending slang from Urban Dictionary / slang.org. Maintains <code>maxwell_slang.json</code>.</td></tr>
+<tr><td>Watch Loop</td><td><code>telegram_watch_check.py</code></td><td>Background inbox poller with 7-tier backoff (30s &rarr; 1800s). Auto-deactivates after 18 empty checks.</td></tr>
+<tr><td>Diagnostics</td><td><code>telegram_diagnostic.py</code></td><td>10-point health check: bridge process, offset state, 409 conflicts, webhook status.</td></tr>
+</table>
+
+<h3>2.2 Message Flow</h3>
+<div class="section-box">
+<div class="flow-step"><div class="flow-num">1</div><div class="flow-text">User sends message in Telegram group</div></div>
+<div class="flow-step"><div class="flow-num">2</div><div class="flow-text"><code>telegram_bridge.py</code> picks it up via <code>getUpdates</code> long-poll (25s timeout, 3s cycle)</div></div>
+<div class="flow-step"><div class="flow-num">3</div><div class="flow-text">Bridge checks if it's a local command (<code>/status</code>, <code>/rules</code>, <code>/trades</code>, <code>/exit</code>, <code>/regression</code>, <code>/usage</code>, <code>/watch</code>). If yes &rarr; handle directly, respond to Telegram.</div></div>
+<div class="flow-step"><div class="flow-num">4</div><div class="flow-text">Otherwise, message is written to <code>telegram_inbox.json</code> for the active Claude Code session (or Maxwell).</div></div>
+<div class="flow-step"><div class="flow-num">5</div><div class="flow-text"><code>maxwell_chat.handle_message()</code> is called &mdash; begins 2-pass pipeline.</div></div>
+<div class="flow-step"><div class="flow-num">6</div><div class="flow-text"><strong>Pass 1</strong>: Ollama extracts tickers + intent from natural language.</div></div>
+<div class="flow-step"><div class="flow-num">7</div><div class="flow-text">For each ticker (max 5): <code>_gather_math()</code> fetches live data and computes all metrics.</div></div>
+<div class="flow-step"><div class="flow-num">8</div><div class="flow-text"><strong>Pass 2</strong>: Ollama generates 2-3 sentence response using the math summary as context.</div></div>
+<div class="flow-step"><div class="flow-num">9</div><div class="flow-text">Response is formatted (metrics card + Maxwell's take + disclaimer) and sent back to Telegram.</div></div>
+</div>
+
+<h3>2.3 Dual Bot Setup</h3>
+<div class="arch-box">
+<div class="arch-card">
+<h4>Primary Bot (Telegram Bridge)</h4>
+<p>Token: <code>Telegram_API</code></p>
+<p>Chat: <code>Telegram_Bridge_Chat_ID</code></p>
+<p>Routes to Claude Code session + Maxwell</p>
+</div>
+<div class="arch-card">
+<h4>100% WR Group Bot</h4>
+<p>Token: <code>Maxwell_API</code></p>
+<p>Chat: <code>Telegram_100WR_Chat_ID</code></p>
+<p>Responds to "Maxwell" prefix messages only</p>
+</div>
+</div>
+
+<!-- ===== EXTERNAL APIs ===== -->
+<h2>3. External Data Sources</h2>
+
+<div class="legend">
+<span class="tag tag-api">API Pull</span>
+<span class="tag tag-calc">Calculated</span>
+<span class="tag tag-llm">LLM</span>
+<span class="tag tag-state">State File</span>
+</div>
+
+<table>
+<tr><th>Source</th><th>API / Library</th><th>What's Pulled</th><th>Rate Limits</th></tr>
+<tr>
+<td>yfinance</td>
+<td><code>yf.Ticker(symbol)</code></td>
+<td>
+<ul>
+<li><code>tk.info</code> &mdash; currentPrice, shortName</li>
+<li><code>tk.option_chain(expiry)</code> &mdash; calls/puts DataFrames (strike, volume, OI, IV per contract)</li>
+<li><code>tk.options</code> &mdash; list of available expiration dates</li>
+<li><code>tk.history(period="1y")</code> &mdash; daily Close for IV rank</li>
+<li><code>tk.history(period="3mo")</code> &mdash; daily Close/High/Volume for volume profile</li>
+</ul>
+</td>
+<td>Unofficial Yahoo Finance wrapper. No hard limit but can throttle under heavy use.</td>
+</tr>
+<tr>
+<td>Alpha Vantage</td>
+<td><code>NEWS_SENTIMENT</code> endpoint</td>
+<td>
+<ul>
+<li>Articles with per-ticker sentiment scores (-1 to +1)</li>
+<li>Relevance scores per ticker</li>
+<li>Headlines, sources, publication dates</li>
+<li>Overall article sentiment labels</li>
+</ul>
+</td>
+<td>Free tier: 25 req/day, 5/min. Results cached to <code>sentiment_cache/</code> with 12h TTL.</td>
+</tr>
+<tr>
+<td>Ollama (local)</td>
+<td><code>http://localhost:11434/api/generate</code></td>
+<td>
+<ul>
+<li>Pass 1: Ticker extraction + intent classification</li>
+<li>Pass 2: Natural-language response generation</li>
+</ul>
+</td>
+<td>Local inference, no cost. 90s timeout per call. Fallback: <code>llama3.1:8b</code> if <code>options-analyst</code> unavailable.</td>
+</tr>
+<tr>
+<td>Telegram Bot API</td>
+<td><code>getUpdates</code>, <code>sendMessage</code></td>
+<td>
+<ul>
+<li>Incoming messages from group chat</li>
+<li>Outbound message delivery (auto-splits at 4096 chars)</li>
+</ul>
+</td>
+<td>Standard bot rate limits. 409 conflict detection for competing pollers.</td>
+</tr>
+</table>
+
+<!-- ===== METRICS ===== -->
+<h2>4. Metrics — Complete Reference</h2>
+
+<h3>4.1 Direct API Pulls (raw data, no transformation)</h3>
+<table>
+<tr><th>Metric</th><th>Source</th><th>Field</th></tr>
+<tr><td>Current Price</td><td><span class="tag tag-api">yfinance</span></td><td><code>tk.info["currentPrice"]</code> (fallback: <code>regularMarketPrice</code>)</td></tr>
+<tr><td>Company Name</td><td><span class="tag tag-api">yfinance</span></td><td><code>tk.info["shortName"]</code> (fallback: <code>longName</code>)</td></tr>
+<tr><td>Per-Strike IV</td><td><span class="tag tag-api">yfinance</span></td><td><code>chain.calls/puts["impliedVolatility"]</code></td></tr>
+<tr><td>Per-Strike Volume</td><td><span class="tag tag-api">yfinance</span></td><td><code>chain.calls/puts["volume"]</code></td></tr>
+<tr><td>Per-Strike OI</td><td><span class="tag tag-api">yfinance</span></td><td><code>chain.calls/puts["openInterest"]</code></td></tr>
+<tr><td>Available Expirations</td><td><span class="tag tag-api">yfinance</span></td><td><code>tk.options</code></td></tr>
+<tr><td>52-Week Close History</td><td><span class="tag tag-api">yfinance</span></td><td><code>tk.history(period="1y")["Close"]</code></td></tr>
+<tr><td>3-Month OHLCV</td><td><span class="tag tag-api">yfinance</span></td><td><code>tk.history(period="3mo")</code></td></tr>
+<tr><td>News Articles + Scores</td><td><span class="tag tag-api">Alpha Vantage</span></td><td><code>NEWS_SENTIMENT</code> feed, per-ticker sentiment &amp; relevance</td></tr>
+</table>
+
+<h3>4.2 Calculated Metrics</h3>
+
+<h4>Call/Put Volume Split</h4>
+<div class="formula">call_pct = call_volume / (call_volume + put_volume) * 100<br>put_pct = put_volume / (call_volume + put_volume) * 100</div>
+<p><span class="tag tag-calc">Calculated</span> Simple percentage split of total options volume between calls and puts for the nearest-Friday expiry.</p>
+
+<h4>Put/Call Ratio (Volume)</h4>
+<div class="formula">pcr = put_volume / call_volume</div>
+<p><span class="tag tag-calc">Calculated</span> Directional flow indicator. &gt;1.0 = bearish flow, &lt;0.7 = bullish flow.</p>
+
+<h4>Put/Call Ratio (Open Interest)</h4>
+<div class="formula">oi_pcr = put_oi / call_oi</div>
+<p><span class="tag tag-calc">Calculated</span> Positioning indicator (longer-term than volume P/C). &ge;1.3 = put-heavy, &le;0.7 = call-heavy.</p>
+
+<h4>ATM Implied Volatility</h4>
+<div class="formula">atm_iv = mean(closest_call_iv, closest_put_iv)</div>
+<p><span class="tag tag-calc">Calculated</span> Finds the call and put strikes nearest to current price, averages their implied volatilities. Used as the IV input for all subsequent probability calculations.</p>
+
+<h4>IV Rank (0-100%)</h4>
+<div class="formula">rolling_vol = 20-day rolling std(daily returns) * sqrt(252)   [annualized realized vol]<br>iv_rank = (current_atm_iv - 52wk_low_rv) / (52wk_high_rv - 52wk_low_rv) * 100</div>
+<p><span class="tag tag-calc">Calculated</span> Where current ATM IV sits within the 52-week range of 20-day realized volatility. High rank = expensive options. Requires &ge;30 trading days of history.</p>
+
+<h4>Max Pain</h4>
+<div class="formula">For each possible settlement strike S:<br>  total_pain(S) = sum[ call_OI(K) * max(S - K, 0)  for K in all_strikes ]<br>                + sum[ put_OI(K)  * max(K - S, 0)  for K in all_strikes ]<br>max_pain = strike S that minimizes total_pain(S)</div>
+<p><span class="tag tag-calc">Calculated</span> The price at which option holders collectively lose the most money. Theory: market makers push price toward max pain at expiry. Displayed with directional arrow showing distance from current price.</p>
+
+<h4>Expected Move</h4>
+<div class="formula">expected_move = price * IV * sqrt(DTE / 365)</div>
+<p><span class="tag tag-calc">Calculated</span> Standard IV-derived 1-standard-deviation expected price range by expiration. Displayed as &plusmn;$ and &plusmn;%.</p>
+
+<h4>Unusual Activity Detection</h4>
+<div class="formula">median_vol = median(all_strike_volumes)   [floor: 10]<br>Flag if: volume &gt; 5x median AND volume &ge; 100 contracts</div>
+<p><span class="tag tag-calc">Calculated</span> Scans every strike in calls and puts. Flags strikes with volume spikes well above the chain's baseline. Reports side (CALL/PUT), strike, volume, multiple-vs-median, and OI. Top 5 by volume returned.</p>
+
+<h4>Support &amp; Resistance (3-Method Composite)</h4>
+<p><span class="tag tag-calc">Calculated</span> Each price level is scored by three independent methods, then combined:</p>
+
+<div class="section-box">
+<h4>Method 1: Gamma Exposure (GEX) — weight 40%</h4>
+<div class="formula">gamma(S, K, T, sigma) = N'(d1) / (S * sigma * sqrt(T))    [Black-Scholes gamma]<br>d1 = (ln(S/K) + (r + 0.5*sigma^2)*T) / (sigma * sqrt(T))<br><br>For each strike across up to 6 nearest expirations:<br>  call_gex += gamma * call_OI * 100 * price   (positive)<br>  put_gex  -= gamma * put_OI  * 100 * price   (negative)<br><br>Strikes with highest absolute GEX = dealer hedging walls</div>
+
+<h4>Method 2: OI Walls — weight 40%</h4>
+<div class="formula">oi_by_strike = aggregate(call_OI + put_OI) across up to 6 expirations<br>Strikes with highest aggregate OI = potential pinning/barrier levels</div>
+
+<h4>Method 3: Volume Profile — weight 20%</h4>
+<div class="formula">3-month price history bucketed into 50 equal-width price bins<br>Each bin weighted by trading volume at that price level<br>High-volume nodes = historically contested price zones</div>
+
+<h4>Composite Score</h4>
+<div class="formula">score = 0.4 * (|GEX| / max_GEX) + 0.4 * (OI / max_OI) + 0.2 * (VP / max_VP)</div>
+<p>Strikes are split into above-price (resistance) and below-price (support). Top 3 of each returned, sorted closest-to-price first, ranked by composite score.</p>
+</div>
+
+<h4>Touch Probabilities (per S/R level)</h4>
+<div class="formula">sigma = IV * sqrt(DTE / 365)<br>z = ln(level / price) / sigma<br>P(touch) = 2 * (1 - Phi(|z|))     [reflection principle, log-normal GBM]</div>
+<p><span class="tag tag-calc">Calculated</span> Probability of price touching each S/R level by a given date. Computed at two horizons: this Friday and next Friday. Based on the reflection principle for geometric Brownian motion.</p>
+
+<h4>Sentiment Score (composite)</h4>
+<div class="section-box">
+<p><span class="tag tag-calc">Calculated</span> Integer scoring system combining three signals:</p>
+<table>
+<tr><th>Signal</th><th>Condition</th><th>Points</th></tr>
+<tr><td rowspan="4">Volume P/C Ratio</td><td>&ge; 1.5</td><td>-2</td></tr>
+<tr><td>&ge; 1.0</td><td>-1</td></tr>
+<tr><td>&le; 0.7</td><td>+1</td></tr>
+<tr><td>&le; 0.5</td><td>+2</td></tr>
+<tr><td rowspan="2">OI P/C Ratio</td><td>&ge; 1.3</td><td>-1</td></tr>
+<tr><td>&le; 0.7</td><td>+1</td></tr>
+<tr><td rowspan="2">Max Pain Distance</td><td>&gt; 2% above price</td><td>+1</td></tr>
+<tr><td>&gt; 2% below price</td><td>-1</td></tr>
+<tr><td colspan="3"><strong>Result:</strong> &ge;2 = Bullish &nbsp;|&nbsp; &le;-2 = Bearish &nbsp;|&nbsp; else = Neutral</td></tr>
+</table>
+</div>
+
+<h4>News Sentiment Aggregation</h4>
+<div class="formula">Filter articles to relevance &gt; 0.3<br>avg_score = mean(per_ticker_sentiment_scores)<br><br>Labels:  &ge;0.35 = Bullish  |  &ge;0.15 = Somewhat-Bullish  |  &ge;-0.15 = Neutral<br>         &ge;-0.35 = Somewhat-Bearish  |  &lt;-0.35 = Bearish</div>
+<p><span class="tag tag-calc">Calculated</span> from <span class="tag tag-api">Alpha Vantage</span> raw article scores. Returns label + article count + top 3 bullish/bearish headlines. Cached 12 hours to preserve API quota (25/day free tier).</p>
+
+<h4>Signal Sheet</h4>
+<p><span class="tag tag-calc">Calculated</span> <code>compute_signals()</code> distills all computed metrics into plain-English signal strings for the LLM. Examples:</p>
+<ul>
+<li><em>"Volume P/C ratio is 1.3 — moderately bearish flow"</em></li>
+<li><em>"Max pain $185.00 is 2.1% above — upward magnet"</em></li>
+<li><em>"IV rank 82% — very elevated, premium sellers' market"</em></li>
+<li><em>"Expected move &plusmn;$4.50 (&plusmn;2.3%) by expiry"</em></li>
+<li><em>"Unusual CALL activity at $190.00: 12,500 vol (8.3x median), OI 3,200"</em></li>
+</ul>
+
+<!-- ===== LLM ===== -->
+<h2>5. LLM Architecture</h2>
+
+<h3>5.1 Two-Pass Design</h3>
+<table>
+<tr><th>Pass</th><th>Model</th><th>Input</th><th>Output</th><th>Purpose</th></tr>
+<tr>
+<td><strong>Pass 1</strong><br>Intent Extraction</td>
+<td><span class="tag tag-llm">options-analyst</span></td>
+<td>Raw user message ($ signs stripped)</td>
+<td>JSON: <code>{"tickers": [...], "intent": "...", "analyze": bool}</code></td>
+<td>Determine what tickers the user wants analyzed vs. just mentioned. Handles "recommend something besides AAPL" (analyze=false) vs "how's AAPL looking" (analyze=true).</td>
+</tr>
+<tr>
+<td><strong>Pass 2</strong><br>Response Gen</td>
+<td><span class="tag tag-llm">options-analyst</span></td>
+<td>User message + intent + formatted math summary (all computed metrics)</td>
+<td>2-3 sentence natural-language response in Maxwell's voice</td>
+<td>Synthesize quantitative results into a conversational take. Math is pre-computed — LLM only interprets, never calculates.</td>
+</tr>
+</table>
+
+<h3>5.2 Personality System</h3>
+<table>
+<tr><th>Mood</th><th>Probability</th><th>Behavior</th></tr>
+<tr><td>Normal</td><td>80%</td><td>Standard Maxwell — cocky, street-smart, confident. Grew up broke, clawed his way up. Flexes on bad trades, gases up good plays.</td></tr>
+<tr><td>Snarky</td><td>10%</td><td>Fed up. Opens with exasperated complaint about being everyone's free oracle. Still delivers solid analysis because he can't help himself.</td></tr>
+<tr><td>Overworked</td><td>10%</td><td>Exhausted and dramatic. Complains about working for FREE. Calls user a creative ticker-related nickname ("Battery Boy" for TSLA, "Mr. Midas" for gold). Still gives good answer.</td></tr>
+</table>
+
+<h3>5.3 Response Paths</h3>
+<table>
+<tr><th>Scenario</th><th>Handler</th><th>What Happens</th></tr>
+<tr><td>Conversational pattern detected (recommend, suggest, compare, how's the market, etc.)</td><td><code>_generate_no_ticker_response()</code></td><td>Maxwell answers using market knowledge + personality. No math pipeline.</td></tr>
+<tr><td>Tickers found, analyze=true</td><td>Full pipeline: <code>_gather_math()</code> &rarr; <code>_generate_response()</code></td><td>Math computed, formatted card + Maxwell's take displayed.</td></tr>
+<tr><td>Tickers found, analyze=false</td><td><code>_generate_no_ticker_response()</code></td><td>User mentioned tickers but wants a recommendation/opinion, not analysis.</td></tr>
+<tr><td>Tickers found but data fetch fails</td><td><code>_generate_failed_ticker_response()</code></td><td>Maxwell acknowledges lookup failed, still gives opinion from LLM knowledge.</td></tr>
+<tr><td>No tickers at all</td><td><code>_generate_no_ticker_response()</code></td><td>General market chat.</td></tr>
+</table>
+
+<!-- ===== OUTPUT FORMAT ===== -->
+<h2>6. Output Format</h2>
+
+<h3>6.1 Single-Ticker Card</h3>
+<pre>
+[icon] AAPL — Apple Inc.
+Price: $185.42 | Sentiment: BULLISH
+IV: 28.5% | Rank: 62%
+Max Pain: $182.50 (arrow $2.92)
+Calls: 63.2% | Puts: 36.8%
+Resistance: $188.00 (Fri:34% / Next:48%), $190.00 (Fri:22% / Next:35%)
+Support: $183.00 (Fri:45% / Next:58%), $180.50 (Fri:28% / Next:42%)
+
+[newspaper] News: Somewhat-Bullish (12 articles)
+  [green] Apple announces new AI features at WWDC...
+  [red] Analysts warn of China supply chain risks...
+
+[brain] Maxwell says: [2-3 sentence response]
+
+---
+Maxwell is not a licensed financial advisor. [disclaimer]
+</pre>
+
+<h3>6.2 Multi-Ticker Comparison Table</h3>
+<pre>
+         | AAPL    | TSLA    | NVDA
+---------|---------|---------|--------
+Price    | $185.42 | $178.90 | $950.23
+Sentiment| BULLISH | NEUTRAL | BULLISH
+IV Rank  | 62%     | 78%     | 45%
+Max Pain | $182.50 | $175.00 | $940.00
+Calls    | 63.2%   | 51.1%   | 67.8%
+Puts     | 36.8%   | 48.9%   | 32.2%
+
+[brain] Maxwell says: [2-3 sentence comparison]
+</pre>
+
+<!-- ===== CRYPTO ===== -->
+<h2>7. Crypto Support</h2>
+<p>21 crypto symbols are mapped to yfinance tickers via <code>CRYPTO_MAP</code>:</p>
+<pre>BTC, ETH, SOL, XRP, DOGE, ADA, AVAX, DOT, MATIC, LINK, LTC,
+UNI, SHIB, PEPE, BNB, NEAR, ARB, OP, SUI, APT, ATOM</pre>
+<p>Crypto tickers return price-only data (no options chain), so the output card shows price + news sentiment only, with no IV/max pain/S&amp;R analysis.</p>
+
+<!-- ===== STATE ===== -->
+<h2>8. State &amp; Configuration</h2>
+<table>
+<tr><th>File</th><th>Type</th><th>Purpose</th></tr>
+<tr><td><code>.env</code></td><td><span class="tag tag-state">Config</span></td><td>API tokens: <code>Telegram_API</code>, <code>Maxwell_API</code>, <code>ALPHAVANTAGE_API_KEY</code>, chat IDs</td></tr>
+<tr><td><code>telegram_inbox.json</code></td><td><span class="tag tag-state">Queue</span></td><td>Pending messages from Telegram awaiting Claude Code processing</td></tr>
+<tr><td><code>telegram_outbox.json</code></td><td><span class="tag tag-state">Queue</span></td><td>Responses from Claude Code to send back to Telegram</td></tr>
+<tr><td><code>telegram_bridge_offset.json</code></td><td><span class="tag tag-state">State</span></td><td>Last processed Telegram <code>update_id</code> (dedup)</td></tr>
+<tr><td><code>telegram_bridge_heartbeat.json</code></td><td><span class="tag tag-state">State</span></td><td>Bridge PID + timestamp for watchdog monitoring</td></tr>
+<tr><td><code>telegram_watch.json</code></td><td><span class="tag tag-state">State</span></td><td>Watch loop active/idle/cooldown state + backoff tier</td></tr>
+<tr><td><code>maxwell_slang.json</code></td><td><span class="tag tag-state">Data</span></td><td>Trending slang dictionary for personality enhancement</td></tr>
+<tr><td><code>sentiment_cache/*.json</code></td><td><span class="tag tag-state">Cache</span></td><td>Alpha Vantage results cached per ticker per day (12h TTL)</td></tr>
+</table>
+
+<!-- ===== DEPENDENCIES ===== -->
+<h2>9. Dependencies</h2>
+<table>
+<tr><th>Package</th><th>Version Requirement</th><th>Used For</th></tr>
+<tr><td><code>yfinance</code></td><td>Latest</td><td>Stock/crypto prices, options chains, historical data</td></tr>
+<tr><td><code>numpy</code></td><td>&ge;1.20</td><td>Math operations, sqrt, log, array operations</td></tr>
+<tr><td><code>scipy</code></td><td>&ge;1.7</td><td><code>scipy.stats.norm</code> for probability distributions (CDF, PDF)</td></tr>
+<tr><td><code>requests</code></td><td>&ge;2.25</td><td>Ollama API, Telegram API, Alpha Vantage API</td></tr>
+<tr><td><code>python-dotenv</code></td><td>Any</td><td><code>.env</code> file loading</td></tr>
+</table>
+
+<h3>9.1 Infrastructure</h3>
+<table>
+<tr><th>Component</th><th>Requirement</th></tr>
+<tr><td>Ollama</td><td>Running locally on port 11434 with <code>options-analyst</code> model loaded. Fallback: <code>llama3.1:8b</code>.</td></tr>
+<tr><td>Python</td><td>&ge;3.9</td></tr>
+<tr><td>Network</td><td>Outbound HTTPS to: api.telegram.org, query1.finance.yahoo.com, alphavantage.co</td></tr>
+</table>
+
+<!-- ===== LIMITATIONS ===== -->
+<h2>10. Current Limitations &amp; Known Gaps</h2>
+<ul>
+<li><strong>Options data source</strong>: yfinance is unofficial and can break on Yahoo API changes. Schwab API integration is planned (slot reserved in <code>options_data.py</code>) for real-time, reliable data.</li>
+<li><strong>IV Rank uses realized vol as proxy</strong>: True IV rank should compare current IV to historical IV, but historical ATM IV isn't available from yfinance. The 20-day realized vol proxy is approximate.</li>
+<li><strong>Max pain is nearest-expiry only</strong>: Doesn't aggregate across expirations. Large OI clusters in later expirations are invisible to this calculation.</li>
+<li><strong>GEX assumes standard Black-Scholes</strong>: No dividend adjustment, no early exercise for American options. Uses risk-free rate of 5% hardcoded.</li>
+<li><strong>Volume profile is 3-month lookback</strong>: May miss longer-term structural S/R from older price action.</li>
+<li><strong>Crypto: price-only</strong>: No options chain analysis for crypto symbols. Only price + news sentiment.</li>
+<li><strong>Alpha Vantage free tier</strong>: 25 requests/day limits how many tickers can get fresh news sentiment. 12h cache helps but can serve stale data.</li>
+<li><strong>Ollama model dependency</strong>: Requires the custom <code>options-analyst</code> Modelfile to be built and loaded. If model is unavailable, falls back to generic <code>llama3.1:8b</code> which lacks financial specialization.</li>
+<li><strong>No historical tracking</strong>: Maxwell doesn't track past predictions or accuracy. No feedback loop on whether his calls were right.</li>
+<li><strong>Single-expiry focus for main analysis</strong>: The primary metrics (volume split, P/C ratio, max pain) use only the nearest Friday expiry. S/R uses multi-expiry but capped at 6.</li>
+</ul>
+
+<!-- ===== FUTURE ===== -->
+<h2>11. Planned Enhancements</h2>
+<ul>
+<li><strong>Schwab API integration</strong>: Real-time, official options data replacing yfinance.</li>
+<li><strong>Prediction tracking</strong>: Log Maxwell's directional calls, compute accuracy over time, display hit rate.</li>
+<li><strong>Multi-expiry max pain heatmap</strong>: Show how max pain shifts across expirations.</li>
+<li><strong>Dark pool / block trade integration</strong>: Unusual activity enriched with institutional flow data.</li>
+<li><strong>Earnings calendar awareness</strong>: Auto-flag upcoming earnings, adjust IV context (pre-earnings crush, etc.).</li>
+</ul>
+
+<div class="footer">
+Maxwell Design &amp; Requirements Document &bull; Generated 2026-05-24 &bull; Trading Bot Platform
+</div>
+
+</div>
+</body>
+</html>
