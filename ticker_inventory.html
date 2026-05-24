@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 726 with 1m data &#8226; 2,701 missing 1m &#8226; 205 with deployed rules &#8226; 45 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 730 with 1m data &#8226; 2,697 missing 1m &#8226; 205 with deployed rules &#8226; 46 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -642,7 +642,7 @@ var data = [
   {t:"MDLN",n:"Medline Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:6003918,mc:38323109888,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SATS",n:"EchoStar Corporation",s:"Communication Services",i:"Telecom Services",v:5968915,mc:34006028288,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BFLY",n:"Butterfly Network, Inc.",s:"Healthcare",i:"Medical Devices",v:5964800,mc:1261109248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"EBAY",n:"eBay Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:5945580,mc:46735441920,qt:"EQUITY",d1m:1,d5m:1,rules:542,br:0},
+  {t:"EBAY",n:"eBay Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:5945580,mc:46735441920,qt:"EQUITY",d1m:1,d5m:1,rules:1066,br:524},
   {t:"OMEX",n:"Odyssey Marine Exploration, Inc",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:5940286,mc:70222392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GE",n:"GE Aerospace",s:"Industrials",i:"Aerospace &amp; Defense",v:5938828,mc:299531763712,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TERN",n:"Terns Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:5933488,mc:6118809088,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -823,7 +823,7 @@ var data = [
   {t:"ARKB",n:"ARK 21Shares Bitcoin ETF",s:"",i:"",v:4537226,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PGEN",n:"Precigen, Inc.",s:"Healthcare",i:"Biotechnology",v:4534784,mc:1543692544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"COLD",n:"Americold Realty Trust, Inc.",s:"Real Estate",i:"REIT - Industrial",v:4521085,mc:3437068032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"TJX",n:"TJX Companies, Inc. (The)",s:"Consumer Cyclical",i:"Apparel Retail",v:4519842,mc:171356979200,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"TJX",n:"TJX Companies, Inc. (The)",s:"Consumer Cyclical",i:"Apparel Retail",v:4519842,mc:171356979200,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"PENN",n:"PENN Entertainment, Inc.",s:"Consumer Cyclical",i:"Resorts &amp; Casinos",v:4518013,mc:2288721664,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CGDV",n:"Capital Group Dividend Value ET",s:"",i:"",v:4507871,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"NET",n:"Cloudflare, Inc.",s:"Technology",i:"Software - Infrastructure",v:4501201,mc:86375227392,qt:"EQUITY",d1m:1,d5m:1,rules:382,br:0},
@@ -1011,7 +1011,7 @@ var data = [
   {t:"GPN",n:"Global Payments Inc.",s:"Industrials",i:"Specialty Business Services",v:3645369,mc:19121131520,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NTR",n:"Nutrien Ltd.",s:"Basic Materials",i:"Agricultural Inputs",v:3638267,mc:37164994560,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TAL",n:"TAL Education Group",s:"Consumer Defensive",i:"Education &amp; Training Services",v:3628608,mc:6693739008,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VLO",n:"Valero Energy Corporation",s:"Energy",i:"Oil &amp; Gas Refining &amp; Marketing",v:3622896,mc:75257610240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VLO",n:"Valero Energy Corporation",s:"Energy",i:"Oil &amp; Gas Refining &amp; Marketing",v:3622896,mc:75257610240,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"PYLD",n:"PIMCO Multisector Bond Active E",s:"",i:"",v:3604769,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CGGR",n:"Capital Group Growth ETF",s:"",i:"",v:3602000,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ACHC",n:"Acadia Healthcare Company, Inc.",s:"Healthcare",i:"Medical Care Facilities",v:3600228,mc:2324006656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1069,7 +1069,7 @@ var data = [
   {t:"BCE",n:"BCE, Inc.",s:"Communication Services",i:"Telecom Services",v:3331488,mc:22473873408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TSLT",n:"T-REX 2X Long Tesla Daily Targe",s:"",i:"",v:3326994,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"MCD",n:"McDonalds Corporation",s:"Consumer Cyclical",i:"Restaurants",v:3324245,mc:202706731008,qt:"EQUITY",d1m:1,d5m:1,rules:231,br:0},
-  {t:"SPXL",n:"Direxion Daily S&amp;P 500 Bull 3X ",s:"",i:"",v:3316277,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SPXL",n:"Direxion Daily S&amp;P 500 Bull 3X ",s:"",i:"",v:3316277,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ROL",n:"Rollins, Inc.",s:"Consumer Cyclical",i:"Personal Services",v:3309893,mc:26051997696,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TMQ",n:"Trilogy Metals Inc.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:3309381,mc:728142528,qt:"EQUITY",d1m:1,d5m:1,rules:1120,br:550},
   {t:"RPRX",n:"Royalty Pharma plc",s:"Healthcare",i:"Biotechnology",v:3302354,mc:29901699072,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2023,7 +2023,7 @@ var data = [
   {t:"GLOB",n:"Globant S.A.",s:"Technology",i:"Information Technology Services",v:1451763,mc:1731068416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LAZ",n:"Lazard, Inc.",s:"Financial Services",i:"Capital Markets",v:1448779,mc:4439539712,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SYNX",n:"Silynxcom Ltd.",s:"Technology",i:"Communication Equipment",v:1447240,mc:8160361,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"ASO",n:"Academy Sports and Outdoors, In",s:"Consumer Cyclical",i:"Specialty Retail",v:1446433,mc:3355068160,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ASO",n:"Academy Sports and Outdoors, In",s:"Consumer Cyclical",i:"Specialty Retail",v:1446433,mc:3355068160,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CHKP",n:"Check Point Software Technologi",s:"Technology",i:"Software - Infrastructure",v:1445166,mc:12261946368,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"POR",n:"Portland General Electric Co",s:"Utilities",i:"Utilities - Regulated Electric",v:1445144,mc:5684657664,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KW",n:"Kennedy-Wilson Holdings Inc.",s:"Real Estate",i:"Real Estate Services",v:1444955,mc:1521191808,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
