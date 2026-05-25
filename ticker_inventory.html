@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 757 with 1m data &#8226; 2,670 missing 1m &#8226; 213 with deployed rules &#8226; 54 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 761 with 1m data &#8226; 2,666 missing 1m &#8226; 213 with deployed rules &#8226; 54 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -128,7 +128,7 @@ var data = [
   {t:"NFLX",n:"Netflix, Inc.",s:"Communication Services",i:"Entertainment",v:45395144,mc:370087100416,qt:"EQUITY",d1m:1,d5m:1,rules:2181,br:1355},
   {t:"AAPL",n:"Apple Inc.",s:"Technology",i:"Consumer Electronics",v:44020290,mc:4173852573696,qt:"EQUITY",d1m:1,d5m:1,rules:1926,br:548},
   {t:"BMNR",n:"BitMine Immersion Technologies,",s:"Financial Services",i:"Capital Markets",v:43383728,mc:13157225472,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MU",n:"Micron Technology, Inc.",s:"Technology",i:"Semiconductors",v:41321133,mc:721975312384,qt:"EQUITY",d1m:1,d5m:1,rules:650,br:0},
+  {t:"MU",n:"Micron Technology, Inc.",s:"Technology",i:"Semiconductors",v:41321133,mc:721975312384,qt:"EQUITY",d1m:1,d5m:1,rules:718,br:0},
   {t:"LQD",n:"iShares iBoxx $ Investment Grad",s:"",i:"",v:41254488,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IWM",n:"iShares Russell 2000 Index Fund",s:"",i:"",v:40755589,mc:0,qt:"ETF",d1m:1,d5m:1,rules:45,br:0},
   {t:"T",n:"AT&amp;T Inc.",s:"Communication Services",i:"Telecom Services",v:40600927,mc:179961970688,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -476,7 +476,7 @@ var data = [
   {t:"AMPX",n:"Amprius Technologies, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:8444473,mc:3013271040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BCS",n:"Barclays PLC",s:"Financial Services",i:"Banks - Diversified",v:8428501,mc:77818077184,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DOC",n:"Healthpeak Properties, Inc.",s:"Real Estate",i:"REIT - Healthcare Facilities",v:8426795,mc:11478687744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VXUS",n:"Vanguard Total International St",s:"",i:"",v:8408633,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VXUS",n:"Vanguard Total International St",s:"",i:"",v:8408633,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MSOS",n:"AdvisorShares Pure US Cannabis ",s:"",i:"",v:8369069,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"XLRE",n:"State Street Real Estate Select",s:"",i:"",v:8338776,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GT",n:"The Goodyear Tire &amp; Rubber Comp",s:"Consumer Cyclical",i:"Auto Parts",v:8327440,mc:2028542080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -672,7 +672,7 @@ var data = [
   {t:"SPYG",n:"State Street SPDR Portfolio S&amp;P",s:"",i:"",v:5768349,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MNKD",n:"MannKind Corporation",s:"Healthcare",i:"Biotechnology",v:5727559,mc:883155904,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GLXY",n:"Galaxy Digital Inc.",s:"Financial Services",i:"Capital Markets",v:5695535,mc:11832654848,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"SPDW",n:"State Street SPDR Portfolio Dev",s:"",i:"",v:5695355,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SPDW",n:"State Street SPDR Portfolio Dev",s:"",i:"",v:5695355,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ETH",n:"Grayscale Ethereum Staking Mini",s:"",i:"",v:5688150,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"IQMM",n:"ProShares GENIUS Money Market E",s:"",i:"",v:5678482,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CZR",n:"Caesars Entertainment, Inc.",s:"Consumer Cyclical",i:"Resorts &amp; Casinos",v:5676630,mc:5723321856,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -868,7 +868,7 @@ var data = [
   {t:"PONY",n:"Pony AI Inc.",s:"Technology",i:"Information Technology Services",v:4279062,mc:4422124032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"STUB",n:"StubHub Holdings, Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:4272350,mc:2841238528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WBS",n:"Webster Financial Corporation",s:"Financial Services",i:"Banks - Regional",v:4272327,mc:11691832320,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VGK",n:"Vanguard FTSEEuropean ETF",s:"",i:"",v:4272235,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VGK",n:"Vanguard FTSEEuropean ETF",s:"",i:"",v:4272235,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NUVB",n:"Nuvation Bio Inc.",s:"Healthcare",i:"Biotechnology",v:4272094,mc:1681815552,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SJNK",n:"State Street SPDR Bloomberg Sho",s:"",i:"",v:4268689,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ABNB",n:"Airbnb, Inc.",s:"Consumer Cyclical",i:"Travel Services",v:4260076,mc:83073007616,qt:"EQUITY",d1m:1,d5m:1,rules:204,br:0},
@@ -3185,7 +3185,7 @@ var data = [
   {t:"IDXX",n:"IDEXX Laboratories, Inc.",s:"Healthcare",i:"Diagnostics &amp; Research",v:526406,mc:44825546752,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CRDU",n:"Tradr 2X Long CRDO Daily ETF",s:"",i:"",v:525778,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SCZM",n:"Santacruz Silver Mining Ltd.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:525205,mc:718880640,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"COHX",n:"Tradr 2X Long COHR Daily ETF",s:"",i:"",v:525048,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"COHX",n:"Tradr 2X Long COHR Daily ETF",s:"",i:"",v:525048,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LZM",n:"Lifezone Metals Limited",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:522232,mc:502563296,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EXPO",n:"Exponent, Inc.",s:"Industrials",i:"Engineering &amp; Construction",v:522085,mc:3205652992,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BIOA",n:"BioAge Labs, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:521615,mc:740555584,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
