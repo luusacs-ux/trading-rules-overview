@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 767 with 1m data &#8226; 2,660 missing 1m &#8226; 215 with deployed rules &#8226; 55 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 776 with 1m data &#8226; 2,651 missing 1m &#8226; 215 with deployed rules &#8226; 55 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -442,7 +442,7 @@ var data = [
   {t:"PPL",n:"PPL Corporation",s:"Utilities",i:"Utilities - Regulated Electric",v:9179861,mc:28093366272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XBI",n:"State Street SPDR S&amp;P Biotech E",s:"",i:"",v:9165450,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"INDA",n:"Ishares MSCI India ETF",s:"",i:"",v:9160435,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SCHH",n:"Schwab U.S. REIT ETF",s:"",i:"",v:9141827,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SCHH",n:"Schwab U.S. REIT ETF",s:"",i:"",v:9141827,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MCHP",n:"Microchip Technology Incorporat",s:"Technology",i:"Semiconductors",v:9099733,mc:53291024384,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LUV",n:"Southwest Airlines Company",s:"Industrials",i:"Airlines",v:9095871,mc:19409205248,qt:"EQUITY",d1m:1,d5m:1,rules:147,br:0},
   {t:"OGN",n:"Organon &amp; Co.",s:"Healthcare",i:"Drug Manufacturers - General",v:9093869,mc:3505721600,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -944,7 +944,7 @@ var data = [
   {t:"BAM",n:"Brookfield Asset Management Inc",s:"Financial Services",i:"Asset Management",v:3892931,mc:79337480192,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FOXA",n:"Fox Corporation",s:"Communication Services",i:"Entertainment",v:3876531,mc:26472396800,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XLG",n:"Invesco S&amp;P 500 Top 50 ETF",s:"",i:"",v:3865462,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"STX",n:"Seagate Technology Holdings PLC",s:"Technology",i:"Computer Hardware",v:3863144,mc:172882804736,qt:"EQUITY",d1m:1,d5m:1,rules:5,br:0},
+  {t:"STX",n:"Seagate Technology Holdings PLC",s:"Technology",i:"Computer Hardware",v:3863144,mc:172882804736,qt:"EQUITY",d1m:1,d5m:1,rules:630,br:0},
   {t:"TPG",n:"TPG Inc.",s:"Financial Services",i:"Asset Management",v:3859961,mc:17528485888,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PGY",n:"Pagaya Technologies Ltd.",s:"Technology",i:"Software - Infrastructure",v:3857881,mc:1207055744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ASST",n:"Strive, Inc.",s:"Financial Services",i:"Asset Management",v:3856541,mc:1205616896,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -993,7 +993,7 @@ var data = [
   {t:"MUFG",n:"Mitsubishi UFJ Financial Group,",s:"Financial Services",i:"Banks - Diversified",v:3709440,mc:200467726336,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CERT",n:"Certara, Inc.",s:"Healthcare",i:"Health Information Services",v:3709363,mc:947548928,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NG",n:"Novagold Resources Inc.",s:"Basic Materials",i:"Gold",v:3703930,mc:3479530240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"UDR",n:"UDR, Inc.",s:"Real Estate",i:"REIT - Residential",v:3703869,mc:13686847488,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"UDR",n:"UDR, Inc.",s:"Real Estate",i:"REIT - Residential",v:3703869,mc:13686847488,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"MCHI",n:"iShares MSCI China ETF",s:"",i:"",v:3702877,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FIGS",n:"FIGS, Inc.",s:"Consumer Cyclical",i:"Apparel Manufacturing",v:3696986,mc:2428830720,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AXP",n:"American Express Company",s:"Financial Services",i:"Credit Services",v:3696485,mc:215581048832,qt:"EQUITY",d1m:1,d5m:1,rules:1352,br:638},
@@ -1253,7 +1253,7 @@ var data = [
   {t:"REXR",n:"Rexford Industrial Realty, Inc.",s:"Real Estate",i:"REIT - Industrial",v:2751974,mc:8225006592,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"UA",n:"Under Armour, Inc.",s:"Consumer Cyclical",i:"Apparel Manufacturing",v:2750934,mc:2589411328,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SRPT",n:"Sarepta Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:2748706,mc:2300395264,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"IRT",n:"Independence Realty Trust, Inc.",s:"Real Estate",i:"REIT - Residential",v:2744537,mc:3987329280,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"IRT",n:"Independence Realty Trust, Inc.",s:"Real Estate",i:"REIT - Residential",v:2744537,mc:3987329280,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMPL",n:"The Simply Good Foods Company",s:"Consumer Defensive",i:"Packaged Foods",v:2741183,mc:1183111808,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"DHI",n:"D.R. Horton, Inc.",s:"Consumer Cyclical",i:"Residential Construction",v:2739935,mc:41535905792,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VIK",n:"Viking Holdings Ltd",s:"Consumer Cyclical",i:"Travel Services",v:2739593,mc:36448473088,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1263,7 +1263,7 @@ var data = [
   {t:"VGLT",n:"Vanguard Long-Term Treasury ETF",s:"",i:"",v:2727459,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"TAK",n:"Takeda Pharmaceutical Company L",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:2726252,mc:52284637184,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SSNC",n:"SS&amp;C Technologies Holdings, Inc",s:"Technology",i:"Software - Application",v:2722627,mc:16684981248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"EQR",n:"Equity Residential",s:"Real Estate",i:"REIT - Residential",v:2720951,mc:25594732544,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"EQR",n:"Equity Residential",s:"Real Estate",i:"REIT - Residential",v:2720951,mc:25594732544,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"MSOX",n:"AdvisorShares MSOS Daily Levera",s:"",i:"",v:2720135,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AAAU",n:"Goldman Sachs Physical Gold ETF",s:"",i:"",v:2720076,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AXTA",n:"Axalta Coating Systems Ltd.",s:"Basic Materials",i:"Specialty Chemicals",v:2719018,mc:5812749824,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1714,7 +1714,7 @@ var data = [
   {t:"RLMD",n:"Relmada Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:1856976,mc:770943168,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VPL",n:"Vanguard FTSE Pacific ETF",s:"",i:"",v:1855672,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"HODL",n:"VanEck Bitcoin Trust",s:"",i:"",v:1854898,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"DFAR",n:"Dimensional US Real Estate ETF",s:"",i:"",v:1854781,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"DFAR",n:"Dimensional US Real Estate ETF",s:"",i:"",v:1854781,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BCI",n:"abrdn Bloomberg All Commodity S",s:"",i:"",v:1851035,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"GNL",n:"Global Net Lease, Inc.",s:"Real Estate",i:"REIT - Diversified",v:1848055,mc:1939172736,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GOVZ",n:"iShares 25  Year Treasury STRIP",s:"",i:"",v:1845651,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -2336,7 +2336,7 @@ var data = [
   {t:"NBIX",n:"Neurocrine Biosciences, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:1162072,mc:13584603136,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CGMU",n:"Capital Group Municipal Income ",s:"",i:"",v:1161940,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"JBL",n:"Jabil Inc.",s:"Technology",i:"Electronic Components",v:1161083,mc:35581816832,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CPT",n:"Camden Property Trust",s:"Real Estate",i:"REIT - Residential",v:1160060,mc:10377757696,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CPT",n:"Camden Property Trust",s:"Real Estate",i:"REIT - Residential",v:1160060,mc:10377757696,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:"N/A"},
   {t:"NASA",n:"Tema Space Innovators ETF",s:"",i:"",v:1159958,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"VOYA",n:"Voya Financial, Inc.",s:"Financial Services",i:"Financial Conglomerates",v:1159640,mc:7709538304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PTC",n:"PTC Inc.",s:"Technology",i:"Software - Application",v:1157852,mc:16367916032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2373,7 +2373,7 @@ var data = [
   {t:"CCK",n:"Crown Holdings, Inc.",s:"Consumer Cyclical",i:"Packaging &amp; Containers",v:1131771,mc:11024921600,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LINE",n:"Lineage, Inc.",s:"Real Estate",i:"REIT - Industrial",v:1131361,mc:9058206720,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IMAX",n:"Imax Corporation",s:"Communication Services",i:"Entertainment",v:1130944,mc:1966268032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"DRN",n:"Direxion Daily Real Estate Bull",s:"",i:"",v:1129915,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"DRN",n:"Direxion Daily Real Estate Bull",s:"",i:"",v:1129915,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MDY",n:"State Street SPDR S&amp;P MIDCAP 40",s:"",i:"",v:1129811,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SPTM",n:"State Street SPDR Portfolio S&amp;P",s:"",i:"",v:1128620,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"AMN",n:"AMN Healthcare Services Inc",s:"Healthcare",i:"Medical Care Facilities",v:1128295,mc:822604928,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2494,7 +2494,7 @@ var data = [
   {t:"PLX",n:"Protalix BioTherapeutics, Inc. ",s:"Healthcare",i:"Biotechnology",v:1030606,mc:157920416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PKG",n:"Packaging Corporation of Americ",s:"Consumer Cyclical",i:"Packaging &amp; Containers",v:1028330,mc:19868715008,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ATO",n:"Atmos Energy Corporation",s:"Utilities",i:"Utilities - Regulated Gas",v:1028030,mc:30978443264,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AVB",n:"AvalonBay Communities, Inc.",s:"Real Estate",i:"REIT - Residential",v:1027833,mc:25770510336,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AVB",n:"AvalonBay Communities, Inc.",s:"Real Estate",i:"REIT - Residential",v:1027833,mc:25770510336,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SNDR",n:"Schneider National, Inc.",s:"Industrials",i:"Trucking",v:1025884,mc:5258982912,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GPRK",n:"Geopark Ltd",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:1025703,mc:635145536,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HPK",n:"HighPeak Energy, Inc.",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:1022269,mc:857971520,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2571,7 +2571,7 @@ var data = [
   {t:"ENOV",n:"Enovis Corporation",s:"Healthcare",i:"Medical Devices",v:956493,mc:1387841792,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FAZ",n:"Direxion Financial Bear 3X ETF",s:"",i:"",v:956120,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CGXU",n:"Capital Group International Foc",s:"",i:"",v:954893,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MAA",n:"Mid-America Apartment Communiti",s:"Real Estate",i:"REIT - Residential",v:954167,mc:15531555840,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MAA",n:"Mid-America Apartment Communiti",s:"Real Estate",i:"REIT - Residential",v:954167,mc:15531555840,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMWB",n:"Similarweb Ltd.",s:"Technology",i:"Software - Application",v:952661,mc:279445728,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ROK",n:"Rockwell Automation, Inc.",s:"Industrials",i:"Specialty Industrial Machinery",v:952657,mc:49012998144,qt:"EQUITY",d1m:1,d5m:1,rules:104,br:0},
   {t:"RBBN",n:"Ribbon Communications Inc.",s:"Technology",i:"Software - Application",v:950994,mc:479400352,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
