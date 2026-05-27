@@ -23,10 +23,10 @@ tr:hover { background: #1a2a4e; }
 tr.wr100 { background: rgba(0, 255, 136, 0.15); }
 tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
-.fam-AN_S { background: #2a4a2a; color: #66ff66; }
-.fam-AN_L { background: #2a2a4a; color: #6666ff; }
-.fam-AN_D { background: #4a2a4a; color: #ff66ff; }
-.fam-AN_X { background: #4a4a2a; color: #ffff66; }
+.fam-AN_B1_S { background: #2a4a2a; color: #66ff66; }
+.fam-AN_B1_L { background: #2a2a4a; color: #6666ff; }
+.fam-AN_B1_D { background: #4a2a4a; color: #ff66ff; }
+.fam-AN_B1_X { background: #4a4a2a; color: #ffff66; }
 .pipeline { color: #666; font-size: 12px; margin-top: 30px; }
 .sort-arrow { font-size: 10px; margin-left: 4px; }
 </style>
@@ -35,26 +35,12 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <h1>AN &mdash; Backtest Report</h1>
 <div class="subtitle">Pipeline: create_rules_AN_DFAS_20260527_v2 | Ticker: AN | Lead: DFAS | Same: RSSL | Inverse: TZA | Date: 2026-05-27</div>
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">10</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">9</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">5</div></div>
-    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">19.4%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">0</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">0</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">0%</div></div>
 </div>
-<h2>Daily Timeframe (10 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="wr100"><td>1</td><td><strong>DV_24bar_lag_3_rsi30</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>18.72</td><td>7.448</td><td>40</td><td>4</td><td>4</td><td>100.0</td><td><strong>47.94</strong></td><td>11.98</td></tr>
-<tr class="wr100"><td>2</td><td><strong>DV_24bar_lag_8_rsi30</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>15.6</td><td>4.85</td><td>30</td><td>3</td><td>3</td><td>100.0</td><td><strong>30.89</strong></td><td>10.3</td></tr>
-<tr class="wr100"><td>3</td><td><strong>DV_12bar_lag_5_rsi30</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>13.52</td><td>7.425</td><td>40</td><td>3</td><td>3</td><td>100.0</td><td><strong>29.92</strong></td><td>9.97</td></tr>
-<tr class="wr100"><td>4</td><td><strong>DV_12bar_lag_3_rsi30</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>13.52</td><td>7.425</td><td>40</td><td>3</td><td>3</td><td>100.0</td><td><strong>29.92</strong></td><td>9.97</td></tr>
-<tr><td>5</td><td><strong>DV_12bar_lag_8_rsi30</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>15.45</td><td>2.524</td><td>25</td><td>3</td><td>2</td><td>66.7</td><td><strong>15.8</strong></td><td>5.27</td></tr>
-<tr class="wr100"><td>6</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>1.772</td><td>15.47</td><td>40</td><td>7</td><td>7</td><td>100.0</td><td><strong>12.4</strong></td><td>1.77</td></tr>
-<tr class="wr100"><td>7</td><td><strong>DV_12bar_lag_3</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>2.266</td><td>2.524</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.8</strong></td><td>2.27</td></tr>
-<tr class="wr100"><td>8</td><td><strong>DV_12bar_lag_5</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>2.266</td><td>2.524</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.8</strong></td><td>2.27</td></tr>
-<tr class="wr100"><td>9</td><td><strong>DV_24bar_lag_3</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>2.266</td><td>2.524</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.8</strong></td><td>2.27</td></tr>
-<tr class="wr100"><td>10</td><td><strong>DV_24bar_lag_5</strong></td><td><span class="family fam-AN_D">AN_D</span></td><td>2.266</td><td>2.524</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>6.8</strong></td><td>2.27</td></tr>
-</tbody></table>
+
 <div class="pipeline">Generated by create_rules_AN_DFAS_20260527_v2 pipeline</div>
 <script>
 function sortTable(th) {
