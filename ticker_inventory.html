@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 837 with 1m data &#8226; 2,590 missing 1m &#8226; 225 with deployed rules &#8226; 65 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 839 with 1m data &#8226; 2,588 missing 1m &#8226; 225 with deployed rules &#8226; 65 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -853,7 +853,7 @@ var data = [
   {t:"COPX",n:"Global X Copper Miners ETF",s:"",i:"",v:4346923,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"WVE",n:"Wave Life Sciences Ltd.",s:"Healthcare",i:"Biotechnology",v:4345906,mc:1381288192,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DOCN",n:"DigitalOcean Holdings, Inc.",s:"Technology",i:"Software - Infrastructure",v:4340023,mc:15942075392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VTV",n:"Vanguard Value ETF",s:"",i:"",v:4335322,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VTV",n:"Vanguard Value ETF",s:"",i:"",v:4335322,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SDS",n:"ProShares UltraShort S&amp;P500",s:"",i:"",v:4328400,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FETH",n:"Fidelity Ethereum Fund",s:"",i:"",v:4325036,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"NWSA",n:"News Corporation",s:"Communication Services",i:"Entertainment",v:4323971,mc:13927512064,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -900,7 +900,7 @@ var data = [
   {t:"SSRM",n:"SSR Mining Inc.",s:"Basic Materials",i:"Gold",v:4115274,mc:5785106432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EMXC",n:"iShares MSCI Emerging Markets e",s:"",i:"",v:4111876,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"BZ",n:"KANZHUN LIMITED - American Depo",s:"Communication Services",i:"Internet Content &amp; Information",v:4106878,mc:6309287936,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MKC",n:"McCormick &amp; Company, Incorporat",s:"Consumer Defensive",i:"Packaged Foods",v:4106579,mc:13036207104,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"MKC",n:"McCormick &amp; Company, Incorporat",s:"Consumer Defensive",i:"Packaged Foods",v:4106579,mc:13036207104,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:"N/A"},
   {t:"SUNB",n:"Sunbelt Rentals Holdings, Inc.",s:"Industrials",i:"Rental &amp; Leasing Services",v:4091420,mc:30964420608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SPSB",n:"State Street SPDR Portfolio Sho",s:"",i:"",v:4087896,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ABCL",n:"AbCellera Biologics Inc.",s:"Healthcare",i:"Biotechnology",v:4085530,mc:1422534656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1627,7 +1627,7 @@ var data = [
   {t:"BMRN",n:"BioMarin Pharmaceutical Inc.",s:"Healthcare",i:"Biotechnology",v:2002896,mc:10289696768,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"OUST",n:"Ouster, Inc.",s:"Technology",i:"Electronic Components",v:1999976,mc:1821046400,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WEC",n:"WEC Energy Group, Inc.",s:"Utilities",i:"Utilities - Regulated Electric",v:1999527,mc:37527109632,qt:"EQUITY",d1m:1,d5m:1,rules:35,br:0},
-  {t:"SHLD",n:"Global X Defense Tech ETF",s:"",i:"",v:1995286,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SHLD",n:"Global X Defense Tech ETF",s:"",i:"",v:1995286,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ICLR",n:"ICON plc",s:"Healthcare",i:"Diagnostics &amp; Research",v:1991694,mc:9435314176,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GH",n:"Guardant Health, Inc.",s:"Healthcare",i:"Diagnostics &amp; Research",v:1989818,mc:11867972608,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LEGN",n:"Legend Biotech Corporation",s:"Healthcare",i:"Biotechnology",v:1987788,mc:5273085440,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2087,7 +2087,7 @@ var data = [
   {t:"MCO",n:"Moodys Corporation",s:"Financial Services",i:"Financial Data &amp; Stock Exchanges",v:1389916,mc:79399165952,qt:"EQUITY",d1m:1,d5m:1,rules:1140,br:526},
   {t:"REG",n:"Regency Centers Corporation",s:"Real Estate",i:"REIT - Retail",v:1388871,mc:14746607616,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ELDN",n:"Eledon Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:1388056,mc:291769984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GD",n:"General Dynamics Corporation",s:"Industrials",i:"Aerospace &amp; Defense",v:1386688,mc:94423400448,qt:"EQUITY",d1m:1,d5m:1,rules:110,br:0},
+  {t:"GD",n:"General Dynamics Corporation",s:"Industrials",i:"Aerospace &amp; Defense",v:1386688,mc:94423400448,qt:"EQUITY",d1m:1,d5m:1,rules:6,br:0},
   {t:"MRP",n:"Millrose Properties, Inc.",s:"Real Estate",i:"REIT - Residential",v:1380398,mc:4995045376,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MFA",n:"MFA Financial, Inc.",s:"Real Estate",i:"REIT - Mortgage",v:1379976,mc:974996416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IMVT",n:"Immunovant, Inc.",s:"Healthcare",i:"Biotechnology",v:1379394,mc:5666335744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
