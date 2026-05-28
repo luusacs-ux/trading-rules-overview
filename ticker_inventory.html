@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 862 with 1m data &#8226; 2,565 missing 1m &#8226; 231 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 865 with 1m data &#8226; 2,562 missing 1m &#8226; 232 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -403,7 +403,7 @@ var data = [
   {t:"VZLA",n:"Vizsla Silver Corp.",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:9993410,mc:1128881280,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"VOO",n:"Vanguard S&amp;P 500 ETF",s:"",i:"",v:9970383,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AGG",n:"iShares Core U.S. Aggregate Bon",s:"",i:"",v:9967385,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"STM",n:"STMicroelectronics N.V.",s:"Technology",i:"Semiconductors",v:9902205,mc:50821246976,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"STM",n:"STMicroelectronics N.V.",s:"Technology",i:"Semiconductors",v:9902205,mc:50821246976,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:"N/A"},
   {t:"QYLD",n:"Global X NASDAQ 100 Covered Cal",s:"",i:"",v:9880174,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"LRCX",n:"Lam Research Corporation",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:9873684,mc:344907481088,qt:"EQUITY",d1m:1,d5m:1,rules:1938,br:646},
   {t:"USB",n:"U.S. Bancorp",s:"Financial Services",i:"Banks - Regional",v:9873103,mc:86307864576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -644,7 +644,7 @@ var data = [
   {t:"BFLY",n:"Butterfly Network, Inc.",s:"Healthcare",i:"Medical Devices",v:5964800,mc:1261109248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EBAY",n:"eBay Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:5945580,mc:46735441920,qt:"EQUITY",d1m:1,d5m:1,rules:1048,br:524},
   {t:"OMEX",n:"Odyssey Marine Exploration, Inc",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:5940286,mc:70222392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GE",n:"GE Aerospace",s:"Industrials",i:"Aerospace &amp; Defense",v:5938828,mc:299531763712,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GE",n:"GE Aerospace",s:"Industrials",i:"Aerospace &amp; Defense",v:5938828,mc:299531763712,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"TERN",n:"Terns Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:5933488,mc:6118809088,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TU",n:"Telus Corporation",s:"Communication Services",i:"Telecom Services",v:5928164,mc:19657381888,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AR",n:"Antero Resources Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:5912280,mc:12123883520,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -825,7 +825,7 @@ var data = [
   {t:"COLD",n:"Americold Realty Trust, Inc.",s:"Real Estate",i:"REIT - Industrial",v:4521085,mc:3437068032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TJX",n:"TJX Companies, Inc. (The)",s:"Consumer Cyclical",i:"Apparel Retail",v:4519842,mc:171356979200,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"PENN",n:"PENN Entertainment, Inc.",s:"Consumer Cyclical",i:"Resorts &amp; Casinos",v:4518013,mc:2288721664,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CGDV",n:"Capital Group Dividend Value ET",s:"",i:"",v:4507871,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CGDV",n:"Capital Group Dividend Value ET",s:"",i:"",v:4507871,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NET",n:"Cloudflare, Inc.",s:"Technology",i:"Software - Infrastructure",v:4501201,mc:86375227392,qt:"EQUITY",d1m:1,d5m:1,rules:382,br:0},
   {t:"PROP",n:"Prairie Operating Co.",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:4496727,mc:116813224,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ALK",n:"Alaska Air Group, Inc.",s:"Industrials",i:"Airlines",v:4495255,mc:4363574272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1749,7 +1749,7 @@ var data = [
   {t:"YSS",n:"York Space Systems Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:1794669,mc:4174097408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TTI",n:"Tetra Technologies, Inc.",s:"Industrials",i:"Conglomerates",v:1791349,mc:1315990656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XERS",n:"Xeris Biopharma Holdings, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:1790400,mc:1075458432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GDS",n:"GDS Holdings Limited",s:"Technology",i:"Information Technology Services",v:1789471,mc:9016992768,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"GDS",n:"GDS Holdings Limited",s:"Technology",i:"Information Technology Services",v:1789471,mc:9016992768,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:"N/A"},
   {t:"FENI",n:"Fidelity Enhanced International",s:"",i:"",v:1788038,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"FUN",n:"Six Flags Entertainment Corpora",s:"Consumer Cyclical",i:"Leisure",v:1786740,mc:1849034112,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PRCH",n:"Porch Group, Inc.",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:1784769,mc:1228598656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2911,7 +2911,7 @@ var data = [
   {t:"FNDA",n:"Schwab Fundamental U.S. Small C",s:"",i:"",v:734570,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EEFT",n:"Euronet Worldwide, Inc.",s:"Technology",i:"Software - Infrastructure",v:734170,mc:2673193472,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RXST",n:"RxSight, Inc.",s:"Healthcare",i:"Medical Devices",v:733718,mc:300539392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CRS",n:"Carpenter Technology Corporatio",s:"Industrials",i:"Metal Fabrication",v:733633,mc:22109599744,qt:"EQUITY",d1m:1,d5m:1,rules:9,br:0},
+  {t:"CRS",n:"Carpenter Technology Corporatio",s:"Industrials",i:"Metal Fabrication",v:733633,mc:22109599744,qt:"EQUITY",d1m:1,d5m:1,rules:9,br:"N/A"},
   {t:"CLPT",n:"ClearPoint Neuro Inc.",s:"Healthcare",i:"Medical Devices",v:732585,mc:384420704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"STOK",n:"Stoke Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:732145,mc:1949610112,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HOLO",n:"MicroCloud Hologram Inc.",s:"Technology",i:"Electronic Components",v:731372,mc:37576272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3004,7 +3004,7 @@ var data = [
   {t:"PFXF",n:"VanEck Preferred Securities ex ",s:"",i:"",v:673852,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"VC",n:"Visteon Corporation",s:"Consumer Cyclical",i:"Auto Parts",v:671311,mc:2942481920,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GCT",n:"GigaCloud Technology Inc",s:"Technology",i:"Software - Infrastructure",v:670978,mc:1550456448,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"HEI",n:"Heico Corporation",s:"Industrials",i:"Aerospace &amp; Defense",v:670191,mc:38692634624,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"HEI",n:"Heico Corporation",s:"Industrials",i:"Aerospace &amp; Defense",v:670191,mc:38692634624,qt:"EQUITY",d1m:1,d5m:1,rules:4,br:0},
   {t:"SSP",n:"E.W. Scripps Company (The)",s:"Communication Services",i:"Broadcasting",v:670142,mc:449733600,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FESM",n:"Fidelity Enhanced Small Cap ETF",s:"",i:"",v:669256,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ETHD",n:"ProShares UltraShort Ether ETF",s:"",i:"",v:668411,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
