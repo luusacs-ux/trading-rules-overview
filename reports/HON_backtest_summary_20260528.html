@@ -23,10 +23,10 @@ tr:hover { background: #1a2a4e; }
 tr.wr100 { background: rgba(0, 255, 136, 0.15); }
 tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
-.fam-HON_S { background: #2a4a2a; color: #66ff66; }
-.fam-HON_L { background: #2a2a4a; color: #6666ff; }
-.fam-HON_D { background: #4a2a4a; color: #ff66ff; }
-.fam-HON_X { background: #4a4a2a; color: #ffff66; }
+.fam-HON_B3_S { background: #2a4a2a; color: #66ff66; }
+.fam-HON_B3_L { background: #2a2a4a; color: #6666ff; }
+.fam-HON_B3_D { background: #4a2a4a; color: #ff66ff; }
+.fam-HON_B3_X { background: #4a4a2a; color: #ffff66; }
 .pipeline { color: #666; font-size: 12px; margin-top: 30px; }
 .sort-arrow { font-size: 10px; margin-left: 4px; }
 </style>
@@ -35,57 +35,12 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <h1>HON &mdash; Backtest Report</h1>
 <div class="subtitle">Pipeline: create_rules_HON_RSP_20260528_v2 | Ticker: HON | Lead: RSP | Same: XLI | Inverse: SDOW | Date: 2026-05-28</div>
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">31</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">21</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">13</div></div>
-    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">12.5%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">0</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">0</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">0%</div></div>
 </div>
-<h2>15M Timeframe (6 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="wr100"><td>1</td><td><strong>DV_12bar_lag_3</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>0.848</td><td>5.643</td><td>520</td><td>6</td><td>6</td><td>100.0</td><td><strong>5.09</strong></td><td>0.85</td></tr>
-<tr class="wr100"><td>2</td><td><strong>DV_24bar_lag_5</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>2.392</td><td>2.228</td><td>52</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.08</strong></td><td>1.69</td></tr>
-<tr class="wr100"><td>3</td><td><strong>DV_24bar_lag_5_rsi30</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>1.49</td><td>2.275</td><td>52</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.47</strong></td><td>1.49</td></tr>
-<tr class="wr100"><td>4</td><td><strong>DV_12bar_lag_5_rsi30</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>1.49</td><td>2.275</td><td>52</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.47</strong></td><td>1.49</td></tr>
-<tr class="wr100"><td>5</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>1.32</td><td>5.17</td><td>780</td><td>3</td><td>3</td><td>100.0</td><td><strong>3.96</strong></td><td>1.32</td></tr>
-<tr class="wr100"><td>6</td><td><strong>DV_12bar_lag_5</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>1.3</td><td>2.5</td><td>52</td><td>3</td><td>3</td><td>100.0</td><td><strong>3.9</strong></td><td>1.3</td></tr>
-</tbody></table>
-<h2>1H Timeframe (5 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr><td>1</td><td><strong>HON_D00001</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>3</td><td>60.0</td><td><strong>14.44</strong></td><td>2.89</td></tr>
-<tr class="wr100"><td>2</td><td><strong>HON_D00002</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>5</td><td>100.0</td><td><strong>1.06</strong></td><td>0.21</td></tr>
-<tr class="wr100"><td>3</td><td><strong>DV_24bar_deep_oversold</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>0.212</td><td>2.2</td><td>14</td><td>5</td><td>5</td><td>100.0</td><td><strong>1.06</strong></td><td>0.21</td></tr>
-<tr class="wr100"><td>4</td><td><strong>HON_D00003</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>0.85</strong></td><td>0.21</td></tr>
-<tr class="wr100"><td>5</td><td><strong>DV_12bar_deep_oversold</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>0.212</td><td>2.2</td><td>14</td><td>4</td><td>4</td><td>100.0</td><td><strong>0.85</strong></td><td>0.21</td></tr>
-</tbody></table>
-<h2>Daily Timeframe (20 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="wr100"><td>1</td><td><strong>DV_12bar_lag_3_rsi30</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>23.625</td><td>4.607</td><td>30</td><td>5</td><td>5</td><td>100.0</td><td><strong>38.36</strong></td><td>7.67</td></tr>
-<tr class="tier2"><td>2</td><td><strong>DV_12bar_lag_3</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>16.64</td><td>10.368</td><td>35</td><td>7</td><td>6</td><td>85.7</td><td><strong>31.26</strong></td><td>4.47</td></tr>
-<tr class="tier2"><td>3</td><td><strong>HON_D00001</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>7</td><td>6</td><td>85.7</td><td><strong>31.26</strong></td><td>4.47</td></tr>
-<tr class="tier2"><td>4</td><td><strong>HON_D00002</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>7</td><td>6</td><td>85.7</td><td><strong>30.82</strong></td><td>4.4</td></tr>
-<tr class="tier2"><td>5</td><td><strong>HON_D00001</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>7</td><td>6</td><td>85.7</td><td><strong>30.82</strong></td><td>4.4</td></tr>
-<tr class="tier2"><td>6</td><td><strong>HON_D00001</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>4</td><td>80.0</td><td><strong>25.9</strong></td><td>5.18</td></tr>
-<tr><td>7</td><td><strong>HON_D00002</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td><td>66.7</td><td><strong>19.36</strong></td><td>6.45</td></tr>
-<tr class="wr100"><td>8</td><td><strong>HON_D00003</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>14.1</strong></td><td>4.7</td></tr>
-<tr class="tier2"><td>9</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>5.151</td><td>23.5</td><td>8</td><td>5</td><td>4</td><td>80.0</td><td><strong>13.86</strong></td><td>2.77</td></tr>
-<tr class="tier2"><td>10</td><td><strong>HON_D00002</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>5</td><td>4</td><td>80.0</td><td><strong>13.86</strong></td><td>2.77</td></tr>
-<tr class="wr100"><td>11</td><td><strong>DV_12bar_lag_5_rsi30</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>9.2</td><td>4.5</td><td>30</td><td>3</td><td>3</td><td>100.0</td><td><strong>13.7</strong></td><td>4.57</td></tr>
-<tr class="wr100"><td>12</td><td><strong>HON_D00003</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>13.7</strong></td><td>4.57</td></tr>
-<tr class="wr100"><td>13</td><td><strong>HON_D00004</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>6</td><td>100.0</td><td><strong>13.47</strong></td><td>2.25</td></tr>
-<tr class="wr100"><td>14</td><td><strong>HON_D00005</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>10.5</strong></td><td>2.62</td></tr>
-<tr class="wr100"><td>15</td><td><strong>HON_D00006</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>8.65</strong></td><td>2.16</td></tr>
-<tr class="wr100"><td>16</td><td><strong>HON_D00004</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>4</td><td>4</td><td>100.0</td><td><strong>8.64</strong></td><td>2.16</td></tr>
-<tr class="wr100"><td>17</td><td><strong>DV_12bar_lag_5</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>2.16</td><td>10.368</td><td>35</td><td>4</td><td>4</td><td>100.0</td><td><strong>8.64</strong></td><td>2.16</td></tr>
-<tr><td>18</td><td><strong>HON_D00005</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td><td>66.7</td><td><strong>6.69</strong></td><td>2.23</td></tr>
-<tr class="wr100"><td>19</td><td><strong>DV_12bar_lag_8_rsi30</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>1.391</td><td>3.92</td><td>25</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.17</strong></td><td>1.39</td></tr>
-<tr class="wr100"><td>20</td><td><strong>HON_D00007</strong></td><td><span class="family fam-HON_D">HON_D</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>4.11</strong></td><td>1.37</td></tr>
-</tbody></table>
+
 <div class="pipeline">Generated by create_rules_HON_RSP_20260528_v2 pipeline</div>
 <script>
 function sortTable(th) {
