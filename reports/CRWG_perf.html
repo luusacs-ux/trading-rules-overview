@@ -193,7 +193,7 @@ a:hover{color:#e94560;text-decoration:underline}
 </tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-05-28 14:47 UTC</div>
+<div class="footer">Last updated: 2026-05-28 14:59 UTC</div>
 
 <script>
 function sortTable(table, col, type, asc) {
@@ -224,7 +224,7 @@ if (search) {
   search.addEventListener('input', function() {
     var raw = this.value.toLowerCase().trim();
     var terms = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);
-    document.querySelectorAll('#openTable tbody tr, #mainTable tbody tr').forEach(function(r) {
+    document.querySelectorAll('#openTable tbody tr, .closed-table tbody tr').forEach(function(r) {
       var tk = r.cells[0].textContent.toLowerCase();
       var show = terms.length === 0 || terms.some(function(t){return tk.includes(t);});
       r.style.display = show ? '' : 'none';
