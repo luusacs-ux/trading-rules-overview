@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 839 with 1m data &#8226; 2,588 missing 1m &#8226; 226 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 846 with 1m data &#8226; 2,581 missing 1m &#8226; 227 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -575,7 +575,7 @@ var data = [
   {t:"TSLZ",n:"T-Rex 2X Inverse Tesla Daily Ta",s:"",i:"",v:6656530,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ORC",n:"Orchid Island Capital, Inc.",s:"Real Estate",i:"REIT - Mortgage",v:6651577,mc:1390852480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SVIX",n:"-1x Short VIX Futures ETF",s:"",i:"",v:6641116,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VNET",n:"VNET Group, Inc.",s:"Technology",i:"Information Technology Services",v:6589896,mc:2414184960,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VNET",n:"VNET Group, Inc.",s:"Technology",i:"Information Technology Services",v:6589896,mc:2414184960,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"WMB",n:"Williams Companies, Inc. (The)",s:"Energy",i:"Oil &amp; Gas Midstream",v:6587144,mc:93094633472,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GTLB",n:"GitLab Inc.",s:"Technology",i:"Software - Infrastructure",v:6582322,mc:4194279680,qt:"EQUITY",d1m:1,d5m:1,rules:100,br:0},
   {t:"CSGP",n:"CoStar Group, Inc.",s:"Real Estate",i:"Real Estate Services",v:6572886,mc:14251615232,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1082,7 +1082,7 @@ var data = [
   {t:"EC",n:"Ecopetrol S.A.",s:"Energy",i:"Oil &amp; Gas Integrated",v:3269290,mc:29192853504,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GFI",n:"Gold Fields Limited",s:"Basic Materials",i:"Gold",v:3261633,mc:37341974528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CCI",n:"Crown Castle Inc.",s:"Real Estate",i:"REIT - Specialty",v:3259718,mc:38880329728,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"SPEM",n:"State Street SPDR Portfolio Eme",s:"",i:"",v:3258245,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SPEM",n:"State Street SPDR Portfolio Eme",s:"",i:"",v:3258245,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CEG",n:"Constellation Energy Corporatio",s:"Utilities",i:"Utilities - Independent Power Producers",v:3256415,mc:116086456320,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CAVA",n:"CAVA Group, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:3255750,mc:10516694016,qt:"EQUITY",d1m:1,d5m:1,rules:474,br:0},
   {t:"ARR",n:"ARMOUR Residential REIT, Inc.",s:"Real Estate",i:"REIT - Mortgage",v:3253203,mc:2147238144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1228,7 +1228,7 @@ var data = [
   {t:"UBS",n:"UBS Group AG Registered",s:"Financial Services",i:"Banks - Diversified",v:2802211,mc:136861491200,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"LEVI",n:"Levi Strauss &amp; Co",s:"Consumer Cyclical",i:"Apparel Manufacturing",v:2798005,mc:8576496128,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FND",n:"Floor &amp; Decor Holdings, Inc.",s:"Consumer Cyclical",i:"Home Improvement Retail",v:2797971,mc:5220947456,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"WIX",n:"Wix.com Ltd.",s:"Technology",i:"Software - Infrastructure",v:2796857,mc:4491938816,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"WIX",n:"Wix.com Ltd.",s:"Technology",i:"Software - Infrastructure",v:2796857,mc:4491938816,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ADBG",n:"Leverage Shares 2X Long ADBE Da",s:"",i:"",v:2796751,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"OLN",n:"Olin Corporation",s:"Basic Materials",i:"Chemicals",v:2788301,mc:3268835584,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"AEHR",n:"Aehr Test Systems",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:2786375,mc:2868222208,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1360,7 +1360,7 @@ var data = [
   {t:"SPOT",n:"Spotify Technology S.A.",s:"Communication Services",i:"Internet Content &amp; Information",v:2499244,mc:86263783424,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ES",n:"Eversource Energy (D/B/A)",s:"Utilities",i:"Utilities - Regulated Electric",v:2497231,mc:25895745536,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EXPE",n:"Expedia Group, Inc.",s:"Consumer Cyclical",i:"Travel Services",v:2493660,mc:29843488768,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"TWLO",n:"Twilio Inc.",s:"Technology",i:"Software - Infrastructure",v:2493508,mc:29683931136,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"TWLO",n:"Twilio Inc.",s:"Technology",i:"Software - Infrastructure",v:2493508,mc:29683931136,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BINC",n:"iShares Flexible Income Active ",s:"",i:"",v:2492586,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"RKLX",n:"Defiance Daily Target 2X Long R",s:"",i:"",v:2491849,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BOX",n:"Box, Inc.",s:"Technology",i:"Software - Infrastructure",v:2490693,mc:3490313984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1404,7 +1404,7 @@ var data = [
   {t:"VERI",n:"Veritone, Inc.",s:"Technology",i:"Software - Infrastructure",v:2401971,mc:202638992,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RUM",n:"Rumble Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:2395854,mc:1577125248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GTX",n:"Garrett Motion Inc.",s:"Consumer Cyclical",i:"Auto Parts",v:2395210,mc:4893107200,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GDDY",n:"GoDaddy Inc.",s:"Technology",i:"Software - Infrastructure",v:2389726,mc:11609651200,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GDDY",n:"GoDaddy Inc.",s:"Technology",i:"Software - Infrastructure",v:2389726,mc:11609651200,qt:"EQUITY",d1m:1,d5m:1,rules:10,br:0},
   {t:"MUR",n:"Murphy Oil Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:2388715,mc:5973340672,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TROW",n:"T. Rowe Price Group, Inc.",s:"Financial Services",i:"Asset Management",v:2386871,mc:22307297280,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"NVT",n:"nVent Electric plc",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:2385866,mc:27397062656,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -1749,7 +1749,7 @@ var data = [
   {t:"YSS",n:"York Space Systems Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:1794669,mc:4174097408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TTI",n:"Tetra Technologies, Inc.",s:"Industrials",i:"Conglomerates",v:1791349,mc:1315990656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XERS",n:"Xeris Biopharma Holdings, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:1790400,mc:1075458432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"GDS",n:"GDS Holdings Limited",s:"Technology",i:"Information Technology Services",v:1789471,mc:9016992768,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"GDS",n:"GDS Holdings Limited",s:"Technology",i:"Information Technology Services",v:1789471,mc:9016992768,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"FENI",n:"Fidelity Enhanced International",s:"",i:"",v:1788038,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"FUN",n:"Six Flags Entertainment Corpora",s:"Consumer Cyclical",i:"Leisure",v:1786740,mc:1849034112,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PRCH",n:"Porch Group, Inc.",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:1784769,mc:1228598656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2700,7 +2700,7 @@ var data = [
   {t:"SPHD",n:"Invesco S&amp;P 500 High Dividend L",s:"",i:"",v:866784,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"USD",n:"ProShares Ultra Semiconductors",s:"",i:"",v:865742,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ORA",n:"Ormat Technologies, Inc.",s:"Utilities",i:"Utilities - Renewable",v:865527,mc:7088052736,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CMRC",n:"Commerce.com, Inc. - Series 1",s:"Technology",i:"Software - Application",v:865215,mc:252710832,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CMRC",n:"Commerce.com, Inc. - Series 1",s:"Technology",i:"Software - Application",v:865215,mc:252710832,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"PCTY",n:"Paylocity Holding Corporation",s:"Technology",i:"Software - Application",v:864364,mc:5855811584,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"JBND",n:"JPMorgan Active Bond ETF",s:"",i:"",v:863596,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"SOFX",n:"Defiance Daily Target 2X Long S",s:"",i:"",v:862993,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
