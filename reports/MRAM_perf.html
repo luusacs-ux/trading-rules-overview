@@ -38,7 +38,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <body>
 <div class="header">
   <h1>MRAM Rule Performance</h1>
-  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="green">$139.02</span> total PnL</p>
+  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="green">$283.50</span> total PnL</p>
 </div>
 <div class="nav"><a href="../performance.html">Back to Summary</a> <a href="../index.html">Rules Overview</a></div>
 <div class="container">
@@ -72,43 +72,43 @@ a:hover{color:#e94560;text-decoration:underline}
 </thead>
 <tbody>
 <tr>
-  <td title="MRAM_S5M_00020_WR85.3%/APnL237.7%/PTPnL0.62%: RSI=29">MRAM_S5M_00020_WR85.3%/APnL237.7%/PTPnL0.62%: RSI=29</td>
-  <td>2026-05-20</td>
+  <td title="MRAM_S1H_00007_WR36.4%/APnL197.87%/PTPnL6.0%: RSI=29, Stoch=1, WillR=-99">MRAM_S1H_00007_WR36.4%/APnL197.87%/PTPnL6.0%: RSI=29, Stoch=...</td>
+  <td>2026-05-27</td>
   <td data-v="1">1</td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
+  <td data-v="283.5"><span class="green">$283.50</span></td>
+  <td data-v="7.13"><span class="green">+7.13%</span></td>
   <td data-v="1">1</td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
-  <td data-v="1">1</td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
+  <td data-v="283.5"><span class="green">$283.50</span></td>
+  <td data-v="7.13"><span class="green">+7.13%</span></td>
+  <td data-v="0"><span class="zero">0</span></td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
   <td data-v="1">1</td>
   <td data-v="100.0"><span class="green">100%</span></td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
+  <td data-v="283.5"><span class="green">$283.50</span></td>
+  <td data-v="7.13"><span class="green">+7.13%</span></td>
 </tr>
 <tr style="font-weight:bold;border-top:2px solid #e94560">
   <td>TOTAL</td>
   <td></td>
   <td data-v="1">1</td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
+  <td data-v="283.5"><span class="green">$283.50</span></td>
+  <td data-v="7.13"><span class="green">+7.13%</span></td>
   <td data-v="1">1</td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
-  <td data-v="1">1</td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
+  <td data-v="283.5"><span class="green">$283.50</span></td>
+  <td data-v="7.13"><span class="green">+7.13%</span></td>
+  <td data-v="0">0</td>
+  <td data-v="0.0"><span class="zero">$0.00</span></td>
+  <td data-v="0.0"><span class="zero">+0.00%</span></td>
   <td data-v="1">1</td>
   <td data-v="100.0"><span class="green">100%</span></td>
-  <td data-v="139.02"><span class="green">$139.02</span></td>
-  <td data-v="3.49"><span class="green">+3.49%</span></td>
+  <td data-v="283.5"><span class="green">$283.50</span></td>
+  <td data-v="7.13"><span class="green">+7.13%</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-05-22 19:33 UTC</div>
+<div class="footer">Last updated: 2026-05-28 16:38 UTC</div>
 
 <script>
 function sortTable(table, col, type, asc) {
@@ -139,7 +139,7 @@ if (search) {
   search.addEventListener('input', function() {
     var raw = this.value.toLowerCase().trim();
     var terms = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);
-    document.querySelectorAll('#openTable tbody tr, #mainTable tbody tr').forEach(function(r) {
+    document.querySelectorAll('#openTable tbody tr, .closed-table tbody tr').forEach(function(r) {
       var tk = r.cells[0].textContent.toLowerCase();
       var show = terms.length === 0 || terms.some(function(t){return tk.includes(t);});
       r.style.display = show ? '' : 'none';
