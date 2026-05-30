@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 875 with 1m data &#8226; 2,552 missing 1m &#8226; 235 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 883 with 1m data &#8226; 2,544 missing 1m &#8226; 235 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -85,7 +85,7 @@ tr:hover{background:#1e2a4a}
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="footer">Generated: 2026-05-29 | Data source: yfinance</div>
+<div class="footer">Generated: 2026-05-30 | Data source: yfinance</div>
 <script>
 var data = [
   {t:"NVDA",n:"NVIDIA Corporation",s:"Technology",i:"Semiconductors",v:171892757,mc:4775932329984,qt:"EQUITY",d1m:1,d5m:1,rules:1320,br:660},
@@ -206,7 +206,7 @@ var data = [
   {t:"SCHD",n:"Schwab US Dividend Equity ETF",s:"",i:"",v:23476866,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"NCLH",n:"Norwegian Cruise Line Holdings ",s:"Consumer Cyclical",i:"Travel Services",v:23145357,mc:7777326080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MRVL",n:"Marvell Technology, Inc.",s:"Technology",i:"Semiconductors",v:22833345,mc:147564822528,qt:"EQUITY",d1m:1,d5m:1,rules:791,br:0},
-  {t:"CSCO",n:"Cisco Systems, Inc.",s:"Technology",i:"Communication Equipment",v:22723421,mc:372474937344,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"CSCO",n:"Cisco Systems, Inc.",s:"Technology",i:"Communication Equipment",v:22723421,mc:372474937344,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BTE",n:"Baytex Energy Corp",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:22607718,mc:3861397760,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PCG",n:"Pacific Gas &amp; Electric Co.",s:"Utilities",i:"Utilities - Regulated Electric",v:22586101,mc:35962327040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SCHX",n:"Schwab U.S. Large-Cap ETF",s:"",i:"",v:22557683,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -241,7 +241,7 @@ var data = [
   {t:"AG",n:"First Majestic Silver Corp.",s:"Basic Materials",i:"Silver",v:19145020,mc:9430462464,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AMDD",n:"Direxion Daily AMD Bear 1X ETF",s:"",i:"",v:18784578,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SGOV",n:"iShares 0-3 Month Treasury Bond",s:"",i:"",v:18773283,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"HPQ",n:"HP Inc.",s:"Technology",i:"Computer Hardware",v:18612888,mc:19415371776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"HPQ",n:"HP Inc.",s:"Technology",i:"Computer Hardware",v:18612888,mc:19415371776,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"GERN",n:"Geron Corporation",s:"Healthcare",i:"Biotechnology",v:18381661,mc:1057485568,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KRE",n:"State Street SPDR S&amp;P Regional ",s:"",i:"",v:18309405,mc:0,qt:"ETF",d1m:1,d5m:1,rules:71,br:0},
   {t:"RIOT",n:"Riot Platforms, Inc.",s:"Financial Services",i:"Capital Markets",v:18272415,mc:7695377920,qt:"EQUITY",d1m:1,d5m:1,rules:119,br:0},
@@ -254,7 +254,7 @@ var data = [
   {t:"LYFT",n:"Lyft, Inc.",s:"Technology",i:"Software - Application",v:17519600,mc:5384125952,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FCX",n:"Freeport-McMoRan, Inc.",s:"Basic Materials",i:"Copper",v:17418570,mc:82916777984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WFC",n:"Wells Fargo &amp; Company",s:"Financial Services",i:"Banks - Diversified",v:17349961,mc:244478525440,qt:"EQUITY",d1m:1,d5m:1,rules:38,br:0},
-  {t:"HPE",n:"Hewlett Packard Enterprise Comp",s:"Technology",i:"Communication Equipment",v:17346718,mc:39858700288,qt:"EQUITY",d1m:1,d5m:1,rules:726,br:363},
+  {t:"HPE",n:"Hewlett Packard Enterprise Comp",s:"Technology",i:"Communication Equipment",v:17346718,mc:39858700288,qt:"EQUITY",d1m:1,d5m:1,rules:14784,br:363},
   {t:"VEA",n:"Vanguard FTSE Developed Markets",s:"",i:"",v:17306894,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GGLS",n:"Direxion Daily GOOGL Bear 1X ET",s:"",i:"",v:17298070,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"UBER",n:"Uber Technologies, Inc.",s:"Technology",i:"Software - Application",v:17195894,mc:150139551744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -306,7 +306,7 @@ var data = [
   {t:"DVN",n:"Devon Energy Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:14211761,mc:31687243776,qt:"EQUITY",d1m:1,d5m:1,rules:142,br:0},
   {t:"C",n:"Citigroup, Inc.",s:"Financial Services",i:"Banks - Diversified",v:14087380,mc:223930318848,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"UCAR",n:"U Power Limited",s:"Consumer Cyclical",i:"Auto &amp; Truck Dealerships",v:13890907,mc:3327710,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"QCOM",n:"QUALCOMM Incorporated",s:"Technology",i:"Semiconductors",v:13784879,mc:196623695872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"QCOM",n:"QUALCOMM Incorporated",s:"Technology",i:"Semiconductors",v:13784879,mc:196623695872,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CRM",n:"Salesforce, Inc.",s:"Technology",i:"Software - Application",v:13749181,mc:152967872512,qt:"EQUITY",d1m:1,d5m:1,rules:1395,br:709},
   {t:"CVE",n:"Cenovus Energy Inc",s:"Energy",i:"Oil &amp; Gas Integrated",v:13678021,mc:57234845696,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PR",n:"Permian Resources Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:13664166,mc:19672651776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -481,7 +481,7 @@ var data = [
   {t:"XLRE",n:"State Street Real Estate Select",s:"",i:"",v:8338776,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GT",n:"The Goodyear Tire &amp; Rubber Comp",s:"Consumer Cyclical",i:"Auto Parts",v:8327440,mc:2028542080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IVV",n:"iShares Core S&amp;P 500 ETF",s:"",i:"",v:8303244,mc:0,qt:"ETF",d1m:1,d5m:1,rules:26,br:0},
-  {t:"DELL",n:"Dell Technologies Inc.",s:"Technology",i:"Computer Hardware",v:8245141,mc:140648824832,qt:"EQUITY",d1m:1,d5m:1,rules:16489,br:569},
+  {t:"DELL",n:"Dell Technologies Inc.",s:"Technology",i:"Computer Hardware",v:8245141,mc:140648824832,qt:"EQUITY",d1m:1,d5m:1,rules:17262,br:569},
   {t:"CRGY",n:"Crescent Energy Company",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:8237195,mc:4597102592,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CHWY",n:"Chewy, Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:8234178,mc:10225253376,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HLN",n:"Haleon plc",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:8223316,mc:40700694528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -597,7 +597,7 @@ var data = [
   {t:"DIA",n:"State Street SPDR Dow Jones Ind",s:"",i:"",v:6356061,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SW",n:"Smurfit WestRock plc",s:"Consumer Cyclical",i:"Packaging &amp; Containers",v:6351413,mc:20721573888,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CIG",n:"Comp En De Mn Cemig",s:"Utilities",i:"Utilities - Regulated Electric",v:6333680,mc:7065884672,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"IBM",n:"International Business Machines",s:"Technology",i:"Information Technology Services",v:6332859,mc:215261937664,qt:"EQUITY",d1m:1,d5m:1,rules:946,br:473},
+  {t:"IBM",n:"International Business Machines",s:"Technology",i:"Information Technology Services",v:6332859,mc:215261937664,qt:"EQUITY",d1m:1,d5m:1,rules:21586,br:473},
   {t:"ONON",n:"On Holding AG",s:"Consumer Cyclical",i:"Footwear &amp; Accessories",v:6310027,mc:11449204736,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"FTNT",n:"Fortinet, Inc.",s:"Technology",i:"Software - Infrastructure",v:6304608,mc:65830612992,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FNDX",n:"Schwab Fundamental U.S. Large C",s:"",i:"",v:6302961,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -892,7 +892,7 @@ var data = [
   {t:"BEKE",n:"KE Holdings Inc",s:"Real Estate",i:"Real Estate Services",v:4160671,mc:20197898240,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SCHP",n:"Schwab U.S. TIPs ETF",s:"",i:"",v:4156610,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"SG",n:"Sweetgreen, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:4150771,mc:810364288,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VTWO",n:"Vanguard Russell 2000 ETF",s:"",i:"",v:4150730,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VTWO",n:"Vanguard Russell 2000 ETF",s:"",i:"",v:4150730,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"KTOS",n:"Kratos Defense &amp; Security Solut",s:"Industrials",i:"Aerospace &amp; Defense",v:4147711,mc:11116977152,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BMBL",n:"Bumble Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:4143380,mc:650705536,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"QQQM",n:"Invesco NASDAQ 100 ETF",s:"",i:"",v:4135037,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -2007,7 +2007,7 @@ var data = [
   {t:"KC",n:"Kingsoft Cloud Holdings Limited",s:"Technology",i:"Software - Application",v:1465413,mc:4592330752,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TV",n:"Grupo Televisa S.A.B.",s:"Communication Services",i:"Telecom Services",v:1465025,mc:1512662144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FPE",n:"First Trust Preferred Securitie",s:"",i:"",v:1464151,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FUTU",n:"Futu Holdings Limited",s:"Financial Services",i:"Capital Markets",v:1462485,mc:22039977984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FUTU",n:"Futu Holdings Limited",s:"Financial Services",i:"Capital Markets",v:1462485,mc:22039977984,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"NWS",n:"News Corporation",s:"Communication Services",i:"Entertainment",v:1461944,mc:16084524032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KBR",n:"KBR, Inc.",s:"Industrials",i:"Engineering &amp; Construction",v:1461091,mc:4637975040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FXN",n:"First Trust Energy AlphaDEX Fun",s:"",i:"",v:1460745,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -2162,7 +2162,7 @@ var data = [
   {t:"STAG",n:"Stag Industrial, Inc.",s:"Real Estate",i:"REIT - Industrial",v:1309255,mc:7427527680,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GGLL",n:"Direxion Daily GOOGL Bull 2X ET",s:"",i:"",v:1309171,mc:0,qt:"ETF",d1m:1,d5m:1,rules:932,br:0},
   {t:"PTY",n:"Pimco Corporate &amp; Income Opport",s:"Financial Services",i:"Asset Management",v:1308900,mc:2594658560,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"URTY",n:"ProShares UltraPro Russell2000",s:"",i:"",v:1308150,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"URTY",n:"ProShares UltraPro Russell2000",s:"",i:"",v:1308150,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BBGI",n:"Beasley Broadcast Group, Inc.",s:"Communication Services",i:"Broadcasting",v:1306938,mc:33145734,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"STAA",n:"STAAR Surgical Company",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:1306457,mc:1366688768,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WING",n:"Wingstop Inc.",s:"Consumer Cyclical",i:"Restaurants",v:1306340,mc:3996104704,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -2450,7 +2450,7 @@ var data = [
   {t:"RGTX",n:"Defiance Daily Target 2X Long R",s:"",i:"",v:1062750,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NRIX",n:"Nurix Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:1061086,mc:1716536576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TXRH",n:"Texas Roadhouse, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:1060772,mc:10418150400,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FMDE",n:"Fidelity Enhanced Mid Cap ETF",s:"",i:"",v:1059276,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FMDE",n:"Fidelity Enhanced Mid Cap ETF",s:"",i:"",v:1059276,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CHDN",n:"Churchill Downs, Incorporated",s:"Consumer Cyclical",i:"Gambling",v:1059215,mc:6458116096,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EXPI",n:"eXp World Holdings, Inc.",s:"Real Estate",i:"Real Estate Services",v:1059070,mc:1000205696,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"VIVO",n:"VivoPower PLC",s:"Technology",i:"Software - Infrastructure",v:1057737,mc:55575708,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3247,7 +3247,7 @@ var data = [
   {t:"IWO",n:"iShares Russell 2000 Growth Fun",s:"",i:"",v:472550,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CPA",n:"Copa Holdings, S.A.",s:"Industrials",i:"Airlines",v:471043,mc:4673751040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TFI",n:"State Street SPDR Nuveen ICE Mu",s:"",i:"",v:469437,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AN",n:"AutoNation, Inc.",s:"Consumer Cyclical",i:"Auto &amp; Truck Dealerships",v:467686,mc:6776714752,qt:"EQUITY",d1m:1,d5m:1,rules:506,br:2},
+  {t:"AN",n:"AutoNation, Inc.",s:"Consumer Cyclical",i:"Auto &amp; Truck Dealerships",v:467686,mc:6776714752,qt:"EQUITY",d1m:1,d5m:1,rules:639,br:2},
   {t:"UXRP",n:"ProShares Ultra XRP ETF",s:"",i:"",v:464193,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"MSTW",n:"Roundhill MSTR WeeklyPay ETF",s:"",i:"",v:464105,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MLPX",n:"Global X MLP &amp; Energy Infrastru",s:"",i:"",v:463025,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3336,7 +3336,7 @@ var data = [
   {t:"ICG",n:"Intchains Group Limited",s:"Technology",i:"Semiconductors",v:373920,mc:77104144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BTM",n:"Bitcoin Depot Inc.",s:"Financial Services",i:"Capital Markets",v:373415,mc:66729528,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CONY",n:"YieldMax COIN Option Income Str",s:"",i:"",v:372946,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"TMSL",n:"T. Rowe Price Small-Mid Cap ETF",s:"",i:"",v:370910,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"TMSL",n:"T. Rowe Price Small-Mid Cap ETF",s:"",i:"",v:370910,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RRGB",n:"Red Robin Gourmet Burgers, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:365933,mc:64017716,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HECA",n:"Hedgeye Capital Allocation ETF",s:"",i:"",v:364977,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RDWU",n:"T-REX 2X Long RDW Daily Target ",s:"",i:"",v:364738,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
