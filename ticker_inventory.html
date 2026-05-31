@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,427 tickers &#8226; 885 with 1m data &#8226; 2,542 missing 1m &#8226; 235 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,427 tickers &#8226; 886 with 1m data &#8226; 2,541 missing 1m &#8226; 235 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -254,7 +254,7 @@ var data = [
   {t:"LYFT",n:"Lyft, Inc.",s:"Technology",i:"Software - Application",v:17519600,mc:5384125952,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FCX",n:"Freeport-McMoRan, Inc.",s:"Basic Materials",i:"Copper",v:17418570,mc:82916777984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WFC",n:"Wells Fargo &amp; Company",s:"Financial Services",i:"Banks - Diversified",v:17349961,mc:244478525440,qt:"EQUITY",d1m:1,d5m:1,rules:38,br:0},
-  {t:"HPE",n:"Hewlett Packard Enterprise Comp",s:"Technology",i:"Communication Equipment",v:17346718,mc:39858700288,qt:"EQUITY",d1m:1,d5m:1,rules:27564,br:363},
+  {t:"HPE",n:"Hewlett Packard Enterprise Comp",s:"Technology",i:"Communication Equipment",v:17346718,mc:39858700288,qt:"EQUITY",d1m:1,d5m:1,rules:30759,br:363},
   {t:"VEA",n:"Vanguard FTSE Developed Markets",s:"",i:"",v:17306894,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GGLS",n:"Direxion Daily GOOGL Bear 1X ET",s:"",i:"",v:17298070,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"UBER",n:"Uber Technologies, Inc.",s:"Technology",i:"Software - Application",v:17195894,mc:150139551744,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -274,7 +274,7 @@ var data = [
   {t:"KO",n:"Coca-Cola Company (The)",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:16349016,mc:337658839040,qt:"EQUITY",d1m:1,d5m:1,rules:644,br:322},
   {t:"ET",n:"Energy Transfer LP",s:"Energy",i:"Oil &amp; Gas Midstream",v:16316145,mc:70148014080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"COMP",n:"Compass, Inc.",s:"Real Estate",i:"Real Estate Services",v:16282546,mc:5417015808,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"CMG",n:"Chipotle Mexican Grill, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:16276340,mc:41445134336,qt:"EQUITY",d1m:1,d5m:1,rules:89,br:0},
+  {t:"CMG",n:"Chipotle Mexican Grill, Inc.",s:"Consumer Cyclical",i:"Restaurants",v:16276340,mc:41445134336,qt:"EQUITY",d1m:1,d5m:1,rules:89,br:"N/A"},
   {t:"IEMG",n:"iShares Core MSCI Emerging Mark",s:"",i:"",v:16256400,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"QS",n:"QuantumScape Corporation",s:"Consumer Cyclical",i:"Auto Parts",v:16123915,mc:4465953280,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IOVA",n:"Iovance Biotherapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:16091106,mc:1777079552,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -363,7 +363,7 @@ var data = [
   {t:"TNA",n:"Direxion Small Cap Bull 3X ETF",s:"",i:"",v:11127928,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TOST",n:"Toast, Inc.",s:"Technology",i:"Software - Infrastructure",v:11032961,mc:16544608256,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PSQ",n:"ProShares Short QQQ",s:"",i:"",v:11024194,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"AAOI",n:"Applied Optoelectronics, Inc.",s:"Technology",i:"Communication Equipment",v:10974460,mc:14454207488,qt:"EQUITY",d1m:1,d5m:1,rules:1083,br:722},
+  {t:"AAOI",n:"Applied Optoelectronics, Inc.",s:"Technology",i:"Communication Equipment",v:10974460,mc:14454207488,qt:"EQUITY",d1m:1,d5m:1,rules:722,br:361},
   {t:"QNCX",n:"Quince Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:10972005,mc:20049910,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"TSLQ",n:"Tradr 2X Short TSLA Daily ETF",s:"",i:"",v:10920742,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SCHB",n:"Schwab U.S. Broad Market ETF",s:"",i:"",v:10898128,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -374,7 +374,7 @@ var data = [
   {t:"UNG",n:"United States Natural Gas Fund ",s:"",i:"",v:10786333,mc:0,qt:"ETF",d1m:1,d5m:1,rules:1330,br:665},
   {t:"IAU",n:"iShares Gold Trust Shares",s:"",i:"",v:10766689,mc:0,qt:"ETF",d1m:1,d5m:1,rules:49,br:0},
   {t:"SHOP",n:"Shopify Inc.",s:"Technology",i:"Software - Application",v:10750298,mc:139744198656,qt:"EQUITY",d1m:1,d5m:1,rules:478,br:0},
-  {t:"BE",n:"Bloom Energy Corporation",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:10750055,mc:83982049280,qt:"EQUITY",d1m:1,d5m:1,rules:1095,br:730},
+  {t:"BE",n:"Bloom Energy Corporation",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:10750055,mc:83982049280,qt:"EQUITY",d1m:1,d5m:1,rules:730,br:365},
   {t:"CGC",n:"Canopy Growth Corporation",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:10742535,mc:485006976,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VWO",n:"Vanguard FTSE Emerging Markets ",s:"",i:"",v:10704369,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PANW",n:"Palo Alto Networks, Inc.",s:"Technology",i:"Software - Infrastructure",v:10693572,mc:149207777280,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -676,7 +676,7 @@ var data = [
   {t:"ETH",n:"Grayscale Ethereum Staking Mini",s:"",i:"",v:5688150,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"IQMM",n:"ProShares GENIUS Money Market E",s:"",i:"",v:5678482,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CZR",n:"Caesars Entertainment, Inc.",s:"Consumer Cyclical",i:"Resorts &amp; Casinos",v:5676630,mc:5723321856,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"EWH",n:"iShares MSCI Hong Kong Index Fu",s:"",i:"",v:5662175,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"EWH",n:"iShares MSCI Hong Kong Index Fu",s:"",i:"",v:5662175,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IVZ",n:"Invesco Ltd",s:"Financial Services",i:"Asset Management",v:5651862,mc:11893738496,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AMCR",n:"Amcor plc",s:"Consumer Cyclical",i:"Packaging &amp; Containers",v:5650933,mc:17391398912,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FHN",n:"First Horizon Corporation",s:"Financial Services",i:"Banks - Regional",v:5637020,mc:11835572224,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1138,7 +1138,7 @@ var data = [
   {t:"SAIL",n:"SailPoint, Inc.",s:"Technology",i:"Software - Infrastructure",v:3111025,mc:6850211840,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DUST",n:"Direxion Daily Gold Miners Inde",s:"",i:"",v:3104311,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SCHI",n:"Schwab 5-10 Year Corporate Bond",s:"",i:"",v:3103125,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FCEL",n:"FuelCell Energy, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:3102741,mc:717850048,qt:"EQUITY",d1m:1,d5m:1,rules:2828,br:2121},
+  {t:"FCEL",n:"FuelCell Energy, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:3102741,mc:717850048,qt:"EQUITY",d1m:1,d5m:1,rules:1414,br:707},
   {t:"STWD",n:"STARWOOD PROPERTY TRUST, INC. S",s:"Real Estate",i:"REIT - Mortgage",v:3101206,mc:6943906816,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HIMX",n:"Himax Technologies, Inc.",s:"Technology",i:"Semiconductors",v:3099864,mc:2124507776,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DG",n:"Dollar General Corporation",s:"Consumer Defensive",i:"Discount Stores",v:3099196,mc:25768681472,qt:"EQUITY",d1m:1,d5m:1,rules:134,br:0},
