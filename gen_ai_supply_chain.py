@@ -73,11 +73,15 @@ def fetch_data(tickers):
                     d7 = close.index[close.index >= (now - timedelta(days=10))]
                     pct_7d = ((current / float(close.loc[d7[0]]) - 1) * 100) if len(d7) > 0 else 0
 
+                    prev_close = float(close.iloc[-2]) if len(close) >= 2 else current
+                    today_pct = ((current / prev_close) - 1) * 100
+
                     info = yf.Ticker(ticker).info
                     results[ticker] = {
                         "name": info.get("shortName", info.get("longName", ticker)),
                         "industry": info.get("industry", ""),
                         "price": round(current, 2),
+                        "today": round(today_pct, 1),
                         "ytd": round(ytd_pct, 1),
                         "d30": round(pct_30d, 1),
                         "d7": round(pct_7d, 1),
@@ -114,6 +118,7 @@ def generate_html(categories, data):
                 f'<td>{d["name"]}</td>'
                 f'<td>{d["industry"]}</td>'
                 f'<td>${d["price"]:,.2f}</td>'
+                f'<td style="{color(d["today"])}">{d["today"]:+.1f}%</td>'
                 f'<td style="{color(d["ytd"])}">{d["ytd"]:+.1f}%</td>'
                 f'<td style="{color(d["d30"])}">{d["d30"]:+.1f}%</td>'
                 f'<td style="{color(d["d7"])}">{d["d7"]:+.1f}%</td>'
@@ -127,6 +132,7 @@ def generate_html(categories, data):
                 '<th onclick="sortTable(this)">Name<span class="sort-arrow"></span></th>'
                 '<th onclick="sortTable(this)">Industry<span class="sort-arrow"></span></th>'
                 '<th onclick="sortTable(this)">Price<span class="sort-arrow"></span></th>'
+                '<th onclick="sortTable(this)">Today %<span class="sort-arrow"></span></th>'
                 '<th onclick="sortTable(this)">YTD %<span class="sort-arrow"></span></th>'
                 '<th onclick="sortTable(this)">30D %<span class="sort-arrow"></span></th>'
                 '<th onclick="sortTable(this)">7D %<span class="sort-arrow"></span></th>'

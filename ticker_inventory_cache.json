@@ -28750,5 +28750,53 @@
   "marketCap": 0,
   "name": "Vanguard Russell 1000 ETF",
   "quoteType": "ETF"
+ },
+ "BULD": {
+  "sector": "",
+  "industry": "",
+  "volume": 3046,
+  "marketCap": 0,
+  "name": "Pacer BlueStar Engineering the ",
+  "quoteType": "ETF"
+ },
+ "PNQI": {
+  "sector": "",
+  "industry": "",
+  "volume": 57065,
+  "marketCap": 0,
+  "name": "Invesco Nasdaq Internet ETF",
+  "quoteType": "ETF"
+ },
+ "FMCX": {
+  "sector": "",
+  "industry": "",
+  "volume": 1133,
+  "marketCap": 0,
+  "name": "FM Focus Equity ETF",
+  "quoteType": "ETF"
+ },
+ "IXN": {
+  "sector": "",
+  "industry": "",
+  "volume": 382176,
+  "marketCap": 0,
+  "name": "iShares Global Tech ETF",
+  "quoteType": "ETF"
+ },
+ "PABU": {
+  "sector": "",
+  "industry": "",
+  "volume": 65719,
+  "marketCap": 0,
+  "name": "iShares Paris-Aligned Climate O",
+  "quoteType": "ETF"
+ },
+ "FTEC": {
+  "sector": "",
+  "industry": "",
+  "volume": 430884,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Information Techn",
+  "quoteType": "ETF"
  }
 }
