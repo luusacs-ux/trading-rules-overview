@@ -1,0 +1,522 @@
+{
+  "TEL": {
+    "name": "TE Connectivity plc",
+    "industry": "Electronic Components"
+  },
+  "CSCO": {
+    "name": "Cisco Systems, Inc.",
+    "industry": "Communication Equipment"
+  },
+  "ORCL": {
+    "name": "Oracle Corporation",
+    "industry": "Software - Infrastructure"
+  },
+  "ASX": {
+    "name": "ASE Technology Holding Co., Ltd",
+    "industry": "Semiconductors"
+  },
+  "CCJ": {
+    "name": "Cameco Corporation",
+    "industry": "Uranium"
+  },
+  "POWL": {
+    "name": "Powell Industries, Inc.",
+    "industry": "Electrical Equipment & Parts"
+  },
+  "D": {
+    "name": "Dominion Energy, Inc.",
+    "industry": "Utilities - Regulated Electric"
+  },
+  "BOTZ": {
+    "name": "Global X Robotics & Artificial ",
+    "industry": ""
+  },
+  "EME": {
+    "name": "EMCOR Group, Inc.",
+    "industry": "Engineering & Construction"
+  },
+  "ALGM": {
+    "name": "Allegro MicroSystems, Inc.",
+    "industry": "Semiconductors"
+  },
+  "SANM": {
+    "name": "Sanmina Corporation",
+    "industry": "Electronic Components"
+  },
+  "CEVA": {
+    "name": "CEVA, Inc.",
+    "industry": "Semiconductors"
+  },
+  "SOUN": {
+    "name": "SoundHound AI, Inc.",
+    "industry": "Software - Application"
+  },
+  "ONTO": {
+    "name": "Onto Innovation Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "LITE": {
+    "name": "Lumentum Holdings Inc.",
+    "industry": "Communication Equipment"
+  },
+  "SOXX": {
+    "name": "iShares PHLX SOX Semiconductor ",
+    "industry": ""
+  },
+  "MOD": {
+    "name": "Modine Manufacturing Company",
+    "industry": "Auto Parts"
+  },
+  "GEV": {
+    "name": "GE Vernova Inc.",
+    "industry": "Specialty Industrial Machinery"
+  },
+  "LRCX": {
+    "name": "Lam Research Corporation",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "STX": {
+    "name": "Seagate Technology Holdings PLC",
+    "industry": "Computer Hardware"
+  },
+  "WDC": {
+    "name": "Western Digital Corporation",
+    "industry": "Computer Hardware"
+  },
+  "CALX": {
+    "name": "Calix, Inc",
+    "industry": "Software - Infrastructure"
+  },
+  "INTC": {
+    "name": "Intel Corporation",
+    "industry": "Semiconductors"
+  },
+  "OKLO": {
+    "name": "Oklo Inc.",
+    "industry": "Utilities - Independent Power Producers"
+  },
+  "NTAP": {
+    "name": "NetApp, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "UPST": {
+    "name": "Upstart Holdings, Inc.",
+    "industry": "Credit Services"
+  },
+  "ZS": {
+    "name": "Zscaler, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "MU": {
+    "name": "Micron Technology, Inc.",
+    "industry": "Semiconductors"
+  },
+  "NRG": {
+    "name": "NRG Energy, Inc.",
+    "industry": "Utilities - Independent Power Producers"
+  },
+  "MDB": {
+    "name": "MongoDB, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "CDNS": {
+    "name": "Cadence Design Systems, Inc.",
+    "industry": "Software - Application"
+  },
+  "BBAI": {
+    "name": "BigBear.ai, Inc.",
+    "industry": "Information Technology Services"
+  },
+  "EVRG": {
+    "name": "Evergy, Inc.",
+    "industry": "Utilities - Regulated Electric"
+  },
+  "AEHR": {
+    "name": "Aehr Test Systems",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "UUUU": {
+    "name": "Energy Fuels Inc",
+    "industry": "Uranium"
+  },
+  "CLS": {
+    "name": "Celestica, Inc.",
+    "industry": "Electronic Components"
+  },
+  "SIMO": {
+    "name": "Silicon Motion Technology Corpo",
+    "industry": "Semiconductors"
+  },
+  "MRVL": {
+    "name": "Marvell Technology, Inc.",
+    "industry": "Semiconductors"
+  },
+  "ROBT": {
+    "name": "First Trust Nasdaq Artificial I",
+    "industry": ""
+  },
+  "LSCC": {
+    "name": "Lattice Semiconductor Corporati",
+    "industry": "Semiconductors"
+  },
+  "HIMX": {
+    "name": "Himax Technologies, Inc.",
+    "industry": "Semiconductors"
+  },
+  "AMKR": {
+    "name": "Amkor Technology, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "POWI": {
+    "name": "Power Integrations, Inc.",
+    "industry": "Semiconductors"
+  },
+  "ASML": {
+    "name": "ASML Holding N.V. - New York Re",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "BABA": {
+    "name": "Alibaba Group Holding Limited",
+    "industry": "Internet Retail"
+  },
+  "JBL": {
+    "name": "Jabil Inc.",
+    "industry": "Electronic Components"
+  },
+  "RMBS": {
+    "name": "Rambus, Inc.",
+    "industry": "Semiconductors"
+  },
+  "FLEX": {
+    "name": "Flex Ltd.",
+    "industry": "Electronic Components"
+  },
+  "AEIS": {
+    "name": "Advanced Energy Industries, Inc",
+    "industry": "Electrical Equipment & Parts"
+  },
+  "MXL": {
+    "name": "MaxLinear, Inc",
+    "industry": "Semiconductors"
+  },
+  "SO": {
+    "name": "Southern Company (The)",
+    "industry": "Utilities - Regulated Electric"
+  },
+  "PANW": {
+    "name": "Palo Alto Networks, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "CAMT": {
+    "name": "Camtek Ltd.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "CIEN": {
+    "name": "Ciena Corporation",
+    "industry": "Communication Equipment"
+  },
+  "LEU": {
+    "name": "Centrus Energy Corp.",
+    "industry": "Uranium"
+  },
+  "ETN": {
+    "name": "Eaton Corporation, PLC",
+    "industry": "Specialty Industrial Machinery"
+  },
+  "UEC": {
+    "name": "Uranium Energy Corp.",
+    "industry": "Uranium"
+  },
+  "AIQ": {
+    "name": "Global X Artificial Intelligenc",
+    "industry": ""
+  },
+  "MKSI": {
+    "name": "MKS Inc.",
+    "industry": "Scientific & Technical Instruments"
+  },
+  "UMC": {
+    "name": "United Microelectronics Corpora",
+    "industry": "Semiconductors"
+  },
+  "NVDA": {
+    "name": "NVIDIA Corporation",
+    "industry": "Semiconductors"
+  },
+  "NDSN": {
+    "name": "Nordson Corporation",
+    "industry": "Specialty Industrial Machinery"
+  },
+  "GOOGL": {
+    "name": "Alphabet Inc.",
+    "industry": "Internet Content & Information"
+  },
+  "AMBA": {
+    "name": "Ambarella, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "AYI": {
+    "name": "Acuity Inc.",
+    "industry": "Electrical Equipment & Parts"
+  },
+  "AVGO": {
+    "name": "Broadcom Inc.",
+    "industry": "Semiconductors"
+  },
+  "NET": {
+    "name": "Cloudflare, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "BHE": {
+    "name": "Benchmark Electronics, Inc.",
+    "industry": "Electronic Components"
+  },
+  "AMZN": {
+    "name": "Amazon.com, Inc.",
+    "industry": "Internet Retail"
+  },
+  "TER": {
+    "name": "Teradyne, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "ESTC": {
+    "name": "Elastic N.V.",
+    "industry": "Software - Application"
+  },
+  "BIDU": {
+    "name": "Baidu, Inc.",
+    "industry": "Internet Content & Information"
+  },
+  "MSFT": {
+    "name": "Microsoft Corporation",
+    "industry": "Software - Infrastructure"
+  },
+  "AI": {
+    "name": "C3.ai, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "COHU": {
+    "name": "Cohu, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "VRT": {
+    "name": "Vertiv Holdings, LLC",
+    "industry": "Electrical Equipment & Parts"
+  },
+  "AAON": {
+    "name": "AAON, Inc.",
+    "industry": "Building Products & Equipment"
+  },
+  "CEG": {
+    "name": "Constellation Energy Corporatio",
+    "industry": "Utilities - Independent Power Producers"
+  },
+  "SNPS": {
+    "name": "Synopsys, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "META": {
+    "name": "Meta Platforms, Inc.",
+    "industry": "Internet Content & Information"
+  },
+  "IPGP": {
+    "name": "IPG Photonics Corporation",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "ENTG": {
+    "name": "Entegris, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "KLAC": {
+    "name": "KLA Corporation",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "GLW": {
+    "name": "Corning Incorporated",
+    "industry": "Electronic Components"
+  },
+  "ACLS": {
+    "name": "Axcelis Technologies, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "IBM": {
+    "name": "International Business Machines",
+    "industry": "Information Technology Services"
+  },
+  "NNE": {
+    "name": "Nano Nuclear Energy Inc.",
+    "industry": "Specialty Industrial Machinery"
+  },
+  "HUBB": {
+    "name": "Hubbell Inc",
+    "industry": "Electrical Equipment & Parts"
+  },
+  "GFS": {
+    "name": "GlobalFoundries Inc.",
+    "industry": "Semiconductors"
+  },
+  "ANET": {
+    "name": "Arista Networks, Inc.",
+    "industry": "Computer Hardware"
+  },
+  "VIAV": {
+    "name": "Viavi Solutions Inc.",
+    "industry": "Communication Equipment"
+  },
+  "WDAY": {
+    "name": "Workday, Inc.",
+    "industry": "Software - Application"
+  },
+  "SMR": {
+    "name": "NuScale Power Corporation",
+    "industry": "Specialty Industrial Machinery"
+  },
+  "NEE": {
+    "name": "NextEra Energy, Inc.",
+    "industry": "Utilities - Regulated Electric"
+  },
+  "IRM": {
+    "name": "Iron Mountain Incorporated (Del",
+    "industry": "REIT - Specialty"
+  },
+  "EQIX": {
+    "name": "Equinix, Inc.",
+    "industry": "REIT - Specialty"
+  },
+  "BWXT": {
+    "name": "BWX Technologies, Inc.",
+    "industry": "Aerospace & Defense"
+  },
+  "PWR": {
+    "name": "Quanta Services, Inc.",
+    "industry": "Engineering & Construction"
+  },
+  "DELL": {
+    "name": "Dell Technologies Inc.",
+    "industry": "Computer Hardware"
+  },
+  "PSTG": {
+    "name": "Everpure, Inc.",
+    "industry": "Computer Hardware"
+  },
+  "NOW": {
+    "name": "ServiceNow, Inc.",
+    "industry": "Software - Application"
+  },
+  "UCTT": {
+    "name": "Ultra Clean Holdings, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "AMD": {
+    "name": "Advanced Micro Devices, Inc.",
+    "industry": "Semiconductors"
+  },
+  "ARM": {
+    "name": "Arm Holdings plc",
+    "industry": "Semiconductors"
+  },
+  "TSM": {
+    "name": "Taiwan Semiconductor Manufactur",
+    "industry": "Semiconductors"
+  },
+  "SITM": {
+    "name": "SiTime Corporation",
+    "industry": "Semiconductors"
+  },
+  "DDOG": {
+    "name": "Datadog, Inc.",
+    "industry": "Software - Application"
+  },
+  "HPE": {
+    "name": "Hewlett Packard Enterprise Comp",
+    "industry": "Communication Equipment"
+  },
+  "AMAT": {
+    "name": "Applied Materials, Inc.",
+    "industry": "Semiconductor Equipment & Materials"
+  },
+  "QCOM": {
+    "name": "QUALCOMM Incorporated",
+    "industry": "Semiconductors"
+  },
+  "PLTR": {
+    "name": "Palantir Technologies Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "ROBO": {
+    "name": "ROBO Global Robotics and Automa",
+    "industry": ""
+  },
+  "SMH": {
+    "name": "VanEck Semiconductor ETF",
+    "industry": ""
+  },
+  "DLR": {
+    "name": "Digital Realty Trust, Inc.",
+    "industry": "REIT - Specialty"
+  },
+  "FTNT": {
+    "name": "Fortinet, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "SNOW": {
+    "name": "Snowflake Inc.",
+    "industry": "Software - Application"
+  },
+  "CRWD": {
+    "name": "CrowdStrike Holdings, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "S": {
+    "name": "SentinelOne, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "AES": {
+    "name": "The AES Corporation",
+    "industry": "Utilities - Diversified"
+  },
+  "GNRC": {
+    "name": "Generac Holdlings Inc.",
+    "industry": "Specialty Industrial Machinery"
+  },
+  "AAOI": {
+    "name": "Applied Optoelectronics, Inc.",
+    "industry": "Communication Equipment"
+  },
+  "PATH": {
+    "name": "UiPath, Inc.",
+    "industry": "Software - Infrastructure"
+  },
+  "APH": {
+    "name": "Amphenol Corporation",
+    "industry": "Electronic Components"
+  },
+  "MTSI": {
+    "name": "MACOM Technology Solutions Hold",
+    "industry": "Semiconductors"
+  },
+  "MPWR": {
+    "name": "Monolithic Power Systems, Inc.",
+    "industry": "Semiconductors"
+  },
+  "SMCI": {
+    "name": "Super Micro Computer, Inc.",
+    "industry": "Computer Hardware"
+  },
+  "COHR": {
+    "name": "Coherent Corp.",
+    "industry": "Scientific & Technical Instruments"
+  },
+  "VST": {
+    "name": "Vistra Corp.",
+    "industry": "Utilities - Independent Power Producers"
+  },
+  "CRM": {
+    "name": "Salesforce, Inc.",
+    "industry": "Software - Application"
+  },
+  "DT": {
+    "name": "Dynatrace, Inc.",
+    "industry": "Software - Application"
+  }
+}
