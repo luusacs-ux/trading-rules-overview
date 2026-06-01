@@ -28702,5 +28702,53 @@
   "marketCap": 0,
   "name": "Argent Mid Cap ETF",
   "quoteType": "ETF"
+ },
+ "ACLS": {
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "volume": 709206,
+  "marketCap": 4607932928,
+  "name": "Axcelis Technologies, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "ARVR": {
+  "sector": "",
+  "industry": "",
+  "volume": 396,
+  "marketCap": 0,
+  "name": "First Trust Indxx Metaverse ETF",
+  "quoteType": "ETF"
+ },
+ "BIGY": {
+  "sector": "",
+  "industry": "",
+  "volume": 11092,
+  "marketCap": 0,
+  "name": "YieldMax Target 12 Big 50 Optio",
+  "quoteType": "ETF"
+ },
+ "DWSH": {
+  "sector": "",
+  "industry": "",
+  "volume": 42809,
+  "marketCap": 0,
+  "name": "AdvisorShares Dorsey Wright Sho",
+  "quoteType": "ETF"
+ },
+ "TPAY": {
+  "sector": "",
+  "industry": "",
+  "volume": 1193,
+  "marketCap": 0,
+  "name": "Roundhill S&P 500 Target 10 Man",
+  "quoteType": "ETF"
+ },
+ "VONE": {
+  "sector": "",
+  "industry": "",
+  "volume": 100879,
+  "marketCap": 0,
+  "name": "Vanguard Russell 1000 ETF",
+  "quoteType": "ETF"
  }
 }
