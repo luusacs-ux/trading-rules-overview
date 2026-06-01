@@ -28566,5 +28566,125 @@
   "marketCap": 0,
   "name": "ProShares Ultra Health Care",
   "quoteType": "ETF"
+ },
+ "BEDZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 566,
+  "marketCap": 0,
+  "name": "AdvisorShares Hotel ETF",
+  "quoteType": "ETF"
+ },
+ "DTRE": {
+  "sector": "",
+  "industry": "",
+  "volume": 566,
+  "marketCap": 0,
+  "name": "First Trust Alerian Disruptive ",
+  "quoteType": "ETF"
+ },
+ "FDG": {
+  "sector": "",
+  "industry": "",
+  "volume": 21785,
+  "marketCap": 0,
+  "name": "American Century Focused Dynami",
+  "quoteType": "ETF"
+ },
+ "FDIS": {
+  "sector": "",
+  "industry": "",
+  "volume": 91026,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Consumer Discreti",
+  "quoteType": "ETF"
+ },
+ "GXC": {
+  "sector": "",
+  "industry": "",
+  "volume": 34898,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P China ETF",
+  "quoteType": "ETF"
+ },
+ "IEDI": {
+  "sector": "",
+  "industry": "",
+  "volume": 2955,
+  "marketCap": 0,
+  "name": "iShares U.S. Consumer Focused E",
+  "quoteType": "ETF"
+ },
+ "IWFG": {
+  "sector": "",
+  "industry": "",
+  "volume": 1980,
+  "marketCap": 0,
+  "name": "NYLI Winslow Focused Large Cap ",
+  "quoteType": "ETF"
+ },
+ "IYC": {
+  "sector": "",
+  "industry": "",
+  "volume": 137247,
+  "marketCap": 0,
+  "name": "iShares U.S. Consumer Discretio",
+  "quoteType": "ETF"
+ },
+ "MILN": {
+  "sector": "",
+  "industry": "",
+  "volume": 11433,
+  "marketCap": 0,
+  "name": "Global X Millennial Consumer ET",
+  "quoteType": "ETF"
+ },
+ "PEJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 27553,
+  "marketCap": 0,
+  "name": "Invesco Leisure and Entertainme",
+  "quoteType": "ETF"
+ },
+ "QGRO": {
+  "sector": "",
+  "industry": "",
+  "volume": 127428,
+  "marketCap": 0,
+  "name": "American Century U.S. Quality G",
+  "quoteType": "ETF"
+ },
+ "QQEW": {
+  "sector": "",
+  "industry": "",
+  "volume": 58733,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq-100 Select E",
+  "quoteType": "ETF"
+ },
+ "QQQE": {
+  "sector": "",
+  "industry": "",
+  "volume": 222646,
+  "marketCap": 0,
+  "name": "Direxion NASDAQ-100 Equal Weigh",
+  "quoteType": "ETF"
+ },
+ "RFV": {
+  "sector": "",
+  "industry": "",
+  "volume": 6450,
+  "marketCap": 0,
+  "name": "Invesco S&P Midcap 400 Pure Val",
+  "quoteType": "ETF"
+ },
+ "TINY": {
+  "sector": "",
+  "industry": "",
+  "volume": 1793,
+  "marketCap": 0,
+  "name": "ProShares Nanotechnology ETF",
+  "quoteType": "ETF"
  }
 }
