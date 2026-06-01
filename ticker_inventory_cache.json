@@ -28694,5 +28694,13 @@
   "marketCap": 0,
   "name": "NYLI Winslow Large Cap Growth E",
   "quoteType": "ETF"
+ },
+ "AMID": {
+  "sector": "",
+  "industry": "",
+  "volume": 14292,
+  "marketCap": 0,
+  "name": "Argent Mid Cap ETF",
+  "quoteType": "ETF"
  }
 }
