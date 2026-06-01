@@ -27414,5 +27414,1157 @@
   "marketCap": 905076416,
   "name": "Everspin Technologies, Inc.",
   "quoteType": "EQUITY"
+ },
+ "APT": {
+  "sector": "Industrials",
+  "industry": "Building Products & Equipment",
+  "volume": 85761,
+  "marketCap": 59462544,
+  "name": "Alpha Pro Tech, Ltd.",
+  "quoteType": "EQUITY"
+ },
+ "AVGE": {
+  "sector": "",
+  "industry": "",
+  "volume": 52315,
+  "marketCap": 0,
+  "name": "Avantis All Equity Markets ETF",
+  "quoteType": "ETF"
+ },
+ "BNGO": {
+  "sector": "Healthcare",
+  "industry": "Medical Instruments & Supplies",
+  "volume": 305384,
+  "marketCap": 14229000,
+  "name": "Bionano Genomics, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "CCSO": {
+  "sector": "",
+  "industry": "",
+  "volume": 4923,
+  "marketCap": 0,
+  "name": "Carbon Collective Climate Solut",
+  "quoteType": "ETF"
+ },
+ "DIG": {
+  "sector": "",
+  "industry": "",
+  "volume": 84192,
+  "marketCap": 0,
+  "name": "ProShares Ultra Energy",
+  "quoteType": "ETF"
+ },
+ "DRLL": {
+  "sector": "",
+  "industry": "",
+  "volume": 29917,
+  "marketCap": 0,
+  "name": "Strive U.S. Energy ETF",
+  "quoteType": "ETF"
+ },
+ "EMTY": {
+  "sector": "",
+  "industry": "",
+  "volume": 3003,
+  "marketCap": 0,
+  "name": "ProShares Decline of the Retail",
+  "quoteType": "ETF"
+ },
+ "ESS": {
+  "sector": "Real Estate",
+  "industry": "REIT - Residential",
+  "volume": 477885,
+  "marketCap": 18792038400,
+  "name": "Essex Property Trust, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "FXZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 55677,
+  "marketCap": 0,
+  "name": "First Trust Materials AlphaDEX ",
+  "quoteType": "ETF"
+ },
+ "HHH": {
+  "sector": "Real Estate",
+  "industry": "Real Estate - Development",
+  "volume": 497974,
+  "marketCap": 3777217536,
+  "name": "Howard Hughes Holdings Inc.",
+  "quoteType": "EQUITY"
+ },
+ "IEO": {
+  "sector": "",
+  "industry": "",
+  "volume": 145546,
+  "marketCap": 0,
+  "name": "iShares U.S. Oil & Gas Explorat",
+  "quoteType": "ETF"
+ },
+ "IGE": {
+  "sector": "",
+  "industry": "",
+  "volume": 305111,
+  "marketCap": 0,
+  "name": "iShares North American Natural ",
+  "quoteType": "ETF"
+ },
+ "JHDV": {
+  "sector": "",
+  "industry": "",
+  "volume": 193,
+  "marketCap": 0,
+  "name": "John Hancock U.S. High Dividend",
+  "quoteType": "ETF"
+ },
+ "LCLG": {
+  "sector": "",
+  "industry": "",
+  "volume": 673,
+  "marketCap": 0,
+  "name": "Logan Capital Broad Innovative ",
+  "quoteType": "ETF"
+ },
+ "MYY": {
+  "sector": "",
+  "industry": "",
+  "volume": 11828,
+  "marketCap": 0,
+  "name": "ProShares Short MidCap400",
+  "quoteType": "ETF"
+ },
+ "MZZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 8707,
+  "marketCap": 0,
+  "name": "ProShares UltraShort MidCap400",
+  "quoteType": "ETF"
+ },
+ "NVVE": {
+  "sector": "Consumer Cyclical",
+  "industry": "Specialty Retail",
+  "volume": 777733,
+  "marketCap": 2046676,
+  "name": "Nuvve Holding Corp.",
+  "quoteType": "EQUITY"
+ },
+ "NXTE": {
+  "sector": "",
+  "industry": "",
+  "volume": 1796,
+  "marketCap": 0,
+  "name": "AXS Green Alpha ETF",
+  "quoteType": "ETF"
+ },
+ "OSEA": {
+  "sector": "",
+  "industry": "",
+  "volume": 51423,
+  "marketCap": 0,
+  "name": "Harbor International Compounder",
+  "quoteType": "ETF"
+ },
+ "PSCE": {
+  "sector": "",
+  "industry": "",
+  "volume": 50028,
+  "marketCap": 0,
+  "name": "Invesco S&P SmallCap Energy ETF",
+  "quoteType": "ETF"
+ },
+ "PXE": {
+  "sector": "",
+  "industry": "",
+  "volume": 68557,
+  "marketCap": 0,
+  "name": "Invesco Energy Exploration & Pr",
+  "quoteType": "ETF"
+ },
+ "PXI": {
+  "sector": "",
+  "industry": "",
+  "volume": 20784,
+  "marketCap": 0,
+  "name": "Invesco Dorsey Wright Energy Mo",
+  "quoteType": "ETF"
+ },
+ "RBC": {
+  "sector": "Industrials",
+  "industry": "Tools & Accessories",
+  "volume": 208723,
+  "marketCap": 18094161920,
+  "name": "RBC Bearings Incorporated",
+  "quoteType": "EQUITY"
+ },
+ "RTH": {
+  "sector": "",
+  "industry": "",
+  "volume": 6333,
+  "marketCap": 0,
+  "name": "VanEck Retail ETF",
+  "quoteType": "ETF"
+ },
+ "SBB": {
+  "sector": "",
+  "industry": "",
+  "volume": 6276,
+  "marketCap": 0,
+  "name": "ProShares Short SmallCap600",
+  "quoteType": "ETF"
+ },
+ "SDD": {
+  "sector": "",
+  "industry": "",
+  "volume": 5726,
+  "marketCap": 0,
+  "name": "ProShares UltraShort SmallCap60",
+  "quoteType": "ETF"
+ },
+ "SIJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 12413,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Industrial",
+  "quoteType": "ETF"
+ },
+ "SMDD": {
+  "sector": "",
+  "industry": "",
+  "volume": 17974,
+  "marketCap": 0,
+  "name": "UltraPro Short MidCap400",
+  "quoteType": "ETF"
+ },
+ "SMN": {
+  "sector": "",
+  "industry": "",
+  "volume": 9910,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Materials",
+  "quoteType": "ETF"
+ },
+ "SRHQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 717,
+  "marketCap": 0,
+  "name": "SRH U.S. Quality GARP ETF",
+  "quoteType": "ETF"
+ },
+ "STRV": {
+  "sector": "",
+  "industry": "",
+  "volume": 67946,
+  "marketCap": 0,
+  "name": "Strive 500 ETF",
+  "quoteType": "ETF"
+ },
+ "SURE": {
+  "sector": "",
+  "industry": "",
+  "volume": 346,
+  "marketCap": 0,
+  "name": "AdvisorShares Insider Advantage",
+  "quoteType": "ETF"
+ },
+ "SZK": {
+  "sector": "",
+  "industry": "",
+  "volume": 4007,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Consumer S",
+  "quoteType": "ETF"
+ },
+ "THLV": {
+  "sector": "",
+  "industry": "",
+  "volume": 12834,
+  "marketCap": 0,
+  "name": "THOR Equal Weight Low Volatilit",
+  "quoteType": "ETF"
+ },
+ "TSME": {
+  "sector": "",
+  "industry": "",
+  "volume": 83387,
+  "marketCap": 0,
+  "name": "Thrivent Small-Mid Cap Equity E",
+  "quoteType": "ETF"
+ },
+ "UDIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 10900,
+  "marketCap": 0,
+  "name": "Franklin U.S. Core Dividend Til",
+  "quoteType": "ETF"
+ },
+ "USPX": {
+  "sector": "",
+  "industry": "",
+  "volume": 127090,
+  "marketCap": 0,
+  "name": "Franklin U.S. Equity Index ETF",
+  "quoteType": "ETF"
+ },
+ "AVSU": {
+  "sector": "",
+  "industry": "",
+  "volume": 13228,
+  "marketCap": 0,
+  "name": "Avantis Responsible U.S. Equity",
+  "quoteType": "ETF"
+ },
+ "FTXR": {
+  "sector": "",
+  "industry": "",
+  "volume": 156657,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq Transportati",
+  "quoteType": "ETF"
+ },
+ "IVOV": {
+  "sector": "",
+  "industry": "",
+  "volume": 19661,
+  "marketCap": 0,
+  "name": "Vanguard S&P Mid-Cap 400 Value ",
+  "quoteType": "ETF"
+ },
+ "HIBS": {
+  "sector": "",
+  "industry": "",
+  "volume": 213936,
+  "marketCap": 0,
+  "name": "Direxion Daily S&P 500 High Bet",
+  "quoteType": "ETF"
+ },
+ "JMEE": {
+  "sector": "",
+  "industry": "",
+  "volume": 176882,
+  "marketCap": 0,
+  "name": "JPMorgan Small & Mid Cap Enhanc",
+  "quoteType": "ETF"
+ },
+ "SEIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 91960,
+  "marketCap": 0,
+  "name": "SEI Enhanced U.S. Large Cap Val",
+  "quoteType": "ETF"
+ },
+ "RWK": {
+  "sector": "",
+  "industry": "",
+  "volume": 21426,
+  "marketCap": 0,
+  "name": "Invesco S&P MidCap 400 Revenue ",
+  "quoteType": "ETF"
+ },
+ "CNRG": {
+  "sector": "",
+  "industry": "",
+  "volume": 9225,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Kensho Cl",
+  "quoteType": "ETF"
+ },
+ "CTEC": {
+  "sector": "",
+  "industry": "",
+  "volume": 4723,
+  "marketCap": 0,
+  "name": "Global X ClimateTech ETF",
+  "quoteType": "ETF"
+ },
+ "CTEX": {
+  "sector": "",
+  "industry": "",
+  "volume": 2174,
+  "marketCap": 0,
+  "name": "ProShares S&P Kensho Cleantech ",
+  "quoteType": "ETF"
+ },
+ "FDN": {
+  "sector": "",
+  "industry": "",
+  "volume": 572904,
+  "marketCap": 0,
+  "name": "First Trust DJ Internet Index F",
+  "quoteType": "ETF"
+ },
+ "FRNW": {
+  "sector": "",
+  "industry": "",
+  "volume": 102049,
+  "marketCap": 0,
+  "name": "Fidelity Clean Energy ETF",
+  "quoteType": "ETF"
+ },
+ "HYDR": {
+  "sector": "",
+  "industry": "",
+  "volume": 72006,
+  "marketCap": 0,
+  "name": "Global X Hydrogen ETF",
+  "quoteType": "ETF"
+ },
+ "IYK": {
+  "sector": "",
+  "industry": "",
+  "volume": 441157,
+  "marketCap": 0,
+  "name": "iShares U.S. Consumer Staples E",
+  "quoteType": "ETF"
+ },
+ "PBD": {
+  "sector": "",
+  "industry": "",
+  "volume": 58896,
+  "marketCap": 0,
+  "name": "Invesco Global Clean Energy ETF",
+  "quoteType": "ETF"
+ },
+ "PUI": {
+  "sector": "",
+  "industry": "",
+  "volume": 18052,
+  "marketCap": 0,
+  "name": "Invesco Dorsey Wright Utilities",
+  "quoteType": "ETF"
+ },
+ "STEM": {
+  "sector": "Utilities",
+  "industry": "Utilities - Renewable",
+  "volume": 169214,
+  "marketCap": 87061584,
+  "name": "Stem, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "VCLN": {
+  "sector": "",
+  "industry": "",
+  "volume": 1866,
+  "marketCap": 0,
+  "name": "Virtus Duff & Phelps Clean Ener",
+  "quoteType": "ETF"
+ },
+ "AVIE": {
+  "sector": "",
+  "industry": "",
+  "volume": 1479,
+  "marketCap": 0,
+  "name": "Avantis Inflation Focused Equit",
+  "quoteType": "ETF"
+ },
+ "BBSC": {
+  "sector": "",
+  "industry": "",
+  "volume": 15593,
+  "marketCap": 0,
+  "name": "JPMorgan BetaBuilders U.S. Smal",
+  "quoteType": "ETF"
+ },
+ "BUFQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 189444,
+  "marketCap": 0,
+  "name": "FT Vest Laddered Nasdaq Buffer ",
+  "quoteType": "ETF"
+ },
+ "BUZZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 189271,
+  "marketCap": 0,
+  "name": "VanEck Social Sentiment ETF",
+  "quoteType": "ETF"
+ },
+ "DFEN": {
+  "sector": "",
+  "industry": "",
+  "volume": 301273,
+  "marketCap": 0,
+  "name": "Direxion Daily Aerospace & Defe",
+  "quoteType": "ETF"
+ },
+ "DIVD": {
+  "sector": "",
+  "industry": "",
+  "volume": 2128,
+  "marketCap": 0,
+  "name": "Altrius Global Dividend ETF",
+  "quoteType": "ETF"
+ },
+ "DUSL": {
+  "sector": "",
+  "industry": "",
+  "volume": 22547,
+  "marketCap": 0,
+  "name": "Direxion Daily Industrials Bull",
+  "quoteType": "ETF"
+ },
+ "DVND": {
+  "sector": "",
+  "industry": "",
+  "volume": 4839,
+  "marketCap": 0,
+  "name": "Touchstone Dividend Select ETF",
+  "quoteType": "ETF"
+ },
+ "FB": {
+  "sector": "",
+  "industry": "",
+  "volume": 815,
+  "marketCap": 0,
+  "name": "ProShares S&P 500 Dynamic Buffe",
+  "quoteType": "ETF"
+ },
+ "FCOM": {
+  "sector": "",
+  "industry": "",
+  "volume": 124736,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Communication Ser",
+  "quoteType": "ETF"
+ },
+ "FIDU": {
+  "sector": "",
+  "industry": "",
+  "volume": 108388,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Industrials Index",
+  "quoteType": "ETF"
+ },
+ "FSTA": {
+  "sector": "",
+  "industry": "",
+  "volume": 179057,
+  "marketCap": 0,
+  "name": "Fidelity MSCI COnsumer Staples ",
+  "quoteType": "ETF"
+ },
+ "FTDS": {
+  "sector": "",
+  "industry": "",
+  "volume": 1926,
+  "marketCap": 0,
+  "name": "First Trust Dividend Strength E",
+  "quoteType": "ETF"
+ },
+ "FTXG": {
+  "sector": "",
+  "industry": "",
+  "volume": 18877,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq Food & Bever",
+  "quoteType": "ETF"
+ },
+ "FXG": {
+  "sector": "",
+  "industry": "",
+  "volume": 18680,
+  "marketCap": 0,
+  "name": "First Trust Cons. Staples Alpha",
+  "quoteType": "ETF"
+ },
+ "FYC": {
+  "sector": "",
+  "industry": "",
+  "volume": 63236,
+  "marketCap": 0,
+  "name": "First Trust Small Cap Growth Al",
+  "quoteType": "ETF"
+ },
+ "GUSA": {
+  "sector": "",
+  "industry": "",
+  "volume": 1084,
+  "marketCap": 0,
+  "name": "Goldman Sachs MarketBeta U.S. 1",
+  "quoteType": "ETF"
+ },
+ "HUSV": {
+  "sector": "",
+  "industry": "",
+  "volume": 5239,
+  "marketCap": 0,
+  "name": "First Trust Horizon Managed Vol",
+  "quoteType": "ETF"
+ },
+ "IETC": {
+  "sector": "",
+  "industry": "",
+  "volume": 53596,
+  "marketCap": 0,
+  "name": "iShares U.S. Tech Independence ",
+  "quoteType": "ETF"
+ },
+ "ISCG": {
+  "sector": "",
+  "industry": "",
+  "volume": 46504,
+  "marketCap": 0,
+  "name": "iShares Morningstar Small-Cap G",
+  "quoteType": "ETF"
+ },
+ "ITM": {
+  "sector": "",
+  "industry": "",
+  "volume": 263109,
+  "marketCap": 0,
+  "name": "VanEck Intermediate Muni ETF",
+  "quoteType": "ETF"
+ },
+ "IZRL": {
+  "sector": "",
+  "industry": "",
+  "volume": 20138,
+  "marketCap": 0,
+  "name": "ARK Israel Innovative Technolog",
+  "quoteType": "ETF"
+ },
+ "KOMP": {
+  "sector": "",
+  "industry": "",
+  "volume": 90438,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Kensho Ne",
+  "quoteType": "ETF"
+ },
+ "LOAN": {
+  "sector": "Real Estate",
+  "industry": "REIT - Mortgage",
+  "volume": 27366,
+  "marketCap": 48231860,
+  "name": "Manhattan Bridge Capital, Inc",
+  "quoteType": "EQUITY"
+ },
+ "MGK": {
+  "sector": "",
+  "industry": "",
+  "volume": 2010420,
+  "marketCap": 0,
+  "name": "Vanguard Mega Cap Growth ETF",
+  "quoteType": "ETF"
+ },
+ "MSTQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 1376,
+  "marketCap": 0,
+  "name": "LHA Market State Tactical Q ETF",
+  "quoteType": "ETF"
+ },
+ "RBLD": {
+  "sector": "",
+  "industry": "",
+  "volume": 4169,
+  "marketCap": 0,
+  "name": "First Trust Alerian US NextGen ",
+  "quoteType": "ETF"
+ },
+ "REK": {
+  "sector": "",
+  "industry": "",
+  "volume": 12860,
+  "marketCap": 0,
+  "name": "ProShares Short Real Estate",
+  "quoteType": "ETF"
+ },
+ "REW": {
+  "sector": "",
+  "industry": "",
+  "volume": 28643,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Technology",
+  "quoteType": "ETF"
+ },
+ "ROKT": {
+  "sector": "",
+  "industry": "",
+  "volume": 40217,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Kensho Fi",
+  "quoteType": "ETF"
+ },
+ "ROM": {
+  "sector": "",
+  "industry": "",
+  "volume": 54376,
+  "marketCap": 0,
+  "name": "ProShares Ultra Technology",
+  "quoteType": "ETF"
+ },
+ "SDP": {
+  "sector": "",
+  "industry": "",
+  "volume": 6153,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Utilities",
+  "quoteType": "ETF"
+ },
+ "SEIM": {
+  "sector": "",
+  "industry": "",
+  "volume": 76680,
+  "marketCap": 0,
+  "name": "SEI Enhanced U.S. Large Cap Mom",
+  "quoteType": "ETF"
+ },
+ "SELV": {
+  "sector": "",
+  "industry": "",
+  "volume": 14258,
+  "marketCap": 0,
+  "name": "SEI Enhanced Low Volatility U.S",
+  "quoteType": "ETF"
+ },
+ "SKF": {
+  "sector": "",
+  "industry": "",
+  "volume": 39642,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Financials",
+  "quoteType": "ETF"
+ },
+ "SMCP": {
+  "sector": "",
+  "industry": "",
+  "volume": 2858,
+  "marketCap": 0,
+  "name": "SMART Mid Cap ETF",
+  "quoteType": "EQUITY"
+ },
+ "TRFK": {
+  "sector": "",
+  "industry": "",
+  "volume": 126168,
+  "marketCap": 0,
+  "name": "Pacer Data and Digital Revoluti",
+  "quoteType": "ETF"
+ },
+ "VDC": {
+  "sector": "",
+  "industry": "",
+  "volume": 171766,
+  "marketCap": 0,
+  "name": "Vanguard Consumer Staples ETF",
+  "quoteType": "ETF"
+ },
+ "VHT": {
+  "sector": "",
+  "industry": "",
+  "volume": 199280,
+  "marketCap": 0,
+  "name": "Vanguard Health Care ETF",
+  "quoteType": "ETF"
+ },
+ "VIS": {
+  "sector": "",
+  "industry": "",
+  "volume": 100530,
+  "marketCap": 0,
+  "name": "Vanguard Industrials ETF",
+  "quoteType": "ETF"
+ },
+ "VOX": {
+  "sector": "",
+  "industry": "",
+  "volume": 238865,
+  "marketCap": 0,
+  "name": "Vanguard Communication Services",
+  "quoteType": "ETF"
+ },
+ "AFMC": {
+  "sector": "",
+  "industry": "",
+  "volume": 24076,
+  "marketCap": 0,
+  "name": "First Trust Active Factor Mid C",
+  "quoteType": "ETF"
+ },
+ "AZTD": {
+  "sector": "",
+  "industry": "",
+  "volume": 468,
+  "marketCap": 0,
+  "name": "Aztlan Global Stock Selection D",
+  "quoteType": "ETF"
+ },
+ "DFUV": {
+  "sector": "",
+  "industry": "",
+  "volume": 543207,
+  "marketCap": 0,
+  "name": "Dimensional US Marketwide Value",
+  "quoteType": "ETF"
+ },
+ "DJD": {
+  "sector": "",
+  "industry": "",
+  "volume": 42619,
+  "marketCap": 0,
+  "name": "Invesco Dow Jones Industrial Av",
+  "quoteType": "ETF"
+ },
+ "EFU": {
+  "sector": "",
+  "industry": "",
+  "volume": 22342,
+  "marketCap": 0,
+  "name": "ProShares UltraShort MSCI EAFE",
+  "quoteType": "ETF"
+ },
+ "EFZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 63335,
+  "marketCap": 0,
+  "name": "ProShares Short MSCI EAFE",
+  "quoteType": "ETF"
+ },
+ "EPV": {
+  "sector": "",
+  "industry": "",
+  "volume": 61053,
+  "marketCap": 0,
+  "name": "ProShares UltraShort FTSE Europ",
+  "quoteType": "ETF"
+ },
+ "FDIG": {
+  "sector": "",
+  "industry": "",
+  "volume": 45453,
+  "marketCap": 0,
+  "name": "Fidelity Crypto Industry and Di",
+  "quoteType": "ETF"
+ },
+ "GVLU": {
+  "sector": "",
+  "industry": "",
+  "volume": 6563,
+  "marketCap": 0,
+  "name": "Gotham 1000 Value ETF",
+  "quoteType": "ETF"
+ },
+ "IDVO": {
+  "sector": "",
+  "industry": "",
+  "volume": 336420,
+  "marketCap": 0,
+  "name": "Amplify CWP International Enhan",
+  "quoteType": "ETF"
+ },
+ "IJJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 165244,
+  "marketCap": 0,
+  "name": "iShares S&P Mid-Cap 400 Value E",
+  "quoteType": "ETF"
+ },
+ "JHSC": {
+  "sector": "",
+  "industry": "",
+  "volume": 43079,
+  "marketCap": 0,
+  "name": "John Hancock Multifactor Small ",
+  "quoteType": "ETF"
+ },
+ "LCF": {
+  "sector": "",
+  "industry": "",
+  "volume": 4384,
+  "marketCap": 0,
+  "name": "Touchstone US Large Cap Focused",
+  "quoteType": "ETF"
+ },
+ "MDYV": {
+  "sector": "",
+  "industry": "",
+  "volume": 79733,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P 400 Mid C",
+  "quoteType": "ETF"
+ },
+ "MEME": {
+  "sector": "",
+  "industry": "",
+  "volume": 207242,
+  "marketCap": 0,
+  "name": "Roundhill Meme Stock ETF",
+  "quoteType": "EQUITY"
+ },
+ "NDIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 21585,
+  "marketCap": 0,
+  "name": "Amplify Energy & Natural Resour",
+  "quoteType": "ETF"
+ },
+ "NVDS": {
+  "sector": "",
+  "industry": "",
+  "volume": 448642,
+  "marketCap": 0,
+  "name": "Tradr 1.5X Short NVDA Daily ETF",
+  "quoteType": "ETF"
+ },
+ "QVMM": {
+  "sector": "",
+  "industry": "",
+  "volume": 3893,
+  "marketCap": 0,
+  "name": "Invesco S&P MidCap 400 QVM Mult",
+  "quoteType": "ETF"
+ },
+ "STCE": {
+  "sector": "",
+  "industry": "",
+  "volume": 118098,
+  "marketCap": 0,
+  "name": "Schwab Crypto Thematic ETF",
+  "quoteType": "ETF"
+ },
+ "VBR": {
+  "sector": "",
+  "industry": "",
+  "volume": 303096,
+  "marketCap": 0,
+  "name": "Vanguard Small-Cap Value ETF",
+  "quoteType": "ETF"
+ },
+ "EPS": {
+  "sector": "",
+  "industry": "",
+  "volume": 52052,
+  "marketCap": 0,
+  "name": "WisdomTree U.S. LargeCap Fund",
+  "quoteType": "ETF"
+ },
+ "SEMI": {
+  "sector": "",
+  "industry": "",
+  "volume": 16334,
+  "marketCap": 0,
+  "name": "Columbia Select Technology ETF",
+  "quoteType": "ETF"
+ },
+ "TDIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 102346,
+  "marketCap": 0,
+  "name": "First Trust NASDAQ Technology D",
+  "quoteType": "ETF"
+ },
+ "BPAY": {
+  "sector": "",
+  "industry": "",
+  "volume": 1365,
+  "marketCap": 0,
+  "name": "iShares FinTech Active ETF",
+  "quoteType": "ETF"
+ },
+ "IBUY": {
+  "sector": "",
+  "industry": "",
+  "volume": 14503,
+  "marketCap": 0,
+  "name": "Amplify Online Retail ETF",
+  "quoteType": "ETF"
+ },
+ "IYF": {
+  "sector": "",
+  "industry": "",
+  "volume": 345315,
+  "marketCap": 0,
+  "name": "iShares U.S. Financial ETF",
+  "quoteType": "ETF"
+ },
+ "IYG": {
+  "sector": "",
+  "industry": "",
+  "volume": 138571,
+  "marketCap": 0,
+  "name": "iShares U.S. Financial Services",
+  "quoteType": "ETF"
+ },
+ "SFYF": {
+  "sector": "",
+  "industry": "",
+  "volume": 4165,
+  "marketCap": 0,
+  "name": "SoFi Social 50 ETF",
+  "quoteType": "ETF"
+ },
+ "TIME": {
+  "sector": "",
+  "industry": "",
+  "volume": 4630,
+  "marketCap": 0,
+  "name": "Clockwise U.S. Core Equity ETF",
+  "quoteType": "ETF"
+ },
+ "DFNL": {
+  "sector": "",
+  "industry": "",
+  "volume": 32868,
+  "marketCap": 0,
+  "name": "Davis Select Financial ETF",
+  "quoteType": "ETF"
+ },
+ "SEF": {
+  "sector": "",
+  "industry": "",
+  "volume": 32144,
+  "marketCap": 0,
+  "name": "ProShares Short Financials",
+  "quoteType": "ETF"
+ },
+ "FNCL": {
+  "sector": "",
+  "industry": "",
+  "volume": 143836,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Financials Index ",
+  "quoteType": "ETF"
+ },
+ "FTXO": {
+  "sector": "",
+  "industry": "",
+  "volume": 626168,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq Bank ETF",
+  "quoteType": "ETF"
+ },
+ "IXG": {
+  "sector": "",
+  "industry": "",
+  "volume": 39274,
+  "marketCap": 0,
+  "name": "iShares Global Financial ETF",
+  "quoteType": "ETF"
+ },
+ "KXI": {
+  "sector": "",
+  "industry": "",
+  "volume": 69749,
+  "marketCap": 0,
+  "name": "iShares Global Consumer Staples",
+  "quoteType": "ETF"
+ },
+ "FHLC": {
+  "sector": "",
+  "industry": "",
+  "volume": 181158,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Health Care Index",
+  "quoteType": "ETF"
+ },
+ "FPX": {
+  "sector": "",
+  "industry": "",
+  "volume": 32633,
+  "marketCap": 0,
+  "name": "First Trust US Equity Opportuni",
+  "quoteType": "ETF"
+ },
+ "FTXH": {
+  "sector": "",
+  "industry": "",
+  "volume": 6838,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq Pharmaceutic",
+  "quoteType": "ETF"
+ },
+ "FTXL": {
+  "sector": "",
+  "industry": "",
+  "volume": 212311,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq Semiconducto",
+  "quoteType": "ETF"
+ },
+ "FXL": {
+  "sector": "",
+  "industry": "",
+  "volume": 17788,
+  "marketCap": 0,
+  "name": "First Trust Technology AlphaDEX",
+  "quoteType": "ETF"
+ },
+ "IXJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 177255,
+  "marketCap": 0,
+  "name": "iShares Global Healthcare ETF",
+  "quoteType": "ETF"
+ },
+ "JSML": {
+  "sector": "",
+  "industry": "",
+  "volume": 16084,
+  "marketCap": 0,
+  "name": "Janus Henderson Small Cap Growt",
+  "quoteType": "ETF"
+ },
+ "NUGO": {
+  "sector": "",
+  "industry": "",
+  "volume": 121604,
+  "marketCap": 0,
+  "name": "Nuveen Growth Opportunities ETF",
+  "quoteType": "ETF"
+ },
+ "PJP": {
+  "sector": "",
+  "industry": "",
+  "volume": 23404,
+  "marketCap": 0,
+  "name": "Invesco Pharmaceuticals ETF",
+  "quoteType": "ETF"
+ },
+ "PSCT": {
+  "sector": "",
+  "industry": "",
+  "volume": 33317,
+  "marketCap": 0,
+  "name": "Invesco S&P SmallCap Informatio",
+  "quoteType": "ETF"
+ },
+ "PSI": {
+  "sector": "",
+  "industry": "",
+  "volume": 331946,
+  "marketCap": 0,
+  "name": "Invesco Semiconductors ETF",
+  "quoteType": "ETF"
+ },
+ "PTF": {
+  "sector": "",
+  "industry": "",
+  "volume": 86330,
+  "marketCap": 0,
+  "name": "Invesco Dorsey Wright Technolog",
+  "quoteType": "ETF"
+ },
+ "RXL": {
+  "sector": "",
+  "industry": "",
+  "volume": 8773,
+  "marketCap": 0,
+  "name": "ProShares Ultra Health Care",
+  "quoteType": "ETF"
  }
 }
