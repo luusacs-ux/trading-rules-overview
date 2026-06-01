@@ -28686,5 +28686,13 @@
   "marketCap": 0,
   "name": "ProShares Nanotechnology ETF",
   "quoteType": "ETF"
+ },
+ "IWLG": {
+  "sector": "",
+  "industry": "",
+  "volume": 176630,
+  "marketCap": 0,
+  "name": "NYLI Winslow Large Cap Growth E",
+  "quoteType": "ETF"
  }
 }
