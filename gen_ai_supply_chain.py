@@ -9,21 +9,23 @@ import yfinance as yf
 import pandas as pd
 
 OUT_PATH = Path(__file__).parent / "ai_supply_chain.html"
+METADATA_CACHE = Path(__file__).parent / "ai_supply_chain_meta.json"
+MIN_TICKERS_REQUIRED = 50
 
 CATEGORIES = {
-    "AI Chip Designers": ["NVDA","AMD","INTC","AVGO","QCOM","MRVL","ARM","MXL","HIMX","SIMO","AMBA","LSCC","MPWR","POWI","WOLF"],
+    "AI Chip Designers": ["NVDA","AMD","INTC","AVGO","QCOM","MRVL","ARM","MXL","HIMX","SIMO","AMBA","LSCC","MPWR","POWI"],
     "EDA / Chip IP": ["SNPS","CDNS","RMBS","CEVA","SITM","ALGM"],
     "Chip Foundries": ["TSM","GFS","UMC"],
     "Semiconductor Equipment": ["ASML","AMAT","LRCX","KLAC","ONTO","CAMT","ACLS","TER","COHU","IPGP","MKSI","ENTG"],
     "Chip Testing / Packaging": ["AMKR","ASX","AEHR"],
     "Memory / Storage": ["MU","WDC","STX","PSTG","NTAP"],
-    "Networking / Switching": ["ANET","CSCO","JNPR","CIEN","INFN","CALX","VIAV"],
+    "Networking / Switching": ["ANET","CSCO","CIEN","CALX","VIAV"],
     "Optical / Photonics": ["COHR","LITE","AAOI","GLW"],
     "Connectors / Components": ["APH","TEL","HUBB","MTSI","NDSN"],
     "AI Servers / Hardware": ["SMCI","DELL","HPE","CLS","IBM"],
     "Cloud / Data Center": ["AMZN","MSFT","GOOGL","META","ORCL","CRM","BABA","BIDU"],
     "Data Center REITs": ["EQIX","DLR","IRM"],
-    "AI Software / Platforms": ["PLTR","AI","SNOW","DDOG","MDB","PATH","SOUN","BBAI","UPST","DT","CFLT","ESTC","WDAY","NOW","S"],
+    "AI Software / Platforms": ["PLTR","AI","SNOW","DDOG","MDB","PATH","SOUN","BBAI","UPST","DT","ESTC","WDAY","NOW","S"],
     "AI Cybersecurity": ["CRWD","PANW","ZS","FTNT","NET"],
     "Power / Energy": ["VST","CEG","NRG","NEE","SO","EVRG","AES","D","GEV","ETN"],
     "Nuclear / Uranium": ["OKLO","SMR","NNE","CCJ","LEU","BWXT","UEC","UUUU"],
@@ -34,10 +36,34 @@ CATEGORIES = {
     "AI / Robotics ETFs": ["BOTZ","ROBT","AIQ","ROBO","SMH","SOXX"],
 }
 
+
+def _load_metadata_cache():
+    if METADATA_CACHE.exists():
+        age_days = (time.time() - METADATA_CACHE.stat().st_mtime) / 86400
+        if age_days < 7:
+            with open(METADATA_CACHE) as f:
+                return json.load(f)
+    return {}
+
+
+def _save_metadata_cache(cache):
+    with open(METADATA_CACHE, "w") as f:
+        json.dump(cache, f, indent=2)
+
+
+def _color(v):
+    if v > 0: return "color:#66ff66"
+    elif v < 0: return "color:#ff6666"
+    return ""
+
+
 def fetch_data(tickers):
-    """Fetch current price, YTD%, 30d%, 7d% for all tickers."""
+    """Fetch current price, Today%, YTD%, 30d%, 7d% for all tickers."""
     all_tickers = list(set(tickers))
     print(f"Fetching data for {len(all_tickers)} tickers...")
+
+    meta_cache = _load_metadata_cache()
+    cache_hits = 0
 
     results = {}
     batch_size = 20
@@ -73,13 +99,27 @@ def fetch_data(tickers):
                     d7 = close.index[close.index >= (now - timedelta(days=10))]
                     pct_7d = ((current / float(close.loc[d7[0]]) - 1) * 100) if len(d7) > 0 else 0
 
-                    prev_close = float(close.iloc[-2]) if len(close) >= 2 else current
-                    today_pct = ((current / prev_close) - 1) * 100
+                    if ticker in meta_cache:
+                        name = meta_cache[ticker].get("name", ticker)
+                        industry = meta_cache[ticker].get("industry", "")
+                        cache_hits += 1
+                    else:
+                        info = yf.Ticker(ticker).info
+                        name = info.get("shortName", info.get("longName", ticker))
+                        industry = info.get("industry", "")
+                        meta_cache[ticker] = {"name": name, "industry": industry}
 
-                    info = yf.Ticker(ticker).info
+                    today_pct = 0.0
+                    try:
+                        t_info = yf.Ticker(ticker).info
+                        today_pct = t_info.get("regularMarketChangePercent", 0.0) or 0.0
+                    except Exception:
+                        prev_close = float(close.iloc[-2]) if len(close) >= 2 else current
+                        today_pct = ((current / prev_close) - 1) * 100
+
                     results[ticker] = {
-                        "name": info.get("shortName", info.get("longName", ticker)),
-                        "industry": info.get("industry", ""),
+                        "name": name,
+                        "industry": industry,
                         "price": round(current, 2),
                         "today": round(today_pct, 1),
                         "ytd": round(ytd_pct, 1),
@@ -95,6 +135,8 @@ def fetch_data(tickers):
             print(f"  {i+batch_size}/{len(all_tickers)} done...")
         time.sleep(0.5)
 
+    _save_metadata_cache(meta_cache)
+    print(f"  Metadata: {cache_hits} cache hits, {len(meta_cache) - cache_hits} fresh lookups")
     return results
 
 
@@ -108,20 +150,16 @@ def generate_html(categories, data):
             d = data.get(t)
             if not d:
                 continue
-            def color(v):
-                if v > 0: return "color:#66ff66"
-                elif v < 0: return "color:#ff6666"
-                return ""
             rows.append(
                 f'<tr>'
                 f'<td><strong>{t}</strong></td>'
                 f'<td>{d["name"]}</td>'
                 f'<td>{d["industry"]}</td>'
                 f'<td>${d["price"]:,.2f}</td>'
-                f'<td style="{color(d["today"])}">{d["today"]:+.1f}%</td>'
-                f'<td style="{color(d["ytd"])}">{d["ytd"]:+.1f}%</td>'
-                f'<td style="{color(d["d30"])}">{d["d30"]:+.1f}%</td>'
-                f'<td style="{color(d["d7"])}">{d["d7"]:+.1f}%</td>'
+                f'<td style="{_color(d["today"])}">{d["today"]:+.1f}%</td>'
+                f'<td style="{_color(d["ytd"])}">{d["ytd"]:+.1f}%</td>'
+                f'<td style="{_color(d["d30"])}">{d["d30"]:+.1f}%</td>'
+                f'<td style="{_color(d["d7"])}">{d["d7"]:+.1f}%</td>'
                 f'</tr>'
             )
         if rows:
@@ -139,7 +177,6 @@ def generate_html(categories, data):
                 '</tr></thead><tbody>' + "\n".join(rows) + '</tbody></table>'
             )
 
-    total_tickers = sum(len(v) for v in categories.values())
     fetched = len(data)
 
     html = f"""<!DOCTYPE html>
@@ -216,5 +253,11 @@ if __name__ == "__main__":
     all_tickers = list(set(all_tickers))
 
     data = fetch_data(all_tickers)
-    print(f"\nFetched data for {len(data)}/{len(all_tickers)} tickers")
+    fetched = len(data)
+    print(f"\nFetched data for {fetched}/{len(all_tickers)} tickers")
+
+    if fetched < MIN_TICKERS_REQUIRED:
+        print(f"ABORT: Only {fetched} tickers fetched (min {MIN_TICKERS_REQUIRED}). Not overwriting page.")
+        sys.exit(1)
+
     generate_html(CATEGORIES, data)
