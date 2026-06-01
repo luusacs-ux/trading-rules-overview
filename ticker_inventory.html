@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,546 tickers &#8226; 1,011 with 1m data &#8226; 2,535 missing 1m &#8226; 235 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,552 tickers &#8226; 1,017 with 1m data &#8226; 2,535 missing 1m &#8226; 235 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -3365,6 +3365,7 @@ var data = [
   {t:"SLRC",n:"SLR Investment Corp.",s:"Financial Services",i:"Asset Management",v:348325,mc:871237504,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"HYPD",n:"Hyperion DeFi, Inc.",s:"Healthcare",i:"Biotechnology",v:348044,mc:53198984,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VIXM",n:"VIX Mid-Term Futures ETF",s:"",i:"",v:346732,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"IYF",n:"iShares U.S. Financial ETF",s:"",i:"",v:345315,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ANIP",n:"ANI Pharmaceuticals, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:344301,mc:1925349248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"QTUM",n:"Defiance Quantum ETF",s:"",i:"",v:343262,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IFRA",n:"iShares U.S. Infrastructure ETF",s:"",i:"",v:343091,mc:0,qt:"ETF",d1m:1,d5m:1,rules:26,br:0},
@@ -3480,6 +3481,7 @@ var data = [
   {t:"CIFG",n:"Leverage Shares 2X Long CIFR Da",s:"",i:"",v:150826,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"HQ",n:"Horizon Quantum Holdings Ltd.",s:"Technology",i:"Software - Infrastructure",v:150538,mc:499534272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"IEO",n:"iShares U.S. Oil &amp; Gas Explorat",s:"",i:"",v:145546,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"IYG",n:"iShares U.S. Financial Services",s:"",i:"",v:138571,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MUST",n:"Columbia Multi-Sector Municipal",s:"",i:"",v:133047,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"USPX",n:"Franklin U.S. Equity Index ETF",s:"",i:"",v:127090,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TRFK",n:"Pacer Data and Digital Revoluti",s:"",i:"",v:126168,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3577,6 +3579,7 @@ var data = [
   {t:"CNBS",n:"Amplify Seymour Cannabis ETF",s:"",i:"",v:16695,mc:0,qt:"ETF",d1m:1,d5m:1,rules:339,br:0},
   {t:"SEMI",n:"Columbia Select Technology ETF",s:"",i:"",v:16334,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BBSC",n:"JPMorgan BetaBuilders U.S. Smal",s:"",i:"",v:15593,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"IBUY",n:"Amplify Online Retail ETF",s:"",i:"",v:14503,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SELV",n:"SEI Enhanced Low Volatility U.S",s:"",i:"",v:14258,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AVSU",n:"Avantis Responsible U.S. Equity",s:"",i:"",v:13228,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SRS",n:"ProShares UltraShort Real Estat",s:"",i:"",v:12893,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3597,8 +3600,10 @@ var data = [
   {t:"CCSO",n:"Carbon Collective Climate Solut",s:"",i:"",v:4923,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DVND",n:"Touchstone Dividend Select ETF",s:"",i:"",v:4839,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CTEC",n:"Global X ClimateTech ETF",s:"",i:"",v:4723,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"TIME",n:"Clockwise U.S. Core Equity ETF",s:"",i:"",v:4630,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LCF",n:"Touchstone US Large Cap Focused",s:"",i:"",v:4384,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RBLD",n:"First Trust Alerian US NextGen ",s:"",i:"",v:4169,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"SFYF",n:"SoFi Social 50 ETF",s:"",i:"",v:4165,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SZK",n:"ProShares UltraShort Consumer S",s:"",i:"",v:4007,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"QVMM",n:"Invesco S&amp;P MidCap 400 QVM Mult",s:"",i:"",v:3893,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EMTY",n:"ProShares Decline of the Retail",s:"",i:"",v:3003,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3610,6 +3615,7 @@ var data = [
   {t:"NXTE",n:"AXS Green Alpha ETF",s:"",i:"",v:1796,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AVIE",n:"Avantis Inflation Focused Equit",s:"",i:"",v:1479,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MSTQ",n:"LHA Market State Tactical Q ETF",s:"",i:"",v:1376,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"BPAY",n:"iShares FinTech Active ETF",s:"",i:"",v:1365,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GUSA",n:"Goldman Sachs MarketBeta U.S. 1",s:"",i:"",v:1084,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FB",n:"ProShares S&amp;P 500 Dynamic Buffe",s:"",i:"",v:815,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SRHQ",n:"SRH U.S. Quality GARP ETF",s:"",i:"",v:717,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
