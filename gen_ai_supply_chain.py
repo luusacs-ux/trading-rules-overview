@@ -10,6 +10,7 @@ import pandas as pd
 
 OUT_PATH = Path(__file__).parent / "ai_supply_chain.html"
 METADATA_CACHE = Path(__file__).parent / "ai_supply_chain_meta.json"
+STATE_FILE = Path(__file__).parent.parent / "paper_trader_individual_state.json"
 MIN_TICKERS_REQUIRED = 50
 
 CATEGORIES = {
@@ -55,6 +56,24 @@ def _color(v):
     if v > 0: return "color:#66ff66"
     elif v < 0: return "color:#ff6666"
     return ""
+
+
+def _load_bot_itd():
+    """Load Bot ITD% from paper trader state file."""
+    itd = {}
+    if not STATE_FILE.exists():
+        return itd
+    try:
+        with open(STATE_FILE) as f:
+            state = json.load(f)
+        for ticker, data in state.get("tickers", {}).items():
+            trades = data.get("trades", [])
+            cap = data.get("starting_capital", 10000)
+            pnl = sum(t.get("pnl", 0) for t in trades)
+            itd[ticker] = round(pnl / cap * 100, 1) if cap else 0
+    except Exception:
+        pass
+    return itd
 
 
 def fetch_data(tickers):
@@ -140,7 +159,7 @@ def fetch_data(tickers):
     return results
 
 
-def generate_html(categories, data):
+def generate_html(categories, data, bot_itd):
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     sections = []
@@ -150,16 +169,18 @@ def generate_html(categories, data):
             d = data.get(t)
             if not d:
                 continue
+            itd = bot_itd.get(t)
+            itd_str = f'{itd:+.1f}%' if itd is not None else "-"
+            itd_style = _color(itd) if itd else ""
             rows.append(
                 f'<tr>'
                 f'<td><strong>{t}</strong></td>'
-                f'<td>{d["name"]}</td>'
-                f'<td>{d["industry"]}</td>'
                 f'<td>${d["price"]:,.2f}</td>'
                 f'<td style="{_color(d["today"])}">{d["today"]:+.1f}%</td>'
-                f'<td style="{_color(d["ytd"])}">{d["ytd"]:+.1f}%</td>'
-                f'<td style="{_color(d["d30"])}">{d["d30"]:+.1f}%</td>'
                 f'<td style="{_color(d["d7"])}">{d["d7"]:+.1f}%</td>'
+                f'<td style="{_color(d["d30"])}">{d["d30"]:+.1f}%</td>'
+                f'<td style="{_color(d["ytd"])}">{d["ytd"]:+.1f}%</td>'
+                f'<td style="{itd_style}">{itd_str}</td>'
                 f'</tr>'
             )
         if rows:
@@ -167,13 +188,12 @@ def generate_html(categories, data):
             sections.append(
                 '<table><thead><tr>'
                 '<th onclick="sortTable(this)">Ticker<span class="sort-arrow"></span></th>'
-                '<th onclick="sortTable(this)">Name<span class="sort-arrow"></span></th>'
-                '<th onclick="sortTable(this)">Industry<span class="sort-arrow"></span></th>'
                 '<th onclick="sortTable(this)">Price<span class="sort-arrow"></span></th>'
-                '<th onclick="sortTable(this)">Today %<span class="sort-arrow"></span></th>'
-                '<th onclick="sortTable(this)">YTD %<span class="sort-arrow"></span></th>'
-                '<th onclick="sortTable(this)">30D %<span class="sort-arrow"></span></th>'
-                '<th onclick="sortTable(this)">7D %<span class="sort-arrow"></span></th>'
+                '<th onclick="sortTable(this)">Today<span class="sort-arrow"></span></th>'
+                '<th onclick="sortTable(this)">7D<span class="sort-arrow"></span></th>'
+                '<th onclick="sortTable(this)">30D<span class="sort-arrow"></span></th>'
+                '<th onclick="sortTable(this)">YTD<span class="sort-arrow"></span></th>'
+                '<th onclick="sortTable(this)">Bot ITD<span class="sort-arrow"></span></th>'
                 '</tr></thead><tbody>' + "\n".join(rows) + '</tbody></table>'
             )
 
@@ -260,4 +280,6 @@ if __name__ == "__main__":
         print(f"ABORT: Only {fetched} tickers fetched (min {MIN_TICKERS_REQUIRED}). Not overwriting page.")
         sys.exit(1)
 
-    generate_html(CATEGORIES, data)
+    bot_itd = _load_bot_itd()
+    print(f"Bot ITD data: {len(bot_itd)} tickers")
+    generate_html(CATEGORIES, data, bot_itd)
