@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,739 tickers &#8226; 1,217 with 1m data &#8226; 2,522 missing 1m &#8226; 242 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,742 tickers &#8226; 1,221 with 1m data &#8226; 2,521 missing 1m &#8226; 242 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -3659,6 +3659,7 @@ var data = [
   {t:"PEJ",n:"Invesco Leisure and Entertainme",s:"",i:"",v:27553,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LOAN",n:"Manhattan Bridge Capital, Inc",s:"Real Estate",i:"REIT - Mortgage",v:27366,mc:48231860,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BULG",n:"Leverage Shares 2X Long BULL Da",s:"",i:"",v:26084,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FDTX",n:"Fidelity Disruptive Technology ",s:"",i:"",v:25514,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"GOEX",n:"Global X Gold Explorers ETF",s:"",i:"",v:25504,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PGJ",n:"Invesco Golden Dragon China ETF",s:"",i:"",v:25500,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CHPS",n:"Xtrackers Semiconductor Select ",s:"",i:"",v:24607,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3770,6 +3771,7 @@ var data = [
   {t:"RYLG",n:"Global X Russell 2000 Covered C",s:"",i:"",v:2520,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AIUP",n:"FINQ FIRST U.S. Large Cap AI-Ma",s:"",i:"",v:2484,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"HAIL",n:"State Street SPDR S&amp;P Kensho Sm",s:"",i:"",v:2474,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"DRUP",n:"GraniteShares Nasdaq Select Dis",s:"",i:"",v:2236,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"FFF",n:"Founders 100 ETF",s:"",i:"",v:2223,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CTEX",n:"ProShares S&amp;P Kensho Cleantech ",s:"",i:"",v:2174,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMOG",n:"VanEck Low Carbon Energy ETF",s:"",i:"",v:2160,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3784,6 +3786,7 @@ var data = [
   {t:"NIXT",n:"Research Affiliates Deletions E",s:"",i:"",v:1753,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MAKX",n:"ProShares S&amp;P Kensho Smart Fact",s:"",i:"",v:1730,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AVIE",n:"Avantis Inflation Focused Equit",s:"",i:"",v:1479,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"CLOD",n:"Themes Cloud Computing ETF",s:"",i:"",v:1436,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"MSTQ",n:"LHA Market State Tactical Q ETF",s:"",i:"",v:1376,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BPAY",n:"iShares FinTech Active ETF",s:"",i:"",v:1365,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AOTS",n:"AOT Software Platform ETF",s:"",i:"",v:1350,mc:0,qt:"EQUITY",d1m:1,d5m:0,rules:0,br:0},
@@ -3802,7 +3805,7 @@ var data = [
   {t:"BEDZ",n:"AdvisorShares Hotel ETF",s:"",i:"",v:566,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DTRE",n:"First Trust Alerian Disruptive ",s:"",i:"",v:566,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AZTD",n:"Aztlan Global Stock Selection D",s:"",i:"",v:468,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"QFRD",n:"Pacer S&amp;P 500 Quality FCF R&amp;D L",s:"",i:"",v:430,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"QFRD",n:"Pacer S&amp;P 500 Quality FCF R&amp;D L",s:"",i:"",v:430,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ARVR",n:"First Trust Indxx Metaverse ETF",s:"",i:"",v:396,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"VERS",n:"ProShares Metaverse ETF",s:"",i:"",v:387,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MOTO",n:"Guinness Atkinson Smart Transpo",s:"",i:"",v:347,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
