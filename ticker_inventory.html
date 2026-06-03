@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,742 tickers &#8226; 1,223 with 1m data &#8226; 2,519 missing 1m &#8226; 244 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,744 tickers &#8226; 1,226 with 1m data &#8226; 2,518 missing 1m &#8226; 245 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -1563,7 +1563,7 @@ var data = [
   {t:"ECVT",n:"Ecovyst Inc.",s:"Basic Materials",i:"Specialty Chemicals",v:2113470,mc:1628933120,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PHR",n:"Phreesia, Inc.",s:"Healthcare",i:"Health Information Services",v:2112520,mc:586363520,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GNTX",n:"Gentex Corporation",s:"Consumer Cyclical",i:"Auto Parts",v:2109618,mc:4939176448,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"ALGM",n:"Allegro MicroSystems, Inc.",s:"Technology",i:"Semiconductors",v:2109286,mc:9205250048,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ALGM",n:"Allegro MicroSystems, Inc.",s:"Technology",i:"Semiconductors",v:2109286,mc:9205250048,qt:"EQUITY",d1m:1,d5m:1,rules:24,br:0},
   {t:"BULZ",n:"MicroSectors FANG &amp; Innovation ",s:"",i:"",v:2108801,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CWK",n:"Cushman &amp; Wakefield Ltd.",s:"Real Estate",i:"Real Estate Services",v:2108245,mc:3404195328,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EXTR",n:"Extreme Networks, Inc.",s:"Technology",i:"Communication Equipment",v:2105480,mc:3100748288,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3487,6 +3487,7 @@ var data = [
   {t:"RPID",n:"Rapid Micro Biosystems, Inc.",s:"Healthcare",i:"Medical Devices",v:203590,mc:98148960,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"IIIN",n:"Insteel Industries, Inc.",s:"Industrials",i:"Metal Fabrication",v:200847,mc:514786720,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VHT",n:"Vanguard Health Care ETF",s:"",i:"",v:199280,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"MCHPP",n:"Microchip Technology Incorporat",s:"Technology",i:"Semiconductors",v:196198,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"INTT",n:"inTest Corporation",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:194944,mc:204914656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"FXY",n:"Invesco CurrencyShares Japanese",s:"",i:"",v:193800,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMLF",n:"iShares U.S. Small-Cap Equity F",s:"",i:"",v:192306,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3680,6 +3681,7 @@ var data = [
   {t:"BOCT",n:"Innovator U.S. Equity Buffer ET",s:"",i:"",v:21248,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"PXI",n:"Invesco Dorsey Wright Energy Mo",s:"",i:"",v:20784,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IZRL",n:"ARK Israel Innovative Technolog",s:"",i:"",v:20138,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"DLFE",n:"FT Vest U.S. Equity Dual Direct",s:"",i:"",v:20084,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"SNSR",n:"Global X Internet of Things ETF",s:"",i:"",v:19920,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"VTWG",n:"Vanguard Russell 2000 Growth ET",s:"",i:"",v:19857,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FLRG",n:"Fidelity U.S. Multifactor ETF",s:"",i:"",v:19769,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3729,7 +3731,7 @@ var data = [
   {t:"RXL",n:"ProShares Ultra Health Care",s:"",i:"",v:8773,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FXP",n:"ProShares Ultrashort FTSE China",s:"",i:"",v:8766,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MZZ",n:"ProShares UltraShort MidCap400",s:"",i:"",v:8707,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"QVMT",n:"Invesco S&amp;P 500 Concentrated QV",s:"",i:"",v:8384,mc:0,qt:"EQUITY",d1m:1,d5m:0,rules:0,br:0},
+  {t:"QVMT",n:"Invesco S&amp;P 500 Concentrated QV",s:"",i:"",v:8384,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"NXTG",n:"First Trust Indxx NextG ETF",s:"",i:"",v:8098,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AIVC",n:"Amplify Bloomberg AI Equal Weig",s:"",i:"",v:7938,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"IQM",n:"Franklin Intelligent Machines E",s:"",i:"",v:7696,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
