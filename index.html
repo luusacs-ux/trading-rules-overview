@@ -373,7 +373,8 @@ var data = [
   {ticker:"COHU",stock:1346,total:1346,indiv:1346,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:4.01,report:"COHU_backtest_summary_20260605.html"},
   {ticker:"CAMT",stock:1406,total:1406,indiv:1406,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:3.89,report:"CAMT_backtest_summary_20260605.html"},
   {ticker:"UMC",stock:1163,total:1163,indiv:1163,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:2.83,report:"UMC_backtest_summary_20260605.html"},
-  {ticker:"RMBS",stock:1070,total:1070,indiv:1070,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:5.54,report:"RMBS_backtest_summary_20260605.html"}
+  {ticker:"RMBS",stock:1070,total:1070,indiv:1070,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:5.54,report:"RMBS_backtest_summary_20260605.html"},
+  {ticker:"CLS",stock:0,total:0,indiv:0,wr100:0,pnl10:0,avgPnl:0.0,ptpnl:0.0,status:"N/A"}
 ];
 var sortCol="avgPnl",sortAsc=false;
 function render(filter){
@@ -388,7 +389,7 @@ function render(filter){
   var html="";
   rows.forEach(function(d){
     html+="<tr>";
-    html+="<td><a href='reports/"+d.report+"'>"+d.ticker+"</a></td>";
+    html+="<td>"+(d.status==="N/A"?'<span class="dim">'+d.ticker+'</span>':"<a href='reports/"+d.report+"'>"+d.ticker+"</a>")+"</td>";
     html+="<td>"+d.total+"</td>";
     html+="<td>"+(d.stock?'<span class="green">'+d.stock+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td>"+(d.indiv?'<span class="green">'+d.indiv+'</span>':'<span class="zero">0</span>')+"</td>";
@@ -396,7 +397,7 @@ function render(filter){
     html+="<td>"+(d.pnl10?'<span class="green">'+d.pnl10+'</span>':'<span class="zero">0</span>')+"</td>";
     html+="<td><strong>"+(d.avgPnl>0?d.avgPnl.toFixed(1)+"%":'<span class="zero">0</span>')+"</strong></td>";
     html+="<td>"+(d.ptpnl>0?d.ptpnl.toFixed(2)+"%":'<span class="zero">0</span>')+"</td>";
-    html+='<td class="report-link"><a href="reports/'+d.report+'">View</a></td>';
+    html+='<td class="report-link">'+(d.status==="N/A"?'<span class="dim">N/A</span>':'<a href="reports/'+d.report+'">View</a>')+'</td>';
     html+='<td class="report-link">'+(d.sim?'<a href="sim_reports/'+d.sim+'">View</a>':'<span class="dim">&mdash;</span>')+'</td>';
     html+="</tr>";
   });
