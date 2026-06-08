@@ -23,10 +23,10 @@ tr:hover { background: #1a2a4e; }
 tr.wr100 { background: rgba(0, 255, 136, 0.15); }
 tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
-.fam-DDOG_B1_S { background: #2a4a2a; color: #66ff66; }
-.fam-DDOG_B1_L { background: #2a2a4a; color: #6666ff; }
-.fam-DDOG_B1_D { background: #4a2a4a; color: #ff66ff; }
-.fam-DDOG_B1_X { background: #4a4a2a; color: #ffff66; }
+.fam-DDOG_S { background: #2a4a2a; color: #66ff66; }
+.fam-DDOG_L { background: #2a2a4a; color: #6666ff; }
+.fam-DDOG_D { background: #4a2a4a; color: #ff66ff; }
+.fam-DDOG_X { background: #4a4a2a; color: #ffff66; }
 .pipeline { color: #666; font-size: 12px; margin-top: 30px; }
 .sort-arrow { font-size: 10px; margin-left: 4px; }
 </style>
@@ -35,12 +35,72 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <h1>DDOG &mdash; Backtest Report</h1>
 <div class="subtitle">Pipeline: create_rules_DDOG_TIME_20260608_v2 | Ticker: DDOG | Lead: TIME | Same: LRNZ | Inverse: NVDS | Date: 2026-06-08</div>
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">26</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">0</div></div>
-    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">-65.0%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">82</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">11</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">27</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">-41.5%</div></div>
 </div>
-
+<h2>Daily Timeframe (56 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA26</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>4.9</td><td>17.0</td><td>8</td><td>86</td><td>75</td><td>87.2</td><td><strong>180.5</strong></td><td>2.1</td><td><strong>-</strong></td></tr>
+<tr><td>2</td><td><strong>SA17</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>5.093</td><td>7.28</td><td>3</td><td>75</td><td>51</td><td>68.0</td><td><strong>88.03</strong></td><td>1.17</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>3</td><td><strong>LL_lag2_08</strong></td><td><span class="family fam-DDOG_L">DDOG_L</span></td><td>29.038</td><td>5.049</td><td>5</td><td>5</td><td>5</td><td>100.0</td><td><strong>56.49</strong></td><td>11.3</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>4</td><td><strong>LL_lag3_08</strong></td><td><span class="family fam-DDOG_L">DDOG_L</span></td><td>29.038</td><td>2.499</td><td>5</td><td>4</td><td>4</td><td>100.0</td><td><strong>53.89</strong></td><td>13.47</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>5</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>7.21</td><td>17.6</td><td>12</td><td>10</td><td>9</td><td>90.0</td><td><strong>50.17</strong></td><td>5.02</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>6</td><td><strong>LL_lag2_09</strong></td><td><span class="family fam-DDOG_L">DDOG_L</span></td><td>25.0</td><td>4.5</td><td>7</td><td>3</td><td>3</td><td>100.0</td><td><strong>49.0</strong></td><td>16.33</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>7</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>3.636</td><td>18.4</td><td>18</td><td>11</td><td>11</td><td>100.0</td><td><strong>40.0</strong></td><td>3.64</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>8</td><td><strong>INV_lag2_03</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>26.0</td><td>13.524</td><td>12</td><td>6</td><td>5</td><td>83.3</td><td><strong>38.83</strong></td><td>6.47</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>9</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>4.368</td><td>11.76</td><td>7</td><td>14</td><td>12</td><td>85.7</td><td><strong>37.87</strong></td><td>2.7</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>10</td><td><strong>LL_lag0_09</strong></td><td><span class="family fam-DDOG_L">DDOG_L</span></td><td>25.0</td><td>6.65</td><td>8</td><td>3</td><td>3</td><td>100.0</td><td><strong>35.07</strong></td><td>11.69</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>11</td><td><strong>LL_lag1_09</strong></td><td><span class="family fam-DDOG_L">DDOG_L</span></td><td>25.0</td><td>6.65</td><td>8</td><td>3</td><td>3</td><td>100.0</td><td><strong>35.07</strong></td><td>11.69</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>12</td><td><strong>LL_lag3_09</strong></td><td><span class="family fam-DDOG_L">DDOG_L</span></td><td>23.25</td><td>5.76</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>33.95</strong></td><td>11.32</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>13</td><td><strong>INV_lag1_03</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>4.9</td><td>1.8</td><td>3</td><td>11</td><td>8</td><td>72.7</td><td><strong>33.8</strong></td><td>3.07</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>14</td><td><strong>INV_lag0_13</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>6.24</td><td>5.1</td><td>5</td><td>6</td><td>6</td><td>100.0</td><td><strong>31.95</strong></td><td>5.33</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>15</td><td><strong>INV_lag1_13</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>6.24</td><td>5.1</td><td>5</td><td>6</td><td>6</td><td>100.0</td><td><strong>31.95</strong></td><td>5.33</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>16</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>11.11</td><td>9.216</td><td>8</td><td>6</td><td>5</td><td>83.3</td><td><strong>29.37</strong></td><td>4.9</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>17</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>4.905</td><td>18.6</td><td>18</td><td>9</td><td>8</td><td>88.9</td><td><strong>28.96</strong></td><td>3.22</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>18</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>7.423</td><td>24.5</td><td>35</td><td>7</td><td>6</td><td>85.7</td><td><strong>28.31</strong></td><td>4.04</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>19</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>2.704</td><td>8.5</td><td>8</td><td>10</td><td>10</td><td>100.0</td><td><strong>27.04</strong></td><td>2.7</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>20</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>4.368</td><td>11.76</td><td>8</td><td>8</td><td>7</td><td>87.5</td><td><strong>22.11</strong></td><td>2.76</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>21</td><td><strong>INV_lag2_13</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>5.454</td><td>6.376</td><td>5</td><td>7</td><td>6</td><td>85.7</td><td><strong>21.65</strong></td><td>3.09</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>22</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-DDOG_D">DDOG_D</span></td><td>6.54</td><td>18.7</td><td>18</td><td>5</td><td>4</td><td>80.0</td><td><strong>21.4</strong></td><td>4.28</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>23</td><td><strong>INV_lag2_10</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>7.35</td><td>1.206</td><td>3</td><td>4</td><td>3</td><td>75.0</td><td><strong>20.84</strong></td><td>5.21</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>24</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>2.3</td><td>12.0</td><td>7</td><td>11</td><td>10</td><td>90.9</td><td><strong>20.22</strong></td><td>1.84</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>25</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>6.9</td><td>5.184</td><td>5</td><td>5</td><td>4</td><td>80.0</td><td><strong>19.67</strong></td><td>3.93</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>26</td><td><strong>INV_lag0_10</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>7.35</td><td>1.8</td><td>3</td><td>4</td><td>3</td><td>75.0</td><td><strong>17.05</strong></td><td>4.26</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>27</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-DDOG_D">DDOG_D</span></td><td>4.848</td><td>5.184</td><td>5</td><td>4</td><td>3</td><td>75.0</td><td><strong>14.54</strong></td><td>3.63</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>28</td><td><strong>DV_6bar_lead_5</strong></td><td><span class="family fam-DDOG_D">DDOG_D</span></td><td>3.605</td><td>18.7</td><td>18</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.81</strong></td><td>3.6</td><td><strong>-</strong></td></tr>
+<tr><td>29</td><td><strong>INV_lag0_03</strong></td><td><span class="family fam-DDOG_X">DDOG_X</span></td><td>2.704</td><td>10.2</td><td>8</td><td>6</td><td>5</td><td>83.3</td><td><strong>8.76</strong></td><td>1.46</td><td><strong>-</strong></td></tr>
+<tr><td>30</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-DDOG_D">DDOG_D</span></td><td>9.31</td><td>4.365</td><td>7</td><td>3</td><td>2</td><td>66.7</td><td><strong>4.95</strong></td><td>1.65</td><td><strong>-</strong></td></tr>
+<tr><td>31</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-DDOG_D">DDOG_D</span></td><td>2.04</td><td>18.7</td><td>18</td><td>5</td><td>4</td><td>80.0</td><td><strong>3.4</strong></td><td>0.68</td><td><strong>-</strong></td></tr>
+<tr><td>32</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-DDOG_D">DDOG_D</span></td><td>2.704</td><td>18.513</td><td>18</td><td>4</td><td>3</td><td>75.0</td><td><strong>3.36</strong></td><td>0.84</td><td><strong>-</strong></td></tr>
+<tr><td>33</td><td><strong>SA14</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>20.28</td><td>6.0</td><td>5</td><td>30</td><td>9</td><td>30.0</td><td><strong>0.63</strong></td><td>0.02</td><td><strong>-</strong></td></tr>
+<tr><td>34</td><td><strong>SA28</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>13.8</td><td>10.2</td><td>5</td><td>16</td><td>7</td><td>43.8</td><td><strong>-5.02</strong></td><td>-0.31</td><td><strong>-</strong></td></tr>
+<tr><td>35</td><td><strong>SA_drop_5d_12</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>8.08</td><td>10.8</td><td>15</td><td>22</td><td>11</td><td>50.0</td><td><strong>-29.92</strong></td><td>-1.36</td><td><strong>-</strong></td></tr>
+<tr><td>36</td><td><strong>SA30</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>8.08</td><td>10.8</td><td>15</td><td>21</td><td>10</td><td>47.6</td><td><strong>-38.0</strong></td><td>-1.81</td><td><strong>-</strong></td></tr>
+<tr><td>37</td><td><strong>SA_drop_3d_12</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>20.085</td><td>4.41</td><td>5</td><td>12</td><td>2</td><td>16.7</td><td><strong>-39.1</strong></td><td>-3.26</td><td><strong>-</strong></td></tr>
+<tr><td>38</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>24.525</td><td>11.52</td><td>10</td><td>40</td><td>13</td><td>32.5</td><td><strong>-39.39</strong></td><td>-0.98</td><td><strong>-</strong></td></tr>
+<tr><td>39</td><td><strong>SA24</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>25.0</td><td>6.65</td><td>8</td><td>46</td><td>9</td><td>19.6</td><td><strong>-47.59</strong></td><td>-1.03</td><td><strong>-</strong></td></tr>
+<tr><td>40</td><td><strong>SA_drop_3d_8</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>7.6</td><td>18.0</td><td>12</td><td>39</td><td>25</td><td>64.1</td><td><strong>-47.82</strong></td><td>-1.23</td><td><strong>-</strong></td></tr>
+<tr><td>41</td><td><strong>SA_drop_5d_10</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>8.08</td><td>10.692</td><td>12</td><td>42</td><td>21</td><td>50.0</td><td><strong>-54.85</strong></td><td>-1.31</td><td><strong>-</strong></td></tr>
+<tr><td>42</td><td><strong>SA_drop_3d_10</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>7.571</td><td>8.73</td><td>10</td><td>20</td><td>6</td><td>30.0</td><td><strong>-71.89</strong></td><td>-3.59</td><td><strong>-</strong></td></tr>
+<tr><td>43</td><td><strong>SA_drop_2d_8</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>24.5</td><td>8.74</td><td>8</td><td>27</td><td>4</td><td>14.8</td><td><strong>-119.93</strong></td><td>-4.44</td><td><strong>-</strong></td></tr>
+<tr><td>44</td><td><strong>SA29</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>9.064</td><td>10.2</td><td>10</td><td>35</td><td>11</td><td>31.4</td><td><strong>-136.92</strong></td><td>-3.91</td><td><strong>-</strong></td></tr>
+<tr><td>45</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>3.27</td><td>19.8</td><td>18</td><td>97</td><td>76</td><td>78.4</td><td><strong>-142.57</strong></td><td>-1.47</td><td><strong>-</strong></td></tr>
+<tr><td>46</td><td><strong>SA21</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>3.27</td><td>19.8</td><td>18</td><td>97</td><td>76</td><td>78.4</td><td><strong>-142.57</strong></td><td>-1.47</td><td><strong>-</strong></td></tr>
+<tr><td>47</td><td><strong>SA_drop_5d_8</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>4.646</td><td>8.33</td><td>7</td><td>54</td><td>23</td><td>42.6</td><td><strong>-151.37</strong></td><td>-2.8</td><td><strong>-</strong></td></tr>
+<tr><td>48</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>3.15</td><td>12.0</td><td>12</td><td>64</td><td>39</td><td>60.9</td><td><strong>-165.36</strong></td><td>-2.58</td><td><strong>-</strong></td></tr>
+<tr><td>49</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>3.181</td><td>10.2</td><td>7</td><td>154</td><td>103</td><td>66.9</td><td><strong>-175.63</strong></td><td>-1.14</td><td><strong>-</strong></td></tr>
+<tr><td>50</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>8.24</td><td>6.237</td><td>7</td><td>89</td><td>26</td><td>29.2</td><td><strong>-176.28</strong></td><td>-1.98</td><td><strong>-</strong></td></tr>
+<tr><td>51</td><td><strong>SA23</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>8.24</td><td>6.237</td><td>7</td><td>89</td><td>26</td><td>29.2</td><td><strong>-176.28</strong></td><td>-1.98</td><td><strong>-</strong></td></tr>
+<tr><td>52</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>2.52</td><td>11.52</td><td>8</td><td>125</td><td>89</td><td>71.2</td><td><strong>-179.61</strong></td><td>-1.44</td><td><strong>-</strong></td></tr>
+<tr><td>53</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>3.181</td><td>8.73</td><td>7</td><td>105</td><td>61</td><td>58.1</td><td><strong>-183.37</strong></td><td>-1.75</td><td><strong>-</strong></td></tr>
+<tr><td>54</td><td><strong>SA20</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>2.52</td><td>19.206</td><td>18</td><td>150</td><td>122</td><td>81.3</td><td><strong>-223.98</strong></td><td>-1.49</td><td><strong>-</strong></td></tr>
+<tr><td>55</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>4.242</td><td>11.52</td><td>12</td><td>140</td><td>87</td><td>62.1</td><td><strong>-233.81</strong></td><td>-1.67</td><td><strong>-</strong></td></tr>
+<tr><td>56</td><td><strong>SA22</strong></td><td><span class="family fam-DDOG_S">DDOG_S</span></td><td>4.242</td><td>11.52</td><td>12</td><td>140</td><td>87</td><td>62.1</td><td><strong>-233.81</strong></td><td>-1.67</td><td><strong>-</strong></td></tr>
+</tbody></table>
 <div class="pipeline">Generated by create_rules_DDOG_TIME_20260608_v2 pipeline</div>
 <script>
 function sortTable(th) {
