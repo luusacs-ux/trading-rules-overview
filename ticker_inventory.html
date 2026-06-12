@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,941 tickers &#8226; 1,483 with 1m data &#8226; 2,458 missing 1m &#8226; 276 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,943 tickers &#8226; 1,486 with 1m data &#8226; 2,457 missing 1m &#8226; 277 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -85,7 +85,7 @@ tr:hover{background:#1e2a4a}
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="footer">Generated: 2026-06-11 | Data source: yfinance</div>
+<div class="footer">Generated: 2026-06-12 | Data source: yfinance</div>
 <script>
 var data = [
   {t:"NVDA",n:"NVIDIA Corporation",s:"Technology",i:"Semiconductors",v:171892757,mc:4775932329984,qt:"EQUITY",d1m:1,d5m:1,rules:1320,br:660},
@@ -173,7 +173,7 @@ var data = [
   {t:"VZ",n:"Verizon Communications Inc.",s:"Communication Services",i:"Telecom Services",v:27675000,mc:197691834368,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"RXT",n:"Rackspace Technology, Inc.",s:"Technology",i:"Software - Infrastructure",v:27395186,mc:610595136,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CRWV",n:"CoreWeave, Inc.",s:"Technology",i:"Software - Infrastructure",v:27339368,mc:67551510528,qt:"EQUITY",d1m:1,d5m:1,rules:423,br:0},
-  {t:"SMR",n:"NuScale Power Corporation",s:"Industrials",i:"Specialty Industrial Machinery",v:27237076,mc:3842723840,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"SMR",n:"NuScale Power Corporation",s:"Industrials",i:"Specialty Industrial Machinery",v:27237076,mc:3842723840,qt:"EQUITY",d1m:1,d5m:1,rules:19,br:0},
   {t:"SOUN",n:"SoundHound AI, Inc.",s:"Technology",i:"Software - Application",v:27195701,mc:3895559936,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"KVUE",n:"Kenvue Inc.",s:"Consumer Defensive",i:"Household &amp; Personal Products",v:27142481,mc:33348947968,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KOS",n:"Kosmos Energy Ltd.",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:26935406,mc:1850627584,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -3649,6 +3649,7 @@ var data = [
   {t:"VRTL",n:"GraniteShares 2x Long VRT Daily",s:"",i:"",v:85084,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IEAG",n:"Infinite Eagle Acquisition Corp",s:"Financial Services",i:"Shell Companies",v:84666,mc:436462080,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DIG",n:"ProShares Ultra Energy",s:"",i:"",v:84192,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"FXO",n:"First Trust Financials AlphaDEX",s:"",i:"",v:84158,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FTXN",n:"First Trust Nasdaq Oil &amp; Gas ET",s:"",i:"",v:83676,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TSME",n:"Thrivent Small-Mid Cap Equity E",s:"",i:"",v:83387,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TSMZ",n:"Direxion Daily TSM Bear 1X ETF",s:"",i:"",v:82909,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3838,6 +3839,7 @@ var data = [
   {t:"MYY",n:"ProShares Short MidCap400",s:"",i:"",v:11828,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PRNT",n:"3D Printing (The) ETF",s:"",i:"",v:11641,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MILN",n:"Global X Millennial Consumer ET",s:"",i:"",v:11433,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"RKNG",n:"Defiance Retail Kings ETF",s:"",i:"",v:11376,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BIGY",n:"YieldMax Target 12 Big 50 Optio",s:"",i:"",v:11092,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MFMO",n:"Motley Fool Momentum Factor ETF",s:"",i:"",v:11053,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMOX",n:"Horizon Small/Mid Cap Core Equi",s:"",i:"",v:11022,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3907,7 +3909,7 @@ var data = [
   {t:"TTXD",n:"Direxion Daily Technology Top 5",s:"",i:"",v:4188,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"RBLD",n:"First Trust Alerian US NextGen ",s:"",i:"",v:4169,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SFYF",n:"SoFi Social 50 ETF",s:"",i:"",v:4165,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"AMOM",n:"QRAFT AI-Enhanced U.S. Large Ca",s:"",i:"",v:4152,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AMOM",n:"QRAFT AI-Enhanced U.S. Large Ca",s:"",i:"",v:4152,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LRNZ",n:"TrueShares Technology, AI &amp; Dee",s:"",i:"",v:4019,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SZK",n:"ProShares UltraShort Consumer S",s:"",i:"",v:4007,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"QVMM",n:"Invesco S&amp;P MidCap 400 QVM Mult",s:"",i:"",v:3893,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
