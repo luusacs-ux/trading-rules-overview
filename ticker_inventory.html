@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,945 tickers &#8226; 1,493 with 1m data &#8226; 2,452 missing 1m &#8226; 284 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,946 tickers &#8226; 1,495 with 1m data &#8226; 2,451 missing 1m &#8226; 285 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -1016,7 +1016,7 @@ var data = [
   {t:"PYLD",n:"PIMCO Multisector Bond Active E",s:"",i:"",v:3604769,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CGGR",n:"Capital Group Growth ETF",s:"",i:"",v:3602000,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ACHC",n:"Acadia Healthcare Company, Inc.",s:"Healthcare",i:"Medical Care Facilities",v:3600228,mc:2324006656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FLEX",n:"Flex Ltd.",s:"Technology",i:"Electronic Components",v:3599715,mc:35462148096,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"FLEX",n:"Flex Ltd.",s:"Technology",i:"Electronic Components",v:3599715,mc:35462148096,qt:"EQUITY",d1m:1,d5m:1,rules:158,br:0},
   {t:"ETSY",n:"Etsy, Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:3599050,mc:5973718016,qt:"EQUITY",d1m:1,d5m:1,rules:86,br:0},
   {t:"FMC",n:"FMC Corporation",s:"Basic Materials",i:"Agricultural Inputs",v:3589145,mc:1859423616,qt:"EQUITY",d1m:1,d5m:1,rules:48,br:0},
   {t:"HR",n:"Healthcare Realty Trust Incorpo",s:"Real Estate",i:"REIT - Healthcare Facilities",v:3586693,mc:6986979840,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1469,7 +1469,7 @@ var data = [
   {t:"SMTC",n:"Semtech Corporation",s:"Technology",i:"Semiconductors",v:2271376,mc:10520077312,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RPD",n:"Rapid7, Inc.",s:"Technology",i:"Software - Infrastructure",v:2270554,mc:446038176,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VSCO",n:"Victorias Secret &amp; Co.",s:"Consumer Cyclical",i:"Apparel Retail",v:2270245,mc:4031646464,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"VNO",n:"Vornado Realty Trust",s:"Real Estate",i:"REIT - Office",v:2269579,mc:6197006336,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"VNO",n:"Vornado Realty Trust",s:"Real Estate",i:"REIT - Office",v:2269579,mc:6197006336,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"IHI",n:"iShares U.S. Medical Devices ET",s:"",i:"",v:2265977,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PAAA",n:"PGIM AAA CLO ETF",s:"",i:"",v:2262393,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CHTR",n:"Charter Communications, Inc.",s:"Communication Services",i:"Telecom Services",v:2261511,mc:22338652160,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -2979,6 +2979,7 @@ var data = [
   {t:"USOY",n:"Defiance Oil Enhanced Options I",s:"",i:"",v:699654,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"CBOX",n:"Calamos Tax-Aware Collateral ET",s:"",i:"",v:699458,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"SCHY",n:"Schwab International Dividend E",s:"",i:"",v:698396,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"RMAX",n:"RE/MAX Holdings, Inc.",s:"Real Estate",i:"Real Estate Services",v:697893,mc:506232128,qt:"EQUITY",d1m:1,d5m:0,rules:0,br:0},
   {t:"BCAT",n:"BlackRock Capital Allocation Term Trust",s:"Financial Services",i:"Asset Management",v:697400,mc:1608300416,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"KN",n:"Knowles Corporation",s:"Technology",i:"Electronic Components",v:696520,mc:2847458560,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"L",n:"Loews Corporation",s:"Financial Services",i:"Insurance - Property &amp; Casualty",v:696328,mc:21850597376,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -3982,7 +3983,7 @@ var data = [
   {t:"PSCD",n:"Invesco S&amp;P SmallCap Consumer D",s:"",i:"",v:801,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NLSI",n:"NEOS Long/Short Equity Income E",s:"",i:"",v:728,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SRHQ",n:"SRH U.S. Quality GARP ETF",s:"",i:"",v:717,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"EPSV",n:"Harbor SMID Cap Value ETF",s:"",i:"",v:687,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
+  {t:"EPSV",n:"Harbor SMID Cap Value ETF",s:"",i:"",v:687,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"OND",n:"ProShares On-Demand ETF",s:"",i:"",v:674,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LCLG",n:"Logan Capital Broad Innovative ",s:"",i:"",v:673,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SIMS",n:"State Street SPDR S&amp;P Kensho In",s:"",i:"",v:660,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -4001,7 +4002,7 @@ var data = [
   {t:"MAVF",n:"Matrix Advisors Value ETF",s:"",i:"",v:411,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"ARVR",n:"First Trust Indxx Metaverse ETF",s:"",i:"",v:396,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DVUT",n:"WEBs Utilities XLU Defined Vola",s:"",i:"",v:396,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"RESM",n:"Columbia Research Enhanced Smal",s:"",i:"",v:387,mc:0,qt:"EQUITY",d1m:1,d5m:0,rules:0,br:0},
+  {t:"RESM",n:"Columbia Research Enhanced Smal",s:"",i:"",v:387,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"VEM",n:"Virtus Emerging Markets Dividen",s:"",i:"",v:387,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"VERS",n:"ProShares Metaverse ETF",s:"",i:"",v:387,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MOTO",n:"Guinness Atkinson Smart Transpo",s:"",i:"",v:347,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -4011,7 +4012,7 @@ var data = [
   {t:"ABOT",n:"ABACUS FCF INNOVATION LEADERS E",s:"",i:"",v:330,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMDX",n:"Intech S&amp;P Small-Mid Cap Divers",s:"",i:"",v:317,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SHPP",n:"Pacer Industrials and Logistics",s:"",i:"",v:300,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"SCDS",n:"JPMorgan Fundamental Data Scien",s:"",i:"",v:284,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
+  {t:"SCDS",n:"JPMorgan Fundamental Data Scien",s:"",i:"",v:284,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"HWSM",n:"Hotchkis &amp; Wiley SMID Cap Diver",s:"",i:"",v:246,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EGLE",n:"Global X S&amp;P 500 U.S. Revenue L",s:"",i:"",v:228,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMQ",n:"Tradr 1X Short Innovation 100 M",s:"",i:"",v:203,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
