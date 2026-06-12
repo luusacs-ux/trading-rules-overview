@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,937 tickers &#8226; 1,474 with 1m data &#8226; 2,463 missing 1m &#8226; 271 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,940 tickers &#8226; 1,479 with 1m data &#8226; 2,461 missing 1m &#8226; 271 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -318,7 +318,7 @@ var data = [
   {t:"TSM",n:"Taiwan Semiconductor Manufactur",s:"Technology",i:"Semiconductors",v:13374145,mc:2045568090112,qt:"EQUITY",d1m:1,d5m:1,rules:639,br:0},
   {t:"KMI",n:"Kinder Morgan, Inc.",s:"Energy",i:"Oil &amp; Gas Midstream",v:13354616,mc:71839629312,qt:"EQUITY",d1m:1,d5m:1,rules:113,br:0},
   {t:"WIT",n:"Wipro Limited",s:"Technology",i:"Information Technology Services",v:13340649,mc:21552996352,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"AES",n:"The AES Corporation",s:"Utilities",i:"Utilities - Diversified",v:13223473,mc:10246839296,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"AES",n:"The AES Corporation",s:"Utilities",i:"Utilities - Diversified",v:13223473,mc:10246839296,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CCC",n:"CCC Intelligent Solutions Holdi",s:"Technology",i:"Software - Application",v:13199300,mc:3122523904,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"PL",n:"Planet Labs PBC",s:"Industrials",i:"Aerospace &amp; Defense",v:13057805,mc:13232879616,qt:"EQUITY",d1m:1,d5m:1,rules:480,br:459},
   {t:"VCIT",n:"Vanguard Intermediate-Term Corp",s:"",i:"",v:13010996,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -3445,7 +3445,7 @@ var data = [
   {t:"JCAP",n:"Jefferson Capital, Inc.",s:"Financial Services",i:"Credit Services",v:314798,mc:1266939008,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"AWR",n:"American States Water Company",s:"Utilities",i:"Utilities - Regulated Water",v:313995,mc:2987040000,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BALI",n:"iShares U.S. Large Cap Premium ",s:"",i:"",v:311300,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FXU",n:"First Trust Utilities AlphaDEX ",s:"",i:"",v:310922,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FXU",n:"First Trust Utilities AlphaDEX ",s:"",i:"",v:310922,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"VENU",n:"Venu Holding Corporation",s:"Consumer Cyclical",i:"Restaurants",v:309120,mc:235958032,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BNGO",n:"Bionano Genomics, Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:305384,mc:14229000,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"IGE",n:"iShares North American Natural ",s:"",i:"",v:305111,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3701,6 +3701,7 @@ var data = [
   {t:"SGRT",n:"SMART Earnings Growth 30 ETF",s:"",i:"",v:55326,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ROM",n:"ProShares Ultra Technology",s:"",i:"",v:54376,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RSPU",n:"Invesco S&amp;P 500 Equal Weight Ut",s:"",i:"",v:54307,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"EQAL",n:"Invesco Russell 1000 Equal Weig",s:"",i:"",v:53688,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IETC",n:"iShares U.S. Tech Independence ",s:"",i:"",v:53596,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"UMAR",n:"Innovator U.S. Equity Ultra Buf",s:"",i:"",v:53200,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"FGRU",n:"T-REX 2X Long FIGR Daily Target",s:"",i:"",v:52655,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -3716,6 +3717,7 @@ var data = [
   {t:"FDIG",n:"Fidelity Crypto Industry and Di",s:"",i:"",v:45453,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"UECG",n:"Leverage Shares 2x Long UEC Dai",s:"",i:"",v:44612,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EFIV",n:"State Street SPDR S&amp;P 500 ESG E",s:"",i:"",v:44079,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"DSCO",n:"DoubleLine Securitized Credit E",s:"",i:"",v:43330,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"JHSC",n:"John Hancock Multifactor Small ",s:"",i:"",v:43079,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DWSH",n:"AdvisorShares Dorsey Wright Sho",s:"",i:"",v:42809,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DJD",n:"Invesco Dow Jones Industrial Av",s:"",i:"",v:42619,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3989,6 +3991,7 @@ var data = [
   {t:"DTRE",n:"First Trust Alerian Disruptive ",s:"",i:"",v:566,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PEZ",n:"Invesco Dorsey Wright Consumer ",s:"",i:"",v:552,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AFSC",n:"abrdn Focused U.S. Small Cap Ac",s:"",i:"",v:509,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"SOLR",n:"Guinness Atkinson Sustainable E",s:"",i:"",v:484,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AZTD",n:"Aztlan Global Stock Selection D",s:"",i:"",v:468,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"QFRD",n:"Pacer S&amp;P 500 Quality FCF R&amp;D L",s:"",i:"",v:430,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MAVF",n:"Matrix Advisors Value ETF",s:"",i:"",v:411,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
