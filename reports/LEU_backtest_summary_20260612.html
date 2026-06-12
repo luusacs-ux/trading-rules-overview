@@ -23,10 +23,10 @@ tr:hover { background: #1a2a4e; }
 tr.wr100 { background: rgba(0, 255, 136, 0.15); }
 tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
-.fam-LEU_S { background: #2a4a2a; color: #66ff66; }
-.fam-LEU_L { background: #2a2a4a; color: #6666ff; }
-.fam-LEU_D { background: #4a2a4a; color: #ff66ff; }
-.fam-LEU_X { background: #4a4a2a; color: #ffff66; }
+.fam-LEU_B1_S { background: #2a4a2a; color: #66ff66; }
+.fam-LEU_B1_L { background: #2a2a4a; color: #6666ff; }
+.fam-LEU_B1_D { background: #4a2a4a; color: #ff66ff; }
+.fam-LEU_B1_X { background: #4a4a2a; color: #ffff66; }
 .pipeline { color: #666; font-size: 12px; margin-top: 30px; }
 .sort-arrow { font-size: 10px; margin-left: 4px; }
 </style>
@@ -35,53 +35,12 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <h1>LEU &mdash; Backtest Report</h1>
 <div class="subtitle">Pipeline: create_rules_LEU_SMRF_20260612_v2 | Ticker: LEU | Lead: SMRF | Same: NUKX | Inverse: OKLS | Date: 2026-06-12</div>
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">37</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">5</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">5</div></div>
-    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">-3.9%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">71</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">0</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">-72.8%</div></div>
 </div>
-<h2>15M Timeframe (37 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="tier2"><td>1</td><td><strong>SA12</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>1.737</td><td>8.245</td><td>26</td><td>674</td><td>580</td><td>86.1</td><td><strong>491.77</strong></td><td>0.73</td><td><strong>-</strong></td></tr>
-<tr class="tier2"><td>2</td><td><strong>SA10</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>1.737</td><td>8.245</td><td>26</td><td>807</td><td>687</td><td>85.1</td><td><strong>484.6</strong></td><td>0.6</td><td><strong>-</strong></td></tr>
-<tr class="tier2"><td>3</td><td><strong>SA13</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>1.737</td><td>8.245</td><td>26</td><td>568</td><td>484</td><td>85.2</td><td><strong>384.97</strong></td><td>0.68</td><td><strong>-</strong></td></tr>
-<tr><td>4</td><td><strong>SA10b</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>7.07</td><td>5.64</td><td>26</td><td>983</td><td>489</td><td>49.7</td><td><strong>368.69</strong></td><td>0.38</td><td><strong>-</strong></td></tr>
-<tr><td>5</td><td><strong>SA17</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>7.14</td><td>5.76</td><td>26</td><td>875</td><td>431</td><td>49.3</td><td><strong>307.27</strong></td><td>0.35</td><td><strong>-</strong></td></tr>
-<tr><td>6</td><td><strong>SA26</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>12.72</td><td>3.6</td><td>26</td><td>193</td><td>90</td><td>46.6</td><td><strong>240.21</strong></td><td>1.24</td><td><strong>-</strong></td></tr>
-<tr><td>7</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>12.588</td><td>2.619</td><td>26</td><td>600</td><td>183</td><td>30.5</td><td><strong>97.03</strong></td><td>0.16</td><td><strong>-</strong></td></tr>
-<tr><td>8</td><td><strong>SA_drop_2d_8</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>18.9</td><td>1.247</td><td>26</td><td>232</td><td>29</td><td>12.5</td><td><strong>38.05</strong></td><td>0.16</td><td><strong>-</strong></td></tr>
-<tr><td>9</td><td><strong>LL_lag1_09</strong></td><td><span class="family fam-LEU_L">LEU_L</span></td><td>13.78</td><td>2.619</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>27.56</strong></td><td>9.19</td><td><strong>-</strong></td></tr>
-<tr><td>10</td><td><strong>LL_lag0_09</strong></td><td><span class="family fam-LEU_L">LEU_L</span></td><td>13.78</td><td>2.619</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>26.99</strong></td><td>9.0</td><td><strong>-</strong></td></tr>
-<tr><td>11</td><td><strong>INV_lag1_03</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>12.72</td><td>3.6</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>25.44</strong></td><td>8.48</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>12</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>7.07</td><td>4.55</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>21.21</strong></td><td>7.07</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>13</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>4.12</td><td>7.5</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>12.36</strong></td><td>4.12</td><td><strong>-</strong></td></tr>
-<tr><td>14</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>8.24</td><td>2.7</td><td>26</td><td>592</td><td>185</td><td>31.2</td><td><strong>9.6</strong></td><td>0.02</td><td><strong>-</strong></td></tr>
-<tr><td>15</td><td><strong>SA29</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>6.864</td><td>0.1</td><td>26</td><td>581</td><td>10</td><td>1.7</td><td><strong>5.45</strong></td><td>0.01</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>16</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-LEU_D">LEU_D</span></td><td>1.737</td><td>7.5</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.21</strong></td><td>1.74</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>17</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>1.737</td><td>7.76</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.21</strong></td><td>1.74</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>18</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>1.737</td><td>7.76</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.21</strong></td><td>1.74</td><td><strong>-</strong></td></tr>
-<tr><td>19</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>1.737</td><td>0.1</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>3.47</strong></td><td>1.16</td><td><strong>-</strong></td></tr>
-<tr><td>20</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-LEU_D">LEU_D</span></td><td>1.754</td><td>0.1</td><td>26</td><td>3</td><td>1</td><td>33.3</td><td><strong>1.55</strong></td><td>0.52</td><td><strong>-</strong></td></tr>
-<tr><td>21</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-LEU_D">LEU_D</span></td><td>0.882</td><td>0.1</td><td>26</td><td>3</td><td>1</td><td>33.3</td><td><strong>0.78</strong></td><td>0.26</td><td><strong>-</strong></td></tr>
-<tr><td>22</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-LEU_X">LEU_X</span></td><td>0.884</td><td>0.1</td><td>26</td><td>3</td><td>1</td><td>33.3</td><td><strong>0.68</strong></td><td>0.23</td><td><strong>-</strong></td></tr>
-<tr><td>23</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>13.78</td><td>2.619</td><td>26</td><td>359</td><td>87</td><td>24.2</td><td><strong>-32.95</strong></td><td>-0.09</td><td><strong>-</strong></td></tr>
-<tr><td>24</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>12.6</td><td>2.619</td><td>26</td><td>426</td><td>112</td><td>26.3</td><td><strong>-35.33</strong></td><td>-0.08</td><td><strong>-</strong></td></tr>
-<tr><td>25</td><td><strong>SA_drop_3d_8</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>13.78</td><td>2.619</td><td>26</td><td>273</td><td>64</td><td>23.4</td><td><strong>-55.72</strong></td><td>-0.2</td><td><strong>-</strong></td></tr>
-<tr><td>26</td><td><strong>SA08</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>1.737</td><td>0.412</td><td>26</td><td>251</td><td>15</td><td>6.0</td><td><strong>-71.18</strong></td><td>-0.28</td><td><strong>-</strong></td></tr>
-<tr><td>27</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>2.424</td><td>5.643</td><td>26</td><td>487</td><td>309</td><td>63.4</td><td><strong>-88.64</strong></td><td>-0.18</td><td><strong>-</strong></td></tr>
-<tr><td>28</td><td><strong>SA_drop_5d_8</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>2.424</td><td>2.4</td><td>26</td><td>333</td><td>141</td><td>42.3</td><td><strong>-115.48</strong></td><td>-0.35</td><td><strong>-</strong></td></tr>
-<tr><td>29</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>13.78</td><td>2.619</td><td>26</td><td>440</td><td>109</td><td>24.8</td><td><strong>-119.56</strong></td><td>-0.27</td><td><strong>-</strong></td></tr>
-<tr><td>30</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>7.854</td><td>2.94</td><td>26</td><td>578</td><td>175</td><td>30.3</td><td><strong>-141.05</strong></td><td>-0.24</td><td><strong>-</strong></td></tr>
-<tr><td>31</td><td><strong>SA24</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>13.78</td><td>2.619</td><td>26</td><td>328</td><td>74</td><td>22.6</td><td><strong>-143.43</strong></td><td>-0.44</td><td><strong>-</strong></td></tr>
-<tr><td>32</td><td><strong>SA25</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>13.78</td><td>2.619</td><td>26</td><td>127</td><td>18</td><td>14.2</td><td><strong>-148.66</strong></td><td>-1.17</td><td><strong>-</strong></td></tr>
-<tr><td>33</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>7.14</td><td>3.6</td><td>26</td><td>571</td><td>212</td><td>37.1</td><td><strong>-173.41</strong></td><td>-0.3</td><td><strong>-</strong></td></tr>
-<tr><td>34</td><td><strong>SA02</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>13.78</td><td>2.619</td><td>26</td><td>265</td><td>56</td><td>21.1</td><td><strong>-182.83</strong></td><td>-0.69</td><td><strong>-</strong></td></tr>
-<tr><td>35</td><td><strong>SA22</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>3.6</td><td>3.2</td><td>26</td><td>433</td><td>151</td><td>34.9</td><td><strong>-361.7</strong></td><td>-0.84</td><td><strong>-</strong></td></tr>
-<tr><td>36</td><td><strong>SA14</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>8.24</td><td>2.76</td><td>26</td><td>560</td><td>134</td><td>23.9</td><td><strong>-374.58</strong></td><td>-0.67</td><td><strong>-</strong></td></tr>
-<tr><td>37</td><td><strong>SA20</strong></td><td><span class="family fam-LEU_S">LEU_S</span></td><td>7.14</td><td>5.64</td><td>26</td><td>468</td><td>161</td><td>34.4</td><td><strong>-664.61</strong></td><td>-1.42</td><td><strong>-</strong></td></tr>
-</tbody></table>
+
 <div class="pipeline">Generated by create_rules_LEU_SMRF_20260612_v2 pipeline</div>
 <script>
 function sortTable(th) {
