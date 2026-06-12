@@ -23,10 +23,10 @@ tr:hover { background: #1a2a4e; }
 tr.wr100 { background: rgba(0, 255, 136, 0.15); }
 tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
-.fam-UEC_S { background: #2a4a2a; color: #66ff66; }
-.fam-UEC_L { background: #2a2a4a; color: #6666ff; }
-.fam-UEC_D { background: #4a2a4a; color: #ff66ff; }
-.fam-UEC_X { background: #4a4a2a; color: #ffff66; }
+.fam-UEC_B1_S { background: #2a4a2a; color: #66ff66; }
+.fam-UEC_B1_L { background: #2a2a4a; color: #6666ff; }
+.fam-UEC_B1_D { background: #4a2a4a; color: #ff66ff; }
+.fam-UEC_B1_X { background: #4a4a2a; color: #ffff66; }
 .pipeline { color: #666; font-size: 12px; margin-top: 30px; }
 .sort-arrow { font-size: 10px; margin-left: 4px; }
 </style>
@@ -35,44 +35,12 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <h1>UEC &mdash; Backtest Report</h1>
 <div class="subtitle">Pipeline: create_rules_UEC_URAA_20260612_v2 | Ticker: UEC | Lead: URAA | Same: NUKX | Inverse: OKLS | Date: 2026-06-12</div>
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">23</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">11</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">8</div></div>
-    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">-5.0%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">0</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">0</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">0%</div></div>
 </div>
-<h2>5M Timeframe (16 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="wr100"><td>1</td><td><strong>UEC_S00001</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>18.66</strong></td><td>6.22</td><td><strong>-</strong></td></tr>
-<tr><td>2</td><td><strong>UEC_S00002</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td><td>66.7</td><td><strong>18.3</strong></td><td>6.1</td><td><strong>-</strong></td></tr>
-<tr><td>3</td><td><strong>UEC_S00003</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td><td>66.7</td><td><strong>16.81</strong></td><td>5.6</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>4</td><td><strong>INV_lag1_03</strong></td><td><span class="family fam-UEC_X">UEC_X</span></td><td>5.304</td><td>3.8</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.91</strong></td><td>5.3</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>5</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-UEC_X">UEC_X</span></td><td>5.15</td><td>0.693</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.45</strong></td><td>5.15</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>6</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-UEC_X">UEC_X</span></td><td>4.738</td><td>0.864</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>14.21</strong></td><td>4.74</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>7</td><td><strong>UEC_S00004</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>12.98</strong></td><td>4.33</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>8</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-UEC_X">UEC_X</span></td><td>4.16</td><td>1.7</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>12.48</strong></td><td>4.16</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>9</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-UEC_X">UEC_X</span></td><td>3.9</td><td>1.9</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>11.7</strong></td><td>3.9</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>10</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>2.525</td><td>2.79</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>7.58</strong></td><td>2.53</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>11</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-UEC_X">UEC_X</span></td><td>2.525</td><td>2.79</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>7.57</strong></td><td>2.52</td><td><strong>-</strong></td></tr>
-<tr><td>12</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>9.152</td><td>3.15</td><td>78</td><td>591</td><td>238</td><td>40.3</td><td><strong>6.31</strong></td><td>0.01</td><td><strong>-</strong></td></tr>
-<tr><td>13</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>5.407</td><td>0.1</td><td>78</td><td>3</td><td>2</td><td>66.7</td><td><strong>6.27</strong></td><td>2.09</td><td><strong>-</strong></td></tr>
-<tr><td>14</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>9.152</td><td>3.15</td><td>78</td><td>421</td><td>165</td><td>39.2</td><td><strong>-5.48</strong></td><td>-0.01</td><td><strong>-</strong></td></tr>
-<tr><td>15</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>9.152</td><td>3.15</td><td>78</td><td>585</td><td>224</td><td>38.3</td><td><strong>-80.96</strong></td><td>-0.14</td><td><strong>-</strong></td></tr>
-<tr><td>16</td><td><strong>SA24</strong></td><td><span class="family fam-UEC_S">UEC_S</span></td><td>4.326</td><td>6.0</td><td>78</td><td>305</td><td>126</td><td>41.3</td><td><strong>-307.91</strong></td><td>-1.01</td><td><strong>-</strong></td></tr>
-</tbody></table>
-<h2>15M Timeframe (7 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr><td>1</td><td><strong>DV_24bar_lag_3_rsi30</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>36.75</td><td>0.1</td><td>104</td><td>3</td><td>1</td><td>33.3</td><td><strong>36.55</strong></td><td>12.18</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>2</td><td><strong>DV_12bar_lag_3_rsi30</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>10.71</td><td>9.8</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>32.13</strong></td><td>10.71</td><td><strong>-</strong></td></tr>
-<tr><td>3</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>19.4</td><td>1.069</td><td>78</td><td>3</td><td>1</td><td>33.3</td><td><strong>17.26</strong></td><td>5.75</td><td><strong>-</strong></td></tr>
-<tr><td>4</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>4.6</td><td>1.47</td><td>26</td><td>5</td><td>3</td><td>60.0</td><td><strong>10.86</strong></td><td>2.17</td><td><strong>-</strong></td></tr>
-<tr><td>5</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>4.284</td><td>5.643</td><td>26</td><td>4</td><td>3</td><td>75.0</td><td><strong>7.21</strong></td><td>1.8</td><td><strong>-</strong></td></tr>
-<tr><td>6</td><td><strong>UEC_D00006</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>-</td><td>-</td><td>-</td><td>6</td><td>5</td><td>83.3</td><td><strong>5.96</strong></td><td>0.99</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>7</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-UEC_D">UEC_D</span></td><td>1.666</td><td>21.038</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.0</strong></td><td>1.67</td><td><strong>-</strong></td></tr>
-</tbody></table>
+
 <div class="pipeline">Generated by create_rules_UEC_URAA_20260612_v2 pipeline</div>
 <script>
 function sortTable(th) {
