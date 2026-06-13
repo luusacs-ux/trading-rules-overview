@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,972 tickers &#8226; 1,523 with 1m data &#8226; 2,449 missing 1m &#8226; 291 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,974 tickers &#8226; 1,526 with 1m data &#8226; 2,448 missing 1m &#8226; 292 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -195,7 +195,7 @@ var data = [
   {t:"NVTS",n:"Navitas Semiconductor Corporati",s:"Technology",i:"Semiconductors",v:25093766,mc:4101666048,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ITUB",n:"Itau Unibanco Banco Holding SA",s:"Financial Services",i:"Banks - Regional",v:25043572,mc:94453047296,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"RWM",n:"ProShares Short Russell2000",s:"",i:"",v:24659942,mc:0,qt:"ETF",d1m:1,d5m:1,rules:2,br:0},
-  {t:"AVGO",n:"Broadcom Inc.",s:"Technology",i:"Semiconductors",v:24426653,mc:2023407747072,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"AVGO",n:"Broadcom Inc.",s:"Technology",i:"Semiconductors",v:24426653,mc:2023407747072,qt:"EQUITY",d1m:1,d5m:1,rules:4,br:0},
   {t:"EOSE",n:"Eos Energy Enterprises, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:24331585,mc:2115102592,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"WBD",n:"Warner Bros. Discovery, Inc. - ",s:"Communication Services",i:"Entertainment",v:24117627,mc:68231806976,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"JOBY",n:"Joby Aviation, Inc.",s:"Industrials",i:"Airports &amp; Air Services",v:24029030,mc:8533909504,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3759,7 +3759,7 @@ var data = [
   {t:"SEF",n:"ProShares Short Financials",s:"",i:"",v:32144,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BMAR",n:"Innovator U.S. Equity Buffer ET",s:"",i:"",v:32116,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"RSHO",n:"Tema U.S. Manufacturing &amp; Resho",s:"",i:"",v:31101,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"SLTY",n:"YieldMax Ultra Short Option Inc",s:"",i:"",v:30114,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SLTY",n:"YieldMax Ultra Short Option Inc",s:"",i:"",v:30114,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"DRLL",n:"Strive U.S. Energy ETF",s:"",i:"",v:29917,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FLJH",n:"Franklin FTSE Japan Hedged ETF",s:"",i:"",v:29860,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"JXI",n:"iShares Global Utilities ETF",s:"",i:"",v:29579,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
@@ -3927,6 +3927,7 @@ var data = [
   {t:"RBLD",n:"First Trust Alerian US NextGen ",s:"",i:"",v:4169,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SFYF",n:"SoFi Social 50 ETF",s:"",i:"",v:4165,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AMOM",n:"QRAFT AI-Enhanced U.S. Large Ca",s:"",i:"",v:4152,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"QQDN",n:"ProShares UltraShort QQQ Mega",s:"",i:"",v:4106,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LRNZ",n:"TrueShares Technology, AI &amp; Dee",s:"",i:"",v:4019,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SZK",n:"ProShares UltraShort Consumer S",s:"",i:"",v:4007,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"QVMM",n:"Invesco S&amp;P MidCap 400 QVM Mult",s:"",i:"",v:3893,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3968,6 +3969,7 @@ var data = [
   {t:"GGTL",n:"Gabelli Global Technology Leade",s:"",i:"",v:2007,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"PEXL",n:"Pacer US Export Leaders ETF",s:"",i:"",v:1987,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IWFG",n:"NYLI Winslow Focused Large Cap ",s:"",i:"",v:1980,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"ACEP",n:"ARS Core Equity Portfolio ETF",s:"",i:"",v:1955,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DAT",n:"ProShares Big Data Refiners ETF",s:"",i:"",v:1949,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FTDS",n:"First Trust Dividend Strength E",s:"",i:"",v:1926,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"VCLN",n:"Virtus Duff &amp; Phelps Clean Ener",s:"",i:"",v:1866,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
