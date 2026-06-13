@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WBI Backtest Summary &mdash; 2026-06-13</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 20px; }
+h1 { color: #00d4ff; margin-bottom: 5px; }
+.subtitle { color: #888; margin-bottom: 20px; font-size: 14px; }
+.cards { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+.card { background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 15px 25px; min-width: 160px; }
+.card .label { color: #888; font-size: 12px; text-transform: uppercase; }
+.card .value { font-size: 28px; font-weight: bold; color: #00d4ff; }
+.card .value.green { color: #00ff88; }
+h2 { color: #00d4ff; margin: 25px 0 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 13px; }
+th { background: #16213e; color: #00d4ff; padding: 8px 10px; text-align: left; cursor: pointer; position: sticky; top: 0; }
+th:hover { background: #1a3a5e; }
+td { padding: 6px 10px; border-bottom: 1px solid #222; }
+tr:hover { background: #1a2a4e; }
+tr.wr100 { background: rgba(0, 255, 136, 0.15); }
+tr.tier2 { background: rgba(0, 212, 255, 0.08); }
+.family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
+.fam-WBI_S { background: #2a4a2a; color: #66ff66; }
+.fam-WBI_L { background: #2a2a4a; color: #6666ff; }
+.fam-WBI_D { background: #4a2a4a; color: #ff66ff; }
+.fam-WBI_X { background: #4a4a2a; color: #ffff66; }
+.pipeline { color: #666; font-size: 12px; margin-top: 30px; }
+.sort-arrow { font-size: 10px; margin-left: 4px; }
+</style>
+</head>
+<body>
+<h1>WBI &mdash; Backtest Report</h1>
+<div class="subtitle">Pipeline: create_rules_WBI_RSPG_20260613_v2 | Ticker: WBI | Lead: RSPG | Same: NVIR | Inverse: WTID | Date: 2026-06-13</div>
+<div class="cards">
+    <div class="card"><div class="label">Total Rules</div><div class="value">92</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">38</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">60</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">33.6%</div></div>
+</div>
+<h2>15M Timeframe (25 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>SA10b</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>1.326</td><td>1.843</td><td>26</td><td>133</td><td>84</td><td>63.2</td><td><strong>22.1</strong></td><td>0.17</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>2</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>8.888</td><td>6.45</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>20.65</strong></td><td>6.88</td><td><strong>-</strong></td></tr>
+<tr><td>3</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>5.05</td><td>6.44</td><td>26</td><td>55</td><td>31</td><td>56.4</td><td><strong>17.01</strong></td><td>0.31</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>4</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>4.944</td><td>6.86</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>14.83</strong></td><td>4.94</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>5</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>4.576</td><td>0.653</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>13.73</strong></td><td>4.58</td><td><strong>-</strong></td></tr>
+<tr><td>6</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>14.28</td><td>4.655</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>12.5</strong></td><td>4.17</td><td><strong>-</strong></td></tr>
+<tr><td>7</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>6.3</td><td>0.188</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>12.41</strong></td><td>4.14</td><td><strong>-</strong></td></tr>
+<tr><td>8</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>12.36</td><td>0.1</td><td>26</td><td>3</td><td>1</td><td>33.3</td><td><strong>12.16</strong></td><td>4.05</td><td><strong>-</strong></td></tr>
+<tr><td>9</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>12.36</td><td>0.1</td><td>26</td><td>3</td><td>1</td><td>33.3</td><td><strong>12.16</strong></td><td>4.05</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>10</td><td><strong>DV_6bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.636</td><td>4.607</td><td>26</td><td>3</td><td>3</td><td>100.0</td><td><strong>10.91</strong></td><td>3.64</td><td><strong>-</strong></td></tr>
+<tr><td>11</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>3.9</td><td>6.65</td><td>26</td><td>42</td><td>23</td><td>54.8</td><td><strong>10.72</strong></td><td>0.26</td><td><strong>-</strong></td></tr>
+<tr><td>12</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>7.575</td><td>4.5</td><td>26</td><td>3</td><td>2</td><td>66.7</td><td><strong>10.65</strong></td><td>3.55</td><td><strong>-</strong></td></tr>
+<tr><td>13</td><td><strong>SA17</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>15.15</td><td>0.98</td><td>26</td><td>124</td><td>30</td><td>24.2</td><td><strong>10.36</strong></td><td>0.08</td><td><strong>-</strong></td></tr>
+<tr><td>14</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>17.595</td><td>6.45</td><td>26</td><td>59</td><td>32</td><td>54.2</td><td><strong>8.46</strong></td><td>0.14</td><td><strong>-</strong></td></tr>
+<tr><td>15</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.88</td><td>2.7</td><td>26</td><td>32</td><td>16</td><td>50.0</td><td><strong>3.11</strong></td><td>0.1</td><td><strong>-</strong></td></tr>
+<tr><td>16</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>1.612</td><td>0.202</td><td>26</td><td>3</td><td>1</td><td>33.3</td><td><strong>1.21</strong></td><td>0.4</td><td><strong>-</strong></td></tr>
+<tr><td>17</td><td><strong>SA29</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.55</td><td>0.1</td><td>26</td><td>86</td><td>2</td><td>2.3</td><td><strong>-3.3</strong></td><td>-0.04</td><td><strong>-</strong></td></tr>
+<tr><td>18</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>10.605</td><td>6.45</td><td>26</td><td>63</td><td>33</td><td>52.4</td><td><strong>-10.85</strong></td><td>-0.17</td><td><strong>-</strong></td></tr>
+<tr><td>19</td><td><strong>SA02</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.88</td><td>7.0</td><td>26</td><td>33</td><td>17</td><td>51.5</td><td><strong>-10.91</strong></td><td>-0.33</td><td><strong>-</strong></td></tr>
+<tr><td>20</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>0.793</td><td>0.873</td><td>26</td><td>31</td><td>8</td><td>25.8</td><td><strong>-13.73</strong></td><td>-0.44</td><td><strong>-</strong></td></tr>
+<tr><td>21</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>10.71</td><td>1.666</td><td>26</td><td>51</td><td>15</td><td>29.4</td><td><strong>-21.62</strong></td><td>-0.42</td><td><strong>-</strong></td></tr>
+<tr><td>22</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.88</td><td>2.7</td><td>26</td><td>17</td><td>4</td><td>23.5</td><td><strong>-22.3</strong></td><td>-1.31</td><td><strong>-</strong></td></tr>
+<tr><td>23</td><td><strong>SA24</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.88</td><td>2.7</td><td>26</td><td>29</td><td>9</td><td>31.0</td><td><strong>-23.59</strong></td><td>-0.81</td><td><strong>-</strong></td></tr>
+<tr><td>24</td><td><strong>SA08</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.88</td><td>2.7</td><td>26</td><td>30</td><td>9</td><td>30.0</td><td><strong>-24.32</strong></td><td>-0.81</td><td><strong>-</strong></td></tr>
+<tr><td>25</td><td><strong>SA14</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>0.793</td><td>0.873</td><td>26</td><td>69</td><td>17</td><td>24.6</td><td><strong>-31.92</strong></td><td>-0.46</td><td><strong>-</strong></td></tr>
+</tbody></table>
+<h2>Daily Timeframe (67 rules)</h2>
+<table>
+<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
+<tbody>
+<tr class="tier2"><td>1</td><td><strong>SA20</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>20.776</td><td>19.55</td><td>52</td><td>25</td><td>21</td><td>84.0</td><td><strong>344.79</strong></td><td>13.79</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>2</td><td><strong>SA_drop_5d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>17.626</td><td>14.55</td><td>22</td><td>21</td><td>19</td><td>90.5</td><td><strong>255.84</strong></td><td>12.18</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>3</td><td><strong>SA_drop_3d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.87</td><td>15.39</td><td>22</td><td>19</td><td>16</td><td>84.2</td><td><strong>154.22</strong></td><td>8.12</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>4</td><td><strong>SA22</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.87</td><td>15.39</td><td>22</td><td>19</td><td>16</td><td>84.2</td><td><strong>154.22</strong></td><td>8.12</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>5</td><td><strong>SA_drop_5d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>16.32</td><td>12.48</td><td>20</td><td>12</td><td>10</td><td>83.3</td><td><strong>97.11</strong></td><td>8.09</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>6</td><td><strong>SA17</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>5.783</td><td>18.73</td><td>10</td><td>16</td><td>16</td><td>100.0</td><td><strong>92.53</strong></td><td>5.78</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>7</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>10.71</td><td>8.5</td><td>18</td><td>11</td><td>9</td><td>81.8</td><td><strong>86.42</strong></td><td>7.86</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>8</td><td><strong>INV_lag1_05</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>5.1</td><td>10.0</td><td>12</td><td>17</td><td>16</td><td>94.1</td><td><strong>80.13</strong></td><td>4.71</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>9</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>10.504</td><td>8.64</td><td>18</td><td>7</td><td>7</td><td>100.0</td><td><strong>73.53</strong></td><td>10.5</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>10</td><td><strong>INV_lag1_14</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>6.58</td><td>10.263</td><td>18</td><td>13</td><td>12</td><td>92.3</td><td><strong>68.7</strong></td><td>5.28</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>11</td><td><strong>INV_lag2_04</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>10.71</td><td>15.81</td><td>35</td><td>8</td><td>7</td><td>87.5</td><td><strong>68.69</strong></td><td>8.59</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>12</td><td><strong>INV_lag0_14</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>7.5</td><td>11.4</td><td>15</td><td>13</td><td>11</td><td>84.6</td><td><strong>64.6</strong></td><td>4.97</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>13</td><td><strong>INV_lag2_05</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>14.688</td><td>14.168</td><td>35</td><td>7</td><td>6</td><td>85.7</td><td><strong>62.75</strong></td><td>8.96</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>14</td><td><strong>DV_6bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>10.4</td><td>5.88</td><td>18</td><td>6</td><td>6</td><td>100.0</td><td><strong>62.4</strong></td><td>10.4</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>15</td><td><strong>INV_lag0_04</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>22.0</td><td>14.4</td><td>25</td><td>7</td><td>6</td><td>85.7</td><td><strong>60.39</strong></td><td>8.63</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>16</td><td><strong>INV_lag2_14</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>7.28</td><td>19.8</td><td>12</td><td>13</td><td>11</td><td>84.6</td><td><strong>59.98</strong></td><td>4.61</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>17</td><td><strong>SA_drop_3d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.06</td><td>9.17</td><td>18</td><td>8</td><td>6</td><td>75.0</td><td><strong>58.39</strong></td><td>7.3</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>18</td><td><strong>SA23</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.06</td><td>9.17</td><td>18</td><td>8</td><td>6</td><td>75.0</td><td><strong>58.39</strong></td><td>7.3</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>19</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.465</td><td>14.112</td><td>20</td><td>15</td><td>15</td><td>100.0</td><td><strong>51.98</strong></td><td>3.47</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>20</td><td><strong>INV_lag1_04</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>11.91</td><td>20.0</td><td>35</td><td>7</td><td>6</td><td>85.7</td><td><strong>51.81</strong></td><td>7.4</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>21</td><td><strong>INV_lag1_03</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>14.393</td><td>10.098</td><td>20</td><td>7</td><td>6</td><td>85.7</td><td><strong>50.26</strong></td><td>7.18</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>22</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>4.444</td><td>10.098</td><td>20</td><td>11</td><td>11</td><td>100.0</td><td><strong>46.12</strong></td><td>4.19</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>23</td><td><strong>INV_lag0_03</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>23.75</td><td>8.245</td><td>35</td><td>4</td><td>3</td><td>75.0</td><td><strong>45.14</strong></td><td>11.29</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>24</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.605</td><td>8.0</td><td>12</td><td>12</td><td>12</td><td>100.0</td><td><strong>43.26</strong></td><td>3.6</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>25</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.744</td><td>10.088</td><td>20</td><td>12</td><td>12</td><td>100.0</td><td><strong>42.87</strong></td><td>3.57</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>26</td><td><strong>LL_lag3_08</strong></td><td><span class="family fam-WBI_L">WBI_L</span></td><td>20.28</td><td>10.2</td><td>35</td><td>3</td><td>3</td><td>100.0</td><td><strong>42.22</strong></td><td>14.07</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>27</td><td><strong>INV_lag2_03</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>4.444</td><td>10.098</td><td>20</td><td>10</td><td>10</td><td>100.0</td><td><strong>41.68</strong></td><td>4.17</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>28</td><td><strong>LL_lag1_08</strong></td><td><span class="family fam-WBI_L">WBI_L</span></td><td>17.422</td><td>10.098</td><td>20</td><td>4</td><td>4</td><td>100.0</td><td><strong>37.63</strong></td><td>9.41</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>29</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.605</td><td>14.112</td><td>20</td><td>10</td><td>10</td><td>100.0</td><td><strong>36.05</strong></td><td>3.6</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>30</td><td><strong>DV_48bar_lead_8</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.6</td><td>7.0</td><td>5</td><td>10</td><td>10</td><td>100.0</td><td><strong>36.0</strong></td><td>3.6</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>31</td><td><strong>SA26</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>5.05</td><td>17.6</td><td>35</td><td>7</td><td>7</td><td>100.0</td><td><strong>35.35</strong></td><td>5.05</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>32</td><td><strong>DV_48bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.6</td><td>8.5</td><td>7</td><td>10</td><td>10</td><td>100.0</td><td><strong>33.01</strong></td><td>3.3</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>33</td><td><strong>DV_72bar_lead_3</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.605</td><td>7.0</td><td>5</td><td>9</td><td>9</td><td>100.0</td><td><strong>32.44</strong></td><td>3.6</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>34</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>14.0</td><td>8.0</td><td>35</td><td>3</td><td>3</td><td>100.0</td><td><strong>29.66</strong></td><td>9.89</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>35</td><td><strong>DV_6bar_lead_8</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>7.21</td><td>6.58</td><td>12</td><td>4</td><td>4</td><td>100.0</td><td><strong>28.84</strong></td><td>7.21</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>36</td><td><strong>INV_lag1_10</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>17.422</td><td>10.098</td><td>20</td><td>5</td><td>4</td><td>80.0</td><td><strong>27.53</strong></td><td>5.51</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>37</td><td><strong>INV_lag2_01</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>7.497</td><td>1.116</td><td>3</td><td>4</td><td>4</td><td>100.0</td><td><strong>26.67</strong></td><td>6.67</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>38</td><td><strong>INV_lag0_10</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>17.422</td><td>10.098</td><td>20</td><td>4</td><td>3</td><td>75.0</td><td><strong>26.43</strong></td><td>6.61</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>39</td><td><strong>SA_drop_1d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.12</td><td>21.84</td><td>38</td><td>18</td><td>16</td><td>88.9</td><td><strong>26.27</strong></td><td>1.46</td><td><strong>-</strong></td></tr>
+<tr class="tier2"><td>40</td><td><strong>SA21</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.12</td><td>21.84</td><td>38</td><td>18</td><td>16</td><td>88.9</td><td><strong>26.27</strong></td><td>1.46</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>41</td><td><strong>DV_72bar_lead_5</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>2.448</td><td>2.97</td><td>5</td><td>10</td><td>10</td><td>100.0</td><td><strong>24.48</strong></td><td>2.45</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>42</td><td><strong>INV_lag1_13</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>3.708</td><td>10.08</td><td>20</td><td>7</td><td>7</td><td>100.0</td><td><strong>23.93</strong></td><td>3.42</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>43</td><td><strong>SA04</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>7.7</td><td>3.2</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>22.74</strong></td><td>7.58</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>44</td><td><strong>SA01</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>7.7</td><td>3.2</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>22.74</strong></td><td>7.58</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>45</td><td><strong>SA31</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>7.7</td><td>3.2</td><td>5</td><td>3</td><td>3</td><td>100.0</td><td><strong>22.74</strong></td><td>7.58</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>46</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>4.444</td><td>10.0</td><td>12</td><td>5</td><td>5</td><td>100.0</td><td><strong>22.22</strong></td><td>4.44</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>47</td><td><strong>DV_72bar_lead_8</strong></td><td><span class="family fam-WBI_D">WBI_D</span></td><td>3.6</td><td>5.94</td><td>7</td><td>7</td><td>7</td><td>100.0</td><td><strong>22.21</strong></td><td>3.17</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>48</td><td><strong>INV_lag0_13</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>5.05</td><td>10.2</td><td>20</td><td>5</td><td>5</td><td>100.0</td><td><strong>21.88</strong></td><td>4.38</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>49</td><td><strong>INV_lag2_10</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>5.05</td><td>10.2</td><td>20</td><td>5</td><td>5</td><td>100.0</td><td><strong>21.88</strong></td><td>4.38</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>50</td><td><strong>INV_lag2_13</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>3.708</td><td>10.08</td><td>20</td><td>6</td><td>6</td><td>100.0</td><td><strong>20.22</strong></td><td>3.37</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>51</td><td><strong>LL_lag2_08</strong></td><td><span class="family fam-WBI_L">WBI_L</span></td><td>16.83</td><td>9.6</td><td>20</td><td>3</td><td>3</td><td>100.0</td><td><strong>18.2</strong></td><td>6.07</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>52</td><td><strong>INV_lag2_07</strong></td><td><span class="family fam-WBI_X">WBI_X</span></td><td>5.303</td><td>2.328</td><td>3</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.91</strong></td><td>5.3</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>53</td><td><strong>SA03</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>5.303</td><td>2.328</td><td>3</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.91</strong></td><td>5.3</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>54</td><td><strong>SA05</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>5.303</td><td>2.328</td><td>3</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.91</strong></td><td>5.3</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>55</td><td><strong>SA32</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>5.303</td><td>2.328</td><td>3</td><td>3</td><td>3</td><td>100.0</td><td><strong>15.91</strong></td><td>5.3</td><td><strong>-</strong></td></tr>
+<tr><td>56</td><td><strong>SA_drop_2d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>22.73</td><td>5.197</td><td>7</td><td>8</td><td>2</td><td>25.0</td><td><strong>14.28</strong></td><td>1.78</td><td><strong>-</strong></td></tr>
+<tr><td>57</td><td><strong>SA_drop_5d_8</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.596</td><td>7.056</td><td>18</td><td>4</td><td>2</td><td>50.0</td><td><strong>13.08</strong></td><td>3.27</td><td><strong>-</strong></td></tr>
+<tr class="wr100"><td>58</td><td><strong>SA10b</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>2.472</td><td>11.16</td><td>12</td><td>5</td><td>5</td><td>100.0</td><td><strong>12.36</strong></td><td>2.47</td><td><strong>-</strong></td></tr>
+<tr><td>59</td><td><strong>SA02</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>22.88</td><td>7.2</td><td>8</td><td>3</td><td>1</td><td>33.3</td><td><strong>8.48</strong></td><td>2.83</td><td><strong>-</strong></td></tr>
+<tr><td>60</td><td><strong>LL_lag0_09</strong></td><td><span class="family fam-WBI_L">WBI_L</span></td><td>4.12</td><td>0.495</td><td>3</td><td>3</td><td>2</td><td>66.7</td><td><strong>7.74</strong></td><td>2.58</td><td><strong>-</strong></td></tr>
+<tr><td>61</td><td><strong>SA_drop_3d_10</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.596</td><td>6.517</td><td>20</td><td>2</td><td>1</td><td>50.0</td><td><strong>7.08</strong></td><td>3.54</td><td><strong>-</strong></td></tr>
+<tr><td>62</td><td><strong>SA29</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>7.14</td><td>7.2</td><td>18</td><td>3</td><td>2</td><td>66.7</td><td><strong>0.78</strong></td><td>0.26</td><td><strong>-</strong></td></tr>
+<tr><td>63</td><td><strong>SA_drop_3d_8</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>13.635</td><td>7.056</td><td>20</td><td>3</td><td>1</td><td>33.3</td><td><strong>-0.48</strong></td><td>-0.16</td><td><strong>-</strong></td></tr>
+<tr><td>64</td><td><strong>SA_drop_2d_3</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>15.15</td><td>6.3</td><td>7</td><td>18</td><td>5</td><td>27.8</td><td><strong>-2.99</strong></td><td>-0.17</td><td><strong>-</strong></td></tr>
+<tr><td>65</td><td><strong>SA_drop_1d_5</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>18.9</td><td>6.528</td><td>20</td><td>5</td><td>1</td><td>20.0</td><td><strong>-3.83</strong></td><td>-0.77</td><td><strong>-</strong></td></tr>
+<tr><td>66</td><td><strong>SA14</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>1.313</td><td>2.821</td><td>3</td><td>2</td><td>0</td><td>0.0</td><td><strong>-5.64</strong></td><td>-2.82</td><td><strong>-</strong></td></tr>
+<tr><td>67</td><td><strong>SA24</strong></td><td><span class="family fam-WBI_S">WBI_S</span></td><td>24.25</td><td>2.82</td><td>10</td><td>5</td><td>0</td><td>0.0</td><td><strong>-14.1</strong></td><td>-2.82</td><td><strong>-</strong></td></tr>
+</tbody></table>
+<div class="pipeline">Generated by create_rules_WBI_RSPG_20260613_v2 pipeline</div>
+<script>
+function sortTable(th) {
+    var table = th.closest("table");
+    var tbody = table.querySelector("tbody");
+    var rows = Array.from(tbody.rows);
+    var col = Array.from(th.parentNode.children).indexOf(th);
+    var asc = th.getAttribute("data-asc") !== "true";
+    th.setAttribute("data-asc", asc);
+    rows.sort(function(a, b) {
+        var va = a.cells[col].textContent.trim();
+        var vb = b.cells[col].textContent.trim();
+        var na = parseFloat(va), nb = parseFloat(vb);
+        if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
+        return asc ? va.localeCompare(vb) : vb.localeCompare(va);
+    });
+    rows.forEach(function(r) { tbody.appendChild(r); });
+}
+</script>
+</body>
+</html>
