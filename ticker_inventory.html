@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,991 tickers &#8226; 1,547 with 1m data &#8226; 2,444 missing 1m &#8226; 295 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,995 tickers &#8226; 1,554 with 1m data &#8226; 2,441 missing 1m &#8226; 296 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -299,7 +299,7 @@ var data = [
   {t:"RCAT",n:"Red Cat Holdings, Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:14864988,mc:1272993792,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CAG",n:"ConAgra Brands, Inc.",s:"Consumer Defensive",i:"Packaged Foods",v:14787391,mc:6698120192,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BP",n:"BP p.l.c.",s:"Energy",i:"Oil &amp; Gas Integrated",v:14557413,mc:119737368576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"DKNG",n:"DraftKings Inc.",s:"Consumer Cyclical",i:"Gambling",v:14529275,mc:11982103552,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"DKNG",n:"DraftKings Inc.",s:"Consumer Cyclical",i:"Gambling",v:14529275,mc:11982103552,qt:"EQUITY",d1m:1,d5m:1,rules:25,br:0},
   {t:"ASTS",n:"AST SpaceMobile, Inc.",s:"Technology",i:"Communication Equipment",v:14446105,mc:24785195008,qt:"EQUITY",d1m:1,d5m:1,rules:424,br:"N/A"},
   {t:"RXRX",n:"Recursion Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:14416528,mc:1788484480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DOW",n:"Dow Inc.",s:"Basic Materials",i:"Chemicals",v:14376500,mc:29406251008,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -926,7 +926,7 @@ var data = [
   {t:"URA",n:"Global X Uranium ETF",s:"",i:"",v:4006910,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SPAB",n:"State Street SPDR Portfolio Agg",s:"",i:"",v:3999532,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"DAWN",n:"Day One Biopharmaceuticals, Inc",s:"Healthcare",i:"Biotechnology",v:3997528,mc:2224784640,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FLUT",n:"Flutter Entertainment plc",s:"Consumer Cyclical",i:"Gambling",v:3994283,mc:17976547328,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FLUT",n:"Flutter Entertainment plc",s:"Consumer Cyclical",i:"Gambling",v:3994283,mc:17976547328,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ARES",n:"Ares Management Corporation",s:"Financial Services",i:"Asset Management",v:3993060,mc:40649674752,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ALT",n:"Altimmune, Inc.",s:"Healthcare",i:"Biotechnology",v:3988501,mc:594726848,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DD",n:"DuPont de Nemours, Inc.",s:"Basic Materials",i:"Specialty Chemicals",v:3988208,mc:20182353920,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1732,7 +1732,7 @@ var data = [
   {t:"PAYC",n:"Paycom Software, Inc.",s:"Technology",i:"Software - Application",v:1835172,mc:7146944000,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"ACRS",n:"Aclaris Therapeutics, Inc.",s:"Healthcare",i:"Biotechnology",v:1833968,mc:663402496,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GOGO",n:"Gogo Inc.",s:"Communication Services",i:"Telecom Services",v:1831953,mc:578820928,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"FUBO",n:"fuboTV Inc.",s:"Communication Services",i:"Broadcasting",v:1828717,mc:364973312,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"FUBO",n:"fuboTV Inc.",s:"Communication Services",i:"Broadcasting",v:1828717,mc:364973312,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"WEAV",n:"Weave Communications, Inc.",s:"Healthcare",i:"Health Information Services",v:1827374,mc:486127872,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NXT",n:"Nextpower Inc.",s:"Technology",i:"Solar",v:1827044,mc:18548445184,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PFGC",n:"Performance Food Group Company",s:"Consumer Defensive",i:"Food Distribution",v:1826172,mc:13686463488,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3801,6 +3801,7 @@ var data = [
   {t:"DUSL",n:"Direxion Daily Industrials Bull",s:"",i:"",v:22547,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EFU",n:"ProShares UltraShort MSCI EAFE",s:"",i:"",v:22342,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RXD",n:"ProShares UltraShort Health Car",s:"",i:"",v:22074,mc:0,qt:"ETF",d1m:1,d5m:1,rules:116,br:0},
+  {t:"EFAX",n:"State Street SPDR MSCI EAFE Fos",s:"",i:"",v:21969,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"WEED",n:"Roundhill Cannabis ETF",s:"",i:"",v:21871,mc:0,qt:"ETF",d1m:1,d5m:1,rules:39,br:0},
   {t:"FDG",n:"American Century Focused Dynami",s:"",i:"",v:21785,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NDIV",n:"Amplify Energy &amp; Natural Resour",s:"",i:"",v:21585,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3872,6 +3873,7 @@ var data = [
   {t:"SMOX",n:"Horizon Small/Mid Cap Core Equi",s:"",i:"",v:11022,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"UDIV",n:"Franklin U.S. Core Dividend Til",s:"",i:"",v:10900,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"KDEC",n:"Innovator U.S. Small Cap Power ",s:"",i:"",v:10861,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
+  {t:"BETZ",n:"Roundhill Sports Betting &amp; iGam",s:"",i:"",v:10749,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"OGIG",n:"ALPS OShares Global Internet G",s:"",i:"",v:10619,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FXD",n:"First Trust Cons. Discret. Alph",s:"",i:"",v:10525,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MFIG",n:"Motley Fool Innovative Growth E",s:"",i:"",v:10520,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -4009,6 +4011,7 @@ var data = [
   {t:"FMCX",n:"FM Focus Equity ETF",s:"",i:"",v:1133,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GK",n:"AdvisorShares Gerber Kawasaki E",s:"",i:"",v:1123,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GUSA",n:"Goldman Sachs MarketBeta U.S. 1",s:"",i:"",v:1084,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"ODDS",n:"Pacer BlueStar Digital Entertai",s:"",i:"",v:1082,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AGRW",n:"Allspring LT Large Growth ETF",s:"",i:"",v:1074,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BUYO",n:"KraneShares Man Buyout Beta Ind",s:"",i:"",v:1036,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NITE",n:"The Nightview Fund NITE",s:"",i:"",v:1000,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -4021,6 +4024,7 @@ var data = [
   {t:"TEKY",n:"Lazard Next Gen Technologies ET",s:"",i:"",v:819,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"FB",n:"ProShares S&amp;P 500 Dynamic Buffe",s:"",i:"",v:815,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PSCD",n:"Invesco S&amp;P SmallCap Consumer D",s:"",i:"",v:801,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"BNGE",n:"First Trust S-Network Streaming",s:"",i:"",v:768,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NLSI",n:"NEOS Long/Short Equity Income E",s:"",i:"",v:728,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SRHQ",n:"SRH U.S. Quality GARP ETF",s:"",i:"",v:717,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EPSV",n:"Harbor SMID Cap Value ETF",s:"",i:"",v:687,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
