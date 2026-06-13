@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">3,946 tickers &#8226; 1,495 with 1m data &#8226; 2,451 missing 1m &#8226; 287 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">3,953 tickers &#8226; 1,502 with 1m data &#8226; 2,451 missing 1m &#8226; 288 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -135,7 +135,7 @@ var data = [
   {t:"NIO",n:"NIO Inc.",s:"Consumer Cyclical",i:"Auto Manufacturers",v:40561908,mc:14783435776,qt:"EQUITY",d1m:1,d5m:1,rules:1600,br:800},
   {t:"BAC",n:"Bank of America Corporation",s:"Financial Services",i:"Banks - Diversified",v:40185415,mc:376970903552,qt:"EQUITY",d1m:1,d5m:1,rules:372,br:0},
   {t:"EEM",n:"iShares MSCI Emerging Index Fun",s:"",i:"",v:40157266,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"OPEN",n:"Opendoor Technologies Inc",s:"Real Estate",i:"Real Estate Services",v:40135444,mc:5045404160,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"OPEN",n:"Opendoor Technologies Inc",s:"Real Estate",i:"Real Estate Services",v:40135444,mc:5045404160,qt:"EQUITY",d1m:1,d5m:1,rules:20,br:0},
   {t:"BBD",n:"Banco Bradesco Sa",s:"Financial Services",i:"Banks - Regional",v:39805898,mc:40591532032,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"HIMS",n:"Hims &amp; Hers Health, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:38919657,mc:6084100096,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"PFE",n:"Pfizer, Inc.",s:"Healthcare",i:"Drug Manufacturers - General",v:38150244,mc:150457024512,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -3570,6 +3570,7 @@ var data = [
   {t:"MSEX",n:"Middlesex Water Company",s:"Utilities",i:"Utilities - Regulated Water",v:158301,mc:948537024,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"DSI",n:"iShares ESG MSCI KLD 400 ETF",s:"",i:"",v:156950,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FTXR",n:"First Trust Nasdaq Transportati",s:"",i:"",v:156657,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"TSLW",n:"Roundhill TSLA WeeklyPay ETF",s:"",i:"",v:155784,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
   {t:"DXLG",n:"Destination XL Group, Inc.",s:"Consumer Cyclical",i:"Apparel Retail",v:152600,mc:40045356,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"CWCO",n:"Consolidated Water Co. Ltd.",s:"Utilities",i:"Utilities - Regulated Water",v:152508,mc:524806208,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CIFG",n:"Leverage Shares 2X Long CIFR Da",s:"",i:"",v:150826,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3701,6 +3702,7 @@ var data = [
   {t:"FXZ",n:"First Trust Materials AlphaDEX ",s:"",i:"",v:55677,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CTRM",n:"Castor Maritime Inc.",s:"Industrials",i:"Marine Shipping",v:55661,mc:20517042,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SGRT",n:"SMART Earnings Growth 30 ETF",s:"",i:"",v:55326,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"TSII",n:"REX TSLA Growth &amp; Income ETF",s:"",i:"",v:55068,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ROM",n:"ProShares Ultra Technology",s:"",i:"",v:54376,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RSPU",n:"Invesco S&amp;P 500 Equal Weight Ut",s:"",i:"",v:54307,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EQAL",n:"Invesco Russell 1000 Equal Weig",s:"",i:"",v:53688,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3770,6 +3772,7 @@ var data = [
   {t:"PGJ",n:"Invesco Golden Dragon China ETF",s:"",i:"",v:25500,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FRI",n:"First Trust S&amp;P REIT Index Fund",s:"",i:"",v:25387,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"LST",n:"Leuthold Select Industries ETF",s:"",i:"",v:24846,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"TESL",n:"Simplify Volt TSLA Revolution E",s:"",i:"",v:24831,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CHPS",n:"Xtrackers Semiconductor Select ",s:"",i:"",v:24607,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MSSM",n:"Morgan Stanley Pathway Small-Mi",s:"",i:"",v:24498,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"IPO",n:"Renaissance IPO ETF",s:"",i:"",v:24106,mc:0,qt:"ETF",d1m:1,d5m:1,rules:92,br:0},
@@ -3808,6 +3811,7 @@ var data = [
   {t:"PUI",n:"Invesco Dorsey Wright Utilities",s:"",i:"",v:18052,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMDD",n:"UltraPro Short MidCap400",s:"",i:"",v:17974,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FXL",n:"First Trust Technology AlphaDEX",s:"",i:"",v:17788,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"TSLP",n:"Kurv Yield Premium Strategy Tes",s:"",i:"",v:17777,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"KEMQ",n:"KraneShares Emerging Markets Co",s:"",i:"",v:17009,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PALD",n:"Direxion Daily PANW Bear 1X ETF",s:"",i:"",v:16809,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CNBS",n:"Amplify Seymour Cannabis ETF",s:"",i:"",v:16695,mc:0,qt:"ETF",d1m:1,d5m:1,rules:296,br:0},
@@ -3956,6 +3960,7 @@ var data = [
   {t:"NXTE",n:"AXS Green Alpha ETF",s:"",i:"",v:1796,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TINY",n:"ProShares Nanotechnology ETF",s:"",i:"",v:1793,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NIXT",n:"Research Affiliates Deletions E",s:"",i:"",v:1753,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"TLA",n:"GraniteShares Autocallable TSLA",s:"",i:"",v:1742,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MAKX",n:"ProShares S&amp;P Kensho Smart Fact",s:"",i:"",v:1730,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"QMID",n:"WisdomTree U.S. MidCap Quality ",s:"",i:"",v:1634,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"DFTT",n:"DF Tactical 30 ETF",s:"",i:"",v:1492,mc:0,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3973,6 +3978,7 @@ var data = [
   {t:"GK",n:"AdvisorShares Gerber Kawasaki E",s:"",i:"",v:1123,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GUSA",n:"Goldman Sachs MarketBeta U.S. 1",s:"",i:"",v:1084,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BUYO",n:"KraneShares Man Buyout Beta Ind",s:"",i:"",v:1036,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"NITE",n:"The Nightview Fund NITE",s:"",i:"",v:1000,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BGRO",n:"iShares Large Cap Growth Active",s:"",i:"",v:911,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"EPAI",n:"Harbor AI Inflection Strategy E",s:"",i:"",v:892,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TOS",n:"Twin Oak Strategic Solutions ET",s:"",i:"",v:885,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3996,6 +4002,7 @@ var data = [
   {t:"DTRE",n:"First Trust Alerian Disruptive ",s:"",i:"",v:566,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"PEZ",n:"Invesco Dorsey Wright Consumer ",s:"",i:"",v:552,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AFSC",n:"abrdn Focused U.S. Small Cap Ac",s:"",i:"",v:509,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"TSLO",n:"Leverage Shares 2x Capped Accel",s:"",i:"",v:498,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SOLR",n:"Guinness Atkinson Sustainable E",s:"",i:"",v:484,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AZTD",n:"Aztlan Global Stock Selection D",s:"",i:"",v:468,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"QFRD",n:"Pacer S&amp;P 500 Quality FCF R&amp;D L",s:"",i:"",v:430,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
