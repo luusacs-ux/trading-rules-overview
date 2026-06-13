@@ -23,10 +23,10 @@ tr:hover { background: #1a2a4e; }
 tr.wr100 { background: rgba(0, 255, 136, 0.15); }
 tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 .family { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: bold; }
-.fam-WEED_S { background: #2a4a2a; color: #66ff66; }
-.fam-WEED_L { background: #2a2a4a; color: #6666ff; }
-.fam-WEED_D { background: #4a2a4a; color: #ff66ff; }
-.fam-WEED_X { background: #4a4a2a; color: #ffff66; }
+.fam-WEED_B1_S { background: #2a4a2a; color: #66ff66; }
+.fam-WEED_B1_L { background: #2a2a4a; color: #6666ff; }
+.fam-WEED_B1_D { background: #4a2a4a; color: #ff66ff; }
+.fam-WEED_B1_X { background: #4a4a2a; color: #ffff66; }
 .pipeline { color: #666; font-size: 12px; margin-top: 30px; }
 .sort-arrow { font-size: 10px; margin-left: 4px; }
 </style>
@@ -35,65 +35,12 @@ tr.tier2 { background: rgba(0, 212, 255, 0.08); }
 <h1>WEED &mdash; Backtest Report</h1>
 <div class="subtitle">Pipeline: create_rules_WEED_MSOS_20260613_v2 | Ticker: WEED | Lead: MSOS | Same: MSOX | Inverse: SMZ | Date: 2026-06-13</div>
 <div class="cards">
-    <div class="card"><div class="label">Total Rules</div><div class="value">39</div></div>
-    <div class="card"><div class="label">100% WR Rules</div><div class="value green">27</div></div>
-    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">26</div></div>
-    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">34.7%</div></div>
+    <div class="card"><div class="label">Total Rules</div><div class="value">0</div></div>
+    <div class="card"><div class="label">100% WR Rules</div><div class="value green">0</div></div>
+    <div class="card"><div class="label">WR&ge;40% + PnL&ge;10%</div><div class="value">0</div></div>
+    <div class="card"><div class="label">Avg PnL per Rule</div><div class="value green">0%</div></div>
 </div>
-<h2>5M Timeframe (20 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr><td>1</td><td><strong>INV_lag0_03</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>40.0</td><td>8.415</td><td>78</td><td>80</td><td>24</td><td>30.0</td><td><strong>123.36</strong></td><td>1.54</td><td><strong>-</strong></td></tr>
-<tr><td>2</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>1.554</td><td>78</td><td>3</td><td>2</td><td>66.7</td><td><strong>64.87</strong></td><td>21.62</td><td><strong>-</strong></td></tr>
-<tr><td>3</td><td><strong>DV_6bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>3.04</td><td>78</td><td>3</td><td>2</td><td>66.7</td><td><strong>61.47</strong></td><td>20.49</td><td><strong>-</strong></td></tr>
-<tr><td>4</td><td><strong>WEED_X00001</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td><td>66.7</td><td><strong>54.33</strong></td><td>18.11</td><td><strong>-</strong></td></tr>
-<tr><td>5</td><td><strong>WEED_X00002</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td><td>66.7</td><td><strong>44.32</strong></td><td>14.77</td><td><strong>-</strong></td></tr>
-<tr><td>6</td><td><strong>DV_48bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>0.1</td><td>78</td><td>3</td><td>1</td><td>33.3</td><td><strong>39.8</strong></td><td>13.27</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>7</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>7.07</td><td>12.6</td><td>78</td><td>4</td><td>4</td><td>100.0</td><td><strong>28.28</strong></td><td>7.07</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>8</td><td><strong>DV_6bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>7.07</td><td>14.4</td><td>78</td><td>4</td><td>4</td><td>100.0</td><td><strong>28.28</strong></td><td>7.07</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>9</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>6.489</td><td>6.86</td><td>78</td><td>4</td><td>4</td><td>100.0</td><td><strong>25.96</strong></td><td>6.49</td><td><strong>-</strong></td></tr>
-<tr><td>10</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>18.18</td><td>2.4</td><td>78</td><td>4</td><td>2</td><td>50.0</td><td><strong>25.41</strong></td><td>6.35</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>11</td><td><strong>DV_6bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>7.931</td><td>14.4</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>23.79</strong></td><td>7.93</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>12</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>5.75</td><td>8.0</td><td>78</td><td>4</td><td>4</td><td>100.0</td><td><strong>23.0</strong></td><td>5.75</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>13</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>6.9</td><td>18.0</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>20.7</strong></td><td>6.9</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>14</td><td><strong>DV_72bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>5.72</td><td>12.8</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>17.16</strong></td><td>5.72</td><td><strong>-</strong></td></tr>
-<tr><td>15</td><td><strong>INV_lag1_01</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>7.575</td><td>0.1</td><td>78</td><td>3</td><td>2</td><td>66.7</td><td><strong>15.05</strong></td><td>5.02</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>16</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>4.8</td><td>18.0</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>14.4</strong></td><td>4.8</td><td><strong>-</strong></td></tr>
-<tr><td>17</td><td><strong>INV_lag0_05</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>40.0</td><td>7.0</td><td>78</td><td>102</td><td>25</td><td>24.5</td><td><strong>6.63</strong></td><td>0.07</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>18</td><td><strong>DV_48bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>1.8</td><td>12.6</td><td>78</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.4</strong></td><td>1.8</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>19</td><td><strong>WEED_X00004</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>-</td><td>-</td><td>-</td><td>3</td><td>3</td><td>100.0</td><td><strong>5.4</strong></td><td>1.8</td><td><strong>-</strong></td></tr>
-<tr><td>20</td><td><strong>INV_lag0_01</strong></td><td><span class="family fam-WEED_X">WEED_X</span></td><td>1.8</td><td>15.3</td><td>78</td><td>38</td><td>31</td><td>81.6</td><td><strong>-42.33</strong></td><td>-1.11</td><td><strong>-</strong></td></tr>
-</tbody></table>
-<h2>15M Timeframe (10 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="wr100"><td>1</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>7.275</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>66.18</strong></td><td>22.06</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>2</td><td><strong>DV_6bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>20.6</td><td>4.9</td><td>52</td><td>3</td><td>3</td><td>100.0</td><td><strong>61.8</strong></td><td>20.6</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>3</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>12.6</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>55.32</strong></td><td>18.44</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>4</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>13.6</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>55.14</strong></td><td>18.38</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>5</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>14.4</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>55.14</strong></td><td>18.38</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>6</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>14.4</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>54.88</strong></td><td>18.29</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>7</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>10.605</td><td>10.12</td><td>52</td><td>5</td><td>5</td><td>100.0</td><td><strong>53.02</strong></td><td>10.6</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>8</td><td><strong>DV_48bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>16.2</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>50.19</strong></td><td>16.73</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>9</td><td><strong>DV_48bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>40.0</td><td>16.2</td><td>104</td><td>3</td><td>3</td><td>100.0</td><td><strong>50.19</strong></td><td>16.73</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>10</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>6.363</td><td>8.5</td><td>52</td><td>7</td><td>7</td><td>100.0</td><td><strong>44.54</strong></td><td>6.36</td><td><strong>-</strong></td></tr>
-</tbody></table>
-<h2>1H Timeframe (9 rules)</h2>
-<table>
-<thead><tr><th onclick="sortTable(this)">#<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Condition<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Family<span class="sort-arrow"></span></th><th onclick="sortTable(this)">TP%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">SL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Hold<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Trades<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Wins<span class="sort-arrow"></span></th><th onclick="sortTable(this)">WR%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Total PnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">PTPnL%<span class="sort-arrow"></span></th><th onclick="sortTable(this)">Conf<span class="sort-arrow"></span></th></tr></thead>
-<tbody>
-<tr class="tier2"><td>1</td><td><strong>DV_12bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>12.24</td><td>4.95</td><td>7</td><td>8</td><td>7</td><td>87.5</td><td><strong>34.46</strong></td><td>4.31</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>2</td><td><strong>DV_48bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>23.5</td><td>5.445</td><td>21</td><td>3</td><td>3</td><td>100.0</td><td><strong>28.33</strong></td><td>9.44</td><td><strong>-</strong></td></tr>
-<tr><td>3</td><td><strong>DV_24bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>28.05</td><td>3.4</td><td>28</td><td>3</td><td>2</td><td>66.7</td><td><strong>28.03</strong></td><td>9.34</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>4</td><td><strong>DV_24bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>9.064</td><td>12.6</td><td>21</td><td>4</td><td>4</td><td>100.0</td><td><strong>27.96</strong></td><td>6.99</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>5</td><td><strong>DV_12bar_lead_8</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>21.8</td><td>5.445</td><td>21</td><td>3</td><td>3</td><td>100.0</td><td><strong>26.63</strong></td><td>8.88</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>6</td><td><strong>DV_48bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>10.1</td><td>12.6</td><td>28</td><td>4</td><td>4</td><td>100.0</td><td><strong>21.98</strong></td><td>5.5</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>7</td><td><strong>DV_48bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>4.848</td><td>12.6</td><td>28</td><td>5</td><td>5</td><td>100.0</td><td><strong>21.14</strong></td><td>4.23</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>8</td><td><strong>DV_24bar_lead_3</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>6.9</td><td>18.0</td><td>70</td><td>3</td><td>3</td><td>100.0</td><td><strong>17.99</strong></td><td>6.0</td><td><strong>-</strong></td></tr>
-<tr class="wr100"><td>9</td><td><strong>DV_12bar_lead_5</strong></td><td><span class="family fam-WEED_D">WEED_D</span></td><td>6.42</td><td>18.0</td><td>70</td><td>3</td><td>3</td><td>100.0</td><td><strong>17.03</strong></td><td>5.68</td><td><strong>-</strong></td></tr>
-</tbody></table>
+
 <div class="pipeline">Generated by create_rules_WEED_MSOS_20260613_v2 pipeline</div>
 <script>
 function sortTable(th) {
