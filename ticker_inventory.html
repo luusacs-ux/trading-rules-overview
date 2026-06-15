@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">4,072 tickers &#8226; 1,654 with 1m data &#8226; 2,418 missing 1m &#8226; 315 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">4,075 tickers &#8226; 1,656 with 1m data &#8226; 2,419 missing 1m &#8226; 316 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -414,7 +414,7 @@ var data = [
   {t:"EXK",n:"Endeavour Silver Corporation",s:"Basic Materials",i:"Silver",v:9761500,mc:2543088384,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"VUG",n:"Vanguard Growth ETF",s:"",i:"",v:9733511,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"JPM",n:"JP Morgan Chase &amp; Co.",s:"Financial Services",i:"Banks - Diversified",v:9729976,mc:829040754688,qt:"EQUITY",d1m:1,d5m:1,rules:1740,br:580},
-  {t:"COP",n:"ConocoPhillips",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:9715688,mc:150240018432,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"COP",n:"ConocoPhillips",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:9715688,mc:150240018432,qt:"EQUITY",d1m:1,d5m:1,rules:3,br:0},
   {t:"BAX",n:"Baxter International Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:9700136,mc:8650855424,qt:"EQUITY",d1m:1,d5m:1,rules:176,br:0},
   {t:"TME",n:"Tencent Music Entertainment Gro",s:"Communication Services",i:"Internet Content &amp; Information",v:9682674,mc:14433875968,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NEM",n:"Newmont Corporation",s:"Basic Materials",i:"Gold",v:9666920,mc:116373929984,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -3690,6 +3690,7 @@ var data = [
   {t:"SPRE",n:"SP Funds S&amp;P Global REIT Sharia",s:"",i:"",v:77625,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SEIM",n:"SEI Enhanced U.S. Large Cap Mom",s:"",i:"",v:76680,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"HIBL",n:"Direxion Daily S&amp;P 500 High Bet",s:"",i:"",v:74061,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"ASMU",n:"Direxion Daily ASML Bull 2X ETF",s:"",i:"",v:73336,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SGDM",n:"Sprott Gold Miners ETF",s:"",i:"",v:72903,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"HYDR",n:"Global X Hydrogen ETF",s:"",i:"",v:72006,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"ZDAI",n:"DirectBooking Technology Co., L",s:"Industrials",i:"Engineering &amp; Construction",v:71967,mc:15846188,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -3938,6 +3939,7 @@ var data = [
   {t:"FNGG",n:"Direxion Daily NYSE FANG+ Bull ",s:"",i:"",v:9050,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AWAY",n:"Amplify Travel Tech ETF",s:"",i:"",v:8920,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FFND",n:"One Global ETF",s:"",i:"",v:8917,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"OILT",n:"Texas Capital Texas Oil Index E",s:"",i:"",v:8892,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"URAN",n:"Themes Uranium &amp; Nuclear ETF",s:"",i:"",v:8858,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AGIQ",n:"SoFi Agentic AI ETF",s:"",i:"",v:8844,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"BIS",n:"ProShares UltraShort Nasdaq Bio",s:"",i:"",v:8831,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -4127,6 +4129,7 @@ var data = [
   {t:"SUPP",n:"TCW Transform Supply Chain ETF",s:"",i:"",v:346,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SURE",n:"AdvisorShares Insider Advantage",s:"",i:"",v:346,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CCOM",n:"Simplify Chinese Commodities St",s:"",i:"",v:342,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"IDVY",n:"First Trust International Risin",s:"",i:"",v:339,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"ABOT",n:"ABACUS FCF INNOVATION LEADERS E",s:"",i:"",v:330,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMDX",n:"Intech S&amp;P Small-Mid Cap Divers",s:"",i:"",v:317,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FCFY",n:"First Trust S&amp;P 500 Diversified",s:"",i:"",v:311,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
