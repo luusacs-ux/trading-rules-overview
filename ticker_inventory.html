@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">4,128 tickers &#8226; 1,710 with 1m data &#8226; 2,418 missing 1m &#8226; 333 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">4,130 tickers &#8226; 1,712 with 1m data &#8226; 2,418 missing 1m &#8226; 334 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -355,7 +355,7 @@ var data = [
   {t:"AXTI",n:"AXT Inc",s:"Technology",i:"Semiconductor Equipment &amp; Materials",v:11626505,mc:7036263424,qt:"EQUITY",d1m:1,d5m:1,rules:1726,br:723},
   {t:"ABT",n:"Abbott Laboratories",s:"Healthcare",i:"Medical Devices",v:11591983,mc:151833853952,qt:"EQUITY",d1m:1,d5m:1,rules:62,br:0},
   {t:"AMDL",n:"GraniteShares 2x Long AMD Daily",s:"",i:"",v:11552356,mc:0,qt:"ETF",d1m:1,d5m:1,rules:325,br:0},
-  {t:"SCHW",n:"Charles Schwab Corporation (The",s:"Financial Services",i:"Capital Markets",v:11487459,mc:161904246784,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"SCHW",n:"Charles Schwab Corporation (The",s:"Financial Services",i:"Capital Markets",v:11487459,mc:161904246784,qt:"EQUITY",d1m:0,d5m:1,rules:7,br:0},
   {t:"BIL",n:"State Street SPDR Bloomberg 1-3",s:"",i:"",v:11482276,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"KDP",n:"Keurig Dr Pepper Inc.",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:11319606,mc:39347380224,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"ZSL",n:"ProShares UltraShort Silver",s:"",i:"",v:11273137,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3639,7 +3639,7 @@ var data = [
   {t:"QCLN",n:"First Trust NASDAQ Clean Edge G",s:"",i:"",v:114337,mc:0,qt:"ETF",d1m:1,d5m:1,rules:167,br:0},
   {t:"BWET",n:"Breakwave Tanker Shipping ETF",s:"",i:"",v:113541,mc:0,qt:"ETF",d1m:1,d5m:1,rules:6,br:"N/A"},
   {t:"JRSH",n:"Jerash Holdings (US), Inc.",s:"Consumer Cyclical",i:"Apparel Manufacturing",v:113158,mc:43687796,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"IAI",n:"iShares U.S. Broker-Dealers &amp; S",s:"",i:"",v:112917,mc:0,qt:"ETF",d1m:1,d5m:0,rules:0,br:0},
+  {t:"IAI",n:"iShares U.S. Broker-Dealers &amp; S",s:"",i:"",v:112917,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RSPH",n:"Invesco S&amp;P 500 Equal Weight He",s:"",i:"",v:112846,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SOYB",n:"Teucrium Soybean Fund ETV",s:"",i:"",v:111264,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"NHIC",n:"NewHold Investment Corp III",s:"",i:"",v:110595,mc:315890016,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
@@ -3912,6 +3912,7 @@ var data = [
   {t:"IYLD",n:"iShares Morningstar Multi-Asset",s:"",i:"",v:15984,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
   {t:"PKB",n:"Invesco Building &amp; Construction",s:"",i:"",v:15903,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RYM",n:"RYTHM, Inc.",s:"Consumer Defensive",i:"Tobacco",v:15858,mc:59577724,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"KCE",n:"State Street SPDR S&amp;P Capital M",s:"",i:"",v:15800,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"VUSG",n:"Vanguard Wellington U.S. Growth",s:"",i:"",v:15652,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BBSC",n:"JPMorgan BetaBuilders U.S. Smal",s:"",i:"",v:15593,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"GTOP",n:"Goldman Sachs Technology Opport",s:"",i:"",v:15585,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -3946,6 +3947,7 @@ var data = [
   {t:"PRNT",n:"3D Printing (The) ETF",s:"",i:"",v:11641,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MILN",n:"Global X Millennial Consumer ET",s:"",i:"",v:11433,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RKNG",n:"Defiance Retail Kings ETF",s:"",i:"",v:11376,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"RSPF",n:"Invesco S&amp;P 500 Equal Weight Fi",s:"",i:"",v:11303,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BIGY",n:"YieldMax Target 12 Big 50 Optio",s:"",i:"",v:11092,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"MFMO",n:"Motley Fool Momentum Factor ETF",s:"",i:"",v:11053,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SMOX",n:"Horizon Small/Mid Cap Core Equi",s:"",i:"",v:11022,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
