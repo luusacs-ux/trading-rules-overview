@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">4,140 tickers &#8226; 1,728 with 1m data &#8226; 2,412 missing 1m &#8226; 336 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">4,141 tickers &#8226; 1,732 with 1m data &#8226; 2,409 missing 1m &#8226; 337 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -298,7 +298,7 @@ var data = [
   {t:"NVDX",n:"T-Rex 2X Long NVIDIA Daily Targ",s:"",i:"",v:14886816,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RCAT",n:"Red Cat Holdings, Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:14864988,mc:1272993792,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CAG",n:"ConAgra Brands, Inc.",s:"Consumer Defensive",i:"Packaged Foods",v:14787391,mc:6698120192,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
-  {t:"BP",n:"BP p.l.c.",s:"Energy",i:"Oil &amp; Gas Integrated",v:14557413,mc:119737368576,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"BP",n:"BP p.l.c.",s:"Energy",i:"Oil &amp; Gas Integrated",v:14557413,mc:119737368576,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"DKNG",n:"DraftKings Inc.",s:"Consumer Cyclical",i:"Gambling",v:14529275,mc:11982103552,qt:"EQUITY",d1m:1,d5m:1,rules:25,br:"N/A"},
   {t:"ASTS",n:"AST SpaceMobile, Inc.",s:"Technology",i:"Communication Equipment",v:14446105,mc:24785195008,qt:"EQUITY",d1m:1,d5m:1,rules:1612,br:"N/A"},
   {t:"RXRX",n:"Recursion Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:14416528,mc:1788484480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -747,7 +747,7 @@ var data = [
   {t:"SHY",n:"iShares 1-3 Year Treasury Bond ",s:"",i:"",v:5137077,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"RDDT",n:"Reddit, Inc.",s:"Communication Services",i:"Internet Content &amp; Information",v:5134813,mc:33040326656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CRBG",n:"Corebridge Financial Inc.",s:"Financial Services",i:"Asset Management",v:5113895,mc:12998457344,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"EOG",n:"EOG Resources, Inc.",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:5090343,mc:75439505408,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
+  {t:"EOG",n:"EOG Resources, Inc.",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:5090343,mc:75439505408,qt:"EQUITY",d1m:1,d5m:1,rules:9,br:0},
   {t:"PURR",n:"Hyperliquid Strategies Inc",s:"Financial Services",i:"Capital Markets",v:5085001,mc:828102912,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"XRX",n:"Xerox Holdings Corporation",s:"Industrials",i:"Business Equipment &amp; Supplies",v:5069833,mc:345249344,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"REI",n:"Ring Energy, Inc.",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:5056900,mc:414602304,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -1753,7 +1753,7 @@ var data = [
   {t:"APLX",n:"Tradr 2X Long APLD Daily ETF",s:"",i:"",v:1797745,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BMNZ",n:"Defiance Daily Target 2X Short ",s:"",i:"",v:1795166,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"YSS",n:"York Space Systems Inc.",s:"Industrials",i:"Aerospace &amp; Defense",v:1794669,mc:4174097408,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"TTI",n:"Tetra Technologies, Inc.",s:"Industrials",i:"Conglomerates",v:1791349,mc:1315990656,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"TTI",n:"Tetra Technologies, Inc.",s:"Industrials",i:"Conglomerates",v:1791349,mc:1315990656,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"XERS",n:"Xeris Biopharma Holdings, Inc.",s:"Healthcare",i:"Drug Manufacturers - Specialty &amp; Generic",v:1790400,mc:1075458432,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"GDS",n:"GDS Holdings Limited",s:"Technology",i:"Information Technology Services",v:1789471,mc:9016992768,qt:"EQUITY",d1m:1,d5m:1,rules:742,br:0},
   {t:"FENI",n:"Fidelity Enhanced International",s:"",i:"",v:1788038,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -4020,6 +4020,7 @@ var data = [
   {t:"MINY",n:"YieldMax Strategic Metals &amp; Min",s:"",i:"",v:6268,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"SDP",n:"ProShares UltraShort Utilities",s:"",i:"",v:6153,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FIVY",n:"YieldMax Dorsey Wright Hybrid 5",s:"",i:"",v:6087,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
+  {t:"GLDN",n:"Nicholas Gold Income ETF",s:"",i:"",v:5896,mc:0,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"TEK",n:"iShares Technology Opportunitie",s:"",i:"",v:5885,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"TOGA",n:"Managed Portfolio Series Trembl",s:"",i:"",v:5785,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"SDD",n:"ProShares UltraShort SmallCap60",s:"",i:"",v:5726,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
@@ -4063,7 +4064,7 @@ var data = [
   {t:"QVMM",n:"Invesco S&amp;P MidCap 400 QVM Mult",s:"",i:"",v:3893,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"INVN",n:"Alger Russell Innovation ETF",s:"",i:"",v:3844,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"FPRO",n:"Fidelity Real Estate Investment",s:"",i:"",v:3836,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
-  {t:"DVXE",n:"WEBs Energy XLE Defined Volatil",s:"",i:"",v:3826,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
+  {t:"DVXE",n:"WEBs Energy XLE Defined Volatil",s:"",i:"",v:3826,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"CARZ",n:"First Trust S-Network Future Ve",s:"",i:"",v:3771,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"BCFN",n:"Baron Financials ETF",s:"",i:"",v:3752,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"URE",n:"ProShares Ultra Real Estate",s:"",i:"",v:3711,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
