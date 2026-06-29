@@ -46,7 +46,7 @@ tr:hover{background:#1e2a4a}
 <body>
 <div class="header">
   <h1>Ticker Data Inventory</h1>
-  <p class="subtitle">4,188 tickers &#8226; 1,815 with 1m data &#8226; 2,373 missing 1m &#8226; 357 with deployed rules &#8226; 68 with bear rules</p>
+  <p class="subtitle">4,188 tickers &#8226; 1,817 with 1m data &#8226; 2,371 missing 1m &#8226; 358 with deployed rules &#8226; 68 with bear rules</p>
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Filter by ticker, name, sector, or industry..." autocomplete="off">
     <select id="sectorFilter"><option value="">All Sectors</option></select>
@@ -85,7 +85,7 @@ tr:hover{background:#1e2a4a}
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="footer">Generated: 2026-06-27 | Data source: yfinance</div>
+<div class="footer">Generated: 2026-06-29 | Data source: yfinance</div>
 <script>
 var data = [
   {t:"NVDA",n:"NVIDIA Corporation",s:"Technology",i:"Semiconductors",v:171892757,mc:4775932329984,qt:"EQUITY",d1m:1,d5m:1,rules:1320,br:660},
@@ -424,7 +424,7 @@ var data = [
   {t:"EQX",n:"Equinox Gold Corp.",s:"Basic Materials",i:"Gold",v:9519638,mc:10732320768,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"NEE",n:"NextEra Energy, Inc.",s:"Utilities",i:"Utilities - Regulated Electric",v:9514130,mc:200776679424,qt:"EQUITY",d1m:1,d5m:1,rules:116,br:0},
   {t:"MOS",n:"Mosaic Company (The)",s:"Basic Materials",i:"Agricultural Inputs",v:9502945,mc:7393113088,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"MO",n:"Altria Group, Inc.",s:"Consumer Defensive",i:"Tobacco",v:9492215,mc:121551380480,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"MO",n:"Altria Group, Inc.",s:"Consumer Defensive",i:"Tobacco",v:9492215,mc:121551380480,qt:"EQUITY",d1m:1,d5m:1,rules:327,br:0},
   {t:"LAES",n:"SEALSQ Corp",s:"Technology",i:"Semiconductors",v:9420984,mc:648272384,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BKR",n:"Baker Hughes Company",s:"Energy",i:"Oil &amp; Gas Equipment &amp; Services",v:9406753,mc:67242414080,qt:"EQUITY",d1m:1,d5m:1,rules:349,br:0},
   {t:"DRAM",n:"Roundhill Memory ETF",s:"",i:"",v:9396472,mc:0,qt:"ETF",d1m:0,d5m:1,rules:0,br:0},
@@ -471,6 +471,7 @@ var data = [
   {t:"SVC",n:"Service Properties Trust - Shar",s:"Real Estate",i:"REIT - Hotel &amp; Motel",v:8619479,mc:994190272,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"COTY",n:"Coty Inc.",s:"Consumer Defensive",i:"Household &amp; Personal Products",v:8618411,mc:2252816128,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"CCO",n:"Clear Channel Outdoor Holdings,",s:"Communication Services",i:"Advertising Agencies",v:8607743,mc:1191386496,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"ECHO",n:"EchoStar Corporation",s:"Communication Services",i:"Telecom Services",v:8605483,mc:28198854656,qt:"EQUITY",d1m:1,d5m:1,rules:15,br:0},
   {t:"APA",n:"APA Corporation",s:"Energy",i:"Oil &amp; Gas E&amp;P",v:8499200,mc:14659049472,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"BND",n:"Vanguard Total Bond Market ETF",s:"",i:"",v:8498916,mc:0,qt:"ETF",d1m:1,d5m:1,rules:0,br:0},
   {t:"AMPX",n:"Amprius Technologies, Inc.",s:"Industrials",i:"Electrical Equipment &amp; Parts",v:8444473,mc:3013271040,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -640,7 +641,6 @@ var data = [
   {t:"PACB",n:"Pacific Biosciences of Californ",s:"Healthcare",i:"Medical Devices",v:6006759,mc:490569632,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"INFQ",n:"Infleqtion, Inc.",s:"Technology",i:"Software - Infrastructure",v:6004288,mc:2619310336,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"MDLN",n:"Medline Inc.",s:"Healthcare",i:"Medical Instruments &amp; Supplies",v:6003918,mc:38323109888,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"SATS",n:"EchoStar Corporation",s:"Communication Services",i:"Telecom Services",v:5968915,mc:34006028288,qt:"EQUITY",d1m:1,d5m:1,rules:15,br:0},
   {t:"BFLY",n:"Butterfly Network, Inc.",s:"Healthcare",i:"Medical Devices",v:5964800,mc:1261109248,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"EBAY",n:"eBay Inc.",s:"Consumer Cyclical",i:"Internet Retail",v:5945580,mc:46735441920,qt:"EQUITY",d1m:1,d5m:1,rules:2928,br:524},
   {t:"OMEX",n:"Odyssey Marine Exploration, Inc",s:"Basic Materials",i:"Other Industrial Metals &amp; Mining",v:5940286,mc:70222392,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
@@ -773,7 +773,7 @@ var data = [
   {t:"MFG",n:"Mizuho Financial Group, Inc. Sp",s:"Financial Services",i:"Banks - Regional",v:4940179,mc:104001036288,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"COF",n:"Capital One Financial Corporati",s:"Financial Services",i:"Credit Services",v:4937208,mc:120294277120,qt:"EQUITY",d1m:1,d5m:1,rules:740,br:0},
   {t:"PRMB",n:"Primo Brands Corporation",s:"Consumer Defensive",i:"Beverages - Non-Alcoholic",v:4928850,mc:7364678144,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
-  {t:"PM",n:"Philip Morris International Inc",s:"Consumer Defensive",i:"Tobacco",v:4923710,mc:264113389568,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
+  {t:"PM",n:"Philip Morris International Inc",s:"Consumer Defensive",i:"Tobacco",v:4923710,mc:264113389568,qt:"EQUITY",d1m:1,d5m:1,rules:0,br:0},
   {t:"AKAM",n:"Akamai Technologies, Inc.",s:"Technology",i:"Software - Infrastructure",v:4923176,mc:17363486720,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"SU",n:"Suncor Energy  Inc.",s:"Energy",i:"Oil &amp; Gas Integrated",v:4921571,mc:82933121024,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
   {t:"APLS",n:"Apellis Pharmaceuticals, Inc.",s:"Healthcare",i:"Biotechnology",v:4921391,mc:5245031936,qt:"EQUITY",d1m:0,d5m:1,rules:0,br:0},
