@@ -14,6 +14,36 @@ GH_PAGES_DIR = os.path.dirname(os.path.abspath(__file__))
 SIGNAL_HISTORY_FILE = os.path.join(PROJECT_DIR, "data", "options_signal_history.csv")
 IV_HISTORY_FILE = os.path.join(PROJECT_DIR, "data", "options_iv_history.csv")
 OUTPUT_FILE = os.path.join(GH_PAGES_DIR, "options_mispricing.html")
+CHARTS_DIR = os.path.join(GH_PAGES_DIR, "charts")
+
+
+def annotate_charts(records):
+    """Attach a per-signal chart filename (charts/{ticker}_{signal_date}.html) to
+    each record, generating the chart if missing. Closed-signal charts are stable
+    once data covers their expiry, so we skip regeneration when the file exists."""
+    try:
+        from gen_mispricing_charts import make_chart
+    except Exception:
+        for r in records:
+            r["chart"] = None
+        return records
+    for r in records:
+        r["chart"] = None
+        try:
+            tkr = r.get("ticker")
+            sd = str(r.get("signal_date", "") or "")
+            exp = str(r.get("near_exp", "") or "")
+            if not (tkr and sd and exp):
+                continue
+            existing = os.path.join(CHARTS_DIR, f"{tkr}_{sd}.html")
+            if os.path.isfile(existing):
+                r["chart"] = os.path.basename(existing)
+            else:
+                r["chart"] = make_chart(tkr, sd, r["price"], r["oi_target"], exp,
+                                        r.get("direction", "bull"))
+        except Exception:
+            r["chart"] = None
+    return records
 
 
 def score_to_stars(score):
@@ -99,6 +129,11 @@ def generate_html(signals_df):
     bullish, bearish = build_today_signals(signals_df)
     hit_stats = compute_hit_stats(signals_df)
     recent = build_recent_history(signals_df)
+
+    # generate + attach per-signal charts (entry/target hlines, date vlines)
+    annotate_charts(bullish)
+    annotate_charts(bearish)
+    annotate_charts(recent)
 
     if signals_df.empty:
         latest_date = "No data"
@@ -256,7 +291,8 @@ function renderSignals(data, tbodyId) {{
     var moveClass = s.oi_pct_move > 0 ? 'green' : 'red';
     var exp = s.near_exp || '';
     try {{ exp = new Date(exp + 'T00:00:00').toLocaleDateString('en-US', {{month:'short', day:'numeric'}}); }} catch(e) {{}}
-    html += '<tr><td>' + s.ticker + '</td><td>' + s.score + '</td><td class="stars">' + stars(s.score) + '</td><td>$' + Number(s.price).toFixed(2) + '</td><td>$' + Number(s.oi_target).toFixed(2) + '</td><td class="' + moveClass + '">' + (s.oi_pct_move > 0 ? '+' : '') + Number(s.oi_pct_move).toFixed(1) + '%</td><td>' + exp + '</td></tr>';
+    var tkrCell = s.chart ? '<a href="charts/' + s.chart + '" target="_blank" title="View chart">' + s.ticker + ' \\uD83D\\uDCC8</a>' : s.ticker;
+    html += '<tr><td>' + tkrCell + '</td><td>' + s.score + '</td><td class="stars">' + stars(s.score) + '</td><td>$' + Number(s.price).toFixed(2) + '</td><td>$' + Number(s.oi_target).toFixed(2) + '</td><td class="' + moveClass + '">' + (s.oi_pct_move > 0 ? '+' : '') + Number(s.oi_pct_move).toFixed(1) + '%</td><td>' + exp + '</td></tr>';
   }}
   tb.innerHTML = html;
 }}
@@ -294,7 +330,8 @@ function renderHistory() {{
     var actualPct = r.actual_pct_move != null ? (r.actual_pct_move > 0 ? '+' : '') + Number(r.actual_pct_move).toFixed(1) + '%' : '-';
     var actualClass = r.actual_pct_move > 0 ? 'green' : r.actual_pct_move < 0 ? 'red' : '';
     var hitIcon = r.hit === 1 || r.hit === true || r.hit === 'True' ? '<span class="green">\\u2713</span>' : r.hit === 0 || r.hit === false || r.hit === 'False' ? '<span class="red">\\u2717</span>' : '-';
-    html += '<tr><td>' + r.signal_date + '</td><td>' + r.ticker + '</td><td>' + dirTag + '</td><td>' + r.score + '</td><td>$' + Number(r.price).toFixed(2) + '</td><td>$' + Number(r.oi_target).toFixed(2) + '</td><td>' + actualPrice + '</td><td class="' + actualClass + '">' + actualPct + '</td><td>' + hitIcon + '</td></tr>';
+    var histTkr = r.chart ? '<a href="charts/' + r.chart + '" target="_blank" title="View chart">' + r.ticker + ' \\uD83D\\uDCC8</a>' : r.ticker;
+    html += '<tr><td>' + r.signal_date + '</td><td>' + histTkr + '</td><td>' + dirTag + '</td><td>' + r.score + '</td><td>$' + Number(r.price).toFixed(2) + '</td><td>$' + Number(r.oi_target).toFixed(2) + '</td><td>' + actualPrice + '</td><td class="' + actualClass + '">' + actualPct + '</td><td>' + hitIcon + '</td></tr>';
   }}
   tb.innerHTML = html;
 }}
