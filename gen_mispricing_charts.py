@@ -39,7 +39,7 @@ def _load_15m(ticker):
 
 
 def make_chart(ticker, signal_date, entry_price, target_price, expire_date,
-               direction="bull", out_dir=CHARTS_DIR):
+               direction="bull", out_dir=CHARTS_DIR, hit=None):
     """Build one signal chart. Returns the output filename (basename) or None."""
     df = _load_15m(ticker)
     if df is None or df.empty:
@@ -78,15 +78,22 @@ def make_chart(ticker, signal_date, entry_price, target_price, expire_date,
         fig.add_annotation(x=vx, y=1, yref="paper", text=label, showarrow=False,
                            font=dict(color=col, size=11), yanchor="bottom")
 
-    # did it hit? (target reached in the correct direction before expiry)
-    pre_exp = df[df["ts"] <= v_exp]
-    hit = False
-    if not pre_exp.empty:
-        if direction == "bull":
-            hit = pre_exp["high"].max() >= target_price
-        else:
-            hit = pre_exp["low"].min() <= target_price
-    status = "✓ HIT" if hit else "✗ no-hit"
+    # hit status: use the authoritative value (from signal history) if provided,
+    # else infer from the local candles (standalone use).
+    if hit is None:
+        pre_exp = df[df["ts"] <= v_exp]
+        hit_flag = False
+        if not pre_exp.empty:
+            if direction == "bull":
+                hit_flag = pre_exp["high"].max() >= target_price
+            else:
+                hit_flag = pre_exp["low"].min() <= target_price
+    else:
+        try:
+            hit_flag = bool(int(float(hit)))
+        except (ValueError, TypeError):
+            hit_flag = False
+    status = "✓ HIT" if hit_flag else "✗ no-hit"
 
     fig.update_layout(
         title=(f"{ticker} — mispricing {signal_date} ({direction}) &nbsp; "

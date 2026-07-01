@@ -7,7 +7,7 @@ import os
 import sys
 import json
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GH_PAGES_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -27,6 +27,7 @@ def annotate_charts(records):
         for r in records:
             r["chart"] = None
         return records
+    today = datetime.now().date()
     for r in records:
         r["chart"] = None
         try:
@@ -36,11 +37,21 @@ def annotate_charts(records):
             if not (tkr and sd and exp):
                 continue
             existing = os.path.join(CHARTS_DIR, f"{tkr}_{sd}.html")
-            if os.path.isfile(existing):
-                r["chart"] = os.path.basename(existing)
-            else:
-                r["chart"] = make_chart(tkr, sd, r["price"], r["oi_target"], exp,
-                                        r.get("direction", "bull"))
+            try:
+                exp_date = datetime.strptime(exp, "%Y-%m-%d").date()
+                frozen = today > exp_date + timedelta(days=7)   # chart freezes at exp+7
+            except ValueError:
+                frozen = False
+            if frozen and os.path.isfile(existing):
+                r["chart"] = os.path.basename(existing)          # frozen: reuse as-is
+                continue
+            try:
+                hit = int(float(r.get("hit")))
+            except (ValueError, TypeError):
+                hit = None
+            fname = make_chart(tkr, sd, r["price"], r["oi_target"], exp,
+                               r.get("direction", "bull"), hit=hit)
+            r["chart"] = fname or (os.path.basename(existing) if os.path.isfile(existing) else None)
         except Exception:
             r["chart"] = None
     return records
@@ -71,30 +82,33 @@ def load_iv_history():
 
 
 def compute_hit_stats(df):
-    if df.empty or "hit" not in df.columns:
+    # "Settled" = outcome locked (pnl set: target touched or expiry reached).
+    if df.empty or "pnl" not in df.columns:
         return None
-    checked = df[df["hit"].notna() & (df["hit"] != "")]
+    checked = df[df["pnl"].notna()].copy()
     if checked.empty:
         return None
-    checked = checked.copy()
-    checked["hit"] = pd.to_numeric(checked["hit"], errors="coerce")
-    checked = checked[checked["hit"].notna()]
-    if checked.empty:
-        return None
+    checked["hit"] = pd.to_numeric(checked["hit"], errors="coerce").fillna(0)
+    checked["pnl_pct"] = pd.to_numeric(checked["pnl_pct"], errors="coerce").fillna(0)
     total = len(checked)
     hits = int(checked["hit"].sum())
     by_stars = {}
     for _, row in checked.iterrows():
         stars = score_to_stars(row["score"])
         if stars not in by_stars:
-            by_stars[stars] = {"total": 0, "hits": 0}
+            by_stars[stars] = {"total": 0, "hits": 0, "pnl": 0.0}
         by_stars[stars]["total"] += 1
+        by_stars[stars]["pnl"] += float(row["pnl_pct"])
         if row["hit"] == 1:
             by_stars[stars]["hits"] += 1
+    for k in by_stars:
+        by_stars[k]["pnl"] = round(by_stars[k]["pnl"], 1)
     return {
         "total": total,
         "hits": hits,
         "hit_rate": round((hits / total) * 100, 1) if total > 0 else 0,
+        "avg_pnl_pct": round(float(checked["pnl_pct"].mean()), 1),
+        "total_pnl_pct": round(float(checked["pnl_pct"].sum()), 1),
         "by_stars": by_stars,
     }
 
@@ -115,9 +129,9 @@ def build_today_signals(df):
 
 
 def build_recent_history(df, days=30):
-    if df.empty or "hit" not in df.columns:
+    if df.empty or "pnl" not in df.columns:
         return []
-    checked = df[df["hit"].notna() & (df["hit"] != "")].copy()
+    checked = df[df["pnl"].notna()].copy()
     if checked.empty:
         return []
     checked["hit"] = pd.to_numeric(checked["hit"], errors="coerce")
@@ -239,7 +253,7 @@ tr:hover{{background:#1e2a4a}}
   <h2>Recent Signal History</h2>
   <div class="scroll-x">
     <table id="histTable"><thead><tr>
-      <th style="text-align:left">Date</th><th style="text-align:left">Ticker</th><th>Dir</th><th>Score</th><th>Price</th><th>Target</th><th>Actual</th><th>Actual %</th><th>Hit</th>
+      <th style="text-align:left">Date</th><th style="text-align:left">Ticker</th><th>Dir</th><th>Score</th><th>Price</th><th>Target</th><th>Exp</th><th>High</th><th>Low</th><th>Actual</th><th>Actual %</th><th>PnL</th><th>%PnL</th><th>Hit</th>
     </tr></thead><tbody id="histBody"></tbody></table>
   </div>
 </div>
@@ -266,7 +280,11 @@ function renderCards() {{
   var cards = [];
   cards.push('<div class="card"><h3>Today</h3><div class="big">' + (bullish.length + bearish.length) + '</div><div class="sub">' + bullish.length + ' bullish, ' + bearish.length + ' bearish</div></div>');
   if (hitStats) {{
-    cards.push('<div class="card"><h3>Hit Rate</h3><div class="big">' + hitStats.hit_rate + '%</div><div class="sub">' + hitStats.hits + '/' + hitStats.total + ' predictions correct</div></div>');
+    cards.push('<div class="card"><h3>Hit Rate</h3><div class="big">' + hitStats.hit_rate + '%</div><div class="sub">' + hitStats.hits + '/' + hitStats.total + ' reached target</div></div>');
+    if (hitStats.avg_pnl_pct != null) {{
+      var pc = hitStats.avg_pnl_pct >= 0 ? '#4caf50' : '#ef5350';
+      cards.push('<div class="card"><h3>Avg PnL</h3><div class="big" style="color:' + pc + '">' + (hitStats.avg_pnl_pct > 0 ? '+' : '') + hitStats.avg_pnl_pct + '%</div><div class="sub">per signal &bull; total ' + (hitStats.total_pnl_pct > 0 ? '+' : '') + hitStats.total_pnl_pct + '%</div></div>');
+    }}
   }}
   var avgScore = 0;
   var all = bullish.concat(bearish);
@@ -303,7 +321,8 @@ function renderHitRate() {{
     el.innerHTML = '<p class="empty">No backchecked signals yet</p>';
     return;
   }}
-  var html = '<div style="margin-bottom:16px;font-size:15px">Overall: <strong>' + hitStats.hits + '/' + hitStats.total + '</strong> (' + hitStats.hit_rate + '%)</div>';
+  var pnlTxt = hitStats.avg_pnl_pct != null ? ' &bull; avg PnL ' + (hitStats.avg_pnl_pct > 0 ? '+' : '') + hitStats.avg_pnl_pct + '% &bull; total ' + (hitStats.total_pnl_pct > 0 ? '+' : '') + hitStats.total_pnl_pct + '%' : '';
+  var html = '<div style="margin-bottom:16px;font-size:15px">Overall: <strong>' + hitStats.hits + '/' + hitStats.total + '</strong> (' + hitStats.hit_rate + '%)' + pnlTxt + '</div>';
   var starKeys = Object.keys(hitStats.by_stars).sort().reverse();
   for (var i = 0; i < starKeys.length; i++) {{
     var k = starKeys[i];
@@ -311,7 +330,8 @@ function renderHitRate() {{
     var pct = s.total > 0 ? Math.round((s.hits / s.total) * 100) : 0;
     var barWidth = Math.max(2, pct * 2);
     var barColor = pct >= 60 ? '#4caf50' : pct >= 40 ? '#ffb74d' : '#ef5350';
-    html += '<div class="hit-bar"><span class="stars" style="min-width:90px">' + k + '</span><div class="hit-bar-fill" style="width:' + barWidth + 'px;background:' + barColor + '"></div><span class="hit-bar-label">' + s.hits + '/' + s.total + ' (' + pct + '%)</span></div>';
+    var starPnl = (s.pnl != null) ? ' &bull; PnL ' + (s.pnl > 0 ? '+' : '') + s.pnl + '%' : '';
+    html += '<div class="hit-bar"><span class="stars" style="min-width:90px">' + k + '</span><div class="hit-bar-fill" style="width:' + barWidth + 'px;background:' + barColor + '"></div><span class="hit-bar-label">' + s.hits + '/' + s.total + ' (' + pct + '%)' + starPnl + '</span></div>';
   }}
   el.innerHTML = html;
 }}
@@ -319,7 +339,7 @@ function renderHitRate() {{
 function renderHistory() {{
   var tb = document.getElementById('histBody');
   if (recent.length === 0) {{
-    tb.innerHTML = '<tr><td colspan="9" class="empty">No backchecked history yet</td></tr>';
+    tb.innerHTML = '<tr><td colspan="14" class="empty">No backchecked history yet</td></tr>';
     return;
   }}
   var html = '';
@@ -331,7 +351,14 @@ function renderHistory() {{
     var actualClass = r.actual_pct_move > 0 ? 'green' : r.actual_pct_move < 0 ? 'red' : '';
     var hitIcon = r.hit === 1 || r.hit === true || r.hit === 'True' ? '<span class="green">\\u2713</span>' : r.hit === 0 || r.hit === false || r.hit === 'False' ? '<span class="red">\\u2717</span>' : '-';
     var histTkr = r.chart ? '<a href="charts/' + r.chart + '" target="_blank" title="View chart">' + r.ticker + ' \\uD83D\\uDCC8</a>' : r.ticker;
-    html += '<tr><td>' + r.signal_date + '</td><td>' + histTkr + '</td><td>' + dirTag + '</td><td>' + r.score + '</td><td>$' + Number(r.price).toFixed(2) + '</td><td>$' + Number(r.oi_target).toFixed(2) + '</td><td>' + actualPrice + '</td><td class="' + actualClass + '">' + actualPct + '</td><td>' + hitIcon + '</td></tr>';
+    var fmtN = function(v){{ return (v != null && v !== '' && !isNaN(v)) ? '$' + Number(v).toFixed(2) : '-'; }};
+    var exp = r.near_exp || '-';
+    var pnlVal = (r.pnl != null && r.pnl !== '' && !isNaN(r.pnl)) ? Number(r.pnl) : null;
+    var pnlPctVal = (r.pnl_pct != null && r.pnl_pct !== '' && !isNaN(r.pnl_pct)) ? Number(r.pnl_pct) : null;
+    var pnlClass = pnlVal == null ? '' : (pnlVal > 0 ? 'green' : pnlVal < 0 ? 'red' : '');
+    var pnlStr = pnlVal == null ? '-' : (pnlVal > 0 ? '+' : '') + '$' + pnlVal.toFixed(2);
+    var pnlPctStr = pnlPctVal == null ? '-' : (pnlPctVal > 0 ? '+' : '') + pnlPctVal.toFixed(1) + '%';
+    html += '<tr><td>' + r.signal_date + '</td><td>' + histTkr + '</td><td>' + dirTag + '</td><td>' + r.score + '</td><td>$' + Number(r.price).toFixed(2) + '</td><td>$' + Number(r.oi_target).toFixed(2) + '</td><td>' + exp + '</td><td>' + fmtN(r.window_high) + '</td><td>' + fmtN(r.window_low) + '</td><td>' + actualPrice + '</td><td class="' + actualClass + '">' + actualPct + '</td><td class="' + pnlClass + '">' + pnlStr + '</td><td class="' + pnlClass + '">' + pnlPctStr + '</td><td>' + hitIcon + '</td></tr>';
   }}
   tb.innerHTML = html;
 }}
