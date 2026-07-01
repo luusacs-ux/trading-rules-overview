@@ -102,13 +102,14 @@ def compute_hit_stats(df):
         if row["hit"] == 1:
             by_stars[stars]["hits"] += 1
     for k in by_stars:
-        by_stars[k]["pnl"] = round(by_stars[k]["pnl"], 1)
+        # AVERAGE %PnL per trade for this star bucket (equal-size assumption),
+        # not a sum -- summing percentages is not a valid return.
+        by_stars[k]["pnl"] = round(by_stars[k]["pnl"] / by_stars[k]["total"], 1)
     return {
         "total": total,
         "hits": hits,
         "hit_rate": round((hits / total) * 100, 1) if total > 0 else 0,
         "avg_pnl_pct": round(float(checked["pnl_pct"].mean()), 1),
-        "total_pnl_pct": round(float(checked["pnl_pct"].sum()), 1),
         "by_stars": by_stars,
     }
 
@@ -283,7 +284,7 @@ function renderCards() {{
     cards.push('<div class="card"><h3>Hit Rate</h3><div class="big">' + hitStats.hit_rate + '%</div><div class="sub">' + hitStats.hits + '/' + hitStats.total + ' reached target</div></div>');
     if (hitStats.avg_pnl_pct != null) {{
       var pc = hitStats.avg_pnl_pct >= 0 ? '#4caf50' : '#ef5350';
-      cards.push('<div class="card"><h3>Avg PnL</h3><div class="big" style="color:' + pc + '">' + (hitStats.avg_pnl_pct > 0 ? '+' : '') + hitStats.avg_pnl_pct + '%</div><div class="sub">per signal &bull; total ' + (hitStats.total_pnl_pct > 0 ? '+' : '') + hitStats.total_pnl_pct + '%</div></div>');
+      cards.push('<div class="card"><h3>Avg PnL / trade</h3><div class="big" style="color:' + pc + '">' + (hitStats.avg_pnl_pct > 0 ? '+' : '') + hitStats.avg_pnl_pct + '%</div><div class="sub">per signal &bull; equal position size</div></div>');
     }}
   }}
   var avgScore = 0;
@@ -321,7 +322,7 @@ function renderHitRate() {{
     el.innerHTML = '<p class="empty">No backchecked signals yet</p>';
     return;
   }}
-  var pnlTxt = hitStats.avg_pnl_pct != null ? ' &bull; avg PnL ' + (hitStats.avg_pnl_pct > 0 ? '+' : '') + hitStats.avg_pnl_pct + '% &bull; total ' + (hitStats.total_pnl_pct > 0 ? '+' : '') + hitStats.total_pnl_pct + '%' : '';
+  var pnlTxt = hitStats.avg_pnl_pct != null ? ' &bull; avg PnL/trade ' + (hitStats.avg_pnl_pct > 0 ? '+' : '') + hitStats.avg_pnl_pct + '% (equal size)' : '';
   var html = '<div style="margin-bottom:16px;font-size:15px">Overall: <strong>' + hitStats.hits + '/' + hitStats.total + '</strong> (' + hitStats.hit_rate + '%)' + pnlTxt + '</div>';
   var starKeys = Object.keys(hitStats.by_stars).sort().reverse();
   for (var i = 0; i < starKeys.length; i++) {{
@@ -330,7 +331,7 @@ function renderHitRate() {{
     var pct = s.total > 0 ? Math.round((s.hits / s.total) * 100) : 0;
     var barWidth = Math.max(2, pct * 2);
     var barColor = pct >= 60 ? '#4caf50' : pct >= 40 ? '#ffb74d' : '#ef5350';
-    var starPnl = (s.pnl != null) ? ' &bull; PnL ' + (s.pnl > 0 ? '+' : '') + s.pnl + '%' : '';
+    var starPnl = (s.pnl != null) ? ' &bull; avg PnL ' + (s.pnl > 0 ? '+' : '') + s.pnl + '%' : '';
     html += '<div class="hit-bar"><span class="stars" style="min-width:90px">' + k + '</span><div class="hit-bar-fill" style="width:' + barWidth + 'px;background:' + barColor + '"></div><span class="hit-bar-label">' + s.hits + '/' + s.total + ' (' + pct + '%)' + starPnl + '</span></div>';
   }}
   el.innerHTML = html;
