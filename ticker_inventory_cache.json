@@ -28798,5 +28798,4717 @@
   "marketCap": 0,
   "name": "Fidelity MSCI Information Techn",
   "quoteType": "ETF"
+ },
+ "AOTG": {
+  "sector": "",
+  "industry": "",
+  "volume": 6566,
+  "marketCap": 0,
+  "name": "AOT Growth and Innovation ETF",
+  "quoteType": "ETF"
+ },
+ "BKF": {
+  "sector": "",
+  "industry": "",
+  "volume": 12266,
+  "marketCap": 0,
+  "name": "iShares MSCI BIC ETF",
+  "quoteType": "ETF"
+ },
+ "CHIQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 61446,
+  "marketCap": 0,
+  "name": "Global X MSCI China Consumer Di",
+  "quoteType": "ETF"
+ },
+ "CRBN": {
+  "sector": "",
+  "industry": "",
+  "volume": 9114,
+  "marketCap": 0,
+  "name": "iShares Low Carbon Optimized MS",
+  "quoteType": "ETF"
+ },
+ "DSI": {
+  "sector": "",
+  "industry": "",
+  "volume": 156950,
+  "marketCap": 0,
+  "name": "iShares ESG MSCI KLD 400 ETF",
+  "quoteType": "ETF"
+ },
+ "EDZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 356061,
+  "marketCap": 0,
+  "name": "Direxion Emerging Markets Bear ",
+  "quoteType": "ETF"
+ },
+ "EEMA": {
+  "sector": "",
+  "industry": "",
+  "volume": 298333,
+  "marketCap": 0,
+  "name": "iShares MSCI Emerging Markets A",
+  "quoteType": "ETF"
+ },
+ "EMQQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 62473,
+  "marketCap": 0,
+  "name": "EMQQ The Emerging Markets Inter",
+  "quoteType": "ETF"
+ },
+ "EUM": {
+  "sector": "",
+  "industry": "",
+  "volume": 146204,
+  "marketCap": 0,
+  "name": "ProShares Short MSCI Emerging M",
+  "quoteType": "ETF"
+ },
+ "FXP": {
+  "sector": "",
+  "industry": "",
+  "volume": 8766,
+  "marketCap": 0,
+  "name": "ProShares Ultrashort FTSE China",
+  "quoteType": "ETF"
+ },
+ "IQM": {
+  "sector": "",
+  "industry": "",
+  "volume": 7696,
+  "marketCap": 0,
+  "name": "Franklin Intelligent Machines E",
+  "quoteType": "ETF"
+ },
+ "KARS": {
+  "sector": "",
+  "industry": "",
+  "volume": 38239,
+  "marketCap": 0,
+  "name": "KraneShares Electric Vehicles a",
+  "quoteType": "ETF"
+ },
+ "KEMQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 17009,
+  "marketCap": 0,
+  "name": "KraneShares Emerging Markets Co",
+  "quoteType": "ETF"
+ },
+ "KGRN": {
+  "sector": "",
+  "industry": "",
+  "volume": 19071,
+  "marketCap": 0,
+  "name": "KraneShares MSCI China Clean Te",
+  "quoteType": "ETF"
+ },
+ "LRNZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 4019,
+  "marketCap": 0,
+  "name": "TrueShares Technology, AI & Dee",
+  "quoteType": "ETF"
+ },
+ "PGJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 25500,
+  "marketCap": 0,
+  "name": "Invesco Golden Dragon China ETF",
+  "quoteType": "ETF"
+ },
+ "QTEC": {
+  "sector": "",
+  "industry": "",
+  "volume": 207080,
+  "marketCap": 0,
+  "name": "First Trust NASDAQ-100-Technolo",
+  "quoteType": "ETF"
+ },
+ "RXI": {
+  "sector": "",
+  "industry": "",
+  "volume": 6476,
+  "marketCap": 0,
+  "name": "iShares Global Consumer Discret",
+  "quoteType": "ETF"
+ },
+ "URTH": {
+  "sector": "",
+  "industry": "",
+  "volume": 1059760,
+  "marketCap": 0,
+  "name": "iShares MSCI World ETF",
+  "quoteType": "ETF"
+ },
+ "XBIT": {
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "volume": 32841,
+  "marketCap": 72560808,
+  "name": "XBiotech Inc.",
+  "quoteType": "EQUITY"
+ },
+ "EFIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 44079,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P 500 ESG E",
+  "quoteType": "ETF"
+ },
+ "FAPR": {
+  "sector": "",
+  "industry": "",
+  "volume": 60030,
+  "marketCap": 0,
+  "name": "FT Vest U.S. Equity Buffer ETF ",
+  "quoteType": "ETF"
+ },
+ "QLC": {
+  "sector": "",
+  "industry": "",
+  "volume": 50765,
+  "marketCap": 0,
+  "name": "FlexShares US Quality Large Cap",
+  "quoteType": "ETF"
+ },
+ "SUSL": {
+  "sector": "",
+  "industry": "",
+  "volume": 29525,
+  "marketCap": 0,
+  "name": "iShares ESG MSCI USA Leaders ET",
+  "quoteType": "ETF"
+ },
+ "FLRG": {
+  "sector": "",
+  "industry": "",
+  "volume": 19769,
+  "marketCap": 0,
+  "name": "Fidelity U.S. Multifactor ETF",
+  "quoteType": "ETF"
+ },
+ "AHT": {
+  "sector": "Real Estate",
+  "industry": "REIT - Hotel & Motel",
+  "volume": 27892,
+  "marketCap": 20575824,
+  "name": "Ashford Hospitality Trust Inc",
+  "quoteType": "EQUITY"
+ },
+ "BANF": {
+  "sector": "Financial Services",
+  "industry": "Banks - Regional",
+  "volume": 145157,
+  "marketCap": 3643451392,
+  "name": "BancFirst Corporation",
+  "quoteType": "EQUITY"
+ },
+ "BCD": {
+  "sector": "",
+  "industry": "",
+  "volume": 71357,
+  "marketCap": 0,
+  "name": "abrdn Bloomberg All Commodity L",
+  "quoteType": "ETF"
+ },
+ "BDC": {
+  "sector": "Technology",
+  "industry": "Communication Equipment",
+  "volume": 439607,
+  "marketCap": 4020972032,
+  "name": "Belden Inc",
+  "quoteType": "EQUITY"
+ },
+ "BIS": {
+  "sector": "",
+  "industry": "",
+  "volume": 8831,
+  "marketCap": 0,
+  "name": "ProShares UltraShort Nasdaq Bio",
+  "quoteType": "ETF"
+ },
+ "BTMD": {
+  "sector": "Healthcare",
+  "industry": "Medical Care Facilities",
+  "volume": 269817,
+  "marketCap": 75016992,
+  "name": "Biote Corp.",
+  "quoteType": "EQUITY"
+ },
+ "BUYW": {
+  "sector": "",
+  "industry": "",
+  "volume": 352388,
+  "marketCap": 0,
+  "name": "Main BuyWrite ETF",
+  "quoteType": "ETF"
+ },
+ "CARZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 3771,
+  "marketCap": 0,
+  "name": "First Trust S-Network Future Ve",
+  "quoteType": "ETF"
+ },
+ "CMDY": {
+  "sector": "",
+  "industry": "",
+  "volume": 80393,
+  "marketCap": 0,
+  "name": "iShares Bloomberg Roll Select C",
+  "quoteType": "ETF"
+ },
+ "CMTV": {
+  "sector": "Financial Services",
+  "industry": "Banks - Regional",
+  "volume": 34626,
+  "marketCap": 205702208,
+  "name": "Community Bancorp.",
+  "quoteType": "EQUITY"
+ },
+ "COMB": {
+  "sector": "",
+  "industry": "",
+  "volume": 80047,
+  "marketCap": 0,
+  "name": "GraniteShares Bloomberg Commodi",
+  "quoteType": "ETF"
+ },
+ "COSM": {
+  "sector": "Healthcare",
+  "industry": "Medical Distribution",
+  "volume": 1007582,
+  "marketCap": 13748638,
+  "name": "Cosmos Health Inc.",
+  "quoteType": "EQUITY"
+ },
+ "DAT": {
+  "sector": "",
+  "industry": "",
+  "volume": 1949,
+  "marketCap": 0,
+  "name": "ProShares Big Data Refiners ETF",
+  "quoteType": "ETF"
+ },
+ "FFND": {
+  "sector": "",
+  "industry": "",
+  "volume": 8917,
+  "marketCap": 0,
+  "name": "One Global ETF",
+  "quoteType": "ETF"
+ },
+ "FINX": {
+  "sector": "",
+  "industry": "",
+  "volume": 80215,
+  "marketCap": 0,
+  "name": "Global X FinTech ETF",
+  "quoteType": "ETF"
+ },
+ "FLIA": {
+  "sector": "",
+  "industry": "",
+  "volume": 130057,
+  "marketCap": 0,
+  "name": "Franklin International Aggregat",
+  "quoteType": "ETF"
+ },
+ "FLJH": {
+  "sector": "",
+  "industry": "",
+  "volume": 29860,
+  "marketCap": 0,
+  "name": "Franklin FTSE Japan Hedged ETF",
+  "quoteType": "ETF"
+ },
+ "FLTW": {
+  "sector": "",
+  "industry": "",
+  "volume": 548834,
+  "marketCap": 0,
+  "name": "Franklin FTSE Taiwan ETF",
+  "quoteType": "ETF"
+ },
+ "FNGG": {
+  "sector": "",
+  "industry": "",
+  "volume": 9050,
+  "marketCap": 0,
+  "name": "Direxion Daily NYSE FANG+ Bull ",
+  "quoteType": "ETF"
+ },
+ "GDMN": {
+  "sector": "",
+  "industry": "",
+  "volume": 59625,
+  "marketCap": 0,
+  "name": "WisdomTree Efficient Gold Plus ",
+  "quoteType": "ETF"
+ },
+ "GK": {
+  "sector": "",
+  "industry": "",
+  "volume": 1123,
+  "marketCap": 0,
+  "name": "AdvisorShares Gerber Kawasaki E",
+  "quoteType": "ETF"
+ },
+ "GOEX": {
+  "sector": "",
+  "industry": "",
+  "volume": 25504,
+  "marketCap": 0,
+  "name": "Global X Gold Explorers ETF",
+  "quoteType": "ETF"
+ },
+ "GPOR": {
+  "sector": "Energy",
+  "industry": "Oil & Gas E&P",
+  "volume": 338409,
+  "marketCap": 3026985728,
+  "name": "Gulfport Energy Corporation",
+  "quoteType": "EQUITY"
+ },
+ "HAIL": {
+  "sector": "",
+  "industry": "",
+  "volume": 2474,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Kensho Sm",
+  "quoteType": "ETF"
+ },
+ "IHF": {
+  "sector": "",
+  "industry": "",
+  "volume": 478573,
+  "marketCap": 0,
+  "name": "iShares U.S. Health Care Provid",
+  "quoteType": "ETF"
+ },
+ "IOR": {
+  "sector": "Financial Services",
+  "industry": "Mortgage Finance",
+  "volume": 593,
+  "marketCap": 73191200,
+  "name": "Income Opportunity Realty Inves",
+  "quoteType": "EQUITY"
+ },
+ "IWC": {
+  "sector": "",
+  "industry": "",
+  "volume": 132242,
+  "marketCap": 0,
+  "name": "iShares Microcap ETF",
+  "quoteType": "ETF"
+ },
+ "JRSH": {
+  "sector": "Consumer Cyclical",
+  "industry": "Apparel Manufacturing",
+  "volume": 113158,
+  "marketCap": 43687796,
+  "name": "Jerash Holdings (US), Inc.",
+  "quoteType": "EQUITY"
+ },
+ "LIT": {
+  "sector": "",
+  "industry": "",
+  "volume": 403976,
+  "marketCap": 0,
+  "name": "Global X Lithium & Battery Tech",
+  "quoteType": "ETF"
+ },
+ "MELI": {
+  "sector": "Consumer Cyclical",
+  "industry": "Internet Retail",
+  "volume": 552833,
+  "marketCap": 87755808768,
+  "name": "MercadoLibre, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "METV": {
+  "sector": "",
+  "industry": "",
+  "volume": 55834,
+  "marketCap": 0,
+  "name": "Roundhill Ball Metaverse ETF",
+  "quoteType": "ETF"
+ },
+ "MMSC": {
+  "sector": "",
+  "industry": "",
+  "volume": 8831,
+  "marketCap": 0,
+  "name": "First Trust Multi-Manager Small",
+  "quoteType": "ETF"
+ },
+ "NAUT": {
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "volume": 364855,
+  "marketCap": 352008416,
+  "name": "Nautilus Biotechnology, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "NHIC": {
+  "sector": "",
+  "industry": "",
+  "volume": 110595,
+  "marketCap": 315890016,
+  "name": "NewHold Investment Corp III",
+  "quoteType": "EQUITY"
+ },
+ "NXL": {
+  "sector": "Healthcare",
+  "industry": "Medical Devices",
+  "volume": 798439,
+  "marketCap": 12418192,
+  "name": "Nexalin Technology, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "OGIG": {
+  "sector": "",
+  "industry": "",
+  "volume": 10619,
+  "marketCap": 0,
+  "name": "ALPS O'Shares Global Internet G",
+  "quoteType": "ETF"
+ },
+ "OND": {
+  "sector": "",
+  "industry": "",
+  "volume": 674,
+  "marketCap": 0,
+  "name": "ProShares On-Demand ETF",
+  "quoteType": "ETF"
+ },
+ "OPTT": {
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "volume": 4739653,
+  "marketCap": 88929136,
+  "name": "Ocean Power Technologies, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "PINK": {
+  "sector": "",
+  "industry": "",
+  "volume": 107544,
+  "marketCap": 0,
+  "name": "Simplify Health Care ETF",
+  "quoteType": "ETF"
+ },
+ "RMCF": {
+  "sector": "Consumer Defensive",
+  "industry": "Confectioners",
+  "volume": 34111,
+  "marketCap": 17575804,
+  "name": "Rocky Mountain Chocolate Factor",
+  "quoteType": "EQUITY"
+ },
+ "RPID": {
+  "sector": "Healthcare",
+  "industry": "Medical Devices",
+  "volume": 203590,
+  "marketCap": 98148960,
+  "name": "Rapid Micro Biosystems, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "RYLG": {
+  "sector": "",
+  "industry": "",
+  "volume": 2520,
+  "marketCap": 0,
+  "name": "Global X Russell 2000 Covered C",
+  "quoteType": "ETF"
+ },
+ "SD": {
+  "sector": "Energy",
+  "industry": "Oil & Gas E&P",
+  "volume": 422184,
+  "marketCap": 562265088,
+  "name": "SandRidge Energy, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "SGDM": {
+  "sector": "",
+  "industry": "",
+  "volume": 72903,
+  "marketCap": 0,
+  "name": "Sprott Gold Miners ETF",
+  "quoteType": "ETF"
+ },
+ "SIMS": {
+  "sector": "",
+  "industry": "",
+  "volume": 660,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Kensho In",
+  "quoteType": "ETF"
+ },
+ "SJT": {
+  "sector": "Energy",
+  "industry": "Oil & Gas E&P",
+  "volume": 168180,
+  "marketCap": 178977776,
+  "name": "San Juan Basin Royalty Trust",
+  "quoteType": "EQUITY"
+ },
+ "SLVP": {
+  "sector": "",
+  "industry": "",
+  "volume": 458026,
+  "marketCap": 0,
+  "name": "iShares MSCI Global Silver and ",
+  "quoteType": "ETF"
+ },
+ "SMLF": {
+  "sector": "",
+  "industry": "",
+  "volume": 192306,
+  "marketCap": 0,
+  "name": "iShares U.S. Small-Cap Equity F",
+  "quoteType": "ETF"
+ },
+ "SOCL": {
+  "sector": "",
+  "industry": "",
+  "volume": 10207,
+  "marketCap": 0,
+  "name": "Global X Social Media ETF",
+  "quoteType": "ETF"
+ },
+ "SPRX": {
+  "sector": "",
+  "industry": "",
+  "volume": 127465,
+  "marketCap": 0,
+  "name": "Spear Alpha ETF",
+  "quoteType": "ETF"
+ },
+ "SWAG": {
+  "sector": "Communication Services",
+  "industry": "Advertising Agencies",
+  "volume": 60398,
+  "marketCap": 42608252,
+  "name": "Stran & Company, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "TDV": {
+  "sector": "",
+  "industry": "",
+  "volume": 7495,
+  "marketCap": 0,
+  "name": "ProShares S&P Technology Divide",
+  "quoteType": "ETF"
+ },
+ "TEN": {
+  "sector": "Energy",
+  "industry": "Oil & Gas Midstream",
+  "volume": 461833,
+  "marketCap": 1142438656,
+  "name": "Tsakos Energy Navigation Ltd",
+  "quoteType": "EQUITY"
+ },
+ "TMAT": {
+  "sector": "",
+  "industry": "",
+  "volume": 19039,
+  "marketCap": 0,
+  "name": "Main Thematic Innovation ETF",
+  "quoteType": "ETF"
+ },
+ "UGE": {
+  "sector": "",
+  "industry": "",
+  "volume": 68047,
+  "marketCap": 0,
+  "name": "ProShares Ultra Consumer Staple",
+  "quoteType": "ETF"
+ },
+ "VERS": {
+  "sector": "",
+  "industry": "",
+  "volume": 387,
+  "marketCap": 0,
+  "name": "ProShares Metaverse ETF",
+  "quoteType": "ETF"
+ },
+ "VTWG": {
+  "sector": "",
+  "industry": "",
+  "volume": 19857,
+  "marketCap": 0,
+  "name": "Vanguard Russell 2000 Growth ET",
+  "quoteType": "ETF"
+ },
+ "NBDS": {
+  "sector": "",
+  "industry": "",
+  "volume": 3388,
+  "marketCap": 0,
+  "name": "Neuberger Disrupters ETF",
+  "quoteType": "ETF"
+ },
+ "SHPP": {
+  "sector": "",
+  "industry": "",
+  "volume": 300,
+  "marketCap": 0,
+  "name": "Pacer Industrials and Logistics",
+  "quoteType": "ETF"
+ },
+ "AIS": {
+  "sector": "",
+  "industry": "",
+  "volume": 335892,
+  "marketCap": 0,
+  "name": "VistaShares Artificial Intellig",
+  "quoteType": "ETF"
+ },
+ "MULL": {
+  "sector": "",
+  "industry": "",
+  "volume": 460534,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Long MU Daily ",
+  "quoteType": "ETF"
+ },
+ "AFOS": {
+  "sector": "",
+  "industry": "",
+  "volume": 15987,
+  "marketCap": 0,
+  "name": "ARS Focused Opportunity Strateg",
+  "quoteType": "ETF"
+ },
+ "AIBD": {
+  "sector": "",
+  "industry": "",
+  "volume": 63784,
+  "marketCap": 0,
+  "name": "Direxion Daily AI and Big Data ",
+  "quoteType": "ETF"
+ },
+ "AIFD": {
+  "sector": "",
+  "industry": "",
+  "volume": 23117,
+  "marketCap": 0,
+  "name": "TCW Artificial Intelligence ETF",
+  "quoteType": "ETF"
+ },
+ "AIVC": {
+  "sector": "",
+  "industry": "",
+  "volume": 7938,
+  "marketCap": 0,
+  "name": "Amplify Bloomberg AI Equal Weig",
+  "quoteType": "ETF"
+ },
+ "CHPS": {
+  "sector": "",
+  "industry": "",
+  "volume": 24607,
+  "marketCap": 0,
+  "name": "Xtrackers Semiconductor Select ",
+  "quoteType": "ETF"
+ },
+ "CHPY": {
+  "sector": "",
+  "industry": "",
+  "volume": 529004,
+  "marketCap": 0,
+  "name": "YieldMax Semiconductor Portfoli",
+  "quoteType": "ETF"
+ },
+ "CSD": {
+  "sector": "",
+  "industry": "",
+  "volume": 13774,
+  "marketCap": 0,
+  "name": "Invesco S&P Spin-Off ETF",
+  "quoteType": "ETF"
+ },
+ "DVQQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 5153,
+  "marketCap": 0,
+  "name": "WEBs QQQ Defined Volatility ETF",
+  "quoteType": "ETF"
+ },
+ "EGGQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 4636,
+  "marketCap": 0,
+  "name": "NestYield Visionary ETF",
+  "quoteType": "ETF"
+ },
+ "GPTY": {
+  "sector": "",
+  "industry": "",
+  "volume": 38061,
+  "marketCap": 0,
+  "name": "YieldMax AI & Tech Portfolio Op",
+  "quoteType": "ETF"
+ },
+ "GXDW": {
+  "sector": "",
+  "industry": "",
+  "volume": 4684,
+  "marketCap": 0,
+  "name": "Global X Dorsey Wright Thematic",
+  "quoteType": "ETF"
+ },
+ "HBTA": {
+  "sector": "",
+  "industry": "",
+  "volume": 13466,
+  "marketCap": 0,
+  "name": "Horizon Expedition Plus ETF",
+  "quoteType": "ETF"
+ },
+ "IGPT": {
+  "sector": "",
+  "industry": "",
+  "volume": 106592,
+  "marketCap": 0,
+  "name": "Invesco AI and Next Gen Softwar",
+  "quoteType": "ETF"
+ },
+ "KNCT": {
+  "sector": "",
+  "industry": "",
+  "volume": 3161,
+  "marketCap": 0,
+  "name": "Invesco Next Gen Connectivity E",
+  "quoteType": "ETF"
+ },
+ "LINT": {
+  "sector": "",
+  "industry": "",
+  "volume": 173382,
+  "marketCap": 0,
+  "name": "Direxion Daily INTC Bull 2X ETF",
+  "quoteType": "ETF"
+ },
+ "MIGO": {
+  "sector": "",
+  "industry": "",
+  "volume": 35700,
+  "marketCap": 0,
+  "name": "MIG Core ETF",
+  "quoteType": "ETF"
+ },
+ "NXTG": {
+  "sector": "",
+  "industry": "",
+  "volume": 8098,
+  "marketCap": 0,
+  "name": "First Trust Indxx NextG ETF",
+  "quoteType": "ETF"
+ },
+ "PQOC": {
+  "sector": "",
+  "industry": "",
+  "volume": 5209,
+  "marketCap": 0,
+  "name": "PGIM Nasdaq-100 Buffer 12 ETF -",
+  "quoteType": "ETF"
+ },
+ "QCMD": {
+  "sector": "",
+  "industry": "",
+  "volume": 41901,
+  "marketCap": 0,
+  "name": "Direxion Daily QCOM Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "QCML": {
+  "sector": "",
+  "industry": "",
+  "volume": 1301638,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Long QCOM Dail",
+  "quoteType": "ETF"
+ },
+ "RDAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 303844,
+  "marketCap": 47608240,
+  "name": "Rising Dragon Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "RSPT": {
+  "sector": "",
+  "industry": "",
+  "volume": 404941,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Equal Weight Te",
+  "quoteType": "ETF"
+ },
+ "SHOC": {
+  "sector": "",
+  "industry": "",
+  "volume": 16633,
+  "marketCap": 0,
+  "name": "Strive U.S. Semiconductor ETF",
+  "quoteType": "ETF"
+ },
+ "SMHX": {
+  "sector": "",
+  "industry": "",
+  "volume": 96401,
+  "marketCap": 0,
+  "name": "VanEck Fabless Semiconductor ET",
+  "quoteType": "ETF"
+ },
+ "SNSR": {
+  "sector": "",
+  "industry": "",
+  "volume": 19920,
+  "marketCap": 0,
+  "name": "Global X Internet of Things ETF",
+  "quoteType": "ETF"
+ },
+ "SOXY": {
+  "sector": "",
+  "industry": "",
+  "volume": 16398,
+  "marketCap": 0,
+  "name": "YieldMax Target 12 Semiconducto",
+  "quoteType": "ETF"
+ },
+ "TCAI": {
+  "sector": "",
+  "industry": "",
+  "volume": 99300,
+  "marketCap": 0,
+  "name": "Tortoise AI Infrastructure ETF",
+  "quoteType": "ETF"
+ },
+ "TDVI": {
+  "sector": "",
+  "industry": "",
+  "volume": 120466,
+  "marketCap": 0,
+  "name": "FT Vest Technology Dividend Tar",
+  "quoteType": "ETF"
+ },
+ "TEKY": {
+  "sector": "",
+  "industry": "",
+  "volume": 819,
+  "marketCap": 0,
+  "name": "Lazard Next Gen Technologies ET",
+  "quoteType": "ETF"
+ },
+ "TSXD": {
+  "sector": "",
+  "industry": "",
+  "volume": 16600,
+  "marketCap": 0,
+  "name": "Direxion Daily Semiconductors T",
+  "quoteType": "EQUITY"
+ },
+ "TTEQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 95095,
+  "marketCap": 0,
+  "name": "T. Rowe Price Technology ETF",
+  "quoteType": "ETF"
+ },
+ "CLSZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 58176,
+  "marketCap": 0,
+  "name": "Tradr 2X Short CLSK Daily ETF",
+  "quoteType": "ETF"
+ },
+ "DRIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 61980,
+  "marketCap": 0,
+  "name": "Global X Autonomous & Electric ",
+  "quoteType": "ETF"
+ },
+ "EPAI": {
+  "sector": "",
+  "industry": "",
+  "volume": 892,
+  "marketCap": 0,
+  "name": "Harbor AI Inflection Strategy E",
+  "quoteType": "ETF"
+ },
+ "MAKX": {
+  "sector": "",
+  "industry": "",
+  "volume": 1730,
+  "marketCap": 0,
+  "name": "ProShares S&P Kensho Smart Fact",
+  "quoteType": "ETF"
+ },
+ "MOTO": {
+  "sector": "",
+  "industry": "",
+  "volume": 347,
+  "marketCap": 0,
+  "name": "Guinness Atkinson Smart Transpo",
+  "quoteType": "ETF"
+ },
+ "NIXT": {
+  "sector": "",
+  "industry": "",
+  "volume": 1753,
+  "marketCap": 0,
+  "name": "Research Affiliates Deletions E",
+  "quoteType": "ETF"
+ },
+ "PEXL": {
+  "sector": "",
+  "industry": "",
+  "volume": 1987,
+  "marketCap": 0,
+  "name": "Pacer US Export Leaders ETF",
+  "quoteType": "ETF"
+ },
+ "QVMT": {
+  "sector": "",
+  "industry": "",
+  "volume": 8384,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Concentrated QV",
+  "quoteType": "EQUITY"
+ },
+ "SMOG": {
+  "sector": "",
+  "industry": "",
+  "volume": 2160,
+  "marketCap": 0,
+  "name": "VanEck Low Carbon Energy ETF",
+  "quoteType": "ETF"
+ },
+ "TPRY": {
+  "sector": "",
+  "industry": "",
+  "volume": 3568,
+  "marketCap": 0,
+  "name": "VistaShares Target 15 TEPRTantr",
+  "quoteType": "EQUITY"
+ },
+ "AIUP": {
+  "sector": "",
+  "industry": "",
+  "volume": 2484,
+  "marketCap": 0,
+  "name": "FINQ FIRST U.S. Large Cap AI-Ma",
+  "quoteType": "ETF"
+ },
+ "AOTS": {
+  "sector": "",
+  "industry": "",
+  "volume": 1350,
+  "marketCap": 0,
+  "name": "AOT Software Platform ETF",
+  "quoteType": "EQUITY"
+ },
+ "AVRY": {
+  "sector": "",
+  "industry": "",
+  "volume": 13830,
+  "marketCap": 0,
+  "name": "Avory Foundational ETF",
+  "quoteType": "ETF"
+ },
+ "BCSM": {
+  "sector": "",
+  "industry": "",
+  "volume": 13277,
+  "marketCap": 0,
+  "name": "Baron SMID Cap ETF",
+  "quoteType": "ETF"
+ },
+ "FDRS": {
+  "sector": "",
+  "industry": "",
+  "volume": 63207,
+  "marketCap": 0,
+  "name": "Founder-Led ETF",
+  "quoteType": "ETF"
+ },
+ "FFF": {
+  "sector": "",
+  "industry": "",
+  "volume": 2223,
+  "marketCap": 0,
+  "name": "Founders 100 ETF",
+  "quoteType": "ETF"
+ },
+ "JTEK": {
+  "sector": "",
+  "industry": "",
+  "volume": 296834,
+  "marketCap": 0,
+  "name": "JPMorgan U.S. Tech Leaders ETF",
+  "quoteType": "ETF"
+ },
+ "PBOT": {
+  "sector": "",
+  "industry": "",
+  "volume": 4357,
+  "marketCap": 0,
+  "name": "Pictet AI & Automation ETF",
+  "quoteType": "EQUITY"
+ },
+ "PCLG": {
+  "sector": "",
+  "industry": "",
+  "volume": 42242,
+  "marketCap": 0,
+  "name": "Polen Focus Growth ETF",
+  "quoteType": "ETF"
+ },
+ "QFRD": {
+  "sector": "",
+  "industry": "",
+  "volume": 430,
+  "marketCap": 0,
+  "name": "Pacer S&P 500 Quality FCF R&D L",
+  "quoteType": "ETF"
+ },
+ "QOWZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 2696,
+  "marketCap": 0,
+  "name": "Invesco Nasdaq Free Cash Flow A",
+  "quoteType": "ETF"
+ },
+ "SMQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 203,
+  "marketCap": 0,
+  "name": "Tradr 1X Short Innovation 100 M",
+  "quoteType": "ETF"
+ },
+ "CLOD": {
+  "sector": "",
+  "industry": "",
+  "volume": 1436,
+  "marketCap": 0,
+  "name": "Themes Cloud Computing ETF",
+  "quoteType": "ETF"
+ },
+ "DRUP": {
+  "sector": "",
+  "industry": "",
+  "volume": 2236,
+  "marketCap": 0,
+  "name": "GraniteShares Nasdaq Select Dis",
+  "quoteType": "ETF"
+ },
+ "FDTX": {
+  "sector": "",
+  "industry": "",
+  "volume": 25514,
+  "marketCap": 0,
+  "name": "Fidelity Disruptive Technology ",
+  "quoteType": "ETF"
+ },
+ "DLFE": {
+  "sector": "",
+  "industry": "",
+  "volume": 20084,
+  "marketCap": 0,
+  "name": "FT Vest U.S. Equity Dual Direct",
+  "quoteType": "ETF"
+ },
+ "MCHPP": {
+  "sector": "Technology",
+  "industry": "Semiconductors",
+  "volume": 196198,
+  "marketCap": 0,
+  "name": "Microchip Technology Incorporat",
+  "quoteType": "EQUITY"
+ },
+ "HIBL": {
+  "sector": "",
+  "industry": "",
+  "volume": 74061,
+  "marketCap": 0,
+  "name": "Direxion Daily S&P 500 High Bet",
+  "quoteType": "ETF"
+ },
+ "IYM": {
+  "sector": "",
+  "industry": "",
+  "volume": 248290,
+  "marketCap": 0,
+  "name": "iShares U.S. Basic Materials ET",
+  "quoteType": "ETF"
+ },
+ "AFSC": {
+  "sector": "",
+  "industry": "",
+  "volume": 509,
+  "marketCap": 0,
+  "name": "abrdn Focused U.S. Small Cap Ac",
+  "quoteType": "ETF"
+ },
+ "AIBU": {
+  "sector": "",
+  "industry": "",
+  "volume": 16487,
+  "marketCap": 0,
+  "name": "Direxion Daily AI and Big Data ",
+  "quoteType": "ETF"
+ },
+ "AIMS": {
+  "sector": "",
+  "industry": "",
+  "volume": 3298,
+  "marketCap": 0,
+  "name": "Acuitas Small Cap Active ETF",
+  "quoteType": "ETF"
+ },
+ "ALAI": {
+  "sector": "",
+  "industry": "",
+  "volume": 86330,
+  "marketCap": 0,
+  "name": "Alger AI Enablers & Adopters ET",
+  "quoteType": "ETF"
+ },
+ "BGRO": {
+  "sector": "",
+  "industry": "",
+  "volume": 911,
+  "marketCap": 0,
+  "name": "iShares Large Cap Growth Active",
+  "quoteType": "ETF"
+ },
+ "BUYO": {
+  "sector": "",
+  "industry": "",
+  "volume": 1036,
+  "marketCap": 0,
+  "name": "KraneShares Man Buyout Beta Ind",
+  "quoteType": "ETF"
+ },
+ "CAML": {
+  "sector": "",
+  "industry": "",
+  "volume": 35534,
+  "marketCap": 0,
+  "name": "Congress Large Cap Growth ETF",
+  "quoteType": "ETF"
+ },
+ "CARK": {
+  "sector": "",
+  "industry": "",
+  "volume": 9155,
+  "marketCap": 0,
+  "name": "CastleArk Large Growth ETF",
+  "quoteType": "ETF"
+ },
+ "CNAV": {
+  "sector": "",
+  "industry": "",
+  "volume": 4695,
+  "marketCap": 0,
+  "name": "Mohr Company Nav ETF",
+  "quoteType": "ETF"
+ },
+ "CNEQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 259082,
+  "marketCap": 0,
+  "name": "Alger Concentrated Equity ETF",
+  "quoteType": "ETF"
+ },
+ "DFTT": {
+  "sector": "",
+  "industry": "",
+  "volume": 1492,
+  "marketCap": 0,
+  "name": "DF Tactical 30 ETF",
+  "quoteType": "EQUITY"
+ },
+ "IWMI": {
+  "sector": "",
+  "industry": "",
+  "volume": 365292,
+  "marketCap": 0,
+  "name": "NEOS Russell 2000 High Income E",
+  "quoteType": "ETF"
+ },
+ "KDEC": {
+  "sector": "",
+  "industry": "",
+  "volume": 10861,
+  "marketCap": 0,
+  "name": "Innovator U.S. Small Cap Power ",
+  "quoteType": "ETF"
+ },
+ "KFEB": {
+  "sector": "",
+  "industry": "",
+  "volume": 12795,
+  "marketCap": 0,
+  "name": "Innovator U.S. Small Cap Power ",
+  "quoteType": "ETF"
+ },
+ "KLAG": {
+  "sector": "",
+  "industry": "",
+  "volume": 32331,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Long KLAC Da",
+  "quoteType": "ETF"
+ },
+ "LST": {
+  "sector": "",
+  "industry": "",
+  "volume": 24846,
+  "marketCap": 0,
+  "name": "Leuthold Select Industries ETF",
+  "quoteType": "ETF"
+ },
+ "MSSM": {
+  "sector": "",
+  "industry": "",
+  "volume": 24498,
+  "marketCap": 0,
+  "name": "Morgan Stanley Pathway Small-Mi",
+  "quoteType": "ETF"
+ },
+ "NVMI": {
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "volume": 354909,
+  "marketCap": 15680755712,
+  "name": "Nova Ltd.",
+  "quoteType": "EQUITY"
+ },
+ "PWRD": {
+  "sector": "",
+  "industry": "",
+  "volume": 106609,
+  "marketCap": 0,
+  "name": "TCW Transform Systems ETF",
+  "quoteType": "ETF"
+ },
+ "SGRT": {
+  "sector": "",
+  "industry": "",
+  "volume": 55326,
+  "marketCap": 0,
+  "name": "SMART Earnings Growth 30 ETF",
+  "quoteType": "EQUITY"
+ },
+ "SLAB": {
+  "sector": "Technology",
+  "industry": "Semiconductors",
+  "volume": 424142,
+  "marketCap": 7210816512,
+  "name": "Silicon Laboratories, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "SMOX": {
+  "sector": "",
+  "industry": "",
+  "volume": 11022,
+  "marketCap": 0,
+  "name": "Horizon Small/Mid Cap Core Equi",
+  "quoteType": "ETF"
+ },
+ "TCGL": {
+  "sector": "Technology",
+  "industry": "Software - Infrastructure",
+  "volume": 1115075,
+  "marketCap": 3531553280,
+  "name": "TechCreate Group Ltd.",
+  "quoteType": "EQUITY"
+ },
+ "TOS": {
+  "sector": "",
+  "industry": "",
+  "volume": 885,
+  "marketCap": 0,
+  "name": "Twin Oak Strategic Solutions ET",
+  "quoteType": "ETF"
+ },
+ "TSMZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 82909,
+  "marketCap": 0,
+  "name": "Direxion Daily TSM Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "UFOD": {
+  "sector": "",
+  "industry": "",
+  "volume": 2711,
+  "marketCap": 0,
+  "name": "Tuttle Capital UFO Disclosure E",
+  "quoteType": "ETF"
+ },
+ "FWD": {
+  "sector": "",
+  "industry": "",
+  "volume": 236239,
+  "marketCap": 0,
+  "name": "AB Disruptors ETF",
+  "quoteType": "ETF"
+ },
+ "HVAC": {
+  "sector": "",
+  "industry": "",
+  "volume": 8728,
+  "marketCap": 0,
+  "name": "AdvisorShares HVAC and Industri",
+  "quoteType": "ETF"
+ },
+ "MADE": {
+  "sector": "",
+  "industry": "",
+  "volume": 19685,
+  "marketCap": 0,
+  "name": "iShares U.S. Manufacturing ETF",
+  "quoteType": "ETF"
+ },
+ "BCUS": {
+  "sector": "",
+  "industry": "",
+  "volume": 32271,
+  "marketCap": 0,
+  "name": "Bancreek U.S. Large Cap ETF",
+  "quoteType": "ETF"
+ },
+ "ABOT": {
+  "sector": "",
+  "industry": "",
+  "volume": 330,
+  "marketCap": 0,
+  "name": "ABACUS FCF INNOVATION LEADERS E",
+  "quoteType": "ETF"
+ },
+ "AGIQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 8844,
+  "marketCap": 0,
+  "name": "SoFi Agentic AI ETF",
+  "quoteType": "EQUITY"
+ },
+ "APC": {
+  "sector": "Energy",
+  "industry": "Oil & Gas Refining & Marketing",
+  "volume": 160358,
+  "marketCap": 1626633472,
+  "name": "ARKO Petroleum Corp.",
+  "quoteType": "EQUITY"
+ },
+ "APLZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 193480,
+  "marketCap": 0,
+  "name": "Tradr 2X Short APLD Daily ETF",
+  "quoteType": "ETF"
+ },
+ "ARKT": {
+  "sector": "",
+  "industry": "",
+  "volume": 657,
+  "marketCap": 0,
+  "name": "ARK DIET Q4 Buffer ETF",
+  "quoteType": "ETF"
+ },
+ "CLOU": {
+  "sector": "",
+  "industry": "",
+  "volume": 273711,
+  "marketCap": 0,
+  "name": "Global X Cloud Computing ETF",
+  "quoteType": "ETF"
+ },
+ "CLS": {
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "volume": 2172795,
+  "marketCap": 42736652288,
+  "name": "Celestica, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "CRWL": {
+  "sector": "",
+  "industry": "",
+  "volume": 274655,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Long CRWD Dail",
+  "quoteType": "ETF"
+ },
+ "CSRE": {
+  "sector": "",
+  "industry": "",
+  "volume": 131260,
+  "marketCap": 0,
+  "name": "Cohen & Steers Real Estate Acti",
+  "quoteType": "ETF"
+ },
+ "DRNL": {
+  "sector": "",
+  "industry": "",
+  "volume": 6701,
+  "marketCap": 0,
+  "name": "Defiance 2X Daily Long Pure Dro",
+  "quoteType": "ETF"
+ },
+ "DRNZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 168406,
+  "marketCap": 0,
+  "name": "REX Drone ETF",
+  "quoteType": "ETF"
+ },
+ "FCLD": {
+  "sector": "",
+  "industry": "",
+  "volume": 18736,
+  "marketCap": 0,
+  "name": "Fidelity Cloud Computing ETF",
+  "quoteType": "ETF"
+ },
+ "FDRX": {
+  "sector": "",
+  "industry": "",
+  "volume": 9401,
+  "marketCap": 0,
+  "name": "Founder-Led 2X Daily ETF",
+  "quoteType": "ETF"
+ },
+ "FFSM": {
+  "sector": "",
+  "industry": "",
+  "volume": 172300,
+  "marketCap": 0,
+  "name": "Fidelity Fundamental Small-Mid ",
+  "quoteType": "ETF"
+ },
+ "FRI": {
+  "sector": "",
+  "industry": "",
+  "volume": 25387,
+  "marketCap": 0,
+  "name": "First Trust S&P REIT Index Fund",
+  "quoteType": "ETF"
+ },
+ "GIF": {
+  "sector": "",
+  "industry": "",
+  "volume": 9766,
+  "marketCap": 0,
+  "name": "REX Growth & Income Universe ET",
+  "quoteType": "ETF"
+ },
+ "GRNJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 190839,
+  "marketCap": 0,
+  "name": "Fundstrat Granny Shots US Small",
+  "quoteType": "EQUITY"
+ },
+ "HAKY": {
+  "sector": "",
+  "industry": "",
+  "volume": 3231,
+  "marketCap": 0,
+  "name": "Amplify HACK Cybersecurity Cove",
+  "quoteType": "ETF"
+ },
+ "HWAY": {
+  "sector": "",
+  "industry": "",
+  "volume": 592,
+  "marketCap": 0,
+  "name": "Themes US Infrastructure ETF",
+  "quoteType": "ETF"
+ },
+ "HWSM": {
+  "sector": "",
+  "industry": "",
+  "volume": 246,
+  "marketCap": 0,
+  "name": "Hotchkis & Wiley SMID Cap Diver",
+  "quoteType": "ETF"
+ },
+ "ICF": {
+  "sector": "",
+  "industry": "",
+  "volume": 139450,
+  "marketCap": 0,
+  "name": "iShares Select U.S. REIT ETF",
+  "quoteType": "ETF"
+ },
+ "IDGT": {
+  "sector": "",
+  "industry": "",
+  "volume": 51458,
+  "marketCap": 0,
+  "name": "iShares U.S. Digital Infrastruc",
+  "quoteType": "ETF"
+ },
+ "IHAK": {
+  "sector": "",
+  "industry": "",
+  "volume": 182992,
+  "marketCap": 0,
+  "name": "iShares Cybersecurity and Tech ",
+  "quoteType": "ETF"
+ },
+ "INVN": {
+  "sector": "",
+  "industry": "",
+  "volume": 3844,
+  "marketCap": 0,
+  "name": "Alger Russell Innovation ETF",
+  "quoteType": "ETF"
+ },
+ "KYLD": {
+  "sector": "",
+  "industry": "",
+  "volume": 27341,
+  "marketCap": 0,
+  "name": "Kurv High Income ETF",
+  "quoteType": "ETF"
+ },
+ "MEMY": {
+  "sector": "",
+  "industry": "",
+  "volume": 865,
+  "marketCap": 0,
+  "name": "Tuttle Capital Meme Stock Incom",
+  "quoteType": "ETF"
+ },
+ "MFIG": {
+  "sector": "",
+  "industry": "",
+  "volume": 10520,
+  "marketCap": 0,
+  "name": "Motley Fool Innovative Growth E",
+  "quoteType": "ETF"
+ },
+ "NDSN": {
+  "sector": "Industrials",
+  "industry": "Specialty Industrial Machinery",
+  "volume": 359082,
+  "marketCap": 15753136128,
+  "name": "Nordson Corporation",
+  "quoteType": "EQUITY"
+ },
+ "NLSI": {
+  "sector": "",
+  "industry": "",
+  "volume": 728,
+  "marketCap": 0,
+  "name": "NEOS Long/Short Equity Income E",
+  "quoteType": "ETF"
+ },
+ "OKTG": {
+  "sector": "",
+  "industry": "",
+  "volume": 38111,
+  "marketCap": 0,
+  "name": "Leverage Shares 2X Long OKTA Da",
+  "quoteType": "ETF"
+ },
+ "ONDU": {
+  "sector": "",
+  "industry": "",
+  "volume": 160730,
+  "marketCap": 0,
+  "name": "Tradr 2X Long ONDS Daily ETF",
+  "quoteType": "ETF"
+ },
+ "ORCS": {
+  "sector": "",
+  "industry": "",
+  "volume": 94266,
+  "marketCap": 0,
+  "name": "Direxion Daily ORCL Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "PALD": {
+  "sector": "",
+  "industry": "",
+  "volume": 16809,
+  "marketCap": 0,
+  "name": "Direxion Daily PANW Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "PALU": {
+  "sector": "",
+  "industry": "",
+  "volume": 184631,
+  "marketCap": 0,
+  "name": "Direxion Daily PANW Bull 2X ETF",
+  "quoteType": "ETF"
+ },
+ "PANG": {
+  "sector": "",
+  "industry": "",
+  "volume": 89325,
+  "marketCap": 0,
+  "name": "Leverage Shares 2X Long PANW Da",
+  "quoteType": "ETF"
+ },
+ "PATX": {
+  "sector": "",
+  "industry": "",
+  "volume": 105774,
+  "marketCap": 0,
+  "name": "Tradr 2X Long PATH Daily ETF",
+  "quoteType": "ETF"
+ },
+ "PSWD": {
+  "sector": "",
+  "industry": "",
+  "volume": 1295,
+  "marketCap": 0,
+  "name": "Xtrackers Cybersecurity Select ",
+  "quoteType": "ETF"
+ },
+ "QQQD": {
+  "sector": "",
+  "industry": "",
+  "volume": 179719,
+  "marketCap": 0,
+  "name": "Direxion Daily Magnificent 7 Be",
+  "quoteType": "ETF"
+ },
+ "SCDV": {
+  "sector": "",
+  "industry": "",
+  "volume": 7841,
+  "marketCap": 0,
+  "name": "Bahl & Gaynor Small Cap Dividen",
+  "quoteType": "ETF"
+ },
+ "SKYU": {
+  "sector": "",
+  "industry": "",
+  "volume": 2720,
+  "marketCap": 0,
+  "name": "ProShares Ultra Cloud Computing",
+  "quoteType": "ETF"
+ },
+ "SKYY": {
+  "sector": "",
+  "industry": "",
+  "volume": 354331,
+  "marketCap": 0,
+  "name": "First Trust Cloud Computing ETF",
+  "quoteType": "ETF"
+ },
+ "SLTY": {
+  "sector": "",
+  "industry": "",
+  "volume": 30114,
+  "marketCap": 0,
+  "name": "YieldMax Ultra Short Option Inc",
+  "quoteType": "EQUITY"
+ },
+ "SMZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 68185,
+  "marketCap": 0,
+  "name": "Tradr 2X Short SMR Daily ETF",
+  "quoteType": "ETF"
+ },
+ "SPAM": {
+  "sector": "",
+  "industry": "",
+  "volume": 2296,
+  "marketCap": 0,
+  "name": "Themes Cybersecurity ETF",
+  "quoteType": "ETF"
+ },
+ "SPRE": {
+  "sector": "",
+  "industry": "",
+  "volume": 77625,
+  "marketCap": 0,
+  "name": "SP Funds S&P Global REIT Sharia",
+  "quoteType": "ETF"
+ },
+ "SRVR": {
+  "sector": "",
+  "industry": "",
+  "volume": 93836,
+  "marketCap": 0,
+  "name": "Pacer Data & Infrastructure Rea",
+  "quoteType": "ETF"
+ },
+ "TSCM": {
+  "sector": "",
+  "industry": "",
+  "volume": 2476,
+  "marketCap": 0,
+  "name": "TimesSquare Quality Mid Cap Gro",
+  "quoteType": "ETF"
+ },
+ "TSNF": {
+  "sector": "",
+  "industry": "",
+  "volume": 7334,
+  "marketCap": 0,
+  "name": "Truth Social American Next Fron",
+  "quoteType": "EQUITY"
+ },
+ "UCTT": {
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "volume": 1072096,
+  "marketCap": 3679062784,
+  "name": "Ultra Clean Holdings, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "UCYB": {
+  "sector": "",
+  "industry": "",
+  "volume": 4347,
+  "marketCap": 0,
+  "name": "ProShares Ultra Nasdaq Cybersec",
+  "quoteType": "ETF"
+ },
+ "URE": {
+  "sector": "",
+  "industry": "",
+  "volume": 3711,
+  "marketCap": 0,
+  "name": "ProShares Ultra Real Estate",
+  "quoteType": "ETF"
+ },
+ "USRT": {
+  "sector": "",
+  "industry": "",
+  "volume": 444434,
+  "marketCap": 0,
+  "name": "iShares Core U.S. REIT ETF",
+  "quoteType": "ETF"
+ },
+ "BBRE": {
+  "sector": "",
+  "industry": "",
+  "volume": 36057,
+  "marketCap": 0,
+  "name": "JPMorgan BetaBuilders MSCI U.S.",
+  "quoteType": "ETF"
+ },
+ "FPRO": {
+  "sector": "",
+  "industry": "",
+  "volume": 3836,
+  "marketCap": 0,
+  "name": "Fidelity Real Estate Investment",
+  "quoteType": "ETF"
+ },
+ "SMHI": {
+  "sector": "Industrials",
+  "industry": "Marine Shipping",
+  "volume": 94034,
+  "marketCap": 198907728,
+  "name": "SEACOR Marine Holdings Inc.",
+  "quoteType": "EQUITY"
+ },
+ "SITM": {
+  "sector": "Technology",
+  "industry": "Semiconductors",
+  "volume": 521860,
+  "marketCap": 16515966976,
+  "name": "SiTime Corporation",
+  "quoteType": "EQUITY"
+ },
+ "CEGX": {
+  "sector": "",
+  "industry": "",
+  "volume": 137473,
+  "marketCap": 0,
+  "name": "Tradr 2X Long CEG Daily ETF",
+  "quoteType": "ETF"
+ },
+ "FTWO": {
+  "sector": "",
+  "industry": "",
+  "volume": 12823,
+  "marketCap": 0,
+  "name": "Strive Natural Resources and Se",
+  "quoteType": "ETF"
+ },
+ "NUKZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 106315,
+  "marketCap": 0,
+  "name": "Range Nuclear Renaissance Index",
+  "quoteType": "ETF"
+ },
+ "NVDD": {
+  "sector": "",
+  "industry": "",
+  "volume": 142841,
+  "marketCap": 0,
+  "name": "Direxion Daily NVDA Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "UTES": {
+  "sector": "",
+  "industry": "",
+  "volume": 191631,
+  "marketCap": 0,
+  "name": "Virtus Reaves Utilities ETF",
+  "quoteType": "ETF"
+ },
+ "VSTL": {
+  "sector": "",
+  "industry": "",
+  "volume": 60613,
+  "marketCap": 0,
+  "name": "Defiance Daily Target 2X Long V",
+  "quoteType": "ETF"
+ },
+ "ABG": {
+  "sector": "Consumer Cyclical",
+  "industry": "Auto & Truck Dealerships",
+  "volume": 266847,
+  "marketCap": 3679633408,
+  "name": "Asbury Automotive Group Inc",
+  "quoteType": "EQUITY"
+ },
+ "AMOM": {
+  "sector": "",
+  "industry": "",
+  "volume": 4152,
+  "marketCap": 0,
+  "name": "QRAFT AI-Enhanced U.S. Large Ca",
+  "quoteType": "ETF"
+ },
+ "AVTM": {
+  "sector": "",
+  "industry": "",
+  "volume": 2157,
+  "marketCap": 0,
+  "name": "Avantis Total Equity Markets ET",
+  "quoteType": "ETF"
+ },
+ "BCTK": {
+  "sector": "",
+  "industry": "",
+  "volume": 21195,
+  "marketCap": 0,
+  "name": "Baron Technology ETF",
+  "quoteType": "ETF"
+ },
+ "BHE": {
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "volume": 426498,
+  "marketCap": 3051342080,
+  "name": "Benchmark Electronics, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "BIB": {
+  "sector": "",
+  "industry": "",
+  "volume": 9522,
+  "marketCap": 0,
+  "name": "ProShares Ultra Nasdaq Biotechn",
+  "quoteType": "ETF"
+ },
+ "CCOM": {
+  "sector": "",
+  "industry": "",
+  "volume": 342,
+  "marketCap": 0,
+  "name": "Simplify Chinese Commodities St",
+  "quoteType": "ETF"
+ },
+ "CTRM": {
+  "sector": "Industrials",
+  "industry": "Marine Shipping",
+  "volume": 55661,
+  "marketCap": 20517042,
+  "name": "Castor Maritime Inc.",
+  "quoteType": "EQUITY"
+ },
+ "DDFM": {
+  "sector": "",
+  "industry": "",
+  "volume": 22720,
+  "marketCap": 0,
+  "name": "Innovator Equity Dual Direction",
+  "quoteType": "ETF"
+ },
+ "DDTM": {
+  "sector": "",
+  "industry": "",
+  "volume": 4393,
+  "marketCap": 0,
+  "name": "Innovator Equity Dual Direction",
+  "quoteType": "ETF"
+ },
+ "DNNG": {
+  "sector": "",
+  "industry": "",
+  "volume": 2814,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Long DNN Dai",
+  "quoteType": "ETF"
+ },
+ "DVUT": {
+  "sector": "",
+  "industry": "",
+  "volume": 396,
+  "marketCap": 0,
+  "name": "WEBs Utilities XLU Defined Vola",
+  "quoteType": "ETF"
+ },
+ "DXLG": {
+  "sector": "Consumer Cyclical",
+  "industry": "Apparel Retail",
+  "volume": 152600,
+  "marketCap": 40045356,
+  "name": "Destination XL Group, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "EART": {
+  "sector": "",
+  "industry": "",
+  "volume": 21007,
+  "marketCap": 0,
+  "name": "Global X Rare Earth & Critical ",
+  "quoteType": "ETF"
+ },
+ "ELFY": {
+  "sector": "",
+  "industry": "",
+  "volume": 38579,
+  "marketCap": 0,
+  "name": "ALPS Electrification Infrastruc",
+  "quoteType": "ETF"
+ },
+ "EME": {
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "volume": 363057,
+  "marketCap": 35498913792,
+  "name": "EMCOR Group, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "EMMF": {
+  "sector": "",
+  "industry": "",
+  "volume": 18504,
+  "marketCap": 0,
+  "name": "WisdomTree Emerging Markets Mul",
+  "quoteType": "ETF"
+ },
+ "EPSV": {
+  "sector": "",
+  "industry": "",
+  "volume": 687,
+  "marketCap": 0,
+  "name": "Harbor SMID Cap Value ETF",
+  "quoteType": "ETF"
+ },
+ "FEMD": {
+  "sector": "",
+  "industry": "",
+  "volume": 1446,
+  "marketCap": 0,
+  "name": "First Eagle Mid Cap Equity ETF",
+  "quoteType": "ETF"
+ },
+ "FGRU": {
+  "sector": "",
+  "industry": "",
+  "volume": 52655,
+  "marketCap": 0,
+  "name": "T-REX 2X Long FIGR Daily Target",
+  "quoteType": "ETF"
+ },
+ "FGSM": {
+  "sector": "",
+  "industry": "",
+  "volume": 9190,
+  "marketCap": 0,
+  "name": "Frontier Asset Global Small Cap",
+  "quoteType": "ETF"
+ },
+ "FIX": {
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "volume": 416071,
+  "marketCap": 62686572544,
+  "name": "Comfort Systems USA, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "FRWD": {
+  "sector": "",
+  "industry": "",
+  "volume": 126425,
+  "marketCap": 0,
+  "name": "Nomura Transformational Technol",
+  "quoteType": "ETF"
+ },
+ "FSCC": {
+  "sector": "",
+  "industry": "",
+  "volume": 61036,
+  "marketCap": 0,
+  "name": "Federated Hermes MDT Small Cap ",
+  "quoteType": "ETF"
+ },
+ "FUTY": {
+  "sector": "",
+  "industry": "",
+  "volume": 369861,
+  "marketCap": 0,
+  "name": "Fidelity MSCI Utilities Index E",
+  "quoteType": "ETF"
+ },
+ "FXD": {
+  "sector": "",
+  "industry": "",
+  "volume": 10525,
+  "marketCap": 0,
+  "name": "First Trust Cons. Discret. Alph",
+  "quoteType": "ETF"
+ },
+ "FXR": {
+  "sector": "",
+  "industry": "",
+  "volume": 42300,
+  "marketCap": 0,
+  "name": "First Trust Industrials AlphaDE",
+  "quoteType": "ETF"
+ },
+ "FXU": {
+  "sector": "",
+  "industry": "",
+  "volume": 310922,
+  "marketCap": 0,
+  "name": "First Trust Utilities AlphaDEX ",
+  "quoteType": "ETF"
+ },
+ "GAMR": {
+  "sector": "",
+  "industry": "",
+  "volume": 1160,
+  "marketCap": 0,
+  "name": "Amplify Video Game Leaders ETF",
+  "quoteType": "ETF"
+ },
+ "GENB": {
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "volume": 540355,
+  "marketCap": 1679321600,
+  "name": "Generate Biomedicines, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "GGTL": {
+  "sector": "",
+  "industry": "",
+  "volume": 2007,
+  "marketCap": 0,
+  "name": "Gabelli Global Technology Leade",
+  "quoteType": "EQUITY"
+ },
+ "GPI": {
+  "sector": "Consumer Cyclical",
+  "industry": "Auto & Truck Dealerships",
+  "volume": 171025,
+  "marketCap": 3908913408,
+  "name": "Group 1 Automotive, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "GRNI": {
+  "sector": "",
+  "industry": "",
+  "volume": 52034,
+  "marketCap": 0,
+  "name": "Fundstrat Granny Shots US Large",
+  "quoteType": "ETF"
+ },
+ "GTOP": {
+  "sector": "",
+  "industry": "",
+  "volume": 15585,
+  "marketCap": 0,
+  "name": "Goldman Sachs Technology Opport",
+  "quoteType": "ETF"
+ },
+ "HCAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 92315,
+  "marketCap": 293608960,
+  "name": "Hall Chadwick Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "HUTG": {
+  "sector": "",
+  "industry": "",
+  "volume": 70339,
+  "marketCap": 0,
+  "name": "Leverage Shares 2X Long HUT Dai",
+  "quoteType": "ETF"
+ },
+ "IJK": {
+  "sector": "",
+  "industry": "",
+  "volume": 541882,
+  "marketCap": 0,
+  "name": "iShares S&P Mid-Cap 400 Growth ",
+  "quoteType": "ETF"
+ },
+ "IPGP": {
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment & Materials",
+  "volume": 536592,
+  "marketCap": 4615743488,
+  "name": "IPG Photonics Corporation",
+  "quoteType": "EQUITY"
+ },
+ "JOBX": {
+  "sector": "",
+  "industry": "",
+  "volume": 97090,
+  "marketCap": 0,
+  "name": "Tradr 2X Long JOBY Daily ETF",
+  "quoteType": "ETF"
+ },
+ "JXI": {
+  "sector": "",
+  "industry": "",
+  "volume": 29579,
+  "marketCap": 0,
+  "name": "iShares Global Utilities ETF",
+  "quoteType": "ETF"
+ },
+ "KIQQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 644,
+  "marketCap": 0,
+  "name": "KraneShares InspereX Nasdaq Dyn",
+  "quoteType": "ETF"
+ },
+ "LAD": {
+  "sector": "Consumer Cyclical",
+  "industry": "Auto & Truck Dealerships",
+  "volume": 317711,
+  "marketCap": 7016894464,
+  "name": "Lithia Motors, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "LEUX": {
+  "sector": "",
+  "industry": "",
+  "volume": 57082,
+  "marketCap": 0,
+  "name": "Tradr 2X Long LEU Daily ETF",
+  "quoteType": "ETF"
+ },
+ "LFUS": {
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "volume": 297285,
+  "marketCap": 11408330752,
+  "name": "Littelfuse, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "MAGH": {
+  "sector": "Industrials",
+  "industry": "Engineering & Construction",
+  "volume": 0,
+  "marketCap": 225446000,
+  "name": "Magnitude International Ltd",
+  "quoteType": "EQUITY"
+ },
+ "MAVF": {
+  "sector": "",
+  "industry": "",
+  "volume": 411,
+  "marketCap": 0,
+  "name": "Matrix Advisors Value ETF",
+  "quoteType": "ETF"
+ },
+ "MFMO": {
+  "sector": "",
+  "industry": "",
+  "volume": 11053,
+  "marketCap": 0,
+  "name": "Motley Fool Momentum Factor ETF",
+  "quoteType": "ETF"
+ },
+ "MINY": {
+  "sector": "",
+  "industry": "",
+  "volume": 6268,
+  "marketCap": 0,
+  "name": "YieldMax Strategic Metals & Min",
+  "quoteType": "EQUITY"
+ },
+ "NBFR": {
+  "sector": "",
+  "industry": "",
+  "volume": 15069,
+  "marketCap": 0,
+  "name": "Innovator Nasdaq-100 Managed 10",
+  "quoteType": "EQUITY"
+ },
+ "NUKX": {
+  "sector": "",
+  "industry": "",
+  "volume": 4261,
+  "marketCap": 0,
+  "name": "Nicholas Nuclear Income ETF",
+  "quoteType": "EQUITY"
+ },
+ "NULG": {
+  "sector": "",
+  "industry": "",
+  "volume": 98022,
+  "marketCap": 0,
+  "name": "Nuveen ESG Large-Cap Growth ETF",
+  "quoteType": "ETF"
+ },
+ "PAG": {
+  "sector": "Consumer Cyclical",
+  "industry": "Auto & Truck Dealerships",
+  "volume": 295514,
+  "marketCap": 11819414528,
+  "name": "Penske Automotive Group, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "PBE": {
+  "sector": "",
+  "industry": "",
+  "volume": 6320,
+  "marketCap": 0,
+  "name": "Invesco Biotechnology & Genome ",
+  "quoteType": "ETF"
+ },
+ "PEZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 552,
+  "marketCap": 0,
+  "name": "Invesco Dorsey Wright Consumer ",
+  "quoteType": "ETF"
+ },
+ "PLXS": {
+  "sector": "Technology",
+  "industry": "Electronic Components",
+  "volume": 334704,
+  "marketCap": 7629192192,
+  "name": "Plexus Corp.",
+  "quoteType": "EQUITY"
+ },
+ "POWR": {
+  "sector": "",
+  "industry": "",
+  "volume": 197149,
+  "marketCap": 0,
+  "name": "iShares U.S. Power Infrastructu",
+  "quoteType": "EQUITY"
+ },
+ "PRN": {
+  "sector": "",
+  "industry": "",
+  "volume": 27852,
+  "marketCap": 0,
+  "name": "Invesco Dorsey Wright Industria",
+  "quoteType": "ETF"
+ },
+ "PRNT": {
+  "sector": "",
+  "industry": "",
+  "volume": 11641,
+  "marketCap": 0,
+  "name": "3D Printing (The) ETF",
+  "quoteType": "ETF"
+ },
+ "PSCD": {
+  "sector": "",
+  "industry": "",
+  "volume": 801,
+  "marketCap": 0,
+  "name": "Invesco S&P SmallCap Consumer D",
+  "quoteType": "ETF"
+ },
+ "PSCI": {
+  "sector": "",
+  "industry": "",
+  "volume": 3461,
+  "marketCap": 0,
+  "name": "Invesco S&P SmallCap Industrial",
+  "quoteType": "ETF"
+ },
+ "PSR": {
+  "sector": "",
+  "industry": "",
+  "volume": 3153,
+  "marketCap": 0,
+  "name": "Invesco Active U.S. Real Estate",
+  "quoteType": "ETF"
+ },
+ "PSTG": {
+  "sector": "Technology",
+  "industry": "Computer Hardware",
+  "volume": 2894515,
+  "marketCap": 22405251072,
+  "name": "Everpure, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "QMID": {
+  "sector": "",
+  "industry": "",
+  "volume": 1634,
+  "marketCap": 0,
+  "name": "WisdomTree U.S. MidCap Quality ",
+  "quoteType": "ETF"
+ },
+ "RCTR": {
+  "sector": "",
+  "industry": "",
+  "volume": 4812,
+  "marketCap": 0,
+  "name": "First Trust Bloomberg Nuclear P",
+  "quoteType": "ETF"
+ },
+ "RESM": {
+  "sector": "",
+  "industry": "",
+  "volume": 387,
+  "marketCap": 0,
+  "name": "Columbia Research Enhanced Smal",
+  "quoteType": "EQUITY"
+ },
+ "RNWZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 2979,
+  "marketCap": 0,
+  "name": "TrueShares Eagle Global Renewab",
+  "quoteType": "ETF"
+ },
+ "ROBO": {
+  "sector": "",
+  "industry": "",
+  "volume": 215984,
+  "marketCap": 0,
+  "name": "ROBO Global Robotics and Automa",
+  "quoteType": "ETF"
+ },
+ "ROBT": {
+  "sector": "",
+  "industry": "",
+  "volume": 63326,
+  "marketCap": 0,
+  "name": "First Trust Nasdaq Artificial I",
+  "quoteType": "ETF"
+ },
+ "RSHO": {
+  "sector": "",
+  "industry": "",
+  "volume": 31101,
+  "marketCap": 0,
+  "name": "Tema U.S. Manufacturing & Resho",
+  "quoteType": "ETF"
+ },
+ "RSMC": {
+  "sector": "",
+  "industry": "",
+  "volume": 12615,
+  "marketCap": 0,
+  "name": "Rockefeller U.S. Small-Mid Cap ",
+  "quoteType": "ETF"
+ },
+ "RSPU": {
+  "sector": "",
+  "industry": "",
+  "volume": 54307,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Equal Weight Ut",
+  "quoteType": "ETF"
+ },
+ "RUSC": {
+  "sector": "",
+  "industry": "",
+  "volume": 5236,
+  "marketCap": 0,
+  "name": "Russell Investments U.S. Small ",
+  "quoteType": "ETF"
+ },
+ "SAH": {
+  "sector": "Consumer Cyclical",
+  "industry": "Auto & Truck Dealerships",
+  "volume": 297942,
+  "marketCap": 2688877312,
+  "name": "Sonic Automotive, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "SAWS": {
+  "sector": "",
+  "industry": "",
+  "volume": 574,
+  "marketCap": 0,
+  "name": "AAM Sawgrass US Small Cap Quali",
+  "quoteType": "ETF"
+ },
+ "SCDS": {
+  "sector": "",
+  "industry": "",
+  "volume": 284,
+  "marketCap": 0,
+  "name": "JPMorgan Fundamental Data Scien",
+  "quoteType": "ETF"
+ },
+ "SDY": {
+  "sector": "",
+  "industry": "",
+  "volume": 218282,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Dividend ",
+  "quoteType": "ETF"
+ },
+ "SEIS": {
+  "sector": "",
+  "industry": "",
+  "volume": 51117,
+  "marketCap": 0,
+  "name": "SEI Select Small Cap ETF",
+  "quoteType": "ETF"
+ },
+ "SLVO": {
+  "sector": "",
+  "industry": "",
+  "volume": 108011,
+  "marketCap": 0,
+  "name": "ETRACS Silver Shares Covered Ca",
+  "quoteType": "ETF"
+ },
+ "SMCZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 963115,
+  "marketCap": 0,
+  "name": "Defiance Daily Target 2X Short ",
+  "quoteType": "ETF"
+ },
+ "SMDX": {
+  "sector": "",
+  "industry": "",
+  "volume": 317,
+  "marketCap": 0,
+  "name": "Intech S&P Small-Mid Cap Divers",
+  "quoteType": "ETF"
+ },
+ "SMRF": {
+  "sector": "",
+  "industry": "",
+  "volume": 9820,
+  "marketCap": 0,
+  "name": "ALPS Nautilus SMR, Nuclear & Te",
+  "quoteType": "EQUITY"
+ },
+ "SMUP": {
+  "sector": "",
+  "industry": "",
+  "volume": 165716,
+  "marketCap": 0,
+  "name": "T-REX 2X Long SMR Daily Target ",
+  "quoteType": "ETF"
+ },
+ "SPIT": {
+  "sector": "",
+  "industry": "",
+  "volume": 4617,
+  "marketCap": 0,
+  "name": "F/m Emerald Special Situations ",
+  "quoteType": "ETF"
+ },
+ "TECB": {
+  "sector": "",
+  "industry": "",
+  "volume": 16125,
+  "marketCap": 0,
+  "name": "iShares U.S. Tech Breakthrough ",
+  "quoteType": "ETF"
+ },
+ "TEK": {
+  "sector": "",
+  "industry": "",
+  "volume": 5885,
+  "marketCap": 0,
+  "name": "iShares Technology Opportunitie",
+  "quoteType": "ETF"
+ },
+ "TNUK": {
+  "sector": "",
+  "industry": "",
+  "volume": 1438,
+  "marketCap": 0,
+  "name": "Tortoise Nuclear Renaissance ET",
+  "quoteType": "ETF"
+ },
+ "TTXD": {
+  "sector": "",
+  "industry": "",
+  "volume": 4188,
+  "marketCap": 0,
+  "name": "Direxion Daily Technology Top 5",
+  "quoteType": "EQUITY"
+ },
+ "UECG": {
+  "sector": "",
+  "industry": "",
+  "volume": 44612,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Long UEC Dai",
+  "quoteType": "ETF"
+ },
+ "UPW": {
+  "sector": "",
+  "industry": "",
+  "volume": 22855,
+  "marketCap": 0,
+  "name": "ProShares Ultra Utilities",
+  "quoteType": "ETF"
+ },
+ "URAA": {
+  "sector": "",
+  "industry": "",
+  "volume": 88252,
+  "marketCap": 0,
+  "name": "Direxion Daily Uranium Industry",
+  "quoteType": "ETF"
+ },
+ "URAN": {
+  "sector": "",
+  "industry": "",
+  "volume": 8858,
+  "marketCap": 0,
+  "name": "Themes Uranium & Nuclear ETF",
+  "quoteType": "ETF"
+ },
+ "URNJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 342485,
+  "marketCap": 0,
+  "name": "Sprott Junior Uranium Miners ET",
+  "quoteType": "ETF"
+ },
+ "UTSL": {
+  "sector": "",
+  "industry": "",
+  "volume": 97034,
+  "marketCap": 0,
+  "name": "Direxion Daily Utilities Bull 3",
+  "quoteType": "ETF"
+ },
+ "VBK": {
+  "sector": "",
+  "industry": "",
+  "volume": 237742,
+  "marketCap": 0,
+  "name": "Vanguard Small-Cap Growth ETF",
+  "quoteType": "ETF"
+ },
+ "VEM": {
+  "sector": "",
+  "industry": "",
+  "volume": 387,
+  "marketCap": 0,
+  "name": "Virtus Emerging Markets Dividen",
+  "quoteType": "EQUITY"
+ },
+ "VPU": {
+  "sector": "",
+  "industry": "",
+  "volume": 244976,
+  "marketCap": 0,
+  "name": "Vanguard Utilities ETF",
+  "quoteType": "ETF"
+ },
+ "VRTL": {
+  "sector": "",
+  "industry": "",
+  "volume": 85084,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Long VRT Daily",
+  "quoteType": "ETF"
+ },
+ "VUS": {
+  "sector": "",
+  "industry": "",
+  "volume": 838,
+  "marketCap": 0,
+  "name": "Virtus US Dividend ETF",
+  "quoteType": "ETF"
+ },
+ "SJB": {
+  "sector": "",
+  "industry": "",
+  "volume": 402887,
+  "marketCap": 0,
+  "name": "ProShares Short High Yield",
+  "quoteType": "ETF"
+ },
+ "DSCO": {
+  "sector": "",
+  "industry": "",
+  "volume": 43330,
+  "marketCap": 0,
+  "name": "DoubleLine Securitized Credit E",
+  "quoteType": "ETF"
+ },
+ "EQAL": {
+  "sector": "",
+  "industry": "",
+  "volume": 53688,
+  "marketCap": 0,
+  "name": "Invesco Russell 1000 Equal Weig",
+  "quoteType": "ETF"
+ },
+ "SOLR": {
+  "sector": "",
+  "industry": "",
+  "volume": 484,
+  "marketCap": 0,
+  "name": "Guinness Atkinson Sustainable E",
+  "quoteType": "ETF"
+ },
+ "SUPP": {
+  "sector": "",
+  "industry": "",
+  "volume": 346,
+  "marketCap": 0,
+  "name": "TCW Transform Supply Chain ETF",
+  "quoteType": "ETF"
+ },
+ "FXO": {
+  "sector": "",
+  "industry": "",
+  "volume": 84158,
+  "marketCap": 0,
+  "name": "First Trust Financials AlphaDEX",
+  "quoteType": "ETF"
+ },
+ "RKNG": {
+  "sector": "",
+  "industry": "",
+  "volume": 11376,
+  "marketCap": 0,
+  "name": "Defiance Retail Kings ETF",
+  "quoteType": "ETF"
+ },
+ "PQUS": {
+  "sector": "",
+  "industry": "",
+  "volume": 33930,
+  "marketCap": 0,
+  "name": "Pictet AI Enhanced US Equity ET",
+  "quoteType": "EQUITY"
+ },
+ "PKB": {
+  "sector": "",
+  "industry": "",
+  "volume": 15903,
+  "marketCap": 0,
+  "name": "Invesco Building & Construction",
+  "quoteType": "ETF"
+ },
+ "RMAX": {
+  "sector": "Real Estate",
+  "industry": "Real Estate Services",
+  "volume": 697893,
+  "marketCap": 506232128,
+  "name": "RE/MAX Holdings, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "NITE": {
+  "sector": "",
+  "industry": "",
+  "volume": 1000,
+  "marketCap": 0,
+  "name": "The Nightview Fund NITE",
+  "quoteType": "ETF"
+ },
+ "TESL": {
+  "sector": "",
+  "industry": "",
+  "volume": 24831,
+  "marketCap": 0,
+  "name": "Simplify Volt TSLA Revolution E",
+  "quoteType": "ETF"
+ },
+ "TLA": {
+  "sector": "",
+  "industry": "",
+  "volume": 1742,
+  "marketCap": 0,
+  "name": "GraniteShares Autocallable TSLA",
+  "quoteType": "ETF"
+ },
+ "TSII": {
+  "sector": "",
+  "industry": "",
+  "volume": 55068,
+  "marketCap": 0,
+  "name": "REX TSLA Growth & Income ETF",
+  "quoteType": "ETF"
+ },
+ "TSLO": {
+  "sector": "",
+  "industry": "",
+  "volume": 498,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Capped Accel",
+  "quoteType": "ETF"
+ },
+ "TSLP": {
+  "sector": "",
+  "industry": "",
+  "volume": 17777,
+  "marketCap": 0,
+  "name": "Kurv Yield Premium Strategy Tes",
+  "quoteType": "ETF"
+ },
+ "TSLW": {
+  "sector": "",
+  "industry": "",
+  "volume": 155784,
+  "marketCap": 0,
+  "name": "Roundhill TSLA WeeklyPay ETF",
+  "quoteType": "ETF"
+ },
+ "CNCG": {
+  "sector": "",
+  "industry": "",
+  "volume": 2831,
+  "marketCap": 0,
+  "name": "Leverage Shares 2X Long CNC Dai",
+  "quoteType": "ETF"
+ },
+ "DVXE": {
+  "sector": "",
+  "industry": "",
+  "volume": 3826,
+  "marketCap": 0,
+  "name": "WEBs Energy XLE Defined Volatil",
+  "quoteType": "ETF"
+ },
+ "GTOQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 49601,
+  "marketCap": 0,
+  "name": "Invesco High Yield Systematic B",
+  "quoteType": "ETF"
+ },
+ "HBRD": {
+  "sector": "",
+  "industry": "",
+  "volume": 177,
+  "marketCap": 0,
+  "name": "Invesco U.S. Hybrid Bond ETF",
+  "quoteType": "EQUITY"
+ },
+ "IMTG": {
+  "sector": "",
+  "industry": "",
+  "volume": 200,
+  "marketCap": 0,
+  "name": "Invesco Agency MBS ETF",
+  "quoteType": "ETF"
+ },
+ "IPEX": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 12946,
+  "marketCap": 124929344,
+  "name": "Inflection Point Acquisition Co",
+  "quoteType": "EQUITY"
+ },
+ "MSDD": {
+  "sector": "",
+  "industry": "",
+  "volume": 9969,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Short MSTR Dai",
+  "quoteType": "ETF"
+ },
+ "MYHE": {
+  "sector": "",
+  "industry": "",
+  "volume": 939,
+  "marketCap": 0,
+  "name": "State Street My2031 High Yield ",
+  "quoteType": "ETF"
+ },
+ "NVIR": {
+  "sector": "",
+  "industry": "",
+  "volume": 1746,
+  "marketCap": 0,
+  "name": "Horizon Kinetics Energy and Rem",
+  "quoteType": "ETF"
+ },
+ "PBOG": {
+  "sector": "",
+  "industry": "",
+  "volume": 150776,
+  "marketCap": 0,
+  "name": "Portfolio Building Block Integr",
+  "quoteType": "ETF"
+ },
+ "RSPG": {
+  "sector": "",
+  "industry": "",
+  "volume": 134842,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Equal Weight En",
+  "quoteType": "ETF"
+ },
+ "RYM": {
+  "sector": "Consumer Defensive",
+  "industry": "Tobacco",
+  "volume": 15858,
+  "marketCap": 59577724,
+  "name": "RYTHM, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "SASS": {
+  "sector": "",
+  "industry": "",
+  "volume": 5282,
+  "marketCap": 0,
+  "name": "M.D. Sass Concentrated Value ET",
+  "quoteType": "EQUITY"
+ },
+ "SEMY": {
+  "sector": "",
+  "industry": "",
+  "volume": 281001,
+  "marketCap": 0,
+  "name": "GraniteShares YieldBOOST Semico",
+  "quoteType": "ETF"
+ },
+ "TEXX": {
+  "sector": "",
+  "industry": "",
+  "volume": 2322,
+  "marketCap": 0,
+  "name": "Horizon Kinetics Texas ETF",
+  "quoteType": "ETF"
+ },
+ "TFFI": {
+  "sector": "",
+  "industry": "",
+  "volume": 16790,
+  "marketCap": 0,
+  "name": "Chesapeake Trend-Following Fixe",
+  "quoteType": "EQUITY"
+ },
+ "USLN": {
+  "sector": "",
+  "industry": "",
+  "volume": 280,
+  "marketCap": 0,
+  "name": "iShares Broad USD Floating Rate",
+  "quoteType": "ETF"
+ },
+ "UYSC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 3036,
+  "marketCap": 81944320,
+  "name": "UY Scuti Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "VIDA": {
+  "sector": "Technology",
+  "industry": "Software - Application",
+  "volume": 3853105,
+  "marketCap": 75438872,
+  "name": "VIDA Global Inc.",
+  "quoteType": "EQUITY"
+ },
+ "ACEP": {
+  "sector": "",
+  "industry": "",
+  "volume": 1955,
+  "marketCap": 0,
+  "name": "ARS Core Equity Portfolio ETF",
+  "quoteType": "ETF"
+ },
+ "QQDN": {
+  "sector": "",
+  "industry": "",
+  "volume": 4106,
+  "marketCap": 0,
+  "name": "ProShares UltraShort QQQ Mega",
+  "quoteType": "ETF"
+ },
+ "NFRX": {
+  "sector": "",
+  "industry": "",
+  "volume": 514,
+  "marketCap": 0,
+  "name": "Harrison Street Infrastructure ",
+  "quoteType": "ETF"
+ },
+ "AGRW": {
+  "sector": "",
+  "industry": "",
+  "volume": 1074,
+  "marketCap": 0,
+  "name": "Allspring LT Large Growth ETF",
+  "quoteType": "ETF"
+ },
+ "BRIF": {
+  "sector": "",
+  "industry": "",
+  "volume": 13050,
+  "marketCap": 0,
+  "name": "FIS Bright Portfolios Focused E",
+  "quoteType": "ETF"
+ },
+ "DIVB": {
+  "sector": "",
+  "industry": "",
+  "volume": 100326,
+  "marketCap": 0,
+  "name": "iShares Core Dividend ETF",
+  "quoteType": "ETF"
+ },
+ "FDND": {
+  "sector": "",
+  "industry": "",
+  "volume": 2550,
+  "marketCap": 0,
+  "name": "FT Vest Dow Jones Internet & Ta",
+  "quoteType": "ETF"
+ },
+ "FDRR": {
+  "sector": "",
+  "industry": "",
+  "volume": 17606,
+  "marketCap": 0,
+  "name": "Fidelity Dividend ETF for Risin",
+  "quoteType": "ETF"
+ },
+ "FLQL": {
+  "sector": "",
+  "industry": "",
+  "volume": 114887,
+  "marketCap": 0,
+  "name": "Franklin U.S. Large Cap Multifa",
+  "quoteType": "ETF"
+ },
+ "METD": {
+  "sector": "",
+  "industry": "",
+  "volume": 304111,
+  "marketCap": 0,
+  "name": "Direxion Daily META Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "PFM": {
+  "sector": "",
+  "industry": "",
+  "volume": 23495,
+  "marketCap": 0,
+  "name": "Invesco Dividend Achievers ETF",
+  "quoteType": "ETF"
+ },
+ "QDEF": {
+  "sector": "",
+  "industry": "",
+  "volume": 7993,
+  "marketCap": 0,
+  "name": "FlexShares Quality Dividend Def",
+  "quoteType": "ETF"
+ },
+ "QDF": {
+  "sector": "",
+  "industry": "",
+  "volume": 26909,
+  "marketCap": 0,
+  "name": "FlexShares Quality Dividend Ind",
+  "quoteType": "ETF"
+ },
+ "QMFE": {
+  "sector": "",
+  "industry": "",
+  "volume": 16071,
+  "marketCap": 0,
+  "name": "FT Vest Nasdaq-100 Moderate Buf",
+  "quoteType": "ETF"
+ },
+ "ROUS": {
+  "sector": "",
+  "industry": "",
+  "volume": 43571,
+  "marketCap": 0,
+  "name": "Hartford Multifactor U.S. Equit",
+  "quoteType": "ETF"
+ },
+ "TOGA": {
+  "sector": "",
+  "industry": "",
+  "volume": 5785,
+  "marketCap": 0,
+  "name": "Managed Portfolio Series Trembl",
+  "quoteType": "ETF"
+ },
+ "TSEL": {
+  "sector": "",
+  "industry": "",
+  "volume": 45701,
+  "marketCap": 0,
+  "name": "Touchstone Sands Capital US Sel",
+  "quoteType": "ETF"
+ },
+ "IEZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 500066,
+  "marketCap": 0,
+  "name": "iShares U.S. Oil Equipment & Se",
+  "quoteType": "ETF"
+ },
+ "PXJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 47717,
+  "marketCap": 0,
+  "name": "Invesco Oil & Gas Services ETF",
+  "quoteType": "ETF"
+ },
+ "BETZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 10749,
+  "marketCap": 0,
+  "name": "Roundhill Sports Betting & iGam",
+  "quoteType": "ETF"
+ },
+ "BNGE": {
+  "sector": "",
+  "industry": "",
+  "volume": 768,
+  "marketCap": 0,
+  "name": "First Trust S-Network Streaming",
+  "quoteType": "ETF"
+ },
+ "EFAX": {
+  "sector": "",
+  "industry": "",
+  "volume": 21969,
+  "marketCap": 0,
+  "name": "State Street SPDR MSCI EAFE Fos",
+  "quoteType": "ETF"
+ },
+ "ODDS": {
+  "sector": "",
+  "industry": "",
+  "volume": 1082,
+  "marketCap": 0,
+  "name": "Pacer BlueStar Digital Entertai",
+  "quoteType": "ETF"
+ },
+ "DVXF": {
+  "sector": "",
+  "industry": "",
+  "volume": 414,
+  "marketCap": 0,
+  "name": "WEBs Financial XLF Defined Vola",
+  "quoteType": "ETF"
+ },
+ "JEDI": {
+  "sector": "",
+  "industry": "",
+  "volume": 195555,
+  "marketCap": 0,
+  "name": "Defiance Drone and Modern Warfa",
+  "quoteType": "ETF"
+ },
+ "SKRE": {
+  "sector": "",
+  "industry": "",
+  "volume": 78333,
+  "marketCap": 0,
+  "name": "Tuttle Capital Daily 2X Inverse",
+  "quoteType": "ETF"
+ },
+ "SLX": {
+  "sector": "",
+  "industry": "",
+  "volume": 52712,
+  "marketCap": 0,
+  "name": "VanEck Steel ETF",
+  "quoteType": "ETF"
+ },
+ "FITE": {
+  "sector": "",
+  "industry": "",
+  "volume": 9749,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Kensho Fu",
+  "quoteType": "ETF"
+ },
+ "FLYT": {
+  "sector": "",
+  "industry": "",
+  "volume": 310819,
+  "marketCap": 0,
+  "name": "Tradr 2X Long FLY Daily ETF",
+  "quoteType": "ETF"
+ },
+ "HYP": {
+  "sector": "",
+  "industry": "",
+  "volume": 10528,
+  "marketCap": 0,
+  "name": "Golden Eagle Dynamic Hypergrowt",
+  "quoteType": "ETF"
+ },
+ "PLU": {
+  "sector": "",
+  "industry": "",
+  "volume": 344469,
+  "marketCap": 0,
+  "name": "Defiance Daily Target 2x Long P",
+  "quoteType": "ETF"
+ },
+ "FMAG": {
+  "sector": "",
+  "industry": "",
+  "volume": 22573,
+  "marketCap": 0,
+  "name": "Fidelity Magellan ETF",
+  "quoteType": "ETF"
+ },
+ "AALG": {
+  "sector": "",
+  "industry": "",
+  "volume": 63887,
+  "marketCap": 0,
+  "name": "Leverage Shares 2X Long AAL Dai",
+  "quoteType": "ETF"
+ },
+ "AXPG": {
+  "sector": "",
+  "industry": "",
+  "volume": 6987,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Long AXP Dai",
+  "quoteType": "ETF"
+ },
+ "BAMD": {
+  "sector": "",
+  "industry": "",
+  "volume": 11653,
+  "marketCap": 0,
+  "name": "Brookstone Dividend Stock ETF",
+  "quoteType": "ETF"
+ },
+ "DLLL": {
+  "sector": "",
+  "industry": "",
+  "volume": 262626,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Long DELL Dail",
+  "quoteType": "ETF"
+ },
+ "EBI": {
+  "sector": "",
+  "industry": "",
+  "volume": 6438,
+  "marketCap": 0,
+  "name": "Longview Advantage ETF",
+  "quoteType": "ETF"
+ },
+ "FCFY": {
+  "sector": "",
+  "industry": "",
+  "volume": 311,
+  "marketCap": 0,
+  "name": "First Trust S&P 500 Diversified",
+  "quoteType": "ETF"
+ },
+ "GMOV": {
+  "sector": "",
+  "industry": "",
+  "volume": 14111,
+  "marketCap": 0,
+  "name": "GMO US Value ETF",
+  "quoteType": "ETF"
+ },
+ "GQGU": {
+  "sector": "",
+  "industry": "",
+  "volume": 155711,
+  "marketCap": 0,
+  "name": "GQG US Equity ETF",
+  "quoteType": "ETF"
+ },
+ "HDV": {
+  "sector": "",
+  "industry": "",
+  "volume": 3082469,
+  "marketCap": 0,
+  "name": "iShares Core High Dividend ETF",
+  "quoteType": "ETF"
+ },
+ "KMAR": {
+  "sector": "",
+  "industry": "",
+  "volume": 11869,
+  "marketCap": 0,
+  "name": "Innovator U.S. Small Cap Power ",
+  "quoteType": "ETF"
+ },
+ "KNGZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 5690,
+  "marketCap": 0,
+  "name": "First Trust S&P 500 Diversified",
+  "quoteType": "ETF"
+ },
+ "LABX": {
+  "sector": "",
+  "industry": "",
+  "volume": 356853,
+  "marketCap": 0,
+  "name": "Tradr 2X Long ALAB Daily ETF",
+  "quoteType": "ETF"
+ },
+ "LVHD": {
+  "sector": "",
+  "industry": "",
+  "volume": 56934,
+  "marketCap": 0,
+  "name": "Franklin U.S. Low Volatility Hi",
+  "quoteType": "ETF"
+ },
+ "MDLV": {
+  "sector": "",
+  "industry": "",
+  "volume": 5384,
+  "marketCap": 0,
+  "name": "Morgan Dempsey Large Cap Value ",
+  "quoteType": "ETF"
+ },
+ "NFRA": {
+  "sector": "",
+  "industry": "",
+  "volume": 55323,
+  "marketCap": 0,
+  "name": "FlexShares STOXX Global Broad I",
+  "quoteType": "ETF"
+ },
+ "SMRI": {
+  "sector": "",
+  "industry": "",
+  "volume": 10476,
+  "marketCap": 0,
+  "name": "Bushido Capital US Equity ETF",
+  "quoteType": "ETF"
+ },
+ "TNXT": {
+  "sector": "",
+  "industry": "",
+  "volume": 2161,
+  "marketCap": 0,
+  "name": "T. Rowe Price Innovation Leader",
+  "quoteType": "ETF"
+ },
+ "TTXU": {
+  "sector": "",
+  "industry": "",
+  "volume": 12015,
+  "marketCap": 0,
+  "name": "Direxion Daily Technology Top 5",
+  "quoteType": "EQUITY"
+ },
+ "VTIX": {
+  "sector": "Technology",
+  "industry": "Computer Hardware",
+  "volume": 389795,
+  "marketCap": 114509312,
+  "name": "Virtuix Holdings Inc.",
+  "quoteType": "EQUITY"
+ },
+ "VUSG": {
+  "sector": "",
+  "industry": "",
+  "volume": 15652,
+  "marketCap": 0,
+  "name": "Vanguard Wellington U.S. Growth",
+  "quoteType": "ETF"
+ },
+ "AINT": {
+  "sector": "",
+  "industry": "",
+  "volume": 3042,
+  "marketCap": 0,
+  "name": "FINQ DOLLAR NEUTRAL U.S. Large ",
+  "quoteType": "EQUITY"
+ },
+ "AQEC": {
+  "sector": "",
+  "industry": "",
+  "volume": 54415,
+  "marketCap": 0,
+  "name": "AQE Core ETF",
+  "quoteType": "ETF"
+ },
+ "ASLV": {
+  "sector": "",
+  "industry": "",
+  "volume": 11877,
+  "marketCap": 0,
+  "name": "Allspring Special Large Value E",
+  "quoteType": "ETF"
+ },
+ "BAIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 27506,
+  "marketCap": 0,
+  "name": "Brown Advisory International Va",
+  "quoteType": "ETF"
+ },
+ "EXEQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 134,
+  "marketCap": 0,
+  "name": "Wedbush ReturnOnLeadership U.S.",
+  "quoteType": "EQUITY"
+ },
+ "GAID": {
+  "sector": "",
+  "industry": "",
+  "volume": 85,
+  "marketCap": 0,
+  "name": "Guinness Atkinson International",
+  "quoteType": "ETF"
+ },
+ "IAT": {
+  "sector": "",
+  "industry": "",
+  "volume": 251447,
+  "marketCap": 0,
+  "name": "iShares U.S. Regional Banks ETF",
+  "quoteType": "ETF"
+ },
+ "IMVP": {
+  "sector": "",
+  "industry": "",
+  "volume": 45000,
+  "marketCap": 0,
+  "name": "Invesco India ETF",
+  "quoteType": "EQUITY"
+ },
+ "INDZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 2495,
+  "marketCap": 0,
+  "name": "VanEck India Select ETF",
+  "quoteType": "ETF"
+ },
+ "IVSX": {
+  "sector": "",
+  "industry": "",
+  "volume": 744,
+  "marketCap": 0,
+  "name": "Applied Finance IVS Internation",
+  "quoteType": "ETF"
+ },
+ "KBFR": {
+  "sector": "",
+  "industry": "",
+  "volume": 6339,
+  "marketCap": 0,
+  "name": "Innovator U.S. Small Cap Manage",
+  "quoteType": "EQUITY"
+ },
+ "KDVD": {
+  "sector": "",
+  "industry": "",
+  "volume": 303,
+  "marketCap": 0,
+  "name": "Keeley Dividend ETF",
+  "quoteType": "ETF"
+ },
+ "OAKG": {
+  "sector": "",
+  "industry": "",
+  "volume": 2034,
+  "marketCap": 0,
+  "name": "Oakmark Global Large Cap ETF",
+  "quoteType": "EQUITY"
+ },
+ "PBPH": {
+  "sector": "",
+  "industry": "",
+  "volume": 90988,
+  "marketCap": 0,
+  "name": "Portfolio Building Block World ",
+  "quoteType": "ETF"
+ },
+ "RMRC": {
+  "sector": "",
+  "industry": "",
+  "volume": 4820,
+  "marketCap": 0,
+  "name": "ARMOR Core Risk-Managed ETF",
+  "quoteType": "EQUITY"
+ },
+ "RYZ": {
+  "sector": "Industrials",
+  "industry": "Metal Fabrication",
+  "volume": 437544,
+  "marketCap": 1577936128,
+  "name": "Ryerson Holding Corporation",
+  "quoteType": "EQUITY"
+ },
+ "TMVE": {
+  "sector": "",
+  "industry": "",
+  "volume": 2303,
+  "marketCap": 0,
+  "name": "Thrivent Mid Cap Value ETF",
+  "quoteType": "ETF"
+ },
+ "TSCV": {
+  "sector": "",
+  "industry": "",
+  "volume": 3274,
+  "marketCap": 0,
+  "name": "Thrivent Small Cap Value ETF",
+  "quoteType": "ETF"
+ },
+ "VTVT": {
+  "sector": "Healthcare",
+  "industry": "Biotechnology",
+  "volume": 48477,
+  "marketCap": 129049992,
+  "name": "vTv Therapeutics Inc.",
+  "quoteType": "EQUITY"
+ },
+ "AWAY": {
+  "sector": "",
+  "industry": "",
+  "volume": 8920,
+  "marketCap": 0,
+  "name": "Amplify Travel Tech ETF",
+  "quoteType": "ETF"
+ },
+ "FDIQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 4395,
+  "marketCap": 0,
+  "name": "Invesco Bloomberg Financial Dat",
+  "quoteType": "ETF"
+ },
+ "ILDR": {
+  "sector": "",
+  "industry": "",
+  "volume": 41753,
+  "marketCap": 0,
+  "name": "First Trust Innovation Leaders ",
+  "quoteType": "ETF"
+ },
+ "RVER": {
+  "sector": "",
+  "industry": "",
+  "volume": 6388,
+  "marketCap": 0,
+  "name": "Trenchless Fund ETF",
+  "quoteType": "ETF"
+ },
+ "UBEW": {
+  "sector": "",
+  "industry": "",
+  "volume": 8457,
+  "marketCap": 0,
+  "name": "Roundhill UBER WeeklyPay ETF",
+  "quoteType": "ETF"
+ },
+ "UBRL": {
+  "sector": "",
+  "industry": "",
+  "volume": 153022,
+  "marketCap": 0,
+  "name": "GraniteShares 2x Long UBER Dail",
+  "quoteType": "ETF"
+ },
+ "BUYZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 738,
+  "marketCap": 0,
+  "name": "Franklin Disruptive Commerce ET",
+  "quoteType": "ETF"
+ },
+ "CHPT": {
+  "sector": "Consumer Cyclical",
+  "industry": "Specialty Retail",
+  "volume": 536860,
+  "marketCap": 174331920,
+  "name": "ChargePoint Holdings, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "DLPN": {
+  "sector": "Communication Services",
+  "industry": "Advertising Agencies",
+  "volume": 27373,
+  "marketCap": 14709516,
+  "name": "Dolphin Entertainment, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "MMLG": {
+  "sector": "",
+  "industry": "",
+  "volume": 5308,
+  "marketCap": 0,
+  "name": "First Trust Multi-Manager Large",
+  "quoteType": "ETF"
+ },
+ "ALUB": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 20168,
+  "marketCap": 360812512,
+  "name": "Alussa Energy Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "DVXP": {
+  "sector": "",
+  "industry": "",
+  "volume": 893,
+  "marketCap": 0,
+  "name": "WEBs Consumer Staples XLP Defin",
+  "quoteType": "ETF"
+ },
+ "FSML": {
+  "sector": "",
+  "industry": "",
+  "volume": 36353,
+  "marketCap": 0,
+  "name": "Franklin Small Cap Enhanced ETF",
+  "quoteType": "EQUITY"
+ },
+ "GVLE": {
+  "sector": "",
+  "industry": "",
+  "volume": 3349,
+  "marketCap": 0,
+  "name": "Goldman Sachs Value Opportuniti",
+  "quoteType": "ETF"
+ },
+ "GXPS": {
+  "sector": "",
+  "industry": "",
+  "volume": 27442,
+  "marketCap": 0,
+  "name": "Global X PureCap MSCI Consumer ",
+  "quoteType": "ETF"
+ },
+ "IJT": {
+  "sector": "",
+  "industry": "",
+  "volume": 131249,
+  "marketCap": 0,
+  "name": "iShares S&P SmallCap 600 Growth",
+  "quoteType": "ETF"
+ },
+ "KNOV": {
+  "sector": "",
+  "industry": "",
+  "volume": 9888,
+  "marketCap": 0,
+  "name": "Innovator U.S. Small Cap Power ",
+  "quoteType": "ETF"
+ },
+ "REMC": {
+  "sector": "",
+  "industry": "",
+  "volume": 246,
+  "marketCap": 0,
+  "name": "Columbia Research Enhanced Mid ",
+  "quoteType": "EQUITY"
+ },
+ "RSPH": {
+  "sector": "",
+  "industry": "",
+  "volume": 112846,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Equal Weight He",
+  "quoteType": "ETF"
+ },
+ "SAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 57707,
+  "marketCap": 313980352,
+  "name": "Safeguard Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "SLYG": {
+  "sector": "",
+  "industry": "",
+  "volume": 161963,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P 600 Small",
+  "quoteType": "ETF"
+ },
+ "SVAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 149617,
+  "marketCap": 316786688,
+  "name": "Spring Valley Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "TALV": {
+  "sector": "",
+  "industry": "",
+  "volume": 29093,
+  "marketCap": 0,
+  "name": "Transamerica Large Value Active",
+  "quoteType": "EQUITY"
+ },
+ "VIOG": {
+  "sector": "",
+  "industry": "",
+  "volume": 30542,
+  "marketCap": 0,
+  "name": "Vanguard S&P Small-Cap 600 Grow",
+  "quoteType": "ETF"
+ },
+ "VUSV": {
+  "sector": "",
+  "industry": "",
+  "volume": 8217,
+  "marketCap": 0,
+  "name": "Vanguard Wellington U.S. Value ",
+  "quoteType": "ETF"
+ },
+ "LWAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 5425,
+  "marketCap": 306764992,
+  "name": "LightWave Acquisition Corp.",
+  "quoteType": "EQUITY"
+ },
+ "UPGR": {
+  "sector": "",
+  "industry": "",
+  "volume": 1058,
+  "marketCap": 0,
+  "name": "Xtrackers US Green Infrastructu",
+  "quoteType": "ETF"
+ },
+ "CHAT": {
+  "sector": "",
+  "industry": "",
+  "volume": 620352,
+  "marketCap": 0,
+  "name": "Roundhill Generative AI & Techn",
+  "quoteType": "ETF"
+ },
+ "TRFM": {
+  "sector": "",
+  "industry": "",
+  "volume": 29163,
+  "marketCap": 0,
+  "name": "AAM Transformers ETF",
+  "quoteType": "ETF"
+ },
+ "ASMU": {
+  "sector": "",
+  "industry": "",
+  "volume": 73336,
+  "marketCap": 0,
+  "name": "Direxion Daily ASML Bull 2X ETF",
+  "quoteType": "ETF"
+ },
+ "IDVY": {
+  "sector": "",
+  "industry": "",
+  "volume": 339,
+  "marketCap": 0,
+  "name": "First Trust International Risin",
+  "quoteType": "ETF"
+ },
+ "OILT": {
+  "sector": "",
+  "industry": "",
+  "volume": 8892,
+  "marketCap": 0,
+  "name": "Texas Capital Texas Oil Index E",
+  "quoteType": "ETF"
+ },
+ "DUNK": {
+  "sector": "",
+  "industry": "",
+  "volume": 13036,
+  "marketCap": 0,
+  "name": "Dana Unconstrained Equity ETF",
+  "quoteType": "EQUITY"
+ },
+ "EBIZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 3992,
+  "marketCap": 0,
+  "name": "Global X E-commerce ETF",
+  "quoteType": "ETF"
+ },
+ "EUSA": {
+  "sector": "",
+  "industry": "",
+  "volume": 44663,
+  "marketCap": 0,
+  "name": "iShares MSCI USA Equal Weighted",
+  "quoteType": "ETF"
+ },
+ "GSEW": {
+  "sector": "",
+  "industry": "",
+  "volume": 73241,
+  "marketCap": 0,
+  "name": "Goldman Sachs Equal Weight U.S.",
+  "quoteType": "ETF"
+ },
+ "IYLD": {
+  "sector": "",
+  "industry": "",
+  "volume": 15984,
+  "marketCap": 0,
+  "name": "iShares Morningstar Multi-Asset",
+  "quoteType": "ETF"
+ },
+ "MSFY": {
+  "sector": "",
+  "industry": "",
+  "volume": 16426,
+  "marketCap": 0,
+  "name": "Kurv Yield Premium Strategy Mic",
+  "quoteType": "ETF"
+ },
+ "ONLN": {
+  "sector": "",
+  "industry": "",
+  "volume": 7907,
+  "marketCap": 0,
+  "name": "ProShares Online Retail ETF",
+  "quoteType": "ETF"
+ },
+ "RSPE": {
+  "sector": "",
+  "industry": "",
+  "volume": 12765,
+  "marketCap": 0,
+  "name": "Invesco ESG S&P 500 Equal Weigh",
+  "quoteType": "ETF"
+ },
+ "SBIL": {
+  "sector": "",
+  "industry": "",
+  "volume": 216957,
+  "marketCap": 0,
+  "name": "Simplify Government Money Marke",
+  "quoteType": "ETF"
+ },
+ "EZM": {
+  "sector": "",
+  "industry": "",
+  "volume": 23409,
+  "marketCap": 0,
+  "name": "WisdomTree U.S. MidCap Fund",
+  "quoteType": "ETF"
+ },
+ "FEAT": {
+  "sector": "",
+  "industry": "",
+  "volume": 18344,
+  "marketCap": 0,
+  "name": "YieldMax Dorsey Wright Featured",
+  "quoteType": "ETF"
+ },
+ "FIVY": {
+  "sector": "",
+  "industry": "",
+  "volume": 6087,
+  "marketCap": 0,
+  "name": "YieldMax Dorsey Wright Hybrid 5",
+  "quoteType": "ETF"
+ },
+ "GROZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 32069,
+  "marketCap": 0,
+  "name": "Zacks Focus Growth ETF",
+  "quoteType": "ETF"
+ },
+ "JXX": {
+  "sector": "",
+  "industry": "",
+  "volume": 1990,
+  "marketCap": 0,
+  "name": "Janus Henderson Transformationa",
+  "quoteType": "ETF"
+ },
+ "OAKM": {
+  "sector": "",
+  "industry": "",
+  "volume": 226995,
+  "marketCap": 0,
+  "name": "Oakmark U.S. Large Cap ETF",
+  "quoteType": "ETF"
+ },
+ "PLOO": {
+  "sector": "",
+  "industry": "",
+  "volume": 831,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Capped Accel",
+  "quoteType": "ETF"
+ },
+ "PLYY": {
+  "sector": "",
+  "industry": "",
+  "volume": 8069,
+  "marketCap": 0,
+  "name": "GraniteShares YieldBOOST PLTR E",
+  "quoteType": "ETF"
+ },
+ "QPUX": {
+  "sector": "",
+  "industry": "",
+  "volume": 219215,
+  "marketCap": 0,
+  "name": "Defiance 2X Daily Long Pure Qua",
+  "quoteType": "ETF"
+ },
+ "QUBX": {
+  "sector": "",
+  "industry": "",
+  "volume": 495003,
+  "marketCap": 0,
+  "name": "Tradr 2X Long QUBT Daily ETF",
+  "quoteType": "ETF"
+ },
+ "RDIV": {
+  "sector": "",
+  "industry": "",
+  "volume": 55380,
+  "marketCap": 0,
+  "name": "Invesco S&P Ultra Dividend Reve",
+  "quoteType": "ETF"
+ },
+ "RSMR": {
+  "sector": "",
+  "industry": "",
+  "volume": 4504,
+  "marketCap": 0,
+  "name": "FT Vest U.S. Equity Equal Weigh",
+  "quoteType": "ETF"
+ },
+ "SKYA": {
+  "sector": "Technology",
+  "industry": "Software - Infrastructure",
+  "volume": 330176,
+  "marketCap": 52902712,
+  "name": "SkyAI, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "SMOT": {
+  "sector": "",
+  "industry": "",
+  "volume": 31950,
+  "marketCap": 0,
+  "name": "VanEck Morningstar SMID Moat ET",
+  "quoteType": "ETF"
+ },
+ "SPDV": {
+  "sector": "",
+  "industry": "",
+  "volume": 7266,
+  "marketCap": 0,
+  "name": "AAM S&P 500 High Dividend Value",
+  "quoteType": "ETF"
+ },
+ "TSSD": {
+  "sector": "",
+  "industry": "",
+  "volume": 5322,
+  "marketCap": 0,
+  "name": "Truth Social American Security ",
+  "quoteType": "EQUITY"
+ },
+ "VFQY": {
+  "sector": "",
+  "industry": "",
+  "volume": 8401,
+  "marketCap": 0,
+  "name": "Vanguard U.S. Quality Factor ET",
+  "quoteType": "ETF"
+ },
+ "AIOS": {
+  "sector": "Technology",
+  "industry": "Information Technology Services",
+  "volume": 196841,
+  "marketCap": 39690000,
+  "name": "AIOS Tech Inc.",
+  "quoteType": "EQUITY"
+ },
+ "AMZP": {
+  "sector": "",
+  "industry": "",
+  "volume": 17571,
+  "marketCap": 0,
+  "name": "Kurv Yield Premium Strategy Ama",
+  "quoteType": "ETF"
+ },
+ "AZYY": {
+  "sector": "",
+  "industry": "",
+  "volume": 3233,
+  "marketCap": 0,
+  "name": "GraniteShares YieldBoost AMZN E",
+  "quoteType": "ETF"
+ },
+ "GGME": {
+  "sector": "",
+  "industry": "",
+  "volume": 2912,
+  "marketCap": 0,
+  "name": "Invesco Next Gen Media and Gami",
+  "quoteType": "ETF"
+ },
+ "GXPD": {
+  "sector": "",
+  "industry": "",
+  "volume": 95473,
+  "marketCap": 0,
+  "name": "Global X PureCap MSCI Consumer ",
+  "quoteType": "ETF"
+ },
+ "IPAY": {
+  "sector": "",
+  "industry": "",
+  "volume": 26557,
+  "marketCap": 0,
+  "name": "Amplify Digital Payments ETF",
+  "quoteType": "ETF"
+ },
+ "JOUT": {
+  "sector": "Consumer Cyclical",
+  "industry": "Leisure",
+  "volume": 80411,
+  "marketCap": 486654176,
+  "name": "Johnson Outdoors Inc.",
+  "quoteType": "EQUITY"
+ },
+ "LATA": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 29296,
+  "marketCap": 232530000,
+  "name": "Galata Acquisition Corp. II",
+  "quoteType": "EQUITY"
+ },
+ "MMK": {
+  "sector": "",
+  "industry": "",
+  "volume": 1160,
+  "marketCap": 0,
+  "name": "State Street Prime Money Market",
+  "quoteType": "ETF"
+ },
+ "MUSQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 660,
+  "marketCap": 0,
+  "name": "MUSQ Global Music Industry Inde",
+  "quoteType": "ETF"
+ },
+ "NFXS": {
+  "sector": "",
+  "industry": "",
+  "volume": 40634,
+  "marketCap": 0,
+  "name": "Direxion Daily NFLX Bear 1X ETF",
+  "quoteType": "ETF"
+ },
+ "RGTU": {
+  "sector": "",
+  "industry": "",
+  "volume": 192960,
+  "marketCap": 0,
+  "name": "Tradr 2X Long RGTI Daily ETF",
+  "quoteType": "ETF"
+ },
+ "TCHP": {
+  "sector": "",
+  "industry": "",
+  "volume": 217068,
+  "marketCap": 0,
+  "name": "T. Rowe Price Blue Chip Growth ",
+  "quoteType": "ETF"
+ },
+ "TDAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 99003,
+  "marketCap": 235067472,
+  "name": "Translational Development Acqui",
+  "quoteType": "EQUITY"
+ },
+ "TRUD": {
+  "sector": "",
+  "industry": "",
+  "volume": 97606,
+  "marketCap": 0,
+  "name": "VanEck Consumer Discretionary T",
+  "quoteType": "ETF"
+ },
+ "UCC": {
+  "sector": "",
+  "industry": "",
+  "volume": 4661,
+  "marketCap": 0,
+  "name": "ProShares Ultra Consumer Discre",
+  "quoteType": "ETF"
+ },
+ "YCY": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 22550,
+  "marketCap": 149710144,
+  "name": "AA Mission Acquisition Corp. II",
+  "quoteType": "EQUITY"
+ },
+ "AKRE": {
+  "sector": "",
+  "industry": "",
+  "volume": 857460,
+  "marketCap": 0,
+  "name": "Akre Focus ETF",
+  "quoteType": "ETF"
+ },
+ "BCFN": {
+  "sector": "",
+  "industry": "",
+  "volume": 3752,
+  "marketCap": 0,
+  "name": "Baron Financials ETF",
+  "quoteType": "ETF"
+ },
+ "DSTL": {
+  "sector": "",
+  "industry": "",
+  "volume": 86552,
+  "marketCap": 0,
+  "name": "Distillate U.S. Fundamental Sta",
+  "quoteType": "ETF"
+ },
+ "ITAN": {
+  "sector": "",
+  "industry": "",
+  "volume": 7301,
+  "marketCap": 0,
+  "name": "Sparkline Intangible Value ETF",
+  "quoteType": "ETF"
+ },
+ "NERD": {
+  "sector": "",
+  "industry": "",
+  "volume": 1917,
+  "marketCap": 0,
+  "name": "Roundhill Video Games ETF",
+  "quoteType": "ETF"
+ },
+ "OLOX": {
+  "sector": "Industrials",
+  "industry": "Metal Fabrication",
+  "volume": 572677,
+  "marketCap": 6707972,
+  "name": "Olenox Industries Inc.",
+  "quoteType": "EQUITY"
+ },
+ "OUSA": {
+  "sector": "",
+  "industry": "",
+  "volume": 27033,
+  "marketCap": 0,
+  "name": "ALPS O'Shares U.S. Quality Divi",
+  "quoteType": "ETF"
+ },
+ "ZKIN": {
+  "sector": "Basic Materials",
+  "industry": "Steel",
+  "volume": 14382,
+  "marketCap": 87114704,
+  "name": "ZK International Group Co., Ltd",
+  "quoteType": "EQUITY"
+ },
+ "FLXI": {
+  "sector": "",
+  "industry": "",
+  "volume": 79,
+  "marketCap": 0,
+  "name": "Invesco Flexible Income ETF",
+  "quoteType": "ETF"
+ },
+ "IAI": {
+  "sector": "",
+  "industry": "",
+  "volume": 112917,
+  "marketCap": 0,
+  "name": "iShares U.S. Broker-Dealers & S",
+  "quoteType": "ETF"
+ },
+ "KCE": {
+  "sector": "",
+  "industry": "",
+  "volume": 15800,
+  "marketCap": 0,
+  "name": "State Street SPDR S&P Capital M",
+  "quoteType": "ETF"
+ },
+ "RSPF": {
+  "sector": "",
+  "industry": "",
+  "volume": 11303,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Equal Weight Fi",
+  "quoteType": "ETF"
+ },
+ "BBH": {
+  "sector": "",
+  "industry": "",
+  "volume": 5111,
+  "marketCap": 0,
+  "name": "VanEck Biotech ETF",
+  "quoteType": "ETF"
+ },
+ "EDGQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 8039,
+  "marketCap": 0,
+  "name": "Global X Nasdaq-100 Income Edge",
+  "quoteType": "EQUITY"
+ },
+ "GNOM": {
+  "sector": "",
+  "industry": "",
+  "volume": 9455,
+  "marketCap": 0,
+  "name": "Global X Genomics & Biotechnolo",
+  "quoteType": "ETF"
+ },
+ "GTOH": {
+  "sector": "",
+  "industry": "",
+  "volume": 3434,
+  "marketCap": 0,
+  "name": "Invesco Short Duration High Yie",
+  "quoteType": "ETF"
+ },
+ "GXPE": {
+  "sector": "",
+  "industry": "",
+  "volume": 1582,
+  "marketCap": 0,
+  "name": "Global X PureCap MSCI Energy ET",
+  "quoteType": "ETF"
+ },
+ "IBBQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 19515,
+  "marketCap": 0,
+  "name": "Invesco Nasdaq Biotechnology ET",
+  "quoteType": "ETF"
+ },
+ "IDNA": {
+  "sector": "",
+  "industry": "",
+  "volume": 37353,
+  "marketCap": 0,
+  "name": "iShares Genomics Immunology and",
+  "quoteType": "ETF"
+ },
+ "IFLN": {
+  "sector": "",
+  "industry": "",
+  "volume": 190847,
+  "marketCap": 0,
+  "name": "Invesco Bloomberg Enhanced Fall",
+  "quoteType": "EQUITY"
+ },
+ "QNXT": {
+  "sector": "",
+  "industry": "",
+  "volume": 1577,
+  "marketCap": 0,
+  "name": "iShares Nasdaq-100 ex Top 30 ET",
+  "quoteType": "ETF"
+ },
+ "TMED": {
+  "sector": "",
+  "industry": "",
+  "volume": 2165,
+  "marketCap": 0,
+  "name": "T. Rowe Price Health Care ETF",
+  "quoteType": "ETF"
+ },
+ "GLDN": {
+  "sector": "",
+  "industry": "",
+  "volume": 5896,
+  "marketCap": 0,
+  "name": "Nicholas Gold Income ETF",
+  "quoteType": "EQUITY"
+ },
+ "COMD": {
+  "sector": "",
+  "industry": "",
+  "volume": 2400,
+  "marketCap": 0,
+  "name": "Global X Commodity Strategy ETF",
+  "quoteType": "ETF"
+ },
+ "COPZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 33938,
+  "marketCap": 0,
+  "name": "Defiance Daily Target 2X Long C",
+  "quoteType": "EQUITY"
+ },
+ "DSPY": {
+  "sector": "",
+  "industry": "",
+  "volume": 29963,
+  "marketCap": 0,
+  "name": "Tema S&P 500 Historical Weight ",
+  "quoteType": "ETF"
+ },
+ "EDGX": {
+  "sector": "",
+  "industry": "",
+  "volume": 4847,
+  "marketCap": 0,
+  "name": "Global X U.S. 500 Income Edge E",
+  "quoteType": "EQUITY"
+ },
+ "ENFR": {
+  "sector": "",
+  "industry": "",
+  "volume": 87214,
+  "marketCap": 0,
+  "name": "Alerian Energy Infrastructure E",
+  "quoteType": "ETF"
+ },
+ "FAAR": {
+  "sector": "",
+  "industry": "",
+  "volume": 39277,
+  "marketCap": 0,
+  "name": "First Trust Alternative Absolut",
+  "quoteType": "ETF"
+ },
+ "JANI": {
+  "sector": "",
+  "industry": "",
+  "volume": 8865,
+  "marketCap": 0,
+  "name": "AllianzIM International Equity ",
+  "quoteType": "ETF"
+ },
+ "JIDE": {
+  "sector": "",
+  "industry": "",
+  "volume": 890,
+  "marketCap": 0,
+  "name": "JPMorgan International Dynamic ",
+  "quoteType": "EQUITY"
+ },
+ "JUSA": {
+  "sector": "",
+  "industry": "",
+  "volume": 104122,
+  "marketCap": 0,
+  "name": "JPMorgan U.S. Research Enhanced",
+  "quoteType": "ETF"
+ },
+ "LNGX": {
+  "sector": "",
+  "industry": "",
+  "volume": 47093,
+  "marketCap": 0,
+  "name": "Global X U.S. Natural Gas ETF",
+  "quoteType": "EQUITY"
+ },
+ "MYHD": {
+  "sector": "",
+  "industry": "",
+  "volume": 815,
+  "marketCap": 0,
+  "name": "State Street My2030 High Yield ",
+  "quoteType": "ETF"
+ },
+ "NBET": {
+  "sector": "",
+  "industry": "",
+  "volume": 5742,
+  "marketCap": 0,
+  "name": "Neuberger Energy Transition & I",
+  "quoteType": "ETF"
+ },
+ "RZG": {
+  "sector": "",
+  "industry": "",
+  "volume": 7093,
+  "marketCap": 0,
+  "name": "Invesco S&P Smallcap 600 Pure G",
+  "quoteType": "ETF"
+ },
+ "TOV": {
+  "sector": "",
+  "industry": "",
+  "volume": 17795,
+  "marketCap": 0,
+  "name": "JLens 500 Jewish Advocacy U.S. ",
+  "quoteType": "ETF"
+ },
+ "TROT": {
+  "sector": "",
+  "industry": "",
+  "volume": 60,
+  "marketCap": 0,
+  "name": "Invesco MSCI Treasury Duration ",
+  "quoteType": "EQUITY"
+ },
+ "CRWS": {
+  "sector": "Consumer Cyclical",
+  "industry": "Furnishings, Fixtures & Appliances",
+  "volume": 34625,
+  "marketCap": 29525892,
+  "name": "Crown Crafts, Inc.",
+  "quoteType": "EQUITY"
+ },
+ "AAUM": {
+  "sector": "",
+  "industry": "",
+  "volume": 456,
+  "marketCap": 0,
+  "name": "Tema Alternative Asset Managers",
+  "quoteType": "ETF"
+ },
+ "AVMC": {
+  "sector": "",
+  "industry": "",
+  "volume": 30230,
+  "marketCap": 0,
+  "name": "Avantis U.S. Mid Cap Equity ETF",
+  "quoteType": "ETF"
+ },
+ "AVUS": {
+  "sector": "",
+  "industry": "",
+  "volume": 332541,
+  "marketCap": 0,
+  "name": "Avantis U.S. Equity ETF",
+  "quoteType": "ETF"
+ },
+ "BAUG": {
+  "sector": "",
+  "industry": "",
+  "volume": 4379,
+  "marketCap": 0,
+  "name": "Innovator U.S. Equity Buffer ET",
+  "quoteType": "ETF"
+ },
+ "BDEC": {
+  "sector": "",
+  "industry": "",
+  "volume": 26964,
+  "marketCap": 0,
+  "name": "Innovator U.S. Equity Buffer ET",
+  "quoteType": "ETF"
+ },
+ "BFEB": {
+  "sector": "",
+  "industry": "",
+  "volume": 13590,
+  "marketCap": 0,
+  "name": "Innovator U.S. Equity Buffer ET",
+  "quoteType": "ETF"
+ },
+ "BFJA": {
+  "sector": "",
+  "industry": "",
+  "volume": 114,
+  "marketCap": 0,
+  "name": "FT Vest Bitcoin Strategy Floor1",
+  "quoteType": "ETF"
+ },
+ "BNT": {
+  "sector": "Financial Services",
+  "industry": "Insurance - Diversified",
+  "volume": 26043,
+  "marketCap": 11737719808,
+  "name": "Brookfield Wealth Solutions Ltd",
+  "quoteType": "EQUITY"
+ },
+ "DSAC": {
+  "sector": "Financial Services",
+  "industry": "Shell Companies",
+  "volume": 45046,
+  "marketCap": 344265504,
+  "name": "Daedalus Special Acquisition Co",
+  "quoteType": "EQUITY"
+ },
+ "FFEB": {
+  "sector": "",
+  "industry": "",
+  "volume": 30479,
+  "marketCap": 0,
+  "name": "FT Vest U.S. Equity Buffer ETF ",
+  "quoteType": "ETF"
+ },
+ "GABF": {
+  "sector": "",
+  "industry": "",
+  "volume": 5516,
+  "marketCap": 0,
+  "name": "Gabelli ETFs Trust Gabelli Fina",
+  "quoteType": "ETF"
+ },
+ "GPZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 286056,
+  "marketCap": 0,
+  "name": "VanEck Alternative Asset Manage",
+  "quoteType": "ETF"
+ },
+ "IGME": {
+  "sector": "",
+  "industry": "",
+  "volume": 1008,
+  "marketCap": 0,
+  "name": "Bitwise GME Option Income Strat",
+  "quoteType": "ETF"
+ },
+ "IYJ": {
+  "sector": "",
+  "industry": "",
+  "volume": 98922,
+  "marketCap": 0,
+  "name": "iShares U.S. Industrials ETF",
+  "quoteType": "ETF"
+ },
+ "LBO": {
+  "sector": "",
+  "industry": "",
+  "volume": 2304,
+  "marketCap": 0,
+  "name": "WHITEWOLF Publicly Listed Priva",
+  "quoteType": "ETF"
+ },
+ "MBCC": {
+  "sector": "",
+  "industry": "",
+  "volume": 16637,
+  "marketCap": 0,
+  "name": "Monarch Blue Chips Core Index E",
+  "quoteType": "ETF"
+ },
+ "MSOO": {
+  "sector": "",
+  "industry": "",
+  "volume": 1503,
+  "marketCap": 0,
+  "name": "Leverage Shares 2x Capped Accel",
+  "quoteType": "ETF"
+ },
+ "PAWZ": {
+  "sector": "",
+  "industry": "",
+  "volume": 5711,
+  "marketCap": 0,
+  "name": "ProShares Pet Care ETF",
+  "quoteType": "ETF"
+ },
+ "PFEB": {
+  "sector": "",
+  "industry": "",
+  "volume": 31529,
+  "marketCap": 0,
+  "name": "Innovator U.S. Equity Power Buf",
+  "quoteType": "ETF"
+ },
+ "PSP": {
+  "sector": "",
+  "industry": "",
+  "volume": 53987,
+  "marketCap": 0,
+  "name": "Invesco Global Listed Private E",
+  "quoteType": "ETF"
+ },
+ "QUS": {
+  "sector": "",
+  "industry": "",
+  "volume": 30230,
+  "marketCap": 0,
+  "name": "State Street SPDR MSCI USA Stra",
+  "quoteType": "ETF"
+ },
+ "RAFE": {
+  "sector": "",
+  "industry": "",
+  "volume": 13850,
+  "marketCap": 0,
+  "name": "PIMCO RAFI ESG U.S. ETF",
+  "quoteType": "ETF"
+ },
+ "RSPD": {
+  "sector": "",
+  "industry": "",
+  "volume": 55059,
+  "marketCap": 0,
+  "name": "Invesco S&P 500 Equal Weight Co",
+  "quoteType": "ETF"
+ },
+ "RZV": {
+  "sector": "",
+  "industry": "",
+  "volume": 5338,
+  "marketCap": 0,
+  "name": "Invesco S&P Smallcap 600 Pure V",
+  "quoteType": "ETF"
+ },
+ "SEIQ": {
+  "sector": "",
+  "industry": "",
+  "volume": 44593,
+  "marketCap": 0,
+  "name": "SEI Enhanced U.S. Large Cap Qua",
+  "quoteType": "ETF"
+ },
+ "SPGM": {
+  "sector": "",
+  "industry": "",
+  "volume": 179108,
+  "marketCap": 0,
+  "name": "State Street SPDR Portfolio MSC",
+  "quoteType": "ETF"
+ },
+ "SSPY": {
+  "sector": "",
+  "industry": "",
+  "volume": 1838,
+  "marketCap": 0,
+  "name": "Stratified LargeCap Index ETF",
+  "quoteType": "ETF"
+ },
+ "SUNC": {
+  "sector": "Energy",
+  "industry": "Oil & Gas Midstream",
+  "volume": 512375,
+  "marketCap": 3452682496,
+  "name": "SunocoCorp LLC",
+  "quoteType": "EQUITY"
+ },
+ "TPLC": {
+  "sector": "",
+  "industry": "",
+  "volume": 41203,
+  "marketCap": 0,
+  "name": "Timothy Plan US Large/Mid Cap C",
+  "quoteType": "ETF"
+ },
+ "TSIC": {
+  "sector": "",
+  "industry": "",
+  "volume": 1020,
+  "marketCap": 0,
+  "name": "Truth Social American Icons ETF",
+  "quoteType": "EQUITY"
+ },
+ "UYG": {
+  "sector": "",
+  "industry": "",
+  "volume": 13674,
+  "marketCap": 0,
+  "name": "ProShares Ultra Financials",
+  "quoteType": "ETF"
+ },
+ "ECHO": {
+  "sector": "Communication Services",
+  "industry": "Telecom Services",
+  "volume": 8605483,
+  "marketCap": 28198854656,
+  "name": "EchoStar Corporation",
+  "quoteType": "EQUITY"
  }
 }

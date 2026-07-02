@@ -13,7 +13,8 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-git pull --rebase origin main >> "%LOGFILE%" 2>&1
+if exist ".git\rebase-merge" git rebase --abort >> "%LOGFILE%" 2>&1
+git pull --rebase origin main >> "%LOGFILE%" 2>&1 || git rebase --abort >> "%LOGFILE%" 2>&1
 git add ai_supply_chain.html ai_supply_chain_meta.json >> "%LOGFILE%" 2>&1
 git commit -m "Auto-refresh AI Supply Chain data [%date%]" >> "%LOGFILE%" 2>&1
 if %ERRORLEVEL% NEQ 0 (
