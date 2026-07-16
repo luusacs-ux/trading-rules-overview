@@ -38,7 +38,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <body>
 <div class="header">
   <h1>ONDS Rule Performance</h1>
-  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="green">$140.74</span> total PnL</p>
+  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="red">$-252.79</span> total PnL</p>
 </div>
 <div class="nav"><a href="../performance.html">Back to Summary</a> <a href="../index.html">Rules Overview</a></div>
 <div class="container">
@@ -72,43 +72,43 @@ a:hover{color:#e94560;text-decoration:underline}
 </thead>
 <tbody>
 <tr>
-  <td title="ONDS_L5M_00005_WR100.0%/APnL85.8%/PTPnL14.3%: CIFG Stoch0">ONDS_L5M_00005_WR100.0%/APnL85.8%/PTPnL14.3%: CIFG Stoch0</td>
-  <td>2026-05-26</td>
+  <td title="ONDS_SD_00016: 12bar drop=-18.9%">ONDS_SD_00016: 12bar drop=-18.9%</td>
+  <td>N/A</td>
   <td data-v="1">1</td>
-  <td data-v="140.74"><span class="green">$140.74</span></td>
-  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
   <td data-v="1">1</td>
-  <td data-v="140.74"><span class="green">$140.74</span></td>
-  <td data-v="3.53"><span class="green">+3.53%</span></td>
-  <td data-v="0"><span class="zero">0</span></td>
-  <td data-v="0.0"><span class="zero">$0.00</span></td>
-  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
   <td data-v="1">1</td>
-  <td data-v="100.0"><span class="green">100%</span></td>
-  <td data-v="140.74"><span class="green">$140.74</span></td>
-  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="0.0"><span class="zero">—</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
 </tr>
 <tr style="font-weight:bold;border-top:2px solid #e94560">
   <td>TOTAL</td>
   <td></td>
   <td data-v="1">1</td>
-  <td data-v="140.74"><span class="green">$140.74</span></td>
-  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
   <td data-v="1">1</td>
-  <td data-v="140.74"><span class="green">$140.74</span></td>
-  <td data-v="3.53"><span class="green">+3.53%</span></td>
-  <td data-v="0">0</td>
-  <td data-v="0.0"><span class="zero">$0.00</span></td>
-  <td data-v="0.0"><span class="zero">+0.00%</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
   <td data-v="1">1</td>
-  <td data-v="100.0"><span class="green">100%</span></td>
-  <td data-v="140.74"><span class="green">$140.74</span></td>
-  <td data-v="3.53"><span class="green">+3.53%</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
+  <td data-v="1">1</td>
+  <td data-v="0.0"><span class="zero">—</span></td>
+  <td data-v="-252.79"><span class="red">$-252.79</span></td>
+  <td data-v="-6.33"><span class="red">-6.33%</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-05-27 16:45 UTC</div>
+<div class="footer">Last updated: 2026-07-15 19:56 UTC</div>
 
 <script>
 function sortTable(table, col, type, asc) {
@@ -139,7 +139,7 @@ if (search) {
   search.addEventListener('input', function() {
     var raw = this.value.toLowerCase().trim();
     var terms = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);
-    document.querySelectorAll('#openTable tbody tr, #mainTable tbody tr').forEach(function(r) {
+    document.querySelectorAll('#openTable tbody tr, .closed-table tbody tr').forEach(function(r) {
       var tk = r.cells[0].textContent.toLowerCase();
       var show = terms.length === 0 || terms.some(function(t){return tk.includes(t);});
       r.style.display = show ? '' : 'none';

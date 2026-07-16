@@ -38,7 +38,7 @@ a:hover{color:#e94560;text-decoration:underline}
 <body>
 <div class="header">
   <h1>OXY Rule Performance</h1>
-  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="red">$-208.42</span> total PnL</p>
+  <p class="subtitle">1 rules &bull; 1 trades &bull; <span class="red">$-263.93</span> total PnL</p>
 </div>
 <div class="nav"><a href="../performance.html">Back to Summary</a> <a href="../index.html">Rules Overview</a></div>
 <div class="container">
@@ -72,11 +72,11 @@ a:hover{color:#e94560;text-decoration:underline}
 </thead>
 <tbody>
 <tr>
-  <td title="OXY_S5M_00001_WR81.8%/APnL80.66%/PTPnL7.33%: vol_ratio={vr:.1f}">OXY_S5M_00001_WR81.8%/APnL80.66%/PTPnL7.33%: vol_ratio={vr:....</td>
-  <td>2026-05-01</td>
+  <td title="OXY_S5M_00018_WR83.3%/APnL155.29%/PTPnL4.31%: Stoch=9">OXY_S5M_00018_WR83.3%/APnL155.29%/PTPnL4.31%: Stoch=9</td>
+  <td>2026-05-27</td>
   <td data-v="1">1</td>
-  <td data-v="-208.42"><span class="red">$-208.42</span></td>
-  <td data-v="-5.22"><span class="red">-5.22%</span></td>
+  <td data-v="-263.93"><span class="red">$-263.93</span></td>
+  <td data-v="-6.65"><span class="red">-6.65%</span></td>
   <td data-v="0"><span class="zero">0</span></td>
   <td data-v="0.0"><span class="zero">$0.00</span></td>
   <td data-v="0.0"><span class="zero">+0.00%</span></td>
@@ -85,15 +85,15 @@ a:hover{color:#e94560;text-decoration:underline}
   <td data-v="0.0"><span class="zero">+0.00%</span></td>
   <td data-v="1">1</td>
   <td data-v="0.0"><span class="zero">—</span></td>
-  <td data-v="-208.42"><span class="red">$-208.42</span></td>
-  <td data-v="-5.22"><span class="red">-5.22%</span></td>
+  <td data-v="-263.93"><span class="red">$-263.93</span></td>
+  <td data-v="-6.65"><span class="red">-6.65%</span></td>
 </tr>
 <tr style="font-weight:bold;border-top:2px solid #e94560">
   <td>TOTAL</td>
   <td></td>
   <td data-v="1">1</td>
-  <td data-v="-208.42"><span class="red">$-208.42</span></td>
-  <td data-v="-5.22"><span class="red">-5.22%</span></td>
+  <td data-v="-263.93"><span class="red">$-263.93</span></td>
+  <td data-v="-6.65"><span class="red">-6.65%</span></td>
   <td data-v="0">0</td>
   <td data-v="0.0"><span class="zero">$0.00</span></td>
   <td data-v="0.0"><span class="zero">+0.00%</span></td>
@@ -102,13 +102,13 @@ a:hover{color:#e94560;text-decoration:underline}
   <td data-v="0.0"><span class="zero">+0.00%</span></td>
   <td data-v="1">1</td>
   <td data-v="0.0"><span class="zero">—</span></td>
-  <td data-v="-208.42"><span class="red">$-208.42</span></td>
-  <td data-v="-5.22"><span class="red">-5.22%</span></td>
+  <td data-v="-263.93"><span class="red">$-263.93</span></td>
+  <td data-v="-6.65"><span class="red">-6.65%</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="footer">Last updated: 2026-05-22 19:33 UTC</div>
+<div class="footer">Last updated: 2026-07-15 19:56 UTC</div>
 
 <script>
 function sortTable(table, col, type, asc) {
@@ -139,7 +139,7 @@ if (search) {
   search.addEventListener('input', function() {
     var raw = this.value.toLowerCase().trim();
     var terms = raw.split(',').map(function(s){return s.trim();}).filter(Boolean);
-    document.querySelectorAll('#openTable tbody tr, #mainTable tbody tr').forEach(function(r) {
+    document.querySelectorAll('#openTable tbody tr, .closed-table tbody tr').forEach(function(r) {
       var tk = r.cells[0].textContent.toLowerCase();
       var show = terms.length === 0 || terms.some(function(t){return tk.includes(t);});
       r.style.display = show ? '' : 'none';
