@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Requirements v8 — Trading System + ML/Analytics Layer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.6}
+.header{background:#16213e;padding:16px 20px;border-bottom:2px solid #e94560}
+.header h1{font-size:1.4rem;color:#e94560;margin-bottom:4px}
+.header .subtitle{color:#a0a0b0;font-size:12px}
+.nav{padding:10px 20px;font-size:12px;border-bottom:1px solid #1e2a4a}
+.nav a{color:#53c0f0;text-decoration:none;margin-right:16px}
+.nav a:hover{color:#e94560}
+.content{max-width:900px;margin:0 auto;padding:20px}
+h2{color:#e94560;font-size:1.2rem;margin:28px 0 12px;padding-bottom:6px;border-bottom:1px solid #0f3460}
+h3{color:#53c0f0;font-size:1rem;margin:20px 0 8px}
+h4{color:#a0c4ff;font-size:0.9rem;margin:14px 0 6px}
+p{margin:8px 0;color:#c8c8d8}
+ul,ol{margin:8px 0 8px 24px;color:#c8c8d8}
+li{margin:4px 0}
+.card{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0}
+.card-title{color:#e94560;font-weight:600;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#0f3460;color:#e94560;padding:8px 10px;text-align:left;border-bottom:2px solid #e94560;font-size:11px;text-transform:uppercase}
+td{padding:8px 10px;border-bottom:1px solid #1e2a4a;color:#c8c8d8}
+tr:hover{background:#1e2a4a}
+code{background:#0f3460;color:#53c0f0;padding:2px 6px;border-radius:3px;font-size:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin:2px}
+.tag-new{background:#1b5e20;color:#4caf50}
+.tag-change{background:#e65100;color:#ff9800}
+.tag-keep{background:#0d47a1;color:#42a5f5}
+.tag-resolved{background:#4a148c;color:#ce93d8}
+.tag-removed{background:#b71c1c;color:#ef5350}
+.status-box{background:#1b2838;border-left:3px solid #e94560;padding:12px 16px;margin:16px 0;font-size:13px}
+.flow-diagram{background:#0f1a2e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0;font-family:'Courier New',monospace;font-size:12px;color:#53c0f0;line-height:1.8;overflow-x:auto}
+.mermaid{background:#0f1a2e;border:1px solid #0f3460;border-radius:8px;padding:20px;margin:12px 0;overflow-x:auto}
+.footer{text-align:center;padding:24px;color:#555;font-size:11px;border-top:1px solid #1e2a4a;margin-top:40px}
+.toc{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:16px 20px;margin:16px 0}
+.toc-title{color:#e94560;font-weight:600;font-size:14px;margin-bottom:10px}
+.toc ol{margin:0 0 0 20px;padding:0}
+.toc li{margin:4px 0}
+.toc a{color:#53c0f0;text-decoration:none;font-size:13px}
+.toc a:hover{color:#e94560;text-decoration:underline}
+.changelog{margin:12px 0}
+.changelog-entry{background:#16213e;border:1px solid #0f3460;border-radius:8px;padding:16px;margin:12px 0}
+.changelog-version{color:#e94560;font-weight:700;font-size:15px;margin-bottom:4px}
+.changelog-date{color:#a0a0b0;font-size:12px;margin-bottom:8px}
+.changelog-signoff{color:#4caf50;font-size:12px;font-style:italic;margin-top:8px}
+.change-item{margin:4px 0;padding-left:8px;border-left:2px solid #0f3460}
+.change-item.added{border-left-color:#4caf50}
+.change-item.changed{border-left-color:#ff9800}
+.change-item.removed{border-left-color:#ef5350}
+.change-item.fixed{border-left-color:#53c0f0}
+@media(max-width:480px){.content{padding:12px}h2{font-size:1.05rem}table{font-size:11px}th,td{padding:6px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Design Requirements Document</h1>
+  <div class="subtitle">Trading System + ML/Analytics Layer &bull; v8.0 &bull; 2026-07-22</div>
+</div>
+
+<div class="nav">
+  <a href="index.html">&larr; Rules Overview</a>
+  <a href="performance.html">Performance Dashboard</a>
+  <a href="ticker_rankings.html">Ticker Rankings</a>
+  <a href="meta_label_shadow.html">ML Shadow Test</a>
+  <a href="design_requirements_v7.html">v7 (archived)</a>
+</div>
+
+<div class="content">
+
+<!-- ============================================================ -->
+<h2 id="s0">0. Change Management</h2>
+
+<p>This section documents all version changes between releases, with itemized changes, dates, and code review agent sign-off.</p>
+
+<div class="changelog">
+
+<div class="changelog-entry">
+  <div class="changelog-version">v8.0</div>
+  <div class="changelog-date">2026-07-22</div>
+  <p>Adds the ML/analytics layer, options system, and fleet migration built June&ndash;July 2026. Core trading architecture (Sections 2&ndash;6) unchanged and still accurate; this revision documents the new research/ranking/ML components and the GitHub dev/prod fleet split.</p>
+
+  <h4>Section 3: Unified Trader Architecture</h4>
+  <div class="change-item added">ADDED: 3.8 &mdash; GPU LSTM veto filter (<code>ml/gpu_predictor.py</code>, <code>models/gpu/pattern_lstm.pt</code>) wired into the individual trader. Documented as DORMANT (0 vetoes to date, negative validation skill) &mdash; kept as known state, not an endorsement.</div>
+  <div class="change-item changed">CHANGED: 3.7 &mdash; crypto v2 documented as a consensus trader (entry=2 signals, hold-override 50%, exit-flip 30%) over ~274 BTC rules.</div>
+
+  <h4>Section 5: Rule Creation &amp; Promotion Pipeline</h4>
+  <div class="change-item added">ADDED: 5.7 &mdash; data pipeline enhancements: intraday CSVs normalized to US/Pacific, daily CSVs carry split/dividend/earnings event columns, correlation universe quality-gated (~2,653 tickers).</div>
+  <div class="change-item added">ADDED: 5.8 &mdash; rule metrics ledger (<code>rule_metrics.db</code>) + nightly reconcile that self-heals missing production rules.</div>
+
+  <h4>Section 7: GitHub Pages Design</h4>
+  <div class="change-item added">ADDED: hub pages &mdash; AI Supply Chain, Options Mispricing, Cross-Sectional Shadow Book, Ticker Rankings, ML Shadow Test.</div>
+  <div class="change-item added">ADDED: 7.7 &mdash; scheduled auto-refresh tasks (RefreshTickerRankings weekly, MetaLabelShadow hourly, AISupplyChain, OptionsMispricingScan) with the pull&ndash;add&ndash;commit&ndash;push publish pattern.</div>
+
+  <h4>Section 10: System Inventory</h4>
+  <div class="change-item changed">CHANGED: added ML/analytics, options, and fleet components.</div>
+
+  <h4>Section 13: ML &amp; Analytics Layer <span class="tag tag-new">NEW</span></h4>
+  <div class="change-item added">ADDED: probability-engine ticker rankings (5-factor), meta-label model + shadow forward test, GPU LSTM filter status, regime_suite, prediction_engine.</div>
+
+  <h4>Section 14: Options System <span class="tag tag-new">NEW</span></h4>
+  <div class="change-item added">ADDED: options mispricing scanner + Maxwell (<code>options_bot.py</code>).</div>
+
+  <h4>Section 15: Fleet Migration &amp; Deployment <span class="tag tag-new">NEW</span></h4>
+  <div class="change-item added">ADDED: GitHub dev/prod split, code-only repo, <code>fleet/</code> tooling, hourly watchdog that deploys on-disk edits on restart.</div>
+
+  <div class="changelog-signoff" style="color:#ff9800">
+    DRAFT &mdash; pending 5-agent review pipeline sign-off (Senior Architect, Performance Engineer, Clean Code Critic, Production Safety, Market Strategist). Authored 2026-07-22.
+  </div>
+</div>
+
+<div class="changelog-entry">
+  <div class="changelog-version">v7.0</div>
+  <div class="changelog-date">2026-05-28</div>
+  <p>Major revision to align requirements with current production state. All sections updated.</p>
+
+  <h4>Section 1: Document Purpose</h4>
+  <div class="change-item changed">CHANGED: Status updated from "requirements only" to "living document tracking production state"</div>
+
+  <h4>Section 2: Unified Rules Tab</h4>
+  <div class="change-item changed">CHANGED: Rule_ID format corrected from <code>AMZNS_001</code> to <code>{TICKER}_{TYPE}{TF}_{SEQ5}</code> (e.g., <code>AMZN_S5M_00001_WR100%/APnL120%/PTPnL2%</code>)</div>
+  <div class="change-item changed">CHANGED: Rule index file corrected from <code>rule_index.json</code> to <code>rule_index.py</code> (Python module, not JSON)</div>
+  <div class="change-item added">ADDED: Bear rule numbering &mdash; bear families use 05001+ sequence range to prevent ID collisions with bull rules</div>
+  <div class="change-item added">ADDED: Regime gate column concept &mdash; rules have <code>regime_allowed</code> field (BULL/BEAR)</div>
+  <div class="change-item changed">CHANGED: Rule count updated from "1337 rules, 73 families" to "592+ families, T1/T2 only in production index"</div>
+
+  <h4>Section 3: Unified Trader Architecture</h4>
+  <div class="change-item changed">CHANGED: Primary trader file corrected from <code>paper_trader_stock.py</code> to <code>paper_trader_individual.py</code></div>
+  <div class="change-item added">ADDED: Regime gating system &mdash; <code>REGIME_ENABLED=True</code>, blocks rules not allowed in current market regime</div>
+  <div class="change-item added">ADDED: Rule dedup by <code>id(rule_list)</code> replaces prefix-based dedup to prevent triple-loading from aliases</div>
+  <div class="change-item added">ADDED: Bear/bull ID separation prevents parameter substitution bugs (CLSK incident)</div>
+  <div class="change-item changed">CHANGED: Crypto trader section updated &mdash; <code>paper_trader_crypto.py</code> and <code>paper_trader_crypto_v2.py</code> both exist</div>
+
+  <h4>Section 4: Dashboard v6 Layout</h4>
+  <div class="change-item changed">CHANGED: Dashboard files updated &mdash; <code>dashboard_v6.pyw</code> is latest, v4 archived</div>
+  <div class="change-item added">ADDED: Per-ticker performance detail pages (<code>reports/{TICKER}_perf.html</code>)</div>
+
+  <h4>Section 5: Rule Creation &amp; Promotion Pipeline</h4>
+  <div class="change-item removed">REMOVED: <code>create_rules_local5.py</code> reference &mdash; file does not exist. <code>create_rules_local3.py</code> is the 5-cycle pipeline</div>
+  <div class="change-item added">ADDED: Distributed 3-PC pipeline architecture (HQ + MONKEY + Pigg0Tech)</div>
+  <div class="change-item added">ADDED: <code>pipeline_dispatch.py</code> and <code>batch_queue.json</code> for automated queue management</div>
+  <div class="change-item added">ADDED: Distributed Polygon API lock system across cluster</div>
+  <div class="change-item added">ADDED: Bear rule pipeline (<code>--chain-bear</code> flag, <code>create_rules_bear.py</code>)</div>
+  <div class="change-item changed">CHANGED: Tier criteria overhauled (2026-05-13) &mdash; dual-path T1 with statistical trade count minimums</div>
+  <div class="change-item changed">CHANGED: Data source policy &mdash; Polygon.io for ALL stock timeframes (not yfinance for 1h/daily), Binance for crypto</div>
+  <div class="change-item changed">CHANGED: Max 1 pipeline per PC (not "max 2 concurrent" as v6 stated)</div>
+
+  <h4>Section 6: 2-Way Telegram Communication</h4>
+  <div class="change-item keep">KEPT: Architecture unchanged &mdash; bridge + inbox/outbox + watch loop</div>
+
+  <h4>Section 7: GitHub Pages Design</h4>
+  <div class="change-item added">ADDED: <code>performance.html</code> with T1/T2 tier split sections + open positions + per-ticker drill-down</div>
+  <div class="change-item added">ADDED: <code>pattern_discovery_design.html</code>, <code>ticker_inventory.html</code>, <code>short_squeeze_report.html</code>, <code>active_rules.html</code></div>
+  <div class="change-item added">ADDED: <code>gen_performance_dashboard.py</code> auto-generates performance page with live yfinance prices</div>
+  <div class="change-item changed">CHANGED: Build tool corrected from <code>_build_index.py</code> to <code>build_lean_index.py</code></div>
+
+  <h4>Section 8: Regression Test Suite</h4>
+  <div class="change-item changed">CHANGED: Data source references updated (Polygon replaces yfinance/Alpha Vantage/Twelve Data for stocks)</div>
+
+  <h4>Section 9: Open Questions</h4>
+  <div class="change-item resolved">RESOLVED: All 5 open questions from v6 now have answers</div>
+
+  <h4>Section 10: System Inventory</h4>
+  <div class="change-item changed">CHANGED: Complete rewrite to reflect actual file names, roles, and distributed architecture</div>
+
+  <h4>Section 11: Code Review Pipeline</h4>
+  <div class="change-item added">ADDED: New section documenting 5-agent mandatory code review pipeline (was 4-agent in CLAUDE.md)</div>
+
+  <h4>Section 0: Change Management</h4>
+  <div class="change-item added">ADDED: This section &mdash; version history with itemized changes and sign-off</div>
+
+  <div class="changelog-signoff">
+    Reviewed by: Senior Architect (PASS), Performance Engineer (PASS), Clean Code Critic (PASS), Production Safety (PASS), Market Strategist (PASS) &mdash; 2026-05-28
+  </div>
+</div>
+
+<div class="changelog-entry">
+  <div class="changelog-version">v6.0 (v1.3)</div>
+  <div class="changelog-date">2026-04-23 (updated 2026-05-06)</div>
+  <p>Initial design requirements document. Established baseline architecture, dashboard v6 layout, 13-phase pipeline, Telegram bridge, regression test suite.</p>
+  <div class="change-item added">ADDED: Initial document creation &mdash; Sections 1-11</div>
+  <div class="change-item added">ADDED: 2026-05-06 update &mdash; Section 5 expanded with 13-phase pipeline detail, Section 11 workflow diagrams added</div>
+  <div class="changelog-signoff">
+    Reviewed by: Senior Architect (PASS), Performance Engineer (PASS), Clean Code Critic (PASS), Production Safety (PASS) &mdash; 2026-05-06
+  </div>
+</div>
+
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s1">1. Document Purpose</h2>
+<p>This document defines the complete design requirements for the trading system. It serves as the single reference for all system components &mdash; from trading architecture and rule creation through deployment, monitoring, and communication infrastructure. It is maintained as a living document that tracks the production state of the system.</p>
+
+<div class="toc">
+  <div class="toc-title">Table of Contents</div>
+  <ol start="0">
+    <li><a href="#s0">Change Management</a></li>
+    <li><a href="#s1">Document Purpose</a></li>
+    <li><a href="#s2">Unified Rules Tab</a></li>
+    <li><a href="#s3">Unified Trader Architecture</a></li>
+    <li><a href="#s4">Dashboard v6 Layout</a></li>
+    <li><a href="#s5">Rule Creation &amp; Promotion Pipeline</a></li>
+    <li><a href="#s6">2-Way Telegram Communication</a></li>
+    <li><a href="#s7">GitHub Pages Design</a></li>
+    <li><a href="#s8">Regression Test Suite</a></li>
+    <li><a href="#s9">Resolved Questions (from v6)</a></li>
+    <li><a href="#s10">Appendix A: Current System Inventory</a></li>
+    <li><a href="#s11">Appendix B: Workflow Diagrams</a></li>
+    <li><a href="#s12">Appendix C: Code Review Pipeline</a></li>
+    <li><a href="#s13">ML &amp; Analytics Layer <span class="tag tag-new">NEW in v8</span></a></li>
+    <li><a href="#s14">Options System <span class="tag tag-new">NEW in v8</span></a></li>
+    <li><a href="#s15">Fleet Migration &amp; Deployment <span class="tag tag-new">NEW in v8</span></a></li>
+  </ol>
+</div>
+
+<div class="status-box">
+  <strong>Status:</strong> Living document &mdash; reflects production state as of 2026-07-22. Core trading architecture (Sections 2&ndash;6) is stable; Sections 13&ndash;15 document the ML/analytics, options, and fleet layers added June&ndash;July 2026.
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s2">2. Unified Rules Tab</h2>
+
+<h3>2.1 Purpose</h3>
+<p>A single, searchable table showing every active trading rule. Replaces the need to look up rules per-ticker. Every rule on this list is active &mdash; there is no status column.</p>
+
+<h3>2.2 Rule ID Format</h3>
+
+<div class="card">
+  <div class="card-title">Naming Convention <span class="tag tag-change">UPDATED from v6</span></div>
+  <p>Format: <code>{TICKER}_{TYPE}{TF}_{SEQ5}_WR{wr}%/APnL{apnl}%/PTPnL{ptpnl}%</code></p>
+  <p>Example: <code>AMZN_S5M_00001_WR100%/APnL120%/PTPnL2%</code></p>
+  <ul>
+    <li><code>{TICKER}</code> &mdash; Full ticker symbol (AMZN, CLSK, AAL). No abbreviations.</li>
+    <li><code>{TYPE}</code> &mdash; S=standalone, L=lead-lag, D=divergence, X=inverse</li>
+    <li><code>{TF}</code> &mdash; 5M, 15M, 1H, DAILY (always UPPERCASE)</li>
+    <li><code>{SEQ5}</code> &mdash; 5-digit zero-padded sequence. Bull rules: 00001-04999. Bear rules: 05001+</li>
+    <li><code>_WR.../APnL.../PTPnL...</code> &mdash; Backtest metrics suffix embedded in the rule ID</li>
+  </ul>
+  <p>Family keys in ALL_FAMILIES: <code>{TICKER}_S</code>, <code>{TICKER}_L</code>, <code>{TICKER}_D</code>, <code>{TICKER}_X</code>, <code>{TICKER}_B1_S</code> (bear), etc.</p>
+</div>
+
+<h3>2.3 Bull/Bear Number Separation <span class="tag tag-new">NEW in v7</span></h3>
+<div class="card">
+  <div class="card-title">Bear Rule Numbering at 5001+</div>
+  <p>Bull rules use sequence numbers 00001&ndash;04999. Bear rules start at 05001+. This prevents base rule ID collisions where a bull <code>CLSK_S5M_00003</code> and a bear <code>CLSK_S5M_00003</code> shared the same base ID, causing the wrong stop-loss parameters to be used.</p>
+  <ul>
+    <li>Implemented in <code>create_rules_local3.py</code>: <code>BEAR_RULE_START = 5001</code></li>
+    <li>Migration script: <code>renumber_bear_rules.py</code> shifts existing bear rules to 05001+ range</li>
+    <li>Affects: index blocks, rule files, rule_index.py, backtest_all_results.json</li>
+  </ul>
+</div>
+
+<h3>2.4 Column Definitions</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Rule_ID</code></td>
+      <td>String</td>
+      <td>Unique rule identifier. Format: <code>{TICKER}_{TYPE}{TF}_{SEQ5}_WR/APnL/PTPnL</code>. The base ID (before _WR) is the lookup key across paper traders and rule files.</td>
+    </tr>
+    <tr>
+      <td><code>Ticker</code></td>
+      <td>String</td>
+      <td>The stock/ETF ticker the rule trades (e.g., AMZN, AAPL, CLSK).</td>
+    </tr>
+    <tr>
+      <td><code>Timeframe</code></td>
+      <td>String</td>
+      <td>Native evaluation timeframe: <code>5M</code>, <code>15M</code>, <code>1H</code>, or <code>DAILY</code>.</td>
+    </tr>
+    <tr>
+      <td><code>Tier</code></td>
+      <td>Integer</td>
+      <td>Backtest quality tier (1 = best, 2 = strong). Only T1 and T2 rules are in production. See Section 5.3 for criteria.</td>
+    </tr>
+    <tr>
+      <td><code>Regime</code> <span class="tag tag-new">NEW</span></td>
+      <td>String</td>
+      <td>Allowed market regime: <code>BULL</code> or <code>BEAR</code>. Regime gate prevents rules from firing in the wrong market condition.</td>
+    </tr>
+    <tr>
+      <td><code>Win_Rate</code></td>
+      <td>Percent</td>
+      <td>Backtest win rate from creation pipeline.</td>
+    </tr>
+    <tr>
+      <td><code>Avg_PnL</code></td>
+      <td>Percent</td>
+      <td>Backtest average PnL per trade.</td>
+    </tr>
+    <tr>
+      <td><code>Correlations</code></td>
+      <td>String</td>
+      <td>Lead / Same / Inverse tickers used during rule creation (e.g., <code>MSFT / QQQ / SQQQ</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2.5 Design Notes</h3>
+<ul>
+  <li>No <code>Status</code> column &mdash; everything on the list is active. Inactive/retired rules are removed.</li>
+  <li><span class="tag tag-change">CHANGED from v6</span> <code>Last_Run_Time</code> column removed &mdash; not implemented in production; adds tracking overhead without clear value.</li>
+  <li>Rule index is <code>rule_index.py</code> (Python module with <code>ALL_FAMILIES</code> dict), not <code>rule_index.json</code>.</li>
+  <li>Table should be searchable (by ticker, rule ID) and sortable by any column.</li>
+  <li>Mobile-friendly: horizontal scroll on small screens, dark theme.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="s3">3. Unified Trader Architecture</h2>
+
+<h3>3.1 Core Principle: Individual = Master, Stock Pool = Follower</h3>
+
+<div class="card">
+  <div class="card-title">Architecture Summary</div>
+  <p>The <strong>individual trader</strong> (<code>paper_trader_individual.py</code>) is the primary decision maker. It evaluates rules, decides to buy or sell, and executes trades on its own portfolio. The <strong>stock pool trader</strong> (<code>paper_trader_stock.py</code>) mirrors the individual trader's actions when possible. The crypto traders operate independently.</p>
+</div>
+
+<h3>3.2 Regime Gating <span class="tag tag-new">NEW in v7</span></h3>
+
+<div class="card">
+  <div class="card-title">Market Regime Filter</div>
+  <p>Each rule has a <code>regime_allowed</code> field (<code>BULL</code> or <code>BEAR</code>). The paper trader maintains a current regime state and gates rule evaluation accordingly.</p>
+  <ul>
+    <li><code>REGIME_ENABLED = True</code> in <code>paper_trader_individual.py</code></li>
+    <li>Regime gate runs <strong>inside</strong> the evaluation loop (not at position-open time) to prevent signal shadowing</li>
+    <li>If a bear rule fires first in the eval loop, the regime gate skips it via <code>continue</code>, allowing the next valid bull rule to fire</li>
+    <li>Safety net: a second regime check remains in <code>_open_position</code> as a defense-in-depth layer</li>
+  </ul>
+</div>
+
+<h3>3.3 Rule Dedup <span class="tag tag-new">NEW in v7</span></h3>
+
+<div class="card">
+  <div class="card-title">Python Object Identity Dedup</div>
+  <p>Rule lists are deduped using <code>id(rule_list)</code> rather than prefix string matching. This correctly handles:</p>
+  <ul>
+    <li>Case aliases: <code>ALL_AZS_5m = ALL_AZS_5M</code> (same object, loaded once)</li>
+    <li>Legacy aliases: <code>ALL_LTS = ALL_LMTS</code> (same object, loaded once)</li>
+    <li>Distinct families: <code>CLSK_B2_S != CLSK_S</code> (different objects, both loaded)</li>
+  </ul>
+</div>
+
+<h3>3.4 Trade Flow: Buy Signal</h3>
+
+<div class="flow-diagram">
+Individual Trader evaluates rules
+        |
+        v
+  Regime gate: is rule allowed in current regime?
+        |
+       / \
+      /   \
+  Allowed    Not allowed
+     |          |
+     v          v
+  Continue   Skip (continue to next rule)
+  evaluation
+        |
+        v
+  Rule triggers BUY for ticker X
+        |
+        v
+  Individual Trader executes BUY
+  (own portfolio, own balance)
+        |
+        v
+  Signal sent to Stock Pool Trader
+        |
+        v
+  Stock Pool checks available balance
+        |
+       / \
+      /   \
+  Balance    No balance
+  available  available
+     |          |
+     v          v
+  Execute    Skip trade
+  BUY        (log: "no balance")
+</div>
+
+<h3>3.5 Trade Flow: Sell Signal</h3>
+
+<div class="flow-diagram">
+Individual Trader evaluates rules
+        |
+        v
+  Rule triggers SELL for ticker X
+        |
+        v
+  Individual Trader executes SELL
+  (closes own position)
+        |
+        v
+  Signal sent to Stock Pool Trader
+        |
+        v
+  Stock Pool checks if ticker X
+  has an open position
+        |
+       / \
+      /   \
+  Position   No position
+  exists     for ticker X
+     |           |
+     v           v
+  Execute     Skip
+  SELL        (no action needed)
+</div>
+
+<h3>3.6 Key Rules</h3>
+<ol>
+  <li><strong>Individual trader always trades.</strong> Its decisions are independent of the stock pool's state.</li>
+  <li><strong>Stock pool never initiates.</strong> It only acts in response to signals from the individual trader.</li>
+  <li><strong>Regime gating at eval time.</strong> Rules blocked by regime are skipped via <code>continue</code> so the next valid rule can fire.</li>
+  <li><strong>Balance gating on buy.</strong> Stock pool only mirrors a buy if it has sufficient available balance.</li>
+  <li><strong>Position check on sell.</strong> Stock pool only mirrors a sell if it currently holds that ticker.</li>
+  <li><strong>No partial fills.</strong> Stock pool either mirrors the full trade or skips entirely.</li>
+  <li><strong>Logging.</strong> Every mirror attempt (success or skip) is logged with the reason.</li>
+</ol>
+
+<h3>3.7 Implementation Details</h3>
+<ul>
+  <li>Crypto traders operate independently with their own rules, balance, and 24/7 Binance schedule:
+    <ul>
+      <li><code>paper_trader_crypto.py</code> &mdash; per-rule BTC trader over the production BTC rule set (~274 rules).</li>
+      <li><code>paper_trader_crypto_v2.py</code> <span class="tag tag-new">NEW</span> &mdash; <strong>consensus</strong> trader over the same rule set: enters on &ge;2 concurrent signals, hold-override at 50% agreement, exit-flip at 30%. Reports net consensus (e.g. <code>1B/0S of 274</code>) per cycle. A v1-vs-v2 comparison report is generated in <code>backtest_reports/</code>.</li>
+    </ul>
+  </li>
+  <li>Signal mechanism: individual trader writes trade events for pool mirroring.</li>
+  <li>Mirror happens within the same evaluation cycle, not on a delay.</li>
+</ul>
+
+<h3>3.8 GPU ML Veto Filter <span class="tag tag-new">NEW in v8</span> <span class="tag tag-removed">DORMANT</span></h3>
+<div class="card">
+  <div class="card-title">PatternLSTM signal filter &mdash; present but inactive</div>
+  <p>The individual trader loads an optional GPU model (<code>ml/gpu_predictor.py</code> &rarr; <code>GPUSignalFilter</code>, weights at <code>models/gpu/pattern_lstm.pt</code>) intended to <strong>veto</strong> rule signals: when a rule fires a signal, the LSTM can block it if it predicts the opposite direction. It never generates trades on its own.</p>
+  <ul>
+    <li><strong>Status: dormant / not trusted.</strong> Zero <code>GPU VETO</code> events across the entire trade log; the model validated at 20.6% accuracy (3-class, below random) and was trained on 50 tickers unrelated to the traded universe; it CUDA-crashed on 2026-06-26.</li>
+    <li>An offline skill test (2026-07-21) confirmed the model's directional calls are &le; coin-flip on traded tickers, so activating it would strip winners. It remains wired in but effectively no-ops.</li>
+    <li>Superseded by the meta-label approach &mdash; see Section 13.2. Any future signal-quality gating should come from that, not this model.</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s4">4. Dashboard v6 Layout</h2>
+
+<h3>4.1 Top Section: Summary Cards</h3>
+
+<div class="card">
+  <div class="card-title">Layout</div>
+  <ul>
+    <li><span class="tag tag-keep">KEEP</span> <strong>Crypto summary card</strong> &mdash; BTC/COIN performance, open positions, balance</li>
+    <li><span class="tag tag-keep">KEEP</span> <strong>Combined stock summary card</strong> &mdash; aggregate P&amp;L, total balance, open positions count</li>
+  </ul>
+</div>
+
+<h3>4.2 Tabs / Sections</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tab</th>
+      <th>Contents</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Overview</strong></td>
+      <td>Summary cards (crypto + stock), recent trades, system health indicators</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+    <tr>
+      <td><strong>Rules</strong></td>
+      <td>Unified rules table (Section 2 above). All active rules, searchable/sortable.</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+    <tr>
+      <td><strong>Individual Trader</strong></td>
+      <td>Per-ticker positions, trade history, balance for the individual (master) trader</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+    <tr>
+      <td><strong>Stock Pool</strong></td>
+      <td>Pool balance, mirrored positions, skip log</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+    <tr>
+      <td><strong>Crypto</strong></td>
+      <td>BTC trading, independent from stock architecture</td>
+      <td><span class="tag tag-keep">KEEP</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>4.3 Dashboard Files <span class="tag tag-change">UPDATED</span></h3>
+<table>
+  <thead>
+    <tr><th>File</th><th>Status</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>dashboard_v6.pyw</code></td><td>Current</td><td>Latest Tkinter GUI</td></tr>
+    <tr><td><code>dashboard_individual_v5.pyw</code></td><td>Current</td><td>Individual trader view</td></tr>
+    <tr><td><code>dashboard_v5.pyw</code></td><td>Current</td><td>Combined stock view</td></tr>
+    <tr><td><code>dashboard_v4.pyw</code></td><td>Archived</td><td>In <code>archive/</code></td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="s5">5. Rule Creation &amp; Promotion Pipeline</h2>
+
+<h3>5.1 Pipeline Overview</h3>
+<p>The create-rules pipeline uses a <strong>13-phase architecture</strong> with two optimization loops. Rules are never filtered during optimization &mdash; a ratchet mechanism ensures rules can only improve or stay the same. Tier labeling after optimization is the only filter.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pipeline</th>
+      <th>File</th>
+      <th>Optimization</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>create-rules3</strong></td>
+      <td><code>create_rules_local3.py</code></td>
+      <td>13-phase: 5-cycle backtest loop + sim optimization loop</td>
+      <td>Standard rule creation for all tickers. Runs locally with ProcessPoolExecutor (up to 8 workers). Zero API tokens consumed.</td>
+    </tr>
+    <tr>
+      <td><strong>create-rules-bear</strong> <span class="tag tag-new">NEW</span></td>
+      <td><code>create_rules_bear.py</code></td>
+      <td>Bear-specific rule generation</td>
+      <td>Chained after bull pipeline via <code>--chain-bear</code>. Bear rules start at sequence 05001+.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="status-box">
+  <span class="tag tag-removed">REMOVED</span> <code>create_rules_local5.py</code> &mdash; referenced in v6 but never existed. <code>create_rules_local3.py</code> is the 5-cycle pipeline and is the only production pipeline.
+</div>
+
+<h3>5.2 Distributed Pipeline Architecture <span class="tag tag-new">NEW in v7</span></h3>
+
+<div class="card">
+  <div class="card-title">3-PC Cluster</div>
+  <table>
+    <thead>
+      <tr><th>Machine</th><th>IP</th><th>Role</th><th>SSH User</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>TRADE-HQ</td><td>192.168.1.100</td><td>Hub &mdash; deploys results, runs pipelines</td><td>&mdash;</td></tr>
+      <tr><td>MONKEY</td><td>192.168.1.101</td><td>Worker &mdash; runs pipelines</td><td><code>colli</code></td></tr>
+      <tr><td>Pigg0Tech</td><td>192.168.1.102</td><td>Worker &mdash; runs pipelines</td><td><code>payto</code></td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>SMB share: <code>\\192.168.1.100\TradingBot</code> maps to <code>T:\</code> on workers</li>
+    <li>Workers have NO local copy &mdash; everything runs from T: drive</li>
+    <li>Workers use <code>--skip-deploy --chain-bear</code>; only HQ runs Phase 13 (deploy)</li>
+    <li>Distributed Polygon API lock prevents concurrent API calls across machines</li>
+    <li>Queue management: <code>pipeline_dispatch.py</code> + <code>batch_queue.json</code></li>
+    <li>Auto-reconnect: <code>worker_reconnect.ps1</code> checks T: drive every 3 minutes</li>
+  </ul>
+</div>
+
+<h3>5.3 Tier Criteria <span class="tag tag-change">OVERHAULED 2026-05-13</span></h3>
+
+<div class="card">
+  <div class="card-title">Tier Promotion Rules</div>
+  <p>Updated to require statistical trade count minimums. Motivation: rules with 100% WR on only 4 trades are statistically meaningless after 5-cycle optimization.</p>
+  <table>
+    <thead>
+      <tr><th>Tier</th><th>Criteria</th><th>Production</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Tier 1 (Path A)</strong></td><td>WR == 100% AND APnL &gt; 3% AND PTPnL &gt; 3% AND trades &gt; 10</td><td>YES</td></tr>
+      <tr><td><strong>Tier 1 (Path B)</strong></td><td>WR &ge; 90% AND APnL &gt; 3% AND PTPnL &gt; 2% AND trades &gt; 15</td><td>YES</td></tr>
+      <tr><td><strong>Tier 2</strong></td><td>WR &ge; 70% AND APnL &ge; 10% AND PTPnL &gt; 2% AND trades &gt; 5</td><td>YES</td></tr>
+      <tr><td><strong>Tier 3</strong></td><td>APnL &ge; 10%</td><td>NO</td></tr>
+      <tr><td><strong>Tier 0</strong></td><td>Everything else</td><td>NO</td></tr>
+    </tbody>
+  </table>
+  <p>Tier criteria are defined in 6 locations that must stay in sync: <code>create_rules_local3.py</code> (2 places), <code>rule_index.py</code>, <code>build_lean_index.py</code>, <code>rule_metrics_ledger.py</code>, <code>optimize_trackB.py</code>.</p>
+</div>
+
+<h3>5.4 Pipeline Phases</h3>
+
+<h4>Pre-Pipeline: Setup</h4>
+<div class="flow-diagram">
+Phase 0: Correlation Research
+  Auto-search broad ticker universe
+  Find lead, same-direction, and inverse tickers
+        |
+        v
+Data Download &amp; Preparation
+  Polygon.io for ALL stock timeframes (5m, 15m, 1h, daily)
+  Binance for crypto
+  Retry with exponential backoff on connection errors
+</div>
+
+<h4>Backtest Optimization Loop (all rules, no filtering)</h4>
+<div class="flow-diagram">
+Phase 1: Generate all parameter combinations and backtest each one
+  Indicator combos x TP/SL x hold periods x directions
+  No filtering -- ALL rules survive
+        |
+        v
+Phase 2: Optimize all rules by tweaking parameters
+  Adjust TP/SL ratios, hold periods, indicator thresholds
+  Goal: improve WR and PnL for every rule
+        |
+        v
+Phase 3: Re-backtest all rules with new parameters
+        |
+        v
+Phase 4: Per-rule ratchet comparison
+  If rule improved (WR or PnL) -> keep new parameters
+  If rule got worse -> revert to prior parameters
+  Rules can only improve or stay the same
+        |
+        v
+Phase 5: Repeat Phases 2-4 (5 cycles total)
+  Each cycle: optimize -> backtest -> compare -> ratchet
+</div>
+
+<h4>Tier Gate (the ONLY filter)</h4>
+<div class="flow-diagram">
+Phase 6: Apply Tier 1 &amp; Tier 2 labels
+  Dual-path T1 (100%WR/10+ trades OR 90%WR/15+ trades)
+  T2: 70%WR + 10%APnL + 5+ trades
+  Unlabeled rules are discarded
+  This is the ONLY point where rules are filtered out
+</div>
+
+<h4>Simulation Optimization Loop (Tier 1/2 only)</h4>
+<div class="flow-diagram">
+Phase 7: Run 1-minute simulation on Tier 1/2 rules (baseline)
+  Replays every rule on 1m bars for intrabar TP/SL accuracy
+        |
+        v
+Phase 8: Optimize Tier 1/2 rules by tweaking parameters
+        |
+        v
+Phase 9: Re-run 1-minute simulation with new parameters
+        |
+        v
+Phase 10: Per-rule ratchet comparison
+  Report % delta for WR and PnL from Phase 7 baseline
+        |
+        v
+Phase 11: Pause for human approval (temporary -- commentable)
+        |
+        v
+Phase 12: If approved and optimization still improving, repeat 8-11
+        |
+        v
+Phase 13: Deploy pipeline
+  Rule files + index blocks + reports + dashboards
+  ONLY HQ runs Phase 13 (workers use --skip-deploy)
+</div>
+
+<h3>5.5 Rule Promotion Failure Points</h3>
+
+<div class="card">
+  <div class="card-title">Failure Mode 1: Import Validation Errors</div>
+  <p>New rule files may reference indicator functions the paper trader doesn't recognize. Crashes on startup with <code>NameError</code> or <code>ImportError</code>.</p>
+  <ul>
+    <li><strong>Prevention:</strong> Compile-only validation (no trader startup) during pipeline.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Failure Mode 2: Timeframe Case Mismatch</div>
+  <p>Rule exports must use UPPERCASE timeframes (<code>5M</code>, <code>15M</code>, <code>1H</code>, <code>DAILY</code>). Lowercase exports cause silent import failures.</p>
+  <ul>
+    <li><strong>Prevention:</strong> Pipeline enforces uppercase on export. Recurring issue &mdash; validated every time.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Failure Mode 3: Bull/Bear ID Collision <span class="tag tag-new">NEW</span></div>
+  <p>Bull and bear rules sharing the same base sequence number (e.g., both <code>CLSK_S5M_00003</code>) caused the wrong stop-loss parameters to be used. A bear rule's 2.5% SL overwrote a bull rule's 14.88% SL.</p>
+  <ul>
+    <li><strong>Prevention:</strong> Bear rules start at 05001+. <code>renumber_bear_rules.py</code> migration script.</li>
+    <li><strong>Additional defense:</strong> Regime gate blocks out-of-regime rules; id()-based dedup prevents object aliasing.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <div class="card-title">Failure Mode 4: Trader Process Not Restarted</div>
+  <p>New rules deployed but running trader still has old rules in memory.</p>
+  <ul>
+    <li><strong>Current approach:</strong> Pipeline does NOT restart traders automatically. Uses compile-only validation.</li>
+    <li><strong>Required:</strong> Hot-reload mechanism or safe restart window.</li>
+  </ul>
+</div>
+
+<h3>5.6 Pipeline Safeguards (Current)</h3>
+<ul>
+  <li>Max 1 concurrent pipeline per PC &mdash; strictly serial, no parallel ever</li>
+  <li>Compile-only import validation (no trader startup during pipeline)</li>
+  <li>Uppercase timeframe enforcement at all boundaries</li>
+  <li>JS syntax validation on index.html before GitHub Pages push</li>
+  <li>Backtest report generated with unique timestamped filename (never overwrite)</li>
+  <li>Rules always run on their native timeframe indicators</li>
+  <li>Ratchet-only optimization &mdash; rules can never get worse between cycles</li>
+  <li>Retry with exponential backoff on Polygon API connection errors</li>
+  <li>Distributed Polygon API lock across 3-PC cluster</li>
+  <li>Bear rules numbered at 05001+ to prevent ID collision with bull rules</li>
+</ul>
+
+<h3>5.7 Data Pipeline Enhancements <span class="tag tag-new">NEW in v8</span></h3>
+<div class="card">
+  <div class="card-title">Data hygiene &amp; enrichment (June 2026)</div>
+  <ul>
+    <li><strong>Timezone normalization:</strong> all historic intraday CSVs normalized to US/Pacific. New Polygon downloads still require re-stamping into US/Pacific before use.</li>
+    <li><strong>Daily event flags:</strong> daily CSVs carry split / dividend / earnings event columns (annotated via <code>annotate_daily_events.py</code>). Note: the pipeline currently overwrites these on re-download &mdash; re-annotation is an open integration TODO.</li>
+    <li><strong>Correlation universe:</strong> quality-gated to ~2,653 tickers (built by <code>build_correlation_universe.py</code>), replacing the old hardcoded list. Correlation research searches this broad universe, avoiding thin-data tickers.</li>
+    <li><strong>Source policy (confirmed):</strong> Polygon for stocks, Binance for crypto.</li>
+  </ul>
+</div>
+
+<h3>5.8 Rule Metrics Ledger &amp; Nightly Reconcile <span class="tag tag-new">NEW in v8</span></h3>
+<div class="card">
+  <div class="card-title">Live-trade ledger &amp; self-healing inventory</div>
+  <ul>
+    <li><code>rule_metrics_ledger.py</code> records every closed live paper trade into <code>rule_metrics.db</code> (SQLite/WAL): rule_id, ticker, entry/exit price, pnl, win, exit_reason, opened/closed timestamps, bars_held.</li>
+    <li>Feeds trade-alert stats and combined per-rule metrics; the ledger is also the training source for the meta-label model (Section 13.2).</li>
+    <li><strong>Nightly reconcile</strong> self-heals <code>rule_inventory</code> drift &mdash; production rules that were missing from the ledger get registered automatically, keeping tier/status in sync.</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s6">6. 2-Way Telegram Communication</h2>
+
+<h3>6.1 Architecture</h3>
+<p>The system uses a bridge process to communicate between Claude Code and Steven's Telegram. Only one component may call the Telegram API &mdash; the bridge. This prevents 409 Conflict errors from multiple consumers.</p>
+
+<div class="flow-diagram">
+Steven's Telegram App
+        |
+        v
+  Telegram Bot API (getUpdates, long-poll)
+        |
+        v
+  telegram_bridge.py (PID file, single instance)
+    |                    |
+    v                    v
+  telegram_inbox.json    telegram_outbox.json
+  (bridge WRITES)        (bridge READS &amp; sends)
+    |                    ^
+    v                    |
+  Claude Code watch loop
+  (READS inbox,          WRITES outbox)
+</div>
+
+<h3>6.2 Message Structure</h3>
+
+<h4>Inbox (telegram_inbox.json)</h4>
+<table>
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>message</code></td><td>String</td><td>Message text content from Steven</td></tr>
+    <tr><td><code>sender</code></td><td>String</td><td>Telegram sender name</td></tr>
+    <tr><td><code>reply_chat</code></td><td>Integer</td><td>Telegram chat ID for reply routing</td></tr>
+    <tr><td><code>timestamp</code></td><td>ISO 8601</td><td>When the message was received by the bridge</td></tr>
+    <tr><td><code>status</code></td><td>String</td><td><code>"pending"</code> or <code>"processed"</code></td></tr>
+    <tr><td><code>processed_at</code></td><td>ISO 8601</td><td>When the watch loop processed the message</td></tr>
+  </tbody>
+</table>
+
+<h4>Outbox (telegram_outbox.json)</h4>
+<table>
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>message</code></td><td>String</td><td>Response text to send to Steven</td></tr>
+    <tr><td><code>timestamp</code></td><td>ISO 8601</td><td>When the response was queued</td></tr>
+    <tr><td><code>status</code></td><td>String</td><td><code>"pending"</code> &rarr; bridge sends and removes entry</td></tr>
+  </tbody>
+</table>
+
+<h3>6.3 Bridge Process (telegram_bridge.py)</h3>
+<ul>
+  <li>Runs as a detached background process (<code>subprocess.Popen</code> with <code>DETACHED_PROCESS</code>)</li>
+  <li>Single-instance enforcement: kills existing bridge PIDs before starting</li>
+  <li>Polls Telegram API every 3 seconds with 25s long-poll timeout</li>
+  <li>Uses <code>requests</code> library for reliable Windows timeout handling</li>
+  <li>Threading hard-deadline: 90s timeout on getUpdates to prevent silent hangs</li>
+  <li>Heartbeat written to <code>telegram_bridge_heartbeat.json</code> every poll cycle</li>
+  <li>Auto-respawn after 10 consecutive errors</li>
+</ul>
+
+<h3>6.4 Watch Loop (Claude Code)</h3>
+<ul>
+  <li>Polls <code>telegram_inbox.json</code> using Python <code>json.load(encoding='utf-8')</code></li>
+  <li>Controlled by <code>telegram_watch.json</code>: <code>{"active": true/false, "last_check_at": ..., "empty_checks": N}</code></li>
+  <li>Wake-up: check active flag first, read inbox, process pending, write outbox, schedule next</li>
+  <li>P0 rule: NEVER call Telegram API directly. Only bridge calls getUpdates.</li>
+  <li>Adaptive polling: 270s when active, widening to 1200s after consecutive empty checks</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="s7">7. GitHub Pages Design</h2>
+
+<h3>7.1 Purpose</h3>
+<p>Phone-accessible reporting and monitoring. Steven reviews trading rules, backtest reports, and system status from his phone. Hosted on GitHub Pages for zero-infrastructure access.</p>
+
+<h3>7.2 Repository</h3>
+<table>
+  <thead>
+    <tr><th>Property</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Repo</td><td><code>luusacs-ux/trading-rules-overview</code></td></tr>
+    <tr><td>Branch</td><td><code>main</code></td></tr>
+    <tr><td>URL</td><td><code>https://luusacs-ux.github.io/trading-rules-overview/</code></td></tr>
+    <tr><td>Push method</td><td><code>git push origin main</code> from <code>gh_pages/</code></td></tr>
+  </tbody>
+</table>
+
+<h3>7.3 Theme &amp; Style</h3>
+<ul>
+  <li>Dark theme: background <code>#1a1a2e</code>, card background <code>#16213e</code>, borders <code>#0f3460</code></li>
+  <li>Accent color: <code>#e94560</code> (headings, highlights, active states)</li>
+  <li>Link color: <code>#53c0f0</code></li>
+  <li>Font: system font stack (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto)</li>
+  <li>Mobile-first: responsive tables with horizontal scroll, touch-friendly tap targets</li>
+</ul>
+
+<h3>7.4 Pages <span class="tag tag-change">EXPANDED</span></h3>
+<table>
+  <thead>
+    <tr><th>Page</th><th>File</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Rules Overview</td><td><code>index.html</code></td><td>Main dashboard: searchable/sortable table of all tickers with rule counts, win rates, PnL.</td></tr>
+    <tr><td>Performance <span class="tag tag-new">NEW</span></td><td><code>performance.html</code></td><td>Paper trading performance: T1/T2 tier split sections, open positions with live prices, per-ticker drill-down. Generated by <code>gen_performance_dashboard.py</code>.</td></tr>
+    <tr><td>Per-Ticker Performance <span class="tag tag-new">NEW</span></td><td><code>reports/{TICKER}_perf.html</code></td><td>Rule-level performance detail for each ticker. Month/week/prior day/ITD columns.</td></tr>
+    <tr><td>Design Requirements</td><td><code>design_requirements_v8.html</code></td><td>This document (v7 archived)</td></tr>
+    <tr><td>Active Rules Reference</td><td><code>active_rules.html</code></td><td>Full rule reference, linked from dashboard footer</td></tr>
+    <tr><td>Pattern Discovery Design</td><td><code>pattern_discovery_design.html</code></td><td>Outcome-first pattern discovery pipeline design</td></tr>
+    <tr><td>Ticker Inventory</td><td><code>ticker_inventory.html</code></td><td>Ticker coverage inventory</td></tr>
+    <tr><td>Short Squeeze Report</td><td><code>short_squeeze_report.html</code></td><td>Short squeeze analysis report</td></tr>
+    <tr><td>AI Supply Chain <span class="tag tag-new">NEW</span></td><td><code>ai_supply_chain.html</code></td><td>AI supply-chain tracker. Auto-refreshed by <code>gen_ai_supply_chain.py</code>.</td></tr>
+    <tr><td>Options Mispricing <span class="tag tag-new">NEW</span></td><td><code>options_mispricing.html</code></td><td>Options mispricing scanner output (see Section 14).</td></tr>
+    <tr><td>Cross-Sectional Shadow Book <span class="tag tag-new">NEW</span></td><td><code>shadow_book.html</code></td><td>Prediction-engine cross-sectional long/short shadow book (see Section 13.5).</td></tr>
+    <tr><td>Ticker Rankings <span class="tag tag-new">NEW</span></td><td><code>ticker_rankings.html</code></td><td>5-factor forward-looking ranking of the deployed-rule universe (see Section 13.1). Weekly refresh.</td></tr>
+    <tr><td>ML Shadow Test <span class="tag tag-new">NEW</span></td><td><code>meta_label_shadow.html</code></td><td>Live log-only forward test of the meta-label model (see Section 13.2). Hourly refresh, no live action.</td></tr>
+    <tr><td>Backtest Reports</td><td><code>reports/{TICKER}_backtest_summary_{date}.html</code></td><td>Per-ticker detailed backtest results. Never overwritten &mdash; timestamped filenames.</td></tr>
+  </tbody>
+</table>
+
+<h3>7.5 Performance Dashboard Details <span class="tag tag-new">NEW</span></h3>
+<ul>
+  <li><code>gen_performance_dashboard.py</code> reads <code>paper_trader_individual_state.json</code></li>
+  <li>Fetches live prices via yfinance for open position unrealized P&amp;L</li>
+  <li>Builds tier map from <code>rule_index.py</code> ALL_FAMILIES to classify trades by tier</li>
+  <li>Generates three closed-trade sections: <strong>Tier 1</strong>, <strong>Tier 2</strong>, and <strong>All</strong></li>
+  <li>Each section: per-ticker rows with month / week / prior day / ITD metrics</li>
+  <li>Sortable columns, ticker search filter, mobile-responsive</li>
+</ul>
+
+<h3>7.6 Build &amp; Deploy</h3>
+<ul>
+  <li><code>build_lean_index.py</code> generates <code>index.html</code> from template + rule data</li>
+  <li><code>gen_performance_dashboard.py</code> generates <code>performance.html</code> + per-ticker detail pages</li>
+  <li>JS syntax validation required before every push</li>
+  <li>Deploy: <code>git add . &amp;&amp; git commit &amp;&amp; git push origin main</code> from <code>gh_pages/</code></li>
+  <li>GitHub Pages auto-publishes from main branch within ~60 seconds</li>
+</ul>
+
+<h3>7.7 Scheduled Auto-Refresh Tasks <span class="tag tag-new">NEW in v8</span></h3>
+<div class="card">
+  <div class="card-title">Windows Task Scheduler &rarr; silent VBS &rarr; BAT &rarr; generate + publish</div>
+  <p>Each dashboard has a scheduled task that runs a generator, then publishes only if the page changed (git commit guard). All run silently via <code>wscript.exe &lt;name&gt;_silent.vbs</code>.</p>
+  <table>
+    <thead><tr><th>Task</th><th>Cadence</th><th>Publishes</th></tr></thead>
+    <tbody>
+      <tr><td><code>RefreshTickerRankings</code></td><td>Weekly (Sun 08:00 PT)</td><td><code>ticker_rankings.html</code></td></tr>
+      <tr><td><code>MetaLabelShadow</code></td><td>Hourly</td><td><code>meta_label_shadow.html</code> (data-driven; no idle churn)</td></tr>
+      <tr><td><code>AISupplyChain_0700/1000/1200</code></td><td>3&times; daily</td><td><code>ai_supply_chain.html</code></td></tr>
+      <tr><td><code>OptionsMispricingScan</code></td><td>Daily</td><td><code>options_mispricing.html</code></td></tr>
+    </tbody>
+  </table>
+  <p><strong>Publish pattern:</strong> from <code>gh_pages/</code> &mdash; <code>git pull --rebase</code> (fails harmlessly on the chronically-dirty tree, with <code>|| git rebase --abort</code> fallback), <code>git add &lt;file&gt;</code>, <code>git commit</code> (guards "nothing to commit"), <code>git push origin main</code>. The <code>index.html</code> hub is hand-maintained &mdash; never regenerated by the stale <code>_build_index.py</code>.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s8">8. Regression Test Suite</h2>
+
+<h3>8.1 Purpose</h3>
+<p>Automated validation that catches data issues, deployment mismatches, and dashboard corruption before they affect paper trading.</p>
+
+<h3>8.2 Test Steps</h3>
+
+<table>
+  <thead>
+    <tr><th>Step</th><th>Name</th><th>What It Checks</th><th>Pass Criteria</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Data Completeness</strong></td>
+      <td>All tickers in rule_index have historical data files for all 4 timeframes. Checks for &ge;85% of expected trading days.</td>
+      <td>&ge;85% completeness per timeframe per ticker</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>Data Accuracy</strong></td>
+      <td>Cross-timeframe alignment: aggregates 5m/15m bars into 1h/daily OHLC and compares.</td>
+      <td>&lt;1% mean price deviation</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Rule Deployment</strong></td>
+      <td>All tickers in rule_index.py are deployed to both paper traders. Rule files exist and are importable.</td>
+      <td>Every indexed rule has a matching deployed file; compile check passes</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>Dashboard Integrity</strong></td>
+      <td>All tickers appear in gh-pages index.html. Report links resolve to existing HTML files. JavaScript data array has valid syntax.</td>
+      <td>All tickers present, all links valid, JS parses without error</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>8.3 Invocation</h3>
+<table>
+  <thead>
+    <tr><th>Method</th><th>Command</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>CLI</td><td><code>python regression_test.py</code></td></tr>
+    <tr><td>CLI with auto-fix</td><td><code>python regression_test.py --fix</code></td></tr>
+    <tr><td>Specific steps only</td><td><code>python regression_test.py --step 1,3</code></td></tr>
+    <tr><td>Telegram</td><td><code>/regression</code> or <code>/regtest</code></td></tr>
+    <tr><td>Dashboard button</td><td>Dashboard GUIs have a regression test button</td></tr>
+  </tbody>
+</table>
+
+<h3>8.4 Auto-Fix Behavior (<code>--fix</code> flag)</h3>
+<ul>
+  <li><strong>Step 1:</strong> Re-downloads missing data files (Polygon for stocks, Binance for crypto)</li>
+  <li><strong>Step 2:</strong> Re-downloads from single source if cross-source mismatch detected</li>
+  <li><strong>Step 3:</strong> Re-runs import validation; cannot auto-fix rule code errors (requires manual review)</li>
+  <li><strong>Step 4:</strong> Regenerates index.html from current rule data; fixes missing report links</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="s9">9. Resolved Questions (from v6) <span class="tag tag-resolved">ALL RESOLVED</span></h2>
+
+<div class="card">
+  <div class="card-title">Resolutions</div>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Question (from v6)</th><th>Resolution</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Rule ID format validation?</td>
+        <td><strong>Resolved:</strong> Format is <code>{TICKER}_{TYPE}{TF}_{SEQ5}_WR/APnL/PTPnL</code>. Full ticker names, no abbreviations. 5-digit zero-padded sequence. Bear rules at 05001+.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Last_Run_Time granularity?</td>
+        <td><strong>Resolved:</strong> Column not implemented. Removed from requirements &mdash; adds tracking overhead without clear value for decision-making.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Stock pool allocation?</td>
+        <td><strong>Resolved:</strong> Pool mirrors the individual trader's position size when balance allows. No partial fills.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Signal delivery mechanism?</td>
+        <td><strong>Resolved:</strong> Trade signal events written by individual trader, consumed by stock pool.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Dashboard hosting?</td>
+        <td><strong>Resolved:</strong> GitHub Pages for phone-accessible reports. Local Tkinter dashboards for desktop monitoring. Both are maintained.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s10">10. Appendix A: Current System Inventory <span class="tag tag-change">UPDATED</span></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>File</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Individual Paper Trader</td>
+      <td><code>paper_trader_individual.py</code></td>
+      <td>Master &mdash; evaluates rules, executes trades, signals pool. Regime gating + id() dedup.</td>
+    </tr>
+    <tr>
+      <td>Stock Pool Trader</td>
+      <td><code>paper_trader_stock.py</code></td>
+      <td>Follower &mdash; mirrors individual trades when balance allows</td>
+    </tr>
+    <tr>
+      <td>Crypto Trader</td>
+      <td><code>paper_trader_crypto.py</code> / <code>paper_trader_crypto_v2.py</code></td>
+      <td>Independent &mdash; Binance API, 24/7 schedule, own capital pool</td>
+    </tr>
+    <tr>
+      <td>Rule Index</td>
+      <td><code>rule_index.py</code></td>
+      <td>Source of truth &mdash; <code>ALL_FAMILIES</code> dict, T1/T2 production rules only (592+ families)</td>
+    </tr>
+    <tr>
+      <td>Rule Creation (5-cycle)</td>
+      <td><code>create_rules_local3.py</code></td>
+      <td>Standard pipeline &mdash; 13-phase, 5-cycle optimization. Zero API tokens.</td>
+    </tr>
+    <tr>
+      <td>Bear Rule Creation</td>
+      <td><code>create_rules_bear.py</code></td>
+      <td>Bear-specific pipeline, chained via <code>--chain-bear</code></td>
+    </tr>
+    <tr>
+      <td>Bear Renumbering</td>
+      <td><code>renumber_bear_rules.py</code></td>
+      <td>Migration script to shift existing bear rules to 05001+ range</td>
+    </tr>
+    <tr>
+      <td>Pipeline Dispatch</td>
+      <td><code>pipeline_dispatch.py</code></td>
+      <td>3-PC queue management, auto-dispatch to HQ/MONKEY/Pigg0Tech</td>
+    </tr>
+    <tr>
+      <td>Batch Queue</td>
+      <td><code>batch_queue.json</code></td>
+      <td>Ticker queue state &mdash; running, pending, completed, failed entries</td>
+    </tr>
+    <tr>
+      <td>Performance Generator</td>
+      <td><code>gen_performance_dashboard.py</code></td>
+      <td>Generates performance.html + per-ticker detail pages with T1/T2 split</td>
+    </tr>
+    <tr>
+      <td>Index Builder</td>
+      <td><code>build_lean_index.py</code></td>
+      <td>Generates index.html for GitHub Pages</td>
+    </tr>
+    <tr>
+      <td>Dashboard (latest)</td>
+      <td><code>dashboard_v6.pyw</code></td>
+      <td>Tkinter GUI &mdash; combined stock view</td>
+    </tr>
+    <tr>
+      <td>Dashboard (individual)</td>
+      <td><code>dashboard_individual_v5.pyw</code></td>
+      <td>Tkinter GUI &mdash; individual trader view</td>
+    </tr>
+    <tr>
+      <td>Telegram Bridge</td>
+      <td><code>telegram_bridge.py</code></td>
+      <td>2-way Telegram messaging (PID in background)</td>
+    </tr>
+    <tr>
+      <td>Data Download (stocks)</td>
+      <td><code>batch_download_polygon.py</code> / <code>download_1m_polygon.py</code></td>
+      <td>Polygon.io API &mdash; all stock timeframes</td>
+    </tr>
+    <tr>
+      <td>Data Download (crypto)</td>
+      <td><code>download_btc_binance.py</code></td>
+      <td>Binance public API &mdash; crypto OHLCV data</td>
+    </tr>
+    <tr>
+      <td>Code Review</td>
+      <td><code>code_review_agents.py</code></td>
+      <td>5-agent mandatory review pipeline (see Section 12)</td>
+    </tr>
+    <tr>
+      <td>Ticker Ranking Engine <span class="tag tag-new">v8</span></td>
+      <td><code>probability_engine.py</code></td>
+      <td>5-factor forward ranking (future price, company strength, regime, ETF decay, arb edge). Section 13.1.</td>
+    </tr>
+    <tr>
+      <td>Meta-Label Model <span class="tag tag-new">v8</span></td>
+      <td><code>ml_meta_label_eval.py</code>, <code>meta_label_train.py</code>, <code>meta_label_shadow.py</code></td>
+      <td>Predicts P(win) for a fired rule signal; frozen model + log-only shadow forward test. Section 13.2.</td>
+    </tr>
+    <tr>
+      <td>GPU Signal Filter <span class="tag tag-removed">dormant</span></td>
+      <td><code>ml/gpu_predictor.py</code>, <code>ml/gpu_model.py</code></td>
+      <td>PatternLSTM veto filter in the individual trader &mdash; present but inactive. Section 3.8.</td>
+    </tr>
+    <tr>
+      <td>Regime Suite <span class="tag tag-new">v8</span></td>
+      <td><code>regime_suite.py</code></td>
+      <td>5 regime lenses (research-only). Provides <code>TickerRegimeFilter</code> used by the ranking engine.</td>
+    </tr>
+    <tr>
+      <td>Prediction Engine <span class="tag tag-new">v8</span></td>
+      <td><code>prediction_engine/</code></td>
+      <td>Cross-sectional GBDT ranker + LSTM forward models + shadow book. Section 13.5.</td>
+    </tr>
+    <tr>
+      <td>Rule Metrics Ledger <span class="tag tag-new">v8</span></td>
+      <td><code>rule_metrics_ledger.py</code> &rarr; <code>rule_metrics.db</code></td>
+      <td>Live-trade ledger + nightly reconcile. Section 5.8.</td>
+    </tr>
+    <tr>
+      <td>Options Scanner &amp; Maxwell <span class="tag tag-new">v8</span></td>
+      <td><code>options_mispricing_scanner.py</code>, <code>options_bot.py</code></td>
+      <td>Mispricing scan + Maxwell alert bot (@Maxwell100WR_bot). Section 14.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="s11">11. Appendix B: Workflow Diagrams</h2>
+
+<p>Workflow diagrams from v6 remain valid with these updates:</p>
+<ul>
+  <li><strong>11.1 Create-Rules Pipeline:</strong> Updated to reflect 3-PC distributed execution. Workers run Phases 1-12 with <code>--skip-deploy</code>; HQ runs Phase 13.</li>
+  <li><strong>11.2 Paper Trading:</strong> Regime gate added inside the evaluation loop (before entry signal check). Bear rule ID collision prevention via 05001+ numbering.</li>
+  <li><strong>11.4 Data Download:</strong> Polygon.io is now the sole data source for all stock timeframes (not yfinance for 1h/daily as shown in v6). Binance for crypto.</li>
+</ul>
+
+<p>See <a href="design_requirements_v6.html">v6 document</a> for full Mermaid diagram source. Diagrams will be ported to v7 in a future update.</p>
+
+<!-- ============================================================ -->
+<h2 id="s12">12. Appendix C: Code Review Pipeline <span class="tag tag-new">NEW in v7</span></h2>
+
+<h3>12.1 5-Agent Mandatory Review</h3>
+<p>Every code change must pass through the 5-agent review pipeline before production deployment.</p>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Agent</th><th>Focus</th><th>Spec File</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Senior Architect</strong></td><td>Design, architecture, coupling, abstraction</td><td><code>agent_specs/senior_architect_agent.md</code></td></tr>
+    <tr><td>2</td><td><strong>Performance Engineer</strong></td><td>Efficiency, complexity, I/O, memory</td><td><code>agent_specs/performance_engineer_agent.md</code></td></tr>
+    <tr><td>3</td><td><strong>Clean Code Critic</strong></td><td>Dead code, readability, maintainability</td><td><code>agent_specs/clean_code_critic_agent.md</code></td></tr>
+    <tr><td>4</td><td><strong>Production Safety</strong></td><td>Regression detection, import validation, rollback gate</td><td><code>production_safety_check.py</code></td></tr>
+    <tr><td>5</td><td><strong>Market Strategist</strong></td><td>Profitability, risk/reward, overfitting, sample size significance</td><td><code>agent_specs/market_strategist_agent.md</code></td></tr>
+  </tbody>
+</table>
+
+<p>Agents run sequentially &mdash; each must approve before proceeding. Production Safety is the safety gate; Market Strategist advises on trading strategy soundness. Added 2026-05-06.</p>
+
+<!-- ============================================================ -->
+<h2 id="s13">13. ML &amp; Analytics Layer <span class="tag tag-new">NEW in v8</span></h2>
+<p>A research/ranking/ML layer built June&ndash;July 2026. Everything here is <strong>analysis and monitoring</strong> &mdash; none of it currently places or gates live trades. Trade decisions still come entirely from the deterministic rule engine (Section 3).</p>
+
+<h3>13.1 Ticker Ranking Engine (probability_engine.py)</h3>
+<div class="card">
+  <div class="card-title">5-factor forward-looking rank of the deployed-rule universe (~331 tickers)</div>
+  <p>Composite score = <code>EV &times; regime &times; arb-edge &times; strength &times; decay</code>, where <code>EV = target% &times; P(hit)</code>.</p>
+  <ul>
+    <li><strong>Future price</strong> &mdash; target blends each ticker's rule-backtested PTPnL% with a vol-scaled 1&sigma; move; P(hit) via Black-Scholes d2 on one shared volatility estimate (cached ATM IV blended with realized vol).</li>
+    <li><strong>Company strength</strong> &mdash; DOMINANT lever: profit margin, ROE, revenue &amp; earnings growth, debt/equity, free cash flow (yfinance) mapped to a factor in [0.25, 1.0] (<code>STRENGTH_WEIGHT=0.75</code>). ETFs pass through at 1.0. Cached to <code>data/fundamentals_cache.csv</code> (14-day refresh).</li>
+    <li><strong>Regime</strong> &mdash; <code>TickerRegimeFilter</code> state (BULL/CAUTION/BEAR) from <code>regime_suite</code>.</li>
+    <li><strong>ETF decay</strong> &mdash; leveraged/inverse variance drag <code>exp(&minus;&frac12;&middot;L(L&minus;1)&middot;&sigma;&sup2;&middot;T)</code>, applied at each fund's exact per-ETF value (<code>DECAY_WEIGHT=1.0</code>). Plain equities L=1 &rarr; 1.0. Leverage L parsed from yfinance fund name.</li>
+    <li><strong>Arb edge</strong> &mdash; cached options-mispricing score where available, else a realized-vol-compression heuristic.</li>
+  </ul>
+  <p>Output: <code>logs/probability_engine_rank.csv</code> and the hub page <code>ticker_rankings.html</code> (weekly <code>RefreshTickerRankings</code>). Design intent: junk daily-reset ETFs stay demoted by decay while company fundamentals drive the equity ordering.</p>
+</div>
+
+<h3>13.2 Meta-Label Model &amp; Shadow Forward Test</h3>
+<div class="card">
+  <div class="card-title">"Will THIS rule signal win?" &mdash; offline-validated, forward-testing in shadow</div>
+  <p>A secondary model over the trade ledger (Section 5.8) that scores each fired rule signal's probability of winning &mdash; the classic meta-labeling pattern. It never invents trades; it would only decline or size down low-probability signals.</p>
+  <ul>
+    <li><strong>Data:</strong> 1,190 real paper trades (55.9% base WR). Ledger stores outcomes only; entry-state features are reconstructed from native-timeframe bars at entry (respecting the native-timeframe rule).</li>
+    <li><strong>Features:</strong> rule priors (backtest WR/PTPnL/tier/confidence) + entry market state (RSI, stochastic, momentum, realized vol, ATR, distance-from-SMA, volume, regime proxy) + direction-signed momentum.</li>
+    <li><strong>Validation:</strong> purged walk-forward (train on trades closed before the test window minus embargo). Out-of-sample AUC <strong>0.581</strong> (logistic baseline 0.532). Threshold sweep is cleanly monotonic; at <code>P(win)&ge;0.60</code> win rate rises to ~62.7% (vs 54.5%) keeping ~41% of trades. ~58% of predictive gain comes from market-state features, not just rule quality.</li>
+    <li><strong>Files:</strong> <code>ml_meta_label_eval.py</code> (offline eval + report), <code>meta_label_train.py</code> (freezes model to <code>models/meta_label/</code>), <code>meta_label_shadow.py</code> (scorer).</li>
+    <li><strong>Shadow forward test (live, log-only):</strong> the frozen model scores every trade opened after its training cutoff from entry-time features, logging P(win) + outcome to a separate <code>meta_shadow.db</code> and the hub page <code>meta_label_shadow.html</code>. <strong>Fully decoupled &mdash; zero paper-trader edits, no live action.</strong> Hourly <code>MetaLabelShadow</code> task.</li>
+  </ul>
+  <div class="status-box"><strong>Deployment gate:</strong> only after the shadow test accrues enough unseen trades (~1&ndash;2 months) and holds up would this be wired in &mdash; and then as <strong>confidence-weighted sizing</strong>, not a hard veto, inside a controlled restart window (Section 15.2). Nothing touches trading until then.</div>
+</div>
+
+<h3>13.3 GPU LSTM Signal Filter <span class="tag tag-removed">DORMANT</span></h3>
+<p>See Section 3.8. Present in the individual trader but inactive (negative validation skill, 0 vetoes). Superseded by the meta-label approach above.</p>
+
+<h3>13.4 Regime Suite (regime_suite.py)</h3>
+<div class="card">
+  <div class="card-title">5 regime lenses &mdash; research-only</div>
+  <ul>
+    <li>Provides <code>TickerRegimeFilter</code> (BULL/CAUTION/BEAR) consumed by the ranking engine (13.1).</li>
+    <li>Research/analysis only &mdash; not a causal live gate. The HMM lens is explicitly non-causal; integration guardrails apply.</li>
+  </ul>
+</div>
+
+<h3>13.5 Prediction Engine (prediction_engine/)</h3>
+<div class="card">
+  <div class="card-title">Big-data expected-return research (stats + ML)</div>
+  <ul>
+    <li>Cross-sectional GBDT ranker (LightGBM, GPU) &mdash; predicts relative forward return, reported via information coefficient and a purged walk-forward long/short book.</li>
+    <li>LSTM forward-return models (daily + intraday horizons).</li>
+    <li>Cross-sectional <strong>shadow book</strong> published to <code>shadow_book.html</code>.</li>
+    <li>Research infrastructure &mdash; not wired into any live trader.</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s14">14. Options System <span class="tag tag-new">NEW in v8</span></h2>
+
+<h3>14.1 Options Mispricing Scanner</h3>
+<div class="card">
+  <div class="card-title">Daily mispricing scan</div>
+  <ul>
+    <li>Daily yfinance options scan producing mispricing scores, open-interest targets, and quality-star ratings; alerts via Telegram.</li>
+    <li>Maintains an ATM IV history cache (<code>data/options_iv_history.csv</code>) that also feeds the ranking engine's arb-edge factor (13.1).</li>
+    <li>Published to <code>options_mispricing.html</code> (daily <code>OptionsMispricingScan</code> task).</li>
+  </ul>
+</div>
+
+<h3>14.2 Maxwell (options_bot.py)</h3>
+<div class="card">
+  <div class="card-title">Options alert bot</div>
+  <ul>
+    <li>Maxwell = <code>options_bot.py</code>, Telegram bot <code>@Maxwell100WR_bot</code> (distinct from <code>telegram_bridge.py</code>).</li>
+    <li>Separate design doc: <code>reports/maxwell_design_requirements.html</code>.</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s15">15. Fleet Migration &amp; Deployment <span class="tag tag-new">NEW in v8</span></h2>
+
+<h3>15.1 3-Node Fleet &amp; GitHub Dev/Prod Split</h3>
+<div class="card">
+  <div class="card-title">Code-only repo with dev/prod branches</div>
+  <ul>
+    <li>The 3-PC cluster (Section 5.2) migrated to a GitHub-based dev/prod workflow with a <strong>code-only</strong> repository (no data/artifacts) and <code>fleet/</code> tooling for coordinated deployment across nodes.</li>
+    <li>Separates development from the running production code so worker nodes pull a known-good revision.</li>
+  </ul>
+</div>
+
+<h3>15.2 Trader Watchdog &amp; Edit Discipline</h3>
+<div class="card">
+  <div class="card-title">Hourly watchdog deploys on-disk edits on restart</div>
+  <ul>
+    <li>An hourly watchdog restarts the paper traders; on restart it picks up whatever code is currently on disk.</li>
+    <li><strong>Discipline (P0):</strong> never edit live trader code outside a controlled restart window &mdash; an in-flight edit would be deployed by the next watchdog restart mid-session. All ML/analytics work (Section 13) is deliberately kept out of the trader for this reason.</li>
+  </ul>
+</div>
+
+</div>
+
+<div class="footer">
+  Design Requirements Document v8.0 &bull; 2026-07-22 &bull; DRAFT (pending 5-agent review) &bull; Living document
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    darkMode: true,
+    background: '#0f1a2e',
+    primaryColor: '#0d47a1',
+    primaryTextColor: '#e0e0e0',
+    primaryBorderColor: '#42a5f5',
+    lineColor: '#53c0f0',
+    secondaryColor: '#4a148c',
+    tertiaryColor: '#1b5e20',
+    fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+    fontSize: '13px'
+  },
+  flowchart: {
+    useMaxWidth: true,
+    htmlLabels: true,
+    curve: 'basis'
+  }
+});
+</script>
+
+</body>
+</html>
