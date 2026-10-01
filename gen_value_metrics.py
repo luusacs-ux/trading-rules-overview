@@ -36,6 +36,11 @@ def _clean(v):
     return v
 
 
+def _round(v, nd=2):
+    v = _clean(v)
+    return None if v is None else round(float(v), nd)
+
+
 def _text(v):
     """CSV blanks come back as NaN floats; the page wants strings."""
     v = _clean(v)
@@ -62,6 +67,9 @@ def stocks(latest):
             "t": r["ticker"], "n": _text(r.get("long_name")), "s": _text(r.get("sector")),
             "i": _text(r.get("industry")), "p": _clean(r.get("price")),
             "mc": _clean(r.get("market_cap")), "c": int(r.get("cheap_count") or 0),
+            "tg": _round(r.get("target_mean")), "tl": _round(r.get("target_low")), "th": _round(r.get("target_high")),
+            "na": int(_clean(r.get("n_analysts")) or 0), "rk": _text(r.get("rec_key")).replace("_", " "),
+            "up": _round(100 * (r["target_mean"] / r["price"] - 1)) if _clean(r.get("target_mean")) and _clean(r.get("price")) else None,
             "v": int(r.get("valid_count") or 0), "b": int(r.get("bargain_count") or 0),
             "z": bool(r.get("in_cheap")), "fx": bool(r.get("fx_mismatch")),
         }
@@ -266,11 +274,14 @@ function renderTable(){
     }
     out.push('<tr><td class="l"><span class="tk">' + esc(s.t) + '</span>' + (s.z ? '<span class="zone">CHEAP ZONE</span>' : '') +
       (s.fx ? '<span class="fx">FX</span>' : '') + '<div class="sm">' + esc(s.i) + '</div></td>' +
-      '<td>$' + num(s.p, 2) + '</td><td>' + cap(s.mc) + '</td>' + cells +
+      '<td>$' + num(s.p, 2) + '</td><td>' + cap(s.mc) + '</td>' +
+      '<td' + (s.tl != null && s.th != null ? ' title="analyst range $' + num(s.tl, 2) + ' - $' + num(s.th, 2) + '"' : '') + '>' +
+      (s.tg != null ? '$' + num(s.tg, 2) : '&ndash;') + '</td><td>' + pct(s.up) + '</td><td>' + (s.na || '&ndash;') + '</td>' +
+      '<td class="l sm">' + esc(s.rk || '') + '</td>' + cells +
       '<td>' + s.c + '/' + s.v + '</td><td>' + s.b + '</td></tr>');
   }
   document.getElementById('rows').innerHTML = out.length ? out.join('') :
-    '<tr><td colspan="' + (RATIOS.length + 5) + '" class="empty">No stocks match.</td></tr>';
+    '<tr><td colspan="' + (RATIOS.length + 9) + '" class="empty">No stocks match.</td></tr>';
   document.getElementById('count').textContent = rows.length + (rows.length === 1 ? ' stock' : ' stocks') +
     (rows.length > shown.length ? ' (showing first ' + shown.length + ')' : '') +
     (q ? ' matching "' + q + '"' : (zoneOnly ? ' in the cheap zone' : ' graded'));
@@ -280,7 +291,7 @@ var ths = document.querySelectorAll('th[data-k]');
 for(var i = 0; i < ths.length; i++){
   ths[i].addEventListener('click', function(){
     var k = this.getAttribute('data-k');
-    if(sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = (k === 't' || k === 'c' || k === 'b' || k === 'mc') ? -1 : 1; }
+    if(sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = (k === 't' || k === 'c' || k === 'b' || k === 'mc' || k === 'up' || k === 'na' || k === 'tg') ? -1 : 1; }
     if(k === 't') sortDir = sortKey === k && sortDir === 1 ? 1 : sortDir;
     renderTable();
   });
@@ -376,7 +387,7 @@ def build():
 
   <div class="sec">Stocks</div>
   <div class="note">Green = cheaper than 75% of industry peers (bold = cheaper than 90%), red = pricier than the median or losing money.
-    Hover a ratio for its cheap cutoff. Search any ticker to see how it grades even outside the cheap zone.</div>
+    Hover a ratio for its cheap cutoff, or a target for the analysts' low-high range. Target = Yahoo mean analyst price target. Search any ticker to see how it grades even outside the cheap zone.</div>
   <div class="controls">
     <input type="text" class="search" id="search" placeholder="Search any ticker, company or industry..." autocomplete="off">
     <select id="sector"><option value="">All sectors</option>{sector_opts}</select>
@@ -385,7 +396,7 @@ def build():
   </div>
   <div class="sec" id="count"></div>
   <div class="tw"><table>
-    <thead><tr><th class="l" data-k="t">Ticker</th><th data-k="p">Price</th><th data-k="mc">Mkt cap</th>{head}<th data-k="c">Cheap</th><th data-k="b">Bargain</th></tr></thead>
+    <thead><tr><th class="l" data-k="t">Ticker</th><th data-k="p">Price</th><th data-k="mc">Mkt cap</th><th data-k="tg">Target</th><th data-k="up">Upside</th><th data-k="na">Analysts</th><th class="l" data-k="rk">Rating</th>{head}<th data-k="c">Cheap</th><th data-k="b">Bargain</th></tr></thead>
     <tbody id="rows"></tbody>
   </table></div>
 
